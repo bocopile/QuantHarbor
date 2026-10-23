@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-10-21",
+  "scope": "approved_manual_development_slack_connection",
+  "approval_id": "AP-01",
+  "proposal_version": "v2",
+  "explicit_user_authorization_received": true,
+  "private_channel_created": true,
+  "external_sharing_enabled": false,
+  "invites_sent": 0,
+  "observed_member_count": 1,
+  "connection_messages_sent": 1,
+  "exact_message_readback_verified": true,
+  "message_time_kst": "2026-10-21T13:09:42+09:00",
+  "authorized_followup_events": ["progress", "completed", "failed", "decision_required"],
+  "recurring_schedule_created": false,
+  "investment_reports_authorized": false,
+  "trading_authority": false,
+  "destination_identifiers_persisted_in_repository": false,
+  "initial_attempt_rejected_before_explicit_authorization": true,
+  "executed_by": "root",
+  "independent_verification": false
+}

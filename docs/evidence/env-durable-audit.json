@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-21T00:38:13.959184+00:00",
+  "task": "ENV-durable-audit",
+  "scope": "fixed_local_checks_only",
+  "input_sha256": {
+    "scripts/run_local_check.py": "621cc88927327b28a732cdfb48cca786d63ac8c93915b7ded8256f2ba61ba35d",
+    "tests/test_run_local_check.py": "44f004a3afa943f28889d8c9a89a93e6391c4c20a79b11778c14ed1841cdb10c",
+    "config/ai/development-policy.toml": "07c0bad73484de88c6519c035a89b1595c525a61ffd60365d3dd2aa480bdbb4f",
+    "config/ai/execution-queue.json": "4ef09629af8adaad3404b0fa5e5f53b75c7b3a24f0f764112e260b339274fb9b",
+    "docs/approval-register.md": "d284a43ac088ecebdd9fccd00712924f0b9491c4cb1c0e2cbb3582c078664ce0",
+    "docs/tasks/ENV-durable-audit.md": "3d15838397a314a2bf7702220e718536b791bc8581f15e6d7b53e10ae33d9917",
+    "docs/tasks/ENV-development-budget.md": "5cf0f0717edb32a1fda62b996e710ccfdeaef3419953f5be30397ffa3f35dd4d"
+  },
+  "independent_review": {
+    "correctness_findings": 1,
+    "resolved": 1,
+    "security_additional_findings": 0,
+    "missing_document_hashes_fix_verified": true
+  },
+  "independent_validation": {
+    "role": "qh_validator",
+    "test_run_local_check": {
+      "tests_passed": 16,
+      "exit_code": 0
+    },
+    "test_environment_controls": {
+      "tests_passed": 5,
+      "exit_code": 0
+    },
+    "test_ai_team": {
+      "tests_passed": 13,
+      "exit_code": 0
+    },
+    "team_config_smoke": {
+      "status": "success",
+      "reason": "exit_zero",
+      "exit_code": 0
+    },
+    "inspect_same_run": {
+      "status": "success",
+      "reason": "exit_zero",
+      "exit_code": 0
+    },
+    "journal_events": [
+      "start",
+      "terminal"
+    ],
+    "journal_input_hash_count": 14,
+    "raw_child_output_printed": false
+  },
+  "queue_state": {
+    "Q02": "completed",
+    "Q03": "in_progress"
+  },
+  "limitations": [
+    "not_global_tool_audit",
+    "not_hook_trust_or_execution",
+    "not_direct_subagent_isolation",
+    "no_SIGKILL_terminal_guarantee",
+    "no_same_user_tamper_resistance",
+    "no_durable_long_term_temp_storage",
+    "no_cleanup_of_detached_session_descendants"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-20T07:48:42.358752+00:00",
+  "scope": "synthetic_command_profile_behavior",
+  "config_sha256": "4449102b0489dfff627db887107076ddd10458866d75ff170b48f3d012cc1b41",
+  "network_positive_control": "loopback_reachable",
+  "results": [
+    {
+      "profile": "qh_review",
+      "case": "public_read",
+      "expected": "allowed",
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "workspace_write",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "private_read",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "protected_config_write",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "loopback_connect",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "public_read",
+      "expected": "allowed",
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "workspace_write",
+      "expected": "allowed",
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "private_read",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "protected_config_write",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "loopback_connect",
+      "expected": "denied",
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "Not a test of MCP, connectors, models, or the active app session.",
+    "No actual credentials read; only the configured logs rule was probed.",
+    "No hook trust, subagent, independent review, or broker validation."
+  ],
+  "cli_version": "0.162.1",
+  "validator_sha256": "fb7959cb3eaf704dcd2c1602eca32f5f20d153c4f4d0ce0059b29752ee84c8d4",
+  "current_session_graph_tools": [
+    "detect_changes",
+    "get_architecture",
+    "get_code_snippet",
+    "get_graph_schema",
+    "index_repository",
+    "index_status",
+    "list_projects",
+    "query_graph",
+    "search_code",
+    "search_graph",
+    "trace_path"
+  ],
+  "current_session_graph_allowlist_matches": true,
+  "roles_static_valid_count": 6,
+  "roles_execution_verified": false,
+  "hook_payload_static_valid": true,
+  "hook_executed": false,
+  "hook_trust_changed": false
+}

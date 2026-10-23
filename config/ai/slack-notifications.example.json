@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "destination_status": "approved_manual_route_identifiers_omitted",
+  "delivery_mode": "manual_connector_after_explicit_authorization",
+  "recurring_schedule_enabled": false,
+  "events": {
+    "progress": "[QuantHarbor][작업 ID] 진행: 확인된 현재 단계",
+    "completed": "[QuantHarbor][작업 ID] 완료: 실제 완료 범위와 검증 요약",
+    "failed": "[QuantHarbor][작업 ID] 실패: 비민감 원인 분류와 다음 조치",
+    "decision_required": "[QuantHarbor][작업 ID] 결정 필요: 범위와 선택 항목"
+  },
+  "connection_check_message": "[QuantHarbor][ENV-10] 개발 알림 연결 확인입니다. 합성 검증 메시지이며 계좌·거래·비밀정보를 포함하지 않습니다.",
+  "raw_logs_allowed": false,
+  "account_data_allowed": false,
+  "trading_authority": false,
+  "retry_on_unknown_delivery": false
+}

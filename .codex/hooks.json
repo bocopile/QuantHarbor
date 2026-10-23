@@ -1,0 +1,80 @@
+{
+  "description": "QuantHarbor local metadata audit. Requires explicit hook trust; no raw tool inputs or outputs, no auto approval. Pinned source SHA-256 f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S -c 'import hashlib,pathlib,sys\ntry:\n p=pathlib.Path(sys.argv[1]); source=p.read_bytes()\n if hashlib.sha256(source).hexdigest() != '\"'\"'f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d'\"'\"': raise ValueError()\nexcept Exception:\n print(\"QuantHarbor hook code unavailable or changed.\",file=sys.stderr);sys.exit(2)\nevent=sys.argv[2];sys.argv=[str(p),event]\nexec(compile(source,str(p),\"exec\"),{\"__name__\":\"__main__\",\"__file__\":str(p)})' \"$(git rev-parse --show-toplevel)/scripts/qh_hook_audit.py\" SessionStart",
+            "timeout": 3,
+            "statusMessage": "QuantHarbor 비민감 이벤트 기록"
+          }
+        ],
+        "matcher": "startup|resume|compact|clear|fork"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S -c 'import hashlib,pathlib,sys\ntry:\n p=pathlib.Path(sys.argv[1]); source=p.read_bytes()\n if hashlib.sha256(source).hexdigest() != '\"'\"'f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d'\"'\"': raise ValueError()\nexcept Exception:\n print(\"QuantHarbor hook code unavailable or changed.\",file=sys.stderr);sys.exit(2)\nevent=sys.argv[2];sys.argv=[str(p),event]\nexec(compile(source,str(p),\"exec\"),{\"__name__\":\"__main__\",\"__file__\":str(p)})' \"$(git rev-parse --show-toplevel)/scripts/qh_hook_audit.py\" PreToolUse",
+            "timeout": 3,
+            "statusMessage": "QuantHarbor 비민감 이벤트 기록"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S -c 'import hashlib,pathlib,sys\ntry:\n p=pathlib.Path(sys.argv[1]); source=p.read_bytes()\n if hashlib.sha256(source).hexdigest() != '\"'\"'f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d'\"'\"': raise ValueError()\nexcept Exception:\n print(\"QuantHarbor hook code unavailable or changed.\",file=sys.stderr);sys.exit(2)\nevent=sys.argv[2];sys.argv=[str(p),event]\nexec(compile(source,str(p),\"exec\"),{\"__name__\":\"__main__\",\"__file__\":str(p)})' \"$(git rev-parse --show-toplevel)/scripts/qh_hook_audit.py\" PostToolUse",
+            "timeout": 3,
+            "statusMessage": "QuantHarbor 비민감 이벤트 기록"
+          }
+        ],
+        "matcher": ".*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S -c 'import hashlib,pathlib,sys\ntry:\n p=pathlib.Path(sys.argv[1]); source=p.read_bytes()\n if hashlib.sha256(source).hexdigest() != '\"'\"'f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d'\"'\"': raise ValueError()\nexcept Exception:\n print(\"QuantHarbor hook code unavailable or changed.\",file=sys.stderr);sys.exit(2)\nevent=sys.argv[2];sys.argv=[str(p),event]\nexec(compile(source,str(p),\"exec\"),{\"__name__\":\"__main__\",\"__file__\":str(p)})' \"$(git rev-parse --show-toplevel)/scripts/qh_hook_audit.py\" Stop",
+            "timeout": 3,
+            "statusMessage": "QuantHarbor 비민감 이벤트 기록"
+          }
+        ]
+      }
+    ],
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S -c 'import hashlib,pathlib,sys\ntry:\n p=pathlib.Path(sys.argv[1]); source=p.read_bytes()\n if hashlib.sha256(source).hexdigest() != '\"'\"'f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d'\"'\"': raise ValueError()\nexcept Exception:\n print(\"QuantHarbor hook code unavailable or changed.\",file=sys.stderr);sys.exit(2)\nevent=sys.argv[2];sys.argv=[str(p),event]\nexec(compile(source,str(p),\"exec\"),{\"__name__\":\"__main__\",\"__file__\":str(p)})' \"$(git rev-parse --show-toplevel)/scripts/qh_hook_audit.py\" Interrupt",
+            "timeout": 3,
+            "statusMessage": "QuantHarbor 비민감 이벤트 기록"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 -I -S -c 'import hashlib,pathlib,sys\ntry:\n p=pathlib.Path(sys.argv[1]); source=p.read_bytes()\n if hashlib.sha256(source).hexdigest() != '\"'\"'f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d'\"'\"': raise ValueError()\nexcept Exception:\n print(\"QuantHarbor hook code unavailable or changed.\",file=sys.stderr);sys.exit(2)\nevent=sys.argv[2];sys.argv=[str(p),event]\nexec(compile(source,str(p),\"exec\"),{\"__name__\":\"__main__\",\"__file__\":str(p)})' \"$(git rev-parse --show-toplevel)/scripts/qh_hook_audit.py\" SessionEnd",
+            "timeout": 3,
+            "statusMessage": "QuantHarbor 비민감 이벤트 기록"
+          }
+        ]
+      }
+    ]
+  }
+}

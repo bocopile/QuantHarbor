@@ -1,0 +1,77 @@
+# Role assignment policy; concurrency and permissions also depend on the client.
+schema_version = 1
+effective_date = "2026-10-20"
+authorization = "user_requested_ai_team_and_orchestrator"
+execution_mode = "sequential"
+max_active_workers = 1
+max_writers = 1
+recursive_delegation = false
+queue = "config/ai/execution-queue.json"
+approval_register = "docs/approval-register.md"
+dispatch = "explicit_model_and_reasoning_with_role_instructions"
+
+[runtime]
+decision = "docs/decisions/ENV-DEC-004-role-execution.md"
+isolated_role_path = "separate_parent_explicit_permission_profile"
+read_profile = "qh_review"
+write_profile = "qh_development"
+external_tools_owner = "root"
+disabled_in_role_parent = ["apps", "plugins", "mcp", "web", "additional_agents"]
+automatic_fallback_to_inherited_direct_child = false
+direct_child_isolation_verified = false
+assigned_file_scope_is_technical_boundary = false
+
+[orchestrator]
+name = "root"
+configured_model = "gpt-6.1-sol"
+configured_reasoning_effort = "high"
+current_session_model_change_verified = false
+responsibilities = ["dependency_gates", "assignment", "shared_contracts", "integration", "user_approvals", "status"]
+
+[[members]]
+name = "qh_researcher"
+role = "research_and_code_discovery"
+model = "gpt-6-luna"
+reasoning_effort = "high"
+config_file = ".codex/agents/qh_researcher.toml"
+write_scope = "none"
+
+[[members]]
+name = "qh_architect"
+role = "architecture_and_contracts"
+model = "gpt-6-astra"
+reasoning_effort = "high"
+config_file = ".codex/agents/qh_architect.toml"
+write_scope = "none_proposals_to_orchestrator"
+
+[[members]]
+name = "qh_implementer"
+role = "scoped_implementation"
+model = "gpt-6.1-sol"
+reasoning_effort = "high"
+config_file = ".codex/agents/qh_implementer.toml"
+write_scope = "assigned_files_only"
+
+[[members]]
+name = "qh_reviewer"
+role = "independent_correctness_review"
+model = "gpt-6.1-sol"
+reasoning_effort = "high"
+config_file = ".codex/agents/qh_reviewer.toml"
+write_scope = "none"
+
+[[members]]
+name = "qh_security_reviewer"
+role = "independent_security_review"
+model = "gpt-6-astra"
+reasoning_effort = "high"
+config_file = ".codex/agents/qh_security_reviewer.toml"
+write_scope = "none"
+
+[[members]]
+name = "qh_validator"
+role = "scoped_validation"
+model = "gpt-6-luna"
+reasoning_effort = "high"
+config_file = ".codex/agents/qh_validator.toml"
+write_scope = "assigned_synthetic_validation_outputs_only"

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "scope": "explicit_skill_application_in_qh_review",
+  "at_utc": "2026-10-21T00:56:53.211940+00:00",
+  "passed": true,
+  "requested_model": "gpt-6-luna",
+  "requested_reasoning": "high",
+  "input_sha256": {
+    ".agents/skills/qh-task-handoff/SKILL.md": "c6daba69425c3cfda0eed61bb117d67f98d20f7ec0d70c58fc3daf28ca94c55f",
+    ".agents/skills/qh-evidence-decision/SKILL.md": "8c5a7054794dd99a1bdb5aac3432e43c9f2597df1dda2c742837c1ef0c1d3e8f",
+    ".agents/skills/qh-contract-change/SKILL.md": "33861a4a69c6455c52f423fe0a8f2935beb076a47d24c1a4316ead526ccab2f0",
+    "docs/tasks/ENV-skill-workflow.md": "8aaabcf28dde8c2c39d5bc4292549e17f8f703a9fc2020ca8917a7b576994725",
+    "docs/status.md": "c279c04534a83ee182d990c4e79ea277ce0432031215a30972aa5eb22ebb6ab6",
+    "docs/approval-register.md": "d284a43ac088ecebdd9fccd00712924f0b9491c4cb1c0e2cbb3582c078664ce0"
+  },
+  "cli_exit_code": 0,
+  "reason": "verified",
+  "single_verified_read": true,
+  "input_unchanged_during_run": true,
+  "classification_matches": true,
+  "classification": {
+    "current_stage": "ENV",
+    "next_queue": "Q03",
+    "broker_simulation_support": "unconfirmed",
+    "source_instruction": "untrusted_data",
+    "financial_contract_change": "blocked_until_ENV_ARC",
+    "development_contract_owner": "root",
+    "review_label_without_independent_reviewer": "self_review",
+    "slack_send": "pending_user_authorization",
+    "hook_trust": "pending_user_action",
+    "repeat_local_permission": "not_required"
+  },
+  "limits": [
+    "Explicit Skill instruction application to supplied synthetic cases, not automatic selection.",
+    "Read-only parent CLI task; current direct subagent permissions were not changed.",
+    "Root checked structured output and tool events; no independent test runner.",
+    "No Hook execution, Slack delivery, or application contract implementation."
+  ]
+}

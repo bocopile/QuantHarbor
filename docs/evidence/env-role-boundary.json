@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "scope": "separate_parent_cli_synthetic_role_boundary",
+  "actual_app_subagent_permissions_changed": false,
+  "hook_trust_changed": false,
+  "automatic_retries": 0,
+  "per_run_timeout_seconds": 120,
+  "inputs_sha256": {
+    "scripts/validate_role_boundary.py": "30d9b344682e3e430c5b7fc422c1e4ac202f7a9bdfef3eaf2b2251f1b271b538",
+    "tests/test_role_boundary.py": "c99b592e0ab9263bed5583046aee7d340eacfeed8355e8e0fc7390cf7b3909b3",
+    ".codex/config.toml": "df334d8d0dfb599471dbb81c85c5da207fea59878d02377857051041fba5bf46",
+    "config/ai/team.toml": "7c9a88d8b4bf181560e664aeb6acb3ea6dafa5a76509a8fcf5f4a06a54be6a54"
+  },
+  "synthetic_tests": {
+    "command": "python3 -B -m unittest discover -s tests -p test_role_boundary.py",
+    "passed": 13,
+    "exit_code": 0,
+    "executed_by": "root",
+    "independent_test_runner": false
+  },
+  "actual_probes": [
+    {
+      "generated_at_utc": "2026-10-21T00:52:43.639524+00:00",
+      "profile": "qh_review",
+      "requested_model": "gpt-6-luna",
+      "requested_reasoning": "high",
+      "diagnostic_wrapper": "fixed_event_kind_and_exact_command_booleans_only",
+      "passed": true,
+      "reason": "verified",
+      "cli_exit_code": 0,
+      "verified_tool_probe_count": 1,
+      "outside_fixture_verification": true,
+      "observed": {
+        "public_read": "allowed",
+        "private_read": "denied",
+        "workspace_write": "denied"
+      }
+    },
+    {
+      "generated_at_utc": "2026-10-21T00:53:22.956197+00:00",
+      "profile": "qh_development",
+      "requested_model": "gpt-6.1-sol",
+      "requested_reasoning": "high",
+      "passed": true,
+      "reason": "verified",
+      "cli_exit_code": 0,
+      "verified_tool_probe_count": 1,
+      "outside_fixture_verification": true,
+      "observed": {
+        "public_read": "allowed",
+        "private_read": "denied",
+        "workspace_write": "allowed"
+      }
+    }
+  ],
+  "prior_attempts": [
+    {"at_utc": "2026-10-21T00:48:11Z", "result": "host_sandbox_blocked", "passed": false},
+    {"at_utc": "2026-10-21T00:48:23Z", "result": "cli_failed_before_verified_probe", "passed": false},
+    {"at_utc": "2026-10-21T00:49:22Z", "result": "mcp_config_diagnostic", "passed": false},
+    {"at_utc": "2026-10-21T00:49:58Z", "result": "unexpected_tool_execution", "passed": false},
+    {"at_utc": "2026-10-21T00:50:43Z", "result": "exact_zsh_wrapper_observed_parser_not_yet_updated", "passed": false},
+    {"at_utc": "2026-10-21T00:51:36Z", "result": "unexpected_tool_execution_cause_unconfirmed", "passed": false}
+  ],
+  "limits": [
+    "Fixed synthetic probe only; not an arbitrary role task runner.",
+    "Actual current app and direct subagents retain inherited permissions.",
+    "No provider-side model identity or billing attestation.",
+    "No external connector, Hook trust, or live account validation.",
+    "One previous post-fix run was rejected; repeatability is not established."
+  ]
+}

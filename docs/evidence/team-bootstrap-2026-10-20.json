@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "task": "TEAM-bootstrap",
+  "recorded_at": "2026-10-20T08:52:25.379796+00:00",
+  "scope": "team_configuration_sequential_delegation_and_local_validation_only",
+  "input_sha256": {
+    ".codex/config.toml": "df334d8d0dfb599471dbb81c85c5da207fea59878d02377857051041fba5bf46",
+    "config/ai/team.toml": "7c9a88d8b4bf181560e664aeb6acb3ea6dafa5a76509a8fcf5f4a06a54be6a54",
+    "config/ai/development-policy.toml": "4308f59688caa0c924dbd74b960e96162586473cbe8a163cc309bd6505bc7de4",
+    "config/ai/execution-queue.json": "810389d37d42f9954dc556a737f5169168ac8fd3f0cca3447c04ecaf4db31a5d",
+    "scripts/check_ai_team.py": "0d96f0c226eb396f98deb7d096303d31eabfbb555152fb6a52da1a1626b20519",
+    "tests/test_ai_team.py": "874d1bfb588d810273de33787950b2c5036d3d54d7d8de688e19d2131b7c8033",
+    "docs/approval-register.md": "1db3b103c8d04f15af46da0976d42ba576e4e61afc2f67453110edbd3eb3c40b",
+    "docs/ai-team.md": "eff5168f6a71ddf3e7f153721739f02953965be81ac5ba178d2716aa67f83146",
+    "docs/tasks/TEAM-bootstrap.md": "4668bb300d851cf68a0b872779b1af55603410b60a5ad6e923a2a5e463c003e8",
+    "docs/execution-checklist.md": "182ab5b18eacaa36ed5d2d532be196086c88bd96f7ac1561b0c3e9e3a33d8862",
+    ".codex/agents/qh_researcher.toml": "c640079a5ac0d0b0f9804d985da23b92af15a1bdbb611142ebe89a75321cf239",
+    ".codex/agents/qh_architect.toml": "3db30befadef2a1a63083af853cbd0d51a748baa459e489598106fd9d9e289f2",
+    ".codex/agents/qh_implementer.toml": "6446b4bd2435bad45afbf1c8da8029f4c33fb62e22d6ffcbf02645a5785bc4a6",
+    ".codex/agents/qh_reviewer.toml": "5dae96aa7d2e40bf87713e72d38421da05d4c4abde98e6844487dd07d2e8c270",
+    ".codex/agents/qh_security_reviewer.toml": "e700d0eecb68a022b9e4a80bcda6f1aeedc406b64884460c6670c239b7d3ec28",
+    ".codex/agents/qh_validator.toml": "2c9beaaeed6c3acf9c1634250be0963bedeef24407ca85ff93cbdee224da5cd1"
+  },
+  "config_load": {
+    "source": "local app-server config/read; no thread or model turn started",
+    "config": {
+      "model": "gpt-6.1-sol",
+      "model_reasoning_effort": "high",
+      "sandbox_mode": "workspace-write",
+      "default_permissions": null
+    },
+    "agents": {
+      "enabled": null,
+      "max_concurrent_threads_per_session": 6
+    },
+    "mcp": {
+      "node_repl": {
+        "enabled": true,
+        "enabled_tools": null,
+        "default_tools_approval_mode": null
+      },
+      "notion": {
+        "enabled": true,
+        "enabled_tools": null,
+        "default_tools_approval_mode": null
+      },
+      "codebase-memory-mcp": {
+        "enabled": true,
+        "enabled_tools": [
+          "search_graph",
+          "trace_path",
+          "get_code_snippet",
+          "query_graph",
+          "search_code",
+          "get_architecture",
+          "get_graph_schema",
+          "index_repository",
+          "index_status",
+          "list_projects",
+          "detect_changes"
+        ],
+        "default_tools_approval_mode": "writes"
+      },
+      "computer-use": {
+        "enabled": false,
+        "enabled_tools": null,
+        "default_tools_approval_mode": null
+      }
+    },
+    "apps_default": {
+      "enabled": true,
+      "approvals_reviewer": null,
+      "destructive_enabled": false,
+      "open_world_enabled": false,
+      "default_tools_approval_mode": "writes"
+    },
+    "permission_profiles": [
+      "qh_development",
+      "qh_review"
+    ],
+    "project_agent_names": [],
+    "project_skills": [
+      {
+        "name": "qh-contract-change",
+        "enabled": true
+      },
+      {
+        "name": "qh-evidence-decision",
+        "enabled": true
+      },
+      {
+        "name": "qh-task-handoff",
+        "enabled": true
+      }
+    ],
+    "skill_error_count": 0,
+    "project_hooks": [
+      {
+        "eventName": "sessionStart",
+        "enabled": true,
+        "trustStatus": "untrusted",
+        "isManaged": false
+      }
+    ],
+    "hook_error_count": 0,
+    "hook_warning_count": 0
+  },
+  "dispatch": {
+    "agent_type": "default",
+    "fork_turns": "none",
+    "requested_members": [
+      {
+        "name": "qh_researcher",
+        "model": "gpt-6-luna",
+        "reasoning_effort": "high",
+        "response_received": true
+      },
+      {
+        "name": "qh_architect",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "high",
+        "response_received": true
+      },
+      {
+        "name": "qh_implementer",
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "response_received": true
+      },
+      {
+        "name": "qh_reviewer",
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "response_received": true
+      },
+      {
+        "name": "qh_security_reviewer",
+        "model": "gpt-6-astra",
+        "reasoning_effort": "high",
+        "response_received": true
+      },
+      {
+        "name": "qh_validator",
+        "model": "gpt-6-luna",
+        "reasoning_effort": "high",
+        "response_received": true
+      }
+    ],
+    "sequential_workers": true,
+    "recursive_delegation": false,
+    "current_parent_model_change_attested": false,
+    "provider_model_independently_attested": false,
+    "custom_role_auto_discovery_verified": false
+  },
+  "independent_reviews": [
+    {
+      "reviewer": "qh_reviewer",
+      "findings": 2,
+      "resolved_on_rereview": 2,
+      "topics": [
+        "all_completed_null_pointer",
+        "approval_reference_registration"
+      ]
+    },
+    {
+      "reviewer": "qh_security_reviewer",
+      "findings": 1,
+      "resolved_on_rereview": 1,
+      "topics": [
+        "Q28_investment_delivery_separate_unapproved_AP10"
+      ]
+    }
+  ],
+  "validation": {
+    "performed_by": "qh_validator",
+    "commands": [
+      {
+        "command": "python3 -B scripts/check_ai_team.py",
+        "exit_code": 0,
+        "members": 6,
+        "queue_items": 36,
+        "source_task_ids": 110
+      },
+      {
+        "command": "python3 -B -m unittest discover -s tests -p test_ai_team.py",
+        "exit_code": 0,
+        "tests_passed": 13
+      }
+    ],
+    "evidence_path_escape_checks": true,
+    "approval_reference_check_is_authorization": false,
+    "source_id_coverage_is_task_completion": false,
+    "q28_specific_mapping_validated_by": "independent_security_rereview_and_validator_document_read_not_hardcoded_unit_test"
+  },
+  "handoff": {
+    "new_agent_without_history_identified_phase_and_pending_approvals": true,
+    "parent_client_restart_verified": false,
+    "hook_execution_verified": false
+  },
+  "procedural_deviation": {
+    "role": "qh_architect",
+    "reported_non_sensitive_tmp_document_copy": true,
+    "repository_modified_by_role": false,
+    "technical_readonly_isolation_proven": false
+  },
+  "outcome": {
+    "team_task": "complete",
+    "env_phase": "incomplete",
+    "current_queue_item": "Q02",
+    "pending_user_inputs": [
+      "AP-01",
+      "AP-02",
+      "AP-09"
+    ],
+    "external_messages_sent": false,
+    "additional_paid_api_runner_created": false
+  },
+  "limitations": [
+    "policy_is_not_a_scheduler_or_permission_enforcer",
+    "runtime_role_isolation_and_all_tool_audit_incomplete",
+    "billing_cap_not_enforced",
+    "no_financial_application_or_live_account_validation"
+  ]
+}

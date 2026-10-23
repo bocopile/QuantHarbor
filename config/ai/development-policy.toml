@@ -1,0 +1,68 @@
+# QuantHarbor process policy v1; this file is not a Codex enforcement config.
+schema_version = 1
+phase = "ENV"
+effective_date = "2026-10-20"
+owner = "primary"
+
+[models]
+selection = "explicit_role_models_per_user_request"
+reasoning = "explicit_per_role"
+team_manifest = "config/ai/team.toml"
+automatic_upgrade = false
+paid_api_runner_enabled = false
+monthly_budget_status = "existing_subscription_only_no_incremental_spend"
+account_billing_cap_enforced_by_project = false
+on_account_limit = "stop_no_alternate_account_or_paid_runner"
+# No new paid runner is provisioned. This does not cap the existing Codex account bill.
+additional_paid_runner_budget = 0
+
+[delegation]
+requires_explicit_user_request = true
+recursive = false
+max_concurrent_children = 6
+max_active_workers = 1
+current_authorization = "user_requested_sequential_ai_team"
+default_writers = 1
+
+[workflow]
+execution_mode = "sequential_orchestrated"
+task_template = "docs/templates/task.md"
+decision_template = "docs/templates/decision.md"
+status_file = "docs/status.md"
+shared_contract_owner = "primary"
+test_execution_requires_user_request = true
+current_validation_scope = "user_requested_sequential_local_synthetic_validation"
+approval_register = "docs/approval-register.md"
+execution_queue = "config/ai/execution-queue.json"
+
+[tools]
+inventory = "docs/development-environment.md"
+exposure_enforcement = "codebase_mcp_current_session_allowlist_matches"
+broker_tools_enabled = false
+slack_delivery_enabled = false
+new_external_mutations_enabled = false
+
+[isolation]
+development = "current_host_managed_sandbox"
+available_parent_profiles = ["qh_review", "qh_development"]
+profile_activation = "explicit_validation_commands_only"
+command_profile_validation = "10_synthetic_checks_passed_2026_10_20"
+research = "not_provisioned"
+paper = "not_provisioned"
+live = "not_provisioned"
+private_storage = "not_provisioned"
+secrets = "no_project_credentials"
+
+[audit]
+task_records = "docs/tasks"
+public_decisions = "docs/decisions"
+raw_tool_logs_in_git = false
+hook_role = "session_reminder_only"
+hook_activation = "requires_client_trust"
+
+# Enforced only by scripts/validate_environment.py, not by every Codex tool.
+[validation]
+probe_timeout_seconds = 15
+probe_batch_timeout_seconds = 120
+automatic_retries = 0
+audit_scope = "synthetic_profile_probes_only"

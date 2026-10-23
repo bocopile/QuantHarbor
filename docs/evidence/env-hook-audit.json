@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-21T01:13:09.579138+00:00",
+  "scope": "hook_audit_code_synthetic_validation_and_client_discovery",
+  "input_sha256": {
+    "scripts/qh_hook_audit.py": "f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d",
+    "tests/test_hook_audit.py": "d8cea8a0c8efd137a91e9411383a82570b300eb0617c23d256c13b04b5776e77",
+    ".codex/hooks.json": "3428c99ea9cbbe3c1336c4153cac7585985e4a44d84b5ac4d549d1cdce16bc37"
+  },
+  "synthetic_tests": {
+    "dedicated_tests_passed": 8,
+    "full_suite_passed": 55,
+    "full_suite_exit_code": 0,
+    "executed_by": "root",
+    "independent_execution": false
+  },
+  "security_review": {
+    "initial_findings": 2,
+    "resolved_findings": 2,
+    "reviewer": "qh_security_reviewer",
+    "final_blocking_findings": 0
+  },
+  "client_discovery": {
+    "events": [
+      "PreToolUse",
+      "PostToolUse",
+      "SessionStart",
+      "SessionEnd",
+      "Stop",
+      "Interrupt"
+    ],
+    "enabled_count": 6,
+    "untrusted_count": 6,
+    "error_count": 0,
+    "warning_count": 0,
+    "model_turn_started": false
+  },
+  "actual_trusted_hook_execution_verified": false,
+  "trust_followup": {
+    "date": "2026-10-21",
+    "user_reported_six_hooks_trusted": true,
+    "real_user_state_untrusted_count": 6,
+    "normal_cli_review_required_count": 6,
+    "normal_cli_project_pretooluse_status": "new_review_required",
+    "delegated_registration_authorization": "user_will_register_and_notify",
+    "trust_database_edited": false,
+    "trust_bypass_used": false
+  },
+  "hook_trust_changed": false,
+  "latest_read_only_recheck": {
+    "date": "2026-10-23",
+    "source": "real_user_state_app_server_hooks_list",
+    "enabled_count": 6,
+    "untrusted_count": 6,
+    "error_count": 0,
+    "warning_count": 0,
+    "model_turn_started": false,
+    "trust_changed": false
+  },
+  "raw_tool_input_output_persisted": false,
+  "limits": [
+    "Supported local Hook paths only; hosted tools may bypass these events.",
+    "PostToolUse without explicit result fields is unknown, not success.",
+    "Temporary audit storage is not long-term retention or same-user tamper protection.",
+    "Hook failures/timeouts/platform omissions are not a universal enforcement boundary."
+  ]
+}

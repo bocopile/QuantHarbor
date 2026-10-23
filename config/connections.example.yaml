@@ -1,0 +1,37 @@
+# Git에는 이 예제만 포함합니다. 실제 식별값은 connections.local.yaml에 입력합니다.
+# 비밀값은 아래 이름의 환경변수로 주입하며 이 파일에 직접 넣지 않습니다.
+# 현재는 설정 틀입니다. 애플리케이션 로더와 API 연결은 아직 구현되지 않았습니다.
+schema_version: 1
+
+slack:
+  enabled: false
+  delivery_mode: manual_connector
+  workspace_id: ""
+  channel_id: ""
+  # 기존 Codex connector를 쓰면 별도 토큰 입력이 필요하지 않습니다.
+  # 아래 변수는 향후 직접 API를 연결할 때만 사용합니다.
+  token_env: SLACK_BOT_TOKEN
+  recurring_schedule_enabled: false
+  investment_reports_enabled: false
+
+broker:
+  enabled: false
+  # KIS는 조건부 권고안이며 실제 계좌·공급자 선택은 아직 미확정입니다.
+  provider: ""
+  environment: paper
+  account_id: ""
+  app_key_env: KIS_PAPER_APP_KEY
+  app_secret_env: KIS_PAPER_APP_SECRET
+  orders_enabled: false
+
+market_data:
+  enabled: false
+  provider: ""
+  api_key_env: MARKET_DATA_API_KEY
+
+ai_api:
+  # 현재 개발팀은 기존 Codex 구독을 사용합니다. 이 항목은 별도 운영 API용입니다.
+  enabled: false
+  provider: ""
+  model: ""
+  api_key_env: QH_AI_API_KEY
