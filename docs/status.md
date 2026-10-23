@@ -16,6 +16,8 @@
 
 ## 완료
 
+- [x] GIT-baseline: 승인된 공개 개발 산출물 89개를 로컬 기준 커밋 2bed4c4에 보존. 합성 검증·독립 보안 검토·Git tree 대조 완료.
+
 - [x] 요구사항과 제품 철학 초안 정리.
 - [x] GitHub 후보 99개의 메타데이터 확인 및 후보군 내 스타 순 20개 문서·핵심 구조 조사.
 - [x] 역할별 모델·추론 수준, 증권사·데이터·운영 구조 초안 조사.
@@ -27,10 +29,10 @@
 
 ## 진행 중
 
-- 2026-10-23 사용자가 Git 전략에 따른 기준 커밋 실행을 명시 승인했다. GIT-baseline에서 기존 파일을 보존해 codex/env-baseline을 생성했고 공개 후보 검사·독립 보안 검토·합성 테스트 55개·팀 정합성 확인을 마쳤다. 실제 기준 커밋 생성과 tree 확인을 진행한다. 원격 push·PR·merge는 실행 범위 밖이다. 기준 커밋 후 Q04부터 기존 선행조건을 따른다.
+- 2026-10-23 **GIT-baseline 완료**: 사용자 명시 승인에 따라 codex/env-baseline에서 기준 커밋 `2bed4c4`를 생성했다. 공개 파일 89개·기존 합성 테스트 55개·팀 정합성·독립 보안 검토·staged 공백 검사와 commit tree/작업 파일 일치를 확인했다. 실제 연결 설정은 제외·비추적 상태다. main 보존, push·PR·merge·tag·원격 변경 없음. 상세는 [기준 커밋 카드](tasks/GIT-baseline.md). 다음 Q04는 사용자 직접 Hook 신뢰 등록 후 실제 실행 확인이 필요하다.
 
-- 2026-10-23 사용자 요청에 따라 [Git 전략](git-workflow.md)과 GIT-DEC-001을 수립했다. main+단기 작업 브랜치·필요 기반 worktree·논리적 commit/PR·squash merge·root 통합·복구·정리 기준을 마련했고 독립 공개 문서 검토에서 실질 결함 없음을 확인했다. 템플릿·문서 연결·링크 확인 완료. 실제 branch/worktree 생성·commit·push·PR·merge·보호 규칙·CI는 수행하지 않았다.
-- 같은 날짜 Git 읽기 확인: main ec56042의 초기 커밋 하나, tracked README 하나, 이후 산출물 미커밋, 기본 checkout 하나. origin 이름 존재만 확인했다. 처음 적용할 때 기존 작업을 보존·검토한 기준 커밋을 준비해야 한다. 상세는 GIT-workflow 카드와 AP-06을 따른다.
+- 2026-10-23 사용자 요청에 따라 [Git 전략](git-workflow.md)과 GIT-DEC-001을 수립했다. main+단기 작업 브랜치·필요 기반 worktree·논리적 commit/PR·squash merge·root 통합·복구·정리 기준을 마련했고 독립 공개 문서 검토에서 실질 결함 없음을 확인했다. 템플릿·문서 연결·링크 확인 완료. 전략 수립 당시에는 실제 branch/worktree 생성·commit·push·PR·merge·보호 규칙·CI를 수행하지 않았다.
+- 전략 수립 시점의 Git 읽기 확인(기준 커밋 전): main ec56042의 초기 커밋 하나, tracked README 하나, 이후 산출물 미커밋, 기본 checkout 하나. origin 이름 존재만 확인했다. 후속 GIT-baseline에서 이 기존 작업을 보존·검토해 기준 커밋을 생성했다. 상세는 GIT-workflow 카드와 AP-06을 따른다.
 
 - 2026-10-23 [팀 작업 보드](team-dashboard.md)와 결과 중심 소통 정책을 마련했다. 실제 공개 문서 검토 agent `visibility_reviewer`의 착수·반환을 보드에 반영했고 독립 검토에서 실질 불일치 없음, 링크·큐 수치 확인을 마쳤다. 패널 열기는 queued 응답이며 자동 실시간 서비스나 제품 큐 완료를 의미하지 않는다. 상세: ENV-team-visibility.
 
@@ -49,7 +51,7 @@
 - [ ] 테스트·통합 검증·실계좌 검증.
 - [ ] 증권사·투자 보고용 Slack·AI 운영 API 연결. 개발용 Slack 수동 연결은 완료.
 - [ ] 모의·실전 매매, 정기 작업·자동화 생성.
-- [ ] 로컬 기준 커밋(GIT-baseline 진행 중). 원격 push·GitHub 외부 변경은 별도 미실행.
+- [ ] 원격 push·PR·merge·GitHub 외부 변경. 로컬 기준 커밋은 GIT-baseline에서 완료.
 
 문서의 체크 항목은 해당 산출물만을 의미한다. `.gitignore`가 존재해도 과거 Git 이력에 비밀정보가 없음을 보증하거나, 비밀정보 탐지 기능이 설치됐음을 의미하지 않는다.
 

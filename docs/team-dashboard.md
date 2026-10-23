@@ -7,9 +7,9 @@
 - 제품 실행 큐: **Q04 — Skills·Hook·감사**
 - 큐 완료: **3/36**. Q04 진행 중, Q05~36 미완료. 개수는 작업량 진행률이 아니다.
 - 제품 작업의 막힌 조건: AP-02 사용자 직접 Hook 신뢰 등록 후 실제 실행 확인. 2026-10-23 실제 재조회에서 enabled 6·untrusted 6·오류/경고 0을 확인했다.
-- 최근 완료 작업: **GIT-workflow — Git·worktree·commit·merge 전략 수립**. 독립 검토와 문서 연결 확인 완료. 실제 이력·원격 변경은 하지 않았으며 제품 Q04의 선행조건을 유지한다.
-- 현재 작업: **GIT-baseline — 승인된 로컬 기준 커밋 준비**. 공개 후보 87개에 한정한 민감정보 패턴 검사에서 탐지 0건, 실제 로컬 연결 파일 제외 확인. 독립 보안 검토에서 차단 사항 없음, 기존 합성 테스트 55개·팀 정합성 PASS. 기준 브랜치 생성 완료, 커밋 직전.
-- Git 관측(착수 시 2026-10-23): branch `main`, HEAD `ec56042`, 기본 checkout 1개, 작업 branch/worktree·PR 미생성. 기준 커밋 이후의 작업 파일은 아직 미커밋이다.
+- 최근 완료 작업: **GIT-baseline — 기준 커밋 2bed4c4 생성**. 공개 파일 89개, 합성 테스트 55개·팀 정합성 PASS, 독립 보안 검토 차단 사항 없음.
+- 현재 작업: **Q04 사용자 처리 대기**. 기존 Hook 신뢰 직접 등록 선택에 따라 실제 이벤트 검증이 남아 있다. 기준 커밋으로 ENV 완료 조건을 바꾸지 않는다.
+- Git 적용(2026-10-23): branch `codex/env-baseline`, 기준 commit `2bed4c4`, 기본 checkout 1개. 기준 커밋 직후 clean·89개 blob 일치 확인. 이 보드의 완료 갱신은 후속 문서 커밋으로 보존한다. main `ec56042` 유지, 추가 worktree·PR·merge 미생성.
 - 실행 원칙: 전문 worker 1명, 작성자 1명. 역할 설정이 있다는 이유로 실행 중으로 표시하지 않는다.
 
 ## 담당자별 상태
@@ -18,7 +18,7 @@
 
 | 담당자 | 모델 / 추론 | 상태 | 현재 배정·최근 산출물 | 다음 조건 |
 |---|---|---|---|---|
-| 총괄 root | 프로젝트 설정 Sol / high | 기준 커밋 기록 중 | GIT-baseline·AP-06 실행 범위·후보 검증 통합 | 보안 검토 후 커밋, 이어서 Q04 |
+| 총괄 root | 프로젝트 설정 Sol / high | 기준 커밋 완료·Q04 대기 조건 확인 | GIT-baseline·검증·tree 확인·인계 기록 | 사용자 직접 Hook 신뢰 등록 후 실제 이벤트 검증 |
 | 조사 qh_researcher | Luna / high | 자문 완료 | 실제 agent `requirements_scout`가 1차 응답과 남은 요구 경계 반환 | 다음 공개 조사 배정 |
 | 설계 qh_architect | Astra / high | 미배정 | [역할 실행 경로 결정](decisions/ENV-DEC-004-role-execution.md) | 요구·설계 작업의 선행조건 충족 |
 | 구현 qh_implementer | Sol / high | 미배정 | [기존 Hook 준비 결과](tasks/ENV-hook-audit.md) | 구현 또는 결함 수정 배정 |
@@ -54,6 +54,7 @@ Sol = gpt-6.1-sol, Luna = gpt-6-luna, Astra = gpt-6-astra. root의 실제 대화
 | 이전 | ENV-connection-template | 예제·비추적 사본·제외 규칙 확인. [증거](evidence/env-connection-template.json) |
 | 현재 | ENV-team-visibility | 보드·소통 정책 작성, `visibility_reviewer` 독립 문서 검토 완료·실질 불일치 없음. 링크·큐 수치 확인 |
 | 현재 | A-input-preparation | [사용자 3개 요구](requirements-input.md) 확보·조사 자문·독립 문서 검토 완료. 조회 시점 표현 수정 |
-| 현재 | GIT-workflow | 저장소 읽기 확인·[전략 문서](git-workflow.md)·[결정 기록](decisions/GIT-DEC-001-workflow.md)·독립 검토 완료, Git 이력 변경 없음 |
+| 이전 | GIT-workflow | 저장소 읽기 확인·[전략 문서](git-workflow.md)·[결정 기록](decisions/GIT-DEC-001-workflow.md)·독립 검토 완료, Git 이력 변경 없음 |
+| 현재 | GIT-baseline | [기준 커밋 2bed4c4](tasks/GIT-baseline.md), 공개 89개·합성 테스트 55개·독립 보안 검토·tree 확인 완료 |
 
 실제 계좌·키·토큰·채널 ID·원시 도구 로그는 이 보드에 기록하지 않는다. 본 문서는 실행 중인 서비스가 아니며 세션 종료 후 자동 갱신·무인 실행·예약 알림을 제공하지 않는다.
