@@ -1,0 +1,1234 @@
+{
+  "task": "Q27-correction-financial-close",
+  "status": "partial",
+  "q27_complete": false,
+  "role_requested": "Sol/high 제한 qh_development 단독 구현자",
+  "actual_model_role_reload_verified": false,
+  "delegation_performed": false,
+  "started_utc": "2026-10-25T11:20:57+00:00",
+  "finished_utc": "2026-10-25T11:47:12.638752+00:00",
+  "elapsed_seconds": 1575.639,
+  "deadline_seconds": 2400,
+  "within_deadline": true,
+  "input_root_DB_evidence": {
+    "path": "docs/evidence/execution-database-financial-2026-10-25.json",
+    "sha256": "c5e0ded276fecb59bfb1edddbd2331334fe42e5df3a97065b8e1a1e247eb3fd1",
+    "scenarios": 15,
+    "checks": 30,
+    "seconds": 551.427,
+    "cleanup": 15,
+    "exit_code": 0,
+    "owned18_unchanged": true,
+    "current_source_run": false,
+    "independent_review": false
+  },
+  "adopted_decision": "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md",
+  "implemented": [
+    "실제 Q20 reducer로 replacement submission을 한 번씩 append하여 생성된 연속 reversal+replacement bundle 전체 exact 대조",
+    "Q21 snapshot 재구성/현재 권리와 Q23 calculate_performance/flow/공통 cost 경제 검사 재사용",
+    "입력 전체 이력 보존 및 완전 재생 후 current cutoff의 유효 trade/fee/tax head만 성과·비용·채무·수량·일간 집계",
+    "build_current_inputs/validate_current/current_risk/현금 채무 검사에 실행 전용 추가 경로 연결, 기존 Q23 public v1·Q24 원본 source 보존",
+    "독립 literal broker manifest와 정정 후 다음 actual DB admission4종 및 EX09/11/12/13/19 actual runner 시나리오 추가",
+    "runner 보존식에서 모든 reservation row 검사; 원래 lifecycle/noargs/generic reason/partial 유지"
+  ],
+  "owned_all": [
+    "src/quantharbor/domain/execution.py",
+    "src/quantharbor/domain/execution_math.py",
+    "src/quantharbor/application/execution.py",
+    "src/quantharbor/ports/execution.py",
+    "src/quantharbor/adapters/postgres_execution.py",
+    "src/quantharbor/adapters/synthetic_execution_broker.py",
+    "src/quantharbor/adapters/execution_uow.py",
+    "tests/product/synthetic_execution.py",
+    "tests/product/test_execution.py",
+    "tests/product/test_execution_math.py",
+    "tests/product/test_execution_broker.py",
+    "tests/product/test_execution_runner.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "src/quantharbor/application/approval.py",
+    "src/quantharbor/domain/serialization.py",
+    "tests/product/test_execution_financial.py",
+    "src/quantharbor/application/research.py",
+    "src/quantharbor/application/execution_research.py",
+    "tests/product/test_execution_correction.py",
+    "tests/product/test_research_execution.py"
+  ],
+  "exact_changed_owned": [
+    "src/quantharbor/application/execution.py",
+    "tests/product/synthetic_execution.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "src/quantharbor/application/research.py",
+    "src/quantharbor/application/execution_research.py",
+    "tests/product/test_execution_correction.py",
+    "tests/product/test_research_execution.py"
+  ],
+  "owned_before_sha256": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+    "docs/development/execution.md": "32dc11716e61c788cdac0bc2cea31bf637f94d66a0549c6a458cfee13e931c3f",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+    "src/quantharbor/application/research.py": "1d30c24444c2d0c8b3864d91ced7fb99f4a15b247f591f6c3d1710928641a40c",
+    "src/quantharbor/application/execution_research.py": null,
+    "tests/product/test_execution_correction.py": null,
+    "tests/product/test_research_execution.py": null
+  },
+  "owned_sha256": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+    "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423"
+  },
+  "root_common_files_unchanged": true,
+  "changed_non_owned": [],
+  "protected_sha256": {
+    "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md": "88928bb2a49bb7181b9a22b9313853192d9f806100e073e2a3c9afa2821a09a9",
+    "src/quantharbor/domain/ledger.py": "5f49b3928759e594d832ce4bdecd124320f5fc7cddeaed26aca2e93100c69245",
+    "docs/status.md": "ab87c3d55dd78703fe8649e9a6dd7c8d3ea44db8c755229e23d37aa063898e96",
+    "docs/tasks/EXECUTION-local.md": "468eb3159eba93d975fd88f1244c3044925237313d62d05d744a6b7ce96406f0",
+    "config/ai/execution-queue.json": "09f2d51943ee033dc4bb9c5f803cc095ff3076e5772a6424815160977f91f84a",
+    "src/quantharbor/application/ledger.py": "8b13be5f228af64864445b1a40281e4d50d40644322c3a7a5cd3d93078bf36f2",
+    "docs/contracts/execution-local-v1.md": "5768b96b51ad499433d44c8a2226cffd81f35ac7a94a11ee11f23bc5b7c31c1c",
+    "docs/architecture.md": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+    "docs/contracts/serialization-v1.md": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+    "docs/implementation-backlog.md": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+    "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+    "docs/contracts/execution-v1.md": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+    "docs/contracts/operations-v1.md": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+    "migrations/0001_synthetic_foundation.sql": "3dcad32e09b30af71a557ee211a98fb6afdd96e3639f77990a0a904bb045997a",
+    "migrations/0002_synthetic_ledger.sql": "d48e206c7b74133cc5a8d1645bc986272701ba0124409d3bdb23b602d05333f8",
+    "docs/contracts/approval-fixture-v1.json": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+    "docs/contracts/execution-fixture-v1.json": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1"
+  },
+  "protected_hash_checks": {
+    "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md": true,
+    "src/quantharbor/domain/ledger.py": true,
+    "docs/status.md": true,
+    "docs/tasks/EXECUTION-local.md": true,
+    "config/ai/execution-queue.json": true,
+    "src/quantharbor/application/ledger.py": true,
+    "docs/contracts/execution-local-v1.md": true,
+    "docs/architecture.md": true,
+    "docs/contracts/serialization-v1.md": true,
+    "docs/implementation-backlog.md": true,
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+    "docs/contracts/data-v1.md": true,
+    "docs/contracts/execution-v1.md": true,
+    "docs/contracts/operations-v1.md": true,
+    "migrations/0001_synthetic_foundation.sql": true,
+    "migrations/0002_synthetic_ledger.sql": true,
+    "docs/contracts/approval-fixture-v1.json": true,
+    "docs/contracts/execution-fixture-v1.json": true
+  },
+  "source_freezes": [
+    {
+      "freeze": "final-1",
+      "epoch": 1792928275.5909498,
+      "owned_sha256": {
+        "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+        "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+        "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+        "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+        "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+        "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+        "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+        "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+        "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+        "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+        "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+        "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423"
+      },
+      "changed_owned": [
+        "src/quantharbor/application/execution.py",
+        "tests/product/synthetic_execution.py",
+        "scripts/check_execution.py",
+        "docs/development/execution.md",
+        "src/quantharbor/application/research.py",
+        "src/quantharbor/application/execution_research.py",
+        "tests/product/test_execution_correction.py",
+        "tests/product/test_research_execution.py"
+      ],
+      "actual_runs": {
+        "focused": {
+          "phase": "focused",
+          "source_freeze": "final-1",
+          "command": [
+            "python3.13",
+            "-B",
+            "-m",
+            "unittest",
+            "-v",
+            "test_execution",
+            "test_execution_math",
+            "test_execution_broker",
+            "test_execution_runner",
+            "test_execution_financial",
+            "test_execution_correction",
+            "test_research_execution"
+          ],
+          "started_epoch": 1792928298.009451,
+          "finished_epoch": 1792928714.229894,
+          "seconds": 416.22,
+          "exit_code": 0,
+          "log": "/private/tmp/q27-correction-focused.log",
+          "log_sha256": "febe8150cf769069494c3fad40c684e6d902691424ea4b89a76228192793655e",
+          "counts": {
+            "tests": 75,
+            "failures": 0,
+            "errors": 0
+          }
+        },
+        "regression": {
+          "phase": "regression",
+          "source_freeze": "final-1",
+          "command": [
+            "python3.13",
+            "-B",
+            "-m",
+            "unittest",
+            "-v",
+            "test_serialization",
+            "test_approval.ApprovalFixedCases.test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission",
+            "test_approval.ApprovalFixedCases.test_AP02_exact_replay_only_receipt_and_current_permission",
+            "test_approval.ApprovalFixedCases.test_AP04_fake_principal_foreign_issuer_bool_AI_and_JSON_are_not_authority",
+            "test_approval.ApprovalFixedCases.test_AP18_multiple_application_instances_exact_receipt_single_effect",
+            "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission",
+            "test_target.TargetIntegrationTests.test_source_bound_704_and_804_golden",
+            "test_performance.PerformanceTests.test_actual_flow_boundary_golden_21_percent_and_amount_26",
+            "test_performance.PerformanceTests.test_actual_sale_fee_tax_and_slippage_no_double_count_golden",
+            "test_performance.PerformanceTests.test_missing_and_interleaved_flow_boundary_rejected",
+            "test_performance.PerformanceTests.test_research_rights_required_at_every_evaluation_point",
+            "test_costing.CostingTests.test_actual_event_cost_allocation_is_unique_complete_and_bound",
+            "test_research.ResearchTests.test_01_all_24_runs_preserved_with_independent_fixed_expectations",
+            "test_research.ResearchTests.test_no_real_broker_model_network_or_test_imports_in_production"
+          ],
+          "started_epoch": 1792928307.002248,
+          "finished_epoch": 1792928386.519868,
+          "seconds": 79.518,
+          "exit_code": 0,
+          "log": "/private/tmp/q27-correction-regression.log",
+          "log_sha256": "ae0ef4325b50766665cf6b6fae10a1e573a98e98757d2c28d0e8d3dd4883dadb",
+          "counts": {
+            "tests": 21,
+            "failures": 0,
+            "errors": 0
+          }
+        },
+        "public_quality": {
+          "phase": "public_quality",
+          "source_freeze": "final-1",
+          "command": [
+            "python3.13",
+            "-I",
+            "-S",
+            "-B",
+            "scripts/check_quality.py"
+          ],
+          "started_epoch": 1792928319.519886,
+          "finished_epoch": 1792928320.432272,
+          "seconds": 0.912,
+          "exit_code": 0,
+          "log": "/private/tmp/q27-correction-public_quality.log",
+          "log_sha256": "663b944141c8d570a557e025e9cb32036b2b6b0bf3cf948807b73dce1806f8f2",
+          "counts": {
+            "tests": null,
+            "failures": 0,
+            "errors": 0
+          }
+        },
+        "team": {
+          "phase": "team",
+          "source_freeze": "final-1",
+          "command": [
+            "python3.13",
+            "-B",
+            "scripts/check_ai_team.py"
+          ],
+          "started_epoch": 1792928307.0022342,
+          "finished_epoch": 1792928307.065182,
+          "seconds": 0.063,
+          "exit_code": 0,
+          "log": "/private/tmp/q27-correction-team.log",
+          "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009",
+          "counts": {
+            "tests": null,
+            "failures": 0,
+            "errors": 0
+          }
+        }
+      },
+      "whole_focused_single_run": true,
+      "source_frozen_unchanged": true
+    }
+  ],
+  "tests": {
+    "focused": {
+      "phase": "focused",
+      "source_freeze": "final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_execution",
+        "test_execution_math",
+        "test_execution_broker",
+        "test_execution_runner",
+        "test_execution_financial",
+        "test_execution_correction",
+        "test_research_execution"
+      ],
+      "started_epoch": 1792928298.009451,
+      "finished_epoch": 1792928714.229894,
+      "seconds": 416.22,
+      "exit_code": 0,
+      "log": "/private/tmp/q27-correction-focused.log",
+      "log_sha256": "febe8150cf769069494c3fad40c684e6d902691424ea4b89a76228192793655e",
+      "counts": {
+        "tests": 75,
+        "failures": 0,
+        "errors": 0
+      }
+    },
+    "regression": {
+      "phase": "regression",
+      "source_freeze": "final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_serialization",
+        "test_approval.ApprovalFixedCases.test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission",
+        "test_approval.ApprovalFixedCases.test_AP02_exact_replay_only_receipt_and_current_permission",
+        "test_approval.ApprovalFixedCases.test_AP04_fake_principal_foreign_issuer_bool_AI_and_JSON_are_not_authority",
+        "test_approval.ApprovalFixedCases.test_AP18_multiple_application_instances_exact_receipt_single_effect",
+        "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission",
+        "test_target.TargetIntegrationTests.test_source_bound_704_and_804_golden",
+        "test_performance.PerformanceTests.test_actual_flow_boundary_golden_21_percent_and_amount_26",
+        "test_performance.PerformanceTests.test_actual_sale_fee_tax_and_slippage_no_double_count_golden",
+        "test_performance.PerformanceTests.test_missing_and_interleaved_flow_boundary_rejected",
+        "test_performance.PerformanceTests.test_research_rights_required_at_every_evaluation_point",
+        "test_costing.CostingTests.test_actual_event_cost_allocation_is_unique_complete_and_bound",
+        "test_research.ResearchTests.test_01_all_24_runs_preserved_with_independent_fixed_expectations",
+        "test_research.ResearchTests.test_no_real_broker_model_network_or_test_imports_in_production"
+      ],
+      "started_epoch": 1792928307.002248,
+      "finished_epoch": 1792928386.519868,
+      "seconds": 79.518,
+      "exit_code": 0,
+      "log": "/private/tmp/q27-correction-regression.log",
+      "log_sha256": "ae0ef4325b50766665cf6b6fae10a1e573a98e98757d2c28d0e8d3dd4883dadb",
+      "counts": {
+        "tests": 21,
+        "failures": 0,
+        "errors": 0
+      }
+    },
+    "public_quality": {
+      "phase": "public_quality",
+      "source_freeze": "final-1",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "started_epoch": 1792928319.519886,
+      "finished_epoch": 1792928320.432272,
+      "seconds": 0.912,
+      "exit_code": 0,
+      "log": "/private/tmp/q27-correction-public_quality.log",
+      "log_sha256": "663b944141c8d570a557e025e9cb32036b2b6b0bf3cf948807b73dce1806f8f2",
+      "counts": {
+        "tests": null,
+        "failures": 0,
+        "errors": 0
+      }
+    },
+    "team": {
+      "phase": "team",
+      "source_freeze": "final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "scripts/check_ai_team.py"
+      ],
+      "started_epoch": 1792928307.0022342,
+      "finished_epoch": 1792928307.065182,
+      "seconds": 0.063,
+      "exit_code": 0,
+      "log": "/private/tmp/q27-correction-team.log",
+      "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009",
+      "counts": {
+        "tests": null,
+        "failures": 0,
+        "errors": 0
+      }
+    }
+  },
+  "exploratory_not_final_freeze_runs": [
+    {
+      "run": "exploratory-correction-initial",
+      "tests": 12,
+      "failures": 0,
+      "errors": 5,
+      "seconds_from_unittest": 68.169,
+      "log": "/private/tmp/q27-correction-initial.log",
+      "log_sha256": "9e6d2da3863d09fad5a3f80d075d924ba4a855f2360a6870942e94f0387a82e1",
+      "source_version_notes": "execution_cash_base의 Q24 v1 payable walker가 reversal을 해석하지 못한4오류 및 test source_key 필드명 오류1",
+      "archived_source_freeze": false,
+      "final_source_pass_claim": false
+    },
+    {
+      "run": "affected-failed5-retry",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "seconds_from_unittest": 44.784,
+      "log": "/private/tmp/q27-correction-failed5.log",
+      "log_sha256": "a95bbcd79c39408a441d4a687efb23e86d8d7cbeb1b5e30da508f1b84903da1f",
+      "source_version_notes": "전체 재생을 마친 현재 head view로 현금 채무 검증, 테스트 필드명 source_event_key 수정",
+      "archived_source_freeze": false,
+      "final_source_pass_claim": false
+    },
+    {
+      "run": "exploratory-research-risk-initial",
+      "tests": 6,
+      "failures": 0,
+      "errors": 2,
+      "seconds_from_unittest": 95.411,
+      "log": "/private/tmp/q27-research-execution-initial.log",
+      "log_sha256": "9104e3b354e1d3822f1a1cfe975eb8349cb7dc807066d56cef5ec463a1f62b8b",
+      "source_version_notes": "EX12 한 test의 daily/turnover subtest2오류: 미결제 매수 뒤 매도로 음수 settled quantity를 만든 부적합 fixture",
+      "archived_source_freeze": false,
+      "final_source_pass_claim": false
+    },
+    {
+      "run": "affected-EX12-retry",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "seconds_from_unittest": 32.83,
+      "log": "/private/tmp/q27-research-execution-failed1.log",
+      "log_sha256": "8909ea65b8355ddce4ece0408007d214bc926fc457a04fce4ba6ae62dfa9a2d1",
+      "source_version_notes": "매수→실제 Q20 settlement→매도로 fixture 의미 보완, independent cash400/receivable200 선언",
+      "archived_source_freeze": false,
+      "final_source_pass_claim": false
+    }
+  ],
+  "unchanged_green_repetitions": 0,
+  "public_quality": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 511,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "team": "PASS: 저장된 팀원 6명·큐 36개·작업 ID 110개 정합성 확인\n범위: 로컬 파일만 검사. 현재 세션 모델·역할 로드·권한·격리·외부 연결은 미검증.\n승인 ID 등록과 증거 파일 존재만 확인. 승인 충족·증거의 성공 여부는 미판정.\n",
+  "AST_whitespace_diff_hash_checks": {
+    "epoch": 1792928832.599694,
+    "owned_sha256": {
+      "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+      "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+      "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+      "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+      "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+      "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+      "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+      "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+      "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+      "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+      "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+      "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+      "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+      "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+      "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+      "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+      "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+      "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+      "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+      "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+      "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+      "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423"
+    },
+    "changed_owned": [
+      "src/quantharbor/application/execution.py",
+      "tests/product/synthetic_execution.py",
+      "scripts/check_execution.py",
+      "docs/development/execution.md",
+      "src/quantharbor/application/research.py",
+      "src/quantharbor/application/execution_research.py",
+      "tests/product/test_execution_correction.py",
+      "tests/product/test_research_execution.py"
+    ],
+    "changed_non_owned": [],
+    "protected_checks": {
+      "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md": true,
+      "src/quantharbor/domain/ledger.py": true,
+      "docs/status.md": true,
+      "docs/tasks/EXECUTION-local.md": true,
+      "config/ai/execution-queue.json": true,
+      "src/quantharbor/application/ledger.py": true,
+      "docs/contracts/execution-local-v1.md": true,
+      "docs/architecture.md": true,
+      "docs/contracts/serialization-v1.md": true,
+      "docs/implementation-backlog.md": true,
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+      "docs/contracts/data-v1.md": true,
+      "docs/contracts/execution-v1.md": true,
+      "docs/contracts/operations-v1.md": true,
+      "migrations/0001_synthetic_foundation.sql": true,
+      "migrations/0002_synthetic_ledger.sql": true,
+      "docs/contracts/approval-fixture-v1.json": true,
+      "docs/contracts/execution-fixture-v1.json": true
+    },
+    "protected_unchanged": true,
+    "whitespace_findings_including_untracked": [],
+    "AST": "pass",
+    "owned_diff_check_exit_code": 0,
+    "owned_diff_check_output": "",
+    "freeze_unchanged": true
+  },
+  "invocation_failure_fixed_without_source_change": {
+    "first_quality_exit_code": 2,
+    "reason": "isolated_python_required; -I에 -S 누락, 검사 진입 전 거부됨",
+    "failed_log": "/private/tmp/q27-correction-public_quality-invocation.log",
+    "corrected_command": [
+      "python3.13",
+      "-I",
+      "-S",
+      "-B",
+      "scripts/check_quality.py"
+    ]
+  },
+  "bounded_read_incident": "초기 공개 파일 snapshot 스크립트의 제외 순서 때문에 config/connections.local.yaml is_file metadata 조회가 PermissionError로 거부됨. 내용 읽기 없음. 이후 제외를 stat 앞에 적용했고 추가 접근 없음.",
+  "EXmapping": {
+    "EX01": {
+      "fixed_input": "actual Q24/Q26 source and DB approval positive",
+      "fixed_expected_unchanged": "candidate3*100+cost2=302; immutable terms/display; source-bound allow and one atomic intent",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX01_actual_Q24_Q26_DB_admission"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX01_real_source_positive302_and_current_typed_risk"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "이전 root 실제 admission 증거 보존. 새 source 버전 DB 재검증 대기.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX02": {
+      "fixed_input": "same candidate competing approvals",
+      "fixed_expected_unchanged": "one consumed/claim/intent/outbox; other approval remains unconsumed; no reuse after aborted_unsent or generation change",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved",
+        "EX02_different_approval_rejected_cross_generation_SQL_claim_unique"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "candidate claim/다른 approval/세대 간 SQL 고유성은 이전 root 증거. 새 issuer 재시작은 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX03": {
+      "fixed_input": "two different candidates on concurrent DB connections A600",
+      "fixed_expected_unchanged": "one admission only;302 winner leaves298 or402 winner leaves198",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX03_current_available600_is_independent_from_original_candidate",
+        "test_execution_math.ExecutionMathTests.test_EX03_600_cannot_fund_302_and402"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "실제 두 요청·양쪽 winner·DB 잠금 경합은 이전 root15/30 버전에서 통과.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX04": {
+      "fixed_input": "admission fault at every durable stage",
+      "fixed_expected_unchanged": "approval nonce claim intent reservations outbox history receipt all unchanged; no standalone consume",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX04_actual_database_all_admission_faults_rollback"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "admission 단계별 원자 rollback은 이전 root 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX05": {
+      "fixed_input": "admission commit reply lost and same command retry",
+      "fixed_expected_unchanged": "one durable result/intent; changed payload conflicts; no new admission",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX05_committed_command_lookup_no_second_intent",
+        "EX05_actual_connection_commit_response_frame_lost_lookup_once"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "실제 COMMIT 응답 frame 유실과 같은 command lookup은 이전 root15/30 버전에서 통과.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX06": {
+      "fixed_input": "partial fill1 of3 at100; execution fee0 known, order remaining fee bound2",
+      "fixed_expected_unchanged": "L1000 H302 F100 B1000 U202 D100 A598; qty1; principal obligation100; reserve202",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX06_actual_Q20_projection_DB_cash598"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX06_EX07_EX08_independent_literal_A598_at_each_boundary"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "A598·Q20 실제 부분체결 이전 root 증거 및 현재 local 영향 시험.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX07": {
+      "fixed_input": "settlement of EX06 principal100",
+      "fixed_expected_unchanged": "L900 H202 F100 B1000 U202 D100 A598; no double spend or quantity reapply",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX07_actual_Q20_settlement_no_reapply_cash598"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX06_EX07_EX08_independent_literal_A598_at_each_boundary"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "settlement A598 이전 root 증거 및 현재 local 영향 시험.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX08": {
+      "fixed_input": "new complete independent broker query includes100 debit, excludes local202",
+      "fixed_expected_unchanged": "L900 H202 F100 B900 U202 D0 A598; update cutoff and inclusion atomically",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX06_EX07_EX08_independent_literal_A598_at_each_boundary",
+        "test_execution_financial.ExecutionFinancialTests.test_EX08_actual_event_inputs_fresh_query_A598_and_next_candidate_risk",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX08_component_partial_reflection_cannot_double_deduct_or_double_include",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+        "test_execution_correction.ExecutionCorrectionTests.test_cumulative_latest_correction_literal190",
+        "test_execution_correction.ExecutionCorrectionTests.test_delta_qty1_to2_not3_Q20_Q21_Q23_currentrisk",
+        "test_execution_correction.ExecutionCorrectionTests.test_mult_price90_100_95_principal290",
+        "test_execution_correction.ExecutionCorrectionTests.test_positive_cost_revision_latest_only_no_doublecharge"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:delta",
+        "corrected_current:cumulative",
+        "corrected_current:multi",
+        "corrected_current:cost"
+      ],
+      "scope_and_limits": "정상 정정 뒤 전체 이력·현재 head·독립 literal query·성과·다음 위험 연결 local 검증. 다음 실제 DB admission 시나리오 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX09": {
+      "fixed_input": "sellable independent ledger/broker quantities",
+      "fixed_expected_unchanged": "min(12-4,10-2-1)=7;8 rejected; no expected buy quantity",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX09_sellable7_reject8",
+        "test_execution_financial.ExecutionFinancialTests.test_EX09_EX10_sell_settlement_receivable_does_not_raise_capacity",
+        "test_research_execution.ExecutionResearchRiskTests.test_EX09_current_typed_broker7_accepts7_rejects8"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "sellable_bound:quantity7",
+        "sellable_bound:quantity8"
+      ],
+      "scope_and_limits": "실제 typed current_risk의 7허용/8거절 local 검증, 동일 DB 두 시나리오 작성/미실행. 고정식 min(12-4,10-2-1)의 상세 component 분해는 순수 시험이며 DB 전체 증명 아님.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX10": {
+      "fixed_input": "unsettled sale receivable500 and postquery credit",
+      "fixed_expected_unchanged": "available cash does not increase without eligible settlement and complete fresh query",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX10_postquery_credit_and_unsettled_receivable_not_added",
+        "test_execution_financial.ExecutionFinancialTests.test_EX09_EX10_sell_settlement_receivable_does_not_raise_capacity"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "매도 채권·오래된 broker B가 용량을 늘리지 않음은 이전 root DB 및 현재 local 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX11": {
+      "fixed_input": "one-sided worst exposure",
+      "fixed_expected_unchanged": "400+100+50=550 >500 denied; opposing sale cannot net risk",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX11_one_sided_buys_never_netted_against_sales",
+        "test_execution_financial.ExecutionFinancialTests.test_EX11_partial_fills_not_double_exposure_or_funding",
+        "test_research_execution.ExecutionResearchRiskTests.test_EX11_actual_typed_all_account_one_sided_opposing_sale_no_net"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "risk_negative:exposure"
+      ],
+      "scope_and_limits": "실제 Q20 현재 holdings와 Q23 성과로 계좌 전체550>500, 반대 매도100 상계 금지 local 검증. 실제 DB 음성 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX12": {
+      "fixed_input": "daily and turnover with active reservations",
+      "fixed_expected_unchanged": "used400+active350+new300=1050>1000; NAV1000 gross turnover1.05>1 denied",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX12_time_weighted_nav_turnover105percent",
+        "test_research_execution.ExecutionResearchRiskTests.test_EX12_daily_and_gross_turnover_used400_active350_new300_NAV1000"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "risk_negative:daily",
+        "risk_negative:turnover"
+      ],
+      "scope_and_limits": "사용400+활성350+신규300=1050, 시간가중NAV1000; daily와 gross 분리 차단 local 검증. 매수 결제 후 매도로 입력 의미 보존. 실제 DB 음성2종 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX13": {
+      "fixed_input": "worst prospective loss and drawdown",
+      "fixed_expected_unchanged": "observed loss40+worst15=55>50 denied; unknown performance or denominator blocked",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX13_worst_loss55_and_unknown_performance_denied",
+        "test_research_execution.ExecutionResearchRiskTests.test_EX13_observed40_plus_cost15_exceeds50_and_drawdown"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "risk_negative:loss",
+        "risk_negative:drawdown"
+      ],
+      "scope_and_limits": "실제 PnL-40·NAV960·추가비용15로 손실55>50 및 낙폭 차단 local 검증. 실제 DB 음성2종 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX14": {
+      "fixed_input": "dispatch own reservation, approval/principal/session/rights expiry",
+      "fixed_expected_unchanged": "do not double charge own hold; every current gate rechecked; exactexpiry excluded; heartbeat no approval extension",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX14_own_reservation_excluded_and_exact_expiry_denied"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "자기 held만 제외·used/타 예약 보존 및 만료 영향 시험. 전체 권한/제어 행렬은 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX15": {
+      "fixed_input": "stop or withdrawal vs final handoff gate both orders",
+      "fixed_expected_unchanged": "stop/withdraw before handoff =>0 broker sends and only issuer-proven-unsent release; handoff first=>requested/unknown held",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX15_EX16_actual_handoff_once_and_unsent_proof_request_bound"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "unsent 보호철회는 이전 root 증거. gate 양방향 경합 전체는 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX16": {
+      "fixed_input": "handoff success then result persist crash",
+      "fixed_expected_unchanged": "broker received once; recoveryunknown; reservations/claims held; outbox replay sends0",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+        "EX16_EX18_actual_after_handoff_crash_unknown_no_resend"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX15_EX16_actual_handoff_once_and_unsent_proof_request_bound"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "handoff 전후 crash unknown/noresend 이전 root DB 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX17": {
+      "fixed_input": "lease/fence loss or stale executor and restart",
+      "fixed_expected_unchanged": "no automatic takeover/resend; oldsession/handle rejected; stopped/reconciling",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "stop/fence·신규 issuer 재시작/결속 전체는 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX18": {
+      "fixed_input": "complete empty query or elapsed day for unknown",
+      "fixed_expected_unchanged": "unknown and reservations preserved; new orders blocked",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+        "EX16_EX18_actual_after_handoff_crash_unknown_no_resend"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX18_EX26_unknown_intent_or_accounting_incomplete_blocks_new",
+        "test_execution_broker.ExecutionBrokerTests.test_EX18_complete_empty_query_is_fact_not_finality"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "unknown·빈 조회의 보수적 hold 유지 이전 root 및 local 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX19": {
+      "fixed_input": "real issuer request-bound final reject/proven unsent",
+      "fixed_expected_unchanged": "only actual issued finality permits release; forged hash/bool/foreignissuer denied",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX19_real_journal_rejects_resealed_and_foreign_receipt",
+        "test_execution_correction.ExecutionCorrectionTests.test_EX19_local_receipt_transition_actual_finalreject_only_releases"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "finality"
+      ],
+      "scope_and_limits": "실제 issuer receipt의 최종 거절만 해제, 위조 journal/hash·외부 issuer·bool 거절 local undecorated 전이 검증. 동일 실제 DB 시나리오 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX20": {
+      "fixed_input": "fill before ACK then duplicatefill",
+      "fixed_expected_unchanged": "quantity1 once; lateACK does not regress partially_filled/filled",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX20_actual_duplicate_fill_once",
+        "EX20_actual_fill_before_ACK_late_ACK_no_regression"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX20_issued_fill_identity_replays_same_object"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "fill-before-ACK·late ACK 무퇴행·중복 무변화 이전 root DB 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX21": {
+      "fixed_input": "cumulative1 then3 and delta stream semantics",
+      "fixed_expected_unchanged": "effectiveqty3 not4; mixed semantics/missingpredecessor quarantined no fabricated delta",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX21_EX22_issuer_preserves_cumulative_and_revision_semantics",
+        "test_execution_financial.ExecutionFinancialTests.test_EX21_cumulative_increments_multiple_prices_and_latest_correction",
+        "test_execution_financial.ExecutionFinancialTests.test_EX21_out_of_order_cumulative_sequence_explicit_reprocess",
+        "test_execution_correction.ExecutionCorrectionTests.test_cumulative_latest_correction_literal190"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:cumulative"
+      ],
+      "scope_and_limits": "누계 최신 sequence 정정의 정상 성과·current risk local 연결. 앞선 누계 정정의 기장된 successor 재해석은 명시 미지원/보존·차단.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX22": {
+      "fixed_input": "same event revision1 qty1 then revision2 qty2",
+      "fixed_expected_unchanged": "effectiveqty2 not3; Q20 correction/predecessor mapping; reverse revision quarantined then explicit reprocess",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX21_EX22_issuer_preserves_cumulative_and_revision_semantics",
+        "test_execution_financial.ExecutionFinancialTests.test_EX22_predecessor_retained_then_explicit_reprocess_old_revision_no_regression",
+        "test_execution_correction.ExecutionCorrectionTests.test_bundle_replacement_appended_once_reversal_submission_never_appended",
+        "test_execution_correction.ExecutionCorrectionTests.test_delta_qty1_to2_not3_Q20_Q21_Q23_currentrisk"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:delta"
+      ],
+      "scope_and_limits": "delta1→2=2·원금190 local 연결, 실제 reducer bundle exact 재생; 정정 후 DB 다음 admission 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX23": {
+      "fixed_input": "overfill4 for order3 or conflicting brokerID/payload",
+      "fixed_expected_unchanged": "preserve evidence and halt; no clamp/drop/duplicateorder",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX23_actual_late_final_conflict_preserved",
+        "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_financial.ExecutionFinancialTests.test_EX23_overfill_collision_and_Q20_quarantine_preserve_evidence",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX23_collision_remains_incomplete_after_a_later_valid_revision"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "충돌/overfill/late final 관측 보존·지속 incomplete 이전 root 및 local 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX24": {
+      "fixed_input": "broker event transaction failure at inbox ledger reservation intent history",
+      "fixed_expected_unchanged": "all economic tables/outbox/inbox unchanged; retried issued event accounts once",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+        "EX24_actual_correction_all_fault_fingerprints"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "원 체결·정정 trade/fee/tax 단계별 rollback 이전 root 증거. 현재 수정본 DB 재실행 대기.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX25": {
+      "fixed_input": "ledger outbox duplicate/reverse delivery",
+      "fixed_expected_unchanged": "ledger_consume and execution cursor same transaction; no broker event ID inserted into ledger inbox; no double posting",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "역순/중복 ledger delivery·동일 TX cursor 이전 root 증거.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX26": {
+      "fixed_input": "unknown fee or correction unsupported by Q20",
+      "fixed_expected_unchanged": "observed fill and conservative usage preserved, cost bound held, accounting incomplete/newordersblocked; later complete exactevent finalizes once",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX26_actual_unknown_complete_revision_fee1_tax0_5_settlement_once",
+        "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked",
+        "EX26_actual_cost_over_bound_ledger_preserved_incomplete"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX18_EX26_unknown_intent_or_accounting_incomplete_blocks_new",
+        "test_execution_broker.ExecutionBrokerTests.test_EX26_unknown_cost_is_not_normalized_to_zero",
+        "test_execution_financial.ExecutionFinancialTests.test_EX26_excess_cost_preserved_with_actual_ledger_and_block",
+        "test_execution_financial.ExecutionFinancialTests.test_EX26_settled_trade_correction_retains_dependency_and_halts",
+        "test_execution_financial.ExecutionFinancialTests.test_EX26_unknown_cost_complete_revision_nonzero_fee_tax_settlement_once",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX26_known_fee_unknown_tax_preserves_lower_bound_without_fake_zero",
+        "test_execution_correction.ExecutionCorrectionTests.test_positive_cost_revision_latest_only_no_doublecharge",
+        "test_execution_correction.ExecutionCorrectionTests.test_unresolved_settled_dependency_denied"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:cost"
+      ],
+      "scope_and_limits": "양수→다른 양수 fee/tax head만 성과/원가에 포함. 양수→0·결제 후 trade dependency·기존 미지원 누계는 보존/incomplete/신규차단; 자동 해소 완료 아님.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX27": {
+      "fixed_input": "distinct authenticated cancel command and ACK",
+      "fixed_expected_unchanged": "original approval not cancel permission; cancelACK releases0; wrongaccount/target/version denied",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX27_cancel_receipt_has_separate_attempt_and_no_terminal_claim"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "명령 발급·최대 잔량만 이전 root 범위. 취소 handoff/ACK 확정 권위는 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX28": {
+      "fixed_input": "cancel timeout/ACK and fill race",
+      "fixed_expected_unchanged": "fill always accepted with provenance; only confirmed remaining cancelled releases remaining; no automatic retry/replace",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "취소 timeout/ACK/fill 경합과 확정 잔량 해제는 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX29": {
+      "fixed_input": "new valid controller protectivewithdraw after oldrights/session loss",
+      "fixed_expected_unchanged": "protective request recorded without new risk/report allow; finance query stays restricted",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "보호철회 기존 증거. 모든 현재 권한 회수/새 controller 행렬은 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX30": {
+      "fixed_input": "current reconciliation and explicit resume",
+      "fixed_expected_unchanged": "actual independent complete broker facts vs ledger/intents/reserves; caller complete bool, partialscope or stalecutoff neveropens; initial empty positive supported",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "독립 issuer 전체 계좌 statement와 Q21 대사. complete bool 금지 유지. 전체 order/reservation 독립 manifest는 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX31": {
+      "fixed_input": "restore external generation and day rollover",
+      "fixed_expected_unchanged": "claims consumed unknown reservations held; oldapproval/session/nonce unusable; no dispatch; unresolvedreconcile preventsresume",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "새 issuer 재시작·외부 세대·수동 resume/재결속 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX32": {
+      "fixed_input": "storage full and outstanding events/commands",
+      "fixed_expected_unchanged": "pre-reserved stop/withdraw/cancel/fill completion works; no eviction or unreleased terminal sessionholds; excessissuance denied atomically",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution_broker.ExecutionBrokerTests.test_EX32_EX37_bounded_issuance_and_no_network_parameters"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "정확 intent당 행/index/bytes 및 종료 보호 용량 증명 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX33": {
+      "fixed_input": "current source/canonical/rights/binding manipulations",
+      "fixed_expected_unchanged": "missing refs, foreign account/environment, stale FX/price/calendar/cost/classification/policy, futurecutoff and resealedforgery deny",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX33_current_rights_and_original_rights_both_rechecked",
+        "test_execution.ExecutionTypedTests.test_EX33_forged_query_and_missing_current_scope_denied",
+        "test_execution_financial.ExecutionFinancialTests.test_EX33_fresh_query_missing_event_or_false_inclusion_fails_closed",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX33_reflection_cannot_reduce_old_query_used_or_spend_other_intent",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX33_refresh_rejects_real_but_stale_query_after_fill",
+        "test_execution_correction.ExecutionCorrectionTests.test_all_current_risk_and_daily_rights_rechecked_after_correction",
+        "test_execution_correction.ExecutionCorrectionTests.test_current_rights_revoked_and_futurecutoff_and_completebool_denied",
+        "test_execution_correction.ExecutionCorrectionTests.test_hash_bundle_account_cursor_predecessor_time_economics_forgery_denied",
+        "test_execution_correction.ExecutionCorrectionTests.test_missing_reversal_replacement_and_bundle_reordering_denied",
+        "test_execution_correction.ExecutionCorrectionTests.test_oldcost_doublecharge_missing_cost_and_forged_performance_denied",
+        "test_execution_correction.ExecutionCorrectionTests.test_quarantined_decision_cursor_gap_cannot_be_discarded",
+        "test_execution_correction.ExecutionCorrectionTests.test_real_issuer_wrongscope_and_wrong_literal_balance_denied",
+        "test_research_execution.ExecutionResearchRiskTests.test_future_revision_retained_but_cannot_enter_earlier_cutoff_costs"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:delta",
+        "corrected_current:cumulative",
+        "corrected_current:multi",
+        "corrected_current:cost"
+      ],
+      "scope_and_limits": "누락 bundle/hash/source/account/cursor/predecessor/time/dependency·wrongscope/잔액불일치·cutoff·권리·complete bool local 거부. 실제 DB 전체 권한/경계 행렬은 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX34": {
+      "fixed_input": "SQL product role direct table writes and closed schema",
+      "fixed_expected_unchanged": "direct financialmutation/DELETE denied; crossaccount/enum/negative/version/FK/commit invariant checks; fixedbounded errors",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX34_product_role_direct_financial_mutation_denied"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "제품 role 직접 금융 mutation 거부 이전 root 증거. SQL 함수 자체 닫힌 인증/NULL/enum/hash-only 우회 전체 차단은 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX35": {
+      "fixed_input": "one process two app instances and two SQL connections",
+      "fixed_expected_unchanged": "sameaccount shared registry/gate + DB lock/version; identicaleconomics one effect",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX35_two_facades_shared_registry_database_reload",
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1"
+      ],
+      "this_freeze_local_passed_tests": [],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:delta",
+        "corrected_current:cumulative",
+        "corrected_current:multi",
+        "corrected_current:cost"
+      ],
+      "scope_and_limits": "기존 facade 공유 registry/DB 잠금 증거. 새 정정 binding을 공유하는 다른 facade 다음 admission 시나리오 작성/미실행.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX36": {
+      "fixed_input": "Q26 application adapter boundary and memory import",
+      "fixed_expected_unchanged": "only trusted exact adapters; arbitrary protocol or memory-approved JSON import denied; no memory authority alongside DB composition",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX36_execution_adapter_closed_type_rejects_duck_and_memory",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX36_no_memory_approval_or_arbitrary_adapter_composition"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "정확 adapter 경계·메모리 승인 권위 import 금지 영향 시험.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX37": {
+      "fixed_input": "record/count/byte/query/SQL frame and timeout limits",
+      "fixed_expected_unchanged": "canonical64KiB source8MiB128refs strings2KiB query1..20; bounded DB/framing; failures generic and stopped",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+      "this_freeze_local_passed_tests": [
+        "test_execution.ExecutionTypedTests.test_EX37_execution_serialization_closed_and_environment_bound",
+        "test_execution_math.ExecutionMathTests.test_EX37_negative_available_is_not_clamped_to_zero",
+        "test_execution_broker.ExecutionBrokerTests.test_EX32_EX37_bounded_issuance_and_no_network_parameters",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX37_durable_codec_preserves_typed_refs_exactly_without_capabilities",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX37_unstarted_database_no_process_and_SQL_function_allowlist",
+        "test_execution_financial.ExecutionPipeTests.test_EX37_partial_pipe_writes_send_entire_bounded_frame",
+        "test_execution_financial.ExecutionPipeTests.test_EX37_write_timeout_and_oversized_frame_return_fixed_reason",
+        "test_execution_financial.ExecutionSourceRefreshTests.test_EX37_actual_LedgerEvent_codec_uses_body_environment_and_closed_schema"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "bounded frame/부분 write/timeout/닫힌 serializer 영향 시험. 정확 rows/index/bytes 용량 증명은 후속.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX38": {
+      "fixed_input": "existing obligations + two sequential candidates",
+      "fixed_expected_unchanged": "L1000 H100 F100 B950 U50 D0 =>A800; reserve302 then402 =>96, no missing obligation",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX38_actual_obligations_two_admissions_800_498_96"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX38_obligations_800_then302_then402_remaining96"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "800→498→96 실제 두 admission은 이전 root15/30 증거 및 현재 local 영향 시험.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX39": {
+      "fixed_input": "quantity/cash/risk reservation conservation under correction",
+      "fixed_expected_unchanged": "every component held+used+released reconciles approved bound; correction increases re-reserved or halt; no negative or implicit release",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX39_actual_multi_price190_revision290_Q20_conservation"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_math.ExecutionMathTests.test_EX39_component_conservation_exact_and_negative_boundaries",
+        "test_execution_financial.ExecutionFinancialTests.test_EX39_multi_price_and_delta_revision_literal_principal290",
+        "test_execution_correction.ExecutionCorrectionTests.test_mult_price90_100_95_principal290",
+        "test_execution_correction.ExecutionCorrectionTests.test_positive_cost_revision_latest_only_no_doublecharge"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [
+        "corrected_current:delta",
+        "corrected_current:cumulative",
+        "corrected_current:multi",
+        "corrected_current:cost",
+        "conserved:all_reservation_rows"
+      ],
+      "scope_and_limits": "190→290·유효량/원금/비용 최신 head·보수적 가격 개선 hold. runner 보존식은 object_agg 중복 component 소실 없이 모든 reservation row 검사로 보강. 실제 새 DB 대기.",
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX40": {
+      "fixed_input": "synthetic DB runner lifecycle and clean migration",
+      "fixed_expected_unchanged": "existing fixed PostgreSQL image,ownUUIDproject,networknone,nohostmount/ports,pullnever; migration0001/2unchanged,0003order/hash/idempotence; owncleanupverified",
+      "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+        "EX40_own_UUID_projects_fixed_image_migrations_idempotent_cleanup"
+      ],
+      "this_freeze_local_passed_tests": [
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX40_cli_arguments_rejected_before_database_or_process",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX40_migration_guard_contains_exact_predecessor_and_idempotence"
+      ],
+      "new_actual_DB_scenarios_authored_not_executed": [],
+      "scope_and_limits": "noargs·고정 image/networknone/noports/nomount/pullnever/ownUUID cleanup 경계 유지. 현재 runner Docker 실행은 root만, 이 역할 미실행.",
+      "fixed_case_fully_completed_claimed": false
+    }
+  },
+  "actual_DB_new_runner_executed": false,
+  "actual_new_DB_pass_claimed": false,
+  "full_product_executed": false,
+  "full_quality87_executed": false,
+  "independent_reviews_executed": false,
+  "root_runner_authored": {
+    "path": "scripts/check_execution.py",
+    "command": "python3.13 -B scripts/check_execution.py",
+    "source_sha256": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+    "expected_scenarios_authored": 27,
+    "new_scenarios_authored": 12,
+    "status_must_remain": "partial",
+    "q27_complete_must_remain": false,
+    "Docker_allowed_only_for_root": true
+  },
+  "explicit_unsupported_boundaries": [
+    "양수 비용→0 정정: 근거 보존·incomplete·신규 차단; 새로운 expense/ledger 계약 없음",
+    "이미 결제된 trade 정정: Q20 correction_consequences_unresolved dependency 미해결; 근거·hold 보존 및 차단",
+    "앞선 cumulative sequence 정정 후 기장된 후속 sequence 재해석: cumulative_successor_dependency 보존·차단",
+    "정정된 외부 입출금 flow는 기존 미지원 차단",
+    "quarantine cursor gap은 decision 이력 없이 해소하지 않으며 fail closed; 별도 typed DB decision reader 미구현"
+  ],
+  "limitations": [
+    "새 DB 시나리오는 실제 PostgreSQL/Docker 미실행. local undecorated repository/SyntheticLedger/FakeUoW 결과를 DB pass로 승격하지 않음",
+    "EX09 실제 typed/DB7/8 경계 시나리오와 고정식 상세12-4/10-2-1의 순수 시험을 구분; 상세 분해 전체 actual DB 재현은 남음",
+    "원금 가격 개선의 보수적 잔여 hold 유지",
+    "source freeze 이전 탐색 실행은 소스 SHA 전체를 별도 보관하지 않았고 최종 고정본 통과로 합산하지 않음"
+  ],
+  "deferred_next_sequence": [
+    "root 최신 고정 SHA 검토 후 noargs actual DB27시나리오 실행 및 실패 영향만 최소 수정",
+    "취소 attempt/handoff/ACK/확정 잔량·fill 경합, 요청별 권위 검증",
+    "새 issuer DB 재시작·generation/fence·현재 원천과 권한 재결속·명시 수동 resume",
+    "intent별 Q20 행·index·bytes·종료 보호 예산의 정확 계상 및 용량 증명",
+    "SQL 함수 자체 닫힌 session/nonce/account/schema/NULL/enum/previous hash/전이/CAS 인증과 우회 차단",
+    "독립 보안/일반 검토 후 전체 product/quality87 최종 검증"
+  ],
+  "forbidden_actions": {
+    "network": false,
+    "password_or_private_content_read": false,
+    "API": false,
+    "Docker": false,
+    "install": false,
+    "git_mutation": false,
+    "external_mutation": false,
+    "child_MCP": false,
+    "recursive_delegation": false
+  },
+  "root_acceptance": {
+    "timestamp": "2026-10-25T11:54:24.581048+00:00",
+    "handoff_sha256": "c0ec1f9529d530ade2bc4b1392460d6e460cb4cf7d25b5f8ed8fe21c333f9fbd",
+    "owned_hash_matches": {
+      "src/quantharbor/domain/execution.py": true,
+      "src/quantharbor/domain/execution_math.py": true,
+      "src/quantharbor/application/execution.py": true,
+      "src/quantharbor/ports/execution.py": true,
+      "src/quantharbor/adapters/postgres_execution.py": true,
+      "src/quantharbor/adapters/synthetic_execution_broker.py": true,
+      "src/quantharbor/adapters/execution_uow.py": true,
+      "tests/product/synthetic_execution.py": true,
+      "tests/product/test_execution.py": true,
+      "tests/product/test_execution_math.py": true,
+      "tests/product/test_execution_broker.py": true,
+      "tests/product/test_execution_runner.py": true,
+      "scripts/check_execution.py": true,
+      "docs/development/execution.md": true,
+      "migrations/0003_synthetic_execution.sql": true,
+      "src/quantharbor/application/approval.py": true,
+      "src/quantharbor/domain/serialization.py": true,
+      "tests/product/test_execution_financial.py": true,
+      "src/quantharbor/application/research.py": true,
+      "src/quantharbor/application/execution_research.py": true,
+      "tests/product/test_execution_correction.py": true,
+      "tests/product/test_research_execution.py": true
+    },
+    "protected_matches": {
+      "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md": true,
+      "src/quantharbor/domain/ledger.py": true,
+      "docs/status.md": true,
+      "docs/tasks/EXECUTION-local.md": true,
+      "config/ai/execution-queue.json": true,
+      "src/quantharbor/application/ledger.py": true,
+      "docs/contracts/execution-local-v1.md": true,
+      "docs/architecture.md": true,
+      "docs/contracts/serialization-v1.md": true,
+      "docs/implementation-backlog.md": true,
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+      "docs/contracts/data-v1.md": true,
+      "docs/contracts/execution-v1.md": true,
+      "docs/contracts/operations-v1.md": true,
+      "migrations/0001_synthetic_foundation.sql": true,
+      "migrations/0002_synthetic_ledger.sql": true,
+      "docs/contracts/approval-fixture-v1.json": true,
+      "docs/contracts/execution-fixture-v1.json": true
+    },
+    "role_final_text_present": true,
+    "prior_session_unavailable_after_resume": true,
+    "actual_DB_correction": "pending",
+    "q27_complete": false
+  }
+}

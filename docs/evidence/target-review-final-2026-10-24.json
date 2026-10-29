@@ -1,0 +1,37 @@
+{
+  "task": "Q24-local",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "pass",
+  "findings": [],
+  "resolved": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T5b",
+    "T6b"
+  ],
+  "sha256": {
+    "docs/development/target.md": "15fb9335be797ea3102becaf95159c81a04aa8e3e212ae66a14569053a67002e",
+    "src/quantharbor/adapters/synthetic_target.py": "d1866d1846a7035bc8217cf03d71e37a152ef419fce82ac3ee863dd5ef24fd3d",
+    "src/quantharbor/application/target.py": "b5b71c10a76d98e77e5a58694fedf1099c53da7523521f65688b8fa5a75c55d2",
+    "src/quantharbor/domain/serialization.py": "3e7243f427db45333b0017ebc0369760a42f5bd6a1b53f11fd826b3befb84d5b",
+    "src/quantharbor/domain/target.py": "206ce294150ba2c634f6178f1cc0bba5dbff6fbdec02230718d964b647c2426d",
+    "src/quantharbor/ports/target.py": "e0fbf705e838d8ac1270f7eeeddd0582e2fff842c3d0b539a4fa5c2a898efa0c",
+    "tests/product/synthetic_target.py": "401ea1d7880bba7f5d65047124c993e1e2309b1a09ec40f7a67b3b352ecf5ea0",
+    "tests/product/test_target.py": "ca99cdb33d46acb053133dcaa8e6b387875d29d5dd6cea7ee3404be4636bd648",
+    "tests/product/test_target_canonical.py": "e6ed37aed7969af071dc89b5e915323b492a12d5b089bfaf236f063f8f263b35",
+    "tests/product/test_target_constraints.py": "787b8a3ef6f4c658c45602f80b578edacb0047c38d06cb05e1fe13b2e67b1657",
+    "tests/product/test_target_review.py": "3e89df8a1d18efcd87c7f0d0d210386cb9d6dca87e5094a854a93f6f6bd59a9a",
+    "tests/product/test_target_review_cases.py": "857d3f3fbac6d334ca241c1c95d015d2552ea3ddc14ff8c1370d63ceec478a6c"
+  },
+  "hashes_match": true,
+  "tests_executed": false,
+  "baseline_files_unchanged": 7,
+  "scope": "initial_full_review_then_two_focused_rereviews"
+}

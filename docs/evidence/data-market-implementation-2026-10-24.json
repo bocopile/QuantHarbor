@@ -1,0 +1,51 @@
+{
+  "task": "Q17A",
+  "date": "2026-10-24",
+  "actor": "foundation_implementer",
+  "status": "implementation returned; independent review pending",
+  "tests": [
+    {
+      "scope": "new market tests first run",
+      "passed": 28,
+      "failed": 0
+    },
+    {
+      "command": "PYTHONPATH=src python3.13 -m unittest discover -s tests/product -v",
+      "passed": 93,
+      "seconds": 0.409,
+      "exit_code": 0
+    },
+    {
+      "command": "python3.13 -I -S scripts/check_quality.py",
+      "files": 209,
+      "findings": 0,
+      "exit_code": 0
+    }
+  ],
+  "root_intermediate_fixes": [
+    "per-series freshness",
+    "PIT/context held records cannot become risk eligible",
+    "late conflict detected_at cutoff"
+  ],
+  "files": {
+    "src/quantharbor/domain/market_data.py": "a228f4cc766e943036a5b0adaa2cfa175f2d6e993df00c56dc60c9801e6a671e",
+    "src/quantharbor/domain/serialization.py": "ca202985a2b40b91219c72cd7b2a35897fde7fb6cdb713f9414e07f8c11d1cb8",
+    "src/quantharbor/application/market_ingest.py": "291584bb493789dc0d40a581fe756c798c56e097895fb44868065e1310add1e5",
+    "src/quantharbor/ports/market_data.py": "e97ef37f27a9ac0e2759702c797327f0ef85a0befa834d3b03315dcccd8d6272",
+    "src/quantharbor/adapters/synthetic_market.py": "ad418f588bd0c4d393f84dbc0f1a41f0c37b4e74f7a140b2134492511cbe43aa",
+    "tests/product/synthetic_market.py": "9f3afdc34d0d4c175f18c67886c3bdd855d2562234a23188817769f7beb1c6dd",
+    "tests/product/test_market_data.py": "acfd2a7b891e38b19ca8e5a71144096b6ddf722b6115294fd74a005bdd959847",
+    "tests/product/test_market_ingest.py": "4ef44a29cd5dde418daf5c2ba49f80e05cef596f3fefc6e77782b8df2b80c604",
+    "docs/development/market-data.md": "a14407de28a1ae253f505de6f1de43ef47dce75b534eccd8afd6642fe8fe0dfc"
+  },
+  "unexecuted": [
+    "independent review/validation",
+    "Parquet storage",
+    "actual source/account/API",
+    "blocking I/O timeout"
+  ],
+  "limits": [
+    "synthetic-only; source rights SG-02 pending",
+    "conflict incoming evidence currently IngestState, persistence Q17B"
+  ]
+}

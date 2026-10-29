@@ -1,0 +1,379 @@
+{
+  "task": "Q27-recovery-validity-fixes",
+  "status": "implementation_and_focused_validation_handoff_Q27_partial",
+  "owned29_before": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "cce3f1136382b000b565423c4c45d119a660758e8f1d7300ec79ba187052b183",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "206d34784890eb0975bad5cf3d2dc151bf2f58024fe09e77035e486afa0ef160",
+    "docs/development/execution.md": "3b1bf22e2e08305d1190f13208e8491ac8333825ef0b4087db5e573baa29f3b4",
+    "migrations/0003_synthetic_execution.sql": "2a28e090ab4546348d1b776413a2aab2212758f5462782178268de68663e4ab9",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f5a6127956c0a78b779d6be4fc8aadecc7f27d04637d14388d6cce8682a127ac",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "59c7b7db567be1fe00fb4b24fa0e75b9e1b39fef1de38c1e09c4fcc711b5b0a9",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31",
+    "src/quantharbor/application/target.py": "b5b71c10a76d98e77e5a58694fedf1099c53da7523521f65688b8fa5a75c55d2"
+  },
+  "owned29_after": {
+    "src/quantharbor/domain/execution.py": "497feda509351050db27c1f491ec677b73a1a7df908b7c45b762163b4738b62d",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "fa702ed3a5e2d9d03441688064d8fe441bcbe8ae737827844c557d377c12c1f7",
+    "src/quantharbor/ports/execution.py": "103796ccdf33aaaa8573df1cacbcbebb28edd5f2c4b787bd61ca573c9307d87c",
+    "src/quantharbor/adapters/postgres_execution.py": "914ec4d9d0c237830db4f0d50bada90a59365d97d72fbde26549ee54fa409bc0",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "bbe8207b9929f37c5021f3c6457bdefefe3942e260e1d7e45ecd3184c2bbd765",
+    "tests/product/synthetic_execution.py": "30b7da1f8956da0bf18c7e8ef946e30481f5ba73c3a98bad55cbc42f61e54b86",
+    "tests/product/test_execution.py": "da73e32f90c3e2d5f5375927fd1d2492e14fb74c7de50505c2fd066ac19e181d",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "3e17fafccf4267c1109e76b1242e971dbb4676c6f9e94fcfdb09039f547603e3",
+    "docs/development/execution.md": "815b3a4dc696300b65373ef3f6b94765aea9bd68c62c6fb9978aa0d138a9a707",
+    "migrations/0003_synthetic_execution.sql": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "cb65048fe5970431763b1b55f15cfeb23627c438012d97026896109617c32048",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "790d881ccf3838008550a269bfdbcdc5a502be28d21cc8b7491ca9c48801820d",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31",
+    "src/quantharbor/application/target.py": "3e94542f1e71ead57eeb39450bdc1acd4ca48b7669ca5a9bb2e07c1fa0d43bdd"
+  },
+  "changed": [
+    "src/quantharbor/domain/execution.py",
+    "src/quantharbor/application/execution.py",
+    "src/quantharbor/ports/execution.py",
+    "src/quantharbor/adapters/postgres_execution.py",
+    "src/quantharbor/adapters/execution_uow.py",
+    "tests/product/synthetic_execution.py",
+    "tests/product/test_execution.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "tests/product/test_execution_control.py",
+    "tests/product/test_execution_sql.py",
+    "src/quantharbor/application/target.py"
+  ],
+  "binding": {
+    "typed": "ExecutionReconciliation adds current_identity/validator_version/absolute valid_from/valid_to; legacy matched cannot resume; no caller hash/flag creates authority",
+    "application": "validate_current retains actual Q24/approval terms/request+approval TTL; private _validate_account_current independently replays Q20/Q21/Q23 and all-account data/current rights/current policies. Actual freshness deadlines derive from observations; no renewed TargetRequest is created in recovery. New genuine Q24 requests occur only in synthetic fixture source builder for next orders.",
+    "source": "new source actual replay independent of old candidate; pending/approved invalidated; immutable records/consumed/claims/history retained; original raw source_archive plus repository links retained and charged; same-material rights attenuation permits revocation only and cannot create validity",
+    "SQL": "same ledger/account/head locks; source/version/generation/fence CAS; closed context carries verified source identity/version/absolute validity/query/cursor; cursor checked against ledger stream; matched/resume/common_plan bind same fields; policy references change only under policy action; archive append-only",
+    "registry": "source/inputs/history staged locally; publish only after commit. COMMIT EOF observes exact DB source/hash/version/generation/fence/archive from a fresh connection, no write retry. Exact rollback retains prior binding; uncertain observation blocks shared registry.",
+    "restart": "requires exact source_history archive bytes for source cycles; no old handles/nonces/egress revived",
+    "budget": "limits unchanged:1024/64MiB, owner384/24MiB, common128/8MiB plus source8MiB, Q26 separate128/8MiB; active2/event8/cancel2/withdraw2/query20. Existing SQL small-row bounds and actual row/state-copy accounting retained; no actual DB capacity proof performed"
+  },
+  "actual_DB": {
+    "executed_by_worker": false,
+    "previous_scenarios_preserved": 73,
+    "new_scenarios": [
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "empty"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "request"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "policy"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "fresh"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "runtime"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "unknown"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "cost"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_validity",
+        "kwargs": {
+          "mode": "rights"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_binding_transaction",
+        "kwargs": {
+          "mode": "rollback"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_binding_transaction",
+        "kwargs": {
+          "mode": "commit_loss"
+        },
+        "executed": false
+      },
+      {
+        "function": "recovery_binding_transaction",
+        "kwargs": {
+          "mode": "sql"
+        },
+        "executed": false
+      }
+    ],
+    "total_authored": 84,
+    "strengthened_existing": [
+      "completion_approval_terminal(action='admit',expiry='approval'): terminal nonincrease + matched + explicit resume + old replay/new nonce zero effects; prior diagnostic evidence preserved",
+      "completion_recovery_orders(order='invalidated'): genuine new source accepted, original retained, repair reserved; previous source rejection replaced with DEC005 positive requirement"
+    ],
+    "extra_boundaries": "policy at valid_to; rights at valid_to; commit_loss includes exact binding publish then second actual COMMIT with failed observation requiring shared registry block",
+    "run_order": "root focused new+changed actual DB first, failures corrected, independent security/general, latest full84 DB/product/quality, P28"
+  },
+  "validation": {
+    "final_application": 10,
+    "latest_adapter_affected_control_application_SQL": 21,
+    "affected_cohort_note": "Adapter/domain/UOW/migration hashes match final. During run application/ports only gained thin rebind keyword forwarding; runner scenarios changed. Entire owned29 was not frozen during that run; final application10 covers current application code.",
+    "earlier_target": 14,
+    "earlier_storage": 19,
+    "final_storage": 2,
+    "quality_public_files": 567,
+    "quality_findings": 0,
+    "team_pass": true,
+    "git_diff_check": true,
+    "owned29_no_index_whitespace_check": true,
+    "all_owned_python_AST": true,
+    "typed_SQL_reconciliation_fields": 16,
+    "latest_full_product_or_quality_unittest_claimed": false,
+    "independent_review_claimed": false
+  },
+  "failures_and_corrections": [
+    {
+      "stage": "early direct application smoke",
+      "result": "missing cash_targets on internal account context; failure tool output only, no private stdout artifact captured",
+      "correction": "private context uses empty account cash targets; order wrapper returns original request with original targets and TTL"
+    },
+    {
+      "stage": "control-smoke/debug-control/dec005-control",
+      "result": "unexpected None validity comparison and misplaced refresh check in receipt store",
+      "correction": "optional typed validity validated safely; check confined to reconciliation. Follow-up retry-control3 and affected21 passed"
+    },
+    {
+      "stage": "control-regression",
+      "result": "1 of6 failed: old test expected source replacement rejection",
+      "correction": "DEC005 now accepts actual new source. Strengthened source retention/invalidation/reconcile/resume checks; same root scenario updated; affected21 passed"
+    }
+  ],
+  "remaining_material_issues": [
+    "No new actual PostgreSQL execution: migration syntax, trusted context/CAS, physical source archive copies, nonincrease of actual+remaining rows/bytes and source 128-ref union must be independently confirmed on root actual DB. Unit/memory results do not establish DB atomicity.",
+    "84 total scenarios authored; policy/rights boundaries, COMMIT observation and source cycle are not claimed passed in DB. Fresh-source restart with exact archive and exhaustive head-order/time/rights/CAS permutations need root acceptance beyond focused local tests.",
+    "Source archive retention conservatively consumes serialized metadata/common bytes as well as source limit; elective transitions can reject before fixed caps. Full allowed-max worst-case capacity and owner separation need actual independent measurements.",
+    "Full product suite and quality unittest intentionally left to final validator; independent security/general and P28 not run."
+  ],
+  "unexecuted": [
+    "root actual DB84 including new11 and modified expired-target/invalidated recovery",
+    "independent security/general",
+    "latest full product/quality unittest",
+    "P28/P29/RETURN"
+  ],
+  "q27_complete": false,
+  "date": "2026-10-27",
+  "role": "gpt-6.1-sol/high",
+  "role_exit_code": 0,
+  "root_verified": {
+    "owned29": true,
+    "protected530": true,
+    "baseline7": true,
+    "fixtures2": true,
+    "migrations12": true,
+    "command_logs23": true,
+    "handoff_sha256": "c79e049522cf5ecde8b3110ceed04e12df12475a9eb0ed64135ce451794f5cd8"
+  },
+  "commands": [
+    {
+      "label": "focused-app",
+      "exit_code": 0,
+      "elapsed_seconds": 48.216,
+      "log_sha256": "7a6fc45f3f5b2dd117150603766f31a5923aa2b367f27068e1f831b3b6537e49"
+    },
+    {
+      "label": "control-smoke",
+      "exit_code": 1,
+      "elapsed_seconds": 55.407,
+      "log_sha256": "eafd8f0570dd64123ece6833c7b0c6461e2413333df94c6567738df681da068e"
+    },
+    {
+      "label": "debug-control",
+      "exit_code": 1,
+      "elapsed_seconds": 49.904,
+      "log_sha256": "b4e3d91b925990b40c1be388c2f3da6da6c866335a95ad8b5c84a277de5aba6d"
+    },
+    {
+      "label": "focused-sql",
+      "exit_code": 0,
+      "elapsed_seconds": 3.371,
+      "log_sha256": "9afbeabcab0f356f6f10a576beadd12249c55b686ce46e54f3f385e039305cdc"
+    },
+    {
+      "label": "dec005-control",
+      "exit_code": 1,
+      "elapsed_seconds": 161.893,
+      "log_sha256": "100e4316b7c0019173911027d9f3713e114d0cd29bac1933d192e249f7d04288"
+    },
+    {
+      "label": "quality",
+      "exit_code": 0,
+      "elapsed_seconds": 1.087,
+      "log_sha256": "6078100ea2c5fc4cb094dbd10df92ef071e16e8592f8f25747fb1a9be733908d"
+    },
+    {
+      "label": "team",
+      "exit_code": 0,
+      "elapsed_seconds": 0.049,
+      "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+    },
+    {
+      "label": "retry-control",
+      "exit_code": 0,
+      "elapsed_seconds": 159.13,
+      "log_sha256": "b2e94e824473bbd16ce168f302fb2d533fafdc8ce7aa8ea27bdb1ebabbde7eae"
+    },
+    {
+      "label": "focused-target",
+      "exit_code": 0,
+      "elapsed_seconds": 65.415,
+      "log_sha256": "3aed1248d9d89fa3591ee385075ff3b50b52429dac2c0d66acec4e1e474bb8ff"
+    },
+    {
+      "label": "diff",
+      "exit_code": 0,
+      "elapsed_seconds": 0.029,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "dec005-final",
+      "exit_code": 0,
+      "elapsed_seconds": 245.671,
+      "log_sha256": "c9d3e337186e282f936665db77c5e7db6c745c5159aec650c1a5057c6ea91936"
+    },
+    {
+      "label": "control-regression",
+      "exit_code": 1,
+      "elapsed_seconds": 270.46,
+      "log_sha256": "fba611be03bdc8d0826319a14dfde500c5ac35f66a9be47a8dc0dd52701dc279"
+    },
+    {
+      "label": "structural-final",
+      "exit_code": 0,
+      "elapsed_seconds": 0.631,
+      "log_sha256": "b88cda45700e76e62b4b8f9006ae01aacd125d812d484e6b6f2ab37d0e923178"
+    },
+    {
+      "label": "quality-final",
+      "exit_code": 0,
+      "elapsed_seconds": 0.952,
+      "log_sha256": "6078100ea2c5fc4cb094dbd10df92ef071e16e8592f8f25747fb1a9be733908d"
+    },
+    {
+      "label": "final-application",
+      "exit_code": 0,
+      "elapsed_seconds": 57.161,
+      "log_sha256": "c05096050a8bce64ba56bff15d89b1c63b03aaea8556a1a2654b8716026dc56a"
+    },
+    {
+      "label": "focused-storage",
+      "exit_code": 0,
+      "elapsed_seconds": 635.885,
+      "log_sha256": "1d6ec786eabdc9900fa9351c33e8870b825127ebf22f63a6471ebcb1dcc8ba04"
+    },
+    {
+      "label": "final-structure",
+      "exit_code": 0,
+      "elapsed_seconds": 0.541,
+      "log_sha256": "b88cda45700e76e62b4b8f9006ae01aacd125d812d484e6b6f2ab37d0e923178"
+    },
+    {
+      "label": "final-quality",
+      "exit_code": 0,
+      "elapsed_seconds": 0.92,
+      "log_sha256": "6078100ea2c5fc4cb094dbd10df92ef071e16e8592f8f25747fb1a9be733908d"
+    },
+    {
+      "label": "final-affected",
+      "exit_code": 0,
+      "elapsed_seconds": 257.846,
+      "log_sha256": "7d404e389c083f7ef72b1264994a1cfe9128cbb4bd38d351ca3bb887350e6a48"
+    },
+    {
+      "label": "handoff-structure",
+      "exit_code": 0,
+      "elapsed_seconds": 0.668,
+      "log_sha256": "b88cda45700e76e62b4b8f9006ae01aacd125d812d484e6b6f2ab37d0e923178"
+    },
+    {
+      "label": "handoff-quality",
+      "exit_code": 0,
+      "elapsed_seconds": 0.883,
+      "log_sha256": "6078100ea2c5fc4cb094dbd10df92ef071e16e8592f8f25747fb1a9be733908d"
+    },
+    {
+      "label": "handoff-diff",
+      "exit_code": 0,
+      "elapsed_seconds": 0.028,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "handoff-storage",
+      "exit_code": 0,
+      "elapsed_seconds": 121.451,
+      "log_sha256": "597edb9ee2dddded6d8980399d70d252238fe3e5a5f42b5414a4a167e7d5d846"
+    }
+  ]
+}

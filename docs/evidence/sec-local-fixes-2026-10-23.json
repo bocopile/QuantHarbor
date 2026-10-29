@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-23",
+  "task": "Q14",
+  "executor": "foundation_implementer",
+  "result": "pass_security_fix_self_validation",
+  "resolved": [
+    "empty private Docker config and HOME for control commands; exact container env validation",
+    "pending marker binds endpoint/daemon fingerprint; mismatch/unknown/legacy preserve and deny"
+  ],
+  "boundary_unit_tests": 23,
+  "actual_docker_tests": 13,
+  "skipped": 0,
+  "elapsed_seconds": 12.212,
+  "sha256": {
+    "src/quantharbor/runtime/isolation.py": "0d5588336024fe79fc6133a525b77234845bc432079665b922a58874655aec12",
+    "tests/product/test_boundary_isolation.py": "1e20a7982fc680e44cf211b68027a8ef3afc9fc9ebdefe89be1fd96788a600ff",
+    "tests/isolation/test_docker_boundary.py": "c311ba30f89bb5db81772032b41b413e09a9658f40fadbd4dd18442a8c7daac6",
+    "scripts/check_isolation.py": "9697718c5e8687890d276cd769493fac64f54538f2c3134a739aa680da514287"
+  },
+  "not_executed": [
+    "independent security re-review",
+    "independent validation",
+    "multiple real Docker daemons; identity mismatch tested synthetically"
+  ]
+}

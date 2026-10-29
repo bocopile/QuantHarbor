@@ -1,0 +1,14 @@
+{
+  "task": "Q21-local",
+  "role": "qh_architect",
+  "model": "gpt-6-astra",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "design_returned_root_integrated",
+  "design_output_sha256": "a248fe8d15afdd0d4c934cb60467af080776542b5b7ddc56787eed4c1da5f583",
+  "outputs": [
+    "docs/contracts/valuation-local-v1.md",
+    "docs/decisions/VAL-DEC-001-local-read-model.md"
+  ],
+  "tests_executed": false
+}

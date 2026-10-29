@@ -1,0 +1,109 @@
+{
+  "task": "Q27",
+  "phase": "root_storage_SQL_smoke_repairs",
+  "at": "2026-10-25T15:01:38.922845+00:00",
+  "fixes": {
+    "task": "Q27",
+    "phase": "root_storage_migration_fix",
+    "before": "a2ac1e1e7073576365be55c94281886f85c96b3a95196d15788877ae5c38b956",
+    "after": "9763b066362cf97bb5a17143882653099e53d1396682e5cfd8661143860af8d2",
+    "change": "Parenthesize CASE expression in PL/pgSQL IF condition; no financial meaning change",
+    "failed_smoke": "/private/tmp/q27-root-db-storage-smoke.json",
+    "diagnostic": "/private/tmp/q27-storage-migration-diagnostic.json",
+    "validation_after_fix": "pending",
+    "runtime_fix": "Separate bounded execution aggregate parser from unchanged Q20 64KiB nonnegative-integer ledger parser; duplicate keys and floating JSON numbers still rejected, domain record validators unchanged",
+    "latest_sha256": "6268c0f0a24a498e548d92b80f251b032d3b9531d93036533bf988663ad95d9d",
+    "initial_migration_error_observed": "syntax error at end of input at IS DISTINCT FROM CASE in execution_derive_append",
+    "migration_after_parenthesis": "actual diagnostic exit0, own_project_removed",
+    "runtime_before_parser_fix": "actual bootstrap failed ledger_wire_check due to version -1, own_project_removed",
+    "closed_row_precedence_fix": "Parenthesize JSON payload extraction before text-array key subtraction in approval/session immutable comparisons; actual DB ERROR invalid JSON token payload"
+  },
+  "actual_DB": {
+    "scope": "root_fixed_synthetic_runtime_diagnostic",
+    "checks": [
+      "EX04_actual_database_all_admission_faults_rollback",
+      "EX01_actual_Q24_Q26_DB_admission",
+      "EX05_committed_command_lookup_no_second_intent",
+      "EX35_two_facades_shared_registry_database_reload",
+      "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+      "EX06_actual_Q20_projection_DB_cash598",
+      "EX20_actual_duplicate_fill_once",
+      "EX07_actual_Q20_settlement_no_reapply_cash598",
+      "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic",
+      "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only",
+      "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission",
+      "EX34_product_role_direct_financial_mutation_denied"
+    ],
+    "goldens": {
+      "candidate": {
+        "quantity": "3",
+        "limit_price": "100",
+        "cost_bound": "2",
+        "maximum_burden": "302"
+      },
+      "partial_fill": {
+        "L": "1000",
+        "H": "302",
+        "F": "100",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "settlement": {
+        "L": "900",
+        "H": "202",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "fresh_query": {
+        "L": "900",
+        "H": "202",
+        "B": "900",
+        "U": "202",
+        "D": "0",
+        "A": "598",
+        "next_remaining": "196"
+      }
+    },
+    "status": "pass",
+    "cleanup": "own_project_removed",
+    "elapsed_seconds": 119.143,
+    "sql_errors": []
+  },
+  "owned_after_sha256": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "ff9ec012e38a7477b2298d0972effd60efeabad7b2d0ef2c0721283f4eca4004",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "53fbe1b6f4a56e92a868421c57691fdb718c59f941960edaeaa6dc9308b8703c",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "9ee7629ab7e22c3287b6ce10cbbd390b9638600d45244f9d60a8b376de4cce75",
+    "docs/development/execution.md": "dcce2d4c1ef7e07e7716625efab8f51e1bb2a2c8beb00730a86adfc87162fc68",
+    "migrations/0003_synthetic_execution.sql": "6268c0f0a24a498e548d92b80f251b032d3b9531d93036533bf988663ad95d9d",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f4cc53ebe3649debf248c8ee66ea158d9f8b65b61f1332b4da6b4ea28ab4cadd",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "70e5e18fb0c3c62fd3d3374af85c9681f552b99c2182d62d5e0320edba123232",
+    "tests/product/test_execution_sql.py": "04c0955a18bb545a0d7529eba0ca973d4cd4ff567c76a802998384394c638c05",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c"
+  },
+  "diagnostic_mode": "Same production SQL/roles/inputs; UoW stderr redirected only to own temporary diagnostic file. No computation/authority/result stub. Final standard runner pending.",
+  "q27_complete": false,
+  "remaining": "Full55/current storage proofs, EX11, common reserve, terminal third, independent reviews/fullproduct"
+}

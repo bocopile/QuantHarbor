@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-24",
+  "task": "Q18",
+  "reviewer": "baseline_security_review",
+  "mode": "independent_read_only",
+  "result": "changes_required",
+  "matched_sha256_count": 8,
+  "input": "data-document-implementation-2026-10-24.json",
+  "findings": [
+    {
+      "id": "S3",
+      "priority": "P2",
+      "file": "src/quantharbor/domain/documents.py",
+      "line": 608,
+      "issue": "purpose=store with research use can mark usable_for_research under store-only grant"
+    },
+    {
+      "id": "D1",
+      "priority": "documentation",
+      "file": "docs/development/document-lineage.md",
+      "issue": "quality unittest command missing -I -S"
+    }
+  ],
+  "not_claimed": "financial order authorization bypass",
+  "unexecuted": [
+    "tests",
+    "private input reads",
+    "external calls"
+  ]
+}

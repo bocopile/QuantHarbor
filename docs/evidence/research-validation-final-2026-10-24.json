@@ -1,0 +1,46 @@
+{
+  "task": "Q23-local",
+  "model": "gpt-6-luna",
+  "reasoning": "high",
+  "sha256": {
+    "src/quantharbor/domain/research.py": "72cd728517185dac26f71adcf90e19e34ed88031b0b25c2bf6478aa428a8ddc3",
+    "src/quantharbor/application/research.py": "1d30c24444c2d0c8b3864d91ced7fb99f4a15b247f591f6c3d1710928641a40c",
+    "src/quantharbor/ports/research.py": "b9bfd8d5b74a3b441b1190b2286da26af7a56c0a0d77502bddd20bf223531af6",
+    "src/quantharbor/adapters/synthetic_research.py": "9dd1f39113ee65a25739c21cdf5f5a7cbe08f2fca79e4f221f0369c7165dbf00",
+    "src/quantharbor/research/__init__.py": "7ed85a557be4ad20fa83d29f6747053f3fb87aef5a137d4523143043b71024a9",
+    "src/quantharbor/research/metrics.py": "4277638f249df37663a3744d6e2b8f707c17dbea45097b00f1889e1e010475a2",
+    "src/quantharbor/research/costing.py": "a6763d953acf9464cc912ab836c4f1f4558897f4d37fc26a8238ef0e19442f78",
+    "src/quantharbor/research/strategies.py": "9bebc7fb2ce975c3091ed8a2f854b3a3c731c8918e12743696bad761137146d5",
+    "src/quantharbor/domain/serialization.py": "dc21f8703e7dc8c2872a1b14f63ac83b2acf549a387a7ba20334b98c04793787",
+    "tests/product/synthetic_research.py": "85f1bddb0b9eb89b00fbe48ad4d8fee89c9a17dc643f22fe63f1895c2013ede8",
+    "tests/product/test_research.py": "f8f7609e07646aac3beca9ef5b03657ed8019e74c74a2791e4e1a3b266ea8fb3",
+    "tests/product/test_performance.py": "f84c0c13a76422437754d4e3d856f2dbfc6c1da8adcc2a060d4854d5372b3130",
+    "tests/product/test_costing.py": "b898aff3122118f900a0fd63362a9a80df5e50d84570852bdf4ca0b8d593da95",
+    "docs/development/research.md": "db4d870ac975a410974187a0c48f1f469aabf32bc15c846ed6965c1845a149b0"
+  },
+  "spec_raw_sha256": "b24ec83a0cbbe1646fee64c2d433cf8d2c57831f58c8e2e746c0e9c371dc4bb4",
+  "role": "qh_validator",
+  "execution": "separate_parent_qh_development",
+  "result": "pass",
+  "findings": [],
+  "resolved": [
+    "R1"
+  ],
+  "hashes_match": true,
+  "tests_executed": true,
+  "checks": {
+    "product": 380,
+    "product_seconds": 152.094,
+    "quality": 87,
+    "public_files": 379,
+    "public_findings": 0,
+    "team_members": 6,
+    "queue_items": 36,
+    "task_ids": 110,
+    "git_diff_check": "pass",
+    "fixed_runs_and_reproducibility": "executed_in_product_suite",
+    "baseline_files_unchanged": 7,
+    "before_after_hashes_match": 14
+  },
+  "actual_api_calls": 0
+}

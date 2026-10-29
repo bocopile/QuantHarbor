@@ -1,0 +1,63 @@
+{
+  "task": "Q20-local",
+  "executor": "root",
+  "result": "pass",
+  "independent_of_latest_writer": false,
+  "execution": "check_ledger.main with task-specific diagnostic PostgresLedger subclass; same SQL path, diagnostic capture only",
+  "parity_submissions": 44,
+  "checks": [
+    "migration_order_checksum_idempotency",
+    "revisions_repeated_snapshots_balanced_reversal_knowledge_cursor_hash_parity",
+    "settlement_revisions_repeats_correction_consequences_parity",
+    "prospective_and_uneffective_revision_parity",
+    "baseline_completeness_costs_currency_cash_event_fx_parity",
+    "split_ratio_and_correction_consequences_parity",
+    "quarantine_explicit_reprocess_parity",
+    "append_and_reversal_bundle_rollback_every_boundary",
+    "direct_sql_closed_schema_duplicate_keys_exact_numeric_and_overflow_rollback",
+    "immutable_rows_and_deferred_journal_validation",
+    "two_session_account_lock_same_revision_exactly_one_economic_append",
+    "connection_termination_rollback_and_replay",
+    "inbox_workstate_atomicity_collision_ack_loss_out_of_order_delivery",
+    "same_economic_path_dump_restore_replay_and_duplicate_revision"
+  ],
+  "cleanup": "own_project_removed",
+  "elapsed_seconds": 43.69,
+  "sha256": {
+    "src/quantharbor/domain/ledger.py": "5f49b3928759e594d832ce4bdecd124320f5fc7cddeaed26aca2e93100c69245",
+    "src/quantharbor/application/ledger.py": "77f4d4a52590bcd2a5462338f5df626eef43063c62a827d625063f11eef2ab46",
+    "src/quantharbor/ports/ledger.py": "fbda6397cb7e31c52530a1be71754b3bb1673e1e0997c08bdc57f894a4113e91",
+    "src/quantharbor/adapters/synthetic_ledger.py": "0fb4a781293e6f9481424cc32321a4e75c4b43f83f3b36b9b429b06ac884b8bd",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/domain/serialization.py": "1dcb58472cd6499653be512a344ad3880d5c6a51389eb9e7f42c0501d66a93fc",
+    "migrations/0002_synthetic_ledger.sql": "ed71e1e1d63d428a8564558a7d2307b987609cf65b3dcb51be539059f49a2faa",
+    "tests/product/synthetic_ledger.py": "e700e9f3477831cdb4fc59e439dc500b2d14f432df8a029b3a91dd5d289e3c0a",
+    "tests/product/test_ledger.py": "f8febaefd3358bd5eefa725be06e52fa051e36811612167d3df79dd6631f4a7f",
+    "scripts/check_ledger.py": "18033d6263d1eef50956717e492536dae82b80f511334ff2ec728fcfc12703ac",
+    "tests/quality/test_ledger_runner.py": "fe241bf5332928d9ed9fbb6a9649f239c1b85616cf885cb0a5be2c32d5426e60",
+    "docs/development/ledger.md": "697412bd419983fb2dc83216b665c7fbb6c5b9e0979640cc79e646d4925aa463"
+  },
+  "root_fixes": [
+    "wait_for_final_PID1_postgres_before_pg_isready",
+    "ledger_semantics_dependency_ref_variable_alias_disambiguation",
+    "ledger_replay_supersedes_input_parameter_disambiguation"
+  ],
+  "failed_attempts_preserved": [
+    "initial_setup_socket_unavailable",
+    "setup_diagnostics_socket_unavailable",
+    "migration_pass_then_ledger_semantics_x_ambiguous",
+    "migration_pass_then_ledger_replay_supersedes_ambiguous"
+  ],
+  "targeted_quality_tests": 12,
+  "unexecuted": [
+    "independent_review",
+    "independent_final_tests",
+    "unmodified_runner_after_fixes"
+  ],
+  "actual_account_api_calls": 0,
+  "limitations": [
+    "synthetic_only",
+    "tmpfs_transaction_and_logical_restore_not_power_loss_durability",
+    "real_storage_and_Q19_gates_pending"
+  ]
+}

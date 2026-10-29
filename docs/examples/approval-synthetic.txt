@@ -1,0 +1,15 @@
+QuantHarbor 합성 승인·철회 예시
+검증일: 2026-10-25 · 실제 인증/주문/계좌 접근 없음
+
+합성 주문 후보 · synthetic-account:q24:US · q24.A 3주 매수 · 지정가 100 USD · 비용 최대 2 USD · 최대 필요자금 302 USD · 매도 최저 총대금 0 USD · day · 2024-03-08T14:31:03.000000Z부터 2024-03-08T14:31:33.000000Z 미만 · 명시한 합성 목표와 현재 보유의 차이입니다. · 위험: 가격 변화와 부분체결 위험이 있습니다. · 합성 전체 주문 비용 상한이며 부분체결 횟수와 무관합니다. · 표시한 종료시각은 제외하며 이후 최신 근거를 다시 검사해야 합니다. · 합성 시험이며 실제 전략 채택이 아닙니다. · 승인 전이며 주문은 전송되지 않았습니다. · 합성 승인 범위: synthetic-account:q24:US · synthetic · synthetic-generation-1 · submit_candidate_once · cd6a6496f1a63fb00efc5c3a66d00dd0d0559d3cea5ea134bdc618a529265a59 · 승인 종료 2024-03-08T14:31:28.000000Z 미만
+
+실제 모듈 실행 결과
+1. 표시: pending, 승인 종료14:31:28Z 미만.
+2. 명시 합성 승인: approved. 클릭 시각14:31:10Z에도 종료시각 유지.
+3. 합성 admission: consumed, prepared intent와 pending outbox 각1개.
+   현금302 USD·수량3·위험302 USD 예약 held.
+4. 전송 전 합성 철회: intent/outbox aborted_unsent, 예약3개 released.
+   승인은 consumed를 유지하고 후보 소비 claim1개를 보존한다.
+
+실제 broker 호출0. 메모리 내 합성 결과이며 실제 DB transaction·인증·주문 권한 증거가 아니다.
+JSON은 읽기 예시이며 승인 원천이나 권한으로 다시 입력하지 않는다.

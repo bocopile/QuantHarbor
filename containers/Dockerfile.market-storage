@@ -1,0 +1,16 @@
+FROM python@sha256:608b27b2db85abf38d81685085cd1166a5ed7ada66549f0dfe53a75bb830cd5d
+WORKDIR /app
+ENV PYTHONPATH=/app/src PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY wheels/ /opt/wheels/
+COPY containers/requirements.market-storage.txt /opt/requirements.txt
+RUN ["python", "-I", "-m", "pip", "install", "--no-index", "--no-deps", "--no-cache-dir", "--disable-pip-version-check", "--require-hashes", "--find-links=/opt/wheels", "-r", "/opt/requirements.txt"]
+COPY src/ /app/src/
+COPY tests/product/ /app/tests/product/
+COPY tests/storage/ /app/tests/storage/
+COPY config/runtime.synthetic.toml /app/config/runtime.synthetic.toml
+COPY config/runtime-lock.json /app/config/runtime-lock.json
+COPY config/market-storage-lock.json /app/config/market-storage-lock.json
+COPY pyproject.toml /app/pyproject.toml
+RUN ["python", "-I", "-c", "import os; os.mkdir('/store',0o700); os.chown('/store',10001,10001)"]
+USER 10001:10001
+CMD ["python", "-m", "unittest", "discover", "-s", "tests/storage", "-v"]

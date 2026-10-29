@@ -1,0 +1,489 @@
+{
+  "scope": "synthetic_example_only",
+  "candidate_count": 2,
+  "planned_burden": "704",
+  "available": "800",
+  "remaining": "96",
+  "candidates": [
+    {
+      "environment": "synthetic",
+      "payload": {
+        "body": {
+          "account_ref": "synthetic-account:q24:US",
+          "authority_generation": "synthetic-generation-1",
+          "display_terms": {
+            "account_label": "synthetic-account:q24:US",
+            "cost_explanation": "합성 전체 주문 비용 상한이며 부분체결 횟수와 무관합니다.",
+            "expiry_explanation": "표시한 종료시각은 제외하며 이후 최신 근거를 다시 검사해야 합니다.",
+            "instrument_label": "q24.A",
+            "locale": "ko-KR",
+            "rationale": "명시한 합성 목표와 현재 보유의 차이입니다.",
+            "render_version": "target-ko-v1",
+            "risks": [
+              "가격 변화와 부분체결 위험이 있습니다."
+            ],
+            "synthetic_notice": "합성 시험이며 실제 전략 채택이 아닙니다."
+          },
+          "environment": "synthetic",
+          "input_refs": [
+            {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "calendar:ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+              "kind": "calendar",
+              "sha256": "ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "catalog:61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "kind": "catalog",
+              "sha256": "61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-facts-snapshot",
+              "kind": "facts",
+              "sha256": "bf4d9a6cc5f7c61eacd1383f0a16b3e507a313524946535a7e351495b7679002",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24.market-request",
+              "kind": "market",
+              "sha256": "24e87222a9e66311e3a7543a0a711477c9451834eb4c6f11ab487d86b34f0f7a",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "loss-performance",
+              "kind": "performance",
+              "sha256": "db44ebf394c45a1fc3c535433f00940324fa0c77a291089bf912c1dbcdf92e13",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-policy-v1",
+              "kind": "policy",
+              "sha256": "2e62a40be5ce0274806df540ec675f5056b0a60ba0dc34f90c4129b8338000c8",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "current-projection",
+              "kind": "projection",
+              "sha256": "96f55422caff36929447b3df29482b98685cb1ab30c0e38b0a0c583fe4687f3a",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-request",
+              "kind": "request",
+              "sha256": "c6065942165b535218eddc635ac23fab917714e8bff5c0c33a535c59b411e6fb",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24.rights",
+              "kind": "rights",
+              "sha256": "1a9d67c076441b7fd2e94a7dea1e546ce04508a4bd0e7db81da802b79905a26d",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "rights:1a9d67c076441b7fd2e94a7dea1e546ce04508a4bd0e7db81da802b79905a26d",
+              "kind": "rights",
+              "sha256": "1a9d67c076441b7fd2e94a7dea1e546ce04508a4bd0e7db81da802b79905a26d",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "snapshot:1d9b56bcadb838927291ce7e06ea1e72d408179b6de50d79239098d3122ee8f2",
+              "kind": "snapshot",
+              "sha256": "edc3b1e5d19d3139700496d4a668f69a15737c9f5c79eaf54fd6971896b36089",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "snapshot:59838c5b75eb0c924ddab29b1dfa7cb95e1762450c6e6e82af474c570d79e911",
+              "kind": "snapshot",
+              "sha256": "cfa22bb107b1fa4f184c34c1e9b2f44d1ca5e602c4d442cf4fcf71fb1d30e379",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "statement-1",
+              "kind": "statement",
+              "sha256": "002e4b873c4a85f4e10318ea86c2dc624fc97b3bbc5ef22722f7bad93d9f96e3",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-explicit-proposal",
+              "kind": "strategy",
+              "sha256": "38aada1ed7e873a0fbbe2770d0320814202b210f7a7379c347dd8fb76b553df8",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "timezone:8dfd32dc152623fac0a71c7372ce28659b02b4cd0e3eea33e29e5242eed01c7d",
+              "kind": "timezone",
+              "sha256": "8dfd32dc152623fac0a71c7372ce28659b02b4cd0e3eea33e29e5242eed01c7d",
+              "version": 1
+            }
+          ],
+          "order_index": 0,
+          "plan_ref": {
+            "canonicalization_version": "qh-canonical-json-v1",
+            "id": "target-plan:caa5cf2581452a6b1b6f932d119dd0d16d43f40b91c4e1c3ff4712f52218ffd6",
+            "kind": "plan",
+            "sha256": "89f11549843d909e55aa2e5a420f9dcbce75ac26a4b626058f73d756ffa7299b",
+            "version": 1
+          },
+          "policy_ref": {
+            "canonicalization_version": "qh-canonical-json-v1",
+            "id": "q24-policy-v1",
+            "kind": "policy",
+            "sha256": "2e62a40be5ce0274806df540ec675f5056b0a60ba0dc34f90c4129b8338000c8",
+            "version": 1
+          },
+          "schema_version": 1,
+          "terms": {
+            "account_ref": "synthetic-account:q24:US",
+            "capability": {
+              "account_ref": "synthetic-account:q24:US",
+              "calendar_ref": {
+                "canonicalization_version": "context-source-facts-v1",
+                "id": "calendar:ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+                "kind": "calendar",
+                "sha256": "ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+                "version": 1
+              },
+              "capability_id": "cap-0",
+              "catalog_ref": {
+                "canonicalization_version": "context-source-facts-v1",
+                "id": "catalog:61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+                "kind": "catalog",
+                "sha256": "61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+                "version": 1
+              },
+              "currency": "USD",
+              "environment": "synthetic",
+              "known_at": "2023-12-01T00:00:00.000000Z",
+              "lot": "1",
+              "market": "US",
+              "max_notional": "10000000",
+              "max_quantity": "10000",
+              "min_notional": "0",
+              "min_quantity": "1",
+              "order_kind": "limit",
+              "partial_fill_basis": "whole_order_aggregate",
+              "position": {
+                "instrument_id": "q24.A",
+                "mapping_version": "q24-mapping-v1",
+                "unit": "share",
+                "venue_id": "q24.venue"
+              },
+              "schema_version": 1,
+              "session_kind": "regular",
+              "tick": "0.01",
+              "time_in_force": "day",
+              "valid_from": "2023-12-01T00:00:00.000000Z",
+              "valid_to": "2025-01-01T00:00:00.000000Z"
+            },
+            "cost_bound": "2",
+            "cost_rule": {
+              "account_ref": "synthetic-account:q24:US",
+              "charging_basis": "whole_order_aggregate",
+              "currency": "USD",
+              "environment": "synthetic",
+              "fee_fixed": "2",
+              "fee_per_share": "0",
+              "market": "US",
+              "money_quantum": "0.01",
+              "rounding": "ceiling",
+              "rule_id": "cost-buy",
+              "schema_version": 1,
+              "side": "buy",
+              "tax_fixed": "0",
+              "tax_per_share": "0",
+              "valid_from": "2023-12-01T00:00:00.000000Z",
+              "valid_to": "2025-01-01T00:00:00.000000Z"
+            },
+            "cumulative_burden": "302",
+            "currency": "USD",
+            "fee_bound": "2",
+            "limit_price": "100",
+            "mapping_ref": {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "catalog:61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "kind": "catalog",
+              "sha256": "61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "version": 1
+            },
+            "market": "US",
+            "maximum_burden": "302",
+            "minimum_sale_proceeds": "0",
+            "position": {
+              "instrument_id": "q24.A",
+              "mapping_version": "q24-mapping-v1",
+              "unit": "share",
+              "venue_id": "q24.venue"
+            },
+            "principal_bound": "300",
+            "quantity": "3",
+            "reference_price": "100",
+            "remaining_capacity": "498",
+            "side": "buy",
+            "tax_bound": "0",
+            "valid_from": "2024-03-08T14:31:03.000000Z",
+            "valid_to": "2024-03-08T14:31:33.000000Z"
+          }
+        },
+        "candidate_id": "candidate:cbdac019e28bef518d5cc91be6dec4461b24471dc9d7d1bc1576ae0cdc547164"
+      },
+      "schema_name": "OrderCandidate",
+      "schema_version": 1
+    },
+    {
+      "environment": "synthetic",
+      "payload": {
+        "body": {
+          "account_ref": "synthetic-account:q24:US",
+          "authority_generation": "synthetic-generation-1",
+          "display_terms": {
+            "account_label": "synthetic-account:q24:US",
+            "cost_explanation": "합성 전체 주문 비용 상한이며 부분체결 횟수와 무관합니다.",
+            "expiry_explanation": "표시한 종료시각은 제외하며 이후 최신 근거를 다시 검사해야 합니다.",
+            "instrument_label": "q24.B",
+            "locale": "ko-KR",
+            "rationale": "명시한 합성 목표와 현재 보유의 차이입니다.",
+            "render_version": "target-ko-v1",
+            "risks": [
+              "가격 변화와 부분체결 위험이 있습니다."
+            ],
+            "synthetic_notice": "합성 시험이며 실제 전략 채택이 아닙니다."
+          },
+          "environment": "synthetic",
+          "input_refs": [
+            {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "calendar:ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+              "kind": "calendar",
+              "sha256": "ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "catalog:61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "kind": "catalog",
+              "sha256": "61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-facts-snapshot",
+              "kind": "facts",
+              "sha256": "bf4d9a6cc5f7c61eacd1383f0a16b3e507a313524946535a7e351495b7679002",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24.market-request",
+              "kind": "market",
+              "sha256": "24e87222a9e66311e3a7543a0a711477c9451834eb4c6f11ab487d86b34f0f7a",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "loss-performance",
+              "kind": "performance",
+              "sha256": "db44ebf394c45a1fc3c535433f00940324fa0c77a291089bf912c1dbcdf92e13",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-policy-v1",
+              "kind": "policy",
+              "sha256": "2e62a40be5ce0274806df540ec675f5056b0a60ba0dc34f90c4129b8338000c8",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "current-projection",
+              "kind": "projection",
+              "sha256": "96f55422caff36929447b3df29482b98685cb1ab30c0e38b0a0c583fe4687f3a",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-request",
+              "kind": "request",
+              "sha256": "c6065942165b535218eddc635ac23fab917714e8bff5c0c33a535c59b411e6fb",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24.rights",
+              "kind": "rights",
+              "sha256": "1a9d67c076441b7fd2e94a7dea1e546ce04508a4bd0e7db81da802b79905a26d",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "rights:1a9d67c076441b7fd2e94a7dea1e546ce04508a4bd0e7db81da802b79905a26d",
+              "kind": "rights",
+              "sha256": "1a9d67c076441b7fd2e94a7dea1e546ce04508a4bd0e7db81da802b79905a26d",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "snapshot:1d9b56bcadb838927291ce7e06ea1e72d408179b6de50d79239098d3122ee8f2",
+              "kind": "snapshot",
+              "sha256": "edc3b1e5d19d3139700496d4a668f69a15737c9f5c79eaf54fd6971896b36089",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "snapshot:59838c5b75eb0c924ddab29b1dfa7cb95e1762450c6e6e82af474c570d79e911",
+              "kind": "snapshot",
+              "sha256": "cfa22bb107b1fa4f184c34c1e9b2f44d1ca5e602c4d442cf4fcf71fb1d30e379",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "statement-1",
+              "kind": "statement",
+              "sha256": "002e4b873c4a85f4e10318ea86c2dc624fc97b3bbc5ef22722f7bad93d9f96e3",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "qh-canonical-json-v1",
+              "id": "q24-explicit-proposal",
+              "kind": "strategy",
+              "sha256": "38aada1ed7e873a0fbbe2770d0320814202b210f7a7379c347dd8fb76b553df8",
+              "version": 1
+            },
+            {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "timezone:8dfd32dc152623fac0a71c7372ce28659b02b4cd0e3eea33e29e5242eed01c7d",
+              "kind": "timezone",
+              "sha256": "8dfd32dc152623fac0a71c7372ce28659b02b4cd0e3eea33e29e5242eed01c7d",
+              "version": 1
+            }
+          ],
+          "order_index": 1,
+          "plan_ref": {
+            "canonicalization_version": "qh-canonical-json-v1",
+            "id": "target-plan:caa5cf2581452a6b1b6f932d119dd0d16d43f40b91c4e1c3ff4712f52218ffd6",
+            "kind": "plan",
+            "sha256": "89f11549843d909e55aa2e5a420f9dcbce75ac26a4b626058f73d756ffa7299b",
+            "version": 1
+          },
+          "policy_ref": {
+            "canonicalization_version": "qh-canonical-json-v1",
+            "id": "q24-policy-v1",
+            "kind": "policy",
+            "sha256": "2e62a40be5ce0274806df540ec675f5056b0a60ba0dc34f90c4129b8338000c8",
+            "version": 1
+          },
+          "schema_version": 1,
+          "terms": {
+            "account_ref": "synthetic-account:q24:US",
+            "capability": {
+              "account_ref": "synthetic-account:q24:US",
+              "calendar_ref": {
+                "canonicalization_version": "context-source-facts-v1",
+                "id": "calendar:ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+                "kind": "calendar",
+                "sha256": "ee691aaa4fc5f2d2f0f7503d2e6f29999db77d38d79fea8130019809619856a5",
+                "version": 1
+              },
+              "capability_id": "cap-1",
+              "catalog_ref": {
+                "canonicalization_version": "context-source-facts-v1",
+                "id": "catalog:61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+                "kind": "catalog",
+                "sha256": "61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+                "version": 1
+              },
+              "currency": "USD",
+              "environment": "synthetic",
+              "known_at": "2023-12-01T00:00:00.000000Z",
+              "lot": "1",
+              "market": "US",
+              "max_notional": "10000000",
+              "max_quantity": "10000",
+              "min_notional": "0",
+              "min_quantity": "1",
+              "order_kind": "limit",
+              "partial_fill_basis": "whole_order_aggregate",
+              "position": {
+                "instrument_id": "q24.B",
+                "mapping_version": "q24-mapping-v1",
+                "unit": "share",
+                "venue_id": "q24.venue"
+              },
+              "schema_version": 1,
+              "session_kind": "regular",
+              "tick": "0.01",
+              "time_in_force": "day",
+              "valid_from": "2023-12-01T00:00:00.000000Z",
+              "valid_to": "2025-01-01T00:00:00.000000Z"
+            },
+            "cost_bound": "2",
+            "cost_rule": {
+              "account_ref": "synthetic-account:q24:US",
+              "charging_basis": "whole_order_aggregate",
+              "currency": "USD",
+              "environment": "synthetic",
+              "fee_fixed": "2",
+              "fee_per_share": "0",
+              "market": "US",
+              "money_quantum": "0.01",
+              "rounding": "ceiling",
+              "rule_id": "cost-buy",
+              "schema_version": 1,
+              "side": "buy",
+              "tax_fixed": "0",
+              "tax_per_share": "0",
+              "valid_from": "2023-12-01T00:00:00.000000Z",
+              "valid_to": "2025-01-01T00:00:00.000000Z"
+            },
+            "cumulative_burden": "704",
+            "currency": "USD",
+            "fee_bound": "2",
+            "limit_price": "100",
+            "mapping_ref": {
+              "canonicalization_version": "context-source-facts-v1",
+              "id": "catalog:61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "kind": "catalog",
+              "sha256": "61aeeecbb2ed28ac60b32499b9e3c4430aa981597560c3adcbef533677c3f34f",
+              "version": 1
+            },
+            "market": "US",
+            "maximum_burden": "402",
+            "minimum_sale_proceeds": "0",
+            "position": {
+              "instrument_id": "q24.B",
+              "mapping_version": "q24-mapping-v1",
+              "unit": "share",
+              "venue_id": "q24.venue"
+            },
+            "principal_bound": "400",
+            "quantity": "4",
+            "reference_price": "100",
+            "remaining_capacity": "96",
+            "side": "buy",
+            "tax_bound": "0",
+            "valid_from": "2024-03-08T14:31:03.000000Z",
+            "valid_to": "2024-03-08T14:31:33.000000Z"
+          }
+        },
+        "candidate_id": "candidate:0cfdcc470dc527f395c37c04c52236ccd74e46eaea8cd812e7c7fa8ea3c2ac12"
+      },
+      "schema_name": "OrderCandidate",
+      "schema_version": 1
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "task": "GIT-baseline",
+  "verified_date": "2026-10-23",
+  "base_commit": "ec56042ffe42eaac8bd222f4afe110ddea9dbb97",
+  "branch": "codex/env-baseline",
+  "scope": "local baseline preparation, not ENV completion",
+  "checks": {
+    "unittest": {
+      "command": "python3 -B -m unittest discover -s tests",
+      "tests": 55,
+      "seconds": 5.6,
+      "exit_code": 0
+    },
+    "team_config": {
+      "command": "python3 -B scripts/check_ai_team.py",
+      "members": 6,
+      "queue_entries": 36,
+      "task_ids": 110,
+      "exit_code": 0
+    },
+    "structured_files": {
+      "json": 17,
+      "toml": 10,
+      "result": "parsed"
+    },
+    "candidate_scan": {
+      "initial_files": 87,
+      "known_secret_patterns_findings": 0,
+      "non_regular_or_binary_files": 0,
+      "local_connection_file_ignored": true,
+      "local_connection_file_read": false,
+      "scope": "candidate files only; heuristic, not historical audit or guarantee of absence"
+    }
+  },
+  "independent_review": {
+    "agent": "baseline_security_review",
+    "role": "qh_security_reviewer",
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "candidate_files": 88,
+    "input_manifest_sha256": "6aac019b1ecb26711096cfda8fba0c5ab7108e8f76c78d466f4dad020a785f45",
+    "manifest_format": "sorted UTF-8 path + NUL + lowercase file SHA-256 + LF",
+    "blocking_findings": 0,
+    "scope": "public candidates, read-only advisory; no direct-child isolation proof"
+  },
+  "input_sha256": {
+    "scripts/check_ai_team.py": "0d96f0c226eb396f98deb7d096303d31eabfbb555152fb6a52da1a1626b20519",
+    "scripts/qh_hook_audit.py": "f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d",
+    "scripts/run_local_check.py": "621cc88927327b28a732cdfb48cca786d63ac8c93915b7ded8256f2ba61ba35d",
+    "scripts/validate_environment.py": "9dbb848c54ca0a050890704cb8a9998d59a6c8109b778e8b2cbab7ef472ec33e",
+    "scripts/validate_role_boundary.py": "30d9b344682e3e430c5b7fc422c1e4ac202f7a9bdfef3eaf2b2251f1b271b538",
+    "tests/test_ai_team.py": "874d1bfb588d810273de33787950b2c5036d3d54d7d8de688e19d2131b7c8033",
+    "tests/test_environment_controls.py": "a64c741c83ba12fd66785ce54176a16bb63286aa513769c859cee8a9152e2aca",
+    "tests/test_hook_audit.py": "d8cea8a0c8efd137a91e9411383a82570b300eb0617c23d256c13b04b5776e77",
+    "tests/test_role_boundary.py": "c99b592e0ab9263bed5583046aee7d340eacfeed8355e8e0fc7390cf7b3909b3",
+    "tests/test_run_local_check.py": "44f004a3afa943f28889d8c9a89a93e6391c4c20a79b11778c14ed1841cdb10c",
+    ".codex/config.toml": "df334d8d0dfb599471dbb81c85c5da207fea59878d02377857051041fba5bf46",
+    ".codex/hooks.json": "3428c99ea9cbbe3c1336c4153cac7585985e4a44d84b5ac4d549d1cdce16bc37",
+    "config/ai/team.toml": "85a5b5084671cdb1bfd6e15e3073a66ee861fd122809d7cb636ff6b7d41cbc3b",
+    "config/ai/execution-queue.json": "d6edad218d0a5b147fd77f988899030e84c5d6d1b8ede4f8b36e36c2ca7e828c",
+    "docs/approval-register.md": "ae9909f49f1a9682fe624209bf5cf87dc31e52f078ba91d2419eb2ab6f32bd6b"
+  },
+  "not_executed": [
+    "actual trusted Hook execution",
+    "actual CLI isolation revalidation",
+    "external service calls",
+    "push",
+    "PR",
+    "merge",
+    "remote settings",
+    "financial application tests"
+  ],
+  "commit_result": {
+    "commit": "2bed4c4f42101eaf52651381c8942589e115f7f7",
+    "tree": "832ee2b9b8a9e4956c89281ba5017b480af10851",
+    "files": 89,
+    "all_commit_blobs_match_working_files": true,
+    "working_tree_clean_immediately_after_baseline": true,
+    "local_settings_ignored_and_untracked": true,
+    "main_unchanged": "ec56042ffe42eaac8bd222f4afe110ddea9dbb97",
+    "staged_whitespace_check": "passed after removing EOF blank lines from two research documents",
+    "note": "Input hashes refer to baseline preparation; this completion record is a subsequent documentation commit."
+  }
+}

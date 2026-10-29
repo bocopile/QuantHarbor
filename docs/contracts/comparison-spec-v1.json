@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "spec_id": "synthetic-comparison-v1",
+  "environment": "synthetic",
+  "purpose": "engineering_comparison_not_operational_strategy_adoption",
+  "run_at": "2024-03-20T00:00:00.000000Z",
+  "snapshot_evaluated_at": "each_point_knowledge_cutoff",
+  "fit": "none",
+  "strategies": [
+    "cash",
+    "buy_hold",
+    "equal_weight_rebalance"
+  ],
+  "primary_benchmark": "buy_hold",
+  "cash_benchmark": "cash",
+  "invested_fraction": "0.9",
+  "equity_weight": "0.45",
+  "general_etf_weight": "0.45",
+  "cash_target_fraction": "0.1",
+  "rebalance_schedule": "every_oos_decision_point_except_last",
+  "entry_schedule": "first_oos_decision_point",
+  "decision_and_fill": "previous_completed_known_bar_decision_then_next_eligible_bar_close_fill",
+  "end_policy": "mark_to_market_no_forced_liquidation",
+  "fill_policy": "sell_first_then_instrument_id_all_or_none_per_order",
+  "quantity_lot": "1",
+  "max_volume_participation": "0.1",
+  "bar_volume": "100000",
+  "settlement": "synthetic_T_plus_0_explicit_settlement_event",
+  "interest_rate": "0",
+  "automatic_fx": false,
+  "margin": false,
+  "short": false,
+  "fold_reset": "independent_initial_cash_at_first_oos_point_no_cross_fold_return_link",
+  "folds": [
+    {
+      "id": "fold01",
+      "train": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "validation": [
+        5,
+        6
+      ],
+      "oos": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "fold02",
+      "train": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "validation": [
+        8,
+        9
+      ],
+      "oos": [
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "markets": [
+    {
+      "id": "KR",
+      "currency": "KRW",
+      "timezone": "Asia/Seoul",
+      "initial_cash": "10000000",
+      "tick": "1",
+      "money_quantum": "1",
+      "minimum_notional": "1000",
+      "equity_price_multiplier": "100",
+      "etf_price_multiplier": "80"
+    },
+    {
+      "id": "US",
+      "currency": "USD",
+      "timezone": "America/New_York",
+      "initial_cash": "10000",
+      "tick": "0.01",
+      "money_quantum": "0.01",
+      "minimum_notional": "1",
+      "equity_price_multiplier": "1",
+      "etf_price_multiplier": "0.8"
+    }
+  ],
+  "base_equity_closes": [
+    "100",
+    "102",
+    "98",
+    "105",
+    "103",
+    "110",
+    "108",
+    "112",
+    "104",
+    "109",
+    "115",
+    "111"
+  ],
+  "base_etf_closes": [
+    "100",
+    "99",
+    "103",
+    "100",
+    "106",
+    "102",
+    "105",
+    "101",
+    "108",
+    "107",
+    "104",
+    "110"
+  ],
+  "bar_ohlc": "open_high_low_close_equal_fixed_close",
+  "points": [
+    {
+      "index": 1,
+      "date": "2024-03-04",
+      "KR": {
+        "bar_start": "2024-03-04T06:00:00.000000Z",
+        "bar_end": "2024-03-04T06:15:00.000000Z",
+        "published_at": "2024-03-04T06:15:01.000000Z",
+        "observed_at": "2024-03-04T06:15:02.000000Z",
+        "ingested_at": "2024-03-04T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-04T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-04T20:30:00.000000Z",
+        "bar_end": "2024-03-04T20:45:00.000000Z",
+        "published_at": "2024-03-04T20:45:01.000000Z",
+        "observed_at": "2024-03-04T20:45:02.000000Z",
+        "ingested_at": "2024-03-04T20:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-04T20:45:04.000000Z"
+      }
+    },
+    {
+      "index": 2,
+      "date": "2024-03-05",
+      "KR": {
+        "bar_start": "2024-03-05T06:00:00.000000Z",
+        "bar_end": "2024-03-05T06:15:00.000000Z",
+        "published_at": "2024-03-05T06:15:01.000000Z",
+        "observed_at": "2024-03-05T06:15:02.000000Z",
+        "ingested_at": "2024-03-05T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-05T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-05T20:30:00.000000Z",
+        "bar_end": "2024-03-05T20:45:00.000000Z",
+        "published_at": "2024-03-05T20:45:01.000000Z",
+        "observed_at": "2024-03-05T20:45:02.000000Z",
+        "ingested_at": "2024-03-05T20:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-05T20:45:04.000000Z"
+      }
+    },
+    {
+      "index": 3,
+      "date": "2024-03-06",
+      "KR": {
+        "bar_start": "2024-03-06T06:00:00.000000Z",
+        "bar_end": "2024-03-06T06:15:00.000000Z",
+        "published_at": "2024-03-06T06:15:01.000000Z",
+        "observed_at": "2024-03-06T06:15:02.000000Z",
+        "ingested_at": "2024-03-06T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-06T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-06T20:30:00.000000Z",
+        "bar_end": "2024-03-06T20:45:00.000000Z",
+        "published_at": "2024-03-06T20:45:01.000000Z",
+        "observed_at": "2024-03-06T20:45:02.000000Z",
+        "ingested_at": "2024-03-06T20:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-06T20:45:04.000000Z"
+      }
+    },
+    {
+      "index": 4,
+      "date": "2024-03-07",
+      "KR": {
+        "bar_start": "2024-03-07T06:00:00.000000Z",
+        "bar_end": "2024-03-07T06:15:00.000000Z",
+        "published_at": "2024-03-07T06:15:01.000000Z",
+        "observed_at": "2024-03-07T06:15:02.000000Z",
+        "ingested_at": "2024-03-07T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-07T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-07T20:30:00.000000Z",
+        "bar_end": "2024-03-07T20:45:00.000000Z",
+        "published_at": "2024-03-07T20:45:01.000000Z",
+        "observed_at": "2024-03-07T20:45:02.000000Z",
+        "ingested_at": "2024-03-07T20:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-07T20:45:04.000000Z"
+      }
+    },
+    {
+      "index": 5,
+      "date": "2024-03-08",
+      "KR": {
+        "bar_start": "2024-03-08T06:00:00.000000Z",
+        "bar_end": "2024-03-08T06:15:00.000000Z",
+        "published_at": "2024-03-08T06:15:01.000000Z",
+        "observed_at": "2024-03-08T06:15:02.000000Z",
+        "ingested_at": "2024-03-08T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-08T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-08T20:30:00.000000Z",
+        "bar_end": "2024-03-08T20:45:00.000000Z",
+        "published_at": "2024-03-08T20:45:01.000000Z",
+        "observed_at": "2024-03-08T20:45:02.000000Z",
+        "ingested_at": "2024-03-08T20:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-08T20:45:04.000000Z"
+      }
+    },
+    {
+      "index": 6,
+      "date": "2024-03-11",
+      "KR": {
+        "bar_start": "2024-03-11T06:00:00.000000Z",
+        "bar_end": "2024-03-11T06:15:00.000000Z",
+        "published_at": "2024-03-11T06:15:01.000000Z",
+        "observed_at": "2024-03-11T06:15:02.000000Z",
+        "ingested_at": "2024-03-11T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-11T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-11T19:30:00.000000Z",
+        "bar_end": "2024-03-11T19:45:00.000000Z",
+        "published_at": "2024-03-11T19:45:01.000000Z",
+        "observed_at": "2024-03-11T19:45:02.000000Z",
+        "ingested_at": "2024-03-11T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-11T19:45:04.000000Z"
+      }
+    },
+    {
+      "index": 7,
+      "date": "2024-03-12",
+      "KR": {
+        "bar_start": "2024-03-12T06:00:00.000000Z",
+        "bar_end": "2024-03-12T06:15:00.000000Z",
+        "published_at": "2024-03-12T06:15:01.000000Z",
+        "observed_at": "2024-03-12T06:15:02.000000Z",
+        "ingested_at": "2024-03-12T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-12T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-12T19:30:00.000000Z",
+        "bar_end": "2024-03-12T19:45:00.000000Z",
+        "published_at": "2024-03-12T19:45:01.000000Z",
+        "observed_at": "2024-03-12T19:45:02.000000Z",
+        "ingested_at": "2024-03-12T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-12T19:45:04.000000Z"
+      }
+    },
+    {
+      "index": 8,
+      "date": "2024-03-13",
+      "KR": {
+        "bar_start": "2024-03-13T06:00:00.000000Z",
+        "bar_end": "2024-03-13T06:15:00.000000Z",
+        "published_at": "2024-03-13T06:15:01.000000Z",
+        "observed_at": "2024-03-13T06:15:02.000000Z",
+        "ingested_at": "2024-03-13T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-13T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-13T19:30:00.000000Z",
+        "bar_end": "2024-03-13T19:45:00.000000Z",
+        "published_at": "2024-03-13T19:45:01.000000Z",
+        "observed_at": "2024-03-13T19:45:02.000000Z",
+        "ingested_at": "2024-03-13T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-13T19:45:04.000000Z"
+      }
+    },
+    {
+      "index": 9,
+      "date": "2024-03-14",
+      "KR": {
+        "bar_start": "2024-03-14T06:00:00.000000Z",
+        "bar_end": "2024-03-14T06:15:00.000000Z",
+        "published_at": "2024-03-14T06:15:01.000000Z",
+        "observed_at": "2024-03-14T06:15:02.000000Z",
+        "ingested_at": "2024-03-14T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-14T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-14T19:30:00.000000Z",
+        "bar_end": "2024-03-14T19:45:00.000000Z",
+        "published_at": "2024-03-14T19:45:01.000000Z",
+        "observed_at": "2024-03-14T19:45:02.000000Z",
+        "ingested_at": "2024-03-14T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-14T19:45:04.000000Z"
+      }
+    },
+    {
+      "index": 10,
+      "date": "2024-03-15",
+      "KR": {
+        "bar_start": "2024-03-15T06:00:00.000000Z",
+        "bar_end": "2024-03-15T06:15:00.000000Z",
+        "published_at": "2024-03-15T06:15:01.000000Z",
+        "observed_at": "2024-03-15T06:15:02.000000Z",
+        "ingested_at": "2024-03-15T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-15T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-15T19:30:00.000000Z",
+        "bar_end": "2024-03-15T19:45:00.000000Z",
+        "published_at": "2024-03-15T19:45:01.000000Z",
+        "observed_at": "2024-03-15T19:45:02.000000Z",
+        "ingested_at": "2024-03-15T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-15T19:45:04.000000Z"
+      }
+    },
+    {
+      "index": 11,
+      "date": "2024-03-18",
+      "KR": {
+        "bar_start": "2024-03-18T06:00:00.000000Z",
+        "bar_end": "2024-03-18T06:15:00.000000Z",
+        "published_at": "2024-03-18T06:15:01.000000Z",
+        "observed_at": "2024-03-18T06:15:02.000000Z",
+        "ingested_at": "2024-03-18T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-18T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-18T19:30:00.000000Z",
+        "bar_end": "2024-03-18T19:45:00.000000Z",
+        "published_at": "2024-03-18T19:45:01.000000Z",
+        "observed_at": "2024-03-18T19:45:02.000000Z",
+        "ingested_at": "2024-03-18T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-18T19:45:04.000000Z"
+      }
+    },
+    {
+      "index": 12,
+      "date": "2024-03-19",
+      "KR": {
+        "bar_start": "2024-03-19T06:00:00.000000Z",
+        "bar_end": "2024-03-19T06:15:00.000000Z",
+        "published_at": "2024-03-19T06:15:01.000000Z",
+        "observed_at": "2024-03-19T06:15:02.000000Z",
+        "ingested_at": "2024-03-19T06:15:03.000000Z",
+        "knowledge_cutoff": "2024-03-19T06:15:04.000000Z"
+      },
+      "US": {
+        "bar_start": "2024-03-19T19:30:00.000000Z",
+        "bar_end": "2024-03-19T19:45:00.000000Z",
+        "published_at": "2024-03-19T19:45:01.000000Z",
+        "observed_at": "2024-03-19T19:45:02.000000Z",
+        "ingested_at": "2024-03-19T19:45:03.000000Z",
+        "knowledge_cutoff": "2024-03-19T19:45:04.000000Z"
+      }
+    }
+  ],
+  "cost_scenarios": [
+    {
+      "id": "explicit_costs",
+      "fee_rate_buy": "0.001",
+      "fee_rate_sell": "0.001",
+      "tax_rate_buy": "0",
+      "tax_rate_sell": "0.002",
+      "slippage_rate": "0.0005",
+      "fx_spread_rate": "0",
+      "fx_explicit_fee": "0"
+    },
+    {
+      "id": "zero_cost_control",
+      "fee_rate_buy": "0",
+      "fee_rate_sell": "0",
+      "tax_rate_buy": "0",
+      "tax_rate_sell": "0",
+      "slippage_rate": "0",
+      "fx_spread_rate": "0",
+      "fx_explicit_fee": "0"
+    }
+  ],
+  "rounding": "half_even_quantum_except_buy_tick_ceil_sell_tick_floor_lot_floor",
+  "ratio_quantum": "0.000000000001",
+  "turnover_primary": "gross_traded_notional_over_time_weighted_average_nav",
+  "turnover_secondary": "half_gross_traded_notional_over_time_weighted_average_nav",
+  "external_flow_support": "base_currency_cash_exact_quantum_with_before_after_boundary_snapshots",
+  "primary_experiment_external_flows": "none",
+  "cost_basis": "native_moving_weighted_average_supported_zero_opening_positions_only",
+  "annualization": false,
+  "selection_from_oos": false,
+  "universe": "two_predeclared_synthetic_instruments_per_market_equity_and_general_etf_valid_before_point1",
+  "corporate_actions_primary_scenario": "explicit_none_not_assumed_from_missing",
+  "rights": "synthetic_collect_store_research_report_before_point1_through_run_at",
+  "input_limit_each": 128,
+  "resolved_input_max_bytes": 8388608,
+  "canonical_max_bytes": 65536,
+  "run_count": 24
+}

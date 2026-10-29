@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-24",
+  "task": "Q17",
+  "validator": "env_final_validator",
+  "mode": "independent_execution",
+  "result": "pass",
+  "host_product": 106,
+  "quality_tests": 22,
+  "public_files": 235,
+  "findings": 0,
+  "storage": {
+    "python": "3.13.17",
+    "pyarrow": "26.0.0",
+    "product_tests": 106,
+    "storage_tests": 12,
+    "medium": "own_local_docker_volume",
+    "new_process_decimal_timestamp": true,
+    "seconds": 14.127,
+    "cleanup": "own_objects_removed"
+  },
+  "foundation": {
+    "checks": 8,
+    "product_tests": 106,
+    "seconds": 7.363,
+    "cleanup": "own_project_removed",
+    "migration_sha256": "3dcad32e09b30af71a557ee211a98fb6afdd96e3639f77990a0a904bb045997a"
+  },
+  "team": {
+    "members": 6,
+    "queue": 36,
+    "task_ids": 110
+  },
+  "input_evidence": "data-storage-general-fixes-2026-10-24.json",
+  "input_evidence_sha256": "b9142fd455ffffe5101da19ce1dbd6d1b1eed2b6084f1c1e6c5164e5b1325e5f",
+  "matched_sha256_before_after": 17,
+  "wheel_sha256": "e3b190ba1d3d22a5a8758597f797111b77d433473744352a184a5ee0a42d672e",
+  "unexecuted": [
+    "real data/tzdb/rights",
+    "accounts/API",
+    "remote CI",
+    "raw body reparse",
+    "power-loss durability"
+  ]
+}

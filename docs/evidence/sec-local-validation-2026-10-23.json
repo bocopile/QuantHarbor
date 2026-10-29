@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-23",
+  "task": "Q14",
+  "validator": "env_final_validator / qh_validator",
+  "result": "pass_requested_scope",
+  "commands": [
+    {
+      "command": "PYTHONPATH=src python3.13 -m unittest discover -s tests/product -v",
+      "exit_code": 0,
+      "tests": 47,
+      "elapsed_seconds": 0.336
+    },
+    {
+      "command": "PYTHONPATH=src python3.13 scripts/check_isolation.py",
+      "exit_code": 0,
+      "tests": 13,
+      "skipped": 0,
+      "elapsed_seconds": 11.931,
+      "cleanup_assertions": "pass"
+    },
+    {
+      "command": "python3.13 scripts/check_foundation.py",
+      "exit_code": 0,
+      "checks": 8,
+      "product_tests": 47,
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 5.46
+    }
+  ],
+  "inputs_unchanged": true,
+  "input_files": 17,
+  "combined_sha256": "e84d53eb7513a2e86f5e587af70be2befa652472e9e712a43cb0d501f63e9af9",
+  "isolation_sha256": "b908f5c26a2cafe4c96b28784cef1b35beab5c44eafad0fac0c935e80df5e326",
+  "not_validated": [
+    "real paper/live",
+    "actual authentication/orders",
+    "host admin/daemon compromise"
+  ]
+}

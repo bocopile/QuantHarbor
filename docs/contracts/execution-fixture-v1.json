@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "task": "Q27-local",
+  "scope": "synthetic_only_not_real_policy_or_broker_authorization",
+  "time": {
+    "at": "2024-03-08T14:31:10Z",
+    "approval_fixture": "docs/contracts/approval-fixture-v1.json",
+    "approval_fixture_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300"
+  },
+  "goldens": {
+    "candidate": {
+      "quantity": "3",
+      "limit_price": "100",
+      "cost_bound": "2",
+      "maximum_burden": "302",
+      "currency": "USD"
+    },
+    "baseline_obligations": {
+      "L": "1000",
+      "H": "100",
+      "F": "100",
+      "B": "950",
+      "U": "50",
+      "D": "0",
+      "A": "800",
+      "after302": "498",
+      "after302and402": "96"
+    },
+    "concurrency": {
+      "available": "600",
+      "burdens": [
+        "302",
+        "402"
+      ],
+      "maximum_winners": 1,
+      "winner_remaining": [
+        "298",
+        "198"
+      ]
+    },
+    "partial_fill": {
+      "L": "1000",
+      "H": "302",
+      "F": "100",
+      "B": "1000",
+      "U": "202",
+      "D": "100",
+      "A": "598",
+      "quantity": "1",
+      "unsettled_principal": "100",
+      "remaining_principal": "200",
+      "remaining_order_cost_bound": "2",
+      "execution_cost_known": "0"
+    },
+    "settlement": {
+      "L": "900",
+      "H": "202",
+      "F": "100",
+      "B": "1000",
+      "U": "202",
+      "D": "100",
+      "A": "598"
+    },
+    "fresh_query": {
+      "L": "900",
+      "H": "202",
+      "F": "100",
+      "B": "900",
+      "U": "202",
+      "D": "0",
+      "A": "598"
+    },
+    "sellable": {
+      "ledger": "12",
+      "all_reservations": "4",
+      "broker": "10",
+      "unreflected_reservations": "2",
+      "postquery_fills": "1",
+      "maximum": "7",
+      "reject_quantity": "8"
+    },
+    "one_sided_exposure": {
+      "current": "400",
+      "active_buy": "100",
+      "new_buy": "50",
+      "worst": "550",
+      "limit": "500"
+    },
+    "daily_turnover": {
+      "used": "400",
+      "active": "350",
+      "new": "300",
+      "total": "1050",
+      "daily_limit": "1000",
+      "time_weighted_nav": "1000",
+      "gross_turnover": "1.05",
+      "max_gross_turnover": "1"
+    },
+    "loss": {
+      "observed": "40",
+      "worst_extra": "15",
+      "total": "55",
+      "limit": "50"
+    }
+  },
+  "limits": {
+    "canonical_bytes": 65536,
+    "source_bytes": 8388608,
+    "source_refs": 128,
+    "text_utf8_bytes": 2048,
+    "query_min": 1,
+    "query_max": 20,
+    "execution_records": 1024,
+    "execution_bytes": 67108864,
+    "active_intents": 2,
+    "broker_events_per_intent": 8,
+    "cancel_commands_per_intent": 2,
+    "withdrawal_commands_per_intent": 2,
+    "intent_reserved_records": 384,
+    "intent_reserved_bytes": 25165824,
+    "global_protected_records": 128,
+    "global_protected_bytes": 8388608,
+    "source_reserved_bytes": 8388608,
+    "approval_records": 128,
+    "approval_bytes": 8388608,
+    "sql_frame_bytes": 8388608,
+    "sql_statement_seconds": 15,
+    "sql_lock_seconds": 10,
+    "automatic_write_retries": 0
+  },
+  "cases": [
+    {
+      "id": "EX01",
+      "input": "actual Q24/Q26 source and DB approval positive",
+      "expected": "candidate3*100+cost2=302; immutable terms/display; source-bound allow and one atomic intent"
+    },
+    {
+      "id": "EX02",
+      "input": "same candidate competing approvals",
+      "expected": "one consumed/claim/intent/outbox; other approval remains unconsumed; no reuse after aborted_unsent or generation change"
+    },
+    {
+      "id": "EX03",
+      "input": "two different candidates on concurrent DB connections A600",
+      "expected": "one admission only;302 winner leaves298 or402 winner leaves198"
+    },
+    {
+      "id": "EX04",
+      "input": "admission fault at every durable stage",
+      "expected": "approval nonce claim intent reservations outbox history receipt all unchanged; no standalone consume"
+    },
+    {
+      "id": "EX05",
+      "input": "admission commit reply lost and same command retry",
+      "expected": "one durable result/intent; changed payload conflicts; no new admission"
+    },
+    {
+      "id": "EX06",
+      "input": "partial fill1 of3 at100; execution fee0 known, order remaining fee bound2",
+      "expected": "L1000 H302 F100 B1000 U202 D100 A598; qty1; principal obligation100; reserve202"
+    },
+    {
+      "id": "EX07",
+      "input": "settlement of EX06 principal100",
+      "expected": "L900 H202 F100 B1000 U202 D100 A598; no double spend or quantity reapply"
+    },
+    {
+      "id": "EX08",
+      "input": "new complete independent broker query includes100 debit, excludes local202",
+      "expected": "L900 H202 F100 B900 U202 D0 A598; update cutoff and inclusion atomically"
+    },
+    {
+      "id": "EX09",
+      "input": "sellable independent ledger/broker quantities",
+      "expected": "min(12-4,10-2-1)=7;8 rejected; no expected buy quantity"
+    },
+    {
+      "id": "EX10",
+      "input": "unsettled sale receivable500 and postquery credit",
+      "expected": "available cash does not increase without eligible settlement and complete fresh query"
+    },
+    {
+      "id": "EX11",
+      "input": "one-sided worst exposure",
+      "expected": "400+100+50=550 >500 denied; opposing sale cannot net risk"
+    },
+    {
+      "id": "EX12",
+      "input": "daily and turnover with active reservations",
+      "expected": "used400+active350+new300=1050>1000; NAV1000 gross turnover1.05>1 denied"
+    },
+    {
+      "id": "EX13",
+      "input": "worst prospective loss and drawdown",
+      "expected": "observed loss40+worst15=55>50 denied; unknown performance or denominator blocked"
+    },
+    {
+      "id": "EX14",
+      "input": "dispatch own reservation, approval/principal/session/rights expiry",
+      "expected": "do not double charge own hold; every current gate rechecked; exactexpiry excluded; heartbeat no approval extension"
+    },
+    {
+      "id": "EX15",
+      "input": "stop or withdrawal vs final handoff gate both orders",
+      "expected": "stop/withdraw before handoff =>0 broker sends and only issuer-proven-unsent release; handoff first=>requested/unknown held"
+    },
+    {
+      "id": "EX16",
+      "input": "handoff success then result persist crash",
+      "expected": "broker received once; recoveryunknown; reservations/claims held; outbox replay sends0"
+    },
+    {
+      "id": "EX17",
+      "input": "lease/fence loss or stale executor and restart",
+      "expected": "no automatic takeover/resend; oldsession/handle rejected; stopped/reconciling"
+    },
+    {
+      "id": "EX18",
+      "input": "complete empty query or elapsed day for unknown",
+      "expected": "unknown and reservations preserved; new orders blocked"
+    },
+    {
+      "id": "EX19",
+      "input": "real issuer request-bound final reject/proven unsent",
+      "expected": "only actual issued finality permits release; forged hash/bool/foreignissuer denied"
+    },
+    {
+      "id": "EX20",
+      "input": "fill before ACK then duplicatefill",
+      "expected": "quantity1 once; lateACK does not regress partially_filled/filled"
+    },
+    {
+      "id": "EX21",
+      "input": "cumulative1 then3 and delta stream semantics",
+      "expected": "effectiveqty3 not4; mixed semantics/missingpredecessor quarantined no fabricated delta"
+    },
+    {
+      "id": "EX22",
+      "input": "same event revision1 qty1 then revision2 qty2",
+      "expected": "effectiveqty2 not3; Q20 correction/predecessor mapping; reverse revision quarantined then explicit reprocess"
+    },
+    {
+      "id": "EX23",
+      "input": "overfill4 for order3 or conflicting brokerID/payload",
+      "expected": "preserve evidence and halt; no clamp/drop/duplicateorder"
+    },
+    {
+      "id": "EX24",
+      "input": "broker event transaction failure at inbox ledger reservation intent history",
+      "expected": "all economic tables/outbox/inbox unchanged; retried issued event accounts once"
+    },
+    {
+      "id": "EX25",
+      "input": "ledger outbox duplicate/reverse delivery",
+      "expected": "ledger_consume and execution cursor same transaction; no broker event ID inserted into ledger inbox; no double posting"
+    },
+    {
+      "id": "EX26",
+      "input": "unknown fee or correction unsupported by Q20",
+      "expected": "observed fill and conservative usage preserved, cost bound held, accounting incomplete/newordersblocked; later complete exactevent finalizes once"
+    },
+    {
+      "id": "EX27",
+      "input": "distinct authenticated cancel command and ACK",
+      "expected": "original approval not cancel permission; cancelACK releases0; wrongaccount/target/version denied"
+    },
+    {
+      "id": "EX28",
+      "input": "cancel timeout/ACK and fill race",
+      "expected": "fill always accepted with provenance; only confirmed remaining cancelled releases remaining; no automatic retry/replace"
+    },
+    {
+      "id": "EX29",
+      "input": "new valid controller protectivewithdraw after oldrights/session loss",
+      "expected": "protective request recorded without new risk/report allow; finance query stays restricted"
+    },
+    {
+      "id": "EX30",
+      "input": "current reconciliation and explicit resume",
+      "expected": "actual independent complete broker facts vs ledger/intents/reserves; caller complete bool, partialscope or stalecutoff neveropens; initial empty positive supported"
+    },
+    {
+      "id": "EX31",
+      "input": "restore external generation and day rollover",
+      "expected": "claims consumed unknown reservations held; oldapproval/session/nonce unusable; no dispatch; unresolvedreconcile preventsresume"
+    },
+    {
+      "id": "EX32",
+      "input": "storage full and outstanding events/commands",
+      "expected": "pre-reserved stop/withdraw/cancel/fill completion works; no eviction or unreleased terminal sessionholds; excessissuance denied atomically"
+    },
+    {
+      "id": "EX33",
+      "input": "current source/canonical/rights/binding manipulations",
+      "expected": "missing refs, foreign account/environment, stale FX/price/calendar/cost/classification/policy, futurecutoff and resealedforgery deny"
+    },
+    {
+      "id": "EX34",
+      "input": "SQL product role direct table writes and closed schema",
+      "expected": "direct financialmutation/DELETE denied; crossaccount/enum/negative/version/FK/commit invariant checks; fixedbounded errors"
+    },
+    {
+      "id": "EX35",
+      "input": "one process two app instances and two SQL connections",
+      "expected": "sameaccount shared registry/gate + DB lock/version; identicaleconomics one effect"
+    },
+    {
+      "id": "EX36",
+      "input": "Q26 application adapter boundary and memory import",
+      "expected": "only trusted exact adapters; arbitrary protocol or memory-approved JSON import denied; no memory authority alongside DB composition"
+    },
+    {
+      "id": "EX37",
+      "input": "record/count/byte/query/SQL frame and timeout limits",
+      "expected": "canonical64KiB source8MiB128refs strings2KiB query1..20; bounded DB/framing; failures generic and stopped"
+    },
+    {
+      "id": "EX38",
+      "input": "existing obligations + two sequential candidates",
+      "expected": "L1000 H100 F100 B950 U50 D0 =>A800; reserve302 then402 =>96, no missing obligation"
+    },
+    {
+      "id": "EX39",
+      "input": "quantity/cash/risk reservation conservation under correction",
+      "expected": "every component held+used+released reconciles approved bound; correction increases re-reserved or halt; no negative or implicit release"
+    },
+    {
+      "id": "EX40",
+      "input": "synthetic DB runner lifecycle and clean migration",
+      "expected": "existing fixed PostgreSQL image,ownUUIDproject,networknone,nohostmount/ports,pullnever; migration0001/2unchanged,0003order/hash/idempotence; owncleanupverified"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "task": "Q17A",
+  "date": "2026-10-24",
+  "reviewer": "env_final_reviewer",
+  "result": "pass_R1_R4_scope",
+  "inputs": "data-market-fixes-2026-10-24.json",
+  "all_7_hashes_match": true,
+  "new_blockers": [],
+  "execution": "read-only; no tests",
+  "q17b_conditions": [
+    "persist complete evidence/conflict sides/request/limits/page receipts",
+    "reconstruct derived state from evidence and compare",
+    "new-process PIT equivalence and current rights/freshness checks"
+  ],
+  "not_complete": [
+    "Q17B",
+    "independent execution validation",
+    "SG-02 actual data"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "task": "Q22-local",
+  "role": "qh_validator",
+  "model": "gpt-6-luna",
+  "reasoning": "high",
+  "execution": "root_launched_separate_parent_qh_development",
+  "execution_note": "root launcher explicitly supplies model/high/profile; validator did not switch roles or subdelegate within that already-isolated session",
+  "result": "pass",
+  "tests": {
+    "product": 348,
+    "quality": 87
+  },
+  "public_check": {
+    "files": 356,
+    "findings": 0
+  },
+  "team_check": {
+    "roles": 6,
+    "queue_items": 36,
+    "task_ids": 110
+  },
+  "git_diff_check": "pass",
+  "all_command_exit_codes": 0,
+  "commands_run_once": true,
+  "sha256_before": {
+    "src/quantharbor/domain/reporting.py": "f96cd83f01c9d9e2aea1b20bd80a373e74187531e2bb3b9971232f4e03a0dfbd",
+    "src/quantharbor/application/reporting.py": "0f415a306e6db24ff97a760a71e2602642fc31082c920d4d06e29c78aad13aaa",
+    "src/quantharbor/ports/reporting.py": "49a645197cd6bc9fa7d5fda704fe44d19559e4df3831610d9bac3815c66627a7",
+    "src/quantharbor/adapters/synthetic_reporting.py": "01a8813c726aa0d3820b73a922954f6454271121fa9c3be8ecbeb72a5bd5cf82",
+    "src/quantharbor/runtime/report_cli.py": "bc793f80b3fbe1a1a49bd011dc7834e99fa5e2f3a70a925a046bf24d5b25ceb5",
+    "src/quantharbor/__main__.py": "9dd164a292f9893782b60cfb0d7a11e6b0d494633fc71fc84f27a4cca7052245",
+    "src/quantharbor/domain/serialization.py": "f70dc6620b59b92eea2904e5746e5949b7717296b002f9b2d2c9733287b2ab74",
+    "tests/product/synthetic_reporting.py": "e2d831c269fe7d5aa8f53f0a59f4d8f7e41503e16f6d8ab92779e9bfbc6427eb",
+    "tests/product/test_reporting.py": "deae306990f561bef641e8ee17e5044d43aea6122060eb49cecbd3820005415a",
+    "tests/product/test_reporting_canonical.py": "fedc0747aced9c826b5ec75fd4a14d6dba0a4e2636ef4acf2cc1301932ad6eaa",
+    "tests/product/test_reporting_cli.py": "f91e78dd542fe45cc4de9b1ec9b4ec95bc1eb7dcd33b849f9c031b2bf5d457b5",
+    "docs/development/reporting.md": "9d040e7107c2b3f1b7f627983d17557a218482bc6cfd8d04663e2d4e4fd51817"
+  },
+  "sha256_after": {
+    "src/quantharbor/domain/reporting.py": "f96cd83f01c9d9e2aea1b20bd80a373e74187531e2bb3b9971232f4e03a0dfbd",
+    "src/quantharbor/application/reporting.py": "0f415a306e6db24ff97a760a71e2602642fc31082c920d4d06e29c78aad13aaa",
+    "src/quantharbor/ports/reporting.py": "49a645197cd6bc9fa7d5fda704fe44d19559e4df3831610d9bac3815c66627a7",
+    "src/quantharbor/adapters/synthetic_reporting.py": "01a8813c726aa0d3820b73a922954f6454271121fa9c3be8ecbeb72a5bd5cf82",
+    "src/quantharbor/runtime/report_cli.py": "bc793f80b3fbe1a1a49bd011dc7834e99fa5e2f3a70a925a046bf24d5b25ceb5",
+    "src/quantharbor/__main__.py": "9dd164a292f9893782b60cfb0d7a11e6b0d494633fc71fc84f27a4cca7052245",
+    "src/quantharbor/domain/serialization.py": "f70dc6620b59b92eea2904e5746e5949b7717296b002f9b2d2c9733287b2ab74",
+    "tests/product/synthetic_reporting.py": "e2d831c269fe7d5aa8f53f0a59f4d8f7e41503e16f6d8ab92779e9bfbc6427eb",
+    "tests/product/test_reporting.py": "deae306990f561bef641e8ee17e5044d43aea6122060eb49cecbd3820005415a",
+    "tests/product/test_reporting_canonical.py": "fedc0747aced9c826b5ec75fd4a14d6dba0a4e2636ef4acf2cc1301932ad6eaa",
+    "tests/product/test_reporting_cli.py": "f91e78dd542fe45cc4de9b1ec9b4ec95bc1eb7dcd33b849f9c031b2bf5d457b5",
+    "docs/development/reporting.md": "9d040e7107c2b3f1b7f627983d17557a218482bc6cfd8d04663e2d4e4fd51817"
+  },
+  "hashes_unchanged": true,
+  "evidence_refs_checked": 11,
+  "local_queue_at_validation": "Q20 Q21 completed; Q22 in_progress; Q23..29 pending",
+  "full_queue_at_validation": "Q19 blocked",
+  "unexecuted": [
+    "actual_account_reporting",
+    "external_delivery",
+    "production_report_persistence"
+  ],
+  "completion_scope": "synthetic_local_only"
+}

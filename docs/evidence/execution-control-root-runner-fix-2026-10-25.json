@@ -1,0 +1,23 @@
+{
+  "task": "Q27-local",
+  "change": "root pre-DB runner allowlist repair",
+  "reason": "new control scenarios count ledger_event/execution_attempt but whitelist omitted those fixed tables",
+  "before_sha256": "60dc03811bf850e0138d4df999be3203f8f647661373647a0d722534d8e7a01f",
+  "after_sha256": "71e3a287648c3fa3e4653794053fe9bcb1280b84b9ba596cdb0b4ff6d454a31d",
+  "file": "scripts/check_execution.py",
+  "product_code_changed": false,
+  "test": {
+    "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest -v test_execution_runner",
+    "tests": 6,
+    "seconds": 2.728,
+    "exit_code": 0
+  },
+  "actual_DB": "pending",
+  "public_quality": {
+    "files": 515,
+    "findings": 0,
+    "exit_code": 0
+  },
+  "team_pass": true,
+  "diff_check_pass": true
+}

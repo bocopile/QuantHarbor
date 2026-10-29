@@ -1,0 +1,32 @@
+{
+  "scope": "ephemeral_appserver_thread_same_named_profile_and_tool_disables",
+  "model_turns_started": 0,
+  "ephemeral": true,
+  "requested_profile": "qh_review",
+  "active_permission_profile": {
+    "id": "qh_review",
+    "extends": ":read-only"
+  },
+  "approval_policy": "never",
+  "mcp_runtime_statuses": [
+    "disabled",
+    "disabled",
+    "disabled",
+    "disabled"
+  ],
+  "mcp_discovery_error_count": 0,
+  "mcp_entries": 4,
+  "mcp_tool_count": 0,
+  "inventory_end": true,
+  "dynamic_tools_supplied": 0,
+  "date": "2026-10-23",
+  "cli_version": "0.163.0",
+  "scope_note": "MCP inventory only in ephemeral named-profile thread using temporary SQLite; actual project Hook trust is verified separately against real user state.",
+  "initial_attempt": {
+    "passed": false,
+    "reason": "server_exit",
+    "execution": "inside managed host sandbox"
+  },
+  "recovery": "single require_escalated launch of the same ephemeral named-profile inventory; no model turns or commands",
+  "passed": true
+}

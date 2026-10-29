@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-23T03:52:37.972448+00:00",
+  "scope": "separate_parent_cli_synthetic_role_boundary",
+  "profile": "qh_development",
+  "attempt": 1,
+  "timeout_seconds": 120,
+  "passed": true,
+  "reason": "verified",
+  "actual_app_subagent_permissions_changed": false,
+  "hook_trust_changed": false,
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "config_sha256": "df334d8d0dfb599471dbb81c85c5da207fea59878d02377857051041fba5bf46",
+  "harness_sha256": "30d9b344682e3e430c5b7fc422c1e4ac202f7a9bdfef3eaf2b2251f1b271b538",
+  "cli_exit_code": 0,
+  "verified_tool_probe_count": 1,
+  "expected": {
+    "public_read": "allowed",
+    "private_read": "denied",
+    "workspace_write": "allowed"
+  },
+  "observed": {
+    "public_read": "allowed",
+    "private_read": "denied",
+    "workspace_write": "allowed"
+  },
+  "outside_fixture_verification": true
+}

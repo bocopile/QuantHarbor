@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-24",
+  "task": "Q19",
+  "scope": "local synthetic preparation only",
+  "reported_by": "foundation_implementer",
+  "recorded_by": "root",
+  "independent_validation": false,
+  "results": {
+    "broker_tests": 25,
+    "product_tests": 152,
+    "quality_tests": 22,
+    "public_candidates": 267,
+    "public_findings": 0,
+    "team": [
+      6,
+      36,
+      110
+    ]
+  },
+  "initial_failures": [
+    "64KiB boundary accepted as complete",
+    "Batch direct construction lacked completeness invariants"
+  ],
+  "fixes": [
+    "64KiB and 30-second equality incomplete",
+    "Batch validates missing facts, duplicate observations, cursor chain, hard caps, source_error binding"
+  ],
+  "not_executed": [
+    "real API",
+    "credential/private file reads",
+    "actual broker account capability",
+    "DB/Docker reruns",
+    "independent review and execution"
+  ],
+  "sha256": {
+    "src/quantharbor/domain/broker_read.py": "1873732dbdbb23920e128631aa52b240667cfa0bb966ccadbfb9622441cc7bf4",
+    "src/quantharbor/ports/broker_read.py": "96f05f4e7d192b7d9d94db2c241bf5723f6613897f5752a42f7b9d7758f73c8f",
+    "src/quantharbor/application/broker_read.py": "55e616ee255771c866f9d7cab1190fde4279fbc6a049ff0f003037c7c14a728b",
+    "src/quantharbor/adapters/kis_read.py": "8654c152e5ef5addbec6daf981e5ead4a56ed0c9489d94eaa82c34c66eb62ed4",
+    "src/quantharbor/adapters/synthetic_broker.py": "d6fa266a6270c823b2e1dc80dad530c3a3806a5c29d2892c0688eaba537ed7c4",
+    "src/quantharbor/domain/serialization.py": "4b111a8758f2f1a133301c2bb4ec161703f2e9df948652bb37fd8c4b34ed87d7",
+    "tests/product/synthetic_broker.py": "ab5451eb1fb942eac9f1dbff3ea230a029b01f7a19347cec4feb8ea631f6882c",
+    "tests/product/test_broker_read.py": "c36219e96b1690e257d64dcdbc6fa8fc1798b26fdcd26d6a04b0e768273a0ed5",
+    "tests/product/test_kis_read.py": "de1dcb4b1164fd77196b6ca858e27253d607e30b673f6f9e9224873c6ef70d9d",
+    "docs/development/broker-read.md": "0b8caac518a5f3ecf770fa8a4d0768d8473f6ebc03b41175acd6e4f74cf94902"
+  }
+}

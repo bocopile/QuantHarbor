@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-24",
+  "task": "SEC-paper-vault",
+  "runner": "root",
+  "independent_of_latest_writer": false,
+  "quality_tests": 75,
+  "public_candidates": 289,
+  "public_findings": 0,
+  "team": [
+    6,
+    36,
+    110
+  ],
+  "git_diff_check": "pass",
+  "sha256_unchanged": {
+    "scripts/bootstrap_paper_storage.py": "8bab8e385d23f55e7e6a2b31a5cb8c79d81fad9969ac3a6f600d1f0789427eff",
+    "tests/quality/test_paper_storage.py": "6bf1475dccfb87fe92fd98a705714cb9f09002cba3d12cfaf99ce7989ed8c142",
+    "docs/development/paper-private-storage.md": "fa0dd3770caa0773e2024b694be7e86bfba6d8f6acf142b41d42ead90a0f0f04"
+  },
+  "actual_synthetic_integration": "see paper-vault-integration-2026-10-24.json",
+  "not_executed": [
+    "unchanged product/DB/Docker rerun",
+    "operational password completion",
+    "keys/policy/API"
+  ],
+  "post_handoff_checks": {
+    "public_candidates": 292,
+    "public_findings": 0,
+    "team": "pass",
+    "git_diff_check": "pass",
+    "test_rerun": false,
+    "guide_updated_after_review": "operational attempt outcome only; helper/tests unchanged"
+  }
+}

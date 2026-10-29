@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-24",
+  "task": "Q19",
+  "reported_by": "foundation_implementer",
+  "recorded_by": "root",
+  "scope": "R1/R2 synthetic fixes; independent re-review pending",
+  "red": {
+    "tests": 35,
+    "failures": 4
+  },
+  "green": {
+    "broker": 37,
+    "product": 164,
+    "quality": 22,
+    "public_candidates": 273,
+    "public_findings": 0,
+    "team": [
+      6,
+      36,
+      110
+    ]
+  },
+  "changes": [
+    "supported operation and singleton endpoint completeness",
+    "required object section count per timestamp group",
+    "receipt row count versus observation count per timestamp group"
+  ],
+  "limitation": "Equal-timestamp page attribution is bound by grouped counts, not individually proved",
+  "sha256": {
+    "src/quantharbor/domain/broker_read.py": "f8ea2dda07ba1f4bd6199d7ff1aa1555923f344cf408615477816a0fa1849fd9",
+    "src/quantharbor/ports/broker_read.py": "96f05f4e7d192b7d9d94db2c241bf5723f6613897f5752a42f7b9d7758f73c8f",
+    "src/quantharbor/application/broker_read.py": "55e616ee255771c866f9d7cab1190fde4279fbc6a049ff0f003037c7c14a728b",
+    "src/quantharbor/adapters/kis_read.py": "b048590cd451eefc43d06c05ba8515f5e5b28529b759f88debd5ecfac7deccfc",
+    "src/quantharbor/adapters/synthetic_broker.py": "d6fa266a6270c823b2e1dc80dad530c3a3806a5c29d2892c0688eaba537ed7c4",
+    "src/quantharbor/domain/serialization.py": "4b111a8758f2f1a133301c2bb4ec161703f2e9df948652bb37fd8c4b34ed87d7",
+    "tests/product/synthetic_broker.py": "ab5451eb1fb942eac9f1dbff3ea230a029b01f7a19347cec4feb8ea631f6882c",
+    "tests/product/test_broker_read.py": "b953eea28aa7dec7e3a4cb0f019dd97e9e10cc41b31e017ef81099a9abde6f69",
+    "tests/product/test_kis_read.py": "de1dcb4b1164fd77196b6ca858e27253d607e30b673f6f9e9224873c6ef70d9d",
+    "docs/development/broker-read.md": "256cc12c0745853f886e5c92cdcd9044019abbdc988faaf4d92ba745392a2165"
+  },
+  "not_executed": [
+    "independent re-review",
+    "real API",
+    "credentials/account",
+    "DB/Docker reruns"
+  ]
+}

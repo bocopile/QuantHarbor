@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-24",
+  "task": "SEC-paper-vault",
+  "writer_and_test_runner": "root",
+  "independent_validation": false,
+  "finding": "SV2 remaining: first SIGTERM during normal cleanup was ignored",
+  "red": {
+    "tests": 49,
+    "failures": 1
+  },
+  "green": {
+    "tests": 49,
+    "passed": true
+  },
+  "change": "Record deferred cleanup cancellation and propagate after bounded cleanup, preventing following work and success report.",
+  "sha256": {
+    "scripts/bootstrap_paper_storage.py": "df3725bb1d218dd100b100c8f4e3200a993715d29d2caf0394ba416957a4f32e",
+    "tests/quality/test_paper_storage.py": "6d9a5e9413a03a13b2464b1d9249fbbf3fa03250da093b828e81e363936a2b49",
+    "docs/development/paper-private-storage.md": "bb87b3116de9e0de8828562c2962d8c3782886a5288679efef705b8f336cf1c6"
+  },
+  "not_executed": [
+    "independent rereview",
+    "actual images/UI/API"
+  ]
+}

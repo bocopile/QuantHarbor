@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "date": "2026-10-23",
+  "scope": "design_baseline_not_runtime_validation",
+  "files": {
+    "docs/architecture.md": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+    "docs/contracts/serialization-v1.md": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+    "docs/implementation-backlog.md": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+    "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+    "docs/contracts/execution-v1.md": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+    "docs/contracts/operations-v1.md": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d"
+  },
+  "review_evidence": "docs/evidence/arc-integration-review-2026-10-23.json"
+}

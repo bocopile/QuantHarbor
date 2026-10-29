@@ -1,0 +1,24 @@
+{
+  "task": "Q27",
+  "at": "2026-10-25T15:04:39.070000+00:00",
+  "change": "Split fixed EX11 into literal400+activebuy100+new50 and existing independent opposing-sale nonnetting DB case, avoiding an irrelevant third-presentation capacity barrier. Product finance/quota code unchanged.",
+  "changed": [
+    "scripts/check_execution.py",
+    "tests/product/test_execution_storage.py"
+  ],
+  "sha256": {
+    "scripts/check_execution.py": "8e9e24f61e23138b1f28de48e8b937b498d5c656a65d88f6613571c0a90959fe",
+    "tests/product/test_execution_storage.py": "c67611dad12aa696648ac92f25dec373a4d6e263d531cf1e63b73f2cc4e93c9c"
+  },
+  "local_test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:tests/product python3.13 -B -m unittest -v test_execution_storage.ExecutionStorageTests.test_EX11_two_approvals_reach_actual_exposure_400_100_50",
+    "run": 1,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 39.927,
+    "exit_code": 0,
+    "log_sha256": "1a03743ed3a48e4e6da3d6a23d11df2d64f1feb7f1e5ae865674709f27ce844d"
+  },
+  "actual_DB": "currently running fixed storage-focused cases; not yet passed",
+  "q27_complete": false
+}

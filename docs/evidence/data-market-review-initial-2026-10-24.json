@@ -1,0 +1,37 @@
+{
+  "task": "Q17A",
+  "reviewer": "env_final_reviewer",
+  "date": "2026-10-24",
+  "result": "changes_required",
+  "method": "read-only static review; no tests",
+  "input_evidence": "data-market-implementation-2026-10-24.json",
+  "inputs_match": true,
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P2",
+      "issue": "CorporateAction effective_date/effective_at lacks timezone binding and raw select_view bypasses context"
+    },
+    {
+      "id": "R2",
+      "priority": "P2",
+      "issue": "adjustment action knowledge_at/basis_at/venue/unit bindings missing"
+    },
+    {
+      "id": "R3",
+      "priority": "P2",
+      "issue": "page received_at later than evaluation accepted"
+    },
+    {
+      "id": "R4",
+      "priority": "P2",
+      "issue": "conflict detected_at depends on observation insertion order"
+    }
+  ],
+  "q17b_required": [
+    "typed request/scope/limits/state and conflict incoming/detected_at",
+    "failure/page evidence bound to manifest",
+    "new-process PIT/conflict reproduction",
+    "current rights/freshness recheck"
+  ]
+}

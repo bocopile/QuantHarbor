@@ -1,0 +1,2800 @@
+{
+  "task": "Q27-control-local",
+  "status": "구현 인계; 실제 DB/독립 판정 대기",
+  "q27_complete": false,
+  "requested_role": "단독 Sol/high 제한 qh_development",
+  "actual_role_model_profile_reload_verified": false,
+  "delegation_performed": false,
+  "one_writer": true,
+  "root_common_document_owner": "root",
+  "started_epoch": 1792930347.462,
+  "finished_epoch": 1792932600.7713249,
+  "input_root_actual_DB": {
+    "path": "docs/evidence/execution-database-correction-2026-10-25.json",
+    "sha256": "f975b90b12669293e7b2da85eb039fc550f6ce46fd57c91c25a344eda5539046",
+    "exit_code": 0,
+    "seconds": 1032.689,
+    "scenarios": 27,
+    "check_groups": 42,
+    "q27_complete": false,
+    "remaining_label_note": "runner의 correction_actual_database_run_and_independent_reviews는 실행 전 작성된 잔여 라벨이다. 본 실행에서 correction actual DB는 완료했으며 독립 검토는 남았다. EX09 상세 분해와 EX11 원래400+100+50의 전 경로 일치 검증은 별도 대조해야 한다.",
+    "verdict_preserved": true
+  },
+  "input_decision": {
+    "path": "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md",
+    "sha256": "88928bb2a49bb7181b9a22b9313853192d9f806100e073e2a3c9afa2821a09a9"
+  },
+  "input_previous_handoffs": [
+    "/private/tmp/q27-financial-handoff.json",
+    "/private/tmp/q27-correction-handoff.json"
+  ],
+  "owned_all": [
+    "src/quantharbor/domain/execution.py",
+    "src/quantharbor/domain/execution_math.py",
+    "src/quantharbor/application/execution.py",
+    "src/quantharbor/ports/execution.py",
+    "src/quantharbor/adapters/postgres_execution.py",
+    "src/quantharbor/adapters/synthetic_execution_broker.py",
+    "src/quantharbor/adapters/execution_uow.py",
+    "tests/product/synthetic_execution.py",
+    "tests/product/test_execution.py",
+    "tests/product/test_execution_math.py",
+    "tests/product/test_execution_broker.py",
+    "tests/product/test_execution_runner.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "src/quantharbor/application/approval.py",
+    "src/quantharbor/domain/serialization.py",
+    "tests/product/test_execution_financial.py",
+    "src/quantharbor/application/research.py",
+    "src/quantharbor/application/execution_research.py",
+    "tests/product/test_execution_correction.py",
+    "tests/product/test_research_execution.py",
+    "tests/product/test_execution_control.py"
+  ],
+  "preversion": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+    "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": null
+  },
+  "finalsha": {
+    "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "8ebf993bd2e46f7e4601ebd477d4b0b79c7b36be5f7b477d701bf40c1cea695c",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "60dc03811bf850e0138d4df999be3203f8f647661373647a0d722534d8e7a01f",
+    "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+    "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "237e598a16d9462c55d7b635093e808e2190884b58accc987884f0841daeeb80"
+  },
+  "actualchanges": [
+    "src/quantharbor/domain/execution.py",
+    "src/quantharbor/application/execution.py",
+    "src/quantharbor/ports/execution.py",
+    "src/quantharbor/adapters/postgres_execution.py",
+    "src/quantharbor/adapters/synthetic_execution_broker.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "tests/product/test_execution_financial.py",
+    "tests/product/test_execution_control.py"
+  ],
+  "unchanged_owned": [
+    "src/quantharbor/domain/execution_math.py",
+    "src/quantharbor/adapters/execution_uow.py",
+    "tests/product/synthetic_execution.py",
+    "tests/product/test_execution.py",
+    "tests/product/test_execution_math.py",
+    "tests/product/test_execution_broker.py",
+    "tests/product/test_execution_runner.py",
+    "src/quantharbor/application/approval.py",
+    "src/quantharbor/domain/serialization.py",
+    "src/quantharbor/application/research.py",
+    "src/quantharbor/application/execution_research.py",
+    "tests/product/test_execution_correction.py",
+    "tests/product/test_research_execution.py"
+  ],
+  "new_owned": [
+    "tests/product/test_execution_control.py"
+  ],
+  "additional_seam_files_outside_prior_owned": [],
+  "owned_seams": {
+    "src/quantharbor/ports/execution.py": "runtime_generation/current controller ID-only control APIs",
+    "src/quantharbor/domain/execution.py": "CancelCommand state_version; query actual journal manifest; reconciliation session/source hash",
+    "src/quantharbor/application/execution.py": "original immutable source generation vs explicit DB runtime generation; ID-only forwarding",
+    "tests/product/test_execution_financial.py": "add real intent generation/fence to existing local fixture for current authority checks",
+    "migrations/0003_synthetic_execution.sql": "only dispatching/unknown→aborted_unsent permitted transitions; root migration review/run required"
+  },
+  "callpath_lines": {
+    "src/quantharbor/adapters/postgres_execution.py:_source_check": 167,
+    "src/quantharbor/adapters/postgres_execution.py:_release_remaining": 431,
+    "src/quantharbor/adapters/postgres_execution.py:_withdraw": 444,
+    "src/quantharbor/adapters/postgres_execution.py:dispatch": 491,
+    "src/quantharbor/adapters/postgres_execution.py:_handoff_ready": 506,
+    "src/quantharbor/adapters/postgres_execution.py:_store_receipt": 526,
+    "src/quantharbor/adapters/postgres_execution.py:resolve_unsent": 561,
+    "src/quantharbor/adapters/postgres_execution.py:control": 594,
+    "src/quantharbor/adapters/postgres_execution.py:reconcile": 633,
+    "src/quantharbor/adapters/postgres_execution.py:_validate_recovery": 671,
+    "src/quantharbor/adapters/postgres_execution.py:_receive": 793,
+    "src/quantharbor/adapters/postgres_execution.py:cancel": 1023,
+    "src/quantharbor/adapters/postgres_execution.py:cancel_receipt": 1056,
+    "src/quantharbor/adapters/postgres_execution.py:_check_cancel": 1084,
+    "src/quantharbor/adapters/postgres_execution.py:_arm_cancel": 1099,
+    "src/quantharbor/adapters/postgres_execution.py:dispatch_cancel": 1118,
+    "src/quantharbor/adapters/postgres_execution.py:_store_cancel_receipt": 1129,
+    "src/quantharbor/adapters/postgres_execution.py:_invalidate_generation": 1150,
+    "src/quantharbor/adapters/postgres_execution.py:rotate": 1188,
+    "src/quantharbor/adapters/postgres_execution.py:current_runtime": 1197,
+    "src/quantharbor/adapters/postgres_execution.py:restart": 1210,
+    "src/quantharbor/adapters/postgres_execution.py:rebind": 1272,
+    "src/quantharbor/adapters/synthetic_execution_broker.py:prove_unsent": 119,
+    "src/quantharbor/adapters/synthetic_execution_broker.py:manifest": 177,
+    "src/quantharbor/application/execution.py:dispatch": 356,
+    "src/quantharbor/application/execution.py:cancel": 362,
+    "src/quantharbor/application/execution.py:reconcile": 365,
+    "src/quantharbor/application/execution.py:dispatch_cancel": 368,
+    "src/quantharbor/application/execution.py:rebind": 371,
+    "src/quantharbor/application/execution.py:control": 374,
+    "src/quantharbor/application/execution.py:cancel_receipt": 377,
+    "src/quantharbor/application/execution.py:resolve_unsent": 380,
+    "tests/product/test_execution_control.py:cancel": 101,
+    "tests/product/test_execution_control.py:restart": 105,
+    "scripts/check_execution.py:control_cancel": 612,
+    "scripts/check_execution.py:control_cancel_conflict": 645,
+    "scripts/check_execution.py:control_race": 662,
+    "scripts/check_execution.py:control_restart": 714,
+    "scripts/check_execution.py:control_restart_reply_loss": 774,
+    "scripts/check_execution.py:control_cancel_fault": 797,
+    "scripts/check_execution.py:control_proven_unsent": 818,
+    "scripts/check_execution.py:control_resume_binding": 852,
+    "scripts/check_execution.py:dispatch": 683
+  },
+  "source_freezes": [
+    {
+      "freeze": "control-final-1",
+      "time": 1792931602.010027,
+      "sha256": {
+        "src/quantharbor/domain/execution.py": "adf2594ddb7fe614e530a06789e6c15e8f952b87811b4e8f8429e41b62f16a71",
+        "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+        "src/quantharbor/application/execution.py": "cd58c143d27fb74610eadadf7cac881c1dde8eef788b2401e18a6e54c2668181",
+        "src/quantharbor/ports/execution.py": "ed60f077dbc8fcf65e454aa842694e4270e704dc6012de3d1d8061a9f1c5797c",
+        "src/quantharbor/adapters/postgres_execution.py": "3adba08c3b92f807547bcaf5f1eb73588d6e2de6af8a268d5ea7435e41aa7b9a",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "36e51a7bfa56fa8be8eb4a90df91779c807a516c9c759c333c5aac01e8107f7d",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "cfb6af7c3e83f96f93b83b06de7589385ee545c260062281830bbe958a82deca",
+        "docs/development/execution.md": "743fd6fb0a5d136d44d758039d27b14e85955d0362f9e554df060797f7cb297d",
+        "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+        "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+        "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+        "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+        "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+        "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+        "tests/product/test_execution_control.py": "150fbf06a9399395b492f34f479ad962a990e11d0bdb8cba8a1d7213e220212e"
+      }
+    },
+    {
+      "freeze": "control-final-2",
+      "time": 1792932282.779053,
+      "sha256": {
+        "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+        "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+        "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+        "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+        "src/quantharbor/adapters/postgres_execution.py": "8ebf993bd2e46f7e4601ebd477d4b0b79c7b36be5f7b477d701bf40c1cea695c",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "60dc03811bf850e0138d4df999be3203f8f647661373647a0d722534d8e7a01f",
+        "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+        "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+        "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+        "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+        "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+        "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+        "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+        "tests/product/test_execution_control.py": "237e598a16d9462c55d7b635093e808e2190884b58accc987884f0841daeeb80"
+      }
+    }
+  ],
+  "verification_commands": [
+    {
+      "phase": "focused",
+      "freeze": "control-final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-fv",
+        "test_execution_control.ExecutionControlTests.test_restart_corrected_history_rebind_resume_and_new_candidate",
+        "test_execution_control.ExecutionControlTests.test_gate_serializes_real_threads_both_stop_orders",
+        "test_execution_control.ExecutionControlTests.test_unprocessed_query_manifest_and_new_broker_cannot_auth_old_journal",
+        "test_execution_control.ExecutionControlTests.test_gate_serializes_real_threads_both_withdraw_orders",
+        "test_execution_control.ExecutionControlTests.test_cancel_separate_permission_withdraw_remains_authorized",
+        "test_execution_control.ExecutionControlTests.test_protective_withdraw_after_report_and_risk_source_rights_revoked",
+        "test_execution_control.ExecutionControlTests.test_late_completion_via_new_runtime_preserves_broker_financial_fact",
+        "test_execution_control.ExecutionControlTests.test_restart_lost_broker_journal_is_observation_only_not_import",
+        "test_execution_control.ExecutionControlTests.test_resume_fresh_controller_session_invalidates_old_reconciliation_version",
+        "test_execution_control.ExecutionControlTests.test_restart_commit_response_lost_old_issuer_fails_closed_current_CAS_observation",
+        "test_execution_control.ExecutionControlTests.test_cancel_ACK_does_not_release_fill_then_actual_confirmation",
+        "test_execution_control.ExecutionControlTests.test_cancel_handoff_crash_attempt_durable_no_resend",
+        "test_execution_control.ExecutionControlTests.test_shared_facade_refresh_and_generation_current_inputs",
+        "test_execution_control.ExecutionControlTests.test_restart_unknown_empty_query_never_releases_or_resumes",
+        "test_execution_control.ExecutionControlTests.test_quarantine_restart_cannot_clear_history_or_protection"
+      ],
+      "exit_code": 0,
+      "seconds": 610.932,
+      "started_epoch": 1792931634.3696792,
+      "finished_epoch": 1792932245.301812,
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "log": "/private/tmp/q27-control-focused.log",
+      "log_sha256": "eab7bcdc3c76888c67553fac32108878e58371fd629fea222b1894f680ba1de8"
+    },
+    {
+      "phase": "regression",
+      "freeze": "control-final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_execution",
+        "test_execution_broker",
+        "test_execution_runner",
+        "test_serialization",
+        "test_execution_correction.ExecutionCorrectionTests.test_EX19_local_receipt_transition_actual_finalreject_only_releases",
+        "test_execution_correction.ExecutionCorrectionTests.test_delta_qty1_to2_not3_Q20_Q21_Q23_currentrisk",
+        "test_execution_correction.ExecutionCorrectionTests.test_current_rights_revoked_and_futurecutoff_and_completebool_denied",
+        "test_execution_correction.ExecutionCorrectionTests.test_unresolved_settled_dependency_denied",
+        "test_approval_security.ApprovalSecurity.test_protective_new_controller_survives_permission_report_and_risk_loss",
+        "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission",
+        "test_approval_review.ApprovalReview.test_AR1_repeated_stop_preserves_disconnect",
+        "test_approval_review.ApprovalReview.test_AR2_disconnect_releases_unusable_session_hold",
+        "test_target.TargetIntegrationTests.test_source_bound_704_and_804_golden"
+      ],
+      "exit_code": 0,
+      "seconds": 157.674,
+      "started_epoch": 1792931643.515701,
+      "finished_epoch": 1792931801.1901598,
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "log": "/private/tmp/q27-control-regression.log",
+      "log_sha256": "9a271b51f1520e2255086e4f7e6e4f446305a75fc4341f7f8b576314a03aba8f"
+    },
+    {
+      "freeze": "control-final-2",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-fv",
+        "test_execution_control.ExecutionControlTests.test_explicit_issuer_proven_unsent_after_restart_releases_only_actual_revoked_attempt",
+        "test_execution_control.ExecutionControlTests.test_manual_unsent_proof_cannot_release_already_handed_off_or_foreign_issuer",
+        "test_execution_control.ExecutionControlTests.test_resume_binds_exact_session_and_current_query_cash_qty_source_readset",
+        "test_execution_correction.ExecutionCorrectionTests.test_EX19_local_receipt_transition_actual_finalreject_only_releases",
+        "test_execution_broker.ExecutionBrokerTests.test_EX15_EX16_actual_handoff_once_and_unsent_proof_request_bound",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX37_durable_codec_preserves_typed_refs_exactly_without_capabilities",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX40_migration_guard_contains_exact_predecessor_and_idempotence"
+      ],
+      "started_epoch": 1792932282.816214,
+      "finished_epoch": 1792932436.9248278,
+      "seconds": 154.109,
+      "exit_code": 0,
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "log": "/private/tmp/q27-control-boundary.log",
+      "log_sha256": "1e381b0a464c0b299f82fddc624570c825e4ca9e7b60f3e7242fab0fe29cff4d"
+    }
+  ],
+  "exploratory_runs_not_final_sha_evidence": [
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest -v test_execution_control.ExecutionControlTests.test_cancel_ACK_does_not_release_fill_then_actual_confirmation",
+      "run": 1,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 5.9,
+      "log": "/private/tmp/q27-control-diagnostic.log",
+      "reason": "initial recovery projection metadata equality; compare actual cursor/economics and separately replay/validate current full history"
+    },
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest -v test_execution_control",
+      "run": 18,
+      "passed": 15,
+      "failures": 1,
+      "errors": 2,
+      "seconds": 699.452,
+      "log": "/private/tmp/q27-control-exploratory.log",
+      "reason": "barrier10s insufficient for real source replay; old generation completion indexes/holds blocked new candidate; initial no-fill ACK query was actually matched so negative fixture changed to actual unprocessed fill",
+      "source_sha_frozen": false
+    },
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B /private/tmp/q27-control-failed-diagnostic.py",
+      "run": 1,
+      "failures": 0,
+      "errors": 1,
+      "seconds": 64.862,
+      "log": "/private/tmp/q27-control-failed-diagnostic.log",
+      "reason": "Q26 records59+holds71=130>128; retired unusable live old command indexes while preserving immutable evidence/archive and remaining protected closures"
+    }
+  ],
+  "final_freeze_focused_runs": 1,
+  "earlier_green_full_suites_repeated_after_final_change": false,
+  "verification_note": "고정본1의 focused15/영향39와 고정본2의 신규/직접영향7은 다른 SHA다. 최신 전체 제어28/제품전체/품질87 통과로 합산하지 않는다.",
+  "public_quality_final": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 514,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "team_final": {
+    "exit_code": 0,
+    "log": "/private/tmp/q27-control-team-final.log",
+    "scope": "저장된 공개 팀/큐 정합성만; 역할/모델/권한 로드 검증 아님"
+  },
+  "git_diff_check": {
+    "exit_code": 0,
+    "untracked_included": false
+  },
+  "owned_content_whitespace": [],
+  "protected_hash_count": 490,
+  "all_protected_unchanged": true,
+  "protected_hash_checks": {
+    "pyproject.toml": true,
+    "README.md": true,
+    ".dockerignore": true,
+    ".gitignore": true,
+    "AGENTS.md": true,
+    "migrations/0001_synthetic_foundation.sql": true,
+    "migrations/0002_synthetic_ledger.sql": true,
+    "config/paper-onboarding.example.json": true,
+    "config/runtime-lock.json": true,
+    "config/runtime.synthetic.toml": true,
+    "config/market-storage-lock.json": true,
+    "config/README.md": true,
+    "config/connections.example.yaml": true,
+    "config/ci/quality.workflow.example.yml": true,
+    "config/ai/slack-notifications.example.json": true,
+    "config/ai/development-policy.toml": true,
+    "config/ai/team.toml": true,
+    "config/ai/execution-queue.json": true,
+    "tests/test_environment_controls.py": true,
+    "tests/test_run_local_check.py": true,
+    "tests/test_role_boundary.py": true,
+    "tests/test_hook_audit.py": true,
+    "tests/test_ai_team.py": true,
+    "tests/quality/test_market_storage_harness.py": true,
+    "tests/quality/__init__.py": true,
+    "tests/quality/test_ledger_runner.py": true,
+    "tests/quality/test_quality.py": true,
+    "tests/quality/test_paper_storage.py": true,
+    "tests/product/test_broker_read.py": true,
+    "tests/product/test_investment_ai_evaluation.py": true,
+    "tests/product/test_valuation_snapshot.py": true,
+    "tests/product/test_market_ingest.py": true,
+    "tests/product/test_boundary_isolation.py": true,
+    "tests/product/test_reporting_cli.py": true,
+    "tests/product/test_valuation_reconciliation.py": true,
+    "tests/product/test_costing.py": true,
+    "tests/product/test_investment_ai_security_second.py": true,
+    "tests/product/test_catalog.py": true,
+    "tests/product/test_target_canonical.py": true,
+    "tests/product/test_valuation.py": true,
+    "tests/product/test_investment_ai_sources.py": true,
+    "tests/product/test_target.py": true,
+    "tests/product/synthetic_research.py": true,
+    "tests/product/test_document_files.py": true,
+    "tests/product/test_reporting.py": true,
+    "tests/product/synthetic_market.py": true,
+    "tests/product/synthetic_market_storage.py": true,
+    "tests/product/test_boundary.py": true,
+    "tests/product/synthetic_documents.py": true,
+    "tests/product/__init__.py": true,
+    "tests/product/test_approval_review.py": true,
+    "tests/product/synthetic_ledger.py": true,
+    "tests/product/test_research.py": true,
+    "tests/product/test_market_review.py": true,
+    "tests/product/synthetic_investment_ai.py": true,
+    "tests/product/test_investment_ai_bounds.py": true,
+    "tests/product/test_kis_read.py": true,
+    "tests/product/test_performance.py": true,
+    "tests/product/test_primitives.py": true,
+    "tests/product/test_reporting_canonical.py": true,
+    "tests/product/test_approval_security.py": true,
+    "tests/product/test_approval_regression.py": true,
+    "tests/product/test_target_constraints.py": true,
+    "tests/product/synthetic_valuation.py": true,
+    "tests/product/synthetic_target.py": true,
+    "tests/product/synthetic_approval.py": true,
+    "tests/product/synthetic_broker.py": true,
+    "tests/product/test_target_review.py": true,
+    "tests/product/test_calendar.py": true,
+    "tests/product/synthetic_reporting.py": true,
+    "tests/product/test_serialization.py": true,
+    "tests/product/synthetic_timezones.py": true,
+    "tests/product/test_settings_cli.py": true,
+    "tests/product/test_investment_ai_review.py": true,
+    "tests/product/test_investment_ai.py": true,
+    "tests/product/test_documents.py": true,
+    "tests/product/test_ledger.py": true,
+    "tests/product/test_target_review_cases.py": true,
+    "tests/product/test_market_data.py": true,
+    "tests/product/test_market_storage.py": true,
+    "tests/product/test_investment_ai_security.py": true,
+    "tests/product/test_approval.py": true,
+    "tests/storage/__init__.py": true,
+    "tests/storage/test_parquet_market_store.py": true,
+    "tests/isolation/__init__.py": true,
+    "tests/isolation/test_docker_boundary.py": true,
+    ".agents/skills/qh-contract-change/SKILL.md": true,
+    ".agents/skills/qh-evidence-decision/SKILL.md": true,
+    ".agents/skills/qh-task-handoff/SKILL.md": true,
+    "docs/approval-register.md": true,
+    "docs/ai-team.md": true,
+    "docs/architecture.md": true,
+    "docs/execution-checklist.md": true,
+    "docs/policy-gates.md": true,
+    "docs/team-dashboard.md": true,
+    "docs/git-workflow.md": true,
+    "docs/status.md": true,
+    "docs/requirements-input.md": true,
+    "docs/vision.md": true,
+    "docs/plan.md": true,
+    "docs/implementation-backlog.md": true,
+    "docs/requirements-scenarios.md": true,
+    "docs/security.md": true,
+    "docs/ai-environment.md": true,
+    "docs/development-environment.md": true,
+    "docs/research/performance-methodology-2026-10-24.json": true,
+    "docs/research/ai-security-second-input-2026-10-25.md": true,
+    "docs/research/ai-review-input-2026-10-25.md": true,
+    "docs/research/market-storage-preparation-2026-10-23.json": true,
+    "docs/research/github-evidence-2026-10-19.json": true,
+    "docs/research/kis-read-sources-2026-10-24.json": true,
+    "docs/research/selection-2026-10-23.md": true,
+    "docs/research/ai-evaluation-synthetic-2026-10-25.md": true,
+    "docs/research/execution-design-input-2026-10-25.md": true,
+    "docs/research/models-and-brokers.md": true,
+    "docs/research/ai-security-third-input-2026-10-25.md": true,
+    "docs/research/ai-design-input-2026-10-24.md": true,
+    "docs/research/ai-security-input-2026-10-24.md": true,
+    "docs/research/target-design-input-2026-10-24.md": true,
+    "docs/research/strategy-comparison-synthetic-2026-10-24.md": true,
+    "docs/research/broker-selection.md": true,
+    "docs/research/oss-survey.md": true,
+    "docs/research/oss-application-plan.md": true,
+    "docs/research/approval-security-input-2026-10-25.md": true,
+    "docs/research/approval-review-input-2026-10-25.md": true,
+    "docs/research/github-candidates-2026-10-19.json": true,
+    "docs/research/target-review-input-2026-10-24.md": true,
+    "docs/research/strategy-comparison-synthetic-2026-10-24.json": true,
+    "docs/research/ai-evaluation-synthetic-2026-10-25.json": true,
+    "docs/research/approval-design-input-2026-10-25.md": true,
+    "docs/research/kis-read-contracts-2026-10-24.md": true,
+    "docs/research/target-review-second-input-2026-10-24.md": true,
+    "docs/research/ai-evaluation-manifest-2026-10-25.json": true,
+    "docs/tasks/ENV-development-budget.md": true,
+    "docs/tasks/ENV-runtime-controls.md": true,
+    "docs/tasks/EXECUTION-local.md": true,
+    "docs/tasks/DATA-document-lineage.md": true,
+    "docs/tasks/VALUATION-local.md": true,
+    "docs/tasks/ENV-hook-audit.md": true,
+    "docs/tasks/ENV-connection-template.md": true,
+    "docs/tasks/OPS-local.md": true,
+    "docs/tasks/DEV-quality-gates.md": true,
+    "docs/tasks/ARC-selection.md": true,
+    "docs/tasks/INTEGRATION-local.md": true,
+    "docs/tasks/ENV-slack.md": true,
+    "docs/tasks/ARC-operations.md": true,
+    "docs/tasks/ARC-integration.md": true,
+    "docs/tasks/ENV-validation.md": true,
+    "docs/tasks/GIT-workflow.md": true,
+    "docs/tasks/LEDGER-local.md": true,
+    "docs/tasks/PLAN-orchestration.md": true,
+    "docs/tasks/BASE-local-foundation.md": true,
+    "docs/tasks/ARC-requirements.md": true,
+    "docs/tasks/PLAN-detail.md": true,
+    "docs/tasks/APPROVAL-local.md": true,
+    "docs/tasks/RESEARCH-local.md": true,
+    "docs/tasks/ENV-team-visibility.md": true,
+    "docs/tasks/ENV-durable-audit.md": true,
+    "docs/tasks/SEC-paper-vault.md": true,
+    "docs/tasks/BROKER-read-adapter.md": true,
+    "docs/tasks/ENV-final-assessment.md": true,
+    "docs/tasks/ENV-controls.md": true,
+    "docs/tasks/ENV-bootstrap.md": true,
+    "docs/tasks/DATA-catalog-calendar.md": true,
+    "docs/tasks/TARGET-local.md": true,
+    "docs/tasks/GIT-baseline.md": true,
+    "docs/tasks/ENV-skill-workflow.md": true,
+    "docs/tasks/TEAM-bootstrap.md": true,
+    "docs/tasks/REPORT-local.md": true,
+    "docs/tasks/AI-local.md": true,
+    "docs/tasks/ARC-data-contracts.md": true,
+    "docs/tasks/SEC-local-boundaries.md": true,
+    "docs/tasks/offline-execution-queue.json": true,
+    "docs/tasks/ENV-role-boundary.md": true,
+    "docs/tasks/ARC-execution-contracts.md": true,
+    "docs/tasks/A-input-preparation.md": true,
+    "docs/tasks/DATA-market-pipeline.md": true,
+    "docs/evidence/target-example-2026-10-24.json": true,
+    "docs/evidence/report-validation-final-2026-10-24.json": true,
+    "docs/evidence/ai-security-fixes-2026-10-24.json": true,
+    "docs/evidence/valuation-review-initial-2026-10-24.json": true,
+    "docs/evidence/data-calendar-review-2026-10-23.json": true,
+    "docs/evidence/env-role-capabilities.json": true,
+    "docs/evidence/arc-integration-review-2026-10-23.json": true,
+    "docs/evidence/ledger-db-initial-2026-10-24.json": true,
+    "docs/evidence/env-slack.json": true,
+    "docs/evidence/ai-security-fixes2-2026-10-25.json": true,
+    "docs/evidence/data-calendar-validation-2026-10-23.json": true,
+    "docs/evidence/ai-security-initial-2026-10-24.json": true,
+    "docs/evidence/execution-database-initial-2026-10-25.json": true,
+    "docs/evidence/target-implementation-2026-10-24.json": true,
+    "docs/evidence/env-connection-template.json": true,
+    "docs/evidence/approval-review-initial-2026-10-25.json": true,
+    "docs/evidence/paper-vault-implementation-2026-10-24.json": true,
+    "docs/evidence/target-review-second-2026-10-24.json": true,
+    "docs/evidence/report-implementation-2026-10-24.json": true,
+    "docs/evidence/ledger-implementation-2026-10-24.json": true,
+    "docs/evidence/broker-read-validation-2026-10-24.json": true,
+    "docs/evidence/arc-execution-review-2026-10-23.json": true,
+    "docs/evidence/approval-review-final-2026-10-25.json": true,
+    "docs/evidence/approval-review-fixes-2026-10-25.json": true,
+    "docs/evidence/data-market-validation-2026-10-24.json": true,
+    "docs/evidence/data-storage-review-initial-2026-10-24.json": true,
+    "docs/evidence/target-validation-final-2026-10-24.json": true,
+    "docs/evidence/arc-requirements-acceptance-2026-10-23.json": true,
+    "docs/evidence/ai-validation-final-2026-10-25.json": true,
+    "docs/evidence/env-runtime-controls-2026-10-20.json": true,
+    "docs/evidence/dev-quality-review-2026-10-23.json": true,
+    "docs/evidence/data-market-review-final-2026-10-24.json": true,
+    "docs/evidence/env-role-boundary.json": true,
+    "docs/evidence/broker-read-review-initial-2026-10-24.json": true,
+    "docs/evidence/sec-local-fixes-2026-10-23.json": true,
+    "docs/evidence/paper-vault-review-final-2026-10-24.json": true,
+    "docs/evidence/ai-security-final-2026-10-25.json": true,
+    "docs/evidence/dev-quality-validation-2026-10-23.json": true,
+    "docs/evidence/target-design-2026-10-24.json": true,
+    "docs/evidence/valuation-design-2026-10-24.json": true,
+    "docs/evidence/paper-vault-security-initial-2026-10-24.json": true,
+    "docs/evidence/env-config-2026-10-20.json": true,
+    "docs/evidence/paper-vault-host-compatibility-2026-10-24.json": true,
+    "docs/evidence/data-market-fixes-2026-10-24.json": true,
+    "docs/evidence/approval-security-fixes-2026-10-25.json": true,
+    "docs/evidence/approval-security-final-2026-10-25.json": true,
+    "docs/evidence/dev-quality-implementation-2026-10-23.json": true,
+    "docs/evidence/base-foundation-review-2026-10-23.json": true,
+    "docs/evidence/research-review-initial-2026-10-24.json": true,
+    "docs/evidence/sec-local-security-initial-2026-10-23.json": true,
+    "docs/evidence/broker-read-review-fixes-2026-10-24.json": true,
+    "docs/evidence/broker-read-review-final-2026-10-24.json": true,
+    "docs/evidence/broker-read-security-initial-2026-10-24.json": true,
+    "docs/evidence/env-skill-workflow.json": true,
+    "docs/evidence/ai-design-2026-10-24.json": true,
+    "docs/evidence/ai-security-third-2026-10-25.json": true,
+    "docs/evidence/research-validation-final-2026-10-24.json": true,
+    "docs/evidence/sec-local-review-2026-10-23.json": true,
+    "docs/evidence/ai-security-second-2026-10-25.json": true,
+    "docs/evidence/paper-vault-integration-2026-10-24.json": true,
+    "docs/evidence/ai-review-initial-2026-10-25.json": true,
+    "docs/evidence/arc-selection-review-2026-10-23.json": true,
+    "docs/evidence/sec-local-security-final-2026-10-23.json": true,
+    "docs/evidence/base-runtime-inventory-2026-10-23.json": true,
+    "docs/evidence/data-storage-review-final-2026-10-24.json": true,
+    "docs/evidence/arc-operations-review-2026-10-23.json": true,
+    "docs/evidence/ai-security-fixes3-2026-10-25.json": true,
+    "docs/evidence/env-hook-audit.json": true,
+    "docs/evidence/git-baseline-2026-10-23.json": true,
+    "docs/evidence/data-market-review-initial-2026-10-24.json": true,
+    "docs/evidence/broker-read-security-fixes-2026-10-24.json": true,
+    "docs/evidence/broker-read-security-final-2026-10-24.json": true,
+    "docs/evidence/base-foundation-validation-2026-10-23.json": true,
+    "docs/evidence/data-document-implementation-2026-10-24.json": true,
+    "docs/evidence/arc-requirements-draft-review-2026-10-23.json": true,
+    "docs/evidence/ledger-validation-initial-2026-10-24.json": true,
+    "docs/evidence/report-example-2026-10-24.json": true,
+    "docs/evidence/env-final-role-development-2026-10-23.json": true,
+    "docs/evidence/execution-design-2026-10-25.json": true,
+    "docs/evidence/ledger-review-fixes-2026-10-24.json": true,
+    "docs/evidence/ledger-review-final-2026-10-24.json": true,
+    "docs/evidence/ledger-db-final-2026-10-24.json": true,
+    "docs/evidence/target-review-fixes2-2026-10-24.json": true,
+    "docs/evidence/data-document-review-final-2026-10-24.json": true,
+    "docs/evidence/env-hook-runtime-2026-10-23.json": true,
+    "docs/evidence/data-storage-security-final-2026-10-24.json": true,
+    "docs/evidence/data-storage-security-fixes-2026-10-24.json": true,
+    "docs/evidence/research-design-2026-10-24.json": true,
+    "docs/evidence/env-validation-2026-10-20.json": true,
+    "docs/evidence/arc-data-review-2026-10-23.json": true,
+    "docs/evidence/paper-vault-security-fixes2-2026-10-24.json": true,
+    "docs/evidence/approval-security-post-review-2026-10-25.json": true,
+    "docs/evidence/target-review-final-2026-10-24.json": true,
+    "docs/evidence/target-review-fixes-2026-10-24.json": true,
+    "docs/evidence/arc-requirements-v02-review-2026-10-23.json": true,
+    "docs/evidence/data-market-implementation-2026-10-24.json": true,
+    "docs/evidence/dev-quality-actions-2026-10-23.json": true,
+    "docs/evidence/sec-local-validation-2026-10-23.json": true,
+    "docs/evidence/paper-vault-security-host-final-2026-10-24.json": true,
+    "docs/evidence/report-review-final-2026-10-24.json": true,
+    "docs/evidence/env-durable-audit.json": true,
+    "docs/evidence/research-implementation-2026-10-24.json": true,
+    "docs/evidence/approval-example-2026-10-25.json": true,
+    "docs/evidence/dev-quality-fixes-2026-10-23.json": true,
+    "docs/evidence/ai-security-post-review-2026-10-25.json": true,
+    "docs/evidence/ai-implementation-2026-10-24.json": true,
+    "docs/evidence/data-storage-package-preflight-2026-10-23.json": true,
+    "docs/evidence/approval-validation-final-2026-10-25.json": true,
+    "docs/evidence/execution-implementation-partial-2026-10-25.json": true,
+    "docs/evidence/approval-security-initial-2026-10-25.json": true,
+    "docs/evidence/arc-operations-security-2026-10-23.json": true,
+    "docs/evidence/paper-vault-security-fixes-2026-10-24.json": true,
+    "docs/evidence/paper-vault-security-final-2026-10-24.json": true,
+    "docs/evidence/valuation-validation-final-2026-10-24.json": true,
+    "docs/evidence/data-document-security-initial-2026-10-24.json": true,
+    "docs/evidence/data-storage-runtime-2026-10-24.json": true,
+    "docs/evidence/env-final-role-capabilities-2026-10-23.json": true,
+    "docs/evidence/broker-read-implementation-2026-10-24.json": true,
+    "docs/evidence/sec-local-implementation-2026-10-23.json": true,
+    "docs/evidence/data-storage-general-fixes-2026-10-24.json": true,
+    "docs/evidence/paper-vault-validation-2026-10-24.json": true,
+    "docs/evidence/approval-design-2026-10-25.json": true,
+    "docs/evidence/data-storage-implementation-2026-10-24.json": true,
+    "docs/evidence/data-document-validation-2026-10-24.json": true,
+    "docs/evidence/data-calendar-sources-2026-10-23.json": true,
+    "docs/evidence/ledger-validation-final-2026-10-24.json": true,
+    "docs/evidence/research-review-fixes-2026-10-24.json": true,
+    "docs/evidence/research-review-final-2026-10-24.json": true,
+    "docs/evidence/base-foundation-root-2026-10-23.json": true,
+    "docs/evidence/report-display-refinement-2026-10-24.json": true,
+    "docs/evidence/valuation-review-final-2026-10-24.json": true,
+    "docs/evidence/valuation-review-fixes-2026-10-24.json": true,
+    "docs/evidence/data-storage-official-sources-2026-10-24.json": true,
+    "docs/evidence/data-document-security-fixes-2026-10-24.json": true,
+    "docs/evidence/data-calendar-implementation-2026-10-23.json": true,
+    "docs/evidence/data-document-security-final-2026-10-24.json": true,
+    "docs/evidence/paper-vault-operational-attempt-2026-10-24.json": true,
+    "docs/evidence/approval-implementation-2026-10-25.json": true,
+    "docs/evidence/ai-review-final-2026-10-25.json": true,
+    "docs/evidence/ai-review-fixes-2026-10-25.json": true,
+    "docs/evidence/ledger-review-initial-2026-10-24.json": true,
+    "docs/evidence/report-review-initial-2026-10-24.json": true,
+    "docs/evidence/env-final-role-review-2026-10-23.json": true,
+    "docs/evidence/research-comparison-export-2026-10-24.json": true,
+    "docs/evidence/env-model-catalog-2026-10-20.json": true,
+    "docs/evidence/valuation-implementation-2026-10-24.json": true,
+    "docs/evidence/env-final-assessment-2026-10-23.json": true,
+    "docs/evidence/team-bootstrap-2026-10-20.json": true,
+    "docs/evidence/ledger-design-2026-10-24.json": true,
+    "docs/evidence/target-review-initial-2026-10-24.json": true,
+    "docs/evidence/env-final-profiles-2026-10-23.json": true,
+    "docs/development/target.md": true,
+    "docs/development/approval.md": true,
+    "docs/development/investment-ai.md": true,
+    "docs/development/valuation.md": true,
+    "docs/development/document-lineage.md": true,
+    "docs/development/reporting.md": true,
+    "docs/development/quality.md": true,
+    "docs/development/market-data.md": true,
+    "docs/development/market-storage.md": true,
+    "docs/development/ci-definition.md": true,
+    "docs/development/broker-read.md": true,
+    "docs/development/research.md": true,
+    "docs/development/local-isolation.md": true,
+    "docs/development/paper-private-storage.md": true,
+    "docs/development/ledger.md": true,
+    "docs/development/paper-connection-preparation.md": true,
+    "docs/development/catalog-calendar.md": true,
+    "docs/development/local-foundation.md": true,
+    "docs/contracts/document-lineage-v1.md": true,
+    "docs/contracts/market-storage-v1.md": true,
+    "docs/contracts/comparison-spec-v1.json": true,
+    "docs/contracts/serialization-v1.md": true,
+    "docs/contracts/broker-read-v1.md": true,
+    "docs/contracts/target-local-v1.md": true,
+    "docs/contracts/reporting-local-v1.md": true,
+    "docs/contracts/operations-v1.md": true,
+    "docs/contracts/market-data-v1.md": true,
+    "docs/contracts/research-local-v1.md": true,
+    "docs/contracts/ai-local-v1.md": true,
+    "docs/contracts/valuation-local-v1.md": true,
+    "docs/contracts/ai-evaluation-spec-v1.json": true,
+    "docs/contracts/approval-fixture-v1.json": true,
+    "docs/contracts/baseline-v1.json": true,
+    "docs/contracts/execution-local-v1.md": true,
+    "docs/contracts/execution-v1.md": true,
+    "docs/contracts/approval-local-v1.md": true,
+    "docs/contracts/execution-fixture-v1.json": true,
+    "docs/contracts/ledger-local-v1.md": true,
+    "docs/contracts/data-v1.md": true,
+    "docs/decisions/ENV-DEC-001-development-bootstrap.md": true,
+    "docs/decisions/B-DEC-001-initial-adoption.md": true,
+    "docs/decisions/ENV-DEC-004-role-execution.md": true,
+    "docs/decisions/TARGET-DEC-001-synthetic-facts.md": true,
+    "docs/decisions/GIT-DEC-001-workflow.md": true,
+    "docs/decisions/ENV-DEC-003-orchestrated-team.md": true,
+    "docs/decisions/BROKER-DEC-001-read-adapter.md": true,
+    "docs/decisions/A-DEC-002-initial-trading-policy.md": true,
+    "docs/decisions/ENV-DEC-002-local-development-gate.md": true,
+    "docs/decisions/VAL-DEC-001-local-read-model.md": true,
+    "docs/decisions/REPORT-DEC-001-local-display.md": true,
+    "docs/decisions/ARC-DEC-002-execution-boundaries.md": true,
+    "docs/decisions/LEDGER-DEC-001-local-replay.md": true,
+    "docs/decisions/BASE-DEC-001-runtime.md": true,
+    "docs/decisions/A-DEC-003-policy-gates.md": true,
+    "docs/decisions/A-DEC-001-initial-product-input.md": true,
+    "docs/decisions/EXECUTION-DEC-001-single-database-authority.md": true,
+    "docs/decisions/ARC-DEC-001-data-boundaries.md": true,
+    "docs/decisions/ARC-DEC-003-local-operations.md": true,
+    "docs/decisions/EXEC-DEC-001-offline-sequence.md": true,
+    "docs/decisions/AI-DEC-001-synthetic-protocol.md": true,
+    "docs/decisions/DATA-DEC-001-market-pipeline.md": true,
+    "docs/decisions/SEC-DEC-002-paper-vault.md": true,
+    "docs/decisions/RESEARCH-DEC-001-synthetic-comparison.md": true,
+    "docs/decisions/APPROVAL-DEC-001-synthetic-authority.md": true,
+    "docs/decisions/DATA-DEC-002-document-lineage.md": true,
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+    "docs/examples/reporting-synthetic.txt": true,
+    "docs/examples/target-synthetic.txt": true,
+    "docs/examples/target-synthetic.json": true,
+    "docs/examples/approval-synthetic.json": true,
+    "docs/examples/approval-synthetic.txt": true,
+    "docs/templates/task.md": true,
+    "docs/templates/decision.md": true,
+    ".codex/hooks.json": true,
+    ".codex/config.toml": true,
+    ".codex/agents/qh_researcher.toml": true,
+    ".codex/agents/qh_architect.toml": true,
+    ".codex/agents/qh_security_reviewer.toml": true,
+    ".codex/agents/qh_validator.toml": true,
+    ".codex/agents/qh_explorer.toml": true,
+    ".codex/agents/qh_reviewer.toml": true,
+    ".codex/agents/qh_implementer.toml": true,
+    "scripts/check_ledger.py": true,
+    "scripts/run_local_check.py": true,
+    "scripts/check_foundation.py": true,
+    "scripts/check_isolation.py": true,
+    "scripts/check_market_storage.py": true,
+    "scripts/check_quality.py": true,
+    "scripts/check_ai_team.py": true,
+    "scripts/bootstrap_paper_storage.py": true,
+    "scripts/validate_role_boundary.py": true,
+    "scripts/qh_hook_audit.py": true,
+    "scripts/validate_environment.py": true,
+    "containers/Dockerfile.market-storage": true,
+    "containers/requirements.market-storage.txt": true,
+    "containers/compose.synthetic.yaml": true,
+    "containers/Dockerfile.synthetic": true,
+    ".idea/QuantHarbor.iml": true,
+    ".idea/vcs.xml": true,
+    ".idea/.gitignore": true,
+    ".idea/workspace.xml": true,
+    ".idea/modules.xml": true,
+    ".idea/misc.xml": true,
+    "src/quantharbor/__init__.py": true,
+    "src/quantharbor/__main__.py": true,
+    "src/quantharbor/research/costing.py": true,
+    "src/quantharbor/research/metrics.py": true,
+    "src/quantharbor/research/strategies.py": true,
+    "src/quantharbor/research/__init__.py": true,
+    "src/quantharbor/market_data/__init__.py": true,
+    "src/quantharbor/market_data/timezones.py": true,
+    "src/quantharbor/adapters/postgres_ledger.py": true,
+    "src/quantharbor/adapters/synthetic_research.py": true,
+    "src/quantharbor/adapters/synthetic_market.py": true,
+    "src/quantharbor/adapters/__init__.py": true,
+    "src/quantharbor/adapters/synthetic_ledger.py": true,
+    "src/quantharbor/adapters/parquet_market_store.py": true,
+    "src/quantharbor/adapters/synthetic_investment_ai.py": true,
+    "src/quantharbor/adapters/document_files.py": true,
+    "src/quantharbor/adapters/synthetic_valuation.py": true,
+    "src/quantharbor/adapters/synthetic_target.py": true,
+    "src/quantharbor/adapters/synthetic_approval.py": true,
+    "src/quantharbor/adapters/synthetic_broker.py": true,
+    "src/quantharbor/adapters/kis_read.py": true,
+    "src/quantharbor/adapters/synthetic_reporting.py": true,
+    "src/quantharbor/application/market_ingest.py": true,
+    "src/quantharbor/application/broker_read.py": true,
+    "src/quantharbor/application/ledger.py": true,
+    "src/quantharbor/application/document_ingest.py": true,
+    "src/quantharbor/application/__init__.py": true,
+    "src/quantharbor/application/valuation.py": true,
+    "src/quantharbor/application/target.py": true,
+    "src/quantharbor/application/investment_ai.py": true,
+    "src/quantharbor/application/reporting.py": true,
+    "src/quantharbor/ports/research.py": true,
+    "src/quantharbor/ports/broker_read.py": true,
+    "src/quantharbor/ports/ledger.py": true,
+    "src/quantharbor/ports/__init__.py": true,
+    "src/quantharbor/ports/valuation.py": true,
+    "src/quantharbor/ports/market_data.py": true,
+    "src/quantharbor/ports/approval.py": true,
+    "src/quantharbor/ports/target.py": true,
+    "src/quantharbor/ports/investment_ai.py": true,
+    "src/quantharbor/ports/reporting.py": true,
+    "src/quantharbor/domain/catalog.py": true,
+    "src/quantharbor/domain/market_storage.py": true,
+    "src/quantharbor/domain/research.py": true,
+    "src/quantharbor/domain/primitives.py": true,
+    "src/quantharbor/domain/broker_read.py": true,
+    "src/quantharbor/domain/documents.py": true,
+    "src/quantharbor/domain/ledger.py": true,
+    "src/quantharbor/domain/__init__.py": true,
+    "src/quantharbor/domain/calendar.py": true,
+    "src/quantharbor/domain/valuation.py": true,
+    "src/quantharbor/domain/market_data.py": true,
+    "src/quantharbor/domain/approval.py": true,
+    "src/quantharbor/domain/target.py": true,
+    "src/quantharbor/domain/investment_ai.py": true,
+    "src/quantharbor/domain/reporting.py": true,
+    "docs/evidence/execution-correction-partial-2026-10-25.json": true,
+    "docs/evidence/execution-database-correction-2026-10-25.json": true,
+    "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md": true
+  },
+  "root_status_evidence_queue_config_unchanged": true,
+  "final_freeze_sha_matches": {
+    "src/quantharbor/domain/execution.py": true,
+    "src/quantharbor/domain/execution_math.py": true,
+    "src/quantharbor/application/execution.py": true,
+    "src/quantharbor/ports/execution.py": true,
+    "src/quantharbor/adapters/postgres_execution.py": true,
+    "src/quantharbor/adapters/synthetic_execution_broker.py": true,
+    "src/quantharbor/adapters/execution_uow.py": true,
+    "tests/product/synthetic_execution.py": true,
+    "tests/product/test_execution.py": true,
+    "tests/product/test_execution_math.py": true,
+    "tests/product/test_execution_broker.py": true,
+    "tests/product/test_execution_runner.py": true,
+    "scripts/check_execution.py": true,
+    "docs/development/execution.md": true,
+    "migrations/0003_synthetic_execution.sql": true,
+    "src/quantharbor/application/approval.py": true,
+    "src/quantharbor/domain/serialization.py": true,
+    "tests/product/test_execution_financial.py": true,
+    "src/quantharbor/application/research.py": true,
+    "src/quantharbor/application/execution_research.py": true,
+    "tests/product/test_execution_correction.py": true,
+    "tests/product/test_research_execution.py": true,
+    "tests/product/test_execution_control.py": true
+  },
+  "new_actual_DB_runner_authored_scenarios": 46,
+  "actual_DB_runner_executed": false,
+  "actual_new_migration_executed": false,
+  "Docker_requested": false,
+  "full_product_executed": false,
+  "full_quality87_executed": false,
+  "independent_review_executed": false,
+  "unexecuted": [
+    "root noargs actual PostgreSQL46 시나리오/0003 실행과 runtime SQL 검증",
+    "여러 프로세스의 강제 egress gate 격리 증명",
+    "정확 per-intent Q20 rows/index/bytes/종료 보호 용량",
+    "SQL 자체 닫힌 권한/session/nonce/schema/read-set/전이 제약",
+    "독립 보안/일반 검토와 최신 전체 제품/품질87",
+    "실제 계좌/API/비밀번호/운영 격리/과거 백업 복원"
+  ],
+  "remaining": [
+    "EX09 상세 min(12-4,10-2-1)의 nonzero sell holds/postquery fills/부분 반영을 함께 결속한 실제 DB 분해 증거는 잔여; 기존 B7 사례를 전체 증명으로 표시하지 않음",
+    "이전 root EX11 원래400+100+50 상세 모든 경로 동등성 주의 판정 보존",
+    "EXECUTION-DEC-002 미지원 Q20 비용 양수→0, 결제 후 trade dependency, 앞선 cumulative successor 재해석, quarantine cursor gap은 보존/차단이며 자동 해소하지 않음",
+    "confirm-before-fill 수량 충돌은 보수적 quarantine/incomplete로 남는다. 뒤 fill 도착이 자동 해소하지 않으며 임의 clamp/drop 없음",
+    "order-level cost/price-improvement cushion은 별도 금융 근거 전까지 terminal cancel 후에도 보수적으로 남을 수 있음",
+    "현재 synthetic gate는 공유 issuer/broker Python RLock이다. 실제 두 thread/DB facade 직렬화 시험을 multi-process OS/DB 강제 격리 증명으로 승격하지 않음",
+    "정확 저장 용량 및 closed SQL 인증 잔여로 Q27 complete=false 유지"
+  ],
+  "EXmapping": {
+    "EX01": {
+      "fixed_fixture_case": {
+        "id": "EX01",
+        "input": "actual Q24/Q26 source and DB approval positive",
+        "expected": "candidate3*100+cost2=302; immutable terms/display; source-bound allow and one atomic intent"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "actual Q24/Q26 source and DB approval positive",
+        "fixed_expected_unchanged": "candidate3*100+cost2=302; immutable terms/display; source-bound allow and one atomic intent",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX01_actual_Q24_Q26_DB_admission"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX01_real_source_positive302_and_current_typed_risk"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "이전 root 실제 admission 증거 보존. 새 source 버전 DB 재검증 대기.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX01_actual_Q24_Q26_DB_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX02": {
+      "fixed_fixture_case": {
+        "id": "EX02",
+        "input": "same candidate competing approvals",
+        "expected": "one consumed/claim/intent/outbox; other approval remains unconsumed; no reuse after aborted_unsent or generation change"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "same candidate competing approvals",
+        "fixed_expected_unchanged": "one consumed/claim/intent/outbox; other approval remains unconsumed; no reuse after aborted_unsent or generation change",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved",
+          "EX02_different_approval_rejected_cross_generation_SQL_claim_unique"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "candidate claim/다른 approval/세대 간 SQL 고유성은 이전 root 증거. 새 issuer 재시작은 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved",
+        "EX02_different_approval_rejected_cross_generation_SQL_claim_unique"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "새 generation에서도 consumed/claim 보존; old nonce/handle 재사용 거절; SQL 고유성의 이전 root 판정 보존."
+    },
+    "EX03": {
+      "fixed_fixture_case": {
+        "id": "EX03",
+        "input": "two different candidates on concurrent DB connections A600",
+        "expected": "one admission only;302 winner leaves298 or402 winner leaves198"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "two different candidates on concurrent DB connections A600",
+        "fixed_expected_unchanged": "one admission only;302 winner leaves298 or402 winner leaves198",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+          "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX03_current_available600_is_independent_from_original_candidate",
+          "test_execution_math.ExecutionMathTests.test_EX03_600_cannot_fund_302_and402"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "실제 두 요청·양쪽 winner·DB 잠금 경합은 이전 root15/30 버전에서 통과.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX04": {
+      "fixed_fixture_case": {
+        "id": "EX04",
+        "input": "admission fault at every durable stage",
+        "expected": "approval nonce claim intent reservations outbox history receipt all unchanged; no standalone consume"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "admission fault at every durable stage",
+        "fixed_expected_unchanged": "approval nonce claim intent reservations outbox history receipt all unchanged; no standalone consume",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX04_actual_database_all_admission_faults_rollback"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "admission 단계별 원자 rollback은 이전 root 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX04_actual_database_all_admission_faults_rollback"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX05": {
+      "fixed_fixture_case": {
+        "id": "EX05",
+        "input": "admission commit reply lost and same command retry",
+        "expected": "one durable result/intent; changed payload conflicts; no new admission"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "admission commit reply lost and same command retry",
+        "fixed_expected_unchanged": "one durable result/intent; changed payload conflicts; no new admission",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX05_committed_command_lookup_no_second_intent",
+          "EX05_actual_connection_commit_response_frame_lost_lookup_once"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "실제 COMMIT 응답 frame 유실과 같은 command lookup은 이전 root15/30 버전에서 통과.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX05_committed_command_lookup_no_second_intent",
+        "EX05_actual_connection_commit_response_frame_lost_lookup_once"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX06": {
+      "fixed_fixture_case": {
+        "id": "EX06",
+        "input": "partial fill1 of3 at100; execution fee0 known, order remaining fee bound2",
+        "expected": "L1000 H302 F100 B1000 U202 D100 A598; qty1; principal obligation100; reserve202"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "partial fill1 of3 at100; execution fee0 known, order remaining fee bound2",
+        "fixed_expected_unchanged": "L1000 H302 F100 B1000 U202 D100 A598; qty1; principal obligation100; reserve202",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX06_actual_Q20_projection_DB_cash598"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX06_EX07_EX08_independent_literal_A598_at_each_boundary"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "A598·Q20 실제 부분체결 이전 root 증거 및 현재 local 영향 시험.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX06_actual_Q20_projection_DB_cash598"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX07": {
+      "fixed_fixture_case": {
+        "id": "EX07",
+        "input": "settlement of EX06 principal100",
+        "expected": "L900 H202 F100 B1000 U202 D100 A598; no double spend or quantity reapply"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "settlement of EX06 principal100",
+        "fixed_expected_unchanged": "L900 H202 F100 B1000 U202 D100 A598; no double spend or quantity reapply",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX07_actual_Q20_settlement_no_reapply_cash598"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX06_EX07_EX08_independent_literal_A598_at_each_boundary"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "settlement A598 이전 root 증거 및 현재 local 영향 시험.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX07_actual_Q20_settlement_no_reapply_cash598"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX08": {
+      "fixed_fixture_case": {
+        "id": "EX08",
+        "input": "new complete independent broker query includes100 debit, excludes local202",
+        "expected": "L900 H202 F100 B900 U202 D0 A598; update cutoff and inclusion atomically"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "new complete independent broker query includes100 debit, excludes local202",
+        "fixed_expected_unchanged": "L900 H202 F100 B900 U202 D0 A598; update cutoff and inclusion atomically",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX06_EX07_EX08_independent_literal_A598_at_each_boundary",
+          "test_execution_financial.ExecutionFinancialTests.test_EX08_actual_event_inputs_fresh_query_A598_and_next_candidate_risk",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX08_component_partial_reflection_cannot_double_deduct_or_double_include",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+          "test_execution_correction.ExecutionCorrectionTests.test_cumulative_latest_correction_literal190",
+          "test_execution_correction.ExecutionCorrectionTests.test_delta_qty1_to2_not3_Q20_Q21_Q23_currentrisk",
+          "test_execution_correction.ExecutionCorrectionTests.test_mult_price90_100_95_principal290",
+          "test_execution_correction.ExecutionCorrectionTests.test_positive_cost_revision_latest_only_no_doublecharge"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:delta",
+          "corrected_current:cumulative",
+          "corrected_current:multi",
+          "corrected_current:cost"
+        ],
+        "scope_and_limits": "정상 정정 뒤 전체 이력·현재 head·독립 literal query·성과·다음 위험 연결 local 검증. 다음 실제 DB admission 시나리오 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX09": {
+      "fixed_fixture_case": {
+        "id": "EX09",
+        "input": "sellable independent ledger/broker quantities",
+        "expected": "min(12-4,10-2-1)=7;8 rejected; no expected buy quantity"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "sellable independent ledger/broker quantities",
+        "fixed_expected_unchanged": "min(12-4,10-2-1)=7;8 rejected; no expected buy quantity",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX09_sellable7_reject8",
+          "test_execution_financial.ExecutionFinancialTests.test_EX09_EX10_sell_settlement_receivable_does_not_raise_capacity",
+          "test_research_execution.ExecutionResearchRiskTests.test_EX09_current_typed_broker7_accepts7_rejects8"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "sellable_bound:quantity7",
+          "sellable_bound:quantity8"
+        ],
+        "scope_and_limits": "실제 typed current_risk의 7허용/8거절 local 검증, 동일 DB 두 시나리오 작성/미실행. 고정식 min(12-4,10-2-1)의 상세 component 분해는 순수 시험이며 DB 전체 증명 아님.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity",
+        "EX09_actual_typed_DB_sellable7_quantity7_applied",
+        "EX09_actual_typed_DB_sellable7_quantity8_rejected"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "순수 min(12-4,10-2-1)=7과 이전 실제 typed/DB B7의7허용8거절은 별개. nonzero sell holds/postquery fills/부분 반영을 함께 결속한 상세 DB 분해는 미실행/잔여."
+    },
+    "EX10": {
+      "fixed_fixture_case": {
+        "id": "EX10",
+        "input": "unsettled sale receivable500 and postquery credit",
+        "expected": "available cash does not increase without eligible settlement and complete fresh query"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "unsettled sale receivable500 and postquery credit",
+        "fixed_expected_unchanged": "available cash does not increase without eligible settlement and complete fresh query",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX10_postquery_credit_and_unsettled_receivable_not_added",
+          "test_execution_financial.ExecutionFinancialTests.test_EX09_EX10_sell_settlement_receivable_does_not_raise_capacity"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "매도 채권·오래된 broker B가 용량을 늘리지 않음은 이전 root DB 및 현재 local 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX11": {
+      "fixed_fixture_case": {
+        "id": "EX11",
+        "input": "one-sided worst exposure",
+        "expected": "400+100+50=550 >500 denied; opposing sale cannot net risk"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "one-sided worst exposure",
+        "fixed_expected_unchanged": "400+100+50=550 >500 denied; opposing sale cannot net risk",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX11_one_sided_buys_never_netted_against_sales",
+          "test_execution_financial.ExecutionFinancialTests.test_EX11_partial_fills_not_double_exposure_or_funding",
+          "test_research_execution.ExecutionResearchRiskTests.test_EX11_actual_typed_all_account_one_sided_opposing_sale_no_net"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "risk_negative:exposure"
+        ],
+        "scope_and_limits": "실제 Q20 현재 holdings와 Q23 성과로 계좌 전체550>500, 반대 매도100 상계 금지 local 검증. 실제 DB 음성 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX11_actual_all_account_DB_exposure_negative_no_cached_allow"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "이전 root all-account exposure negative 보존. 원래400+100+50 상세 모든 경로 동등성은 새로 입증하지 않음."
+    },
+    "EX12": {
+      "fixed_fixture_case": {
+        "id": "EX12",
+        "input": "daily and turnover with active reservations",
+        "expected": "used400+active350+new300=1050>1000; NAV1000 gross turnover1.05>1 denied"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "daily and turnover with active reservations",
+        "fixed_expected_unchanged": "used400+active350+new300=1050>1000; NAV1000 gross turnover1.05>1 denied",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX12_time_weighted_nav_turnover105percent",
+          "test_research_execution.ExecutionResearchRiskTests.test_EX12_daily_and_gross_turnover_used400_active350_new300_NAV1000"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "risk_negative:daily",
+          "risk_negative:turnover"
+        ],
+        "scope_and_limits": "사용400+활성350+신규300=1050, 시간가중NAV1000; daily와 gross 분리 차단 local 검증. 매수 결제 후 매도로 입력 의미 보존. 실제 DB 음성2종 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX12_actual_all_account_DB_daily_negative_no_cached_allow",
+        "EX12_actual_all_account_DB_turnover_negative_no_cached_allow"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX13": {
+      "fixed_fixture_case": {
+        "id": "EX13",
+        "input": "worst prospective loss and drawdown",
+        "expected": "observed loss40+worst15=55>50 denied; unknown performance or denominator blocked"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "worst prospective loss and drawdown",
+        "fixed_expected_unchanged": "observed loss40+worst15=55>50 denied; unknown performance or denominator blocked",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX13_worst_loss55_and_unknown_performance_denied",
+          "test_research_execution.ExecutionResearchRiskTests.test_EX13_observed40_plus_cost15_exceeds50_and_drawdown"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "risk_negative:loss",
+          "risk_negative:drawdown"
+        ],
+        "scope_and_limits": "실제 PnL-40·NAV960·추가비용15로 손실55>50 및 낙폭 차단 local 검증. 실제 DB 음성2종 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX13_actual_all_account_DB_loss_negative_no_cached_allow",
+        "EX13_actual_all_account_DB_drawdown_negative_no_cached_allow"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX14": {
+      "fixed_fixture_case": {
+        "id": "EX14",
+        "input": "dispatch own reservation, approval/principal/session/rights expiry",
+        "expected": "do not double charge own hold; every current gate rechecked; exactexpiry excluded; heartbeat no approval extension"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "dispatch own reservation, approval/principal/session/rights expiry",
+        "fixed_expected_unchanged": "do not double charge own hold; every current gate rechecked; exactexpiry excluded; heartbeat no approval extension",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX14_own_reservation_excluded_and_exact_expiry_denied"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "자기 held만 제외·used/타 예약 보존 및 만료 영향 시험. 전체 권한/제어 행렬은 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX15": {
+      "fixed_fixture_case": {
+        "id": "EX15",
+        "input": "stop or withdrawal vs final handoff gate both orders",
+        "expected": "stop/withdraw before handoff =>0 broker sends and only issuer-proven-unsent release; handoff first=>requested/unknown held"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "stop or withdrawal vs final handoff gate both orders",
+        "fixed_expected_unchanged": "stop/withdraw before handoff =>0 broker sends and only issuer-proven-unsent release; handoff first=>requested/unknown held",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX15_EX16_actual_handoff_once_and_unsent_proof_request_bound"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "unsent 보호철회는 이전 root 증거. gate 양방향 경합 전체는 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "공유 gate 실제 두 thread에서 finalcheck/withdraw 양 순서 확인. 미전송 증거 없는 durable attempt는 해제하지 않음. 실제 issuer의 폐기 proof만 명시 수동 해제."
+    },
+    "EX16": {
+      "fixed_fixture_case": {
+        "id": "EX16",
+        "input": "handoff success then result persist crash",
+        "expected": "broker received once; recoveryunknown; reservations/claims held; outbox replay sends0"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "handoff success then result persist crash",
+        "fixed_expected_unchanged": "broker received once; recoveryunknown; reservations/claims held; outbox replay sends0",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+          "EX16_EX18_actual_after_handoff_crash_unknown_no_resend"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX15_EX16_actual_handoff_once_and_unsent_proof_request_bound"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "handoff 전후 crash unknown/noresend 이전 root DB 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+        "EX16_EX18_actual_after_handoff_crash_unknown_no_resend"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX17": {
+      "fixed_fixture_case": {
+        "id": "EX17",
+        "input": "lease/fence loss or stale executor and restart",
+        "expected": "no automatic takeover/resend; oldsession/handle rejected; stopped/reconciling"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "lease/fence loss or stale executor and restart",
+        "fixed_expected_unchanged": "no automatic takeover/resend; oldsession/handle rejected; stopped/reconciling",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "stop/fence·신규 issuer 재시작/결속 전체는 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "새 issuer 현재 DB generation CAS, stopped 시작, old handles/read permits/nonce 차단, dispatching unknown. late completion의 금융 사실은 새 runtime에서 보존/반영."
+    },
+    "EX18": {
+      "fixed_fixture_case": {
+        "id": "EX18",
+        "input": "complete empty query or elapsed day for unknown",
+        "expected": "unknown and reservations preserved; new orders blocked"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "complete empty query or elapsed day for unknown",
+        "fixed_expected_unchanged": "unknown and reservations preserved; new orders blocked",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+          "EX16_EX18_actual_after_handoff_crash_unknown_no_resend"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX18_EX26_unknown_intent_or_accounting_incomplete_blocks_new",
+          "test_execution_broker.ExecutionBrokerTests.test_EX18_complete_empty_query_is_fact_not_finality"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "unknown·빈 조회의 보수적 hold 유지 이전 root 및 local 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+        "EX16_EX18_actual_after_handoff_crash_unknown_no_resend"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "complete empty query/새 generation만으로 unknown 해제0; 실제 전송 후 timeout은 manual unsent로도 해제 불가."
+    },
+    "EX19": {
+      "fixed_fixture_case": {
+        "id": "EX19",
+        "input": "real issuer request-bound final reject/proven unsent",
+        "expected": "only actual issued finality permits release; forged hash/bool/foreignissuer denied"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "real issuer request-bound final reject/proven unsent",
+        "fixed_expected_unchanged": "only actual issued finality permits release; forged hash/bool/foreignissuer denied",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX19_real_journal_rejects_resealed_and_foreign_receipt",
+          "test_execution_correction.ExecutionCorrectionTests.test_EX19_local_receipt_transition_actual_finalreject_only_releases"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "finality"
+        ],
+        "scope_and_limits": "실제 issuer receipt의 최종 거절만 해제, 위조 journal/hash·외부 issuer·bool 거절 local undecorated 전이 검증. 동일 실제 DB 시나리오 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX19_actual_issuer_finalreject_release_forged_hash_foreignissuer_bool_denied"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "실제 독립 issuer request journal의 final reject/폐기한 attempt proven_unsent만 해제. 새로운 manual positive/negative local 통과; DB 시나리오 작성/미실행."
+    },
+    "EX20": {
+      "fixed_fixture_case": {
+        "id": "EX20",
+        "input": "fill before ACK then duplicatefill",
+        "expected": "quantity1 once; lateACK does not regress partially_filled/filled"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "fill before ACK then duplicatefill",
+        "fixed_expected_unchanged": "quantity1 once; lateACK does not regress partially_filled/filled",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX20_actual_duplicate_fill_once",
+          "EX20_actual_fill_before_ACK_late_ACK_no_regression"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX20_issued_fill_identity_replays_same_object"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "fill-before-ACK·late ACK 무퇴행·중복 무변화 이전 root DB 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX20_actual_duplicate_fill_once",
+        "EX20_actual_fill_before_ACK_late_ACK_no_regression"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX21": {
+      "fixed_fixture_case": {
+        "id": "EX21",
+        "input": "cumulative1 then3 and delta stream semantics",
+        "expected": "effectiveqty3 not4; mixed semantics/missingpredecessor quarantined no fabricated delta"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "cumulative1 then3 and delta stream semantics",
+        "fixed_expected_unchanged": "effectiveqty3 not4; mixed semantics/missingpredecessor quarantined no fabricated delta",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX21_EX22_issuer_preserves_cumulative_and_revision_semantics",
+          "test_execution_financial.ExecutionFinancialTests.test_EX21_cumulative_increments_multiple_prices_and_latest_correction",
+          "test_execution_financial.ExecutionFinancialTests.test_EX21_out_of_order_cumulative_sequence_explicit_reprocess",
+          "test_execution_correction.ExecutionCorrectionTests.test_cumulative_latest_correction_literal190"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:cumulative"
+        ],
+        "scope_and_limits": "누계 최신 sequence 정정의 정상 성과·current risk local 연결. 앞선 누계 정정의 기장된 successor 재해석은 명시 미지원/보존·차단.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX22": {
+      "fixed_fixture_case": {
+        "id": "EX22",
+        "input": "same event revision1 qty1 then revision2 qty2",
+        "expected": "effectiveqty2 not3; Q20 correction/predecessor mapping; reverse revision quarantined then explicit reprocess"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "same event revision1 qty1 then revision2 qty2",
+        "fixed_expected_unchanged": "effectiveqty2 not3; Q20 correction/predecessor mapping; reverse revision quarantined then explicit reprocess",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX21_EX22_issuer_preserves_cumulative_and_revision_semantics",
+          "test_execution_financial.ExecutionFinancialTests.test_EX22_predecessor_retained_then_explicit_reprocess_old_revision_no_regression",
+          "test_execution_correction.ExecutionCorrectionTests.test_bundle_replacement_appended_once_reversal_submission_never_appended",
+          "test_execution_correction.ExecutionCorrectionTests.test_delta_qty1_to2_not3_Q20_Q21_Q23_currentrisk"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:delta"
+        ],
+        "scope_and_limits": "delta1→2=2·원금190 local 연결, 실제 reducer bundle exact 재생; 정정 후 DB 다음 admission 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX23": {
+      "fixed_fixture_case": {
+        "id": "EX23",
+        "input": "overfill4 for order3 or conflicting brokerID/payload",
+        "expected": "preserve evidence and halt; no clamp/drop/duplicateorder"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "overfill4 for order3 or conflicting brokerID/payload",
+        "fixed_expected_unchanged": "preserve evidence and halt; no clamp/drop/duplicateorder",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX23_actual_late_final_conflict_preserved",
+          "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_financial.ExecutionFinancialTests.test_EX23_overfill_collision_and_Q20_quarantine_preserve_evidence",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX23_collision_remains_incomplete_after_a_later_valid_revision"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "충돌/overfill/late final 관측 보존·지속 incomplete 이전 root 및 local 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX23_actual_late_final_conflict_preserved",
+        "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX24": {
+      "fixed_fixture_case": {
+        "id": "EX24",
+        "input": "broker event transaction failure at inbox ledger reservation intent history",
+        "expected": "all economic tables/outbox/inbox unchanged; retried issued event accounts once"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "broker event transaction failure at inbox ledger reservation intent history",
+        "fixed_expected_unchanged": "all economic tables/outbox/inbox unchanged; retried issued event accounts once",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+          "EX24_actual_correction_all_fault_fingerprints"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "원 체결·정정 trade/fee/tax 단계별 rollback 이전 root 증거. 현재 수정본 DB 재실행 대기.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+        "EX24_actual_correction_all_fault_fingerprints"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX25": {
+      "fixed_fixture_case": {
+        "id": "EX25",
+        "input": "ledger outbox duplicate/reverse delivery",
+        "expected": "ledger_consume and execution cursor same transaction; no broker event ID inserted into ledger inbox; no double posting"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "ledger outbox duplicate/reverse delivery",
+        "fixed_expected_unchanged": "ledger_consume and execution cursor same transaction; no broker event ID inserted into ledger inbox; no double posting",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "역순/중복 ledger delivery·동일 TX cursor 이전 root 증거.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX26": {
+      "fixed_fixture_case": {
+        "id": "EX26",
+        "input": "unknown fee or correction unsupported by Q20",
+        "expected": "observed fill and conservative usage preserved, cost bound held, accounting incomplete/newordersblocked; later complete exactevent finalizes once"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "unknown fee or correction unsupported by Q20",
+        "fixed_expected_unchanged": "observed fill and conservative usage preserved, cost bound held, accounting incomplete/newordersblocked; later complete exactevent finalizes once",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX26_actual_unknown_complete_revision_fee1_tax0_5_settlement_once",
+          "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked",
+          "EX26_actual_cost_over_bound_ledger_preserved_incomplete"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX18_EX26_unknown_intent_or_accounting_incomplete_blocks_new",
+          "test_execution_broker.ExecutionBrokerTests.test_EX26_unknown_cost_is_not_normalized_to_zero",
+          "test_execution_financial.ExecutionFinancialTests.test_EX26_excess_cost_preserved_with_actual_ledger_and_block",
+          "test_execution_financial.ExecutionFinancialTests.test_EX26_settled_trade_correction_retains_dependency_and_halts",
+          "test_execution_financial.ExecutionFinancialTests.test_EX26_unknown_cost_complete_revision_nonzero_fee_tax_settlement_once",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX26_known_fee_unknown_tax_preserves_lower_bound_without_fake_zero",
+          "test_execution_correction.ExecutionCorrectionTests.test_positive_cost_revision_latest_only_no_doublecharge",
+          "test_execution_correction.ExecutionCorrectionTests.test_unresolved_settled_dependency_denied"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:cost"
+        ],
+        "scope_and_limits": "양수→다른 양수 fee/tax head만 성과/원가에 포함. 양수→0·결제 후 trade dependency·기존 미지원 누계는 보존/incomplete/신규차단; 자동 해소 완료 아님.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX26_actual_unknown_complete_revision_fee1_tax0_5_settlement_once",
+        "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked",
+        "EX26_actual_cost_over_bound_ledger_preserved_incomplete",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX27": {
+      "fixed_fixture_case": {
+        "id": "EX27",
+        "input": "distinct authenticated cancel command and ACK",
+        "expected": "original approval not cancel permission; cancelACK releases0; wrongaccount/target/version denied"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "distinct authenticated cancel command and ACK",
+        "fixed_expected_unchanged": "original approval not cancel permission; cancelACK releases0; wrongaccount/target/version denied",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX27_cancel_receipt_has_separate_attempt_and_no_terminal_claim"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "명령 발급·최대 잔량만 이전 root 범위. 취소 handoff/ACK 확정 권위는 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "별도 현재 controller cancel 권한/session/nonce/generation/target brokerorder/version/maxremaining/TTL, attempt commit→새 DB final recheck→handoff1→result persist. ACK/unknown은 해제0. 재전송/자동retry/replace없음."
+    },
+    "EX28": {
+      "fixed_fixture_case": {
+        "id": "EX28",
+        "input": "cancel timeout/ACK and fill race",
+        "expected": "fill always accepted with provenance; only confirmed remaining cancelled releases remaining; no automatic retry/replace"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "cancel timeout/ACK and fill race",
+        "fixed_expected_unchanged": "fill always accepted with provenance; only confirmed remaining cancelled releases remaining; no automatic retry/replace",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "취소 timeout/ACK/fill 경합과 확정 잔량 해제는 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "cancel_ack에 결속된 실제 issuer confirmation만 허용. 잔량 정확 일치만 해당 principal/qty/risk 해제. 비용/가격개선 hold 유지. 역순 충돌/duplicate/late fill 증거 보존/incomplete."
+    },
+    "EX29": {
+      "fixed_fixture_case": {
+        "id": "EX29",
+        "input": "new valid controller protectivewithdraw after oldrights/session loss",
+        "expected": "protective request recorded without new risk/report allow; finance query stays restricted"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "new valid controller protectivewithdraw after oldrights/session loss",
+        "fixed_expected_unchanged": "protective request recorded without new risk/report allow; finance query stays restricted",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "보호철회 기존 증거. 모든 현재 권한 회수/새 controller 행렬은 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "approve/report/risk 권리 상실 후 독립 controller 새 session의 보호 withdraw 가능. consumed 유지/withdrawal 별도. stop/disconnect 기존 Q26 보완 보존."
+    },
+    "EX30": {
+      "fixed_fixture_case": {
+        "id": "EX30",
+        "input": "current reconciliation and explicit resume",
+        "expected": "actual independent complete broker facts vs ledger/intents/reserves; caller complete bool, partialscope or stalecutoff neveropens; initial empty positive supported"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "current reconciliation and explicit resume",
+        "fixed_expected_unchanged": "actual independent complete broker facts vs ledger/intents/reserves; caller complete bool, partialscope or stalecutoff neveropens; initial empty positive supported",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "독립 issuer 전체 계좌 statement와 Q21 대사. complete bool 금지 유지. 전체 order/reservation 독립 manifest는 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "저장 reconciliation에 session/source hash, exact current cash/qty/statement/cutoff/request/receipt/event manifest와 DB version/cursor/generation/fence 결속. 실제 Q20/Q21/정정 Q23·현재 권리·quarantine 검사. 명시 resume만 가능."
+    },
+    "EX31": {
+      "fixed_fixture_case": {
+        "id": "EX31",
+        "input": "restore external generation and day rollover",
+        "expected": "claims consumed unknown reservations held; oldapproval/session/nonce unusable; no dispatch; unresolvedreconcile preventsresume"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "restore external generation and day rollover",
+        "fixed_expected_unchanged": "claims consumed unknown reservations held; oldapproval/session/nonce unusable; no dispatch; unresolvedreconcile preventsresume",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "새 issuer 재시작·외부 세대·수동 resume/재결속 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "current_runtime 읽기 전용 관측, 새 SyntheticAuthority actual opaque handles, root composition restart, rebind→reconcile→explicit resume. corrected full history positive와 quarantine/journal-loss negative 구별. 과거 backup restore Q28."
+    },
+    "EX32": {
+      "fixed_fixture_case": {
+        "id": "EX32",
+        "input": "storage full and outstanding events/commands",
+        "expected": "pre-reserved stop/withdraw/cancel/fill completion works; no eviction or unreleased terminal sessionholds; excessissuance denied atomically"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "storage full and outstanding events/commands",
+        "fixed_expected_unchanged": "pre-reserved stop/withdraw/cancel/fill completion works; no eviction or unreleased terminal sessionholds; excessissuance denied atomically",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution_broker.ExecutionBrokerTests.test_EX32_EX37_bounded_issuance_and_no_network_parameters"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "정확 intent당 행/index/bytes 및 종료 보호 용량 증명 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "Q26 128 유지. 옛 세대 live command/nonce/receipt 인덱스는 retired_commands 이력으로 보존 이동, 소비된 승인에 남은 보호 철회당8 closure 몫 유지. 금융 예약 불변. 정확 저장 용량 증명은 여전히 미완료."
+    },
+    "EX33": {
+      "fixed_fixture_case": {
+        "id": "EX33",
+        "input": "current source/canonical/rights/binding manipulations",
+        "expected": "missing refs, foreign account/environment, stale FX/price/calendar/cost/classification/policy, futurecutoff and resealedforgery deny"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "current source/canonical/rights/binding manipulations",
+        "fixed_expected_unchanged": "missing refs, foreign account/environment, stale FX/price/calendar/cost/classification/policy, futurecutoff and resealedforgery deny",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX33_current_rights_and_original_rights_both_rechecked",
+          "test_execution.ExecutionTypedTests.test_EX33_forged_query_and_missing_current_scope_denied",
+          "test_execution_financial.ExecutionFinancialTests.test_EX33_fresh_query_missing_event_or_false_inclusion_fails_closed",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX33_reflection_cannot_reduce_old_query_used_or_spend_other_intent",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX33_refresh_rejects_real_but_stale_query_after_fill",
+          "test_execution_correction.ExecutionCorrectionTests.test_all_current_risk_and_daily_rights_rechecked_after_correction",
+          "test_execution_correction.ExecutionCorrectionTests.test_current_rights_revoked_and_futurecutoff_and_completebool_denied",
+          "test_execution_correction.ExecutionCorrectionTests.test_hash_bundle_account_cursor_predecessor_time_economics_forgery_denied",
+          "test_execution_correction.ExecutionCorrectionTests.test_missing_reversal_replacement_and_bundle_reordering_denied",
+          "test_execution_correction.ExecutionCorrectionTests.test_oldcost_doublecharge_missing_cost_and_forged_performance_denied",
+          "test_execution_correction.ExecutionCorrectionTests.test_quarantined_decision_cursor_gap_cannot_be_discarded",
+          "test_execution_correction.ExecutionCorrectionTests.test_real_issuer_wrongscope_and_wrong_literal_balance_denied",
+          "test_research_execution.ExecutionResearchRiskTests.test_future_revision_retained_but_cannot_enter_earlier_cutoff_costs"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:delta",
+          "corrected_current:cumulative",
+          "corrected_current:multi",
+          "corrected_current:cost"
+        ],
+        "scope_and_limits": "누락 bundle/hash/source/account/cursor/predecessor/time/dependency·wrongscope/잔액불일치·cutoff·권리·complete bool local 거부. 실제 DB 전체 권한/경계 행렬은 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX34": {
+      "fixed_fixture_case": {
+        "id": "EX34",
+        "input": "SQL product role direct table writes and closed schema",
+        "expected": "direct financialmutation/DELETE denied; crossaccount/enum/negative/version/FK/commit invariant checks; fixedbounded errors"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "SQL product role direct table writes and closed schema",
+        "fixed_expected_unchanged": "direct financialmutation/DELETE denied; crossaccount/enum/negative/version/FK/commit invariant checks; fixedbounded errors",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX34_product_role_direct_financial_mutation_denied"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "제품 role 직접 금융 mutation 거부 이전 root 증거. SQL 함수 자체 닫힌 인증/NULL/enum/hash-only 우회 전체 차단은 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX34_product_role_direct_financial_mutation_denied"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "0003에 실제 proven_unsent를 위한 dispatching/unknown→aborted_unsent 전이 추가. SQL 자체 닫힌 인증/NULL/schema/nonce/transition/read-set 제약 전체 완료는 미주장."
+    },
+    "EX35": {
+      "fixed_fixture_case": {
+        "id": "EX35",
+        "input": "one process two app instances and two SQL connections",
+        "expected": "sameaccount shared registry/gate + DB lock/version; identicaleconomics one effect"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "one process two app instances and two SQL connections",
+        "fixed_expected_unchanged": "sameaccount shared registry/gate + DB lock/version; identicaleconomics one effect",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX35_two_facades_shared_registry_database_reload",
+          "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+          "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1"
+        ],
+        "this_freeze_local_passed_tests": [],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:delta",
+          "corrected_current:cumulative",
+          "corrected_current:multi",
+          "corrected_current:cost"
+        ],
+        "scope_and_limits": "기존 facade 공유 registry/DB 잠금 증거. 새 정정 binding을 공유하는 다른 facade 다음 admission 시나리오 작성/미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX35_two_facades_shared_registry_database_reload",
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+        "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+        "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "여러 facade는 같은 registry의 최신 source/current inputs를 읽고 transaction 종료 _state=None 유지. generation 변경 후 old facade 거절."
+    },
+    "EX36": {
+      "fixed_fixture_case": {
+        "id": "EX36",
+        "input": "Q26 application adapter boundary and memory import",
+        "expected": "only trusted exact adapters; arbitrary protocol or memory-approved JSON import denied; no memory authority alongside DB composition"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "Q26 application adapter boundary and memory import",
+        "fixed_expected_unchanged": "only trusted exact adapters; arbitrary protocol or memory-approved JSON import denied; no memory authority alongside DB composition",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX36_execution_adapter_closed_type_rejects_duck_and_memory",
+          "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX36_no_memory_approval_or_arbitrary_adapter_composition"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "정확 adapter 경계·메모리 승인 권위 import 금지 영향 시험.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "trusted root synthetic composition API 외 arbitrary JSON authority import 없음. 실제 모델/권한 profile 재로드 확인은 미실행."
+    },
+    "EX37": {
+      "fixed_fixture_case": {
+        "id": "EX37",
+        "input": "record/count/byte/query/SQL frame and timeout limits",
+        "expected": "canonical64KiB source8MiB128refs strings2KiB query1..20; bounded DB/framing; failures generic and stopped"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "record/count/byte/query/SQL frame and timeout limits",
+        "fixed_expected_unchanged": "canonical64KiB source8MiB128refs strings2KiB query1..20; bounded DB/framing; failures generic and stopped",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [],
+        "this_freeze_local_passed_tests": [
+          "test_execution.ExecutionTypedTests.test_EX37_execution_serialization_closed_and_environment_bound",
+          "test_execution_math.ExecutionMathTests.test_EX37_negative_available_is_not_clamped_to_zero",
+          "test_execution_broker.ExecutionBrokerTests.test_EX32_EX37_bounded_issuance_and_no_network_parameters",
+          "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX37_durable_codec_preserves_typed_refs_exactly_without_capabilities",
+          "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX37_unstarted_database_no_process_and_SQL_function_allowlist",
+          "test_execution_financial.ExecutionPipeTests.test_EX37_partial_pipe_writes_send_entire_bounded_frame",
+          "test_execution_financial.ExecutionPipeTests.test_EX37_write_timeout_and_oversized_frame_return_fixed_reason",
+          "test_execution_financial.ExecutionSourceRefreshTests.test_EX37_actual_LedgerEvent_codec_uses_body_environment_and_closed_schema"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "bounded frame/부분 write/timeout/닫힌 serializer 영향 시험. 정확 rows/index/bytes 용량 증명은 후속.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "기존 UoW deadline/frame/partial-write 상한 보존. 정확 per-intent index/bytes/종료 용량 증명은 잔여."
+    },
+    "EX38": {
+      "fixed_fixture_case": {
+        "id": "EX38",
+        "input": "existing obligations + two sequential candidates",
+        "expected": "L1000 H100 F100 B950 U50 D0 =>A800; reserve302 then402 =>96, no missing obligation"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "existing obligations + two sequential candidates",
+        "fixed_expected_unchanged": "L1000 H100 F100 B950 U50 D0 =>A800; reserve302 then402 =>96, no missing obligation",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX38_actual_obligations_two_admissions_800_498_96"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX38_obligations_800_then302_then402_remaining96"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "800→498→96 실제 두 admission은 이전 root15/30 증거 및 현재 local 영향 시험.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX38_actual_obligations_two_admissions_800_498_96"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX39": {
+      "fixed_fixture_case": {
+        "id": "EX39",
+        "input": "quantity/cash/risk reservation conservation under correction",
+        "expected": "every component held+used+released reconciles approved bound; correction increases re-reserved or halt; no negative or implicit release"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "quantity/cash/risk reservation conservation under correction",
+        "fixed_expected_unchanged": "every component held+used+released reconciles approved bound; correction increases re-reserved or halt; no negative or implicit release",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX39_actual_multi_price190_revision290_Q20_conservation"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_math.ExecutionMathTests.test_EX39_component_conservation_exact_and_negative_boundaries",
+          "test_execution_financial.ExecutionFinancialTests.test_EX39_multi_price_and_delta_revision_literal_principal290",
+          "test_execution_correction.ExecutionCorrectionTests.test_mult_price90_100_95_principal290",
+          "test_execution_correction.ExecutionCorrectionTests.test_positive_cost_revision_latest_only_no_doublecharge"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [
+          "corrected_current:delta",
+          "corrected_current:cumulative",
+          "corrected_current:multi",
+          "corrected_current:cost",
+          "conserved:all_reservation_rows"
+        ],
+        "scope_and_limits": "190→290·유효량/원금/비용 최신 head·보수적 가격 개선 hold. runner 보존식은 object_agg 중복 component 소실 없이 모든 reservation row 검사로 보강. 실제 새 DB 대기.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX39_actual_multi_price190_revision290_Q20_conservation"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false
+    },
+    "EX40": {
+      "fixed_fixture_case": {
+        "id": "EX40",
+        "input": "synthetic DB runner lifecycle and clean migration",
+        "expected": "existing fixed PostgreSQL image,ownUUIDproject,networknone,nohostmount/ports,pullnever; migration0001/2unchanged,0003order/hash/idempotence; owncleanupverified"
+      },
+      "prior_correction_handoff": {
+        "fixed_input": "synthetic DB runner lifecycle and clean migration",
+        "fixed_expected_unchanged": "existing fixed PostgreSQL image,ownUUIDproject,networknone,nohostmount/ports,pullnever; migration0001/2unchanged,0003order/hash/idempotence; owncleanupverified",
+        "prior_root_actual_DB_checks_at_prior_18_hash_version": [
+          "EX40_own_UUID_projects_fixed_image_migrations_idempotent_cleanup"
+        ],
+        "this_freeze_local_passed_tests": [
+          "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX40_cli_arguments_rejected_before_database_or_process",
+          "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX40_migration_guard_contains_exact_predecessor_and_idempotence"
+        ],
+        "new_actual_DB_scenarios_authored_not_executed": [],
+        "scope_and_limits": "noargs·고정 image/networknone/noports/nomount/pullnever/ownUUID cleanup 경계 유지. 현재 runner Docker 실행은 root만, 이 역할 미실행.",
+        "fixed_case_fully_completed_claimed": false
+      },
+      "latest_input_root_actual_DB_checks": [
+        "EX40_own_UUID_projects_fixed_image_migrations_idempotent_cleanup"
+      ],
+      "current_version_actual_DB_executed": false,
+      "fixed_case_fully_completed_claimed": false,
+      "this_control_scope": "noargs/fixed image/pullnever/network none/no mount/port/own UUID cleanup 보존; root 전용46 DB 시나리오 작성만, Docker 실행0."
+    }
+  },
+  "forbidden_actions": {
+    "recursive_agent": false,
+    "external_network": false,
+    "private_content_or_metadata_read": false,
+    "password_API_credential": false,
+    "Docker": false,
+    "installation": false,
+    "Git_mutation": false
+  },
+  "setup_invocation_errors": [
+    "preversion helper 첫 호출에서 이전 인계의 owned 대신 owned_all 키를 사용해야 해 KeyError; 올바른22 SHA를 코드 수정 전에 동결했다",
+    "ps 진단은 sandbox operation not permitted로 거절되어 process 목록 없음; 재시도 없음"
+  ],
+  "log_sha256": {
+    "/private/tmp/q27-control-diagnostic.log": "0040f58c893353200b43621abf0f0655141097c05fb96bda6443ee399866a82d",
+    "/private/tmp/q27-control-exploratory.log": "260ff363128fa132e5c6b0bc2a4a06a404c443457f200c12f942460b074d7254",
+    "/private/tmp/q27-control-failed-diagnostic.log": "02a810fbc19f66a7e68905a9fb4b2b38846809519f9ef2a8208a36c2883a83dc",
+    "/private/tmp/q27-control-focused.log": "eab7bcdc3c76888c67553fac32108878e58371fd629fea222b1894f680ba1de8",
+    "/private/tmp/q27-control-regression.log": "9a271b51f1520e2255086e4f7e6e4f446305a75fc4341f7f8b576314a03aba8f",
+    "/private/tmp/q27-control-boundary.log": "1e381b0a464c0b299f82fddc624570c825e4ca9e7b60f3e7242fab0fe29cff4d",
+    "/private/tmp/q27-control-quality-final.log": "b62d70356d6333ae2c853240c7cfc0f22865c3c6f8e5f2677594ae0e58ec8236",
+    "/private/tmp/q27-control-team-final.log": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+  },
+  "next_root_action": "23 finalsha/10 changed files와0003전이를 검토한 뒤 root가 python3.13 -B scripts/check_execution.py를 인자 없이 실행. root common status/evidence/queue에 결과와 미완료를 통합. 제어 actual DB 실패만 수정 후 저장용량/SQL→독립검토→최종 전체 검증.",
+  "elapsed_seconds": 2253.309,
+  "within_deadline_2400s": true,
+  "finished_utc": "2026-10-25T12:50:00.771694+00:00",
+  "commands": [
+    {
+      "phase": "focused",
+      "freeze": "control-final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-fv",
+        "test_execution_control.ExecutionControlTests.test_restart_corrected_history_rebind_resume_and_new_candidate",
+        "test_execution_control.ExecutionControlTests.test_gate_serializes_real_threads_both_stop_orders",
+        "test_execution_control.ExecutionControlTests.test_unprocessed_query_manifest_and_new_broker_cannot_auth_old_journal",
+        "test_execution_control.ExecutionControlTests.test_gate_serializes_real_threads_both_withdraw_orders",
+        "test_execution_control.ExecutionControlTests.test_cancel_separate_permission_withdraw_remains_authorized",
+        "test_execution_control.ExecutionControlTests.test_protective_withdraw_after_report_and_risk_source_rights_revoked",
+        "test_execution_control.ExecutionControlTests.test_late_completion_via_new_runtime_preserves_broker_financial_fact",
+        "test_execution_control.ExecutionControlTests.test_restart_lost_broker_journal_is_observation_only_not_import",
+        "test_execution_control.ExecutionControlTests.test_resume_fresh_controller_session_invalidates_old_reconciliation_version",
+        "test_execution_control.ExecutionControlTests.test_restart_commit_response_lost_old_issuer_fails_closed_current_CAS_observation",
+        "test_execution_control.ExecutionControlTests.test_cancel_ACK_does_not_release_fill_then_actual_confirmation",
+        "test_execution_control.ExecutionControlTests.test_cancel_handoff_crash_attempt_durable_no_resend",
+        "test_execution_control.ExecutionControlTests.test_shared_facade_refresh_and_generation_current_inputs",
+        "test_execution_control.ExecutionControlTests.test_restart_unknown_empty_query_never_releases_or_resumes",
+        "test_execution_control.ExecutionControlTests.test_quarantine_restart_cannot_clear_history_or_protection"
+      ],
+      "exit_code": 0,
+      "seconds": 610.932,
+      "started_epoch": 1792931634.3696792,
+      "finished_epoch": 1792932245.301812,
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "log": "/private/tmp/q27-control-focused.log",
+      "log_sha256": "eab7bcdc3c76888c67553fac32108878e58371fd629fea222b1894f680ba1de8"
+    },
+    {
+      "phase": "regression",
+      "freeze": "control-final-1",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_execution",
+        "test_execution_broker",
+        "test_execution_runner",
+        "test_serialization",
+        "test_execution_correction.ExecutionCorrectionTests.test_EX19_local_receipt_transition_actual_finalreject_only_releases",
+        "test_execution_correction.ExecutionCorrectionTests.test_delta_qty1_to2_not3_Q20_Q21_Q23_currentrisk",
+        "test_execution_correction.ExecutionCorrectionTests.test_current_rights_revoked_and_futurecutoff_and_completebool_denied",
+        "test_execution_correction.ExecutionCorrectionTests.test_unresolved_settled_dependency_denied",
+        "test_approval_security.ApprovalSecurity.test_protective_new_controller_survives_permission_report_and_risk_loss",
+        "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission",
+        "test_approval_review.ApprovalReview.test_AR1_repeated_stop_preserves_disconnect",
+        "test_approval_review.ApprovalReview.test_AR2_disconnect_releases_unusable_session_hold",
+        "test_target.TargetIntegrationTests.test_source_bound_704_and_804_golden"
+      ],
+      "exit_code": 0,
+      "seconds": 157.674,
+      "started_epoch": 1792931643.515701,
+      "finished_epoch": 1792931801.1901598,
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "log": "/private/tmp/q27-control-regression.log",
+      "log_sha256": "9a271b51f1520e2255086e4f7e6e4f446305a75fc4341f7f8b576314a03aba8f"
+    },
+    {
+      "freeze": "control-final-2",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "-fv",
+        "test_execution_control.ExecutionControlTests.test_explicit_issuer_proven_unsent_after_restart_releases_only_actual_revoked_attempt",
+        "test_execution_control.ExecutionControlTests.test_manual_unsent_proof_cannot_release_already_handed_off_or_foreign_issuer",
+        "test_execution_control.ExecutionControlTests.test_resume_binds_exact_session_and_current_query_cash_qty_source_readset",
+        "test_execution_correction.ExecutionCorrectionTests.test_EX19_local_receipt_transition_actual_finalreject_only_releases",
+        "test_execution_broker.ExecutionBrokerTests.test_EX15_EX16_actual_handoff_once_and_unsent_proof_request_bound",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX37_durable_codec_preserves_typed_refs_exactly_without_capabilities",
+        "test_execution_runner.ExecutionRunnerBoundaryTests.test_EX40_migration_guard_contains_exact_predecessor_and_idempotence"
+      ],
+      "started_epoch": 1792932282.816214,
+      "finished_epoch": 1792932436.9248278,
+      "seconds": 154.109,
+      "exit_code": 0,
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "log": "/private/tmp/q27-control-boundary.log",
+      "log_sha256": "1e381b0a464c0b299f82fddc624570c825e4ca9e7b60f3e7242fab0fe29cff4d"
+    },
+    {
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "exit_code": 0,
+      "log": "/private/tmp/q27-control-quality-final.log"
+    },
+    {
+      "command": [
+        "python3.13",
+        "-B",
+        "scripts/check_ai_team.py"
+      ],
+      "exit_code": 0,
+      "log": "/private/tmp/q27-control-team-final.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "scope": "tracked; untracked owned whitespace separately checked"
+    }
+  ],
+  "counts": {
+    "control_source_tests_defined": 28,
+    "freeze1_focused_passed": 15,
+    "freeze1_impact_passed": 39,
+    "final_freeze2_new3_impact4_passed": 7,
+    "latest_all_control_tests_executed": false,
+    "public_files_checked": 514,
+    "public_findings": 0,
+    "protected_files_unchanged": 490,
+    "owned_files": 23,
+    "changed_owned_files": 10,
+    "root_DB_scenarios_authored_not_executed": 46
+  },
+  "owned_sha256": {
+    "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "8ebf993bd2e46f7e4601ebd477d4b0b79c7b36be5f7b477d701bf40c1cea695c",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "60dc03811bf850e0138d4df999be3203f8f647661373647a0d722534d8e7a01f",
+    "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+    "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "237e598a16d9462c55d7b635093e808e2190884b58accc987884f0841daeeb80"
+  },
+  "owned_before_sha256": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+    "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": null
+  },
+  "time": {
+    "started_epoch": 1792930347.462,
+    "finished_epoch": 1792932600.7713249,
+    "elapsed_seconds": 2253.309,
+    "deadline_seconds": 2400,
+    "within_deadline": true
+  },
+  "logs": {
+    "/private/tmp/q27-control-diagnostic.log": "0040f58c893353200b43621abf0f0655141097c05fb96bda6443ee399866a82d",
+    "/private/tmp/q27-control-exploratory.log": "260ff363128fa132e5c6b0bc2a4a06a404c443457f200c12f942460b074d7254",
+    "/private/tmp/q27-control-failed-diagnostic.log": "02a810fbc19f66a7e68905a9fb4b2b38846809519f9ef2a8208a36c2883a83dc",
+    "/private/tmp/q27-control-focused.log": "eab7bcdc3c76888c67553fac32108878e58371fd629fea222b1894f680ba1de8",
+    "/private/tmp/q27-control-regression.log": "9a271b51f1520e2255086e4f7e6e4f446305a75fc4341f7f8b576314a03aba8f",
+    "/private/tmp/q27-control-boundary.log": "1e381b0a464c0b299f82fddc624570c825e4ca9e7b60f3e7242fab0fe29cff4d",
+    "/private/tmp/q27-control-quality-final.log": "b62d70356d6333ae2c853240c7cfc0f22865c3c6f8e5f2677594ae0e58ec8236",
+    "/private/tmp/q27-control-team-final.log": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+  },
+  "root_acceptance": {
+    "at": "2026-10-25T12:51:18.345921+00:00",
+    "role_exit_code": 0,
+    "handoff_sha256": "97ef7f972f95d01e1556d8012e157c265b9d8ca0d7a287e2463a14c965659ccc",
+    "owned23_match": {
+      "src/quantharbor/domain/execution.py": true,
+      "src/quantharbor/domain/execution_math.py": true,
+      "src/quantharbor/application/execution.py": true,
+      "src/quantharbor/ports/execution.py": true,
+      "src/quantharbor/adapters/postgres_execution.py": true,
+      "src/quantharbor/adapters/synthetic_execution_broker.py": true,
+      "src/quantharbor/adapters/execution_uow.py": true,
+      "tests/product/synthetic_execution.py": true,
+      "tests/product/test_execution.py": true,
+      "tests/product/test_execution_math.py": true,
+      "tests/product/test_execution_broker.py": true,
+      "tests/product/test_execution_runner.py": true,
+      "scripts/check_execution.py": true,
+      "docs/development/execution.md": true,
+      "migrations/0003_synthetic_execution.sql": true,
+      "src/quantharbor/application/approval.py": true,
+      "src/quantharbor/domain/serialization.py": true,
+      "tests/product/test_execution_financial.py": true,
+      "src/quantharbor/application/research.py": true,
+      "src/quantharbor/application/execution_research.py": true,
+      "tests/product/test_execution_correction.py": true,
+      "tests/product/test_research_execution.py": true,
+      "tests/product/test_execution_control.py": true
+    },
+    "protected_direct_matches": {
+      "pyproject.toml": true,
+      "README.md": true,
+      ".dockerignore": true,
+      ".gitignore": true,
+      "AGENTS.md": true,
+      "migrations/0001_synthetic_foundation.sql": true,
+      "migrations/0002_synthetic_ledger.sql": true,
+      "config/paper-onboarding.example.json": true,
+      "config/runtime-lock.json": true,
+      "config/runtime.synthetic.toml": true,
+      "config/market-storage-lock.json": true,
+      "config/README.md": true,
+      "config/connections.example.yaml": true,
+      "config/ci/quality.workflow.example.yml": true,
+      "config/ai/slack-notifications.example.json": true,
+      "config/ai/development-policy.toml": true,
+      "config/ai/team.toml": true,
+      "config/ai/execution-queue.json": true,
+      "tests/test_environment_controls.py": true,
+      "tests/test_run_local_check.py": true,
+      "tests/test_role_boundary.py": true,
+      "tests/test_hook_audit.py": true,
+      "tests/test_ai_team.py": true,
+      "tests/quality/test_market_storage_harness.py": true,
+      "tests/quality/__init__.py": true,
+      "tests/quality/test_ledger_runner.py": true,
+      "tests/quality/test_quality.py": true,
+      "tests/quality/test_paper_storage.py": true,
+      "tests/product/test_broker_read.py": true,
+      "tests/product/test_investment_ai_evaluation.py": true,
+      "tests/product/test_valuation_snapshot.py": true,
+      "tests/product/test_market_ingest.py": true,
+      "tests/product/test_boundary_isolation.py": true,
+      "tests/product/test_reporting_cli.py": true,
+      "tests/product/test_valuation_reconciliation.py": true,
+      "tests/product/test_costing.py": true,
+      "tests/product/test_investment_ai_security_second.py": true,
+      "tests/product/test_catalog.py": true,
+      "tests/product/test_target_canonical.py": true,
+      "tests/product/test_valuation.py": true,
+      "tests/product/test_investment_ai_sources.py": true,
+      "tests/product/test_target.py": true,
+      "tests/product/synthetic_research.py": true,
+      "tests/product/test_document_files.py": true,
+      "tests/product/test_reporting.py": true,
+      "tests/product/synthetic_market.py": true,
+      "tests/product/synthetic_market_storage.py": true,
+      "tests/product/test_boundary.py": true,
+      "tests/product/synthetic_documents.py": true,
+      "tests/product/__init__.py": true,
+      "tests/product/test_approval_review.py": true,
+      "tests/product/synthetic_ledger.py": true,
+      "tests/product/test_research.py": true,
+      "tests/product/test_market_review.py": true,
+      "tests/product/synthetic_investment_ai.py": true,
+      "tests/product/test_investment_ai_bounds.py": true,
+      "tests/product/test_kis_read.py": true,
+      "tests/product/test_performance.py": true,
+      "tests/product/test_primitives.py": true,
+      "tests/product/test_reporting_canonical.py": true,
+      "tests/product/test_approval_security.py": true,
+      "tests/product/test_approval_regression.py": true,
+      "tests/product/test_target_constraints.py": true,
+      "tests/product/synthetic_valuation.py": true,
+      "tests/product/synthetic_target.py": true,
+      "tests/product/synthetic_approval.py": true,
+      "tests/product/synthetic_broker.py": true,
+      "tests/product/test_target_review.py": true,
+      "tests/product/test_calendar.py": true,
+      "tests/product/synthetic_reporting.py": true,
+      "tests/product/test_serialization.py": true,
+      "tests/product/synthetic_timezones.py": true,
+      "tests/product/test_settings_cli.py": true,
+      "tests/product/test_investment_ai_review.py": true,
+      "tests/product/test_investment_ai.py": true,
+      "tests/product/test_documents.py": true,
+      "tests/product/test_ledger.py": true,
+      "tests/product/test_target_review_cases.py": true,
+      "tests/product/test_market_data.py": true,
+      "tests/product/test_market_storage.py": true,
+      "tests/product/test_investment_ai_security.py": true,
+      "tests/product/test_approval.py": true,
+      "tests/storage/__init__.py": true,
+      "tests/storage/test_parquet_market_store.py": true,
+      "tests/isolation/__init__.py": true,
+      "tests/isolation/test_docker_boundary.py": true,
+      ".agents/skills/qh-contract-change/SKILL.md": true,
+      ".agents/skills/qh-evidence-decision/SKILL.md": true,
+      ".agents/skills/qh-task-handoff/SKILL.md": true,
+      "docs/approval-register.md": true,
+      "docs/ai-team.md": true,
+      "docs/architecture.md": true,
+      "docs/execution-checklist.md": true,
+      "docs/policy-gates.md": true,
+      "docs/team-dashboard.md": true,
+      "docs/git-workflow.md": true,
+      "docs/status.md": true,
+      "docs/requirements-input.md": true,
+      "docs/vision.md": true,
+      "docs/plan.md": true,
+      "docs/implementation-backlog.md": true,
+      "docs/requirements-scenarios.md": true,
+      "docs/security.md": true,
+      "docs/ai-environment.md": true,
+      "docs/development-environment.md": true,
+      "docs/research/performance-methodology-2026-10-24.json": true,
+      "docs/research/ai-security-second-input-2026-10-25.md": true,
+      "docs/research/ai-review-input-2026-10-25.md": true,
+      "docs/research/market-storage-preparation-2026-10-23.json": true,
+      "docs/research/github-evidence-2026-10-19.json": true,
+      "docs/research/kis-read-sources-2026-10-24.json": true,
+      "docs/research/selection-2026-10-23.md": true,
+      "docs/research/ai-evaluation-synthetic-2026-10-25.md": true,
+      "docs/research/execution-design-input-2026-10-25.md": true,
+      "docs/research/models-and-brokers.md": true,
+      "docs/research/ai-security-third-input-2026-10-25.md": true,
+      "docs/research/ai-design-input-2026-10-24.md": true,
+      "docs/research/ai-security-input-2026-10-24.md": true,
+      "docs/research/target-design-input-2026-10-24.md": true,
+      "docs/research/strategy-comparison-synthetic-2026-10-24.md": true,
+      "docs/research/broker-selection.md": true,
+      "docs/research/oss-survey.md": true,
+      "docs/research/oss-application-plan.md": true,
+      "docs/research/approval-security-input-2026-10-25.md": true,
+      "docs/research/approval-review-input-2026-10-25.md": true,
+      "docs/research/github-candidates-2026-10-19.json": true,
+      "docs/research/target-review-input-2026-10-24.md": true,
+      "docs/research/strategy-comparison-synthetic-2026-10-24.json": true,
+      "docs/research/ai-evaluation-synthetic-2026-10-25.json": true,
+      "docs/research/approval-design-input-2026-10-25.md": true,
+      "docs/research/kis-read-contracts-2026-10-24.md": true,
+      "docs/research/target-review-second-input-2026-10-24.md": true,
+      "docs/research/ai-evaluation-manifest-2026-10-25.json": true,
+      "docs/tasks/ENV-development-budget.md": true,
+      "docs/tasks/ENV-runtime-controls.md": true,
+      "docs/tasks/EXECUTION-local.md": true,
+      "docs/tasks/DATA-document-lineage.md": true,
+      "docs/tasks/VALUATION-local.md": true,
+      "docs/tasks/ENV-hook-audit.md": true,
+      "docs/tasks/ENV-connection-template.md": true,
+      "docs/tasks/OPS-local.md": true,
+      "docs/tasks/DEV-quality-gates.md": true,
+      "docs/tasks/ARC-selection.md": true,
+      "docs/tasks/INTEGRATION-local.md": true,
+      "docs/tasks/ENV-slack.md": true,
+      "docs/tasks/ARC-operations.md": true,
+      "docs/tasks/ARC-integration.md": true,
+      "docs/tasks/ENV-validation.md": true,
+      "docs/tasks/GIT-workflow.md": true,
+      "docs/tasks/LEDGER-local.md": true,
+      "docs/tasks/PLAN-orchestration.md": true,
+      "docs/tasks/BASE-local-foundation.md": true,
+      "docs/tasks/ARC-requirements.md": true,
+      "docs/tasks/PLAN-detail.md": true,
+      "docs/tasks/APPROVAL-local.md": true,
+      "docs/tasks/RESEARCH-local.md": true,
+      "docs/tasks/ENV-team-visibility.md": true,
+      "docs/tasks/ENV-durable-audit.md": true,
+      "docs/tasks/SEC-paper-vault.md": true,
+      "docs/tasks/BROKER-read-adapter.md": true,
+      "docs/tasks/ENV-final-assessment.md": true,
+      "docs/tasks/ENV-controls.md": true,
+      "docs/tasks/ENV-bootstrap.md": true,
+      "docs/tasks/DATA-catalog-calendar.md": true,
+      "docs/tasks/TARGET-local.md": true,
+      "docs/tasks/GIT-baseline.md": true,
+      "docs/tasks/ENV-skill-workflow.md": true,
+      "docs/tasks/TEAM-bootstrap.md": true,
+      "docs/tasks/REPORT-local.md": true,
+      "docs/tasks/AI-local.md": true,
+      "docs/tasks/ARC-data-contracts.md": true,
+      "docs/tasks/SEC-local-boundaries.md": true,
+      "docs/tasks/offline-execution-queue.json": true,
+      "docs/tasks/ENV-role-boundary.md": true,
+      "docs/tasks/ARC-execution-contracts.md": true,
+      "docs/tasks/A-input-preparation.md": true,
+      "docs/tasks/DATA-market-pipeline.md": true,
+      "docs/evidence/target-example-2026-10-24.json": true,
+      "docs/evidence/report-validation-final-2026-10-24.json": true,
+      "docs/evidence/ai-security-fixes-2026-10-24.json": true,
+      "docs/evidence/valuation-review-initial-2026-10-24.json": true,
+      "docs/evidence/data-calendar-review-2026-10-23.json": true,
+      "docs/evidence/env-role-capabilities.json": true,
+      "docs/evidence/arc-integration-review-2026-10-23.json": true,
+      "docs/evidence/ledger-db-initial-2026-10-24.json": true,
+      "docs/evidence/env-slack.json": true,
+      "docs/evidence/ai-security-fixes2-2026-10-25.json": true,
+      "docs/evidence/data-calendar-validation-2026-10-23.json": true,
+      "docs/evidence/ai-security-initial-2026-10-24.json": true,
+      "docs/evidence/execution-database-initial-2026-10-25.json": true,
+      "docs/evidence/target-implementation-2026-10-24.json": true,
+      "docs/evidence/env-connection-template.json": true,
+      "docs/evidence/approval-review-initial-2026-10-25.json": true,
+      "docs/evidence/paper-vault-implementation-2026-10-24.json": true,
+      "docs/evidence/target-review-second-2026-10-24.json": true,
+      "docs/evidence/report-implementation-2026-10-24.json": true,
+      "docs/evidence/ledger-implementation-2026-10-24.json": true,
+      "docs/evidence/broker-read-validation-2026-10-24.json": true,
+      "docs/evidence/arc-execution-review-2026-10-23.json": true,
+      "docs/evidence/approval-review-final-2026-10-25.json": true,
+      "docs/evidence/approval-review-fixes-2026-10-25.json": true,
+      "docs/evidence/data-market-validation-2026-10-24.json": true,
+      "docs/evidence/data-storage-review-initial-2026-10-24.json": true,
+      "docs/evidence/target-validation-final-2026-10-24.json": true,
+      "docs/evidence/arc-requirements-acceptance-2026-10-23.json": true,
+      "docs/evidence/ai-validation-final-2026-10-25.json": true,
+      "docs/evidence/env-runtime-controls-2026-10-20.json": true,
+      "docs/evidence/dev-quality-review-2026-10-23.json": true,
+      "docs/evidence/data-market-review-final-2026-10-24.json": true,
+      "docs/evidence/env-role-boundary.json": true,
+      "docs/evidence/broker-read-review-initial-2026-10-24.json": true,
+      "docs/evidence/sec-local-fixes-2026-10-23.json": true,
+      "docs/evidence/paper-vault-review-final-2026-10-24.json": true,
+      "docs/evidence/ai-security-final-2026-10-25.json": true,
+      "docs/evidence/dev-quality-validation-2026-10-23.json": true,
+      "docs/evidence/target-design-2026-10-24.json": true,
+      "docs/evidence/valuation-design-2026-10-24.json": true,
+      "docs/evidence/paper-vault-security-initial-2026-10-24.json": true,
+      "docs/evidence/env-config-2026-10-20.json": true,
+      "docs/evidence/paper-vault-host-compatibility-2026-10-24.json": true,
+      "docs/evidence/data-market-fixes-2026-10-24.json": true,
+      "docs/evidence/approval-security-fixes-2026-10-25.json": true,
+      "docs/evidence/approval-security-final-2026-10-25.json": true,
+      "docs/evidence/dev-quality-implementation-2026-10-23.json": true,
+      "docs/evidence/base-foundation-review-2026-10-23.json": true,
+      "docs/evidence/research-review-initial-2026-10-24.json": true,
+      "docs/evidence/sec-local-security-initial-2026-10-23.json": true,
+      "docs/evidence/broker-read-review-fixes-2026-10-24.json": true,
+      "docs/evidence/broker-read-review-final-2026-10-24.json": true,
+      "docs/evidence/broker-read-security-initial-2026-10-24.json": true,
+      "docs/evidence/env-skill-workflow.json": true,
+      "docs/evidence/ai-design-2026-10-24.json": true,
+      "docs/evidence/ai-security-third-2026-10-25.json": true,
+      "docs/evidence/research-validation-final-2026-10-24.json": true,
+      "docs/evidence/sec-local-review-2026-10-23.json": true,
+      "docs/evidence/ai-security-second-2026-10-25.json": true,
+      "docs/evidence/paper-vault-integration-2026-10-24.json": true,
+      "docs/evidence/ai-review-initial-2026-10-25.json": true,
+      "docs/evidence/arc-selection-review-2026-10-23.json": true,
+      "docs/evidence/sec-local-security-final-2026-10-23.json": true,
+      "docs/evidence/base-runtime-inventory-2026-10-23.json": true,
+      "docs/evidence/data-storage-review-final-2026-10-24.json": true,
+      "docs/evidence/arc-operations-review-2026-10-23.json": true,
+      "docs/evidence/ai-security-fixes3-2026-10-25.json": true,
+      "docs/evidence/env-hook-audit.json": true,
+      "docs/evidence/git-baseline-2026-10-23.json": true,
+      "docs/evidence/data-market-review-initial-2026-10-24.json": true,
+      "docs/evidence/broker-read-security-fixes-2026-10-24.json": true,
+      "docs/evidence/broker-read-security-final-2026-10-24.json": true,
+      "docs/evidence/base-foundation-validation-2026-10-23.json": true,
+      "docs/evidence/data-document-implementation-2026-10-24.json": true,
+      "docs/evidence/arc-requirements-draft-review-2026-10-23.json": true,
+      "docs/evidence/ledger-validation-initial-2026-10-24.json": true,
+      "docs/evidence/report-example-2026-10-24.json": true,
+      "docs/evidence/env-final-role-development-2026-10-23.json": true,
+      "docs/evidence/execution-design-2026-10-25.json": true,
+      "docs/evidence/ledger-review-fixes-2026-10-24.json": true,
+      "docs/evidence/ledger-review-final-2026-10-24.json": true,
+      "docs/evidence/ledger-db-final-2026-10-24.json": true,
+      "docs/evidence/target-review-fixes2-2026-10-24.json": true,
+      "docs/evidence/data-document-review-final-2026-10-24.json": true,
+      "docs/evidence/env-hook-runtime-2026-10-23.json": true,
+      "docs/evidence/data-storage-security-final-2026-10-24.json": true,
+      "docs/evidence/data-storage-security-fixes-2026-10-24.json": true,
+      "docs/evidence/research-design-2026-10-24.json": true,
+      "docs/evidence/env-validation-2026-10-20.json": true,
+      "docs/evidence/arc-data-review-2026-10-23.json": true,
+      "docs/evidence/paper-vault-security-fixes2-2026-10-24.json": true,
+      "docs/evidence/approval-security-post-review-2026-10-25.json": true,
+      "docs/evidence/target-review-final-2026-10-24.json": true,
+      "docs/evidence/target-review-fixes-2026-10-24.json": true,
+      "docs/evidence/arc-requirements-v02-review-2026-10-23.json": true,
+      "docs/evidence/data-market-implementation-2026-10-24.json": true,
+      "docs/evidence/dev-quality-actions-2026-10-23.json": true,
+      "docs/evidence/sec-local-validation-2026-10-23.json": true,
+      "docs/evidence/paper-vault-security-host-final-2026-10-24.json": true,
+      "docs/evidence/report-review-final-2026-10-24.json": true,
+      "docs/evidence/env-durable-audit.json": true,
+      "docs/evidence/research-implementation-2026-10-24.json": true,
+      "docs/evidence/approval-example-2026-10-25.json": true,
+      "docs/evidence/dev-quality-fixes-2026-10-23.json": true,
+      "docs/evidence/ai-security-post-review-2026-10-25.json": true,
+      "docs/evidence/ai-implementation-2026-10-24.json": true,
+      "docs/evidence/data-storage-package-preflight-2026-10-23.json": true,
+      "docs/evidence/approval-validation-final-2026-10-25.json": true,
+      "docs/evidence/execution-implementation-partial-2026-10-25.json": true,
+      "docs/evidence/approval-security-initial-2026-10-25.json": true,
+      "docs/evidence/arc-operations-security-2026-10-23.json": true,
+      "docs/evidence/paper-vault-security-fixes-2026-10-24.json": true,
+      "docs/evidence/paper-vault-security-final-2026-10-24.json": true,
+      "docs/evidence/valuation-validation-final-2026-10-24.json": true,
+      "docs/evidence/data-document-security-initial-2026-10-24.json": true,
+      "docs/evidence/data-storage-runtime-2026-10-24.json": true,
+      "docs/evidence/env-final-role-capabilities-2026-10-23.json": true,
+      "docs/evidence/broker-read-implementation-2026-10-24.json": true,
+      "docs/evidence/sec-local-implementation-2026-10-23.json": true,
+      "docs/evidence/data-storage-general-fixes-2026-10-24.json": true,
+      "docs/evidence/paper-vault-validation-2026-10-24.json": true,
+      "docs/evidence/approval-design-2026-10-25.json": true,
+      "docs/evidence/data-storage-implementation-2026-10-24.json": true,
+      "docs/evidence/data-document-validation-2026-10-24.json": true,
+      "docs/evidence/data-calendar-sources-2026-10-23.json": true,
+      "docs/evidence/ledger-validation-final-2026-10-24.json": true,
+      "docs/evidence/research-review-fixes-2026-10-24.json": true,
+      "docs/evidence/research-review-final-2026-10-24.json": true,
+      "docs/evidence/base-foundation-root-2026-10-23.json": true,
+      "docs/evidence/report-display-refinement-2026-10-24.json": true,
+      "docs/evidence/valuation-review-final-2026-10-24.json": true,
+      "docs/evidence/valuation-review-fixes-2026-10-24.json": true,
+      "docs/evidence/data-storage-official-sources-2026-10-24.json": true,
+      "docs/evidence/data-document-security-fixes-2026-10-24.json": true,
+      "docs/evidence/data-calendar-implementation-2026-10-23.json": true,
+      "docs/evidence/data-document-security-final-2026-10-24.json": true,
+      "docs/evidence/paper-vault-operational-attempt-2026-10-24.json": true,
+      "docs/evidence/approval-implementation-2026-10-25.json": true,
+      "docs/evidence/ai-review-final-2026-10-25.json": true,
+      "docs/evidence/ai-review-fixes-2026-10-25.json": true,
+      "docs/evidence/ledger-review-initial-2026-10-24.json": true,
+      "docs/evidence/report-review-initial-2026-10-24.json": true,
+      "docs/evidence/env-final-role-review-2026-10-23.json": true,
+      "docs/evidence/research-comparison-export-2026-10-24.json": true,
+      "docs/evidence/env-model-catalog-2026-10-20.json": true,
+      "docs/evidence/valuation-implementation-2026-10-24.json": true,
+      "docs/evidence/env-final-assessment-2026-10-23.json": true,
+      "docs/evidence/team-bootstrap-2026-10-20.json": true,
+      "docs/evidence/ledger-design-2026-10-24.json": true,
+      "docs/evidence/target-review-initial-2026-10-24.json": true,
+      "docs/evidence/env-final-profiles-2026-10-23.json": true,
+      "docs/development/target.md": true,
+      "docs/development/approval.md": true,
+      "docs/development/investment-ai.md": true,
+      "docs/development/valuation.md": true,
+      "docs/development/document-lineage.md": true,
+      "docs/development/reporting.md": true,
+      "docs/development/quality.md": true,
+      "docs/development/market-data.md": true,
+      "docs/development/market-storage.md": true,
+      "docs/development/ci-definition.md": true,
+      "docs/development/broker-read.md": true,
+      "docs/development/research.md": true,
+      "docs/development/local-isolation.md": true,
+      "docs/development/paper-private-storage.md": true,
+      "docs/development/ledger.md": true,
+      "docs/development/paper-connection-preparation.md": true,
+      "docs/development/catalog-calendar.md": true,
+      "docs/development/local-foundation.md": true,
+      "docs/contracts/document-lineage-v1.md": true,
+      "docs/contracts/market-storage-v1.md": true,
+      "docs/contracts/comparison-spec-v1.json": true,
+      "docs/contracts/serialization-v1.md": true,
+      "docs/contracts/broker-read-v1.md": true,
+      "docs/contracts/target-local-v1.md": true,
+      "docs/contracts/reporting-local-v1.md": true,
+      "docs/contracts/operations-v1.md": true,
+      "docs/contracts/market-data-v1.md": true,
+      "docs/contracts/research-local-v1.md": true,
+      "docs/contracts/ai-local-v1.md": true,
+      "docs/contracts/valuation-local-v1.md": true,
+      "docs/contracts/ai-evaluation-spec-v1.json": true,
+      "docs/contracts/approval-fixture-v1.json": true,
+      "docs/contracts/baseline-v1.json": true,
+      "docs/contracts/execution-local-v1.md": true,
+      "docs/contracts/execution-v1.md": true,
+      "docs/contracts/approval-local-v1.md": true,
+      "docs/contracts/execution-fixture-v1.json": true,
+      "docs/contracts/ledger-local-v1.md": true,
+      "docs/contracts/data-v1.md": true,
+      "docs/decisions/ENV-DEC-001-development-bootstrap.md": true,
+      "docs/decisions/B-DEC-001-initial-adoption.md": true,
+      "docs/decisions/ENV-DEC-004-role-execution.md": true,
+      "docs/decisions/TARGET-DEC-001-synthetic-facts.md": true,
+      "docs/decisions/GIT-DEC-001-workflow.md": true,
+      "docs/decisions/ENV-DEC-003-orchestrated-team.md": true,
+      "docs/decisions/BROKER-DEC-001-read-adapter.md": true,
+      "docs/decisions/A-DEC-002-initial-trading-policy.md": true,
+      "docs/decisions/ENV-DEC-002-local-development-gate.md": true,
+      "docs/decisions/VAL-DEC-001-local-read-model.md": true,
+      "docs/decisions/REPORT-DEC-001-local-display.md": true,
+      "docs/decisions/ARC-DEC-002-execution-boundaries.md": true,
+      "docs/decisions/LEDGER-DEC-001-local-replay.md": true,
+      "docs/decisions/BASE-DEC-001-runtime.md": true,
+      "docs/decisions/A-DEC-003-policy-gates.md": true,
+      "docs/decisions/A-DEC-001-initial-product-input.md": true,
+      "docs/decisions/EXECUTION-DEC-001-single-database-authority.md": true,
+      "docs/decisions/ARC-DEC-001-data-boundaries.md": true,
+      "docs/decisions/ARC-DEC-003-local-operations.md": true,
+      "docs/decisions/EXEC-DEC-001-offline-sequence.md": true,
+      "docs/decisions/AI-DEC-001-synthetic-protocol.md": true,
+      "docs/decisions/DATA-DEC-001-market-pipeline.md": true,
+      "docs/decisions/SEC-DEC-002-paper-vault.md": true,
+      "docs/decisions/RESEARCH-DEC-001-synthetic-comparison.md": true,
+      "docs/decisions/APPROVAL-DEC-001-synthetic-authority.md": true,
+      "docs/decisions/DATA-DEC-002-document-lineage.md": true,
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+      "docs/examples/reporting-synthetic.txt": true,
+      "docs/examples/target-synthetic.txt": true,
+      "docs/examples/target-synthetic.json": true,
+      "docs/examples/approval-synthetic.json": true,
+      "docs/examples/approval-synthetic.txt": true,
+      "docs/templates/task.md": true,
+      "docs/templates/decision.md": true,
+      ".codex/hooks.json": true,
+      ".codex/config.toml": true,
+      ".codex/agents/qh_researcher.toml": true,
+      ".codex/agents/qh_architect.toml": true,
+      ".codex/agents/qh_security_reviewer.toml": true,
+      ".codex/agents/qh_validator.toml": true,
+      ".codex/agents/qh_explorer.toml": true,
+      ".codex/agents/qh_reviewer.toml": true,
+      ".codex/agents/qh_implementer.toml": true,
+      "scripts/check_ledger.py": true,
+      "scripts/run_local_check.py": true,
+      "scripts/check_foundation.py": true,
+      "scripts/check_isolation.py": true,
+      "scripts/check_market_storage.py": true,
+      "scripts/check_quality.py": true,
+      "scripts/check_ai_team.py": true,
+      "scripts/bootstrap_paper_storage.py": true,
+      "scripts/validate_role_boundary.py": true,
+      "scripts/qh_hook_audit.py": true,
+      "scripts/validate_environment.py": true,
+      "containers/Dockerfile.market-storage": true,
+      "containers/requirements.market-storage.txt": true,
+      "containers/compose.synthetic.yaml": true,
+      "containers/Dockerfile.synthetic": true,
+      ".idea/QuantHarbor.iml": true,
+      ".idea/vcs.xml": true,
+      ".idea/.gitignore": true,
+      ".idea/workspace.xml": true,
+      ".idea/modules.xml": true,
+      ".idea/misc.xml": true,
+      "src/quantharbor/__init__.py": true,
+      "src/quantharbor/__main__.py": true,
+      "src/quantharbor/research/costing.py": true,
+      "src/quantharbor/research/metrics.py": true,
+      "src/quantharbor/research/strategies.py": true,
+      "src/quantharbor/research/__init__.py": true,
+      "src/quantharbor/market_data/__init__.py": true,
+      "src/quantharbor/market_data/timezones.py": true,
+      "src/quantharbor/adapters/postgres_ledger.py": true,
+      "src/quantharbor/adapters/synthetic_research.py": true,
+      "src/quantharbor/adapters/synthetic_market.py": true,
+      "src/quantharbor/adapters/__init__.py": true,
+      "src/quantharbor/adapters/synthetic_ledger.py": true,
+      "src/quantharbor/adapters/parquet_market_store.py": true,
+      "src/quantharbor/adapters/synthetic_investment_ai.py": true,
+      "src/quantharbor/adapters/document_files.py": true,
+      "src/quantharbor/adapters/synthetic_valuation.py": true,
+      "src/quantharbor/adapters/synthetic_target.py": true,
+      "src/quantharbor/adapters/synthetic_approval.py": true,
+      "src/quantharbor/adapters/synthetic_broker.py": true,
+      "src/quantharbor/adapters/kis_read.py": true,
+      "src/quantharbor/adapters/synthetic_reporting.py": true,
+      "src/quantharbor/application/market_ingest.py": true,
+      "src/quantharbor/application/broker_read.py": true,
+      "src/quantharbor/application/ledger.py": true,
+      "src/quantharbor/application/document_ingest.py": true,
+      "src/quantharbor/application/__init__.py": true,
+      "src/quantharbor/application/valuation.py": true,
+      "src/quantharbor/application/target.py": true,
+      "src/quantharbor/application/investment_ai.py": true,
+      "src/quantharbor/application/reporting.py": true,
+      "src/quantharbor/ports/research.py": true,
+      "src/quantharbor/ports/broker_read.py": true,
+      "src/quantharbor/ports/ledger.py": true,
+      "src/quantharbor/ports/__init__.py": true,
+      "src/quantharbor/ports/valuation.py": true,
+      "src/quantharbor/ports/market_data.py": true,
+      "src/quantharbor/ports/approval.py": true,
+      "src/quantharbor/ports/target.py": true,
+      "src/quantharbor/ports/investment_ai.py": true,
+      "src/quantharbor/ports/reporting.py": true,
+      "src/quantharbor/domain/catalog.py": true,
+      "src/quantharbor/domain/market_storage.py": true,
+      "src/quantharbor/domain/research.py": true,
+      "src/quantharbor/domain/primitives.py": true,
+      "src/quantharbor/domain/broker_read.py": true,
+      "src/quantharbor/domain/documents.py": true,
+      "src/quantharbor/domain/ledger.py": true,
+      "src/quantharbor/domain/__init__.py": true,
+      "src/quantharbor/domain/calendar.py": true,
+      "src/quantharbor/domain/valuation.py": true,
+      "src/quantharbor/domain/market_data.py": true,
+      "src/quantharbor/domain/approval.py": true,
+      "src/quantharbor/domain/target.py": true,
+      "src/quantharbor/domain/investment_ai.py": true,
+      "src/quantharbor/domain/reporting.py": true,
+      "docs/evidence/execution-correction-partial-2026-10-25.json": true,
+      "docs/evidence/execution-database-correction-2026-10-25.json": true,
+      "docs/decisions/EXECUTION-DEC-002-correction-performance-scope.md": true
+    },
+    "capacity_archive_concern": "retired_commands excluded from Q26 usage; allocation requires storage design/review, not accepted capacity proof",
+    "root_DB": "pending focused21; full46 remains final-stage",
+    "q27_complete": false
+  }
+}

@@ -1,0 +1,698 @@
+{
+  "task": "Q27-financial",
+  "started_epoch": 1792924849.1549199,
+  "owned": [
+    "src/quantharbor/domain/execution.py",
+    "src/quantharbor/domain/execution_math.py",
+    "src/quantharbor/application/execution.py",
+    "src/quantharbor/ports/execution.py",
+    "src/quantharbor/adapters/postgres_execution.py",
+    "src/quantharbor/adapters/synthetic_execution_broker.py",
+    "src/quantharbor/adapters/execution_uow.py",
+    "tests/product/synthetic_execution.py",
+    "tests/product/test_execution.py",
+    "tests/product/test_execution_math.py",
+    "tests/product/test_execution_broker.py",
+    "tests/product/test_execution_runner.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "src/quantharbor/application/approval.py",
+    "src/quantharbor/domain/serialization.py",
+    "tests/product/test_execution_financial.py"
+  ],
+  "preversion": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "a0086edc262472843457f8fff8c63a38ce2d759905bae41910a4c38be386d932",
+    "src/quantharbor/application/execution.py": "334d7cf33883a930e4116ac1ce3c8cca804ff62da3c2849cfbaa79f548a8055d",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "6463cabbdbe4a59c046dd3e43341d3deb63c26fd9a23b918f3f939c5bd10b803",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "2556408a91e864e5015d66c097ec006ed591d1540c6969da39a74e1a0aea152d",
+    "src/quantharbor/adapters/execution_uow.py": "2e753dcaa535f4963c628baed7afdc9474e1da99266d6913644df79d58449559",
+    "tests/product/synthetic_execution.py": "cc700d42613e3bdbd23b9a9cd1f32fb2e4412af32e0d2ae159394e96c3dceeb9",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "7d966e80373966273caf6695f2bf8026cf46c74c05c9df3374ac33d4d0d80998",
+    "docs/development/execution.md": "0a05b59c25276ac89477d93def71d3b85e784c18d5e548e94f92214660952048",
+    "migrations/0003_synthetic_execution.sql": "09f5f462f80080aeed495024e0e59e3a39ae3180480239b1e55f172f6f29831b",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "96908ac4b3483b2ea59c73532811b7adec54c16033f22dff23032f924ba36344",
+    "tests/product/test_execution_financial.py": null
+  },
+  "commands": [
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest discover -s tests/product -p test_execution*.py -v",
+      "log": "/private/tmp/q27-financial-focused.log",
+      "started": 1792925536.1280699,
+      "exit_code": 0,
+      "seconds": 194.557
+    },
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest test_execution_financial.ExecutionSourceRefreshTests -v",
+      "log": "/private/tmp/q27-financial-source-refresh.log",
+      "started": 1792925976.4515321,
+      "exit_code": 1,
+      "seconds": 18.07
+    },
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest test_execution_financial.ExecutionSourceRefreshTests.test_EX08_component_partial_reflection_cannot_double_deduct_or_double_include test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically test_execution_financial.ExecutionSourceRefreshTests.test_EX37_actual_LedgerEvent_codec_uses_body_environment_and_closed_schema test_execution_financial.ExecutionSourceRefreshTests.test_EX23_collision_remains_incomplete_after_a_later_valid_revision -v",
+      "log": "/private/tmp/q27-financial-source-corrections.log",
+      "started": 1792926064.923326,
+      "exit_code": 0,
+      "seconds": 29.584
+    },
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest test_execution_financial.ExecutionSourceRefreshTests.test_EX26_known_fee_unknown_tax_preserves_lower_bound_without_fake_zero -v",
+      "log": "/private/tmp/q27-financial-partial-cost.log",
+      "started": 1792926271.158528,
+      "exit_code": 0,
+      "seconds": 9.316
+    },
+    {
+      "command": "PYTHONPATH=src:tests/product python3.13 -B -m unittest test_serialization test_approval.ApprovalFixedCases.test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission test_approval.ApprovalFixedCases.test_AP02_exact_replay_only_receipt_and_current_permission test_approval.ApprovalFixedCases.test_AP04_fake_principal_foreign_issuer_bool_AI_and_JSON_are_not_authority test_approval.ApprovalFixedCases.test_AP18_multiple_application_instances_exact_receipt_single_effect test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission test_target.TargetIntegrationTests.test_source_bound_704_and_804_golden -v",
+      "exit_code": 0,
+      "seconds": 30.251,
+      "log": "/private/tmp/q27-financial-regression.log"
+    },
+    {
+      "command": "python3.13 -I -S -B scripts/check_quality.py",
+      "exit_code": 0,
+      "log": "/private/tmp/q27-financial-quality-final.json",
+      "seconds": 0.784631584,
+      "seconds_source": "tool wall time; final changed-source scan"
+    },
+    {
+      "command": "python3.13 -I -S -B scripts/check_ai_team.py",
+      "exit_code": 0,
+      "log": "/private/tmp/q27-financial-team.log"
+    },
+    {
+      "command": "git diff --check -- src/quantharbor/domain/execution.py src/quantharbor/domain/execution_math.py src/quantharbor/application/execution.py src/quantharbor/ports/execution.py src/quantharbor/adapters/postgres_execution.py src/quantharbor/adapters/synthetic_execution_broker.py src/quantharbor/adapters/execution_uow.py tests/product/synthetic_execution.py tests/product/test_execution.py tests/product/test_execution_math.py tests/product/test_execution_broker.py tests/product/test_execution_runner.py scripts/check_execution.py docs/development/execution.md migrations/0003_synthetic_execution.sql src/quantharbor/application/approval.py src/quantharbor/domain/serialization.py tests/product/test_execution_financial.py",
+      "exit_code": 0,
+      "seconds": 0.000423125,
+      "seconds_source": "tool wall time"
+    },
+    {
+      "command": "python3 -B /private/tmp/q27-finalize-handoff.py",
+      "result": "owned/protected SHA + AST + untracked whitespace verification",
+      "log": "/private/tmp/q27-financial-verification.json"
+    }
+  ],
+  "root_DB_runner_executed": false,
+  "source_freeze_epoch": 1792926271.1546612,
+  "freeze_sha": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+    "docs/development/execution.md": "32dc11716e61c788cdac0bc2cea31bf637f94d66a0549c6a458cfee13e931c3f",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804"
+  },
+  "source_freezes": [
+    {
+      "epoch": 1792925536.124043,
+      "sha": {
+        "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+        "src/quantharbor/domain/execution_math.py": "a0086edc262472843457f8fff8c63a38ce2d759905bae41910a4c38be386d932",
+        "src/quantharbor/application/execution.py": "f8ccdec09b727ce8993192baf753ca1031c8c8689e25cbf62953db449ed98e60",
+        "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+        "src/quantharbor/adapters/postgres_execution.py": "63cf93ec23ae8e0fa79b63bfae82aa2013d44ae8a303ededf944732c7efa49eb",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "edcdda24d72ed970aadb8bfc9b28993520cb6fe478e98ce859241c2a44696f3c",
+        "docs/development/execution.md": "e22dbbfea4986e8e1fa915b16ddf157dc9e1a53e9528bcaa490dd21ee2d8717f",
+        "migrations/0003_synthetic_execution.sql": "086a7b251362410f4a5c9a8bfe3ce456e442a3407c23b87e01d408cbaa265e34",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ffe34d88fee46cb8df251eab404f8c4fbb3d71e02aa6711a471cb4ee7ed737a0",
+        "tests/product/test_execution_financial.py": "d56e9f7c12350e2ab70181eb8a3e2cde70b14dad60e536e31627b3a44018c5ce"
+      },
+      "test_scope": "initial47"
+    },
+    {
+      "epoch": 1792925976.446816,
+      "sha": {
+        "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+        "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+        "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+        "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+        "src/quantharbor/adapters/postgres_execution.py": "7afb915c28fdc7fe61446ae442cf073ec6dec6868c43496c36d5feea56f18c84",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+        "docs/development/execution.md": "e96c995fe8035696dd466b0ac42edc92fec9fe7eaff609cb0385be817a6e95fe",
+        "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ffe34d88fee46cb8df251eab404f8c4fbb3d71e02aa6711a471cb4ee7ed737a0",
+        "tests/product/test_execution_financial.py": "ed322832c97aadf6e189e48c4da15fdf503688113b66ec0d29172ddcdd6d6dba"
+      },
+      "test_scope": "new_source_refresh4_only_no_unchanged_green_reruns"
+    },
+    {
+      "epoch": 1792926064.9186409,
+      "sha": {
+        "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+        "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+        "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+        "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+        "src/quantharbor/adapters/postgres_execution.py": "6defdf4419c56a3390509fa18386f7b55b5ec421a9276276d422de24a5e4ec40",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+        "docs/development/execution.md": "e96c995fe8035696dd466b0ac42edc92fec9fe7eaff609cb0385be817a6e95fe",
+        "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+        "tests/product/test_execution_financial.py": "e206acdf7010d082185beb7185ebb72f5930db47212156ce38bd747f62e6091b"
+      },
+      "test_scope": "failed2_plus_new_codec_collision2"
+    },
+    {
+      "epoch": 1792926271.1546612,
+      "sha": {
+        "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+        "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+        "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+        "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+        "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+        "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+        "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+        "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+        "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+        "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+        "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+        "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+        "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+        "docs/development/execution.md": "32dc11716e61c788cdac0bc2cea31bf637f94d66a0549c6a458cfee13e931c3f",
+        "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+        "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+        "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+        "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804"
+      },
+      "test_scope": "new_partial_known_cost_lower_bound1_only"
+    }
+  ],
+  "status": "partial",
+  "q27_complete": false,
+  "requested_role": "qh_development",
+  "requested_model_reasoning": "Sol/high",
+  "actual_model_load": "not_independently_verified",
+  "delegation": false,
+  "owned_sha256": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+    "docs/development/execution.md": "32dc11716e61c788cdac0bc2cea31bf637f94d66a0549c6a458cfee13e931c3f",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804"
+  },
+  "owned_changed": [
+    "src/quantharbor/domain/execution_math.py",
+    "src/quantharbor/application/execution.py",
+    "src/quantharbor/adapters/postgres_execution.py",
+    "src/quantharbor/adapters/synthetic_execution_broker.py",
+    "src/quantharbor/adapters/execution_uow.py",
+    "tests/product/synthetic_execution.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "src/quantharbor/domain/serialization.py",
+    "tests/product/test_execution_financial.py"
+  ],
+  "owned_unchanged": [
+    "src/quantharbor/domain/execution.py",
+    "src/quantharbor/ports/execution.py",
+    "tests/product/test_execution.py",
+    "tests/product/test_execution_math.py",
+    "tests/product/test_execution_broker.py",
+    "tests/product/test_execution_runner.py",
+    "src/quantharbor/application/approval.py"
+  ],
+  "root_common_files_unchanged": true,
+  "verification": {
+    "changed_owned": [
+      "src/quantharbor/domain/execution_math.py",
+      "src/quantharbor/application/execution.py",
+      "src/quantharbor/adapters/postgres_execution.py",
+      "src/quantharbor/adapters/synthetic_execution_broker.py",
+      "src/quantharbor/adapters/execution_uow.py",
+      "tests/product/synthetic_execution.py",
+      "scripts/check_execution.py",
+      "docs/development/execution.md",
+      "migrations/0003_synthetic_execution.sql",
+      "src/quantharbor/domain/serialization.py",
+      "tests/product/test_execution_financial.py"
+    ],
+    "changed_non_owned": [],
+    "owned_sha256": {
+      "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+      "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+      "src/quantharbor/application/execution.py": "7119ccba5b303ccaca98c503a058b74fd29a0ab25c2657340acc8f6bbbef3e2d",
+      "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+      "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+      "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+      "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+      "tests/product/synthetic_execution.py": "20b1a1c5c241313da1707304c36fbec20422da6728532795b1a68312cde63068",
+      "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+      "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+      "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+      "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+      "scripts/check_execution.py": "92eb41fec0a63d1d6eee0047db9158a69078cca885f7e64210fcb376e67b47f5",
+      "docs/development/execution.md": "32dc11716e61c788cdac0bc2cea31bf637f94d66a0549c6a458cfee13e931c3f",
+      "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+      "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+      "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+      "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804"
+    },
+    "protected_sha256": {
+      "docs/architecture.md": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+      "docs/contracts/serialization-v1.md": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+      "docs/implementation-backlog.md": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+      "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+      "docs/contracts/execution-v1.md": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+      "docs/contracts/operations-v1.md": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+      "migrations/0001_synthetic_foundation.sql": "3dcad32e09b30af71a557ee211a98fb6afdd96e3639f77990a0a904bb045997a",
+      "migrations/0002_synthetic_ledger.sql": "d48e206c7b74133cc5a8d1645bc986272701ba0124409d3bdb23b602d05333f8",
+      "docs/contracts/approval-fixture-v1.json": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+      "docs/contracts/execution-fixture-v1.json": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1"
+    },
+    "protected_unchanged": true,
+    "whitespace_findings": [],
+    "python_syntax": "pass",
+    "final_source_freeze_unchanged": true
+  },
+  "input_root_DB_evidence": {
+    "file": "docs/evidence/execution-database-initial-2026-10-25.json",
+    "sha256": "c24122e96a3e8b19c4706dacbef26988c9d96aabe2f29d8032308b9efd2c9bcb",
+    "exit_code": 0,
+    "seconds": 197.86,
+    "checks": [
+      "EX04_actual_database_all_admission_faults_rollback",
+      "EX01_actual_Q24_Q26_DB_admission",
+      "EX05_committed_command_lookup_no_second_intent",
+      "EX35_two_facades_shared_registry_database_reload",
+      "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+      "EX06_actual_Q20_projection_DB_cash598",
+      "EX20_actual_duplicate_fill_once",
+      "EX07_actual_Q20_settlement_no_reapply_cash598",
+      "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic",
+      "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only",
+      "EX34_product_role_direct_financial_mutation_denied",
+      "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+      "EX16_EX18_actual_after_handoff_crash_unknown_no_resend",
+      "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved",
+      "EX03_EX35_actual_two_connections_lock_contention_two_candidates_one_winner",
+      "EX40_own_UUID_projects_fixed_image_migrations_idempotent_cleanup"
+    ],
+    "corrections": [
+      "16 runner checks are partial bundles, not all40 fixed cases",
+      "EX03 currently verifies real DB lock contention and sequential competing candidate decisions; simultaneous competing admission and reverse winner are still required",
+      "EX05 currently verifies postcommit command lookup, not lost commit response",
+      "EX27 issued cancel command only, no actual cancel handoff/confirmation",
+      "EX34 direct table denial only, closed SQL auth invariants incomplete"
+    ],
+    "actual_failure_to_reproduce": false,
+    "owned17_preversion_matches": true
+  },
+  "source_scope": "source+tests+guide only; 0003 is source; no root common document mutation",
+  "implemented": [
+    "Q20 actual DB event query + exact typed prefix comparison in one UoW transaction",
+    "original Q24 source preserved; issuer query/current Q21 valuation and independent reconciliation/Q23 cost-performance/current rights refreshed under gate and DB CAS",
+    "reservation source cutoffs + exact used reflection; per-execution partial inclusion; no double deduction/inclusion",
+    "multi-price delta/cumulative principal+fee+tax sums; latest sequence and delta revision replacement; missing predecessors retained and explicit reprocessing",
+    "unknown costs preserve observed quantity and conservative use; known partial cost lower bound stays used/unsettled; actual complete identity finalizes Q20 trade/fee/tax once",
+    "buy and sell settlement through Q20 dependency; unsettled sale does not fund; late ACK does not regress",
+    "outstanding quantity instead of full quantity in exposure; no duplicated funding hold; self hold exclusion preserves realized use and other reservations",
+    "immutable broker outcome history; Q20 quarantined observations retained/incomplete; collisions/overfill/late final conflicts block",
+    "nonblocking partial pipe writes, common write/read deadline, bounded frames; raw SQL/errors never reflected by production runner",
+    "root runner authored actual two concurrent requests on different facades with DB lock contention, both winners, physical commit response-frame loss, different approval and cross-generation SQL claim uniqueness, new finance/fault scenarios"
+  ],
+  "tests": {
+    "initial_focused": {
+      "run": 47,
+      "passed": 47,
+      "seconds": 194.291,
+      "log": "/private/tmp/q27-financial-focused.log",
+      "version": "source_freezes[0]"
+    },
+    "new_source_refresh_initial": {
+      "run": 4,
+      "passed": 2,
+      "errors": 2,
+      "seconds": 17.808,
+      "log": "/private/tmp/q27-financial-source-refresh.log",
+      "version": "source_freezes[1]"
+    },
+    "failed2_plus_new2": {
+      "run": 4,
+      "passed": 4,
+      "seconds": 29.317,
+      "log": "/private/tmp/q27-financial-source-corrections.log",
+      "version": "source_freezes[2]"
+    },
+    "partial_known_cost_new": {
+      "run": 1,
+      "passed": 1,
+      "seconds": 9.056,
+      "log": "/private/tmp/q27-financial-partial-cost.log",
+      "version": "source_freezes[3]"
+    },
+    "legacy_Q24_Q26_serializer": {
+      "run": 14,
+      "passed": 14,
+      "seconds": 30.251,
+      "log": "/private/tmp/q27-financial-regression.log",
+      "version": "source_freezes[0]"
+    },
+    "unique_Q27_tests_with_passing_result": 54,
+    "final_all54_in_one_run": false,
+    "unchanged_green_test_reruns": 0,
+    "final_freeze_focused_runs": 1,
+    "final_freeze_focused_scope": "new known-fee/unknown-tax lower-bound case only; earlier version test results kept separate"
+  },
+  "failed_and_fixed": [
+    {
+      "test": "ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+      "cause": "new LedgerEvent codec read payload.environment instead of body.environment",
+      "fix": "exact LedgerEvent body environment branch; dedicated closed synthetic codec test",
+      "result": "failed case passed once after correction"
+    },
+    {
+      "test": "ExecutionSourceRefreshTests.test_EX08_component_partial_reflection_cannot_double_deduct_or_double_include",
+      "cause": "concatenated per-execution inclusion identity exceeded the existing identifier maximum",
+      "fix": "bounded included-execution hash ID resolved only against actual issuer/DB head journal; no hash-only authority",
+      "result": "failed case passed once after correction"
+    }
+  ],
+  "public_quality_final": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 505,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "public_team": {
+    "exit_code": 0,
+    "log": "/private/tmp/q27-financial-team.log",
+    "scope": "public files only; config/common inputs unchanged since check"
+  },
+  "owned_git_diff_check": {
+    "exit_code": 0,
+    "includes_untracked": false
+  },
+  "owned_content_whitespace_check": {
+    "findings": [],
+    "includes_untracked": true
+  },
+  "actual_new_migration_or_SQL_executed": false,
+  "full630_executed": false,
+  "full_quality87_executed": false,
+  "independent_review_executed": false,
+  "forbidden_actions_performed": {
+    "recursive_delegation": false,
+    "external_network": false,
+    "password_or_private_secret_read": false,
+    "actual_API": false,
+    "package_install": false,
+    "Git_mutation": false,
+    "Docker": false
+  },
+  "unexecuted": [
+    "root updated standalone Docker/PostgreSQL runner (15 own UUID scenarios)",
+    "updated 0003 installation/idempotence and SQL constraints at runtime",
+    "all new actual DB finance/fault/collision/Q20 quarantine/concurrent admission/commit-response loss scenarios",
+    "independent general/security review",
+    "full product630 and quality unittest87",
+    "actual API/account/funds/credential/operational isolation"
+  ],
+  "remaining_financial": [
+    "earlier cumulative revision with already posted successors remains preserved/blocked (cumulative_successor_dependency); latest sequence correction is implemented",
+    "Q23 v1 bound replay cannot consume correction/reversal series; source refresh after those histories remains fail closed rather than filtering history",
+    "positive fee/tax expense to exact0 correction requires Q20-supported reversal handling; evidence is preserved/blocked",
+    "after settled-trade correction Q20 dependency consequences remain unresolved/blocked with old reservation and full ledger history",
+    "root actual DB full EX09 literal sellability7/reject8 admission and broader typed risk-negative matrix still not proven; only authored sale/reserves/cash scenario plus existing pure literal tests",
+    "unknown costs beyond the approved bound and fully known over-bound costs remain blocked; exact actual excess is retained separately because fixed reservation bounds cannot contain an overrun",
+    "price improvement remainder stays conservatively held inside the original approved principal bound; no implicit release"
+  ],
+  "deferred_next_sequence": [
+    "cancel attempt/handoff/ACK/confirmed remainder authority and races",
+    "new issuer adoption/restart/generation rebinding and authorized manual resume",
+    "complete independent account/request/order/reservation reconciliation manifest",
+    "exact per-intent Q20 rows/index/bytes/protected completion-capacity proof",
+    "complete SQL closed schema/session/nonce/auth/transition/read-set/commit invariants"
+  ],
+  "SQL_residual": "No direct financial table mutation grants. execution_save aggregate NULL/enum/hash-only intent bypasses and execution_ledger append authority are not fully closed at SQL level; trusted Python gate checks are not independent SQL authentication proof.",
+  "next_root_action": "Inspect final owned SHA and migration0003, then root only run python3.13 -B scripts/check_execution.py with no args. Keep initial DB evidence and corrections unchanged; integrate this partial handoff into root status/evidence/queue. Continue documented financial and next-sequence residuals before independent reviews/full suites.",
+  "current_EXmapping": {
+    "EX01": {
+      "implemented_or_prior_evidence": "prior root actual admission passed; new actual event-prefix seam unit checked",
+      "limits_or_pending": "updated runner primary pending"
+    },
+    "EX02": {
+      "implemented_or_prior_evidence": "different approval + cross-generation SQL unique claim scenario authored",
+      "limits_or_pending": "updated actual DB pending; new issuer full re-admission deferred"
+    },
+    "EX03": {
+      "implemented_or_prior_evidence": "two concurrent requests, separate facades, real lock contention and both winner orders authored",
+      "limits_or_pending": "actual DB pending; prior root only sequential competing decision"
+    },
+    "EX04": {
+      "implemented_or_prior_evidence": "prior root admission full fingerprints passed",
+      "limits_or_pending": "updated migration/runner pending"
+    },
+    "EX05": {
+      "implemented_or_prior_evidence": "real COMMIT then connection frame loss + same command lookup authored",
+      "limits_or_pending": "actual DB pending"
+    },
+    "EX06": {
+      "implemented_or_prior_evidence": "prior root literal A598 actual; current Q20 unit finance passed",
+      "limits_or_pending": "updated DB pending"
+    },
+    "EX07": {
+      "implemented_or_prior_evidence": "prior root settlement A598 actual; buy and sell settlement unit passed",
+      "limits_or_pending": "updated DB pending"
+    },
+    "EX08": {
+      "implemented_or_prior_evidence": "fresh issuer query + actual-event Q21/Q23 typed pipeline + atomic metadata/partial inclusion unit passed",
+      "limits_or_pending": "new root scenario A598 then next actual admission196 authored/unrun"
+    },
+    "EX09": {
+      "implemented_or_prior_evidence": "pure sellable7/reject8 preserved; sell Q20 reserves/settlement unit passed",
+      "limits_or_pending": "actual DB sale scenario authored; full7/8 admission proof outstanding"
+    },
+    "EX10": {
+      "implemented_or_prior_evidence": "sale proceeds not capacity unit passed",
+      "limits_or_pending": "new actual DB scenario authored/unrun"
+    },
+    "EX11": {
+      "implemented_or_prior_evidence": "partial-fill remaining exposure and funding604 exact typed positive passed",
+      "limits_or_pending": "broader actual DB negative matrix pending"
+    },
+    "EX12": {
+      "implemented_or_prior_evidence": "Q23 gross/time-weighted NAV/daily scope preserved; original focused typed and pure tests passed",
+      "limits_or_pending": "updated actual DB pending"
+    },
+    "EX13": {
+      "implemented_or_prior_evidence": "current loss/drawdown/current rights scope preserved; original focused tests passed",
+      "limits_or_pending": "updated actual DB pending"
+    },
+    "EX14": {
+      "implemented_or_prior_evidence": "self held-only exclusion retains used and other reservations; existing focused positive/expiry passed",
+      "limits_or_pending": "updated DB pending"
+    },
+    "EX15": {
+      "implemented_or_prior_evidence": "prior root protective unsent withdrawal passed",
+      "limits_or_pending": "full gate order races deferred"
+    },
+    "EX16": {
+      "implemented_or_prior_evidence": "prior root handoff before/after crash unknown/noresend passed",
+      "limits_or_pending": "updated runner pending"
+    },
+    "EX17": {
+      "implemented_or_prior_evidence": "existing stop/recover path preserved",
+      "limits_or_pending": "restart new issuer deferred"
+    },
+    "EX18": {
+      "implemented_or_prior_evidence": "unknown/incomplete blocks; prior root unknown/empty-query retention passed",
+      "limits_or_pending": "updated DB pending"
+    },
+    "EX19": {
+      "implemented_or_prior_evidence": "actual issuer-bound finality focused tests passed",
+      "limits_or_pending": "updated full finality DB coverage pending"
+    },
+    "EX20": {
+      "implemented_or_prior_evidence": "duplicate no economics unit passed; real handoff fill-before-ACK/no late regression authored",
+      "limits_or_pending": "new actual DB pending"
+    },
+    "EX21": {
+      "implemented_or_prior_evidence": "cumulative1->3, multi-price increments, latest correction and explicit out-of-order replay unit passed",
+      "limits_or_pending": "earlier revision with successors blocked; new actual DB pending"
+    },
+    "EX22": {
+      "implemented_or_prior_evidence": "delta revision replace and explicit missing-predecessor reprocess unit passed",
+      "limits_or_pending": "new actual DB pending"
+    },
+    "EX23": {
+      "implemented_or_prior_evidence": "collision/overfill/latefinal evidence and persistent incomplete after later revision unit passed",
+      "limits_or_pending": "new actual DB negatives authored/unrun"
+    },
+    "EX24": {
+      "implemented_or_prior_evidence": "prior root original all fault fingerprints passed; new trade/fee/tax and correction faults authored",
+      "limits_or_pending": "new actual DB pending"
+    },
+    "EX25": {
+      "implemented_or_prior_evidence": "prior root reverse/duplicate ledger delivery and cursor passed",
+      "limits_or_pending": "updated DB pending"
+    },
+    "EX26": {
+      "implemented_or_prior_evidence": "unknown->complete fee1/tax0.5, partial-known lower bound, over-bound cost and settled correction retention unit passed",
+      "limits_or_pending": "new actual DB authored/unrun; Q20 unsupported cases remain blocked"
+    },
+    "EX27": {
+      "implemented_or_prior_evidence": "issued cancel command only, prior root scoped check kept",
+      "limits_or_pending": "handoff deferred"
+    },
+    "EX28": {
+      "implemented_or_prior_evidence": "confirmed remaining authority remains closed",
+      "limits_or_pending": "cancel races deferred"
+    },
+    "EX29": {
+      "implemented_or_prior_evidence": "prior protective withdrawal retained",
+      "limits_or_pending": "full current authority matrix pending"
+    },
+    "EX30": {
+      "implemented_or_prior_evidence": "current issuer query + Q21 independent reconciliation pipeline",
+      "limits_or_pending": "complete order/reservation manifest deferred"
+    },
+    "EX31": {
+      "implemented_or_prior_evidence": "rotate preservation retained",
+      "limits_or_pending": "restart/source rebind/manual resume deferred"
+    },
+    "EX32": {
+      "implemented_or_prior_evidence": "bounded issuance/protected budget existing",
+      "limits_or_pending": "exact capacity proof deferred"
+    },
+    "EX33": {
+      "implemented_or_prior_evidence": "actual issued current query, exact ledger prefix, original/current rights, cutoff/partial inclusion validation",
+      "limits_or_pending": "updated DB pending; wrong/stale/missing/forged unit denials passed"
+    },
+    "EX34": {
+      "implemented_or_prior_evidence": "direct financial mutation denial retained; immutable outcome history and reflected<=used constraint added",
+      "limits_or_pending": "complete SQL auth/NULL/enum/hash-only bypass closure deferred"
+    },
+    "EX35": {
+      "implemented_or_prior_evidence": "shared registry/gate/current inputs retained; concurrent facade scenarios authored",
+      "limits_or_pending": "new actual DB pending"
+    },
+    "EX36": {
+      "implemented_or_prior_evidence": "exact trusted adapter boundary focused passed; Q26 effect regression14 passed at initial freeze",
+      "limits_or_pending": "no memory authority import added"
+    },
+    "EX37": {
+      "implemented_or_prior_evidence": "partial pipe write, write timeout/frame bound, additive actual LedgerEvent codec unit passed",
+      "limits_or_pending": "exact rows/bytes capacity deferred"
+    },
+    "EX38": {
+      "implemented_or_prior_evidence": "pure literal800/498/96 preserved",
+      "limits_or_pending": "actual two admissions scenario authored/unrun"
+    },
+    "EX39": {
+      "implemented_or_prior_evidence": "literal principal190 then290, held110 then10/costheld2 and Q20 corrections/conservation unit passed",
+      "limits_or_pending": "new actual DB authored/unrun"
+    },
+    "EX40": {
+      "implemented_or_prior_evidence": "unit noargs/migration guard passed; fixed image/no network/port/mount/own cleanup inherited unchanged",
+      "limits_or_pending": "new actual lifecycle migration run pending"
+    }
+  },
+  "log_sha256": {
+    "/private/tmp/q27-financial-focused.log": "3f6e68ec340447502ce087451b7f73206eb4b054bc2a3bb9917fa2a64978f2f7",
+    "/private/tmp/q27-financial-partial-cost.log": "ddb0c0395c083e0c38c824c438ae73509958ddeb836f69bb26e7a9d796b62cd9",
+    "/private/tmp/q27-financial-quality-final.json": "65470d3ccc223131ffcd6989b8b2466734b9afafc100735c6b4ad2e11294f4db",
+    "/private/tmp/q27-financial-regression.log": "d5ecd85a55bf819463bc0c27c4fc3135e634e58d24814afe69351d36bdb0061c",
+    "/private/tmp/q27-financial-source-corrections.log": "8f74c0f6b27b6bcde2359ecfff0fa589f3bb62528d804398e5c71ec7987bf5ae",
+    "/private/tmp/q27-financial-source-refresh.log": "12e280853ea00806b62232584217ecb002086b8939ee2dd38def2058d2cac7d2",
+    "/private/tmp/q27-financial-team.log": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009",
+    "/private/tmp/q27-financial-verification.json": "798f9d6dadbeba3a0446a0acc1af82e5e3dff3f6a6f6a96c05173c12626895fa"
+  },
+  "finished_epoch": 1792926514.697379,
+  "elapsed_seconds": 1665.542,
+  "finished_utc": "2026-10-25T11:08:34.697379+00:00",
+  "implementation_time_limit_seconds": 2400,
+  "within_implementation_time_limit": true,
+  "root_handoff_sha256": "db9f1b57e22d4b13c7d71ae274f88e63a24b8b0a9519e9a667ab8f590ec6b73d",
+  "root_owned_hash_checks": {
+    "src/quantharbor/domain/execution.py": true,
+    "src/quantharbor/domain/execution_math.py": true,
+    "src/quantharbor/application/execution.py": true,
+    "src/quantharbor/ports/execution.py": true,
+    "src/quantharbor/adapters/postgres_execution.py": true,
+    "src/quantharbor/adapters/synthetic_execution_broker.py": true,
+    "src/quantharbor/adapters/execution_uow.py": true,
+    "tests/product/synthetic_execution.py": true,
+    "tests/product/test_execution.py": true,
+    "tests/product/test_execution_math.py": true,
+    "tests/product/test_execution_broker.py": true,
+    "tests/product/test_execution_runner.py": true,
+    "scripts/check_execution.py": true,
+    "docs/development/execution.md": true,
+    "migrations/0003_synthetic_execution.sql": true,
+    "src/quantharbor/application/approval.py": true,
+    "src/quantharbor/domain/serialization.py": true,
+    "tests/product/test_execution_financial.py": true
+  },
+  "root_protected_hash_checks": {
+    "docs/architecture.md": true,
+    "docs/contracts/serialization-v1.md": true,
+    "docs/implementation-backlog.md": true,
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+    "docs/contracts/data-v1.md": true,
+    "docs/contracts/execution-v1.md": true,
+    "docs/contracts/operations-v1.md": true,
+    "migrations/0001_synthetic_foundation.sql": true,
+    "migrations/0002_synthetic_ledger.sql": true,
+    "docs/contracts/approval-fixture-v1.json": true,
+    "docs/contracts/execution-fixture-v1.json": true
+  }
+}

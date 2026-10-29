@@ -1,0 +1,226 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_control_focused",
+  "exit_code": 1,
+  "elapsed_seconds": 610.325,
+  "at": "2026-10-25T13:02:04.064337+00:00",
+  "command": "python3.13 -B /private/tmp/qh-q27-db-control-focused.py",
+  "runner_sha256": "a58dee59f43dc934b0862905cc2b3bef554fd63ba22b82f0a127af803fac7ebc",
+  "handoff_sha256": "97ef7f972f95d01e1556d8012e157c265b9d8ca0d7a287e2463a14c965659ccc",
+  "result": {
+    "scope": "Q27_root_actual_control_focused",
+    "status": "fail",
+    "q27_complete": false,
+    "planned_scenarios": [
+      "economic_primary",
+      "corrected_current",
+      "cancel_ack",
+      "cancel_unknown",
+      "cancel_conflict",
+      "dispatch_stop",
+      "protect_stop",
+      "dispatch_withdraw",
+      "protect_withdraw",
+      "protect_rights",
+      "restart_corrected",
+      "restart_quarantine",
+      "restart_unknown",
+      "restart_before_handoff",
+      "restart_late_completion",
+      "restart_reply_loss",
+      "proven_unsent",
+      "already_sent_not_unsent",
+      "resume_binding",
+      "before_cancel_handoff",
+      "after_cancel_handoff"
+    ],
+    "completed_scenarios": [
+      "economic_primary",
+      "corrected_current",
+      "cancel_ack",
+      "cancel_unknown",
+      "cancel_conflict",
+      "dispatch_stop",
+      "protect_stop",
+      "dispatch_withdraw",
+      "protect_withdraw",
+      "protect_rights",
+      "restart_corrected"
+    ],
+    "checks": [
+      "EX04_actual_database_all_admission_faults_rollback",
+      "EX01_actual_Q24_Q26_DB_admission",
+      "EX05_committed_command_lookup_no_second_intent",
+      "EX35_two_facades_shared_registry_database_reload",
+      "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+      "EX06_actual_Q20_projection_DB_cash598",
+      "EX20_actual_duplicate_fill_once",
+      "EX07_actual_Q20_settlement_no_reapply_cash598",
+      "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic",
+      "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only",
+      "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission",
+      "EX34_product_role_direct_financial_mutation_denied",
+      "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+      "EX27_EX28_actual_DB_cancel_ack_attempt_commit_ACK_hold_fill_finality_no_retry",
+      "EX27_EX28_actual_DB_cancel_unknown_attempt_commit_ACK_hold_fill_finality_no_retry",
+      "EX28_actual_DB_confirmation_before_fill_conflict_preserved_incomplete_hold",
+      "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_dispatch_before_stop_not_multi_process_isolation_proof",
+      "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_protect_before_stop_not_multi_process_isolation_proof",
+      "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_dispatch_before_withdraw_not_multi_process_isolation_proof",
+      "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_protect_before_withdraw_not_multi_process_isolation_proof",
+      "EX29_actual_DB_new_controller_session_withdraw_after_approve_report_risk_rights_loss",
+      "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_corrected_preserves_claims_history_hold"
+    ],
+    "goldens": {
+      "candidate": {
+        "quantity": "3",
+        "limit_price": "100",
+        "cost_bound": "2",
+        "maximum_burden": "302"
+      },
+      "partial_fill": {
+        "L": "1000",
+        "H": "302",
+        "F": "100",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "settlement": {
+        "L": "900",
+        "H": "202",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "fresh_query": {
+        "L": "900",
+        "H": "202",
+        "B": "900",
+        "U": "202",
+        "D": "0",
+        "A": "598",
+        "next_remaining": "196"
+      },
+      "corrected_delta": {
+        "quantity": "2",
+        "notional": "190",
+        "pnl": "10",
+        "available": "598",
+        "next_available": "196",
+        "manifest_consumed": true,
+        "all_history_preserved": true
+      }
+    },
+    "cleanup": [
+      {
+        "project": "qh-ledger-665593f712374e6482093ea172335620",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-c9d56e6482ae4514b95b49814cccc5bf",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-eed5a968d946440587d058ec0e32650a",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-b8fad33d20ac43a8820ec69d3b12b2bf",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-510c863d59cf490ba12e2ef69d407c39",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-c0cf4c017a6f4c1e8a24f64a2ce15f98",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-5daf8b965d014de386803c1d4615e302",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-e9fe6966e2d14abb879497e328d81960",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-39026f464cb14282b04db34a963fdcc5",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-af7347b0c2124024a7fa437803404e71",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-9b166e303ea546318abedfcf328e6bad",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-a3bba18f00f040a6b6c93fdca89c3afd",
+        "result": "own_project_removed"
+      }
+    ],
+    "phase": "restart_quarantine",
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "unexecuted": "Other current-version DB scenarios, full product, independent reviews, capacity and closed SQL; prior correction DB27 belongs to its recorded source version.",
+    "reason": "restart_state"
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "8ebf993bd2e46f7e4601ebd477d4b0b79c7b36be5f7b477d701bf40c1cea695c",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "71e3a287648c3fa3e4653794053fe9bcb1280b84b9ba596cdb0b4ff6d454a31d",
+    "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+    "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "237e598a16d9462c55d7b635093e808e2190884b58accc987884f0841daeeb80"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "8ebf993bd2e46f7e4601ebd477d4b0b79c7b36be5f7b477d701bf40c1cea695c",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "71e3a287648c3fa3e4653794053fe9bcb1280b84b9ba596cdb0b4ff6d454a31d",
+    "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+    "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "237e598a16d9462c55d7b635093e808e2190884b58accc987884f0841daeeb80"
+  },
+  "owned_unchanged": true,
+  "q27_complete": false,
+  "root_note": "21 planned; first11 passed22 checks, scenario12 restart_quarantine failed restart_state; all12 created projects must be checked cleanup. No later scenarios executed."
+}

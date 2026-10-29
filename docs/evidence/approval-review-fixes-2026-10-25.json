@@ -1,0 +1,604 @@
+{
+  "task_id": "Q26-local/J05-AR1-AR2",
+  "role_requested": "qh_development",
+  "model_requested": "Sol",
+  "reasoning_requested": "high",
+  "runtime_model_change_verified": false,
+  "status": "targeted_checks_passed_pending_root_independent_reviews_and_final_full_validator",
+  "scope": "synthetic_in_process_only",
+  "started_utc": "2026-10-25T09:05:39.897183+00:00",
+  "written_utc": "2026-10-25T09:12:05.669324+00:00",
+  "elapsed_since_capture_seconds": 385.772141,
+  "ownership": {
+    "authorized_write_files": [
+      "docs/development/approval.md",
+      "src/quantharbor/adapters/synthetic_approval.py",
+      "tests/product/test_approval_review.py"
+    ],
+    "actual_changed_files": [
+      "docs/development/approval.md",
+      "src/quantharbor/adapters/synthetic_approval.py",
+      "tests/product/test_approval_review.py"
+    ],
+    "allowned11_sha256": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+      "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+      "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+      "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+      "tests/product/test_approval_review.py": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1"
+    },
+    "before_after_hashes": {
+      "src/quantharbor/domain/approval.py": {
+        "before": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+        "after": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+        "changed": false
+      },
+      "src/quantharbor/application/approval.py": {
+        "before": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+        "after": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+        "changed": false
+      },
+      "src/quantharbor/ports/approval.py": {
+        "before": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+        "after": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+        "changed": false
+      },
+      "src/quantharbor/adapters/synthetic_approval.py": {
+        "before": "76f72e2908fa0b70ed17631570d9f9b8eb9cafea88df492583ad01abcec7725d",
+        "after": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+        "changed": true
+      },
+      "src/quantharbor/domain/serialization.py": {
+        "before": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+        "after": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+        "changed": false
+      },
+      "tests/product/synthetic_approval.py": {
+        "before": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+        "after": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+        "changed": false
+      },
+      "tests/product/test_approval.py": {
+        "before": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+        "after": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+        "changed": false
+      },
+      "tests/product/test_approval_regression.py": {
+        "before": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+        "after": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+        "changed": false
+      },
+      "docs/development/approval.md": {
+        "before": "4eed3b9c59769e6a7d16c782ead06f3c4b6cd0daaf1b4dffc0fb4d52c20c2dea",
+        "after": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+        "changed": true
+      },
+      "tests/product/test_approval_security.py": {
+        "before": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+        "after": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+        "changed": false
+      },
+      "tests/product/test_approval_review.py": {
+        "before": null,
+        "after": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1",
+        "changed": true
+      }
+    },
+    "domain_application_ports_serializer_frozen_preserved": true,
+    "existing_approval_tests_and_helper_unchanged": true,
+    "common_documents_contracts_evidence_unchanged": true,
+    "existing_tests_helpers_edit_necessity": null
+  },
+  "red_reproduction": {
+    "run": {
+      "label": "red-AR1-AR2",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_approval_review",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:05:40.037468+00:00",
+      "ended_utc": "2026-10-25T09:05:42.857790+00:00",
+      "elapsed_seconds": 2.820104,
+      "exit_code": 1,
+      "tests": 2,
+      "unittest_seconds": 2.61,
+      "log": "/private/tmp/q26-review-handoff/red-AR1-AR2.txt",
+      "log_sha256": "e0df379f744d3d6187202531a7c1edce98dbd338b2de08d517a597950e29d772"
+    },
+    "failures": 2,
+    "errors": 0,
+    "proof": {
+      "product_and_preexisting_owned_unchanged_at_red": {
+        "src/quantharbor/domain/approval.py": true,
+        "src/quantharbor/application/approval.py": true,
+        "src/quantharbor/ports/approval.py": true,
+        "src/quantharbor/adapters/synthetic_approval.py": true,
+        "src/quantharbor/domain/serialization.py": true,
+        "tests/product/synthetic_approval.py": true,
+        "tests/product/test_approval.py": true,
+        "tests/product/test_approval_regression.py": true,
+        "docs/development/approval.md": true,
+        "tests/product/test_approval_security.py": true
+      },
+      "failures": 2,
+      "errors": 0,
+      "new_test_sha256": "fc46a0bc29ba4476ee54777d90aaca0605c7a478a5315f4daa74a85898cde582"
+    },
+    "product_patch_after_actual_red": true,
+    "AR1_actual": "fifth repeated stop leaves hold records=1; valid disconnect rejected capacity_exceeded; converted to explicit assertion failure",
+    "AR2_actual": "paused session retains hold=(6,522190) after direct disconnect; explicit assertNotIn failure"
+  },
+  "fix": {
+    "AR1": "After current authorization, repeated account-wide stop resolves and returns existing same-generation stop event ref without writes/version/charge. Normal session operations reserve stop1+disconnect2 records and corresponding bytes; stop spends1 and preserves disconnect2. Explicit resume allows a new stop event.",
+    "AR2": "Disconnect commits paused history/event and releases only own residual session hold atomically. Restore releases every old-generation session hold including legacy paused/faulted/invalidated and expired running sessions, preserving all records/heads/registry history and consumed financial/approval holds.",
+    "new_storage_collections": 0,
+    "new_API_or_schema": false,
+    "general_eviction": false,
+    "implicit_restart_cancel": false,
+    "completion_and_protective_withdraw_holds_preserved": true,
+    "fault_semantics": "Operation/commit failure rolls staged release back; clock failure preserves reservations/state with existing faulted mode and fault latch only. Authority epoch/generation unchanged on failure.",
+    "session_budget_records": {
+      "initial": 8,
+      "ordinary_protected": 3,
+      "stop_cost": 1,
+      "disconnect_cost": 2,
+      "heartbeat_minimum_before": 5,
+      "one_event_minimum_before": 4
+    },
+    "note_on_bytes": "Unused byte budget is the actual conservative residual, not necessarily records*64KiB because actual committed bytes are deducted; disconnect releases the full residual tuple.",
+    "finite_capacity": "Session/history/registry entries remain; new session issuance legitimately exhausts finite history. No infinite-session claim.",
+    "diffs": {
+      "src/quantharbor/adapters/synthetic_approval.py": {
+        "path": "/private/tmp/q26-review-handoff/src__quantharbor__adapters__synthetic_approval.py.diff",
+        "sha256": "f04e34dac6760faa497e8904cc0aaba6fd2823304bdadf02768199fed391e10a"
+      },
+      "tests/product/test_approval_review.py": {
+        "path": "/private/tmp/q26-review-handoff/tests__product__test_approval_review.py.diff",
+        "sha256": "2f33268a7ad7473987d95f4cc37d10ed0d19c62b88f66ac43477d26c52755b89"
+      },
+      "docs/development/approval.md": {
+        "path": "/private/tmp/q26-review-handoff/docs__development__approval.md.diff",
+        "sha256": "839ef455d85ba075d0eec768a9adfde3114c8d494f4f5b003dd256e4348a143b"
+      }
+    }
+  },
+  "test_selection": {
+    "new_methods": [
+      "test_approval_review.ApprovalReview.test_AR1_repeated_stop_preserves_disconnect",
+      "test_approval_review.ApprovalReview.test_AR2_disconnect_releases_unusable_session_hold",
+      "test_approval_review.ApprovalReview.test_repeated_stop_same_and_changed_timestamp_is_exact_noop",
+      "test_approval_review.ApprovalReview.test_explicit_resume_then_stop_creates_new_evidence_and_can_disconnect",
+      "test_approval_review.ApprovalReview.test_repeated_stop_still_requires_current_authority_and_valid_session",
+      "test_approval_review.ApprovalReview.test_full_store_runtime_heartbeat_and_resume_leave_stop_and_disconnect",
+      "test_approval_review.ApprovalReview.test_disconnect_preserves_live_completion_and_withdraw_holds",
+      "test_approval_review.ApprovalReview.test_restore_releases_legacy_paused_and_expired_generation_holds",
+      "test_approval_review.ApprovalReview.test_restore_releases_other_terminal_session_holds_without_erasing_history",
+      "test_approval_review.ApprovalReview.test_disconnect_and_restore_failure_roll_back_holds_and_state",
+      "test_approval_review.ApprovalReview.test_disconnect_and_restore_clock_failure_preserve_holds_and_latch_fault",
+      "test_approval_review.ApprovalReview.test_restore_preserves_unknown_reservations_and_new_controller_protective_withdraw",
+      "test_approval_review.ApprovalReview.test_closed_sessions_release_only_holds_until_finite_history_is_full"
+    ],
+    "selected_existing_methods_and_reasons": {
+      "test_approval.ApprovalFixedCases.test_AP06_all_current_dependency_rights_and_policy_are_fresh": "현재 원천 권리·정책 검사 보존",
+      "test_approval.ApprovalFixedCases.test_AP07_end_exclusive_presentation_expiry_heartbeat_no_extension_clock_fault": "heartbeat·승인 만료·clock fault 경계",
+      "test_approval.ApprovalFixedCases.test_AP08_disconnect_liveness_expiry_never_auto_resume": "disconnect·liveness 이후 권한과 자동 재개 차단",
+      "test_approval.ApprovalFixedCases.test_AP14_restore_external_generation_preserves_unknown_and_pending_invalidation": "restore 세대·unknown·pending 정리",
+      "test_approval.ApprovalFixedCases.test_AP16_capacity_failure_no_eviction_reserved_withdrawal_closes": "유한 전체 용량·이력·보호 철회 양성 경로",
+      "test_approval.ApprovalFixedCases.test_AP19_protective_new_control_session_after_rights_risk_loss": "만료 후 새 controller와 원천/risk 상실 시 보호 철회",
+      "test_approval_regression.ApprovalRegression.test_current_rights_revoked_at_exact_instant_and_duplicate_finance_blocked": "현재 원천 권리 상실·재전달 상세 권한",
+      "test_approval_regression.ApprovalRegression.test_restore_consumed_withdraw_with_new_generation_and_detail_stays_restricted": "restore 후 새 controller 보호 철회·상세 조회 제한",
+      "test_approval_regression.ApprovalRegression.test_session_expiry_is_end_exclusive_even_with_recent_heartbeat": "session 절대 만료의 끝 제외",
+      "test_approval_regression.ApprovalRegression.test_clock_missing_uncertain_and_monotonic_query_observation": "clock fault 및 관찰 시각 역행",
+      "test_approval_regression.ApprovalRegression.test_reserved_control_closure_survives_new_runtime_capacity_failure": "runtime 포화 후 기존 disconnect 보호",
+      "test_approval_regression.ApprovalRegression.test_lower_byte_capacity_and_altered_snapshot_fail_without_partial_state": "bytes 포화·snapshot 변조 거부 원자성",
+      "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission": "원 승인자 현재 권한 회수 시 dispatch 차단",
+      "test_approval_security.ApprovalSecurity.test_AS2_outstanding_dispatch_completions_preserve_withdrawal": "live 완료 예약과 보호 철회 예산 보존",
+      "test_approval_security.ApprovalSecurity.test_dispatch_original_disconnect_never_implicitly_cancels": "disconnect 이후 dispatch 차단·예약 자동 취소 없음",
+      "test_approval_security.ApprovalSecurity.test_protective_new_controller_survives_permission_report_and_risk_loss": "권한·원천 report·risk 상실 후 새 controller 보호 철회",
+      "test_approval_security.ApprovalSecurity.test_terminal_transition_retains_every_outstanding_completion_reservation": "terminal approval에서도 미완료 명령 예산 보존",
+      "test_approval_security.ApprovalSecurity.test_exact_eight_record_closure_at_record_and_byte_capacity": "최종8 records와 bytes 포화 시 보호 철회"
+    },
+    "new_count": 13,
+    "existing_count": 18,
+    "expected_total": 31,
+    "command": [
+      "python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "test_approval_review",
+      "test_approval.ApprovalFixedCases.test_AP06_all_current_dependency_rights_and_policy_are_fresh",
+      "test_approval.ApprovalFixedCases.test_AP07_end_exclusive_presentation_expiry_heartbeat_no_extension_clock_fault",
+      "test_approval.ApprovalFixedCases.test_AP08_disconnect_liveness_expiry_never_auto_resume",
+      "test_approval.ApprovalFixedCases.test_AP14_restore_external_generation_preserves_unknown_and_pending_invalidation",
+      "test_approval.ApprovalFixedCases.test_AP16_capacity_failure_no_eviction_reserved_withdrawal_closes",
+      "test_approval.ApprovalFixedCases.test_AP19_protective_new_control_session_after_rights_risk_loss",
+      "test_approval_regression.ApprovalRegression.test_current_rights_revoked_at_exact_instant_and_duplicate_finance_blocked",
+      "test_approval_regression.ApprovalRegression.test_restore_consumed_withdraw_with_new_generation_and_detail_stays_restricted",
+      "test_approval_regression.ApprovalRegression.test_session_expiry_is_end_exclusive_even_with_recent_heartbeat",
+      "test_approval_regression.ApprovalRegression.test_clock_missing_uncertain_and_monotonic_query_observation",
+      "test_approval_regression.ApprovalRegression.test_reserved_control_closure_survives_new_runtime_capacity_failure",
+      "test_approval_regression.ApprovalRegression.test_lower_byte_capacity_and_altered_snapshot_fail_without_partial_state",
+      "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission",
+      "test_approval_security.ApprovalSecurity.test_AS2_outstanding_dispatch_completions_preserve_withdrawal",
+      "test_approval_security.ApprovalSecurity.test_dispatch_original_disconnect_never_implicitly_cancels",
+      "test_approval_security.ApprovalSecurity.test_protective_new_controller_survives_permission_report_and_risk_loss",
+      "test_approval_security.ApprovalSecurity.test_terminal_transition_retains_every_outstanding_completion_reservation",
+      "test_approval_security.ApprovalSecurity.test_exact_eight_record_closure_at_record_and_byte_capacity",
+      "-v"
+    ],
+    "not_selected": "전체57 재실행·전체 product·quality unittest87·serializer suite"
+  },
+  "checks": {
+    "red-AR1-AR2": {
+      "label": "red-AR1-AR2",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_approval_review",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:05:40.037468+00:00",
+      "ended_utc": "2026-10-25T09:05:42.857790+00:00",
+      "elapsed_seconds": 2.820104,
+      "exit_code": 1,
+      "tests": 2,
+      "unittest_seconds": 2.61,
+      "log": "/private/tmp/q26-review-handoff/red-AR1-AR2.txt",
+      "log_sha256": "e0df379f744d3d6187202531a7c1edce98dbd338b2de08d517a597950e29d772"
+    },
+    "final-targeted": {
+      "label": "final-targeted",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_approval_review",
+        "test_approval.ApprovalFixedCases.test_AP06_all_current_dependency_rights_and_policy_are_fresh",
+        "test_approval.ApprovalFixedCases.test_AP07_end_exclusive_presentation_expiry_heartbeat_no_extension_clock_fault",
+        "test_approval.ApprovalFixedCases.test_AP08_disconnect_liveness_expiry_never_auto_resume",
+        "test_approval.ApprovalFixedCases.test_AP14_restore_external_generation_preserves_unknown_and_pending_invalidation",
+        "test_approval.ApprovalFixedCases.test_AP16_capacity_failure_no_eviction_reserved_withdrawal_closes",
+        "test_approval.ApprovalFixedCases.test_AP19_protective_new_control_session_after_rights_risk_loss",
+        "test_approval_regression.ApprovalRegression.test_current_rights_revoked_at_exact_instant_and_duplicate_finance_blocked",
+        "test_approval_regression.ApprovalRegression.test_restore_consumed_withdraw_with_new_generation_and_detail_stays_restricted",
+        "test_approval_regression.ApprovalRegression.test_session_expiry_is_end_exclusive_even_with_recent_heartbeat",
+        "test_approval_regression.ApprovalRegression.test_clock_missing_uncertain_and_monotonic_query_observation",
+        "test_approval_regression.ApprovalRegression.test_reserved_control_closure_survives_new_runtime_capacity_failure",
+        "test_approval_regression.ApprovalRegression.test_lower_byte_capacity_and_altered_snapshot_fail_without_partial_state",
+        "test_approval_security.ApprovalSecurity.test_AS1_dispatch_rechecks_original_approver_current_permission",
+        "test_approval_security.ApprovalSecurity.test_AS2_outstanding_dispatch_completions_preserve_withdrawal",
+        "test_approval_security.ApprovalSecurity.test_dispatch_original_disconnect_never_implicitly_cancels",
+        "test_approval_security.ApprovalSecurity.test_protective_new_controller_survives_permission_report_and_risk_loss",
+        "test_approval_security.ApprovalSecurity.test_terminal_transition_retains_every_outstanding_completion_reservation",
+        "test_approval_security.ApprovalSecurity.test_exact_eight_record_closure_at_record_and_byte_capacity",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:09:50.691159+00:00",
+      "ended_utc": "2026-10-25T09:11:46.738061+00:00",
+      "elapsed_seconds": 116.048151,
+      "exit_code": 0,
+      "tests": 31,
+      "unittest_seconds": 115.82,
+      "log": "/private/tmp/q26-review-handoff/final-targeted.txt",
+      "log_sha256": "5d4963996225f3f9bc93cf98fdb3bfc1d32a602f04aae8e2e14f0046c6ecdfaa"
+    },
+    "final-public-quality": {
+      "label": "final-public-quality",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:09:59.507377+00:00",
+      "ended_utc": "2026-10-25T09:10:00.308592+00:00",
+      "elapsed_seconds": 0.801073,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-review-handoff/final-public-quality.txt",
+      "log_sha256": "98c7ee9772bd5b46f449f1ae023f9729bdae2b5d6e33ec20412247427e0182d8"
+    },
+    "final-team": {
+      "label": "final-team",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_ai_team.py"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:09:59.507260+00:00",
+      "ended_utc": "2026-10-25T09:09:59.562343+00:00",
+      "elapsed_seconds": 0.054919,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-review-handoff/final-team.txt",
+      "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+    },
+    "final-diff": {
+      "label": "final-diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:09:59.507313+00:00",
+      "ended_utc": "2026-10-25T09:09:59.546312+00:00",
+      "elapsed_seconds": 0.038854,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-review-handoff/final-diff.txt",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "final-invariants": {
+      "label": "final-invariants",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "/private/tmp/q26-review-handoff/audit.py"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T09:10:25.332563+00:00",
+      "ended_utc": "2026-10-25T09:10:25.538319+00:00",
+      "elapsed_seconds": 0.205513,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-review-handoff/final-invariants.txt",
+      "log_sha256": "6e9f20ed8dcf884e13d9888a20507e371b9c9455d99e3b15ba196c5002a0c4d0"
+    }
+  },
+  "final_test_counts": {
+    "new_review": 13,
+    "selected_existing": 18,
+    "total": 31,
+    "failures": 0,
+    "errors": 0
+  },
+  "test_execution": {
+    "red_invocations": 1,
+    "final_targeted_invocations": 1,
+    "green_reruns": 0,
+    "all57_rerun": false,
+    "full_product_rerun": false,
+    "quality_unittest87_run": false
+  },
+  "historical_evidence": {
+    "prior57": {
+      "label": "final-focused",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-p",
+        "test_approval*.py",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:41:12.512273+00:00",
+      "ended_utc": "2026-10-25T08:49:25.372588+00:00",
+      "elapsed_seconds": 492.85283,
+      "exit_code": 0,
+      "tests": 57,
+      "unittest_seconds": 492.618,
+      "log": "/private/tmp/q26-security-handoff/final-focused.txt",
+      "log_sha256": "e3a1541fcbd08f17af11768ce218727e0935a4a2e0d935942265b4ef1d82a00e"
+    },
+    "source": "docs/evidence/approval-security-fixes-2026-10-25.json",
+    "interpretation": "Preserved historical implementation evidence; not a claim of 57 tests executed on this repair.",
+    "unchanged": true
+  },
+  "invariants": {
+    "checked_utc": "2026-10-25T09:10:25.532738+00:00",
+    "preexisting_public_files_compared": 474,
+    "current_public_files": 475,
+    "preexisting_changes": [
+      "docs/development/approval.md",
+      "src/quantharbor/adapters/synthetic_approval.py"
+    ],
+    "added_files": [
+      "tests/product/test_approval_review.py"
+    ],
+    "nonowned_changes": [],
+    "root_common_unchanged": true,
+    "allowned11_sha256": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+      "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+      "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+      "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+      "tests/product/test_approval_review.py": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1"
+    },
+    "allowned11_match_freeze": true,
+    "frozen_domain_application_ports_serializer_and_existing_tests_unchanged": true,
+    "baseline7": {
+      "docs/architecture.md": {
+        "expected": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+        "actual": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+        "match": true
+      },
+      "docs/contracts/serialization-v1.md": {
+        "expected": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+        "actual": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+        "match": true
+      },
+      "docs/implementation-backlog.md": {
+        "expected": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+        "actual": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+        "match": true
+      },
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": {
+        "expected": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+        "actual": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+        "match": true
+      },
+      "docs/contracts/data-v1.md": {
+        "expected": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+        "actual": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+        "match": true
+      },
+      "docs/contracts/execution-v1.md": {
+        "expected": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+        "actual": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+        "match": true
+      },
+      "docs/contracts/operations-v1.md": {
+        "expected": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+        "actual": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+        "match": true
+      }
+    },
+    "fixture": {
+      "expected": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+      "actual": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+      "match": true
+    },
+    "prior57_evidence_unchanged": true,
+    "bounded_owned_whitespace_findings": [],
+    "diffs": {
+      "src/quantharbor/adapters/synthetic_approval.py": {
+        "path": "/private/tmp/q26-review-handoff/src__quantharbor__adapters__synthetic_approval.py.diff",
+        "sha256": "f04e34dac6760faa497e8904cc0aaba6fd2823304bdadf02768199fed391e10a"
+      },
+      "tests/product/test_approval_review.py": {
+        "path": "/private/tmp/q26-review-handoff/tests__product__test_approval_review.py.diff",
+        "sha256": "2f33268a7ad7473987d95f4cc37d10ed0d19c62b88f66ac43477d26c52755b89"
+      },
+      "docs/development/approval.md": {
+        "path": "/private/tmp/q26-review-handoff/docs__development__approval.md.diff",
+        "sha256": "839ef455d85ba075d0eec768a9adfde3114c8d494f4f5b003dd256e4348a143b"
+      }
+    },
+    "diff_scope_note": "git diff --check covers tracked changes; explicit bounded whitespace/diffs cover all three owned untracked files",
+    "post_targeted_allowned11_match_freeze": true,
+    "post_targeted_preexisting_public_files_compared": 474,
+    "post_targeted_nonowned_changes": []
+  },
+  "public_quality": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 475,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "not_executed": [
+    "full product suite and full approval57 suite; final independent validator owns full run once",
+    "quality unittest87",
+    "unchanged serializer compatibility suite",
+    "independent general/security review",
+    "subagents",
+    "child MCP",
+    "network",
+    "private/credential/password reads",
+    "real APIs",
+    "Docker",
+    "installation",
+    "project Git mutation",
+    "Q27 persistent DB atomicity/egress/reconciliation and real authentication"
+  ],
+  "root_handoff": [
+    "Integrate common task/status/evidence/queue; worker intentionally left all common files unchanged.",
+    "Review AR1/AR2 adapter/docs/new tests and independently re-review security/general effects.",
+    "Final independent validator runs full product/quality once; this worker ran selected31 only.",
+    "Existing contract delegates exact reserve/release rules to guide; no new API/schema/contract file written."
+  ],
+  "artifacts": {
+    "before.json": {
+      "path": "/private/tmp/q26-review-handoff/before.json",
+      "sha256": "39d10204dbe894a0bcce1e5be741245c53cd62dfca56b075acdb2f29b0948cc0"
+    },
+    "freeze.json": {
+      "path": "/private/tmp/q26-review-handoff/freeze.json",
+      "sha256": "1a9eb98cb63230e65cb22ba659683487e35611e4848f594a4b9ed58b4ad90173"
+    },
+    "audit.json": {
+      "path": "/private/tmp/q26-review-handoff/audit.json",
+      "sha256": "ba7b58dd05d40580396c8f7e1bbaea06a9768af2ad412ea0ec0e16411cea873e"
+    },
+    "selection.json": {
+      "path": "/private/tmp/q26-review-handoff/selection.json",
+      "sha256": "ecfdb7eab09e6e88489fa56dcac7c1bfc5f72633003dc04bcef332fa1ba80b7d"
+    },
+    "red-proof.json": {
+      "path": "/private/tmp/q26-review-handoff/red-proof.json",
+      "sha256": "90920cce74e37944d58fcb11e0cf93e3225657066eee27312bb62cfab7058bbe"
+    },
+    "run.py": {
+      "path": "/private/tmp/q26-review-handoff/run.py",
+      "sha256": "b4b5ab117d1078e438a4bda230bdcc4cf2e815af0cd2ff0c3e450264c7520d4d"
+    },
+    "audit.py": {
+      "path": "/private/tmp/q26-review-handoff/audit.py",
+      "sha256": "d83261d8c5ae6d69aa758822421ff1cdb79e5128d3402a10cd5014a1eec656fb"
+    },
+    "build_handoff.py": {
+      "path": "/private/tmp/q26-review-handoff/build_handoff.py",
+      "sha256": "f6da8e7f12a23d168506fc9e7b10267ce166f7a9c6ca2102fd68df9224c786e9"
+    }
+  },
+  "root_verification": {
+    "owned_hashes_matched": 11,
+    "baseline_matched": 7,
+    "fixture_matched": true,
+    "independent_review": "pending"
+  }
+}

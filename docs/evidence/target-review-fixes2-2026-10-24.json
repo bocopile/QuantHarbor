@@ -1,0 +1,93 @@
+{
+  "task": "Q24-local",
+  "role": "qh_implementer",
+  "independent_review": false,
+  "changed_files": [
+    "docs/development/target.md",
+    "src/quantharbor/application/target.py",
+    "tests/product/test_target_review_cases.py"
+  ],
+  "red": {
+    "tests": 4,
+    "failures": 4,
+    "errors": 0,
+    "seconds": 14.438,
+    "log": "/private/tmp/q24-second/red-initial.txt"
+  },
+  "separate_test_diagnostic_error": {
+    "tests": 25,
+    "failures": 0,
+    "errors": 1,
+    "seconds": 111.048,
+    "log": "/private/tmp/q24-second/green-cases.txt",
+    "fixed": true
+  },
+  "focused_green": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 29.536,
+    "log": "/private/tmp/q24-second/green-new.txt"
+  },
+  "full_product": {
+    "runs_after_freeze": 1,
+    "tests": 455,
+    "q24": 75,
+    "seconds": 448.487,
+    "result": "pass",
+    "log": "/private/tmp/q24-second/product-final.txt"
+  },
+  "quality": {
+    "tests": 87,
+    "seconds": 3.121,
+    "result": "pass",
+    "flags": [
+      "-I",
+      "-S",
+      "-B"
+    ]
+  },
+  "public": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 405,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "team": "pass:6/36/110",
+  "verification": {
+    "public_files": 391,
+    "changed_files": [
+      "docs/development/target.md",
+      "src/quantharbor/application/target.py",
+      "tests/product/test_target_review_cases.py"
+    ],
+    "nonowned_changes": 0,
+    "baseline_match": 7,
+    "owned": 12,
+    "frozen_source_test_match": 11,
+    "full_frozen_match": 11,
+    "diff_whitespace": "pass"
+  },
+  "full_frozen_hashes_match_after_product": 12,
+  "sha256": {
+    "docs/development/target.md": "15fb9335be797ea3102becaf95159c81a04aa8e3e212ae66a14569053a67002e",
+    "src/quantharbor/adapters/synthetic_target.py": "d1866d1846a7035bc8217cf03d71e37a152ef419fce82ac3ee863dd5ef24fd3d",
+    "src/quantharbor/application/target.py": "b5b71c10a76d98e77e5a58694fedf1099c53da7523521f65688b8fa5a75c55d2",
+    "src/quantharbor/domain/serialization.py": "3e7243f427db45333b0017ebc0369760a42f5bd6a1b53f11fd826b3befb84d5b",
+    "src/quantharbor/domain/target.py": "206ce294150ba2c634f6178f1cc0bba5dbff6fbdec02230718d964b647c2426d",
+    "src/quantharbor/ports/target.py": "e0fbf705e838d8ac1270f7eeeddd0582e2fff842c3d0b539a4fa5c2a898efa0c",
+    "tests/product/synthetic_target.py": "401ea1d7880bba7f5d65047124c993e1e2309b1a09ec40f7a67b3b352ecf5ea0",
+    "tests/product/test_target.py": "ca99cdb33d46acb053133dcaa8e6b387875d29d5dd6cea7ee3404be4636bd648",
+    "tests/product/test_target_canonical.py": "e6ed37aed7969af071dc89b5e915323b492a12d5b089bfaf236f063f8f263b35",
+    "tests/product/test_target_constraints.py": "787b8a3ef6f4c658c45602f80b578edacb0047c38d06cb05e1fe13b2e67b1657",
+    "tests/product/test_target_review.py": "3e89df8a1d18efcd87c7f0d0d210386cb9d6dca87e5094a854a93f6f6bd59a9a",
+    "tests/product/test_target_review_cases.py": "857d3f3fbac6d334ca241c1c95d015d2552ea3ddc14ff8c1370d63ceec478a6c"
+  },
+  "scope": "synthetic local self-validation; root records common evidence/status and performs subsequent assessment",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "result": "T5b_T6b_fixed_review_pending",
+  "actual_api_calls": 0
+}

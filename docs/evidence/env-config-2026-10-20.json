@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-20",
+  "client": "codex-cli 0.162.1",
+  "scope": "Local app-server configuration metadata only; no model turn or behavioral tests",
+  "configuration": {
+    "subagent_limit": 4,
+    "codebase_memory": {
+      "enabled": true,
+      "enabled_tools": [
+        "search_graph",
+        "trace_path",
+        "get_code_snippet",
+        "query_graph",
+        "search_code",
+        "get_architecture",
+        "get_graph_schema",
+        "index_repository",
+        "index_status",
+        "list_projects",
+        "detect_changes"
+      ],
+      "default_tools_approval_mode": "writes"
+    },
+    "apps_default": {
+      "enabled": true,
+      "approvals_reviewer": null,
+      "destructive_enabled": false,
+      "open_world_enabled": false,
+      "default_tools_approval_mode": "writes"
+    },
+    "named_permission_profiles": [
+      "qh_development",
+      "qh_review"
+    ],
+    "profiles_selected": false
+  },
+  "skills": [
+    {
+      "name": "qh-contract-change",
+      "enabled": true
+    },
+    {
+      "name": "qh-evidence-decision",
+      "enabled": true
+    },
+    {
+      "name": "qh-task-handoff",
+      "enabled": true
+    }
+  ],
+  "skill_discovery_errors": 0,
+  "hooks": [
+    {
+      "eventName": "sessionStart",
+      "enabled": true,
+      "trustStatus": "untrusted",
+      "isManaged": false
+    }
+  ],
+  "hook_discovery_errors": 0,
+  "hook_discovery_warnings": 0,
+  "not_established": [
+    "current desktop thread hot reload",
+    "standalone custom agent discovery",
+    "MCP runtime tool exposure",
+    "permission boundary behavior",
+    "hook trust or execution",
+    "ENV-11 representative workflow"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "run_id": "cf08ed49350d4d4589f04f25e48eb87b",
+  "generated_at_utc": "2026-10-20T08:12:53.645006+00:00",
+  "scope": "synthetic_command_profile_behavior",
+  "config_sha256": "4449102b0489dfff627db887107076ddd10458866d75ff170b48f3d012cc1b41",
+  "policy_sha256": "1540f63336b6fd8259c865f5d7c5a28b441478a016f75c9f7d71d04713b593fb",
+  "validator_sha256": "9dbb848c54ca0a050890704cb8a9998d59a6c8109b778e8b2cbab7ef472ec33e",
+  "enforced_limits": {
+    "probe_timeout_seconds": 15,
+    "probe_batch_timeout_seconds": 120,
+    "automatic_retries": 0
+  },
+  "audit_scope": "completed_report_of_synthetic_profile_probes_only",
+  "network_positive_control": "loopback_reachable",
+  "results": [
+    {
+      "profile": "qh_review",
+      "case": "public_read",
+      "expected": "allowed",
+      "attempt": 1,
+      "duration_ms": 266,
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "workspace_write",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 67,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "private_read",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 69,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "protected_config_write",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 73,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "loopback_connect",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 75,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "public_read",
+      "expected": "allowed",
+      "attempt": 1,
+      "duration_ms": 81,
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "workspace_write",
+      "expected": "allowed",
+      "attempt": 1,
+      "duration_ms": 78,
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "private_read",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 79,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "protected_config_write",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 80,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "loopback_connect",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 79,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "Not a test of MCP, connectors, models, or the active app session.",
+    "No actual credentials read; only the configured logs rule was probed.",
+    "No hook trust, subagent, independent review, or broker validation.",
+    "Audit is emitted at completion; it is not a crash-durable global tool log."
+  ],
+  "control_tests": {
+    "command": "python3 -B -m unittest discover -s tests -p 'test_environment_controls.py' -v",
+    "passed": 5,
+    "failed": 0,
+    "source_sha256": "a64c741c83ba12fd66785ce54176a16bb63286aa513769c859cee8a9152e2aca"
+  }
+}

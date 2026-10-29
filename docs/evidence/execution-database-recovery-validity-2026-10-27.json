@@ -1,0 +1,1616 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_recovery_validity",
+  "exit_code": 0,
+  "elapsed_seconds": 1203.171,
+  "at": "2026-10-27T05:34:11.837664+00:00",
+  "command": "python3.13 -B /private/tmp/qh-q27-db-recovery-followup2.py",
+  "runner_sha256": "bb60631ea172364dd643d5b7a015e2b524340a21143960dff977639be1fd12b8",
+  "handoff_sha256": "c79e049522cf5ecde8b3110ceed04e12df12475a9eb0ed64135ce451794f5cd8",
+  "result": {
+    "scope": "Q27_root_actual_recovery_validity_focused19",
+    "status": "partial",
+    "q27_complete": false,
+    "planned_scenarios": [
+      "recovery-request",
+      "recovery-policy",
+      "recovery-fresh",
+      "recovery-runtime",
+      "recovery-unknown",
+      "recovery-cost",
+      "recovery-rights",
+      "binding-rollback",
+      "binding-commit_loss",
+      "binding-sql",
+      "invalidated-recovery",
+      "SEC1-disconnect",
+      "SEC2-submit",
+      "SEC2-cancel",
+      "SEC2-cancel-exact",
+      "SEC2-valid",
+      "active-third",
+      "terminal-third",
+      "saturated-completion"
+    ],
+    "completed_scenarios": [
+      "recovery-request",
+      "recovery-policy",
+      "recovery-fresh",
+      "recovery-runtime",
+      "recovery-unknown",
+      "recovery-cost",
+      "recovery-rights",
+      "binding-rollback",
+      "binding-commit_loss",
+      "binding-sql",
+      "invalidated-recovery",
+      "SEC1-disconnect",
+      "SEC2-submit",
+      "SEC2-cancel",
+      "SEC2-cancel-exact",
+      "SEC2-valid",
+      "active-third",
+      "terminal-third",
+      "saturated-completion"
+    ],
+    "checks": [
+      "DEC005_request_actual_boundary_original_rows_bytes",
+      "DEC005_policy_actual_boundary_original_rows_bytes",
+      "DEC005_fresh_actual_boundary_original_rows_bytes",
+      "DEC005_runtime_actual_boundary_original_rows_bytes",
+      "DEC005_unknown_actual_boundary_original_rows_bytes",
+      "DEC005_cost_actual_boundary_original_rows_bytes",
+      "DEC005_rights_actual_boundary_original_rows_bytes",
+      "DEC005_transaction_rollback_actual_DB_registry_CAS_readset",
+      "DEC005_transaction_commit_loss_actual_DB_registry_CAS_readset",
+      "DEC005_transaction_sql_actual_DB_registry_CAS_readset",
+      "DEC004_actual_rows_bytes_recovery_invalidated",
+      "SEC1_actual_DB_disconnect_paused_fresh_rebind_manual_resume_every_rows_bytes_nonincrease_no_owner_borrow",
+      "SEC2_submit_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend",
+      "SEC2_cancel_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend",
+      "SEC2_cancel_boundary_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend",
+      "SEC2_actual_DB_submit_cancel_positive_after_final_return_one_second_advance",
+      "DEC004_active3_actual_admission_gate",
+      "DEC004_same_generation_terminal3_admission_and_dispatch",
+      "EX32_saturated_two_owner_bytes_issued_fill_correction_cancel_withdraw_stop_restart_other_reserve"
+    ],
+    "goldens": {
+      "DEC005_request": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4034952,
+              "records": 62,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 34184,
+              "actual_records": 24
+            },
+            "after": {
+              "bytes": 3578484,
+              "records": 60,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 3542016,
+                "records": 35
+              },
+              "actual_bytes": 36468,
+              "actual_records": 25
+            }
+          },
+          {
+            "stage": "elective-request-expiry-current-reconcile",
+            "before": {
+              "bytes": 4962392,
+              "records": 71,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 4918272,
+                "records": 44
+              },
+              "actual_bytes": 44120,
+              "actual_records": 27
+            },
+            "after": {
+              "bytes": 4965040,
+              "records": 72,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 4918272,
+                "records": 44
+              },
+              "actual_bytes": 46768,
+              "actual_records": 28
+            }
+          },
+          {
+            "stage": "explicit-resume",
+            "before": {
+              "bytes": 4965040,
+              "records": 72,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 4918272,
+                "records": 44
+              },
+              "actual_bytes": 46768,
+              "actual_records": 28
+            },
+            "after": {
+              "bytes": 4049819,
+              "records": 67,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 49051,
+              "actual_records": 29
+            }
+          }
+        ],
+        "received": 0,
+        "original_retained": true,
+        "storage": {
+          "bytes": 4049819,
+          "records": 67,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 4000768,
+            "records": 38
+          },
+          "actual_bytes": 49051,
+          "actual_records": 29
+        }
+      },
+      "DEC005_policy": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4034952,
+              "records": 62,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 34184,
+              "actual_records": 24
+            },
+            "after": {
+              "bytes": 3578484,
+              "records": 60,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 3542016,
+                "records": 35
+              },
+              "actual_bytes": 36468,
+              "actual_records": 25
+            }
+          },
+          {
+            "stage": "explicit-resume",
+            "before": {
+              "bytes": 4965004,
+              "records": 72,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 4918272,
+                "records": 44
+              },
+              "actual_bytes": 46732,
+              "actual_records": 28
+            },
+            "after": {
+              "bytes": 4049783,
+              "records": 67,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 49015,
+              "actual_records": 29
+            }
+          }
+        ],
+        "received": 0,
+        "original_retained": true,
+        "storage": {
+          "bytes": 4049783,
+          "records": 67,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 4000768,
+            "records": 38
+          },
+          "actual_bytes": 49015,
+          "actual_records": 29
+        }
+      },
+      "DEC005_fresh": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4580160,
+              "records": 81,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4492288,
+                "records": 45
+              },
+              "actual_bytes": 87872,
+              "actual_records": 36
+            },
+            "after": {
+              "bytes": 4123692,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4033536,
+                "records": 42
+              },
+              "actual_bytes": 90156,
+              "actual_records": 37
+            }
+          },
+          {
+            "stage": "explicit-resume",
+            "before": {
+              "bytes": 5222872,
+              "records": 85,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 4918272,
+                "records": 44
+              },
+              "actual_bytes": 304600,
+              "actual_records": 41
+            },
+            "after": {
+              "bytes": 4307650,
+              "records": 80,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 306882,
+              "actual_records": 42
+            }
+          }
+        ],
+        "received": 1,
+        "original_retained": true,
+        "storage": {
+          "bytes": 5150314,
+          "records": 101,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 4787200,
+            "records": 50
+          },
+          "actual_bytes": 363114,
+          "actual_records": 51
+        }
+      },
+      "DEC005_runtime": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4034952,
+              "records": 62,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 34184,
+              "actual_records": 24
+            },
+            "after": {
+              "bytes": 3578484,
+              "records": 60,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 3542016,
+                "records": 35
+              },
+              "actual_bytes": 36468,
+              "actual_records": 25
+            }
+          }
+        ],
+        "received": 0,
+        "original_retained": true,
+        "storage": {
+          "bytes": 3580672,
+          "records": 61,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 3542016,
+            "records": 35
+          },
+          "actual_bytes": 38656,
+          "actual_records": 26
+        }
+      },
+      "DEC005_unknown": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4877518,
+              "records": 83,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4787200,
+                "records": 50
+              },
+              "actual_bytes": 90318,
+              "actual_records": 33
+            },
+            "after": {
+              "bytes": 4421052,
+              "records": 81,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4328448,
+                "records": 47
+              },
+              "actual_bytes": 92604,
+              "actual_records": 34
+            }
+          }
+        ],
+        "received": 1,
+        "original_retained": true,
+        "storage": {
+          "bytes": 4613507,
+          "records": 82,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 4328448,
+            "records": 47
+          },
+          "actual_bytes": 285059,
+          "actual_records": 35
+        }
+      },
+      "DEC005_cost": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4812807,
+              "records": 83,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4721664,
+                "records": 49
+              },
+              "actual_bytes": 91143,
+              "actual_records": 34
+            },
+            "after": {
+              "bytes": 4356341,
+              "records": 81,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4262912,
+                "records": 46
+              },
+              "actual_bytes": 93429,
+              "actual_records": 35
+            }
+          }
+        ],
+        "received": 1,
+        "original_retained": true,
+        "storage": {
+          "bytes": 4548795,
+          "records": 82,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 4262912,
+            "records": 46
+          },
+          "actual_bytes": 285883,
+          "actual_records": 36
+        }
+      },
+      "DEC005_rights": {
+        "trace": [
+          {
+            "stage": "stop",
+            "before": {
+              "bytes": 4034952,
+              "records": 62,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 34184,
+              "actual_records": 24
+            },
+            "after": {
+              "bytes": 3578484,
+              "records": 60,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 3542016,
+                "records": 35
+              },
+              "actual_bytes": 36468,
+              "actual_records": 25
+            }
+          }
+        ],
+        "received": 0,
+        "original_retained": true,
+        "storage": {
+          "bytes": 4962392,
+          "records": 71,
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 1,
+              "sessions": 0
+            },
+            "bytes": 4918272,
+            "records": 44
+          },
+          "actual_bytes": 44120,
+          "actual_records": 27
+        }
+      },
+      "DEC005_transaction_rollback": {
+        "received": 0,
+        "binding_publication": "unchanged_on_rollback_or_exact_SQL_binding"
+      },
+      "DEC005_transaction_commit_loss": {
+        "received": 0,
+        "binding_publication": "exact_observation_then_ambiguity_blocks"
+      },
+      "DEC005_transaction_sql": {
+        "received": 0,
+        "binding_publication": "unchanged_on_rollback_or_exact_SQL_binding"
+      },
+      "completion_recovery_invalidated": [
+        {
+          "stage": "restart",
+          "before": {
+            "bytes": 4128883,
+            "records": 84,
+            "remaining": {
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 4000768,
+              "records": 38
+            },
+            "actual_bytes": 128115,
+            "actual_records": 46
+          },
+          "after": {
+            "bytes": 3419047,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 139175,
+            "actual_records": 48
+          }
+        },
+        {
+          "stage": "controller",
+          "before": {
+            "bytes": 3419047,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 139175,
+            "actual_records": 48
+          },
+          "after": {
+            "bytes": 3100235,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 148043,
+            "actual_records": 53
+          }
+        },
+        {
+          "stage": "rebind-before-approver",
+          "before": {
+            "bytes": 3100235,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 148043,
+            "actual_records": 53
+          },
+          "after": {
+            "bytes": 2716491,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2558976,
+              "records": 24
+            },
+            "actual_bytes": 157515,
+            "actual_records": 55
+          }
+        },
+        {
+          "stage": "elective-verified-source-invalidates",
+          "before": {
+            "bytes": 2716491,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2558976,
+              "records": 24
+            },
+            "actual_bytes": 157515,
+            "actual_records": 55
+          },
+          "after": {
+            "bytes": 3302183,
+            "records": 82,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 349991,
+            "actual_records": 56
+          }
+        },
+        {
+          "stage": "elective-approver-invalidates",
+          "before": {
+            "bytes": 3302183,
+            "records": 82,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 349991,
+            "actual_records": 56
+          },
+          "after": {
+            "bytes": 2459037,
+            "records": 78,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2100224,
+              "records": 17
+            },
+            "actual_bytes": 358813,
+            "actual_records": 61
+          }
+        },
+        {
+          "stage": "rebind",
+          "before": {
+            "bytes": 2459037,
+            "records": 78,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2100224,
+              "records": 17
+            },
+            "actual_bytes": 358813,
+            "actual_records": 61
+          },
+          "after": {
+            "bytes": 2074385,
+            "records": 78,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1707008,
+              "records": 15
+            },
+            "actual_bytes": 367377,
+            "actual_records": 63
+          }
+        },
+        {
+          "stage": "protective-stop-before-resume",
+          "before": {
+            "bytes": 2074385,
+            "records": 78,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1707008,
+              "records": 15
+            },
+            "actual_bytes": 367377,
+            "actual_records": 63
+          },
+          "after": {
+            "bytes": 2011169,
+            "records": 78,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1641472,
+              "records": 14
+            },
+            "actual_bytes": 369697,
+            "actual_records": 64
+          }
+        },
+        {
+          "stage": "reconcile-after-protective-stop",
+          "before": {
+            "bytes": 2011169,
+            "records": 78,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1641472,
+              "records": 14
+            },
+            "actual_bytes": 369697,
+            "actual_records": 64
+          },
+          "after": {
+            "bytes": 1620645,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1248256,
+              "records": 12
+            },
+            "actual_bytes": 372389,
+            "actual_records": 65
+          }
+        },
+        {
+          "stage": "resume",
+          "before": {
+            "bytes": 1620645,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1248256,
+              "records": 12
+            },
+            "actual_bytes": 372389,
+            "actual_records": 65
+          },
+          "after": {
+            "bytes": 1164225,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 789504,
+              "records": 9
+            },
+            "actual_bytes": 374721,
+            "actual_records": 66
+          }
+        },
+        {
+          "stage": "stop",
+          "before": {
+            "bytes": 1164225,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 789504,
+              "records": 9
+            },
+            "actual_bytes": 374721,
+            "actual_records": 66
+          },
+          "after": {
+            "bytes": 707801,
+            "records": 73,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 330752,
+              "records": 6
+            },
+            "actual_bytes": 377049,
+            "actual_records": 67
+          }
+        }
+      ],
+      "SEC1_disconnect_completion": {
+        "trace": [
+          {
+            "stage": "restart",
+            "before": {
+              "bytes": 4128877,
+              "records": 84,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4000768,
+                "records": 38
+              },
+              "actual_bytes": 128109,
+              "actual_records": 46
+            },
+            "after": {
+              "bytes": 3419041,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 2
+                },
+                "bytes": 3279872,
+                "records": 31
+              },
+              "actual_bytes": 139169,
+              "actual_records": 48
+            }
+          },
+          {
+            "stage": "controller",
+            "before": {
+              "bytes": 3419041,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 2
+                },
+                "bytes": 3279872,
+                "records": 31
+              },
+              "actual_bytes": 139169,
+              "actual_records": 48
+            },
+            "after": {
+              "bytes": 3100229,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 1
+                },
+                "bytes": 2952192,
+                "records": 26
+              },
+              "actual_bytes": 148037,
+              "actual_records": 53
+            }
+          },
+          {
+            "stage": "approver",
+            "before": {
+              "bytes": 3100229,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 1
+                },
+                "bytes": 2952192,
+                "records": 26
+              },
+              "actual_bytes": 148037,
+              "actual_records": 53
+            },
+            "after": {
+              "bytes": 2257083,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 2100224,
+                "records": 17
+              },
+              "actual_bytes": 156859,
+              "actual_records": 58
+            }
+          },
+          {
+            "stage": "matched-before-disconnect",
+            "before": {
+              "bytes": 2257083,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 2100224,
+                "records": 17
+              },
+              "actual_bytes": 156859,
+              "actual_records": 58
+            },
+            "after": {
+              "bytes": 1873339,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1707008,
+                "records": 15
+              },
+              "actual_bytes": 166331,
+              "actual_records": 60
+            }
+          },
+          {
+            "stage": "approver-disconnect",
+            "before": {
+              "bytes": 1873339,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1707008,
+                "records": 15
+              },
+              "actual_bytes": 166331,
+              "actual_records": 60
+            },
+            "after": {
+              "bytes": 1748179,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1575936,
+                "records": 13
+              },
+              "actual_bytes": 172243,
+              "actual_records": 61
+            }
+          },
+          {
+            "stage": "fresh-rebind",
+            "before": {
+              "bytes": 1748179,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1575936,
+                "records": 13
+              },
+              "actual_bytes": 172243,
+              "actual_records": 61
+            },
+            "after": {
+              "bytes": 1362567,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1182720,
+                "records": 11
+              },
+              "actual_bytes": 179847,
+              "actual_records": 63
+            }
+          },
+          {
+            "stage": "manual-resume",
+            "before": {
+              "bytes": 1362567,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1182720,
+                "records": 11
+              },
+              "actual_bytes": 179847,
+              "actual_records": 63
+            },
+            "after": {
+              "bytes": 840603,
+              "records": 71,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 658432,
+                "records": 7
+              },
+              "actual_bytes": 182171,
+              "actual_records": 64
+            }
+          },
+          {
+            "stage": "controller-stop",
+            "before": {
+              "bytes": 840603,
+              "records": 71,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 658432,
+                "records": 7
+              },
+              "actual_bytes": 182171,
+              "actual_records": 64
+            },
+            "after": {
+              "bytes": 384179,
+              "records": 69,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 199680,
+                "records": 4
+              },
+              "actual_bytes": 184499,
+              "actual_records": 65
+            }
+          }
+        ],
+        "paused": true,
+        "owner_budgets_unchanged": true,
+        "slot": {
+          "controller_records": 13,
+          "controller_bytes": 1376256,
+          "noncontroller_records": 9,
+          "noncontroller_bytes": 851968
+        },
+        "capsule": {
+          "records": 29,
+          "bytes": 3211264
+        }
+      },
+      "SEC2_submit": {
+        "received_delta": 0,
+        "reason": "expired",
+        "durable_attempt": "armed",
+        "holds_preserved": true,
+        "noresend": true,
+        "final_DB_committed_closed": true,
+        "clock_after": "2024-03-08T14:31:41.000000Z",
+        "window": {
+          "checked_at": "2024-03-08T14:31:10.000000Z",
+          "deadlines": [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-04-01T00:00:00.000000Z",
+            "2024-03-08T14:31:30.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T23:59:59.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2025-01-01T00:00:00.000000Z",
+            "2025-01-01T00:00:00.000000Z"
+          ]
+        }
+      },
+      "SEC2_cancel": {
+        "received_delta": 0,
+        "reason": "expired",
+        "durable_attempt": "armed",
+        "holds_preserved": true,
+        "noresend": true,
+        "final_DB_committed_closed": true,
+        "clock_after": "2024-03-08T14:31:41.000000Z",
+        "window": {
+          "checked_at": "2024-03-08T14:31:10.000000Z",
+          "deadlines": [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:31:20.000000Z"
+          ]
+        }
+      },
+      "SEC2_cancel_boundary": {
+        "received_delta": 0,
+        "reason": "expired",
+        "durable_attempt": "armed",
+        "holds_preserved": true,
+        "noresend": true,
+        "final_DB_committed_closed": true,
+        "clock_after": "2024-03-08T14:31:20.000000Z",
+        "window": {
+          "checked_at": "2024-03-08T14:31:10.000000Z",
+          "deadlines": [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:31:20.000000Z"
+          ]
+        }
+      },
+      "SEC2_positive": {
+        "received": 2,
+        "submit": "accepted",
+        "cancel": "cancel_ack",
+        "windows": [
+          [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-04-01T00:00:00.000000Z",
+            "2024-03-08T14:31:30.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T23:59:59.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2025-01-01T00:00:00.000000Z",
+            "2025-01-01T00:00:00.000000Z"
+          ],
+          [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:31:21.000000Z"
+          ]
+        ]
+      },
+      "completion_third_active": {
+        "reclaim": {
+          "commands": 0,
+          "records": 0,
+          "bytes": 0
+        },
+        "before": {
+          "rows": 2,
+          "bytes": 232
+        },
+        "after": {
+          "rows": 2,
+          "bytes": 232
+        },
+        "approval_lookup_reclaim": {
+          "commands": 1,
+          "records": 3,
+          "bytes": 12288
+        },
+        "admission_outcome": "rejected",
+        "active_gate_reached": [
+          2
+        ]
+      },
+      "completion_third_terminal": {
+        "reclaim": {
+          "commands": 8,
+          "records": 24,
+          "bytes": 98304
+        },
+        "before": {
+          "rows": 26,
+          "bytes": 7798
+        },
+        "after": {
+          "rows": 2,
+          "bytes": 232
+        },
+        "approval_lookup_reclaim": null,
+        "admission_outcome": "applied",
+        "active_gate_reached": []
+      },
+      "common_completion": {
+        "before": {
+          "actual": {
+            "bytes": 117754,
+            "records": 38
+          },
+          "remaining": {
+            "plan": {
+              "next": 1,
+              "rebind": 0,
+              "resume": 0,
+              "sessions": 0
+            },
+            "bytes": 6622208,
+            "records": 66
+          }
+        },
+        "rotated": {
+          "actual": {
+            "bytes": 161582,
+            "records": 52
+          },
+          "remaining": {
+            "plan": {
+              "next": 0,
+              "rebind": 1,
+              "resume": 1,
+              "sessions": 2
+            },
+            "bytes": 3673088,
+            "records": 37
+          }
+        },
+        "new_session": {
+          "actual": {
+            "bytes": 170450,
+            "records": 57
+          },
+          "remaining": {
+            "plan": {
+              "next": 0,
+              "rebind": 1,
+              "resume": 1,
+              "sessions": 1
+            },
+            "bytes": 3345408,
+            "records": 32
+          }
+        }
+      }
+    },
+    "cleanup": [
+      {
+        "project": "qh-ledger-705adbd51e9e4a9790d6cb58d238a69c",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-5e430a372ae64fd191d24eb5fb6e323a",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-29d5ecfad3c94f1da8467c8d7a0a377c",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-ef4a508357b34ce3b489c9346d417cd3",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-423bcfe56f4e45b1a11cd13564425688",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-db9eae6bc8c84c39903f47c313b775b4",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-0131a8821e934254926a287e00246ab2",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-1644e9606adc42dda409e3378ca7ca7b",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-d7e5764c6b7245aa866eefee89526bab",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-3b52e78847464138a67d4479f61dfc19",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-c77744b7a7014ff1b10838a68cdcfaf1",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-deb2e924449245f0ba3d3c1e54c783b8",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-09a98781244e416e9e7816e5d9e07525",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-c66605ed651340f689fb1a5c609f1ce8",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-61b5b22c8f594cd09ef49a5e7382ded1",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-ee06e4d6e0c940bdbbc4ff8652b29893",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-5fb3a5970de5409e8da4fbb6440143d8",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-0537fb6e44b545f690bad6921fdbe657",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-4ece30bbb37347629d4483f261683fd8",
+        "result": "own_project_removed"
+      }
+    ],
+    "phase": "saturated-completion",
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa",
+    "unexecuted": "Focused19 only; latest full84 remains pending; fixed40 acceptance mapping and independent review/full product require separate judgment.",
+    "reason": "focused19_pass_full84_and_independent_final_pending",
+    "diagnostic_sql_errors": [],
+    "diagnostic_mode": "same fixed SQL/input/role; only synthetic UoW stderr captured"
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "497feda509351050db27c1f491ec677b73a1a7df908b7c45b762163b4738b62d",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "fa702ed3a5e2d9d03441688064d8fe441bcbe8ae737827844c557d377c12c1f7",
+    "src/quantharbor/ports/execution.py": "103796ccdf33aaaa8573df1cacbcbebb28edd5f2c4b787bd61ca573c9307d87c",
+    "src/quantharbor/adapters/postgres_execution.py": "914ec4d9d0c237830db4f0d50bada90a59365d97d72fbde26549ee54fa409bc0",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "bbe8207b9929f37c5021f3c6457bdefefe3942e260e1d7e45ecd3184c2bbd765",
+    "tests/product/synthetic_execution.py": "30b7da1f8956da0bf18c7e8ef946e30481f5ba73c3a98bad55cbc42f61e54b86",
+    "tests/product/test_execution.py": "da73e32f90c3e2d5f5375927fd1d2492e14fb74c7de50505c2fd066ac19e181d",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "beccce93647b68e30b0da4b22f3a04e23f8fa54ec2ce4d7cf2fabf4ea965b036",
+    "docs/development/execution.md": "815b3a4dc696300b65373ef3f6b94765aea9bd68c62c6fb9978aa0d138a9a707",
+    "migrations/0003_synthetic_execution.sql": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "cb65048fe5970431763b1b55f15cfeb23627c438012d97026896109617c32048",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "790d881ccf3838008550a269bfdbcdc5a502be28d21cc8b7491ca9c48801820d",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31",
+    "src/quantharbor/application/target.py": "3e94542f1e71ead57eeb39450bdc1acd4ca48b7669ca5a9bb2e07c1fa0d43bdd"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "497feda509351050db27c1f491ec677b73a1a7df908b7c45b762163b4738b62d",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "fa702ed3a5e2d9d03441688064d8fe441bcbe8ae737827844c557d377c12c1f7",
+    "src/quantharbor/ports/execution.py": "103796ccdf33aaaa8573df1cacbcbebb28edd5f2c4b787bd61ca573c9307d87c",
+    "src/quantharbor/adapters/postgres_execution.py": "914ec4d9d0c237830db4f0d50bada90a59365d97d72fbde26549ee54fa409bc0",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "bbe8207b9929f37c5021f3c6457bdefefe3942e260e1d7e45ecd3184c2bbd765",
+    "tests/product/synthetic_execution.py": "30b7da1f8956da0bf18c7e8ef946e30481f5ba73c3a98bad55cbc42f61e54b86",
+    "tests/product/test_execution.py": "da73e32f90c3e2d5f5375927fd1d2492e14fb74c7de50505c2fd066ac19e181d",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "beccce93647b68e30b0da4b22f3a04e23f8fa54ec2ce4d7cf2fabf4ea965b036",
+    "docs/development/execution.md": "815b3a4dc696300b65373ef3f6b94765aea9bd68c62c6fb9978aa0d138a9a707",
+    "migrations/0003_synthetic_execution.sql": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "cb65048fe5970431763b1b55f15cfeb23627c438012d97026896109617c32048",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "790d881ccf3838008550a269bfdbcdc5a502be28d21cc8b7491ca9c48801820d",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31",
+    "src/quantharbor/application/target.py": "3e94542f1e71ead57eeb39450bdc1acd4ca48b7669ca5a9bb2e07c1fa0d43bdd"
+  },
+  "owned_unchanged": true,
+  "q27_complete": false,
+  "root_interpretation": "Focused19 passed on final runner version, owned29 unchanged/current. Earlier expired-approval and empty positives use same runtime/SQL but earlier runner, not latest full84 proof."
+}

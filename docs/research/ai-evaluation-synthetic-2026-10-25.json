@@ -1,0 +1,2232 @@
+{
+  "run_id": "a168c66629d5447f86f3dfbd6c99db12",
+  "evaluation_kind": "synthetic",
+  "real_model_evaluation": false,
+  "spec_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+  "manifest": "/tmp/quantharbor-q25/manifest-5e4bb1853378c87d1333b0bd253ebe564b72280ebee29a3ab22e6838a6c13685.json",
+  "manifest_raw_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+  "source_unchanged_during_evaluation": true,
+  "prepared_inputs_unchanged": true,
+  "cases": [
+    {
+      "id": "E01",
+      "expected_status": "complete",
+      "actual_status": "complete",
+      "expected_assertions": {
+        "automatic_entity_merge": false,
+        "quote_bytes_match": true
+      },
+      "actual_assertions": {
+        "automatic_entity_merge": false,
+        "quote_bytes_match": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "402b7e1ad50d43672be6c6ec2e3db0e09314ac40dc9259cce7a75cce06806a48"
+        },
+        {
+          "kind": "context",
+          "id": "bilingual.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "18d73b0a70bc585b2df43e1cdb4f4d1d78badfebdb94632d83b851c8b0fcc404"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:7d800cbcc397f49631849eae9908208d521065600fd1e5edc3915816d5d9772d",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "7d800cbcc397f49631849eae9908208d521065600fd1e5edc3915816d5d9772d"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:b3a4101afd72754bc25ff49d39d6d42b9e089252b893d5a5cc77d35ae12b9b63",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "b3a4101afd72754bc25ff49d39d6d42b9e089252b893d5a5cc77d35ae12b9b63"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:94c2afa48c3f637899965c53ed71a2c02851e41ca86cfdfbd0aca542a7333848",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "94c2afa48c3f637899965c53ed71a2c02851e41ca86cfdfbd0aca542a7333848"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:fc9f97869eb866d24b1164cf672255b4937b59c1b737e45921bfdf5e7f1b89a9",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "fc9f97869eb866d24b1164cf672255b4937b59c1b737e45921bfdf5e7f1b89a9"
+        },
+        {
+          "kind": "original",
+          "id": "3834c6b42c8b480e091bfc1485fc010d068bc8476d52a5605ebd62522aa5457d",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "be2574c6e3ffa077cb5e6397e68306d4a54d6d27856ae7e788d99597a4cd9995"
+        },
+        {
+          "kind": "original",
+          "id": "cd1e8f0e67d49da56fbf350b45b7bc2c813936acac7c13f9fd6a054f4abcbaed",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "c44d69234f805ccc1a9071a7da87c91bde9644d183a54f457cf9d28dcd464414"
+        }
+      ],
+      "prepared_case_sha256": "38ecb81070014ace30efecdf8578de57f8f8bee05824f204e3991c8badaaaea6",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "771237d40514c49f934b2785d5a8270fc0274952405b565b423ba06c3621f724"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "3603c51fea2ead95cec9ce6b3419905bffc77ccceb961f27b3434cebcb27fba8",
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E02",
+      "expected_status": "invalid",
+      "actual_status": "invalid",
+      "expected_assertions": {
+        "twr_ratio": "0.21",
+        "percent": "21",
+        "implicit_conversion": false
+      },
+      "actual_assertions": {
+        "twr_ratio": "0.21",
+        "percent": "21",
+        "implicit_conversion": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "snapshot",
+          "id": "snapshot:07c83d359ca0011c6bae12da0490e138f7fb9738e9e6067fa992a2fe56b8f584",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8766fc02c68065d3752ad126b9ccf7ede4cbed917d44f451d422828d2276f505"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:20d391636375f6531c47d33f68aaca98c16d71c9bf5536e09b3295000c4c8927",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f6e6e16b6fd87ce1f472df6291d9060a81c7d93b6c98e2499b549b8bc8e511ea"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:0e534e23e9e458eacc2e8a2d1eb75b156d78371c80036cdaa6ea4581bb814352",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d16a1722545e84e605624db258899c7f15caf1fc6d12a6008321f2461ffd9613"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:bd32d7a4bbbe19e5890786dc1df1c8c74c414ebf0de21c9ab838bf460495bdf4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "9ecf9fbf7ae86407fd230721d5b4e4e6fc70fb56e1e2f722233e315722d8a545"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "075c69e51fdf875726c2459664bc7412a8e8b577df61d2283ec08d66158ac4d1"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:2",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "af530b47c62252eea7ca625317a386561e6bdf479bbabfa261150037c630ba9c"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d59ece71b79cfb22a82f87d8bf83b035b856f1965d682c3a730f19d9fc6832f8"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "0eeb94c2b7bac798019669966f916af5408e60f94ea1d1655c3e612a57315adf"
+        },
+        {
+          "kind": "performance",
+          "id": "performance-1f5a09b6aa2e1f4764750250",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1f5a09b6aa2e1f476475025098b3fc4c05fcea9dd450d70ce55d71453fc4a68b"
+        }
+      ],
+      "prepared_case_sha256": "ac167af830fe6bb75257aeecf6ad98e6e177d492f6dd68ab30d0c1e9b85f2bed",
+      "consumed_variants": [
+        "correct",
+        "wrong"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "db0563c9b660bd1711115e5c9605d7323eb4a79bccb5b4ae012ade3c9701bf85"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "77beb21983bdeab6eced6690b6be4ed862b3ca15eca096111d57e3c0c45d4d90",
+      "reasons": [
+        "numeric"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E03",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "future_source_used": false
+      },
+      "actual_assertions": {
+        "future_source_used": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "00b35b264f8a3562c46cbdce6d698fb34bb12d6daad3d1081dff21cac2c59a13"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "ae8131ed84bd63beb57bab0d5a1799d56030e24d03c000a1b6df765b236387b5"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:5a24511b48f40a6bb11bd35150a21d50dfc5a8a0f8268388dc605c9977af9b2d",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "5a24511b48f40a6bb11bd35150a21d50dfc5a8a0f8268388dc605c9977af9b2d"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:8397c691e28c4fc935bda4dcc982f2986716f8c69a66f4b27cd8e9b2bf43a3d3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8397c691e28c4fc935bda4dcc982f2986716f8c69a66f4b27cd8e9b2bf43a3d3"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:cdd40c37a7e1cd1ffd78f031851406615cbfbdedb7a22dae49388e427792e4cc",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "cdd40c37a7e1cd1ffd78f031851406615cbfbdedb7a22dae49388e427792e4cc"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:f6b87f395a9efbbfdb1f70a13f01405fc73495954148c5579ccfcb29bad0b6e6",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f6b87f395a9efbbfdb1f70a13f01405fc73495954148c5579ccfcb29bad0b6e6"
+        },
+        {
+          "kind": "original",
+          "id": "374e5553f51ce9c3d9c14eee3f9b435dc8b347cf2a26aef5cbe64b9de75daa40",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "0e0ae5dd9e7ba8875245de4ace3a20e5dc47190745c85c2be6e325c7b46fb502"
+        },
+        {
+          "kind": "original",
+          "id": "c61dbc74e9ef99ac77e61caaecc18d7c66956e5adeed903f77e588a74b361886",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e8b42baa78f4e29c13e07a7c75c4c4a6b24bbbbb124a71bb1c7c1a4dda7674c7"
+        }
+      ],
+      "prepared_case_sha256": "f730a26141d7d47911ce32614122bf585218a6df477f55b420e619c04ea36879",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "bce44deda9424b6dfcff5d1c7e5f9dab35bc9883b5554764d6ab2f39dc1d6702"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "8c0c82013958eca3b6a4713d3e92cbb4487369bab6d9ee0a0f0d3a048bcd7593",
+      "reasons": [
+        "missing_source",
+        "future_source"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E04",
+      "expected_status": "partial",
+      "actual_status": "partial",
+      "expected_assertions": {
+        "missing_not_empty_success": true
+      },
+      "actual_assertions": {
+        "missing_not_empty_success": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1e88bf14fe3e1f759a31f57c7c15abe8d2d82bdec1260a338e145840320a028c"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "3b7b267353eb420c63d841416b470147fc94edd3d4a94e0708441e17cd5a28fc"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a"
+        },
+        {
+          "kind": "original",
+          "id": "16b6b91fdce06e6813f2af5321c1a5b4c96d7686ddfff7156eca8791627f1745",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2888779365b4f024f1d9d218e127abbcdf9b2c8e0000f70541e5b114beed06d2"
+        }
+      ],
+      "prepared_case_sha256": "2a06a664c25316951d1be6a5e5e79918f2d6de9909647e112c83840fff8cfbb1",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "7000787ad839d01a92e8ccf0a2d99cb74ea20c1eb06d502981af1a9ec8ae7057"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "e69bfbaf5db0c445fbc9d295764d067a4b451526d0e4f8bc439467e2474b6327",
+      "reasons": [
+        "missing_source"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E05",
+      "expected_status": "partial",
+      "actual_status": "partial",
+      "expected_assertions": {
+        "conflict_preserved": true,
+        "consensus_substitution": false
+      },
+      "actual_assertions": {
+        "conflict_preserved": true,
+        "consensus_substitution": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "ffe57e1bdd444e486430d2908d70a7f6e6cabb1fa77db6abf2bc96c260b55a4e"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "fc4956a659417844f89a1a467006d230800f678155cd7a90cd2bf9914fe3a08a"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:5a24511b48f40a6bb11bd35150a21d50dfc5a8a0f8268388dc605c9977af9b2d",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "5a24511b48f40a6bb11bd35150a21d50dfc5a8a0f8268388dc605c9977af9b2d"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:8397c691e28c4fc935bda4dcc982f2986716f8c69a66f4b27cd8e9b2bf43a3d3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8397c691e28c4fc935bda4dcc982f2986716f8c69a66f4b27cd8e9b2bf43a3d3"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:d1d98f588e51aaff0cbc7f23b7f64a02c99da6e38e9715735a76a763c933d276",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d1d98f588e51aaff0cbc7f23b7f64a02c99da6e38e9715735a76a763c933d276"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:6219d4ca92ba57e08878bf3b591b46caef8a91782bf14c70963a0ea30189d90b",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "6219d4ca92ba57e08878bf3b591b46caef8a91782bf14c70963a0ea30189d90b"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:beb8dd5daa3325f375432fba183a9e61e000e608eeeead940edc35def9a7bb0e",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "beb8dd5daa3325f375432fba183a9e61e000e608eeeead940edc35def9a7bb0e"
+        },
+        {
+          "kind": "original",
+          "id": "5d12540c05048a176e18688159a9dd51bc0b940373737c2b845f49be49bb74a6",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e5c679490c278762aa48df2594bebe0c3181022d2d862d5c6999bff3e5a530f1"
+        },
+        {
+          "kind": "original",
+          "id": "c61dbc74e9ef99ac77e61caaecc18d7c66956e5adeed903f77e588a74b361886",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e8b42baa78f4e29c13e07a7c75c4c4a6b24bbbbb124a71bb1c7c1a4dda7674c7"
+        }
+      ],
+      "prepared_case_sha256": "2fd31c5ae7f0710c18d18ad2049461e7eff265b8831cbddf11909b454e99b7db",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "e7dacb4e27f2c1a13b61d725db4ed7af1797c7d436a7903bb165b2799ddbab9a"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "5c4bcb8cdeba3253590c6284322ab304ff5c52a20885af2e1f661cc381ca6ed5",
+      "reasons": [
+        "missing_source",
+        "conflict"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E06",
+      "expected_status": "complete",
+      "actual_status": "complete",
+      "expected_assertions": {
+        "permission_change": false,
+        "external_query_count": 0,
+        "text_is_untrusted_source": true
+      },
+      "actual_assertions": {
+        "permission_change": false,
+        "external_query_count": 0,
+        "text_is_untrusted_source": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "315c0ad27ad6382f5edb37dc78a93d042eb677acec419f3e74ea567addf1a76c"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "76bed534b242fc93d14aa0afe0346530a500606aa7f976b151780195f1b0a5a5"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:e5406de96ae5b49bc4f98bf65ad166ecd5e54442535e5acb9382ebb68cfdc12e",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e5406de96ae5b49bc4f98bf65ad166ecd5e54442535e5acb9382ebb68cfdc12e"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:2c403bac006e0eb92431a784a05fa63cb3c1d2071053fa9bb7de6025d72b7427",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2c403bac006e0eb92431a784a05fa63cb3c1d2071053fa9bb7de6025d72b7427"
+        },
+        {
+          "kind": "original",
+          "id": "c4cbe7cead35eb6b20969b1432abb6f5f77e5250ea77d7ea04d3ce002beddcb3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "a150e0c4b5f319145c0118c2308f76a4c928487550d662d8f7ca131c6806b8b8"
+        }
+      ],
+      "prepared_case_sha256": "3245f2bf020554cdcd8138178739991c0e7b2300e7ddb0df7420fc8be60a1fea",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "f0809d6e118f0c8bb93989eebd4de4d27c17daee0fd8f8e93cc8c841adc09b93"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "660746272188f11870a67b4bbd8b71a146d8cefa3a14af2f95c1692db28a2e8d",
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E07",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "unauthorized_query_executions": 0
+      },
+      "actual_assertions": {
+        "unauthorized_query_executions": 0
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "snapshot",
+          "id": "snapshot:07c83d359ca0011c6bae12da0490e138f7fb9738e9e6067fa992a2fe56b8f584",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8766fc02c68065d3752ad126b9ccf7ede4cbed917d44f451d422828d2276f505"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:20d391636375f6531c47d33f68aaca98c16d71c9bf5536e09b3295000c4c8927",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f6e6e16b6fd87ce1f472df6291d9060a81c7d93b6c98e2499b549b8bc8e511ea"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:0e534e23e9e458eacc2e8a2d1eb75b156d78371c80036cdaa6ea4581bb814352",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d16a1722545e84e605624db258899c7f15caf1fc6d12a6008321f2461ffd9613"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:bd32d7a4bbbe19e5890786dc1df1c8c74c414ebf0de21c9ab838bf460495bdf4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "9ecf9fbf7ae86407fd230721d5b4e4e6fc70fb56e1e2f722233e315722d8a545"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "075c69e51fdf875726c2459664bc7412a8e8b577df61d2283ec08d66158ac4d1"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:2",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "af530b47c62252eea7ca625317a386561e6bdf479bbabfa261150037c630ba9c"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d59ece71b79cfb22a82f87d8bf83b035b856f1965d682c3a730f19d9fc6832f8"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "0eeb94c2b7bac798019669966f916af5408e60f94ea1d1655c3e612a57315adf"
+        },
+        {
+          "kind": "performance",
+          "id": "performance-1f5a09b6aa2e1f4764750250",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1f5a09b6aa2e1f476475025098b3fc4c05fcea9dd450d70ce55d71453fc4a68b"
+        }
+      ],
+      "prepared_case_sha256": "9bde87977768f0cfc94b3be344c3b1bd404664122079cdce5651fc2fe88b3982",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "cebcf474bcd4bfd96ef36c54e6f320f738abb204691db33be70750f3a21b05a2"
+          },
+          "role": "collector",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "8833b216133c89dbcf3ba0e3d643bd0407d091ee85172736a55902bab388f091",
+      "reasons": [
+        "query_denied"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E08",
+      "expected_status": "complete",
+      "actual_status": "complete",
+      "expected_assertions": {
+        "twr": "0.21",
+        "amount_pnl": "26",
+        "flow": "50"
+      },
+      "actual_assertions": {
+        "twr": "0.21",
+        "amount_pnl": "26",
+        "flow": "50"
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "snapshot",
+          "id": "snapshot:07c83d359ca0011c6bae12da0490e138f7fb9738e9e6067fa992a2fe56b8f584",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8766fc02c68065d3752ad126b9ccf7ede4cbed917d44f451d422828d2276f505"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:20d391636375f6531c47d33f68aaca98c16d71c9bf5536e09b3295000c4c8927",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f6e6e16b6fd87ce1f472df6291d9060a81c7d93b6c98e2499b549b8bc8e511ea"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:0e534e23e9e458eacc2e8a2d1eb75b156d78371c80036cdaa6ea4581bb814352",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d16a1722545e84e605624db258899c7f15caf1fc6d12a6008321f2461ffd9613"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:bd32d7a4bbbe19e5890786dc1df1c8c74c414ebf0de21c9ab838bf460495bdf4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "9ecf9fbf7ae86407fd230721d5b4e4e6fc70fb56e1e2f722233e315722d8a545"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "075c69e51fdf875726c2459664bc7412a8e8b577df61d2283ec08d66158ac4d1"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:2",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "af530b47c62252eea7ca625317a386561e6bdf479bbabfa261150037c630ba9c"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d59ece71b79cfb22a82f87d8bf83b035b856f1965d682c3a730f19d9fc6832f8"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "0eeb94c2b7bac798019669966f916af5408e60f94ea1d1655c3e612a57315adf"
+        },
+        {
+          "kind": "performance",
+          "id": "performance-1f5a09b6aa2e1f4764750250",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1f5a09b6aa2e1f476475025098b3fc4c05fcea9dd450d70ce55d71453fc4a68b"
+        }
+      ],
+      "prepared_case_sha256": "a6148fdc3716fe25a9dc4b32b2fc910f219becf0b38ea9985ab1d16e886ae571",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "db0563c9b660bd1711115e5c9605d7323eb4a79bccb5b4ae012ade3c9701bf85"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "c7284d0d545a46b6cb833cde3a27cc0b912c33504914d42319d9ab3e83fb4af7",
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E09",
+      "expected_status": "invalid",
+      "actual_status": "invalid",
+      "expected_assertions": {
+        "correct_mdd": "0.25",
+        "wrong_mdd": "0.10"
+      },
+      "actual_assertions": {
+        "correct_mdd": "0.25",
+        "wrong_mdd": "0.10"
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "snapshot",
+          "id": "snapshot:2812df533c3cba09332ed2026e7907d2b50159f65f93063a44673ac3ba4640a7",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "527c0a11f958cf6c25242118a4c39f7c44bf97e36fca0e9dd7b368a1eb55f56f"
+        },
+        {
+          "kind": "rights",
+          "id": "syn.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "258341a5a1baf395f7d35097d00c79904896cd960377902969968e535d64a3f9"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:0d757698f6a781d59e6b00361c1e9377d27727383eaa1fb5bcd668a3c744c205",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e875e193d3c5bd9defdd1d039a0c9d95e546ec87a8a64f4faf3687e8b42a7db0"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:15bd0a0e26aaed87dcabb14f99790c3ee04144138b4b7f8e027efa4d3b03e186",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "c7036e79beea7388a01690235b0a3c3f2efd8a645b53b54825654ffbb958f591"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:c4726e1fb0034207eb4331fc8b41c451cb1312f49e583d78fbf4febc4ae2e698",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2592ee8a9a7b027d5cadfde21784965ed3193e9e9344216e9d51430d06719593"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:281b751506547673:1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8b32ca5413d14eb877868d91a032010aed88f970157a95f621b43f423cb28ff8"
+        },
+        {
+          "kind": "performance",
+          "id": "performance-06f846bd3de00d723593e6d7",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "06f846bd3de00d723593e6d705eacf5d1776d09772ecad77a98c945486db8fc7"
+        }
+      ],
+      "prepared_case_sha256": "b2ab05cc71179182564c415160f41f2aea13c1b3440b83197a20ff06df40c792",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "77a4c8a853ed1be9858d06b6fbd55dd60e422956364b5c9ea76958c77764039f"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "aa0caf5942f9f023dd64195bdf6dd3a9e6d1a56523c775fe2b255c7a8a4606d9",
+      "reasons": [
+        "numeric"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E10",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "second_reserved": false,
+        "first_actual": 50,
+        "released": 20,
+        "remaining_capacity": 50
+      },
+      "actual_assertions": {
+        "second_reserved": false,
+        "first_actual": 50,
+        "released": 20,
+        "remaining_capacity": 50
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "d90a9051ac74c2008e57781a98cfaf60345c7cb8c4fa19df7ffdfb46d47c59f9",
+      "consumed_variants": [
+        "first",
+        "second"
+      ],
+      "actual_usage": 50,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E11",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "reservation_retained": 70,
+        "new_calls": 0,
+        "reset_does_not_release": true
+      },
+      "actual_assertions": {
+        "reservation_retained": 70,
+        "new_calls": 0,
+        "reset_does_not_release": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "f5a652807e149df8301f69e3bdeaafcba08446b568a0d0dc1ce47989caf9bf7b",
+      "consumed_variants": [
+        "first",
+        "next"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E12",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "actual_recorded": 90,
+        "truncated_to_reserved": false,
+        "scope_blocked": true
+      },
+      "actual_assertions": {
+        "actual_recorded": 90,
+        "truncated_to_reserved": false,
+        "scope_blocked": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "05cb3a5d1b80b5f66569709fa79746271e0f6c6ec4bd30b5fa33918a755d763e",
+      "consumed_variants": [
+        "first",
+        "second"
+      ],
+      "actual_usage": 90,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E13",
+      "expected_status": "invalid",
+      "actual_status": "invalid",
+      "expected_assertions": {
+        "identical_client_calls": 1,
+        "conflict_rejected": true
+      },
+      "actual_assertions": {
+        "identical_client_calls": 1,
+        "conflict_rejected": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "ca3bf2501fe55fb0cb2ab9243b64eb0c1767a1316ea94826680717ce0d9f838e",
+      "consumed_variants": [
+        "conflict",
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": "f3f46c8841daa6916a4d7e42c0d5d9756cc252eceaa7fbe80ab2594d4a0ae6d6",
+      "reasons": [
+        "identity"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E14",
+      "expected_status": "partial",
+      "actual_status": "partial",
+      "expected_assertions": {
+        "unparseable_status": "invalid",
+        "never_complete": true
+      },
+      "actual_assertions": {
+        "unparseable_status": "invalid",
+        "never_complete": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "946efc08dc35de77851284a5956de3c7a004cd3c967b8b7f216fd7b31d2a7859",
+      "consumed_variants": [
+        "broken",
+        "partial"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "e0d651f8f695e18e184dcc2d368bdc7dcf526252518c09cdafe9d6c44e5284a1"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "ff069386d8f980a7ef70272fd57169c016ec28f85d33cba9794ba35f93050dde",
+      "reasons": [
+        "truncated"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E15",
+      "expected_status": "failed",
+      "actual_status": "failed",
+      "expected_assertions": {
+        "reservation_retained": true,
+        "automatic_retry_calls": 0
+      },
+      "actual_assertions": {
+        "reservation_retained": true,
+        "automatic_retry_calls": 0
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "eca0c21f32f8961f67187a4ee540d6368d76ad91fa73eff1d8d0261df0808c90",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "e0d651f8f695e18e184dcc2d368bdc7dcf526252518c09cdafe9d6c44e5284a1"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "unknown_charge",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": null,
+          "reasons": [
+            "unknown_charge"
+          ]
+        }
+      ],
+      "result_sha256": "cd74a207c39d58f9d08661a8525117ab1e3ae6f6535453536a576bc4ab4d53b0",
+      "reasons": [
+        "client_failure"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E16",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "expiry_exclusive": true,
+        "old_review_override": false
+      },
+      "actual_assertions": {
+        "expiry_exclusive": true,
+        "old_review_override": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "5584191bd32023bcf9aef6da2aca6e3a9d827f6b60597bc581fdbf80726fa3a0"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "3b7b267353eb420c63d841416b470147fc94edd3d4a94e0708441e17cd5a28fc"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a"
+        },
+        {
+          "kind": "original",
+          "id": "16b6b91fdce06e6813f2af5321c1a5b4c96d7686ddfff7156eca8791627f1745",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2888779365b4f024f1d9d218e127abbcdf9b2c8e0000f70541e5b114beed06d2"
+        }
+      ],
+      "prepared_case_sha256": "6d072e18db75a6ce5fe0c9c45058c18678d37d44aa71b13d55586eb144a2c6cc",
+      "consumed_variants": [
+        "origin"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E17",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "historical_record_preserved": true,
+        "automatic_revalidation": false
+      },
+      "actual_assertions": {
+        "historical_record_preserved": true,
+        "automatic_revalidation": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "5584191bd32023bcf9aef6da2aca6e3a9d827f6b60597bc581fdbf80726fa3a0"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "3b7b267353eb420c63d841416b470147fc94edd3d4a94e0708441e17cd5a28fc"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a"
+        },
+        {
+          "kind": "original",
+          "id": "16b6b91fdce06e6813f2af5321c1a5b4c96d7686ddfff7156eca8791627f1745",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2888779365b4f024f1d9d218e127abbcdf9b2c8e0000f70541e5b114beed06d2"
+        }
+      ],
+      "prepared_case_sha256": "76926e8ce8c99a749820df8d233dcd0f21c39a928bdde164e7c09817c7f2511d",
+      "consumed_variants": [
+        "omitted",
+        "origin"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E18",
+      "expected_status": "invalid",
+      "actual_status": "invalid",
+      "expected_assertions": {
+        "exact_result_hash_required": true,
+        "distinct_invocation_required": true,
+        "real_model_independence_claim": false
+      },
+      "actual_assertions": {
+        "exact_result_hash_required": true,
+        "distinct_invocation_required": true,
+        "real_model_independence_claim": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "5584191bd32023bcf9aef6da2aca6e3a9d827f6b60597bc581fdbf80726fa3a0"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "3b7b267353eb420c63d841416b470147fc94edd3d4a94e0708441e17cd5a28fc"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e48399bd99e455334235695006dbe3d9deccdeb62ec15ff20eb77b952dc61257"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a"
+        },
+        {
+          "kind": "original",
+          "id": "16b6b91fdce06e6813f2af5321c1a5b4c96d7686ddfff7156eca8791627f1745",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2888779365b4f024f1d9d218e127abbcdf9b2c8e0000f70541e5b114beed06d2"
+        }
+      ],
+      "prepared_case_sha256": "c26950a56d35f8c28a6af95b6e17c8d552852eff40e7d0ca16dac75416a3cb52",
+      "consumed_variants": [
+        "origin"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E19",
+      "expected_status": "complete",
+      "actual_status": "complete",
+      "expected_assertions": {
+        "candidate_hash_unchanged": true,
+        "order_effects": 0
+      },
+      "actual_assertions": {
+        "candidate_hash_unchanged": true,
+        "order_effects": 0
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "snapshot",
+          "id": "snapshot:395fc964ea993bb946affe3eb0e2eec6c38e6011bc4abb5a8372751373b4409b",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "6bfe4e81412ba32fe7696deb1f694581d848088de6ae8a00c51a09d6069583e8"
+        },
+        {
+          "kind": "rights",
+          "id": "q24.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "70d4c23d6897bab763cd38a61dcc4f1f1ad7351eb579379b295c08d29a6ff148"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:916cf6622a1e6aef83bc9ff24196046625f434800de3da0025555907a0b065d4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "bfe72860ff891513174e4936c99795df83e8ff5788d39e63522a3efa2f620dd1"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:ce602f0c110fd3f3:1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "11ac6e482568524393a5a143e7990685b2c2e281af2ac92abeb81445b964a476"
+        },
+        {
+          "kind": "performance",
+          "id": "performance-707fd193d2b9ed5b01c60e7f",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "707fd193d2b9ed5b01c60e7f59113cedceb1486ea77225cf1fc043103dfceebd"
+        },
+        {
+          "kind": "plan",
+          "id": "target-plan:a442df84be41612c9e0f781916b1651a577d4e012aa0e69adc98a17ed498229f",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "133033afbf0e8fb39d2a5ceebddc690149ec9dd8e72ac529be432c22f884cb27"
+        },
+        {
+          "kind": "candidate",
+          "id": "candidate:e2fb802e836ee5ef0f98e856720711ba8caa08c3c04e4a60fbdf250abd2dba6e",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "efc03e061b548d1a680cb40c667d55500ba4d8ec91a0b836dbbd29b5aeaa65b7"
+        },
+        {
+          "kind": "candidate",
+          "id": "candidate:ba345db153ac0c47135be15aeeddf17ba6738ba7babcaf17b415cfa9fe249a67",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "07006a44ad5044d0faf07e3d67cf51ceb9213f73c113db2348146ea97bf9c340"
+        },
+        {
+          "kind": "policy",
+          "id": "q24-policy-v1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "c6ba68e9effd1128dca64068a91ab2e73e0b65f326bfe17e18dbb95a7e2606f1"
+        },
+        {
+          "kind": "strategy",
+          "id": "q24-explicit-proposal",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "38aada1ed7e873a0fbbe2770d0320814202b210f7a7379c347dd8fb76b553df8"
+        }
+      ],
+      "prepared_case_sha256": "f2315cd41f23a3e1cfca82370df56e23201af79f212a2794af2baf05f0ab6974",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "3038429d8d96100f9682f408cf2ea3f0668547b94158fc8002338a53dcf3cd28"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:03.000000Z",
+          "dispatch_at": "2024-03-08T14:31:03.000000Z",
+          "settled_at": "2024-03-08T14:31:03.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "8191dfbcd3147f7d51ebef400f9bc1dd043cc6d4459ad702083ef722ae7d67ca",
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E20",
+      "expected_status": "partial",
+      "actual_status": "partial",
+      "expected_assertions": {
+        "weekly_start": "2024-03-03T15:00:00Z",
+        "weekly_end": "2024-03-10T15:00:00Z",
+        "monthly_start": "2024-02-29T15:00:00Z",
+        "monthly_end": "2024-03-31T15:00:00Z",
+        "wrong_period_metric_unknown": true,
+        "missing_intervention_not_zero": true
+      },
+      "actual_assertions": {
+        "weekly_start": "2024-03-03T15:00:00Z",
+        "weekly_end": "2024-03-10T15:00:00Z",
+        "monthly_start": "2024-02-29T15:00:00Z",
+        "monthly_end": "2024-03-31T15:00:00Z",
+        "wrong_period_metric_unknown": true,
+        "missing_intervention_not_zero": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "snapshot",
+          "id": "snapshot:07c83d359ca0011c6bae12da0490e138f7fb9738e9e6067fa992a2fe56b8f584",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8766fc02c68065d3752ad126b9ccf7ede4cbed917d44f451d422828d2276f505"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:20d391636375f6531c47d33f68aaca98c16d71c9bf5536e09b3295000c4c8927",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f6e6e16b6fd87ce1f472df6291d9060a81c7d93b6c98e2499b549b8bc8e511ea"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:0e534e23e9e458eacc2e8a2d1eb75b156d78371c80036cdaa6ea4581bb814352",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d16a1722545e84e605624db258899c7f15caf1fc6d12a6008321f2461ffd9613"
+        },
+        {
+          "kind": "snapshot",
+          "id": "snapshot:bd32d7a4bbbe19e5890786dc1df1c8c74c414ebf0de21c9ab838bf460495bdf4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "9ecf9fbf7ae86407fd230721d5b4e4e6fc70fb56e1e2f722233e315722d8a545"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "075c69e51fdf875726c2459664bc7412a8e8b577df61d2283ec08d66158ac4d1"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:2",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "af530b47c62252eea7ca625317a386561e6bdf479bbabfa261150037c630ba9c"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:3",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "d59ece71b79cfb22a82f87d8bf83b035b856f1965d682c3a730f19d9fc6832f8"
+        },
+        {
+          "kind": "event",
+          "id": "ledger:181e8743759bf56c:4",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "0eeb94c2b7bac798019669966f916af5408e60f94ea1d1655c3e612a57315adf"
+        },
+        {
+          "kind": "performance",
+          "id": "performance-1f5a09b6aa2e1f4764750250",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1f5a09b6aa2e1f476475025098b3fc4c05fcea9dd450d70ce55d71453fc4a68b"
+        },
+        {
+          "kind": "timezone",
+          "id": "synthetic-rules-2024-v1",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "e1dfaaea84ebf42d954134f1f13b252b19fadfce5c158ebd5aa8b296cbcdee7c"
+        }
+      ],
+      "prepared_case_sha256": "2401fc8e874f312329c0b8f691136bcb9431a7391b5319d82a46dfca75fd1ca6",
+      "consumed_variants": [
+        "monthly",
+        "weekly"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "989b5b0f0a846b180f8970fa92a28d558d10c82b30a11df51ffb28516a268750"
+          },
+          "role": "report",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-04-01T00:00:00.000000Z",
+          "dispatch_at": "2024-04-01T00:00:00.000000Z",
+          "settled_at": "2024-04-01T00:00:00.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "ab1406f5f3bbce8630886ad8220512bd002d9b4a315297b89b46ac5011423be5",
+      "reasons": [
+        "intervention_unknown",
+        "period_mismatch"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E21",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "historical_grant_substitution": false
+      },
+      "actual_assertions": {
+        "historical_grant_substitution": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [
+        {
+          "kind": "document",
+          "id": "doc.batch",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "5584191bd32023bcf9aef6da2aca6e3a9d827f6b60597bc581fdbf80726fa3a0"
+        },
+        {
+          "kind": "context",
+          "id": "doc.context",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "3b7b267353eb420c63d841416b470147fc94edd3d4a94e0708441e17cd5a28fc"
+        },
+        {
+          "kind": "rights",
+          "id": "other",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "c2bac23cda1c776a6f632cadf9349ea2228e46bd48e46fff85743e0b8683f611"
+        },
+        {
+          "kind": "revision",
+          "id": "revision:1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1ef83ce3a614beaa26d487bacb74d5147cdb8b77c3cd5c65c890f44f0cc321e0"
+        },
+        {
+          "kind": "observation",
+          "id": "observation:f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "f8116e209e1b7f3e4101b9d6e63fe3520e04086c3173c0b7cfa9c00a42928c8a"
+        },
+        {
+          "kind": "original",
+          "id": "16b6b91fdce06e6813f2af5321c1a5b4c96d7686ddfff7156eca8791627f1745",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "2888779365b4f024f1d9d218e127abbcdf9b2c8e0000f70541e5b114beed06d2"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "8f5c413c9983210357aee5c6ad851dd6a4d0d338b6753e0247221891fbe83698"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "431f1cac3ff69f8b8babf270f83c80c51a173e4e7db28bfa1221d915940c75cf"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "4b558305cc65a43c6dabbb4ba6e64ff435ebd9815bb3059f315c1bad338c6e3a"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "1b6306a66a96f1b5233fa1388c38f780645750f40e993178d4ed5cf55ff98d42"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "ba3181591fd7a0b315beea472ac49838263db18cdb878566861d80e60d00afd3"
+        },
+        {
+          "kind": "rights",
+          "id": "doc.rights",
+          "version": 1,
+          "canonicalization_version": "qh-canonical-json-v1",
+          "sha256": "a1f94e4b2032da764b80aa08fcee02fcaf5df204859f7b7d6f6e26d6b8191651"
+        }
+      ],
+      "prepared_case_sha256": "6b257e4493ca6cf3c4e36e76991373903b8ca6b9664c2ad0a2f6ad694b6d57e5",
+      "consumed_variants": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "3fd62780e3d020621f11b7b1b9e98676e43ae6ceb50e528113d19840d3c2407f"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 9,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "dba5350d4453a633b3a4cbaa8a4c6b5fd73ab6dd69596e3764747223a69b2ecf",
+      "reasons": [
+        "rights_denied"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E22",
+      "expected_status": "invalid",
+      "actual_status": "invalid",
+      "expected_assertions": {
+        "silent_truncation": false
+      },
+      "actual_assertions": {
+        "silent_truncation": false
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "2681133e87a7cd0a3a8c34c47adb927c791762fa8a0821f5de497011962b80fe",
+      "consumed_variants": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": null,
+      "reasons": [],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E23",
+      "expected_status": "blocked",
+      "actual_status": "blocked",
+      "expected_assertions": {
+        "actual_api_calls": 0,
+        "actual_new_spend": 0
+      },
+      "actual_assertions": {
+        "actual_api_calls": 0,
+        "actual_new_spend": 0
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "898c81ae43f47d89fdadb14c8b7b4beba344887f0721f6b8f28f25b5812564c3",
+      "consumed_variants": [
+        "actual",
+        "escalation"
+      ],
+      "actual_usage": null,
+      "budget_attempt_evidence": [],
+      "result_sha256": "d3462629782894f066b97164d3f47dc77500ac181ee58b91f8ac684705bae3c6",
+      "reasons": [
+        "actual_disabled"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    },
+    {
+      "id": "E24",
+      "expected_status": "invalid",
+      "actual_status": "invalid",
+      "expected_assertions": {
+        "usage_settled": 50,
+        "charge_not_discarded": true
+      },
+      "actual_assertions": {
+        "usage_settled": 50,
+        "charge_not_discarded": true
+      },
+      "matches": true,
+      "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+      "input_refs": [],
+      "prepared_case_sha256": "fa168ece57e32f3488ffa422f647967e34aa6cd38fff719e4840428582640106",
+      "consumed_variants": [
+        "main"
+      ],
+      "actual_usage": 50,
+      "budget_attempt_evidence": [
+        {
+          "schema_version": 1,
+          "environment": "synthetic",
+          "attempt_id": "a1",
+          "request_ref": {
+            "kind": "request",
+            "id": "ai-request",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "e0d651f8f695e18e184dcc2d368bdc7dcf526252518c09cdafe9d6c44e5284a1"
+          },
+          "role": "risk",
+          "sequence": 1,
+          "client_profile": "synthetic",
+          "policy_ref": {
+            "kind": "budget_policy",
+            "id": "ai-budget-v1",
+            "version": 1,
+            "canonicalization_version": "qh-canonical-json-v1",
+            "sha256": "2afcddb530c8778e86ba32fd507c818d60bdd96ca4c21a58db0a1e2a52fa7c3b"
+          },
+          "reserved_usage": {
+            "input_tokens": 69,
+            "output_tokens": 20,
+            "calls": 1,
+            "charge": 110
+          },
+          "state": "settled",
+          "reserved_at": "2024-03-08T14:31:08.000000Z",
+          "dispatch_at": "2024-03-08T14:31:08.000000Z",
+          "settled_at": "2024-03-08T14:31:08.000000Z",
+          "actual_usage": {
+            "input_tokens": 49,
+            "output_tokens": 0,
+            "calls": 1,
+            "charge": 50
+          },
+          "reasons": []
+        }
+      ],
+      "result_sha256": "08f48f83ce0d42397cdd081226989a75c45e5a63d5e5d185f0590c0c36137309",
+      "reasons": [
+        "schema"
+      ],
+      "actual_api_calls": 0,
+      "actual_new_spend": 0,
+      "network_calls": 0,
+      "order_effects": 0
+    }
+  ],
+  "case_count": 24,
+  "passed": 24,
+  "seconds": 32.459,
+  "actual_api_calls": 0,
+  "actual_new_spend": 0,
+  "network_calls": 0,
+  "order_effects": 0
+}

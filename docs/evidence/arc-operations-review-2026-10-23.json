@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-23",
+  "task": "Q11",
+  "reviewer": "env_final_reviewer / qh_reviewer",
+  "result": "pass_scoped_design",
+  "reviewed_sha256": {
+    "docs/tasks/ARC-operations.md": "c71e0addde156016398d0b6f48a7dbaa2955c23fc26b85e76fa75390065807b6",
+    "docs/contracts/operations-v1.md": "7ce84ca1305aa5151debc3db022a955fe655d7d9948af2a5e9dab7cff45c54a1",
+    "docs/decisions/ARC-DEC-003-local-operations.md": "56a2c3e7944c7803340f56256239c1a7e70902a2836c2410fe7afd43a2258950",
+    "docs/contracts/execution-v1.md": "3fa814fd00770fc35594588c30ef01971c34809008770a3981c5b61f529001a2",
+    "docs/requirements-scenarios.md": "843b2d166f1e012c247923dfd8d5e32ed4290bcd49dc8babe135cdb67899e262",
+    "docs/policy-gates.md": "f4bca5690b64c06156c93d8992fc786a45e49d60e9c779ca3fba2d8821c176bd"
+  },
+  "security_evidence": "docs/evidence/arc-operations-security-2026-10-23.json",
+  "resolved": [
+    "control-session liveness required for admission/dispatch/egress"
+  ],
+  "not_executed": [
+    "actual ACL/network/resources",
+    "database backup restore",
+    "financial tests"
+  ]
+}

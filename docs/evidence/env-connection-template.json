@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-21",
+  "example_sha256": "736973a3186f95ba9a54fb7749c660f7df8df634efa306cace67cea07016b2d0",
+  "yaml_valid": true,
+  "all_connections_disabled": true,
+  "local_initial_copy_matches_example": true,
+  "local_mode": "0600",
+  "local_ignored": true,
+  "local_tracked": false,
+  "example_ignored": false,
+  "actual_credentials_added": false,
+  "loader_implemented": false,
+  "api_calls_made": false,
+  "commit_created": false,
+  "executed_by": "root"
+}

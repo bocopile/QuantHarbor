@@ -1,0 +1,392 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_correction_partial",
+  "exit_code": 0,
+  "elapsed_seconds": 1032.689,
+  "command": "python3.13 -B scripts/check_execution.py",
+  "result": {
+    "scope": "Q27_synthetic_actual_database_only",
+    "status": "partial",
+    "q27_complete": false,
+    "checks": [
+      "EX04_actual_database_all_admission_faults_rollback",
+      "EX01_actual_Q24_Q26_DB_admission",
+      "EX05_committed_command_lookup_no_second_intent",
+      "EX35_two_facades_shared_registry_database_reload",
+      "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+      "EX06_actual_Q20_projection_DB_cash598",
+      "EX20_actual_duplicate_fill_once",
+      "EX07_actual_Q20_settlement_no_reapply_cash598",
+      "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic",
+      "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only",
+      "EX08_EX33_actual_current_source_query_rebind_and_next_candidate_admission",
+      "EX34_product_role_direct_financial_mutation_denied",
+      "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+      "EX16_EX18_actual_after_handoff_crash_unknown_no_resend",
+      "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved",
+      "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_0",
+      "EX03_EX35_concurrent_admission_requests_actual_DB_contention_winner_1",
+      "EX05_actual_connection_commit_response_frame_lost_lookup_once",
+      "EX02_different_approval_rejected_cross_generation_SQL_claim_unique",
+      "EX20_actual_fill_before_ACK_late_ACK_no_regression",
+      "EX24_actual_correction_all_fault_fingerprints",
+      "EX39_actual_multi_price190_revision290_Q20_conservation",
+      "EX23_actual_late_final_conflict_preserved",
+      "EX26_actual_unknown_complete_revision_fee1_tax0_5_settlement_once",
+      "EX21_EX22_actual_cumulative_out_of_order_explicit_reprocess_prices_correction",
+      "EX09_EX10_actual_sale_receivable_settlement_no_unproven_cash_capacity",
+      "EX23_EX26_actual_collision_overfill_Q20_quarantine_preserved_new_blocked",
+      "EX26_actual_cost_over_bound_ledger_preserved_incomplete",
+      "EX38_actual_obligations_two_admissions_800_498_96",
+      "EX08_EX21_EX22_EX26_EX33_EX35_actual_delta_Q20_Q21_Q23_currentrisk_next_admission",
+      "EX08_EX21_EX22_EX26_EX33_EX35_actual_cumulative_Q20_Q21_Q23_currentrisk_next_admission",
+      "EX08_EX21_EX22_EX26_EX33_EX35_actual_multi_Q20_Q21_Q23_currentrisk_next_admission",
+      "EX08_EX21_EX22_EX26_EX33_EX35_actual_cost_Q20_Q21_Q23_currentrisk_next_admission",
+      "EX19_actual_issuer_finalreject_release_forged_hash_foreignissuer_bool_denied",
+      "EX09_actual_typed_DB_sellable7_quantity7_applied",
+      "EX09_actual_typed_DB_sellable7_quantity8_rejected",
+      "EX11_actual_all_account_DB_exposure_negative_no_cached_allow",
+      "EX12_actual_all_account_DB_daily_negative_no_cached_allow",
+      "EX12_actual_all_account_DB_turnover_negative_no_cached_allow",
+      "EX13_actual_all_account_DB_loss_negative_no_cached_allow",
+      "EX13_actual_all_account_DB_drawdown_negative_no_cached_allow",
+      "EX40_own_UUID_projects_fixed_image_migrations_idempotent_cleanup"
+    ],
+    "goldens": {
+      "candidate": {
+        "quantity": "3",
+        "limit_price": "100",
+        "cost_bound": "2",
+        "maximum_burden": "302"
+      },
+      "partial_fill": {
+        "L": "1000",
+        "H": "302",
+        "F": "100",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "settlement": {
+        "L": "900",
+        "H": "202",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "fresh_query": {
+        "L": "900",
+        "H": "202",
+        "B": "900",
+        "U": "202",
+        "D": "0",
+        "A": "598",
+        "next_remaining": "196"
+      },
+      "concurrency_winner_0": {
+        "available": "600",
+        "burdens": [
+          "302",
+          "402"
+        ],
+        "winners": 1,
+        "remaining": "298"
+      },
+      "concurrency_winner_1": {
+        "available": "600",
+        "burdens": [
+          "302",
+          "402"
+        ],
+        "winners": 1,
+        "remaining": "198"
+      },
+      "multi_price": {
+        "before_principal": "190",
+        "after_principal": "290",
+        "quantity": "3",
+        "principal_held": "10",
+        "cost_held": "2"
+      },
+      "corrected_delta": {
+        "quantity": "2",
+        "notional": "190",
+        "pnl": "10",
+        "available": "598",
+        "next_available": "196",
+        "manifest_consumed": true,
+        "all_history_preserved": true
+      },
+      "corrected_cumulative": {
+        "quantity": "2",
+        "notional": "190",
+        "pnl": "10",
+        "available": "598",
+        "next_available": "196",
+        "manifest_consumed": true,
+        "all_history_preserved": true
+      },
+      "corrected_multi": {
+        "quantity": "3",
+        "notional": "290",
+        "pnl": "10",
+        "available": "598",
+        "next_available": "196",
+        "manifest_consumed": true,
+        "all_history_preserved": true
+      },
+      "corrected_cost": {
+        "quantity": "1",
+        "notional": "100",
+        "pnl": "-1.5",
+        "available": "598",
+        "next_available": "196",
+        "manifest_consumed": true,
+        "all_history_preserved": true
+      },
+      "risk_exposure": {
+        "current": "500",
+        "active_opposing_sale": "100",
+        "new_buy": "50",
+        "one_sided": "550",
+        "limit": "500"
+      },
+      "risk_daily": {
+        "used": "400",
+        "active": "350",
+        "new": "300",
+        "total": "1050",
+        "NAV": "1000",
+        "turnover": "1.05"
+      },
+      "risk_turnover": {
+        "used": "400",
+        "active": "350",
+        "new": "300",
+        "total": "1050",
+        "NAV": "1000",
+        "turnover": "1.05"
+      },
+      "risk_loss": {
+        "observed_loss": "40",
+        "worst_cost": "15",
+        "prospective_loss": "55",
+        "NAV": "960",
+        "loss_limit": "50",
+        "drawdown_limit": "0.05"
+      },
+      "risk_drawdown": {
+        "observed_loss": "40",
+        "worst_cost": "15",
+        "prospective_loss": "55",
+        "NAV": "960",
+        "loss_limit": "50",
+        "drawdown_limit": "0.05"
+      }
+    },
+    "remaining": [
+      "correction_actual_database_run_and_independent_reviews",
+      "EX21_unsupported_earlier_cumulative_revision_successor_reinterpretation",
+      "EX26_unsupported_zero_cost_and_settled_trade_dependency_corrections",
+      "EX27_EX28_cancel_handoff_and_confirmation_authority",
+      "EX31_restart_new_issuer_rebind_and_manual_resume",
+      "EX32_EX37_exact_per_intent_row_index_byte_accounting_and_capacity_proof",
+      "EX34_complete_SQL_auth_nonce_closed_schema_invariants"
+    ],
+    "cleanup": [
+      {
+        "project": "qh-ledger-3a8f6d6240234f469485e0bef078ab22",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-47ae45f96ebb47178faec2af737542aa",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-31f8887a6f6e4504a087f5dff3748534",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-364915a708a94f538cdeca45a8953498",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-0b0093ffbcfb496aa6f4f313b0fcad13",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-ae39278d78b14606ac0b732ec826610b",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-de0560afc45a486dbd0270118a160d6e",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-49f3895c912f497abdf8040a8ffebd51",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-84be8d914f1f4fd0a476c2120e29368d",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-376c66d2e50245179ffae8f41235a41c",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-1c908eec61754c32970c732a9c67b5d7",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-394c4fc90fdc4ab5a3b754f85fad1fc6",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-8c648d9c7e224233bdcf351af0ac9131",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-4e37ca7a505947c0bd48bf92c3ea90f1",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-743471929b3c4a18809073264f5d451c",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-a5f38d694eef472e9d06fa97226de90f",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-cb2ab63e4b7b491282eee8f4efd6310f",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-3a02315891dd403caa0e253186349ab5",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-e31fb99bf3bc482fbef375c9358cc6d8",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-3894a423a74d40c5a2ab9157e33ef179",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-0064d80509a344f9b5c54438998748b4",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-395455e5e1664892b93203e40b92a0f0",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-2e722e83750d42b5a7bcbbde73ee25b1",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-d1aa6d6fc60f4ac889c6b8c1fba0022a",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-fc73854b185b4d9abd5b03da5f4fe0fd",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-b9e2df0dfe8d44c4b4a41f34f37236d3",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-5ed660cfe6a64771982b0f165c992208",
+        "result": "own_project_removed"
+      }
+    ],
+    "phase": "<lambda>:scenario",
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "reason": "implemented_checks_pass_remaining_contract_work",
+    "elapsed_seconds": 1032.446
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+    "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "bace871c7e5c1ae3d4660f6bc95541152723c9729ceb946b8074540aa4bdcec5",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "f59acf0658cc13f69b8395a7ea09bea7be67b3c4e26072d65ad5c94897c6a815",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "c7e9832759b08c74575d1fcd38cabeeabf871976650cde185ba8dbb9a98fee5a",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "dd20df49a73d882d4d12631b3108e00df516b269023f403aa9e48370241c384f",
+    "docs/development/execution.md": "f3c2373d169f75d166644afbe585799be6caff7ed41763ca52d1947b9757c90d",
+    "migrations/0003_synthetic_execution.sql": "08e61b84e5e95154591ee2ae0f083250b663c52641c4eaf506f32e2c3eb3090f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "23d1d24c2f92686397eb63ee932c2c1c9c8f10657ed87b3f03585789ffe6e804",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423"
+  },
+  "owned_unchanged": true,
+  "stderr_bytes": 0,
+  "q27_complete": false,
+  "root_verified_at": "2026-10-25T12:12:06.980747+00:00",
+  "scope_note": "Actual synthetic PostgreSQL correction/current-risk cases; partial Q27. Independent reviews/full product/control/capacity/closed SQL remain.",
+  "source_current_matches": {
+    "src/quantharbor/domain/execution.py": true,
+    "src/quantharbor/domain/execution_math.py": true,
+    "src/quantharbor/application/execution.py": true,
+    "src/quantharbor/ports/execution.py": true,
+    "src/quantharbor/adapters/postgres_execution.py": true,
+    "src/quantharbor/adapters/synthetic_execution_broker.py": true,
+    "src/quantharbor/adapters/execution_uow.py": true,
+    "tests/product/synthetic_execution.py": true,
+    "tests/product/test_execution.py": true,
+    "tests/product/test_execution_math.py": true,
+    "tests/product/test_execution_broker.py": true,
+    "tests/product/test_execution_runner.py": true,
+    "scripts/check_execution.py": true,
+    "docs/development/execution.md": true,
+    "migrations/0003_synthetic_execution.sql": true,
+    "src/quantharbor/application/approval.py": true,
+    "src/quantharbor/domain/serialization.py": true,
+    "tests/product/test_execution_financial.py": true,
+    "src/quantharbor/application/research.py": true,
+    "src/quantharbor/application/execution_research.py": true,
+    "tests/product/test_execution_correction.py": true,
+    "tests/product/test_research_execution.py": true
+  },
+  "remaining_label_note": "runner의 correction_actual_database_run_and_independent_reviews는 실행 전 작성된 잔여 라벨이다. 본 실행에서 correction actual DB는 완료했으며 독립 검토는 남았다. EX09 상세 분해와 EX11 원래400+100+50의 전 경로 일치 검증은 별도 대조해야 한다."
+}

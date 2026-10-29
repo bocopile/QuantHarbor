@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-23",
+  "task": "Q14",
+  "reviewer": "env_final_reviewer / qh_reviewer",
+  "result": "pass_code_review_scope",
+  "resolved": [
+    "start client failure or never-started container must not report success",
+    "runtime-lock manifest included in synthetic container"
+  ],
+  "reviewed_sha256": {
+    "src/quantharbor/runtime/boundary.py": "764eb7b5a842f0bcd15ba536a46d56a007c96c9838fdcff646f630cdd75cbde1",
+    "src/quantharbor/runtime/isolation.py": "b908f5c26a2cafe4c96b28784cef1b35beab5c44eafad0fac0c935e80df5e326",
+    "tests/product/test_boundary.py": "9c7d002fbddada3cc89f6d8e7182d668f1775d8f5602b577dd868c389334566f",
+    "tests/product/test_boundary_isolation.py": "770101bfea7d70fd0810ece69223b46c8aa900bdeb78f5cf19ae12cbb28e6dc4",
+    "tests/isolation/test_docker_boundary.py": "d47163d895f3c36eb5bfb638dec9eb66e0cabc62619d47e2b3a91b6a6549cf2a",
+    "scripts/check_isolation.py": "9697718c5e8687890d276cd769493fac64f54538f2c3134a739aa680da514287",
+    "containers/Dockerfile.synthetic": "5b3e26f8e2b057ee072ec6216d3a7efc71523ed47c2defbeb1e04c9ecc3a9537",
+    ".dockerignore": "df1911dae0916ec6d00d9658a855edebaa8ada18e1f40ea062e48c3a13d1477d"
+  },
+  "tests_not_executed_by_reviewer": true,
+  "independent_execution_pending": true
+}

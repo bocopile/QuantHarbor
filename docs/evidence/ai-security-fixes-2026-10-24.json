@@ -1,0 +1,164 @@
+{
+  "task": "Q25-AS1-AS5-securityfix",
+  "role": "sole_implementer",
+  "requested_profile": "qh_development",
+  "subagents": 0,
+  "state": "securityfix_returned_final_full_selfvalidation_pass_pending_root_independent_review",
+  "source_frozen_through_full_run": true,
+  "sha256": {
+    "docs/development/investment-ai.md": "3700ce7b2f92849fc196c8b4bebcda4749d20a121974b627f56b832eb1a6fe4d",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "ef0670ae1c84566ba89c151b3a416f69aca9abc75f31dd3fcd1a81dc7fff5a7e",
+    "src/quantharbor/application/investment_ai.py": "954565265fba7520dac69aa6de8602662132375ade99454b188efda27eeeb19c",
+    "src/quantharbor/domain/investment_ai.py": "8a02b37f4da642cf3ab6f3d79b55cab3c18776ae8ef25f4a5458f2dbcc2c247d",
+    "src/quantharbor/domain/serialization.py": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1",
+    "src/quantharbor/ports/investment_ai.py": "9630a387aab0f8b27dfc461160fab51200b51936b6411aa2b64e2b2d984285c4",
+    "tests/product/synthetic_investment_ai.py": "0678d7c0810297f350d9b57a2146f018ae49df425058ed32ad99024441de48c0",
+    "tests/product/test_investment_ai.py": "25f7994b242a98f8286cd7f072ed99e8eef9f082116f41ec8b6df1656bcb8c18",
+    "tests/product/test_investment_ai_bounds.py": "684965fab6141da0546c716916e4cf95fb655e39ce8accd4830bb01725c9a3f1",
+    "tests/product/test_investment_ai_evaluation.py": "a15f187dcedfe68c976078a8ce6e2e8795e2d34ac9c9a649e6f395422f0bceb3",
+    "tests/product/test_investment_ai_security.py": "920fb64aac91134121dd775a7f748372165f39fa97f53404016c07f59e3caf92",
+    "tests/product/test_investment_ai_sources.py": "5100ba01cc2677dd1b5a1e9f720c2da144313598a72591d7fa600c0cdda33a90"
+  },
+  "owned_files": 12,
+  "root_common_files_unchanged": true,
+  "unowned_changes": [],
+  "source_drift": [],
+  "baseline_files_unchanged": 7,
+  "baseline_checks": {
+    "docs/architecture.md": true,
+    "docs/contracts/serialization-v1.md": true,
+    "docs/implementation-backlog.md": true,
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+    "docs/contracts/data-v1.md": true,
+    "docs/contracts/execution-v1.md": true,
+    "docs/contracts/operations-v1.md": true
+  },
+  "spec_raw_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+  "actual_red": {
+    "AS1_AS5": {
+      "tests": 5,
+      "failures": 5,
+      "errors": 0,
+      "seconds": 4.473,
+      "log": "/tmp/quantharbor-q25-security/red.txt"
+    },
+    "additional_inline_query_denial": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 0.014,
+      "log": "/tmp/quantharbor-q25-security/inline-denial-red.txt"
+    },
+    "intermediate_test_construction_error": {
+      "tests": 55,
+      "errors": 1,
+      "product_failures": 0,
+      "log": "/tmp/quantharbor-q25-security/green-first.txt",
+      "classification": "new query check rejected initial forged constructor; fixture subsequently forges checks and receipt explicitly"
+    }
+  },
+  "final_focused": {
+    "tests": 66,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 67.339,
+    "log": "/tmp/quantharbor-q25-security/focused-final.txt",
+    "additional_security_tests": 16
+  },
+  "final_full_product": {
+    "task": "Q25-AS1-AS5",
+    "discovered": 521,
+    "tests_run": 521,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 522.34,
+    "source_unchanged": true,
+    "source_drift": [],
+    "source_freeze": "/tmp/quantharbor-q25-security/source-freeze.json",
+    "result": "pass",
+    "fixed_evaluation": {
+      "result": "/tmp/quantharbor-q25/evaluation-43bb48a0bc47dc9fe4c2f375f6a871e07f290dbea85829a184a870b81d51bcd3.json",
+      "manifest": "/tmp/quantharbor-q25/manifest-ce63483f2731261ba44e2dffc39c8c0e0fb4a0c6e9b20f31da9ec5c217f82428.json"
+    },
+    "actual_api_calls": 0,
+    "actual_new_spend": 0,
+    "network_calls": 0
+  },
+  "fixed24": {
+    "cases": 24,
+    "passed": 24,
+    "seconds": 27.763,
+    "run_id": "2689c469f80c4ef3988c7a0592633f0b",
+    "result": "/tmp/quantharbor-q25/evaluation-43bb48a0bc47dc9fe4c2f375f6a871e07f290dbea85829a184a870b81d51bcd3.json",
+    "manifest": "/tmp/quantharbor-q25/manifest-ce63483f2731261ba44e2dffc39c8c0e0fb4a0c6e9b20f31da9ec5c217f82428.json",
+    "manifest_raw_sha256": "43bb48a0bc47dc9fe4c2f375f6a871e07f290dbea85829a184a870b81d51bcd3",
+    "source_unchanged": true,
+    "status_counts": {
+      "complete": 4,
+      "invalid": 6,
+      "blocked": 9,
+      "partial": 4,
+      "failed": 1
+    },
+    "manifest_written_before_first_case": true
+  },
+  "checks": {
+    "quality": {
+      "tests": 87,
+      "seconds": 3.603,
+      "result": "pass",
+      "command": "python3.13 -I -S -B -m unittest discover -s tests/quality -v",
+      "log": "/tmp/quantharbor-q25-security/quality-final.txt"
+    },
+    "public": {
+      "scope": "Q15_public_candidates_only",
+      "result": "pass",
+      "files_checked": 431,
+      "findings": [],
+      "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+    },
+    "team": {
+      "result": "pass",
+      "members": 6,
+      "queue": 36,
+      "task_ids": 110,
+      "log": "/tmp/quantharbor-q25-security/team-final.txt"
+    },
+    "git_diff_check": {
+      "result": "pass",
+      "log": "/tmp/quantharbor-q25-security/diff-final.txt"
+    }
+  },
+  "history": "/tmp/quantharbor-q25-security/history.json",
+  "api_docs": "docs/development/investment-ai.md:31",
+  "new_or_changed_apis": [
+    "run_research -> repository.execute: actual invocation/normalization/validation binding; arbitrary result/finish import rejected",
+    "repository.execute_review: exact processing evidence and current original/review query intersections",
+    "repository.hypothesis_dependencies(origin_ref): required source/claim/rights/event/snapshot/benchmark/plan/policy/strategy closure",
+    "append(hypothesis, sources=current_sources): optional explicit current source context; latest fully injected Sources by default",
+    "bind_sources(Sources): current source injection, no fallback to historical origin source",
+    "execute_query/query_count/query_denials: atomic shared request quota and actual denied-query evidence",
+    "settle malformed dispatched usage -> unknown_charge retaining reservation and scope block",
+    "cached replay current denial -> transient blocked denied:<attempt_id> view with body/checks/receipt/manifest/period cleared",
+    "ResearchResult complete constructor/parser requires matching declared-query receipts and attempt ref kind"
+  ],
+  "limits": [
+    "합성 프로토콜·주 담당 자기 검증이며 독립 보안/일반/실행 검토는 root 후속",
+    "실제 모델 의미 품질 평가·실제 API·비밀값·주문·외부 지출 없음; actual client disabled",
+    "in-process RLock/메모리 저장소로 재시작 내구성·악성 Python/호스트 격리·외부 서명·hard kill을 증명하지 않음",
+    "호스트가 현재 원천을 주입하며 실제 외부 원천의 최신성을 자동 수집하지 않음",
+    "새 기록 상태/schema/spec 버전 변경 없음; root 상태·계약·큐·근거 파일은 미수정"
+  ],
+  "actual_api_calls": 0,
+  "actual_new_spend": 0,
+  "network_calls": 0,
+  "docker_runs": 0,
+  "installs": 0,
+  "repository_git_mutations": 0,
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "independent_review": false,
+  "root_hashes_match": true
+}

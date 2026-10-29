@@ -1,0 +1,27 @@
+{
+  "task": "Q26-local",
+  "role": "qh_security_reviewer",
+  "requested_model": "gpt-6-astra",
+  "reasoning": "high",
+  "result": "pass",
+  "scope": "AR1_AR2_security_impact_static_review",
+  "findings": [],
+  "owned_sha256": {
+    "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+    "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+    "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+    "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+    "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+    "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+    "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+    "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+    "docs/development/approval.md": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+    "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+    "tests/product/test_approval_review.py": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1"
+  },
+  "owned_hashes_matched": 11,
+  "baseline_matched": 7,
+  "fixture_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+  "tests_executed": false,
+  "review_summary": "**PASS — 일반 최종 검토 이후 수행한 Q26 AR1·AR2 보안 영향 정적 검토에서 잔여 P1/P2를 발견하지 못했습니다.**\n\n- **AR1:** 반복 stop 반환 전에 현재 handle·권한·세대·만료·liveness·clock을 검사합니다. 인증 우회나 reconnect가 없고, stop→명시 resume→stop은 새 사건과 disconnect 보호 예산을 유지합니다. clock fault는 stopped로 덮어쓰지 않습니다. [인증](/Users/okestro/projects/QuantHarbor/src/quantharbor/adapters/synthetic_approval.py:277), [제어](/Users/okestro/projects/QuantHarbor/src/quantharbor/adapters/synthetic_approval.py:654)\n- **AR2:** disconnect의 세션 hold 해제와 paused 이력 저장은 동일 commit입니다. restore도 옛 세션 hold를 staging에서 해제하며 불변 이력·consumed 보호 철회 hold·금융 예약을 보존합니다. 실패 시 부분 해제나 authority epoch 전진이 없고, clock 오류는 fault만 남깁니다. [commit](/Users/okestro/projects/QuantHarbor/src/quantharbor/adapters/synthetic_approval.py:170), [restore](/Users/okestro/projects/QuantHarbor/src/quantharbor/adapters/synthetic_approval.py:770)\n- **AS1·AS2 보존:** dispatch 직전 원 승인자의 현재 approve 권한을 재검사합니다. 명령별 완료 예산·원자적 withdraw 롤백·128 records/8MiB 상한이 유지됩니다. 옛 handle은 사용할 수 없으며, 새 유효 controller의 보호 철회는 report/risk 거부에도 가능합니다. [dispatch](/Users/okestro/projects/QuantHarbor/src/quantharbor/adapters/synthetic_approval.py:631), [예약·철회](/Users/okestro/projects/QuantHarbor/src/quantharbor/adapters/synthetic_approval.py:418)\n- **오류·테스트:** 고정 오류 code만 반환합니다. 선택된 **31개 정의(신규13+기존18)**의 실제 제품 호출, 상태·예약·이력 보존, 정확한 거부 사유, 실패 롤백 및 양성 철회 assertion을 확인했습니다. [신규 회귀](/Users/okestro/projects/QuantHarbor/tests/product/test_approval_review.py:27)\n\n실제 소유11 해시는 최신 수정 기록·일반 최종 검토와 전부 일치합니다. 이전 보안 기준10 대비 adapter·안내만 변경됐고 테스트1개가 추가됐습니다. 나머지8개는 동일합니다.\n\n아래 SHA256은 **이번 검토 전 = 검토 후**입니다.\n\n| 파일 | SHA256 |\n|---|---|\n| src/quantharbor/domain/approval.py | `7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644` |\n| src/quantharbor/application/approval.py | `9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca` |\n| src/quantharbor/ports/approval.py | `7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5` |\n| src/quantharbor/adapters/synthetic_approval.py | `a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c` |\n| src/quantharbor/domain/serialization.py | `c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71` |\n| tests/product/synthetic_approval.py | `9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33` |\n| tests/product/test_approval.py | `17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6` |\n| tests/product/test_approval_regression.py | `bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342` |\n| docs/development/approval.md | `9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d` |\n| tests/product/test_approval_security.py | `3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d` |\n| tests/product/test_approval_review.py | `307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1` |\n\n이전 보안 기준의 변경 전 SHA256:\n\n- adapter: `76f72e2908fa0b70ed17631570d9f9b8eb9cafea88df492583ad01abcec7725d`\n- 안내: `4eed3b9c59769e6a7d16c782ead06f3c4b6cd0daaf1b4dffc0fb4d52c20c2dea`\n- 신규 review 테스트: 없음.\n\n**baseline7/7·fixture1/1도 이전 보안 기준 및 최신 기록과 일치하며, 검토 전후 총19개 drift는 0입니다.** Fixture SHA256: `84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300`.\n\n**테스트 실행 0건.** 최신31 통과는 구현자 기록이며 이전57 통과는 과거 버전 증거입니다. 수정·subagent·MCP·네트워크·비공개 읽기·Docker·Git 변경 없이 검토했습니다. 전체 제품·품질 실행 검증은 별도 validator 작업으로 남습니다."
+}

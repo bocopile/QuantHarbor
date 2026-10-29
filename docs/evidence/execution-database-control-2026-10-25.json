@@ -1,0 +1,192 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_control_repair_focused",
+  "exit_code": 0,
+  "elapsed_seconds": 472.565,
+  "at": "2026-10-25T13:14:24.175985+00:00",
+  "command": "python3.13 -B /private/tmp/qh-q27-db-control-repair.py",
+  "runner_sha256": "77ccc8539160de7fe97c4ab458745043d035e0a043eee94dd95f37039230e662",
+  "handoff_sha256": "97ef7f972f95d01e1556d8012e157c265b9d8ca0d7a287e2463a14c965659ccc",
+  "result": {
+    "scope": "Q27_root_actual_control_repair_focused",
+    "status": "partial",
+    "q27_complete": false,
+    "planned_scenarios": [
+      "restart_corrected",
+      "restart_quarantine",
+      "restart_unknown",
+      "restart_before_handoff",
+      "restart_late_completion",
+      "restart_reply_loss",
+      "proven_unsent",
+      "already_sent_not_unsent",
+      "resume_binding",
+      "before_cancel_handoff",
+      "after_cancel_handoff"
+    ],
+    "completed_scenarios": [
+      "restart_corrected",
+      "restart_quarantine",
+      "restart_unknown",
+      "restart_before_handoff",
+      "restart_late_completion",
+      "restart_reply_loss",
+      "proven_unsent",
+      "already_sent_not_unsent",
+      "resume_binding",
+      "before_cancel_handoff",
+      "after_cancel_handoff"
+    ],
+    "checks": [
+      "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_corrected_preserves_claims_history_hold",
+      "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_quarantine_preserves_claims_history_hold",
+      "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_unknown_preserves_claims_history_hold",
+      "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_before_handoff_preserves_claims_history_hold",
+      "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_late_completion_preserves_claims_history_hold",
+      "EX31_actual_DB_restart_COMMIT_response_loss_CAS_observation_no_live_split_authority",
+      "EX19_EX30_EX31_actual_DB_explicit_issuer_unsent_revoked_attempt_only_release_rebind_resume",
+      "EX19_EX30_EX31_actual_DB_explicit_issuer_unsent_already_sent_refused",
+      "EX30_actual_DB_resume_exact_session_source_hash_current_cash_qty_query_readset",
+      "EX27_actual_DB_before_cancel_handoff_durable_attempt_unknown_hold_no_resend",
+      "EX27_actual_DB_after_cancel_handoff_durable_attempt_unknown_hold_no_resend"
+    ],
+    "goldens": {},
+    "cleanup": [
+      {
+        "project": "qh-ledger-156ea62044c94d4b80a67f5b847d4d39",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-73fb49c5f937409bbea1ab6f825bac5d",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-fd15ac7eb7774b37b32067d41e8a99b3",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-56f78774a5d744b7ba40f1f287f11efb",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-465ff9e5af1d4953b636266f1f325fc0",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-68f14b22394048e3a8abbefa10cd1e00",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-46c6f7e6274343dcb6d996cd8438aa91",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-48013e0e03dc42b4b27cc0ddc5baa4fb",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-7f59bb624e3f4199827d0f9d3a44568f",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-92a5394459f64203b74ccbf513061997",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-a1f9a06d656243ed9639b8ccc22afde1",
+        "result": "own_project_removed"
+      }
+    ],
+    "phase": "after_cancel_handoff",
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "unexecuted": "Other current-version DB scenarios, full product, independent reviews, capacity and closed SQL; prior correction DB27 belongs to its recorded source version.",
+    "reason": "focused_control_checks_pass_remaining_Q27_work"
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "5bcf1be2888b75772d675a7d4f131c34032b9a15cbac4735a1f17370228d3f8e",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "71e3a287648c3fa3e4653794053fe9bcb1280b84b9ba596cdb0b4ff6d454a31d",
+    "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+    "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f4cc53ebe3649debf248c8ee66ea158d9f8b65b61f1332b4da6b4ea28ab4cadd"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "91a77821a9f5be2035722948ec5f9bf30dde676e06767aafdff8d34ce8bf1fe3",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "450178895815e91db431cd4beed4679f571b346ae4ae74fba1d41853ee9a13f1",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "5bcf1be2888b75772d675a7d4f131c34032b9a15cbac4735a1f17370228d3f8e",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "d63ec8292d81d67b86aa64eb6acc2baa0d919ab72c9988866550c0768e23d979",
+    "src/quantharbor/adapters/execution_uow.py": "c9f7d3c66980f6f2ae2e01cdf7fae08b91fb48e1c5ea4fbf21f5bfb88b72e01a",
+    "tests/product/synthetic_execution.py": "2f69a0f4ac0bb4359a66e120a6a80b65f037db0445512bf31b06c56c04c184d0",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "71e3a287648c3fa3e4653794053fe9bcb1280b84b9ba596cdb0b4ff6d454a31d",
+    "docs/development/execution.md": "b7902b7470b36b7ce644323e20f05126b9295966f42944152cb1cd79b0d7e89b",
+    "migrations/0003_synthetic_execution.sql": "cf9e077918fc1b3746a0ddc5c63235724ee2b127c886035c2d28da5cca0ded3f",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f4cc53ebe3649debf248c8ee66ea158d9f8b65b61f1332b4da6b4ea28ab4cadd"
+  },
+  "owned_unchanged": true,
+  "q27_complete": false,
+  "root_acceptance": {
+    "at": "2026-10-25T13:15:49.981574+00:00",
+    "current_owned23_match": {
+      "src/quantharbor/domain/execution.py": true,
+      "src/quantharbor/domain/execution_math.py": true,
+      "src/quantharbor/application/execution.py": true,
+      "src/quantharbor/ports/execution.py": true,
+      "src/quantharbor/adapters/postgres_execution.py": true,
+      "src/quantharbor/adapters/synthetic_execution_broker.py": true,
+      "src/quantharbor/adapters/execution_uow.py": true,
+      "tests/product/synthetic_execution.py": true,
+      "tests/product/test_execution.py": true,
+      "tests/product/test_execution_math.py": true,
+      "tests/product/test_execution_broker.py": true,
+      "tests/product/test_execution_runner.py": true,
+      "scripts/check_execution.py": true,
+      "docs/development/execution.md": true,
+      "migrations/0003_synthetic_execution.sql": true,
+      "src/quantharbor/application/approval.py": true,
+      "src/quantharbor/domain/serialization.py": true,
+      "tests/product/test_execution_financial.py": true,
+      "src/quantharbor/application/research.py": true,
+      "src/quantharbor/application/execution_research.py": true,
+      "tests/product/test_execution_correction.py": true,
+      "tests/product/test_research_execution.py": true,
+      "tests/product/test_execution_control.py": true
+    },
+    "initial_failed_run": "docs/evidence/execution-database-control-initial-2026-10-25.json",
+    "root_repair": "docs/evidence/execution-control-root-repair-2026-10-25.json",
+    "scope": "initial first10 scenarios at pre-repair source plus post-repair11 cover focused21 across two versions; corrected restart was rerun. Not latest all46 DB, fixed40 acceptance, independent review or whole product validation.",
+    "distinct_check_names_across_versions": 32,
+    "known_capacity_concern": "retired_commands Q26/Q27 allocation unapproved/unproven; independent storage adviser next",
+    "q27_complete": false
+  }
+}

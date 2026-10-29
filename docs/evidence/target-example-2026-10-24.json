@@ -1,0 +1,16 @@
+{
+  "task": "Q24-local",
+  "execution": "root_actual_public_api_example",
+  "result": "pass",
+  "candidates": 2,
+  "available": "800",
+  "planned_burden": "704",
+  "remaining": "96",
+  "sha256": {
+    "docs/examples/target-synthetic.txt": "1e60deb0ea72bd05a50e29d489b1a7fdfccf1097b6a8f55bc742c97c799444b3",
+    "docs/examples/target-synthetic.json": "b3164280b4f3c592fc65003be54e2da8eb8c46a980d454dd853aa12464dcbea8"
+  },
+  "actual_api_calls": 0,
+  "approval_reservation_dispatch": false,
+  "independent_validation": "still_running_at_export"
+}

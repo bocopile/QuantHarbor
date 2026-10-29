@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-23",
+  "task": "Q13",
+  "reviewer": "env_final_reviewer / qh_reviewer",
+  "result": "pass_code_and_docs_scope",
+  "resolved": [
+    "runtime source ignore exception",
+    "require nonzero discovery and matching test run count",
+    "compare stored/restored decimal to fixed expected value",
+    "cleanup affects final result"
+  ],
+  "reviewed_sha256": {
+    "scripts/check_foundation.py": "67c4134d7517f4770496d6e12b9076f646965e6eeee8082238ef08cf243b312a",
+    "docs/development/local-foundation.md": "ff2a7b95d8b85099dbe09a675eb62769909f1c616fafc5599f062abc0e2c95df",
+    "docs/decisions/BASE-DEC-001-runtime.md": "bd31b086246230d4170e7916080bee3d7bf30dfffbc2035939f79dc59c9bb4c2",
+    "docs/evidence/base-foundation-root-2026-10-23.json": "6e1014ef1a55c1bfd85d5f6f778526f9486695692c5153376ecd1d990933f429"
+  },
+  "not_executed": [
+    "reviewer did not run tests",
+    "independent validator pending",
+    "Q14 isolation controls",
+    "financial workflows"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "checked_date": "2026-10-21",
+  "scope": "ephemeral_appserver_thread_same_named_profile_and_tool_disables",
+  "model_turns_started": 0,
+  "external_tools_called": 0,
+  "ephemeral": true,
+  "active_permission_profile": {"id": "qh_review", "extends": ":read-only"},
+  "approval_policy": "never",
+  "mcp_runtime_statuses": ["disabled", "disabled", "disabled", "disabled"],
+  "mcp_discovery_error_count": 0,
+  "mcp_entries": 4,
+  "mcp_tool_count": 0,
+  "inventory_end": true,
+  "dynamic_tools_supplied": 0,
+  "project_hook_trust": ["untrusted"],
+  "current_app_permissions_changed": false,
+  "all_builtin_tool_inventory_verified": false,
+  "limits": "Thread runtime MCP inventory, not the tool list of the earlier exec process. Same named profile and disabling policy were selected; no model turn was started."
+}

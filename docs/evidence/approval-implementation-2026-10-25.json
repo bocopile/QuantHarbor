@@ -1,0 +1,629 @@
+{
+  "task_id": "Q26-local/J05",
+  "status": "implementation_frozen_focused_checks_passed_pending_independent_reviews",
+  "written_utc": "2026-10-25T08:20:37.278024+00:00",
+  "elapsed_since_pre_capture_seconds": 1721.843,
+  "scope": "synthetic_in_process_only",
+  "language": "ko-KR",
+  "owned_files": [
+    "src/quantharbor/domain/approval.py",
+    "src/quantharbor/application/approval.py",
+    "src/quantharbor/ports/approval.py",
+    "src/quantharbor/adapters/synthetic_approval.py",
+    "src/quantharbor/domain/serialization.py",
+    "tests/product/synthetic_approval.py",
+    "tests/product/test_approval.py",
+    "tests/product/test_approval_regression.py",
+    "docs/development/approval.md"
+  ],
+  "owned_sha256": {
+    "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+    "src/quantharbor/application/approval.py": "d47171b9e75a895eb370005b111fe6aa06596ee1adb665a3a66de38930583ea8",
+    "src/quantharbor/ports/approval.py": "6d3ccc06ca208ad1490006f129e3092b02fb5ee39579e1edc5dd20b25b417130",
+    "src/quantharbor/adapters/synthetic_approval.py": "5eb9d83543305db253f036766d6b3a19979a982acf1e253ec6bbf0a1eeef1407",
+    "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+    "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+    "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+    "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+    "docs/development/approval.md": "1c696de2dfd5c93d4bf339a9ac067b5105bdd9f0adb494f943a8051e6bc9d842"
+  },
+  "pre_run_identity": {
+    "frozen_utc": "2026-10-25T08:15:13.324515+00:00",
+    "owned_files": [
+      "src/quantharbor/domain/approval.py",
+      "src/quantharbor/application/approval.py",
+      "src/quantharbor/ports/approval.py",
+      "src/quantharbor/adapters/synthetic_approval.py",
+      "src/quantharbor/domain/serialization.py",
+      "tests/product/synthetic_approval.py",
+      "tests/product/test_approval.py",
+      "tests/product/test_approval_regression.py",
+      "docs/development/approval.md"
+    ],
+    "owned_hashes": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "d47171b9e75a895eb370005b111fe6aa06596ee1adb665a3a66de38930583ea8",
+      "src/quantharbor/ports/approval.py": "6d3ccc06ca208ad1490006f129e3092b02fb5ee39579e1edc5dd20b25b417130",
+      "src/quantharbor/adapters/synthetic_approval.py": "5eb9d83543305db253f036766d6b3a19979a982acf1e253ec6bbf0a1eeef1407",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "1c696de2dfd5c93d4bf339a9ac067b5105bdd9f0adb494f943a8051e6bc9d842"
+    },
+    "fixture_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+    "cases": [
+      {
+        "id": "AP01",
+        "input": "exact presentation and explicit synthetic approve",
+        "expected": "approved; candidate quantity3 price100 cost2 maximum302 unchanged"
+      },
+      {
+        "id": "AP02",
+        "input": "same command and same payload replay",
+        "expected": "same receipt; no additional transition"
+      },
+      {
+        "id": "AP03",
+        "input": "nonce command action candidate display session substitutions",
+        "expected": "conflict/denial; no authorization"
+      },
+      {
+        "id": "AP04",
+        "input": "fake principal parsed evidence foreign issuer proof bool AI text",
+        "expected": "denied; no mutation"
+      },
+      {
+        "id": "AP05",
+        "input": "candidate quantity price text account generation changes",
+        "expected": "old presentation/approval unusable"
+      },
+      {
+        "id": "AP06",
+        "input": "current rights revoke and policy change after display",
+        "expected": "approve/admission blocked; no stale detail disclosure"
+      },
+      {
+        "id": "AP07",
+        "input": "TTL and clock exact boundaries",
+        "expected": "t0+20sec excluded; heartbeat never extends approval"
+      },
+      {
+        "id": "AP08",
+        "input": "disconnect liveness expiry automatic reconnect",
+        "expected": "no new authority use or automatic resume"
+      },
+      {
+        "id": "AP09",
+        "input": "two approvals same candidate concurrent admission",
+        "expected": "at most1 consumed; intent/reservation/outbox bundle1"
+      },
+      {
+        "id": "AP10",
+        "input": "revoke versus admission both serial orders",
+        "expected": "first confirmed state wins; no partial commit"
+      },
+      {
+        "id": "AP11",
+        "input": "prepared withdrawal versus dispatch both orders",
+        "expected": "withdraw first unsent_confirmed/aborted; dispatch first requested"
+      },
+      {
+        "id": "AP12",
+        "input": "failure injected at each staged commit step",
+        "expected": "aggregate history nonce consumption reservation outbox unchanged"
+      },
+      {
+        "id": "AP13",
+        "input": "consumed then aborted_unsent then retry",
+        "expected": "same approval and candidate cannot consume again"
+      },
+      {
+        "id": "AP14",
+        "input": "restore authority generation",
+        "expected": "old handles and pending/approved invalid; consumed unknown reservations claims retained; stopped"
+      },
+      {
+        "id": "AP15",
+        "input": "constructor canonical reseal predecessor direct repository write",
+        "expected": "invalid authority or history rejected"
+      },
+      {
+        "id": "AP16",
+        "input": "capacity and active procedure closing storage",
+        "expected": "no partial write/eviction; reserved closing records usable"
+      },
+      {
+        "id": "AP17",
+        "input": "role-separated queries and exceptions",
+        "expected": "no nonce/handles/raw exception/unauthorized finance disclosure"
+      },
+      {
+        "id": "AP18",
+        "input": "same repository multiple application instances",
+        "expected": "single shared serialization boundary; no duplicate effects"
+      },
+      {
+        "id": "AP19",
+        "input": "protective withdrawal after data rights lost/new valid control session",
+        "expected": "authorized request recorded without requiring report/risk allow; details still restricted"
+      },
+      {
+        "id": "AP20",
+        "input": "expired challenge or rejected authenticated action replay",
+        "expected": "one recorded outcome; nonce cannot change payload"
+      },
+      {
+        "id": "AP21",
+        "input": "Q27 transition plan versus persistence",
+        "expected": "pure plan changes nothing; memory simulation stages whole aggregate only; no actual dispatch"
+      }
+    ],
+    "actual_q24_source_sha256": "e6377f4cf0e2cd7285a65a79238181ace4c7be272ab98273534f67d5a840412d",
+    "actual_q24_refs": {
+      "request": {
+        "kind": "request",
+        "id": "q24-request",
+        "version": 1,
+        "canonicalization_version": "qh-canonical-json-v1",
+        "sha256": "0e99c16c93d4ef6c40ce02227104f39d2ceafbf2fd0cc3cca30f88f7bc9c7e8f"
+      },
+      "candidate": {
+        "kind": "candidate",
+        "id": "candidate:d644672bfa1b96a708d0af1a01190a736c2b41cd8e6f6fbfa2740bd7c5b0d11e",
+        "version": 1,
+        "canonicalization_version": "qh-canonical-json-v1",
+        "sha256": "dc286f04ea988c0d1b186c4d60321e07f84b5bee21d21ee9f0a56400d5d30517"
+      },
+      "plan": {
+        "kind": "plan",
+        "id": "target-plan:5760ba9754973a37d961c8533d0fabfa532d3e63b384e1e454355bc88e869b17",
+        "version": 1,
+        "canonicalization_version": "qh-canonical-json-v1",
+        "sha256": "1c9a9ce8bb76620df84fbb9c7875886ee73e7595f8e012f9b5ce762e6c452cc9"
+      },
+      "result": {
+        "kind": "result",
+        "id": "target-result:7433481c222cc902472101944bceb6306903949e0abab8f1ef6f4537bfaa6e0a",
+        "version": 1,
+        "canonicalization_version": "qh-canonical-json-v1",
+        "sha256": "56c0c0012240e77f1b124e48cebba92996586bae97ce4e72547422824c4d03d7"
+      }
+    },
+    "financial_actual": {
+      "quantity": "3",
+      "limit_price": "100",
+      "cost_bound": "2",
+      "maximum_burden": "302",
+      "currency": "USD",
+      "valid_to": "2024-03-08T14:31:33.000000Z"
+    }
+  },
+  "invariants": {
+    "checked_utc": "2026-10-25T08:20:37.246984+00:00",
+    "preexisting_files_checked": 162,
+    "only_preexisting_change": {
+      "src/quantharbor/domain/serialization.py": {
+        "before": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1",
+        "after": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71"
+      }
+    },
+    "root_common_and_preexisting_nonowned_unchanged": true,
+    "serializer_exact_additive_registration_only": true,
+    "baseline7": {
+      "docs/architecture.md": {
+        "expected": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+        "actual": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+        "match": true
+      },
+      "docs/contracts/serialization-v1.md": {
+        "expected": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+        "actual": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+        "match": true
+      },
+      "docs/implementation-backlog.md": {
+        "expected": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+        "actual": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+        "match": true
+      },
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": {
+        "expected": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+        "actual": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+        "match": true
+      },
+      "docs/contracts/data-v1.md": {
+        "expected": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+        "actual": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+        "match": true
+      },
+      "docs/contracts/execution-v1.md": {
+        "expected": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+        "actual": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+        "match": true
+      },
+      "docs/contracts/operations-v1.md": {
+        "expected": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+        "actual": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+        "match": true
+      }
+    },
+    "ai_spec_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+    "approval_fixture_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+    "final_owned_unchanged": true,
+    "owned_hashes": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "d47171b9e75a895eb370005b111fe6aa06596ee1adb665a3a66de38930583ea8",
+      "src/quantharbor/ports/approval.py": "6d3ccc06ca208ad1490006f129e3092b02fb5ee39579e1edc5dd20b25b417130",
+      "src/quantharbor/adapters/synthetic_approval.py": "5eb9d83543305db253f036766d6b3a19979a982acf1e253ec6bbf0a1eeef1407",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "1c696de2dfd5c93d4bf339a9ac067b5105bdd9f0adb494f943a8051e6bc9d842"
+    }
+  },
+  "checks": {
+    "final-focused": {
+      "label": "final-focused",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-p",
+        "test_approval*.py",
+        "-v"
+      ],
+      "started_utc": "2026-10-25T08:15:13.523958+00:00",
+      "elapsed_seconds": 290.733695,
+      "exit_code": 0,
+      "tests": 40,
+      "unittest_seconds": 290.526,
+      "output_file": "/private/tmp/q26-handoff/final-focused.txt"
+    },
+    "final-serializer-compat": {
+      "label": "final-serializer-compat",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_serialization",
+        "test_target_canonical",
+        "test_reporting_canonical",
+        "test_investment_ai.InvestmentAITests.test_direct_parser_and_repository_roundtrip",
+        "test_investment_ai_bounds.AIBoundsTests.test_direct_constructor_caps_and_int64_roundtrip",
+        "-v"
+      ],
+      "started_utc": "2026-10-25T08:15:36.894125+00:00",
+      "elapsed_seconds": 14.267972,
+      "exit_code": 0,
+      "tests": 27,
+      "unittest_seconds": 14.008,
+      "output_file": "/private/tmp/q26-handoff/final-serializer-compat.txt"
+    },
+    "final-diff": {
+      "label": "final-diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_utc": "2026-10-25T08:15:36.897804+00:00",
+      "elapsed_seconds": 0.046144,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "output_file": "/private/tmp/q26-handoff/final-diff.txt"
+    },
+    "final-team": {
+      "label": "final-team",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_ai_team.py"
+      ],
+      "started_utc": "2026-10-25T08:15:36.894070+00:00",
+      "elapsed_seconds": 0.083623,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "output_file": "/private/tmp/q26-handoff/final-team.txt"
+    },
+    "final-public-quality": {
+      "label": "final-public-quality",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "started_utc": "2026-10-25T08:15:36.894071+00:00",
+      "elapsed_seconds": 0.796753,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "output_file": "/private/tmp/q26-handoff/final-public-quality.txt"
+    }
+  },
+  "fixed_21_case_results": {
+    "AP01": {
+      "expected": "approved; candidate quantity3 price100 cost2 maximum302 unchanged",
+      "test_line": "test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission (test_approval.ApprovalFixedCases.test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission) ... ok",
+      "passed": true
+    },
+    "AP02": {
+      "expected": "same receipt; no additional transition",
+      "test_line": "test_AP02_exact_replay_only_receipt_and_current_permission (test_approval.ApprovalFixedCases.test_AP02_exact_replay_only_receipt_and_current_permission) ... ok",
+      "passed": true
+    },
+    "AP03": {
+      "expected": "conflict/denial; no authorization",
+      "test_line": "test_AP03_nonce_command_action_candidate_display_session_substitutions (test_approval.ApprovalFixedCases.test_AP03_nonce_command_action_candidate_display_session_substitutions) ... ok",
+      "passed": true
+    },
+    "AP04": {
+      "expected": "denied; no mutation",
+      "test_line": "test_AP04_fake_principal_foreign_issuer_bool_AI_and_JSON_are_not_authority (test_approval.ApprovalFixedCases.test_AP04_fake_principal_foreign_issuer_bool_AI_and_JSON_are_not_authority) ... ok",
+      "passed": true
+    },
+    "AP05": {
+      "expected": "old presentation/approval unusable",
+      "test_line": "test_AP05_candidate_financial_text_account_generation_binding (test_approval.ApprovalFixedCases.test_AP05_candidate_financial_text_account_generation_binding) ... ok",
+      "passed": true
+    },
+    "AP06": {
+      "expected": "approve/admission blocked; no stale detail disclosure",
+      "test_line": "test_AP06_all_current_dependency_rights_and_policy_are_fresh (test_approval.ApprovalFixedCases.test_AP06_all_current_dependency_rights_and_policy_are_fresh) ... ok",
+      "passed": true
+    },
+    "AP07": {
+      "expected": "t0+20sec excluded; heartbeat never extends approval",
+      "test_line": "test_AP07_end_exclusive_presentation_expiry_heartbeat_no_extension_clock_fault (test_approval.ApprovalFixedCases.test_AP07_end_exclusive_presentation_expiry_heartbeat_no_extension_clock_fault) ... ok",
+      "passed": true
+    },
+    "AP08": {
+      "expected": "no new authority use or automatic resume",
+      "test_line": "test_AP08_disconnect_liveness_expiry_never_auto_resume (test_approval.ApprovalFixedCases.test_AP08_disconnect_liveness_expiry_never_auto_resume) ... ok",
+      "passed": true
+    },
+    "AP09": {
+      "expected": "at most1 consumed; intent/reservation/outbox bundle1",
+      "test_line": "test_AP09_two_approvals_one_candidate_both_orders_shared_lock (test_approval.ApprovalFixedCases.test_AP09_two_approvals_one_candidate_both_orders_shared_lock) ... ok",
+      "passed": true
+    },
+    "AP10": {
+      "expected": "first confirmed state wins; no partial commit",
+      "test_line": "test_AP10_revoke_admission_both_orders_no_partial_state (test_approval.ApprovalFixedCases.test_AP10_revoke_admission_both_orders_no_partial_state) ... ok",
+      "passed": true
+    },
+    "AP11": {
+      "expected": "withdraw first unsent_confirmed/aborted; dispatch first requested",
+      "test_line": "test_AP11_prepared_withdraw_dispatch_both_orders (test_approval.ApprovalFixedCases.test_AP11_prepared_withdraw_dispatch_both_orders) ... ok",
+      "passed": true
+    },
+    "AP12": {
+      "expected": "aggregate history nonce consumption reservation outbox unchanged",
+      "test_line": "test_AP12_each_staging_failure_leaves_entire_aggregate_unchanged (test_approval.ApprovalFixedCases.test_AP12_each_staging_failure_leaves_entire_aggregate_unchanged) ... ok",
+      "passed": true
+    },
+    "AP13": {
+      "expected": "same approval and candidate cannot consume again",
+      "test_line": "test_AP13_aborted_unsent_does_not_release_consumption_claim (test_approval.ApprovalFixedCases.test_AP13_aborted_unsent_does_not_release_consumption_claim) ... ok",
+      "passed": true
+    },
+    "AP14": {
+      "expected": "old handles and pending/approved invalid; consumed unknown reservations claims retained; stopped",
+      "test_line": "test_AP14_restore_external_generation_preserves_unknown_and_pending_invalidation (test_approval.ApprovalFixedCases.test_AP14_restore_external_generation_preserves_unknown_and_pending_invalidation) ... ok",
+      "passed": true
+    },
+    "AP15": {
+      "expected": "invalid authority or history rejected",
+      "test_line": "test_AP15_constructor_parser_reseal_predecessor_repository_bypass (test_approval.ApprovalFixedCases.test_AP15_constructor_parser_reseal_predecessor_repository_bypass) ... ok",
+      "passed": true
+    },
+    "AP16": {
+      "expected": "no partial write/eviction; reserved closing records usable",
+      "test_line": "test_AP16_capacity_failure_no_eviction_reserved_withdrawal_closes (test_approval.ApprovalFixedCases.test_AP16_capacity_failure_no_eviction_reserved_withdrawal_closes) ... ok",
+      "passed": true
+    },
+    "AP17": {
+      "expected": "no nonce/handles/raw exception/unauthorized finance disclosure",
+      "test_line": "test_AP17_roles_protected_queries_fixed_errors_no_nonce_or_handles (test_approval.ApprovalFixedCases.test_AP17_roles_protected_queries_fixed_errors_no_nonce_or_handles) ... ok",
+      "passed": true
+    },
+    "AP18": {
+      "expected": "single shared serialization boundary; no duplicate effects",
+      "test_line": "test_AP18_multiple_application_instances_exact_receipt_single_effect (test_approval.ApprovalFixedCases.test_AP18_multiple_application_instances_exact_receipt_single_effect) ... ok",
+      "passed": true
+    },
+    "AP19": {
+      "expected": "authorized request recorded without requiring report/risk allow; details still restricted",
+      "test_line": "test_AP19_protective_new_control_session_after_rights_risk_loss (test_approval.ApprovalFixedCases.test_AP19_protective_new_control_session_after_rights_risk_loss) ... ok",
+      "passed": true
+    },
+    "AP20": {
+      "expected": "one recorded outcome; nonce cannot change payload",
+      "test_line": "test_AP20_expired_challenge_rejection_receipt_replay_not_substitution (test_approval.ApprovalFixedCases.test_AP20_expired_challenge_rejection_receipt_replay_not_substitution) ... ok",
+      "passed": true
+    },
+    "AP21": {
+      "expected": "pure plan changes nothing; memory simulation stages whole aggregate only; no actual dispatch",
+      "test_line": "test_AP21_pure_plan_no_authority_no_standalone_commit (test_approval.ApprovalFixedCases.test_AP21_pure_plan_no_authority_no_standalone_commit) ... ok",
+      "passed": true
+    }
+  },
+  "development_runs": [
+    {
+      "run": "dev-01",
+      "log": "/private/tmp/q26-handoff/dev-01.txt",
+      "tests": 5,
+      "seconds": 21.926,
+      "result": "failed",
+      "failure_summary": "errors=5",
+      "log_sha256": "8353215b16dd31eb9ce667cc20603603feceaeb9d51ad8cd333a43be9a5d8f36"
+    },
+    {
+      "run": "dev-02",
+      "log": "/private/tmp/q26-handoff/dev-02.txt",
+      "tests": 5,
+      "seconds": 34.977,
+      "result": "failed",
+      "failure_summary": "errors=1",
+      "log_sha256": "3c61f06f1a38c5214a4148932c7350ed1489f18c7f58ee7277cc08a8d75515a5"
+    },
+    {
+      "run": "dev-03",
+      "log": "/private/tmp/q26-handoff/dev-03.txt",
+      "tests": 5,
+      "seconds": 66.729,
+      "result": "pass",
+      "failure_summary": null,
+      "log_sha256": "a5c1709d77c8cc01cbf4bd799b13398622e28c9cf3b470580c808b504d4ce63c"
+    },
+    {
+      "run": "dev-04",
+      "log": "/private/tmp/q26-handoff/dev-04.txt",
+      "tests": 6,
+      "seconds": 49.74,
+      "result": "pass",
+      "failure_summary": null,
+      "log_sha256": "2fd6c5613f6880ae0e1f508e240f4e2c734be326ef75df76b3236e656dc0223e"
+    },
+    {
+      "run": "dev-05",
+      "log": "/private/tmp/q26-handoff/dev-05.txt",
+      "tests": 7,
+      "seconds": 80.741,
+      "result": "pass",
+      "failure_summary": null,
+      "log_sha256": "1fdc6da4e7f3e84413fcafa3ac833b8296038caf9daaef9c41f42da9861cfab0"
+    },
+    {
+      "run": "dev-06",
+      "log": "/private/tmp/q26-handoff/dev-06.txt",
+      "tests": 4,
+      "seconds": 29.504,
+      "result": "pass",
+      "failure_summary": null,
+      "log_sha256": "9181c6b99b506262285a32f1e4eae41c3b4544558e8f4b0c0d27cdfc5c3f2378"
+    },
+    {
+      "run": "dev-07",
+      "log": "/private/tmp/q26-handoff/dev-07.txt",
+      "tests": 8,
+      "seconds": 38.658,
+      "result": "failed",
+      "failure_summary": "errors=1",
+      "log_sha256": "a1d937184e622a6b10eaaf1a997f2b3c55ad27c054ad372c148fd6c71216010f"
+    },
+    {
+      "run": "dev-08",
+      "log": "/private/tmp/q26-handoff/dev-08.txt",
+      "tests": 8,
+      "seconds": 21.95,
+      "result": "pass",
+      "failure_summary": null,
+      "log_sha256": "17e20ea29efc27eef9a1041baa7b7f770ac1b2dfeff83886985f4974d7b95826"
+    }
+  ],
+  "actual_failure_history": [
+    {
+      "run": "dev-01",
+      "errors": 5,
+      "failures": 0,
+      "cause": "ActionReceipt.result_ref was incorrectly required to have Q24 result kind",
+      "correction": "Restrict receipt result kinds to approval/withdrawal/runtime"
+    },
+    {
+      "run": "dev-02",
+      "errors": 1,
+      "failures": 0,
+      "cause": "32 reserved procedure records were insufficient for both withdrawal/dispatch serial orders",
+      "correction": "Reserve 40 records and bound new challenge issuance while preserving protective closure"
+    },
+    {
+      "run": "dev-07",
+      "errors": 1,
+      "failures": 0,
+      "cause": "disconnect reused heartbeat minimum-four guard despite two reserved closing records",
+      "correction": "disconnect requires two; heartbeat retains four; new runtime/control events preserve two"
+    },
+    {
+      "kind": "diagnostic_probe",
+      "cause": "Unwrapped synthetic execute reproduced dev-01 ContractError at receipt validation",
+      "included_in_unittest_counts": false
+    }
+  ],
+  "implemented": [
+    "issuer registry opaque synthetic handles; explicit presentation/challenge/approve",
+    "actual Q24 request/inputs/artifacts reproduction with every current dependency grant rechecked; no cache",
+    "presentation expiry ceiling 2024-03-08T14:31:28Z; original financial and display terms retained",
+    "one shared aggregate lock across application instances; staged consume/claim/prepared intent/reservations/outbox/history/receipt single swap",
+    "exact command replay under current permission; substituted nonce/payload rejected",
+    "withdrawal/dispatch races in both forced orders and simultaneous competing admissions",
+    "consumed/unknown reservation/claim preservation and authorized protective withdrawal with new same-account control session",
+    "external authority generation on exact current snapshot restore; old sessions/pending/approved invalidated; stopped",
+    "canonical parsing and immutable previous-ref resolution; bounded records/bytes/indexes and closing reservations; fixed error codes"
+  ],
+  "full_product_run": {
+    "executed": false,
+    "reason": "Explicitly reserved for one independent validator run after reviews"
+  },
+  "quality_unittest_suite": {
+    "executed": false,
+    "reason": "Public quality CLI was run; quality fixture tests that mutate temporary Git repositories were not run under no-Git-mutation scope"
+  },
+  "unexecuted": [
+    "network",
+    "private reads",
+    "password/real authentication",
+    "real APIs",
+    "Docker",
+    "installation",
+    "Git mutation",
+    "Q27 real DB atomicity or egress"
+  ],
+  "remaining": [
+    "Root general/security independent review and any fixes; then one independent full product validation",
+    "Root integration of status/evidence/task/queue; worker did not write common files",
+    "Real authentication/password/PG-01/account rights remain pending",
+    "Q27 persistent atomic admission, dispatch fencing, egress and actual reconciliation remain pending",
+    "Restore simulation accepts exact current snapshot only; historical or edited rollback snapshots are rejected; no post-restore resume path"
+  ],
+  "root_common_files_unchanged": true,
+  "source_code_frozen_since": "2026-10-25T08:15:13.324515+00:00",
+  "limits": {
+    "canonical_bytes": 65536,
+    "rendered_utf8_bytes": 16384,
+    "text_utf8_bytes": 2048,
+    "source_bytes": 8388608,
+    "refs": 128,
+    "total_records": 128,
+    "total_bytes": 8388608,
+    "session_hold_records": 8,
+    "procedure_hold_records": 40,
+    "index_entry_byte_charge": 4096,
+    "allocator_heap_measured": false
+  },
+  "public_quality": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 466,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "root_verification": {
+    "owned_hashes_matched": 9,
+    "baseline_matched": 7,
+    "fixture_matched": true,
+    "independent_review": "pending",
+    "role_process": "ended; final handoff returned"
+  }
+}

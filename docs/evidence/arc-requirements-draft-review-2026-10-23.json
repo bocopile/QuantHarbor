@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-23",
+  "scope": "Q07 public requirements and scenarios draft v0.1; not Q07 completion",
+  "result": "draft_review_passed",
+  "architect": "qh_architect",
+  "reviewer": "env_final_reviewer",
+  "reviewed_scenario_sha256": "3428e7da816f3ea61367cd97efcf5a6583d8f9e03fe559e3a5fcec39ae37356f",
+  "reviewed_card_before_completion_record_sha256": "dd65f7d07f9f02a6d54cc2141c39d33f2d40ffd9afb0b3d9b08cf6814c769f4b",
+  "reviewed_input_sha256": "0e87095796de0d620ba1ea77e6add44fd5a1a728e7573552bed7d5e6848f37d6",
+  "requirements": 9,
+  "scenarios": 16,
+  "finding_resolved": "SC-08 full vs partial targets, no implicit liquidation of omitted holdings; ambiguous semantics block",
+  "user_decisions_pending": [
+    "trading scope",
+    "analysis cadence",
+    "mock approval mode",
+    "remaining A02-A06 funding, risk and operational policies"
+  ],
+  "financial_runtime_tests_executed": false,
+  "next_queue_item_unlocked": false
+}

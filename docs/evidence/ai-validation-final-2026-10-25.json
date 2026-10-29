@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "task": "Q25-independent-root-validation",
+  "created_at_utc": "2026-10-25T07:36:23.633177+00:00",
+  "scope": "qh_development Luna/high; independent validator",
+  "commands": [
+    {
+      "name": "product",
+      "argv": [
+        "python3.13",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-v"
+      ],
+      "started_utc": "2026-10-25T07:26:06.387720+00:00",
+      "ended_utc": "2026-10-25T07:35:54.552478+00:00",
+      "seconds": 588.171,
+      "exit_code": 0,
+      "log": "/private/tmp/qh-q25-root-validator-20261025/product.log"
+    },
+    {
+      "name": "quality_unittest",
+      "argv": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/quality",
+        "-v"
+      ],
+      "started_utc": "2026-10-25T07:35:54.552632+00:00",
+      "ended_utc": "2026-10-25T07:35:58.041203+00:00",
+      "seconds": 3.489,
+      "exit_code": 0,
+      "log": "/private/tmp/qh-q25-root-validator-20261025/quality_unittest.log"
+    },
+    {
+      "name": "quality_check",
+      "argv": [
+        "python3.13",
+        "-I",
+        "-S",
+        "scripts/check_quality.py"
+      ],
+      "started_utc": "2026-10-25T07:35:58.041282+00:00",
+      "ended_utc": "2026-10-25T07:35:58.709288+00:00",
+      "seconds": 0.668,
+      "exit_code": 0,
+      "log": "/private/tmp/qh-q25-root-validator-20261025/quality_check.log"
+    },
+    {
+      "name": "ai_team",
+      "argv": [
+        "python3.13",
+        "scripts/check_ai_team.py"
+      ],
+      "started_utc": "2026-10-25T07:35:58.709343+00:00",
+      "ended_utc": "2026-10-25T07:35:58.758851+00:00",
+      "seconds": 0.049,
+      "exit_code": 0,
+      "log": "/private/tmp/qh-q25-root-validator-20261025/ai_team.log"
+    },
+    {
+      "name": "git_diff_check",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_utc": "2026-10-25T07:35:58.758905+00:00",
+      "ended_utc": "2026-10-25T07:35:58.785265+00:00",
+      "seconds": 0.026,
+      "exit_code": 0,
+      "log": "/private/tmp/qh-q25-root-validator-20261025/git_diff_check.log"
+    }
+  ],
+  "command_count": 5,
+  "each_command_invoked_once": true,
+  "product_unittest_summary": {
+    "tests": 560,
+    "reported_seconds": 587.882,
+    "exit_code": 0
+  },
+  "fixed24": {
+    "evaluation_path": "/tmp/quantharbor-q25/evaluation-c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c.json",
+    "evaluation_sha256": "d8a38a45254794465c2a37fcc7873e8a6354620997e651ce376653409de2eedb",
+    "manifest_path": "/tmp/quantharbor-q25/manifest-5e4bb1853378c87d1333b0bd253ebe564b72280ebee29a3ab22e6838a6c13685.json",
+    "manifest_sha256": "c2e02ddb158adefe6ecc30958e9039ec65ed542ad75fd5b7d246ec9e3fa6949c",
+    "case_count": 24,
+    "passed": 24,
+    "ids": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05",
+      "E06",
+      "E07",
+      "E08",
+      "E09",
+      "E10",
+      "E11",
+      "E12",
+      "E13",
+      "E14",
+      "E15",
+      "E16",
+      "E17",
+      "E18",
+      "E19",
+      "E20",
+      "E21",
+      "E22",
+      "E23",
+      "E24"
+    ],
+    "manifest_prepared_before_cases": true,
+    "prepared_case_count": 24,
+    "prepared_variant_count": 42,
+    "all_case_ids_present": true,
+    "all_cases_have_consumed_variants": true,
+    "all_variants_consumed": true,
+    "source_unchanged_during_evaluation": true,
+    "prepared_inputs_unchanged": true,
+    "source_fingerprint_file_count": 88,
+    "source_fingerprint_all_matches_after": true,
+    "source_fingerprint_mismatches": [],
+    "evaluation_kind": "synthetic",
+    "real_model_evaluation": false,
+    "actual_api_calls": 0,
+    "actual_new_spend": 0,
+    "network_calls": 0,
+    "order_effects": 0,
+    "case_evidence_count": 24,
+    "public_evaluation": "docs/research/ai-evaluation-synthetic-2026-10-25.json",
+    "public_manifest": "docs/research/ai-evaluation-manifest-2026-10-25.json"
+  },
+  "protocol_test_evidence": {
+    "positive": "tests.product.test_investment_ai_sources.AISourceTests.test_sourcebound_benchmark_positive",
+    "negative": "Product log: test_scalar_benchmark_is_semantic_unknown and test_sourcebound_flow_values_and_numeric_red both passed; initial prose class qualifier omitted after root correction.",
+    "in_full_product_log": true,
+    "budget_concurrency_unknown_charge": "fixed24 E10/E11; test_concurrent_dispatchers_share_total_and_idempotent_replay_spends_zero_queries; unknown-charge/clock regression tests"
+  },
+  "hashes": {
+    "accepted_evidence": "docs/evidence/ai-review-fixes-2026-10-25.json",
+    "owned_count": 14,
+    "baseline_count": 7,
+    "spec_path": "docs/contracts/ai-evaluation-spec-v1.json",
+    "spec_expected_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+    "all_before_after_match_latest_accepted": true,
+    "items": {
+      "docs/development/investment-ai.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "b7025fb09719104b04a8811a370c05fefa548c151f292b000d0cb80aaa64b788"
+      },
+      "src/quantharbor/adapters/synthetic_investment_ai.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "667c2f9d86fbf88e2f952b7f7b3abfdf147fecd190a63b7888dc85168069486d"
+      },
+      "src/quantharbor/application/investment_ai.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "b4fea89bbc94a7f5b5d9d558c1df5d5991c1ac1c0a25507d4777352b243c56ff"
+      },
+      "src/quantharbor/domain/investment_ai.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "8a02b37f4da642cf3ab6f3d79b55cab3c18776ae8ef25f4a5458f2dbcc2c247d"
+      },
+      "src/quantharbor/domain/serialization.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1"
+      },
+      "src/quantharbor/ports/investment_ai.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "9630a387aab0f8b27dfc461160fab51200b51936b6411aa2b64e2b2d984285c4"
+      },
+      "tests/product/synthetic_investment_ai.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "db705f5e9a79b471327a1b6ed493b4f4374224cff94898a33d27555971b5960d"
+      },
+      "tests/product/test_investment_ai.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "25f7994b242a98f8286cd7f072ed99e8eef9f082116f41ec8b6df1656bcb8c18"
+      },
+      "tests/product/test_investment_ai_bounds.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "684965fab6141da0546c716916e4cf95fb655e39ce8accd4830bb01725c9a3f1"
+      },
+      "tests/product/test_investment_ai_evaluation.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "ddfa3da6f0ee6deb33bbbf3ba2639c498cfd67a52b134c453cc3caf2f6fed210"
+      },
+      "tests/product/test_investment_ai_review.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "892048a267c5c2aabf4660e9b30e1199b3a5ee953785a13a63bfd3cc9e0c55cb"
+      },
+      "tests/product/test_investment_ai_security.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "920fb64aac91134121dd775a7f748372165f39fa97f53404016c07f59e3caf92"
+      },
+      "tests/product/test_investment_ai_security_second.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "31e2ea738dd70c2914094d10aebf2a5c813dd0d6105fe075127f9415c95e7f53"
+      },
+      "tests/product/test_investment_ai_sources.py": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "5100ba01cc2677dd1b5a1e9f720c2da144313598a72591d7fa600c0cdda33a90"
+      },
+      "docs/architecture.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833"
+      },
+      "docs/contracts/serialization-v1.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8"
+      },
+      "docs/implementation-backlog.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165"
+      },
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b"
+      },
+      "docs/contracts/data-v1.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099"
+      },
+      "docs/contracts/execution-v1.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59"
+      },
+      "docs/contracts/operations-v1.md": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d"
+      },
+      "docs/contracts/ai-evaluation-spec-v1.json": {
+        "before_matches_latest": true,
+        "after_matches_latest": true,
+        "unchanged": true,
+        "sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f"
+      }
+    }
+  },
+  "queue_state": {
+    "Q19": "blocked/pending actual connection gates; not touched",
+    "Q20_Q24": "completed",
+    "Q25": "in_progress pending acceptance of this validation",
+    "Q26_Q29": "pending",
+    "full_queue_reference": "docs/tasks/offline-execution-queue.json"
+  },
+  "limits": [
+    "No actual model quality, investment performance, live API, operations durability, OS isolation, or private-data verification claimed.",
+    "No extra execution of fixed24; it ran inside the single requested product suite.",
+    "No source/docs/config/private/network/Docker/install/Git mutations.",
+    "No independent review beyond this validator; Q25 completion is not recorded."
+  ],
+  "logs_dir": "/private/tmp/qh-q25-root-validator-20261025",
+  "acceptance_checks": {
+    "all_hashes_match": true,
+    "all_commands_exit_zero": true,
+    "product_test_count_available": true,
+    "fixed24_24_records": true,
+    "fixed24_all_pass": true,
+    "manifest_24_cases": true,
+    "manifest_prepared_before_cases": true,
+    "manifest_42_variants": true,
+    "source_fingerprint_matches": true,
+    "synthetic_only": true,
+    "protocol_positive_negative_seen": true,
+    "all_variants_consumed": true,
+    "fixed24_assertions_match_spec": true,
+    "all_24_case_records_have_manifest_and_assertion_evidence": true
+  },
+  "all_acceptance_checks_pass": true,
+  "role": "qh_validator",
+  "model": "gpt-6-luna",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "result": "pass",
+  "root_hashes_and_artifacts_verified": true,
+  "prose_handoff_correction": "Validator final prose quoted prior evaluation hash and malformed manifest hash; root uses actual independently generated artifacts and JSON hashes verified byte-for-byte here."
+}

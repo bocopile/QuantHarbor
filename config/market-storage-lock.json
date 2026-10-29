@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scope": "Q17 synthetic local Parquet only",
+  "checked_on": "2026-10-24",
+  "platform": "linux/arm64",
+  "python_image": "python@sha256:608b27b2db85abf38d81685085cd1166a5ed7ada66549f0dfe53a75bb830cd5d",
+  "python_version": "3.13.17",
+  "package": "pyarrow",
+  "version": "26.0.0",
+  "wheel": "pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+  "wheel_sha256": "e3b190ba1d3d22a5a8758597f797111b77d433473744352a184a5ee0a42d672e",
+  "wheel_size": 50865064,
+  "url": "https://files.pythonhosted.org/packages/3b/7c/cea852a832a327a8de797b3a68e5c25ce0f5aa1d20503807671bd90ec642/pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+  "source_revision": "446167169a0dc547e00e1bc29f417a40c0ca267a",
+  "license": "Apache-2.0 plus bundled third-party LICENSE/NOTICE retained",
+  "license_sha256": "cd03925a27219d326d622609fbcae6567279af8b8885c33d5969a9e4ef5d7525",
+  "notice_sha256": "afd895d61a00101f6d5a41cf518c83865d815e8109e956f512a0ce4ea9738c06",
+  "python_dependencies": [],
+  "compatibility_status": "synthetic_fixed_runtime_pass",
+  "limits": "No claim of full native dependency vulnerability audit, binary/source attestation, real-data rights or production runtime adoption"
+}

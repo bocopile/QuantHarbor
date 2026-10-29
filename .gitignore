@@ -1,0 +1,69 @@
+# Local IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Real environment files; examples must contain dummy values only
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local.env
+*.local.yaml
+*.local.yml
+*.local.json
+
+# Secrets and broker configuration (real values belong outside the repository)
+secrets/
+.secrets/
+credentials/
+private/
+*.pem
+*.key
+*.p12
+*.pfx
+kis_devlp.yaml
+token.json
+tokens.json
+
+# Local runtime state and financial data
+.runtime/
+runtime/
+data/raw/
+data/processed/
+data/private/
+reports/private/
+logs/
+backups/
+artifacts/
+*.log
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.db
+*.db-*
+*.dump
+*.sql.gz
+
+# Development output
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+node_modules/
+dist/
+build/
+*.egg-info/
+.next/
+
+# Product source is not runtime data.
+!src/quantharbor/runtime/
+!src/quantharbor/runtime/*.py

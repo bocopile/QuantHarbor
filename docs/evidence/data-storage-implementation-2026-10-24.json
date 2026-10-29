@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-24",
+  "task": "Q17B",
+  "stage": "implementation_and_root_integration_not_independent",
+  "worker": {
+    "product": 104,
+    "storage": 12,
+    "runs": 2,
+    "final_seconds": 13.574,
+    "medium": "tmpfs",
+    "quality_files": 228,
+    "findings": 0
+  },
+  "root": {
+    "product": 104,
+    "storage": 12,
+    "seconds": 16.457,
+    "medium": "own_local_docker_volume",
+    "cleanup": "own_objects_removed",
+    "quality_tests": 19,
+    "quality_files": 228,
+    "findings": 0
+  },
+  "initial_integration_failure": "IndentationError before Docker execution; corrected before successful run",
+  "pending": [
+    "independent security review",
+    "general review",
+    "independent final execution",
+    "real data SG-02"
+  ],
+  "sha256": {
+    "src/quantharbor/domain/market_data.py": "a71aab7e30f90115e5cb5382eebecb5994af185ec48be406390e8be55e6e5b36",
+    "src/quantharbor/domain/market_storage.py": "50ace94e55646e931551c8bddc0ad6e7e3da0dfba47c5a905ada72f0d159e78d",
+    "src/quantharbor/domain/serialization.py": "158a41cd5563d9b8024664fafc54795527b6a7dd2ddee7b1790d28e4cc66df3c",
+    "src/quantharbor/application/market_ingest.py": "0ae6289602b0d2fcdfba1903b5188b1ae5b2a579b43d653b902d95ca845f5f4e",
+    "src/quantharbor/adapters/parquet_market_store.py": "0bd0fdfe1666199c17b71aa4e35b75606173f9601d5601cac326e1804cd60c79",
+    "tests/product/synthetic_market_storage.py": "3ae95ec0a4fe9d2f80eb1ad380c6097a7a14bdcd436a4adfe9371c391070bbd8",
+    "tests/product/test_market_storage.py": "cdeab64c0dde3bea09eb79525ffc034414259e072c4681ba3dba43d35ce7d6e2",
+    "tests/storage/__init__.py": "476e48fbd4d68d8405cadb0b4fa6697387b3df50cf8b38162888f2eca6e8ad8c",
+    "tests/storage/test_parquet_market_store.py": "fb8a04c2a5e39ae004ca36faf6ec1ad9f3b7e53dba00df297e5db5614e8d23d7",
+    "docs/development/market-storage.md": "132e77de09ec5c50db814f34c737748e9cedb9d281a35c75d9a888943efc60d0",
+    "scripts/check_market_storage.py": "abed6aad80784b6b52c1dc740dbee0faf549daf84649f4e9aa452161c3697ca0",
+    "scripts/check_quality.py": "41c8e29e089491a987524e38838a374f9351b5b627ad3302f2d19cee5747a08e",
+    "tests/quality/test_quality.py": "ab5ab80e20aef50960bb2d8c5f62122387f5f6e4c976c8437ecb923c1633eafe",
+    "config/market-storage-lock.json": "ddc94a5c468983597f365fca75446ab042861a1abeeecfd0f0c61763d65c1329",
+    "containers/Dockerfile.market-storage": "91b55c911d9fa07f49eef2943b146d6f70688859cdbb32274b22ca4e9f4d8763",
+    "containers/requirements.market-storage.txt": "dc6d27b895f3915b8543b2526673afeb963c81478418065c23f3bd1c908a4f11"
+  }
+}

@@ -1,0 +1,28 @@
+# Q13 합성 개발 전용. 실제 계좌·host·key·DSN·외부 식별값 없음.
+# 이 한도는 설정 검증값이며 아직 실행 서비스가 자원 한도를 강제하지 않는다.
+schema_version = 1
+environment = "synthetic"
+binding_version = "synthetic-v1"
+database_namespace = "qh_synthetic"
+queue_namespace = "qh_synthetic"
+new_cost_budget = 0
+live_enabled = false
+paper_enabled = false
+automation_enabled = false
+external_broker_enabled = false
+external_model_enabled = false
+external_reporting_enabled = false
+
+[limits]
+max_input_bytes = 1048576
+max_output_bytes = 1048576
+# 프로세스별 hard CPU 시간. 전체 작업 합산 CPU2초를 뜻하지 않는다.
+# Q14 runner는 별도로 CPU quota1·전체 실행 wall5초를 함께 강제한다.
+max_cpu_seconds = 2
+max_memory_bytes = 134217728
+max_wall_seconds = 5
+max_disk_bytes = 16777216
+max_queue_depth = 1
+max_concurrency = 1
+max_retries = 0
+liveness_timeout_seconds = 30

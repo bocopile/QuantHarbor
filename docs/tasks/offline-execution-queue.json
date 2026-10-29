@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "decision": "docs/decisions/EXEC-DEC-001-offline-sequence.md",
+  "execution_mode": "sequential",
+  "max_active_workers": 1,
+  "max_writers": 1,
+  "automatic_background_dispatch": false,
+  "current_queue_item": "Q27",
+  "full_queue": "config/ai/execution-queue.json",
+  "completion_scope": "synthetic_local_only",
+  "items": [
+    {
+      "id": "Q20",
+      "scope": "이벤트 원장·현금·revision·replay·합성 DB 원자성",
+      "depends_on_local": [],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/LEDGER-local.md",
+        "docs/evidence/ledger-review-final-2026-10-24.json",
+        "docs/evidence/ledger-db-final-2026-10-24.json",
+        "docs/evidence/ledger-validation-final-2026-10-24.json"
+      ]
+    },
+    {
+      "id": "Q21",
+      "scope": "합성 평가·대사·스냅샷",
+      "depends_on_local": [
+        "Q20"
+      ],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/VALUATION-local.md",
+        "docs/evidence/valuation-review-final-2026-10-24.json",
+        "docs/evidence/valuation-validation-final-2026-10-24.json"
+      ]
+    },
+    {
+      "id": "Q22",
+      "scope": "로컬 자산·현금·대사 보고",
+      "depends_on_local": [
+        "Q21"
+      ],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/REPORT-local.md",
+        "docs/evidence/report-review-final-2026-10-24.json",
+        "docs/evidence/report-validation-final-2026-10-24.json"
+      ]
+    },
+    {
+      "id": "Q23",
+      "scope": "비교 평가 명세·합성 전략·성과/비용·시점 검증",
+      "depends_on_local": [
+        "Q22"
+      ],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/RESEARCH-local.md",
+        "docs/evidence/research-review-final-2026-10-24.json",
+        "docs/evidence/research-validation-final-2026-10-24.json",
+        "docs/research/strategy-comparison-synthetic-2026-10-24.md",
+        "docs/research/strategy-comparison-synthetic-2026-10-24.json"
+      ]
+    },
+    {
+      "id": "Q24",
+      "scope": "합성 목표안·주문 후보",
+      "depends_on_local": [
+        "Q23"
+      ],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/TARGET-local.md",
+        "docs/evidence/target-review-final-2026-10-24.json",
+        "docs/evidence/target-validation-final-2026-10-24.json",
+        "docs/evidence/target-example-2026-10-24.json"
+      ]
+    },
+    {
+      "id": "Q25",
+      "scope": "합성 AI 계약·근거·예산·오류 검사",
+      "depends_on_local": [
+        "Q24"
+      ],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/AI-local.md",
+        "docs/evidence/ai-review-final-2026-10-25.json",
+        "docs/evidence/ai-security-post-review-2026-10-25.json",
+        "docs/evidence/ai-validation-final-2026-10-25.json",
+        "docs/research/ai-evaluation-synthetic-2026-10-25.md"
+      ]
+    },
+    {
+      "id": "Q26",
+      "scope": "합성 승인·철회·만료·재사용 방지",
+      "depends_on_local": [
+        "Q25"
+      ],
+      "status": "completed",
+      "evidence": [
+        "docs/tasks/APPROVAL-local.md",
+        "docs/evidence/approval-review-final-2026-10-25.json",
+        "docs/evidence/approval-security-post-review-2026-10-25.json",
+        "docs/evidence/approval-validation-final-2026-10-25.json",
+        "docs/evidence/approval-example-2026-10-25.json"
+      ]
+    },
+    {
+      "id": "Q27",
+      "scope": "합성 실행·위험·예약·복구",
+      "depends_on_local": [
+        "Q26"
+      ],
+      "status": "in_progress",
+      "evidence": []
+    },
+    {
+      "id": "Q28",
+      "scope": "P28-01~08: 화면/계약·실행 조립·사용자 제어·운영·조회 대시보드·설치/업데이트/안내",
+      "depends_on_local": [
+        "Q27"
+      ],
+      "status": "pending",
+      "evidence": [],
+      "required_subtasks": [
+        "P28-01",
+        "P28-02",
+        "P28-03",
+        "P28-04",
+        "P28-05",
+        "P28-06",
+        "P28-07",
+        "P28-08"
+      ]
+    },
+    {
+      "id": "Q29",
+      "scope": "P29-01/02·RETURN-01: 사용자 흐름/화면·장애/보안/부하/복원 통합·실제 연결 복귀표",
+      "depends_on_local": [
+        "Q28"
+      ],
+      "status": "pending",
+      "evidence": [],
+      "required_subtasks": [
+        "P29-01",
+        "P29-02",
+        "RETURN-01"
+      ]
+    }
+  ],
+  "product_delivery_queue": "docs/tasks/product-delivery-queue.json",
+  "scope_extension_decision": "docs/decisions/EXEC-DEC-002-product-delivery.md"
+}

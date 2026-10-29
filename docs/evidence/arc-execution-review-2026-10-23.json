@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-23",
+  "task": "Q10",
+  "reviewer": "env_final_reviewer / qh_reviewer",
+  "result": "pass_scoped_design",
+  "reviewed_sha256": {
+    "docs/tasks/ARC-execution-contracts.md": "bfe5b5f9495c076a146ee10c9edc741bd67beaa245e555570cb0136db24e2ab6",
+    "docs/contracts/execution-v1.md": "4dec4e9f23c1340dcfd0d78538470a6b48fb6748e2af77fa7eedfaa95cd76573",
+    "docs/decisions/ARC-DEC-002-execution-boundaries.md": "277a3adef0c62ae382afa77032ee29f411e32adee745e459326bcf3e280dc4ac",
+    "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+    "docs/requirements-scenarios.md": "843b2d166f1e012c247923dfd8d5e32ed4290bcd49dc8babe135cdb67899e262",
+    "docs/policy-gates.md": "f4bca5690b64c06156c93d8992fc786a45e49d60e9c779ca3fba2d8821c176bd"
+  },
+  "resolved": [
+    "unknown requires definitive finality or proven unsent",
+    "consumed/prepared withdrawal persists",
+    "risk budget reserves active and unknown worst-case exposure"
+  ],
+  "not_executed": [
+    "financial implementation/tests",
+    "broker calls",
+    "product AI calls"
+  ]
+}

@@ -1,0 +1,41 @@
+# Q15 inactive template: not in .github/workflows; no remote run was authorized.
+name: QuantHarbor synthetic quality
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: qh-synthetic-quality
+  cancel-in-progress: false
+jobs:
+  quality:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13.17'
+          architecture: arm64
+      - name: Public candidate checks
+        run: python3.13 -I -S scripts/check_quality.py
+      - name: Product and quality unit tests
+        env:
+          PYTHONPATH: src
+        run: |
+          python3.13 -m unittest discover -s tests/product -v
+          python3.13 -m unittest discover -s tests/quality -v
+      - name: Fetch pinned synthetic images
+        run: |
+          docker pull python@sha256:608b27b2db85abf38d81685085cd1166a5ed7ada66549f0dfe53a75bb830cd5d
+          docker pull postgres@sha256:a5377a521c0383c9862394c90bdbf7707800ac9a6e40d18318193badfac52ce0
+      - name: Foundation and isolated research
+        env:
+          PYTHONPATH: src
+        run: |
+          python3.13 scripts/check_foundation.py
+          python3.13 scripts/check_isolation.py

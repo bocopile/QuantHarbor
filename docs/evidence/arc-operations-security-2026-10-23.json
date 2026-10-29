@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-23",
+  "task": "Q11",
+  "reviewer": "baseline_security_review / qh_security_reviewer",
+  "result": "pass_security_design",
+  "reviewed_sha256": {
+    "docs/contracts/operations-v1.md": "919a6a654071f7925c07bc5f32394cd9409c20cca5a5f5a1368e878842e214dc",
+    "docs/contracts/execution-v1.md": "71f2c37533f917d2be15cef068aa01bd941a03386d76157a54b604a45acc9772",
+    "docs/tasks/ARC-operations.md": "a619d6a04d58d4b8ae736e3ed41df40ddfe10196278b0a0eb771c9115e0360b1",
+    "docs/decisions/ARC-DEC-003-local-operations.md": "56a2c3e7944c7803340f56256239c1a7e70902a2836c2410fe7afd43a2258950"
+  },
+  "resolved": [
+    "restore invalidates old approval/session/nonce and reestablishes authority generation",
+    "cancel egress requires separate CancelCommand authorization"
+  ],
+  "limitations": [
+    "document review only",
+    "actual ACL/network/backup/order blocking unimplemented and untested"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "task": "Q20-local",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "findings",
+  "sha256": {
+    "src/quantharbor/domain/ledger.py": "5f49b3928759e594d832ce4bdecd124320f5fc7cddeaed26aca2e93100c69245",
+    "src/quantharbor/application/ledger.py": "77f4d4a52590bcd2a5462338f5df626eef43063c62a827d625063f11eef2ab46",
+    "src/quantharbor/ports/ledger.py": "fbda6397cb7e31c52530a1be71754b3bb1673e1e0997c08bdc57f894a4113e91",
+    "src/quantharbor/adapters/synthetic_ledger.py": "0fb4a781293e6f9481424cc32321a4e75c4b43f83f3b36b9b429b06ac884b8bd",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/domain/serialization.py": "1dcb58472cd6499653be512a344ad3880d5c6a51389eb9e7f42c0501d66a93fc",
+    "migrations/0002_synthetic_ledger.sql": "ed71e1e1d63d428a8564558a7d2307b987609cf65b3dcb51be539059f49a2faa",
+    "tests/product/synthetic_ledger.py": "e700e9f3477831cdb4fc59e439dc500b2d14f432df8a029b3a91dd5d289e3c0a",
+    "tests/product/test_ledger.py": "f8febaefd3358bd5eefa725be06e52fa051e36811612167d3df79dd6631f4a7f",
+    "scripts/check_ledger.py": "18033d6263d1eef50956717e492536dae82b80f511334ff2ec728fcfc12703ac",
+    "tests/quality/test_ledger_runner.py": "fe241bf5332928d9ed9fbb6a9649f239c1b85616cf885cb0a5be2c32d5426e60",
+    "docs/development/ledger.md": "697412bd419983fb2dc83216b665c7fbb6c5b9e0979640cc79e646d4925aa463"
+  },
+  "findings": [
+    {
+      "id": "L1",
+      "priority": "P1",
+      "problem": "Prospective settlement dependency change removes current duplicate protection before effective time",
+      "reproducer": "baseline1000; buyA100/buyB100 T1; settleA T2; revise settlement to B prospectiveT4 recordedT3; new settleA T3 accepted causes double cash payment and complete=true"
+    },
+    {
+      "id": "L2",
+      "priority": "P1",
+      "problem": "Split completeness ignores newly added position keys and late originals in its economic basis",
+      "reproducer": "baseline with no holdings; buy10 T1; split2:1 +10 T2; baseline retroactive revision adds5 shares atT0 knownT3 ->25 complete instead of30 or incomplete. Late original buy also affected."
+    }
+  ],
+  "tests_executed": false,
+  "actual_account_api_calls": 0
+}

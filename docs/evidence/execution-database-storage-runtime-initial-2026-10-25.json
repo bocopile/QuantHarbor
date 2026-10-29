@@ -1,0 +1,59 @@
+{
+  "scope": "root_fixed_synthetic_runtime_diagnostic",
+  "checks": [],
+  "goldens": {},
+  "status": "fail",
+  "reason": "storage_failure",
+  "trace": [
+    {
+      "file": "q27-storage-runtime-diagnostic.py",
+      "line": 14,
+      "function": "<module>"
+    },
+    {
+      "file": "check_execution.py",
+      "line": 85,
+      "function": "primary"
+    },
+    {
+      "file": "synthetic_execution.py",
+      "line": 149,
+      "function": "__init__"
+    },
+    {
+      "file": "postgres_execution.py",
+      "line": 166,
+      "function": "__init__"
+    },
+    {
+      "file": "postgres_execution.py",
+      "line": 258,
+      "function": "_persist"
+    },
+    {
+      "file": "execution_uow.py",
+      "line": 262,
+      "function": "call"
+    },
+    {
+      "file": "execution_uow.py",
+      "line": 247,
+      "function": "_apply"
+    },
+    {
+      "file": "execution_uow.py",
+      "line": 171,
+      "function": "_select"
+    },
+    {
+      "file": "execution_uow.py",
+      "line": 139,
+      "function": "_exchange"
+    }
+  ],
+  "cleanup": "own_project_removed",
+  "elapsed_seconds": 5.715,
+  "sql_errors": [
+    "ERROR:  ledger_contract"
+  ]
+}

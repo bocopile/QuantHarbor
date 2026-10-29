@@ -1,0 +1,76 @@
+# QuantHarbor team defaults requested by the user; active UI model may differ.
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"
+# Named permissions below are opt-in; the current managed session is not changed.
+[agents]
+max_concurrent_threads_per_session = 6
+default_subagent_model = "gpt-6-luna"
+default_subagent_reasoning_effort = "high"
+
+[mcp_servers."codebase-memory-mcp"]
+command = "codebase-memory-mcp"
+enabled_tools = [
+  "search_graph", "trace_path", "get_code_snippet", "query_graph",
+  "search_code", "get_architecture", "get_graph_schema",
+  "index_repository", "index_status", "list_projects", "detect_changes",
+]
+default_tools_approval_mode = "writes"
+
+# Defaults only. App/tool-specific settings can override these values.
+[apps._default]
+destructive_enabled = false
+open_world_enabled = false
+default_tools_approval_mode = "writes"
+
+# Keep the active host-managed mode; do not set default_permissions alongside
+# an inherited legacy sandbox_mode. Select one profile explicitly in a future
+# parent session when running that workflow.
+[permissions.qh_review]
+description = "QuantHarbor local read-only review; command network disabled."
+extends = ":read-only"
+
+[permissions.qh_review.network]
+enabled = false
+
+[permissions.qh_review.filesystem]
+"~/.ssh" = "deny"
+"~/.aws" = "deny"
+"~/.kube" = "deny"
+"~/.codex/auth.json" = "deny"
+
+[permissions.qh_review.filesystem.":workspace_roots"]
+".env" = "deny"
+".env.local" = "deny"
+"secrets" = "deny"
+"credentials" = "deny"
+".runtime" = "deny"
+"runtime" = "deny"
+"data/private" = "deny"
+"reports/private" = "deny"
+"logs" = "deny"
+"backups" = "deny"
+
+[permissions.qh_development]
+description = "QuantHarbor workspace editing; command network disabled."
+extends = ":workspace"
+
+[permissions.qh_development.network]
+enabled = false
+
+[permissions.qh_development.filesystem]
+"~/.ssh" = "deny"
+"~/.aws" = "deny"
+"~/.kube" = "deny"
+"~/.codex/auth.json" = "deny"
+
+[permissions.qh_development.filesystem.":workspace_roots"]
+".env" = "deny"
+".env.local" = "deny"
+"secrets" = "deny"
+"credentials" = "deny"
+".runtime" = "deny"
+"runtime" = "deny"
+"data/private" = "deny"
+"reports/private" = "deny"
+"logs" = "deny"
+"backups" = "deny"

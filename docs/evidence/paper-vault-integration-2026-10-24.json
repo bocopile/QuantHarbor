@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-24",
+  "task": "SEC-paper-vault",
+  "runner": "root",
+  "result": "actual_synthetic_integration_pass",
+  "scope": "new temporary synthetic image resources only",
+  "creation_options": {
+    "encryption": "AES-256",
+    "filesystem": "APFS",
+    "size_mib": 256,
+    "type": "UDIF"
+  },
+  "encrypted_boolean": true,
+  "authentication": "ephemeral_random_memory_stdin_nul",
+  "lock_reopen_restore": "pass",
+  "all_detached": true,
+  "image_final_hash_matches": {
+    "vault.dmg": true,
+    "backup.dmg": true,
+    "restore.dmg": true
+  },
+  "image_permissions": "0600/current uid/regular/single link",
+  "real_credentials_or_financial_values": false,
+  "sha256": {
+    "scripts/bootstrap_paper_storage.py": "8bab8e385d23f55e7e6a2b31a5cb8c79d81fad9969ac3a6f600d1f0789427eff",
+    "tests/quality/test_paper_storage.py": "6bf1475dccfb87fe92fd98a705714cb9f09002cba3d12cfaf99ce7989ed8c142",
+    "docs/development/paper-private-storage.md": "fa0dd3770caa0773e2024b694be7e86bfba6d8f6acf142b41d42ead90a0f0f04"
+  },
+  "not_executed": [
+    "operational native password UI",
+    "Keychain choice",
+    "user encrypted area",
+    "real policy values/keys",
+    "API"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "task": "Q21-local",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "pass",
+  "scope": "V1_V2_V3_and_changed_paths_regression",
+  "resolved": [
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "findings": [],
+  "sha256": {
+    "src/quantharbor/domain/valuation.py": "c9ceb96e15474d30aa31ad3ded5f370723340dca047ae04f008d29cc8c159396",
+    "src/quantharbor/application/valuation.py": "2824e19e0862c0fbd8a80d436c6b7ca9d4e3635d02eca50bc04f18168e7ace45",
+    "src/quantharbor/ports/valuation.py": "7f47ea03c644b4fa49050c5f1c78d2cb19380ea89975e0b3f0ce00b71556f9a3",
+    "src/quantharbor/adapters/synthetic_valuation.py": "0f942df075bcf7d2edd2579e71baeb072bdf29b5acf163352f99fbaa4cca7b6d",
+    "src/quantharbor/domain/serialization.py": "3ce4ef10216e3993ad94c406e0ba1faf1c5eb091972c36a2c1c0821ac9081343",
+    "tests/product/synthetic_valuation.py": "b8818b8fe68ed6cf8f368abb157b35a1ed4afc60017ad423e8f78a826d60faee",
+    "tests/product/test_valuation.py": "707a314dbbb6071f0a5dd81fccfbe859c53d2fd67acffd48423b74432f995f19",
+    "tests/product/test_valuation_reconciliation.py": "4cf12d475404666dc930fbf40ffc24a03fe7d2a44acc359ab0a7a38a560c5111",
+    "tests/product/test_valuation_snapshot.py": "fc04167d4bded00a1a6ddae23dc3aac117e594fc3e70f8de72265e062b32f005",
+    "docs/development/valuation.md": "e4be62dbe9e4af156b135be4c1fac994cba7da3e64dcd9b80aec44b2994023c2"
+  },
+  "hashes_match": true,
+  "tests_executed": false,
+  "actual_api_calls": 0
+}

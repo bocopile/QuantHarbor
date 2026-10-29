@@ -1,0 +1,33 @@
+{
+  "task": "DATA-catalog-calendar",
+  "date": "2026-10-23",
+  "executor": "foundation_implementer",
+  "independent": false,
+  "tests": {
+    "new_tests": 18,
+    "product_passed": 65,
+    "quality_files": 193,
+    "quality_findings": 0,
+    "exit_codes": [
+      0,
+      0
+    ],
+    "initial_failures": 0
+  },
+  "files": {
+    "src/quantharbor/domain/catalog.py": "6b81050c61b717ab2c51152a47273d186a15f23707b37a0ac957017e691f2d6f",
+    "src/quantharbor/domain/calendar.py": "ead1326345ef4246601fa3aee000cb8a369cf216aa900851e3934e3562dde93f",
+    "src/quantharbor/market_data/__init__.py": "1f080481a98710d41e0369c77cf5854eb9eb3d42ffd79ba3ce9c12235e6a0a97",
+    "src/quantharbor/market_data/timezones.py": "a3aba443a0290668da213ed62e36d03955c73cba7607c2ee8deb1fbfba0bdb1f",
+    "tests/product/synthetic_timezones.py": "780d32dfc5fb5689c70544b04127f31fe39676fc0936fa7dfe3e6022df2d775d",
+    "tests/product/test_catalog.py": "d2f7388a87d07cea6d5c33db0de6cfd6c9c94c0f9f37ff0bff7985cdcb0d7849",
+    "tests/product/test_calendar.py": "03739ca01f6c97f9b537835a40bd324257eed81a14c9daf902ded65dcdb19c20",
+    "docs/development/catalog-calendar.md": "2d3dc588916e23f0fac77ab927095e1b5e34e6ba5dfa281d2d88aa42ea59a886"
+  },
+  "limits": [
+    "synthetic records and handcrafted timezone fixture",
+    "no actual tzdb/calendar supplier adoption",
+    "SG02 pending",
+    "Docker and independent review pending"
+  ]
+}

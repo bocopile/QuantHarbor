@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "scope": "Q06 development ENV-01..11 scoped acceptance, not operational finance readiness",
+  "cli_version": "0.163.0",
+  "status": "passed_scoped_development_env",
+  "evidence_sha256": {
+    "docs/evidence/env-final-profiles-2026-10-23.json": "ff300fedf5ceff6894924987befddc9bcbd13a429b9ab72b972c00f80f799961",
+    "docs/evidence/env-final-role-review-2026-10-23.json": "838dfa1c5480adfe504bf94ae90752fe3cad795a14996bf8d7f8efa2815aa54a",
+    "docs/evidence/env-final-role-development-2026-10-23.json": "85ede74e1bd72868032b8e3bad6639e3aea00d97bdb83c2a143edcbb7b17616d",
+    "docs/evidence/env-hook-runtime-2026-10-23.json": "0a448d91dce93f7407eccc11ef98484e7c661ee0bb4b29232cc39d12ef7859a3",
+    "docs/evidence/env-slack.json": "d2bb4b890d5f36269fadbbf515ef30c2c85de2eecc4dd151a421716eba70cd38",
+    "docs/evidence/env-role-capabilities.json": "102113d28801c930e91e498d5ed9ce9a5c4809d6d6538328da523f56b19bb0ec",
+    "docs/evidence/env-skill-workflow.json": "248e535238737752ccc8195f4a644e2888bee6bb16b5d47c794480136ad8478e",
+    "docs/evidence/env-durable-audit.json": "53462dbea40149856024096ca6bf04d5f052d410dafe5f57e61d578af97fcbb9",
+    "docs/evidence/env-final-role-capabilities-2026-10-23.json": "a6fd89cbdd63beb8babc43bda05f626cb36190fcba0f3d4f9c43f6dd159197c0"
+  },
+  "validation": {
+    "independent_executor": "env_final_validator",
+    "final_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "profile_cases_passed": 10,
+    "role_probe_counts": {
+      "review": 1,
+      "development": 1
+    },
+    "initial_failures": [
+      {
+        "check": "profiles",
+        "parent_exit_code": 1,
+        "probe_exit_code": 71,
+        "affected_probes": 10,
+        "reason": "startup_error"
+      },
+      {
+        "check": "review",
+        "parent_exit_code": 1,
+        "cli_exit_code": 1,
+        "reason": "host_sandbox_blocked"
+      },
+      {
+        "check": "development",
+        "parent_exit_code": 1,
+        "cli_exit_code": 1,
+        "reason": "host_sandbox_blocked"
+      }
+    ],
+    "recovery": "one require_escalated execution per check to start the same explicitly restricted child profile; no bypass flags or scope change",
+    "full_unit_suite_rerun": false,
+    "last_unit_suite": "GIT-baseline 55 passed; executable code unchanged"
+  },
+  "limits": [
+    "No direct-child isolation proof",
+    "No real credentials, account, orders or money movement",
+    "No remote Git operations, new service or scheduler",
+    "Manual Slack connection evidence from 2026-10-21; no new send this turn; sending tool currently not exposed",
+    "Hook unknown outcomes and missing Post remain non-success",
+    "Temporary audit is not durable operational storage",
+    "Current CLI MCP inventory covers the ephemeral named-profile thread only, not built-in tools, current app or direct-child isolation"
+  ],
+  "next": "Q07 user operating-policy inputs and normal/failure scenarios",
+  "review": {
+    "reviewer": "env_final_reviewer",
+    "role": "qh_reviewer",
+    "result": "passed",
+    "scope": "independent public evidence review, not independent rerun",
+    "additional_mcp_evidence": "reviewed and accepted; ephemeral thread MCP inventory only"
+  }
+}
