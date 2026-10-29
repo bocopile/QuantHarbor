@@ -1,0 +1,157 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_initial_partial",
+  "exit_code": 0,
+  "elapsed_seconds": 197.86,
+  "command": "python3.13 -B scripts/check_execution.py",
+  "result": {
+    "scope": "Q27_synthetic_actual_database_only",
+    "status": "partial",
+    "q27_complete": false,
+    "checks": [
+      "EX04_actual_database_all_admission_faults_rollback",
+      "EX01_actual_Q24_Q26_DB_admission",
+      "EX05_committed_command_lookup_no_second_intent",
+      "EX35_two_facades_shared_registry_database_reload",
+      "EX24_actual_inbox_ledger_reservation_intent_faults_rollback",
+      "EX06_actual_Q20_projection_DB_cash598",
+      "EX20_actual_duplicate_fill_once",
+      "EX07_actual_Q20_settlement_no_reapply_cash598",
+      "EX25_actual_reverse_duplicate_ledger_delivery_cursor_atomic",
+      "EX27_DB_distinct_cancel_command_nonce_remaining_bound_only",
+      "EX34_product_role_direct_financial_mutation_denied",
+      "EX16_EX18_actual_before_handoff_crash_unknown_no_resend",
+      "EX16_EX18_actual_after_handoff_crash_unknown_no_resend",
+      "EX02_EX15_EX29_DB_protective_withdraw_unsent_only_claim_preserved",
+      "EX03_EX35_actual_two_connections_lock_contention_two_candidates_one_winner",
+      "EX40_own_UUID_projects_fixed_image_migrations_idempotent_cleanup"
+    ],
+    "goldens": {
+      "candidate": {
+        "quantity": "3",
+        "limit_price": "100",
+        "cost_bound": "2",
+        "maximum_burden": "302"
+      },
+      "partial_fill": {
+        "L": "1000",
+        "H": "302",
+        "F": "100",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "settlement": {
+        "L": "900",
+        "H": "202",
+        "B": "1000",
+        "U": "202",
+        "D": "100",
+        "A": "598"
+      },
+      "concurrency": {
+        "available": "600",
+        "burdens": [
+          "302",
+          "402"
+        ],
+        "winners": 1,
+        "remaining": "298"
+      }
+    },
+    "remaining": [
+      "EX08_current_source_rebind_and_admission_after_fills",
+      "EX21_EX22_revision_reprocess_and_cumulative_correction",
+      "EX23_late_final_conflict_reconciliation",
+      "EX26_unknown_cost_finalization_nonzero_fee_tax",
+      "EX27_EX28_cancel_handoff_and_confirmation_authority",
+      "EX31_restart_new_issuer_rebind_and_manual_resume",
+      "EX32_EX37_exact_per_intent_row_index_byte_accounting_and_capacity_proof",
+      "EX34_complete_SQL_auth_nonce_closed_schema_invariants",
+      "EX39_multi_price_correction_component_reconciliation"
+    ],
+    "cleanup": [
+      {
+        "project": "qh-ledger-c8c2fc3a38e24a6fbeb3e8c9d4c38f56",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-7f9542f77d7745668d24b7ba335c0802",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-b75887c15e8e46d39b2e49796d152d78",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-4ac2bfc05aa54b2ba5167326235d6fa8",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-ee9d4b50107545f989552127757b2c9d",
+        "result": "own_project_removed"
+      }
+    ],
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "09f5f462f80080aeed495024e0e59e3a39ae3180480239b1e55f172f6f29831b",
+    "reason": "implemented_checks_pass_remaining_contract_work",
+    "elapsed_seconds": 197.626
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "a0086edc262472843457f8fff8c63a38ce2d759905bae41910a4c38be386d932",
+    "src/quantharbor/application/execution.py": "334d7cf33883a930e4116ac1ce3c8cca804ff62da3c2849cfbaa79f548a8055d",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "6463cabbdbe4a59c046dd3e43341d3deb63c26fd9a23b918f3f939c5bd10b803",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "2556408a91e864e5015d66c097ec006ed591d1540c6969da39a74e1a0aea152d",
+    "src/quantharbor/adapters/execution_uow.py": "2e753dcaa535f4963c628baed7afdc9474e1da99266d6913644df79d58449559",
+    "tests/product/synthetic_execution.py": "cc700d42613e3bdbd23b9a9cd1f32fb2e4412af32e0d2ae159394e96c3dceeb9",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "7d966e80373966273caf6695f2bf8026cf46c74c05c9df3374ac33d4d0d80998",
+    "docs/development/execution.md": "0a05b59c25276ac89477d93def71d3b85e784c18d5e548e94f92214660952048",
+    "migrations/0003_synthetic_execution.sql": "09f5f462f80080aeed495024e0e59e3a39ae3180480239b1e55f172f6f29831b",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "96908ac4b3483b2ea59c73532811b7adec54c16033f22dff23032f924ba36344"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "28766c2ecf35b2ab1250042d9baefb7a0525d040949fbb08dae0b0d86b57293a",
+    "src/quantharbor/domain/execution_math.py": "a0086edc262472843457f8fff8c63a38ce2d759905bae41910a4c38be386d932",
+    "src/quantharbor/application/execution.py": "334d7cf33883a930e4116ac1ce3c8cca804ff62da3c2849cfbaa79f548a8055d",
+    "src/quantharbor/ports/execution.py": "f54d9564d900482dff74e828d9a8c99cba042307a56a1ac987f37f00827442aa",
+    "src/quantharbor/adapters/postgres_execution.py": "6463cabbdbe4a59c046dd3e43341d3deb63c26fd9a23b918f3f939c5bd10b803",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "2556408a91e864e5015d66c097ec006ed591d1540c6969da39a74e1a0aea152d",
+    "src/quantharbor/adapters/execution_uow.py": "2e753dcaa535f4963c628baed7afdc9474e1da99266d6913644df79d58449559",
+    "tests/product/synthetic_execution.py": "cc700d42613e3bdbd23b9a9cd1f32fb2e4412af32e0d2ae159394e96c3dceeb9",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "7d966e80373966273caf6695f2bf8026cf46c74c05c9df3374ac33d4d0d80998",
+    "docs/development/execution.md": "0a05b59c25276ac89477d93def71d3b85e784c18d5e548e94f92214660952048",
+    "migrations/0003_synthetic_execution.sql": "09f5f462f80080aeed495024e0e59e3a39ae3180480239b1e55f172f6f29831b",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "96908ac4b3483b2ea59c73532811b7adec54c16033f22dff23032f924ba36344"
+  },
+  "owned_unchanged": true,
+  "stderr_bytes": 0,
+  "q27_complete": false,
+  "root_scope_corrections": [
+    "16 runner checks are partial bundles, not all40 fixed cases",
+    "EX03 currently verifies real DB lock contention and sequential competing candidate decisions; simultaneous competing admission and reverse winner are still required",
+    "EX05 currently verifies postcommit command lookup, not lost commit response",
+    "EX27 issued cancel command only, no actual cancel handoff/confirmation",
+    "EX34 direct table denial only, closed SQL auth invariants incomplete"
+  ],
+  "public_after_integration": {
+    "files_checked": 503,
+    "findings": 0,
+    "team": "pass",
+    "diff_check": "pass",
+    "full_product": "not_run",
+    "quality_unittest": "not_run"
+  }
+}

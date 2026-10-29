@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "fixture_id": "qh-approval-synthetic-v1",
+  "environment": "synthetic",
+  "real_authentication": false,
+  "real_financial_authorization": false,
+  "actual_api_enabled": false,
+  "t0": "2024-03-08T14:31:08Z",
+  "approval_ttl_seconds": 20,
+  "challenge_ttl_seconds": 10,
+  "session_ttl_seconds": 120,
+  "liveness_timeout_seconds": 30,
+  "policy_valid_from": "2024-03-01T00:00:00Z",
+  "policy_valid_to": "2024-04-01T00:00:00Z",
+  "candidate_fixture": "Q24 US default actual generated source; docs/examples/target-synthetic.json is example only",
+  "golden": {
+    "quantity": "3",
+    "limit_price": "100",
+    "cost_bound": "2",
+    "maximum_burden": "302",
+    "currency": "USD",
+    "candidate_valid_to": "2024-03-08T14:31:33Z",
+    "presentation_at": "2024-03-08T14:31:08Z",
+    "approve_at": "2024-03-08T14:31:10Z",
+    "approval_expires_at": "2024-03-08T14:31:28Z",
+    "challenge_expires_at": "2024-03-08T14:31:18Z"
+  },
+  "limits": {
+    "canonical_bytes": 65536,
+    "resolved_bytes": 8388608,
+    "refs": 128,
+    "string_utf8_bytes": 2048,
+    "rendered_utf8_bytes": 16384,
+    "total_records": 128,
+    "total_bytes": 8388608
+  },
+  "cases": [
+    {
+      "id": "AP01",
+      "input": "exact presentation and explicit synthetic approve",
+      "expected": "approved; candidate quantity3 price100 cost2 maximum302 unchanged"
+    },
+    {
+      "id": "AP02",
+      "input": "same command and same payload replay",
+      "expected": "same receipt; no additional transition"
+    },
+    {
+      "id": "AP03",
+      "input": "nonce command action candidate display session substitutions",
+      "expected": "conflict/denial; no authorization"
+    },
+    {
+      "id": "AP04",
+      "input": "fake principal parsed evidence foreign issuer proof bool AI text",
+      "expected": "denied; no mutation"
+    },
+    {
+      "id": "AP05",
+      "input": "candidate quantity price text account generation changes",
+      "expected": "old presentation/approval unusable"
+    },
+    {
+      "id": "AP06",
+      "input": "current rights revoke and policy change after display",
+      "expected": "approve/admission blocked; no stale detail disclosure"
+    },
+    {
+      "id": "AP07",
+      "input": "TTL and clock exact boundaries",
+      "expected": "t0+20sec excluded; heartbeat never extends approval"
+    },
+    {
+      "id": "AP08",
+      "input": "disconnect liveness expiry automatic reconnect",
+      "expected": "no new authority use or automatic resume"
+    },
+    {
+      "id": "AP09",
+      "input": "two approvals same candidate concurrent admission",
+      "expected": "at most1 consumed; intent/reservation/outbox bundle1"
+    },
+    {
+      "id": "AP10",
+      "input": "revoke versus admission both serial orders",
+      "expected": "first confirmed state wins; no partial commit"
+    },
+    {
+      "id": "AP11",
+      "input": "prepared withdrawal versus dispatch both orders",
+      "expected": "withdraw first unsent_confirmed/aborted; dispatch first requested"
+    },
+    {
+      "id": "AP12",
+      "input": "failure injected at each staged commit step",
+      "expected": "aggregate history nonce consumption reservation outbox unchanged"
+    },
+    {
+      "id": "AP13",
+      "input": "consumed then aborted_unsent then retry",
+      "expected": "same approval and candidate cannot consume again"
+    },
+    {
+      "id": "AP14",
+      "input": "restore authority generation",
+      "expected": "old handles and pending/approved invalid; consumed unknown reservations claims retained; stopped"
+    },
+    {
+      "id": "AP15",
+      "input": "constructor canonical reseal predecessor direct repository write",
+      "expected": "invalid authority or history rejected"
+    },
+    {
+      "id": "AP16",
+      "input": "capacity and active procedure closing storage",
+      "expected": "no partial write/eviction; reserved closing records usable"
+    },
+    {
+      "id": "AP17",
+      "input": "role-separated queries and exceptions",
+      "expected": "no nonce/handles/raw exception/unauthorized finance disclosure"
+    },
+    {
+      "id": "AP18",
+      "input": "same repository multiple application instances",
+      "expected": "single shared serialization boundary; no duplicate effects"
+    },
+    {
+      "id": "AP19",
+      "input": "protective withdrawal after data rights lost/new valid control session",
+      "expected": "authorized request recorded without requiring report/risk allow; details still restricted"
+    },
+    {
+      "id": "AP20",
+      "input": "expired challenge or rejected authenticated action replay",
+      "expected": "one recorded outcome; nonce cannot change payload"
+    },
+    {
+      "id": "AP21",
+      "input": "Q27 transition plan versus persistence",
+      "expected": "pure plan changes nothing; memory simulation stages whole aggregate only; no actual dispatch"
+    }
+  ]
+}

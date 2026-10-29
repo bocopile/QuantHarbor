@@ -1,0 +1,33 @@
+{
+  "task": "Q26-local",
+  "role": "qh_security_reviewer",
+  "requested_model": "gpt-6-astra",
+  "reasoning": "high",
+  "result": "findings",
+  "source": "docs/research/approval-security-input-2026-10-25.md",
+  "findings": [
+    {
+      "id": "AS1",
+      "priority": "P1",
+      "summary": "dispatch does not recheck original approver current permissions",
+      "file": "src/quantharbor/adapters/synthetic_approval.py",
+      "line": 589
+    },
+    {
+      "id": "AS2",
+      "priority": "P2",
+      "summary": "outstanding challenge completion consumes protective withdrawal hold",
+      "file": "src/quantharbor/adapters/synthetic_approval.py",
+      "lines": [
+        417,
+        524
+      ]
+    }
+  ],
+  "static_only": true,
+  "tests_executed": false,
+  "owned_hashes_matched": 9,
+  "baseline_matched": 7,
+  "fixture_matched": true,
+  "drift": 0
+}

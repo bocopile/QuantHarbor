@@ -1,0 +1,34 @@
+{
+  "task": "Q27-local",
+  "phase": "root_control_restart_provenance_repair",
+  "at": "2026-10-25T13:06:28.220788+00:00",
+  "finding": "restart used local quarantine alias as issuer event ID, falsely treating intact broker journal as missing",
+  "scope": "actual typed object event_id/receipt_id resolved through original exact issuer journal; wrong types and missing journal still closed",
+  "source_before": {
+    "src/quantharbor/adapters/postgres_execution.py": "8ebf993bd2e46f7e4601ebd477d4b0b79c7b36be5f7b477d701bf40c1cea695c",
+    "tests/product/test_execution_control.py": "237e598a16d9462c55d7b635093e808e2190884b58accc987884f0841daeeb80"
+  },
+  "source_after": {
+    "src/quantharbor/adapters/postgres_execution.py": "5bcf1be2888b75772d675a7d4f131c34032b9a15cbac4735a1f17370228d3f8e",
+    "tests/product/test_execution_control.py": "f4cc53ebe3649debf248c8ee66ea158d9f8b65b61f1332b4da6b4ea28ab4cadd"
+  },
+  "red": {
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "seconds": 35.449,
+    "exit_code": 1,
+    "log_sha256": "5934bd3ad558898bb16d53e990bcfc887580740a5fb65b93e1bbdffc2edbd0db"
+  },
+  "green": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 75.106,
+    "exit_code": 0,
+    "log_sha256": "7f6466b44815f26d64da10836420b80ae7bfde8d5f3ec13295e906f866f4de7d"
+  },
+  "actual_DB": "pending targeted11; prior DB11/22 passed then scenario12 failed; 12 own resources cleaned",
+  "full_product_quality_independent_review": "not executed",
+  "q27_complete": false
+}

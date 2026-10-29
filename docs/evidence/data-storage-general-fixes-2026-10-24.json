@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-24",
+  "task": "Q17B",
+  "stage": "general_fixes_pending_rereview",
+  "worker": "foundation_implementer",
+  "resolved": [
+    "R5 rejection metadata binding",
+    "R6 Docker-independent wheel-boundary test"
+  ],
+  "red": {
+    "R5_methods": 2,
+    "R5_assertions": 16,
+    "R6_failures": 1
+  },
+  "green": {
+    "host_product": 106,
+    "quality_tests": 22,
+    "quality_files": 233,
+    "findings": 0,
+    "container_product": 106,
+    "storage": 12,
+    "seconds": 15.834,
+    "medium": "own_local_docker_volume",
+    "cleanup": "own_objects_removed"
+  },
+  "sha256": {
+    "src/quantharbor/domain/market_data.py": "a71aab7e30f90115e5cb5382eebecb5994af185ec48be406390e8be55e6e5b36",
+    "src/quantharbor/domain/market_storage.py": "71c45fc702b236e6c072b5b74d666cc08bb8a94d41508f1a5f5d9b504e2e2db2",
+    "src/quantharbor/domain/serialization.py": "158a41cd5563d9b8024664fafc54795527b6a7dd2ddee7b1790d28e4cc66df3c",
+    "src/quantharbor/application/market_ingest.py": "0ae6289602b0d2fcdfba1903b5188b1ae5b2a579b43d653b902d95ca845f5f4e",
+    "src/quantharbor/adapters/parquet_market_store.py": "0bd0fdfe1666199c17b71aa4e35b75606173f9601d5601cac326e1804cd60c79",
+    "tests/product/synthetic_market_storage.py": "3ae95ec0a4fe9d2f80eb1ad380c6097a7a14bdcd436a4adfe9371c391070bbd8",
+    "tests/product/test_market_storage.py": "202db31be027e67dc8578649c54bafbbba8a89fe1ab00d6d139f7270d505dee4",
+    "tests/storage/__init__.py": "476e48fbd4d68d8405cadb0b4fa6697387b3df50cf8b38162888f2eca6e8ad8c",
+    "tests/storage/test_parquet_market_store.py": "4453d6c09589622eee5c9b8c2c49269d0b46f189fcc8841a6f754bfb4fe59dd6",
+    "docs/development/market-storage.md": "87370aca2fe224f05a0bdc8180b16ac3cf7e5334d0626ab2573d066d21f15f79",
+    "scripts/check_market_storage.py": "59fb80572c917a743f27c59a8cc5be416eff2cad7ac7bb66567da3c6b717265a",
+    "scripts/check_quality.py": "41c8e29e089491a987524e38838a374f9351b5b627ad3302f2d19cee5747a08e",
+    "tests/quality/test_quality.py": "ab5ab80e20aef50960bb2d8c5f62122387f5f6e4c976c8437ecb923c1633eafe",
+    "config/market-storage-lock.json": "ddc94a5c468983597f365fca75446ab042861a1abeeecfd0f0c61763d65c1329",
+    "containers/Dockerfile.market-storage": "91b55c911d9fa07f49eef2943b146d6f70688859cdbb32274b22ca4e9f4d8763",
+    "containers/requirements.market-storage.txt": "dc6d27b895f3915b8543b2526673afeb963c81478418065c23f3bd1c908a4f11",
+    "tests/quality/test_market_storage_harness.py": "22b51e71921732ccf9cb1490425e75c43331daad08f1c72cff08c6965dd95616"
+  },
+  "unexecuted": [
+    "independent rereview",
+    "independent final execution",
+    "real data/API",
+    "raw body reparsing",
+    "power-loss durability"
+  ]
+}

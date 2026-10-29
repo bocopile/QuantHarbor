@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-23",
+  "task": "Q13",
+  "validator": "env_final_validator / qh_validator",
+  "result": "pass_requested_scope",
+  "commands": [
+    {
+      "command": "python3.13 scripts/check_foundation.py",
+      "exit_code": 0,
+      "checks_passed": 8,
+      "product_tests": 22,
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 5.784
+    },
+    {
+      "command": "PYTHONPATH=src python3.13 -m unittest discover -s tests/product -v",
+      "exit_code": 0,
+      "tests": 22,
+      "elapsed_seconds": 0.116
+    }
+  ],
+  "validator_confirmed_inputs_unchanged": true,
+  "script_sha256": "67c4134d7517f4770496d6e12b9076f646965e6eeee8082238ef08cf243b312a",
+  "not_validated": [
+    "Q14 research isolation",
+    "real accounts and external APIs",
+    "financial workflows"
+  ]
+}

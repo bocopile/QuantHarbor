@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-24",
+  "scope": "Q23 preparation only; no experiment or PG02 completion yet",
+  "sources": [
+    {
+      "url": "https://www.gipsstandards.org/standards/gips-standards-for-firms/gips-standards-handbook-for-firms/",
+      "claim": "시간가중 수익률은 외부 현금흐름 경계의 하위기간 수익률을 기하 연결하는 방식. 구현 참고이며 GIPS 준수 주장 아님."
+    },
+    {
+      "url": "https://www.quantconnect.com/docs/v2/writing-algorithms/key-concepts/research-guide",
+      "claim": "현재 생존 종목만 선택하는 생존편향과 미래 구성종목 사용 등 선행정보 오류를 통제해야 함. 합성 실험에 과거 시점 입력·비용 가정을 고정하는 근거."
+    }
+  ]
+}

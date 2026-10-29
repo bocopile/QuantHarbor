@@ -1,0 +1,127 @@
+{
+  "task": "Q25-local",
+  "role": "qh_implementer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "result": "implementation_returned_final_full_revalidation_and_reviews_pending",
+  "sha256": {
+    "src/quantharbor/domain/investment_ai.py": "3401ddcf640f56a680912ea45b9c440dea978e723579b7f2724df14ab9c44a9b",
+    "src/quantharbor/ports/investment_ai.py": "9630a387aab0f8b27dfc461160fab51200b51936b6411aa2b64e2b2d984285c4",
+    "src/quantharbor/application/investment_ai.py": "eb975ed7b9eefec52fca6fea937d4bb6c6140ee3cdc87f579af9ed302d2f251d",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "71f470739dac118ab2e69f37e1a90916e5acea55064cb27e044d7b5eabcdc33b",
+    "src/quantharbor/domain/serialization.py": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1",
+    "tests/product/synthetic_investment_ai.py": "0678d7c0810297f350d9b57a2146f018ae49df425058ed32ad99024441de48c0",
+    "tests/product/test_investment_ai.py": "25f7994b242a98f8286cd7f072ed99e8eef9f082116f41ec8b6df1656bcb8c18",
+    "tests/product/test_investment_ai_bounds.py": "684965fab6141da0546c716916e4cf95fb655e39ce8accd4830bb01725c9a3f1",
+    "tests/product/test_investment_ai_evaluation.py": "4582f6e6eba5f8da0b3f8682754d04b8019354d2470209972b729956e5b1f884",
+    "tests/product/test_investment_ai_sources.py": "9defc5339bc10dd888ba49202567df3c47e73ba0a7cc3346ab1f5ea7446460c3",
+    "docs/development/investment-ai.md": "ce055b88182989d3b402eec6d410769e9472319d1cf79064d9f6a328a0ffda3b"
+  },
+  "spec_raw_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+  "self_validation": {
+    "final_focused": {
+      "result": "pass",
+      "tests": 50,
+      "seconds": 56.162,
+      "log": "/tmp/q25-final-stable.txt",
+      "includes_fixed_cases": 24
+    },
+    "evaluation": {
+      "result": "pass",
+      "cases": 24,
+      "passed": 24,
+      "seconds": 26.165,
+      "manifest": "/tmp/quantharbor-q25/manifest-70dea3ffa7ec241e4599984590847430c180810c89bf03d6780c1a8bab83956a.json",
+      "result_json": "/tmp/quantharbor-q25/evaluation-8473f6ef71620e8693ade12c4d644714efae8b5e2a2f25f7e6531b08ffe5c94d.json",
+      "status_counts": {
+        "complete": 4,
+        "invalid": 6,
+        "blocked": 9,
+        "partial": 4,
+        "failed": 1
+      },
+      "spec_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f"
+    },
+    "checks": {
+      "quality_log": "/tmp/q25-quality-final.txt",
+      "public_log": "/tmp/q25-public-final.txt",
+      "team_log": "/tmp/q25-team-final.txt",
+      "diff_log": "/tmp/q25-diff-final.txt",
+      "quality_tests": 87,
+      "quality_seconds": 3.232,
+      "quality_result": "pass",
+      "public_files": 426,
+      "public_findings": 0,
+      "team": "pass:6 members/36 queue/110 task ids",
+      "git_diff_check": "pass"
+    },
+    "historical_full_product": {
+      "tests": 503,
+      "seconds": 504.711,
+      "result": "pass",
+      "log": "/tmp/q25-product-full.txt",
+      "source_freeze": "/tmp/quantharbor-q25/source-freeze.json",
+      "final_source_matches": false,
+      "requires_rerun_on_final_source": true
+    }
+  },
+  "development_attempts": [
+    {
+      "log": "/tmp/q25-initial-red.txt",
+      "tests": 9,
+      "failures": 3,
+      "errors": 1,
+      "classification": "candidate nested field product error; token reservation and MDD source fixture errors"
+    },
+    {
+      "log": "/tmp/q25-focused-2.txt",
+      "tests": 9,
+      "errors": 1,
+      "classification": "MDD source fixture timestamp ordering"
+    },
+    {
+      "log": "/tmp/q25-fixed-first.txt",
+      "tests": 24,
+      "errors": 1,
+      "classification": "product rejected Q18 conflicting revision at reference indexing"
+    },
+    {
+      "log": "/tmp/q25-bounds-red.txt",
+      "classification": "test wiring import error before API added"
+    },
+    {
+      "log": "/tmp/q25-bounds-2.txt",
+      "tests": 7,
+      "failures": 1,
+      "classification": "direct constructor canonical byte cap product red"
+    },
+    {
+      "log": "/tmp/quantharbor-q25/final-probes.json",
+      "classification": "two additional actual API red probes after full product: document scope and incomplete ledger cash"
+    },
+    {
+      "log": "/tmp/q25-final-focused-after-full.txt",
+      "tests": 50,
+      "errors": 1,
+      "classification": "excluded: edit after module import; old bytecode referenced instruments while disk used instrument_links; stable rerun required"
+    },
+    {
+      "log": "/tmp/q25-final-stable.txt",
+      "tests": 50,
+      "failures": 0,
+      "errors": 0,
+      "classification": "stable final source; two post-full regression fixes included"
+    }
+  ],
+  "limits": [
+    "실제 모델 품질 평가 아님",
+    "실제 API/client/spend/network 비활성",
+    "in-process RLock/메모리 저장소; 재시작 내구성/OS 격리/hard kill 미검증",
+    "주간/월간 개입 근거 미제공은 unknown; 외부 전송/예약 없음",
+    "자동 retry/escalation 차단; 다통화 economic_cash selector는 unknown"
+  ],
+  "actual_api_calls": 0,
+  "actual_new_spend": 0,
+  "baseline_files_unchanged": 7
+}

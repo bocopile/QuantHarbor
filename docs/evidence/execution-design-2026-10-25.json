@@ -1,0 +1,19 @@
+{
+  "task": "Q27-local",
+  "role": "qh_architect",
+  "requested_model": "gpt-6-astra",
+  "reasoning": "high",
+  "result": "advice_adopted_with_explicit_root_overrides",
+  "source": "docs/research/execution-design-input-2026-10-25.md",
+  "root_overrides": [
+    "execution-induced ledger rows included:1024records/64MiB,384records/24MiB perintent,common128/8MiB+source8MiB",
+    "EX38 explicitly obligations=True not arbitrary helper default",
+    "EX06 known executioncost0 vs remainingordercostbound2; EX26 separately unknown",
+    "Q27 DB restart/generation restore seam; full historical backup Q28"
+  ],
+  "fixed_cases": 40,
+  "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+  "tests_executed": false,
+  "source_edit_by_advisor": false,
+  "code_discovery": "root index_repository returned Transport closed; bounded public file reads used"
+}

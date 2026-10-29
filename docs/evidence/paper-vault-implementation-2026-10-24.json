@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-24",
+  "task": "SEC-paper-vault",
+  "scope": "helper and mocked tests only",
+  "reported_by": "separate_parent_implementation",
+  "recorded_by": "root",
+  "runtime": {
+    "model": "gpt-6.1-sol",
+    "reasoning": "high",
+    "profile": "qh_development",
+    "network_tools": false,
+    "recursive_agents": false,
+    "cli_exit": 0
+  },
+  "results": {
+    "mocked_tests": 38,
+    "public_candidates": 281,
+    "public_findings": 0
+  },
+  "initial_failure": "One minimum-environment assertion failed on macOS automatically inserted encoding key; passed-env keys and runtime insertion distinguished.",
+  "not_executed": [
+    "actual hdiutil mutations",
+    "native password UI",
+    "private file or credential reads",
+    "real API",
+    "independent review or validation"
+  ],
+  "sha256": {
+    "scripts/bootstrap_paper_storage.py": "b132998a4b864de482c64ce923f979b2108917cfeb9d6d229b64e2cf9f3def06",
+    "tests/quality/test_paper_storage.py": "0dd895aeb3d49699c5cb6d27721cf4ba46f4282219c9d822cffcf18ffd5c4d57",
+    "docs/development/paper-private-storage.md": "b15ecf2d353bd91ae1df0b749068984c6dd23c6208d72e526cd13263f7f959c4"
+  },
+  "dispatch_notes": [
+    "Existing direct child stopped before edits because restricted parent required.",
+    "Initial restricted CLI launch failed local app-server initialization with Operation not permitted; explicit escalated outer launch retained restricted child profile and succeeded."
+  ]
+}

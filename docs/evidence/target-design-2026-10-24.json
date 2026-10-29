@@ -1,0 +1,11 @@
+{
+  "task": "Q24-local",
+  "role": "qh_architect",
+  "model": "gpt-6-astra",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "design_integrated_by_root",
+  "contract": "docs/contracts/target-local-v1.md",
+  "tests_executed": false,
+  "actual_api_calls": 0
+}

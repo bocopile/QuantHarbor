@@ -1,0 +1,66 @@
+{
+  "task": "Q25-local",
+  "date": "2026-10-25",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "changes_required",
+  "findings": [
+    {
+      "id": "AR1",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:574",
+      "summary": "response within64KiB grows beyond result cap; settled attempt no result"
+    },
+    {
+      "id": "AR2",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:516",
+      "summary": "predispatch clock error leaks reserved concurrency/cost"
+    },
+    {
+      "id": "AR3",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:349",
+      "summary": "TradeCostFact.slippage Fraction passed to string-only number, valid trade claim invalid"
+    },
+    {
+      "id": "AR4",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:339",
+      "summary": "account aggregate selectors ignore unrelated claim position identity"
+    },
+    {
+      "id": "AR5",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:534",
+      "summary": "AI malformed/failed response drops deterministic period metrics"
+    },
+    {
+      "id": "AR6",
+      "priority": "P2",
+      "path": "tests/product/test_investment_ai_evaluation.py:46",
+      "summary": "pre-eval manifest records common refs not actual per-case variants"
+    }
+  ],
+  "sha256": {
+    "docs/development/investment-ai.md": "53aa7b69ca5f25926d5da2359eee57b4b03dfd741876c8f476dc3a4029f51a6e",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "d70d129d1483d09a6ce9800707cf8601a718a83c3c3143a9d50cb0da92f50b85",
+    "src/quantharbor/application/investment_ai.py": "3bf1a867bb1e52a209b3b1fa586f4e6122aae0fa18cdb1bd8f077be1691372fc",
+    "src/quantharbor/domain/investment_ai.py": "8a02b37f4da642cf3ab6f3d79b55cab3c18776ae8ef25f4a5458f2dbcc2c247d",
+    "src/quantharbor/domain/serialization.py": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1",
+    "src/quantharbor/ports/investment_ai.py": "9630a387aab0f8b27dfc461160fab51200b51936b6411aa2b64e2b2d984285c4",
+    "tests/product/synthetic_investment_ai.py": "0678d7c0810297f350d9b57a2146f018ae49df425058ed32ad99024441de48c0",
+    "tests/product/test_investment_ai.py": "25f7994b242a98f8286cd7f072ed99e8eef9f082116f41ec8b6df1656bcb8c18",
+    "tests/product/test_investment_ai_bounds.py": "684965fab6141da0546c716916e4cf95fb655e39ce8accd4830bb01725c9a3f1",
+    "tests/product/test_investment_ai_evaluation.py": "a15f187dcedfe68c976078a8ce6e2e8795e2d34ac9c9a649e6f395422f0bceb3",
+    "tests/product/test_investment_ai_security.py": "920fb64aac91134121dd775a7f748372165f39fa97f53404016c07f59e3caf92",
+    "tests/product/test_investment_ai_sources.py": "5100ba01cc2677dd1b5a1e9f720c2da144313598a72591d7fa600c0cdda33a90",
+    "tests/product/test_investment_ai_security_second.py": "31e2ea738dd70c2914094d10aebf2a5c813dd0d6105fe075127f9415c95e7f53"
+  },
+  "hashes_match": true,
+  "baseline_files_unchanged": 7,
+  "spec_raw_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+  "tests_executed": false
+}

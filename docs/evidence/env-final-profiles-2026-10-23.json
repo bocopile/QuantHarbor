@@ -1,0 +1,122 @@
+{
+  "schema_version": 2,
+  "run_id": "60f804a666914c9dae7c1c7df69396dc",
+  "generated_at_utc": "2026-10-23T03:51:34.019284+00:00",
+  "scope": "synthetic_command_profile_behavior",
+  "config_sha256": "df334d8d0dfb599471dbb81c85c5da207fea59878d02377857051041fba5bf46",
+  "policy_sha256": "07c0bad73484de88c6519c035a89b1595c525a61ffd60365d3dd2aa480bdbb4f",
+  "validator_sha256": "9dbb848c54ca0a050890704cb8a9998d59a6c8109b778e8b2cbab7ef472ec33e",
+  "enforced_limits": {
+    "probe_timeout_seconds": 15,
+    "probe_batch_timeout_seconds": 120,
+    "automatic_retries": 0
+  },
+  "audit_scope": "completed_report_of_synthetic_profile_probes_only",
+  "network_positive_control": "loopback_reachable",
+  "results": [
+    {
+      "profile": "qh_review",
+      "case": "public_read",
+      "expected": "allowed",
+      "attempt": 1,
+      "duration_ms": 73,
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "workspace_write",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 74,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "private_read",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 73,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "protected_config_write",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 73,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_review",
+      "case": "loopback_connect",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 74,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "public_read",
+      "expected": "allowed",
+      "attempt": 1,
+      "duration_ms": 77,
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "workspace_write",
+      "expected": "allowed",
+      "attempt": 1,
+      "duration_ms": 80,
+      "outcome": "allowed",
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "private_read",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 78,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "protected_config_write",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 79,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    },
+    {
+      "profile": "qh_development",
+      "case": "loopback_connect",
+      "expected": "denied",
+      "attempt": 1,
+      "duration_ms": 79,
+      "outcome": "denied",
+      "errno": 1,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "Not a test of MCP, connectors, models, or the active app session.",
+    "No actual credentials read; only the configured logs rule was probed.",
+    "No hook trust, subagent, independent review, or broker validation.",
+    "Audit is emitted at completion; it is not a crash-durable global tool log."
+  ]
+}

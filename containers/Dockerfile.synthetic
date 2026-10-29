@@ -1,0 +1,10 @@
+FROM python@sha256:608b27b2db85abf38d81685085cd1166a5ed7ada66549f0dfe53a75bb830cd5d
+WORKDIR /app
+ENV PYTHONPATH=/app/src PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY src/ /app/src/
+COPY tests/product/ /app/tests/product/
+COPY config/runtime.synthetic.toml /app/config/runtime.synthetic.toml
+COPY config/runtime-lock.json /app/config/runtime-lock.json
+COPY pyproject.toml /app/pyproject.toml
+USER 10001:10001
+CMD ["python", "-m", "quantharbor", "status"]

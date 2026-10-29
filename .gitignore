@@ -63,3 +63,7 @@ dist/
 build/
 *.egg-info/
 .next/
+
+# Product source is not runtime data.
+!src/quantharbor/runtime/
+!src/quantharbor/runtime/*.py

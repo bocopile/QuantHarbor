@@ -1,0 +1,258 @@
+{
+  "task": "Q25-second-security-fix",
+  "date_recorded": "2026-10-25",
+  "role": "sole_implementer",
+  "requested_profile": "qh_development",
+  "requested_model": "Sol",
+  "requested_reasoning": "high",
+  "runtime_model_independently_verified": false,
+  "subagents": 0,
+  "state": "implementation_complete_pending_root_independent_reviews_and_final_validator",
+  "prerequisites": [
+    "docs/tasks/AI-local.md",
+    "docs/contracts/ai-local-v1.md security supplements",
+    "docs/evidence/ai-security-second-2026-10-25.json",
+    "docs/research/ai-security-second-input-2026-10-25.md",
+    "docs/evidence/ai-security-fixes-2026-10-24.json"
+  ],
+  "owned_files": 13,
+  "sha256": {
+    "docs/development/investment-ai.md": "53aa7b69ca5f25926d5da2359eee57b4b03dfd741876c8f476dc3a4029f51a6e",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "d70d129d1483d09a6ce9800707cf8601a718a83c3c3143a9d50cb0da92f50b85",
+    "src/quantharbor/application/investment_ai.py": "5db7a5ea8c9ca49e614a68c4c67ef0cf7af6663a460cd5d6b43a9c3bbe0113b2",
+    "src/quantharbor/domain/investment_ai.py": "8a02b37f4da642cf3ab6f3d79b55cab3c18776ae8ef25f4a5458f2dbcc2c247d",
+    "src/quantharbor/domain/serialization.py": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1",
+    "src/quantharbor/ports/investment_ai.py": "9630a387aab0f8b27dfc461160fab51200b51936b6411aa2b64e2b2d984285c4",
+    "tests/product/synthetic_investment_ai.py": "0678d7c0810297f350d9b57a2146f018ae49df425058ed32ad99024441de48c0",
+    "tests/product/test_investment_ai.py": "25f7994b242a98f8286cd7f072ed99e8eef9f082116f41ec8b6df1656bcb8c18",
+    "tests/product/test_investment_ai_bounds.py": "684965fab6141da0546c716916e4cf95fb655e39ce8accd4830bb01725c9a3f1",
+    "tests/product/test_investment_ai_evaluation.py": "a15f187dcedfe68c976078a8ce6e2e8795e2d34ac9c9a649e6f395422f0bceb3",
+    "tests/product/test_investment_ai_security.py": "920fb64aac91134121dd775a7f748372165f39fa97f53404016c07f59e3caf92",
+    "tests/product/test_investment_ai_sources.py": "5100ba01cc2677dd1b5a1e9f720c2da144313598a72591d7fa600c0cdda33a90",
+    "tests/product/test_investment_ai_security_second.py": "14416e69c15b1da2f893809ae19db052904a63ee09386c1af010f80fa663c757"
+  },
+  "owned_sha256_path": "/tmp/quantharbor-q25-security-second-20261025/owned-sha256.json",
+  "changed_files": [
+    "docs/development/investment-ai.md",
+    "src/quantharbor/adapters/synthetic_investment_ai.py",
+    "src/quantharbor/application/investment_ai.py",
+    "tests/product/test_investment_ai_security_second.py"
+  ],
+  "unchanged_prior_owned_files": [
+    "src/quantharbor/domain/investment_ai.py",
+    "src/quantharbor/domain/serialization.py",
+    "src/quantharbor/ports/investment_ai.py",
+    "tests/product/synthetic_investment_ai.py",
+    "tests/product/test_investment_ai.py",
+    "tests/product/test_investment_ai_bounds.py",
+    "tests/product/test_investment_ai_evaluation.py",
+    "tests/product/test_investment_ai_security.py",
+    "tests/product/test_investment_ai_sources.py"
+  ],
+  "source_freeze": "/tmp/quantharbor-q25-security-second-20261025/source-freeze.json",
+  "source_frozen_through_final_focused_and_checks": true,
+  "source_drift": [],
+  "root_common_files_unchanged": true,
+  "unowned_changes": [],
+  "public_snapshot_files_checked": 435,
+  "baseline_files_unchanged": 7,
+  "baseline_checks": {
+    "docs/architecture.md": true,
+    "docs/contracts/serialization-v1.md": true,
+    "docs/implementation-backlog.md": true,
+    "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+    "docs/contracts/data-v1.md": true,
+    "docs/contracts/execution-v1.md": true,
+    "docs/contracts/operations-v1.md": true
+  },
+  "spec_raw_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+  "actual_red": [
+    {
+      "log": "/tmp/quantharbor-q25-security-second-20261025/red.txt",
+      "tests": 5,
+      "failures": 6,
+      "errors": 0,
+      "seconds": 0.258,
+      "findings": [
+        "AS1b_missing",
+        "AS1b_changed",
+        "AS3b",
+        "AS4b",
+        "AS5b",
+        "AS6"
+      ],
+      "initial_owned_hashes_match_latest_evidence": true
+    },
+    {
+      "log": "/tmp/quantharbor-q25-security-second-20261025/red-reservation-owner.txt",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 0.013,
+      "finding": "AS5b",
+      "fixture_refinement": "Allows ownership assigned by atomic reservation, requires actual reserver to persist completed result; no product edits before refined red"
+    }
+  ],
+  "fixture_errors": 0,
+  "failure_history": "/tmp/quantharbor-q25-security-second-20261025/history.json",
+  "final_focused": {
+    "task": "Q25-second-security-fix",
+    "tests_discovered": 89,
+    "tests_run": 89,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 79.271,
+    "source_unchanged": true,
+    "source_drift": [],
+    "fixed24": {
+      "result": "/tmp/quantharbor-q25/evaluation-2987d2104309bdb22527ca117d567cfbcc94d88bd3e7a9b790ec2dfd7486ee6a.json",
+      "manifest": "/tmp/quantharbor-q25/manifest-da789209e25e60a1b74db946ee8b8ba4236ff09ce8fbdb4a75427a36f4e77689.json",
+      "case_count": 24,
+      "passed": 24,
+      "seconds": 36.793,
+      "run_id": "f5b75ea21cfa46fa8810136eea6bf19a",
+      "manifest_raw_sha256": "2987d2104309bdb22527ca117d567cfbcc94d88bd3e7a9b790ec2dfd7486ee6a",
+      "source_unchanged_during_evaluation": true,
+      "status_counts": {
+        "complete": 4,
+        "invalid": 6,
+        "blocked": 9,
+        "partial": 4,
+        "failed": 1
+      }
+    },
+    "latest_full_suite_executed": false,
+    "unittest_seconds": 79.008,
+    "log": "/tmp/quantharbor-q25-security-second-20261025/focused-final.txt",
+    "command": "python3.13 -I -S -B; unittest discover tests/product pattern=test_investment_ai*.py; explicit src/tests/product paths",
+    "security_second_tests": 23,
+    "previous_security_regressions": 16
+  },
+  "fixed24": {
+    "result": "/tmp/quantharbor-q25/evaluation-2987d2104309bdb22527ca117d567cfbcc94d88bd3e7a9b790ec2dfd7486ee6a.json",
+    "manifest": "/tmp/quantharbor-q25/manifest-da789209e25e60a1b74db946ee8b8ba4236ff09ce8fbdb4a75427a36f4e77689.json",
+    "case_count": 24,
+    "passed": 24,
+    "seconds": 36.793,
+    "run_id": "f5b75ea21cfa46fa8810136eea6bf19a",
+    "manifest_raw_sha256": "2987d2104309bdb22527ca117d567cfbcc94d88bd3e7a9b790ec2dfd7486ee6a",
+    "source_unchanged_during_evaluation": true,
+    "status_counts": {
+      "complete": 4,
+      "invalid": 6,
+      "blocked": 9,
+      "partial": 4,
+      "failed": 1
+    },
+    "manifest_written_before_first_case": true,
+    "evaluations_executed_after_final_freeze": 1
+  },
+  "latest_full_suite_executed": false,
+  "final_full_product": {
+    "executed": false,
+    "reason": "Orchestrator assigned focused checks here and one full independent validation after reviews; this scheduling detail was not a separate user instruction.",
+    "previous_521": "Historical prior-code result only; not current validation"
+  },
+  "checks": {
+    "quality": {
+      "result": "pass",
+      "tests": 87,
+      "seconds": 3.662,
+      "command": "python3.13 -I -S -B -m unittest discover -s tests/quality -v",
+      "log": "/tmp/quantharbor-q25-security-second-20261025/quality-final.txt"
+    },
+    "public": {
+      "scope": "Q15_public_candidates_only",
+      "result": "pass",
+      "files_checked": 435,
+      "findings": [],
+      "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI",
+      "command": "python3.13 -I -S -B scripts/check_quality.py",
+      "log": "/tmp/quantharbor-q25-security-second-20261025/public-final.txt"
+    },
+    "team": {
+      "result": "pass",
+      "members": 6,
+      "queue": 36,
+      "task_ids": 110,
+      "command": "python3.13 -I -S -B scripts/check_ai_team.py",
+      "log": "/tmp/quantharbor-q25-security-second-20261025/team-final.txt"
+    },
+    "git_diff_check": {
+      "result": "pass",
+      "command": "git diff --check",
+      "log": "/tmp/quantharbor-q25-security-second-20261025/diff-final.txt",
+      "scope": "Git tracked changes"
+    },
+    "all_owned_whitespace": {
+      "result": "pass",
+      "files": 13,
+      "findings": []
+    },
+    "all_owned_freeze_hashes": {
+      "result": "pass",
+      "files": 13
+    },
+    "baseline7_hashes": {
+      "result": "pass",
+      "files": 7
+    }
+  },
+  "fixes": {
+    "AS1b": "current_result hides unavailable/changed source body, preserves safe original partial; payloadless results also recheck current rights; history immutable",
+    "AS3b": "Review checks all actual inline receipts plus declarations against original and review role/query/source intersections; also revalidates reviewer current scope; no query reexecution",
+    "AS4b": "All settlement-time clock exceptions/malformed values/regression settle unknown with retained reservation and scope block; settle_unknown preserves already-settled actual usage; final clock cannot regress settled result time",
+    "AS5b": "Execution ownership derives solely from successful new reservation under repository lock; duplicates before reservation/while dispatched/after settlement/reentrant cannot dispatch or overwrite actual owner result",
+    "AS6": "Review request and review preflight combined count/bytes/holds and commit under same lock; rollback records and processing binding on failure; idempotent positives preserved"
+  },
+  "api_implications": [
+    {
+      "file": "src/quantharbor/application/investment_ai.py:616",
+      "api": "current_result",
+      "change": "Existing (body,status,reasons) shape; body=None on current missing/changed/denied source; safe partial remains usable"
+    },
+    {
+      "file": "src/quantharbor/adapters/synthetic_investment_ai.py:406",
+      "api": "settle_unknown(attempt_id)",
+      "change": "New low-level dispatch fallback; retained reservation/scope block or existing settled record"
+    },
+    {
+      "file": "src/quantharbor/application/investment_ai.py:489",
+      "api": "_run_research",
+      "change": "Internal returns (ResearchResult,new_reservation); public run_research still returns ResearchResult; flag derived from actual atomic reserve, not caller proof"
+    },
+    {
+      "file": "src/quantharbor/adapters/synthetic_investment_ai.py:224",
+      "api": "execute_review / review_result",
+      "change": "Same public signature, actual receipt authorization and current review context; atomic capacity failure leaves neither new request nor review"
+    },
+    {
+      "file": "src/quantharbor/adapters/synthetic_investment_ai.py:284",
+      "api": "reserve / execute",
+      "change": "Malformed direct request/policy/usage types reject with ContractError before mutation"
+    }
+  ],
+  "limits": [
+    "합성 프로토콜에 대한 구현자 자체 검증이며 독립 보안/일반 검토와 최종 전체 실행은 root 후속이다.",
+    "최신 전체 제품 시험 미실행. 과거521 통과는 현재 소스 결과가 아니다.",
+    "in-process RLock/메모리 원자성으로 재시작 내구성·악성 Python/호스트 격리·외부 서명·OS hard kill을 증명하지 않는다.",
+    "현재 원천과 clock은 호스트 주입이며 실제 공급자 최신성이나 실제 API 시간/과금을 검증하지 않는다.",
+    "스키마/spec/금융모듈/TargetRef/frozen/config와 root 공통 문서·증거·상태·큐는 수정하지 않았다.",
+    "public 검사는 공개 후보 범위이며 private/과거 Git 이력/전체 비밀정보·취약점 감사/원격 CI를 포함하지 않는다."
+  ],
+  "actual_client": "disabled",
+  "actual_api_calls": 0,
+  "actual_new_spend": 0,
+  "network_calls": 0,
+  "docker_runs": 0,
+  "installs": 0,
+  "repository_git_mutations": 0,
+  "independent_review": false,
+  "task_elapsed_seconds_since_initial_snapshot": 825.246,
+  "next_owner": "root: independent security/general reviews then final independent validator full product once",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "root_hashes_match": true
+}

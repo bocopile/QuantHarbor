@@ -1,0 +1,33 @@
+{
+  "task": "Q20-local",
+  "role": "qh_implementer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "result": "implementation_returned",
+  "sha256": {
+    "src/quantharbor/domain/ledger.py": "5f49b3928759e594d832ce4bdecd124320f5fc7cddeaed26aca2e93100c69245",
+    "src/quantharbor/application/ledger.py": "77f4d4a52590bcd2a5462338f5df626eef43063c62a827d625063f11eef2ab46",
+    "src/quantharbor/ports/ledger.py": "fbda6397cb7e31c52530a1be71754b3bb1673e1e0997c08bdc57f894a4113e91",
+    "src/quantharbor/adapters/synthetic_ledger.py": "0fb4a781293e6f9481424cc32321a4e75c4b43f83f3b36b9b429b06ac884b8bd",
+    "src/quantharbor/adapters/postgres_ledger.py": "5ee25e1ab1c26899c9406f5707ba91af33e5c3d8b41744995d537c5cd6eee4e2",
+    "src/quantharbor/domain/serialization.py": "1dcb58472cd6499653be512a344ad3880d5c6a51389eb9e7f42c0501d66a93fc",
+    "migrations/0002_synthetic_ledger.sql": "22c9889108670112cf52c9a220860e0321217241ed06e9e6d6b47b41d73171c3",
+    "tests/product/synthetic_ledger.py": "e700e9f3477831cdb4fc59e439dc500b2d14f432df8a029b3a91dd5d289e3c0a",
+    "tests/product/test_ledger.py": "f8febaefd3358bd5eefa725be06e52fa051e36811612167d3df79dd6631f4a7f",
+    "scripts/check_ledger.py": "18033d6263d1eef50956717e492536dae82b80f511334ff2ec728fcfc12703ac",
+    "tests/quality/test_ledger_runner.py": "229e80ec03d770f7c802748ed15fb6fed55f84921b5285f91b201ed0b793593a",
+    "docs/development/ledger.md": "697412bd419983fb2dc83216b665c7fbb6c5b9e0979640cc79e646d4925aa463"
+  },
+  "self_tests": {
+    "product": 217,
+    "ledger": 53,
+    "runner_quality": 11,
+    "failures": 0
+  },
+  "unexecuted": [
+    "actual_PostgreSQL",
+    "independent_review"
+  ],
+  "actual_api_calls": 0
+}

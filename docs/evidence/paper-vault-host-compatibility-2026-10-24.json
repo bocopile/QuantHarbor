@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-24",
+  "task": "SEC-paper-vault",
+  "runner": "root",
+  "first_actual_probe": {
+    "create": "passed",
+    "encrypted_boolean": true,
+    "attach": "passed",
+    "canary_write": false,
+    "result": "failed_device_binding",
+    "observed_device_owner": "current_uid",
+    "observed_apfs_root_mode": "0755",
+    "mount_dev_equals_volume_rdev": true,
+    "cleanup": "exact own image normal detach and all associated devices absent; images retained"
+  },
+  "compatibility_change": "SEC-DEC-002 host correction: allow root/current UID block nodes; first newly created bound APFS root only 0755->0700 via fd then strict validation; all data writes afterward.",
+  "red": {
+    "tests": 53,
+    "errors": 4
+  },
+  "green": {
+    "tests": 53,
+    "passed": true
+  },
+  "sha256": {
+    "scripts/bootstrap_paper_storage.py": "8bab8e385d23f55e7e6a2b31a5cb8c79d81fad9969ac3a6f600d1f0789427eff",
+    "tests/quality/test_paper_storage.py": "6bf1475dccfb87fe92fd98a705714cb9f09002cba3d12cfaf99ce7989ed8c142",
+    "docs/development/paper-private-storage.md": "70cfae57db4e75060beac71b75dd04ad24508d9f8b4d1906230594da841c1d11"
+  },
+  "not_executed": [
+    "new compatibility independent review",
+    "complete actual lock/restore",
+    "operational native UI",
+    "keys",
+    "API"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-24",
+  "task": "Q19",
+  "reported_by": "foundation_implementer",
+  "recorded_by": "root",
+  "scope": "S1/S2 synthetic fixes; independent re-review pending",
+  "red": {
+    "tests": 29,
+    "failures": 4
+  },
+  "green": {
+    "broker": 31,
+    "product": 158,
+    "quality": 22,
+    "public_candidates": 270,
+    "public_findings": 0,
+    "team": [
+      6,
+      36,
+      110
+    ]
+  },
+  "changes": [
+    "shared SOURCE_FIELDS required/optional domain and adapter",
+    "scope venue/currency/symbol validation",
+    "complete validation of required numeric and identity facts"
+  ],
+  "sha256": {
+    "src/quantharbor/domain/broker_read.py": "afd996ae236ecc55e447030f75915c25a4aba2aa20419468005ba09cb83529c1",
+    "src/quantharbor/ports/broker_read.py": "96f05f4e7d192b7d9d94db2c241bf5723f6613897f5752a42f7b9d7758f73c8f",
+    "src/quantharbor/application/broker_read.py": "55e616ee255771c866f9d7cab1190fde4279fbc6a049ff0f003037c7c14a728b",
+    "src/quantharbor/adapters/kis_read.py": "b048590cd451eefc43d06c05ba8515f5e5b28529b759f88debd5ecfac7deccfc",
+    "src/quantharbor/adapters/synthetic_broker.py": "d6fa266a6270c823b2e1dc80dad530c3a3806a5c29d2892c0688eaba537ed7c4",
+    "src/quantharbor/domain/serialization.py": "4b111a8758f2f1a133301c2bb4ec161703f2e9df948652bb37fd8c4b34ed87d7",
+    "tests/product/synthetic_broker.py": "ab5451eb1fb942eac9f1dbff3ea230a029b01f7a19347cec4feb8ea631f6882c",
+    "tests/product/test_broker_read.py": "6feb3fb08f6423eb29303730c2d6ced85288b4a77fe743cff26809229207f84b",
+    "tests/product/test_kis_read.py": "de1dcb4b1164fd77196b6ca858e27253d607e30b673f6f9e9224873c6ef70d9d",
+    "docs/development/broker-read.md": "793c2252f6631ff48a68425cfaf020c140e5b4de64a76a157491fb450e195a1c"
+  },
+  "not_executed": [
+    "independent re-review",
+    "real API",
+    "credentials/account",
+    "DB/Docker reruns"
+  ]
+}

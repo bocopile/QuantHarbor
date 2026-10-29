@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-23",
+  "result": "Q07_requirements_scope_passed",
+  "reviewer": "env_final_reviewer",
+  "evidence_sha256": {
+    "docs/policy-gates.md": "f4bca5690b64c06156c93d8992fc786a45e49d60e9c779ca3fba2d8821c176bd",
+    "docs/decisions/A-DEC-003-policy-gates.md": "170a2cd1497be13fb3a40e665c8987d4e77bf1a0c294f1c0378e096d7d048969",
+    "docs/requirements-scenarios.md": "0cc880b3b757eacdee34a31085ebbde72c5bbd33bafa611aadaf3020e0ef3c91",
+    "docs/requirements-input.md": "c3e4f0e91fca749a29790649567d747028fab84e9a8eaa70f9b687034f71098f",
+    "docs/plan.md": "c36d94fa80474271bc968da1bb2e65ad38034317e844c1c32279f52798a58e7c",
+    "docs/execution-checklist.md": "00b03ac7405fe5018be7b2a8a58ac2ccf17e4587d784fa178dba1e7f526775f9"
+  },
+  "remaining_gates": [
+    "PG-01",
+    "PG-02",
+    "PG-03",
+    "PG-04",
+    "PG-05"
+  ],
+  "remaining_gate_status": "all pending; actual values and execution not completed",
+  "financial_tests_executed": false,
+  "finding_resolved": "SC-15 initial local alert failure stops new submissions, manual resume; extended policy PG04"
+}

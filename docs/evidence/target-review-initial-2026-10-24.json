@@ -1,0 +1,61 @@
+{
+  "task": "Q24-local",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "changes_required",
+  "findings": [
+    {
+      "id": "T1",
+      "priority": "P1",
+      "path": "src/quantharbor/application/target.py:170",
+      "summary": "unsettled ledger payable can be omitted from H; bind obligations completeness to ledger events/projection"
+    },
+    {
+      "id": "T2",
+      "priority": "P1",
+      "path": "src/quantharbor/domain/target.py:731",
+      "summary": "direct constructor/parser/repository reseal can change requested limitprice or cash target without changing order/cash calculations"
+    },
+    {
+      "id": "T3",
+      "priority": "P2",
+      "path": "src/quantharbor/application/target.py:272",
+      "summary": "normal multiple original bars per instrument rejected; resolve exact Q21 selected price/latest eligible record"
+    },
+    {
+      "id": "T4",
+      "priority": "P2",
+      "path": "src/quantharbor/application/target.py:293",
+      "summary": "untouched out-of-scope holdings incorrectly require currently open regular session"
+    },
+    {
+      "id": "T5",
+      "priority": "P2",
+      "path": "src/quantharbor/application/target.py:415",
+      "summary": "candidate expiry omits FX/other accountwide dependent data rights/freshness"
+    },
+    {
+      "id": "T6",
+      "priority": "P2",
+      "path": "src/quantharbor/application/target.py:509",
+      "summary": "daily turnover for fully sold no-longer-held instrument cannot resolve independent historical conversion evidence"
+    }
+  ],
+  "sha256": {
+    "src/quantharbor/domain/target.py": "06044a02e187941dbe87b13128f1b8cd81c7d4a6c9e40f6b42afe5fda47c040c",
+    "src/quantharbor/application/target.py": "632d933b1d71774fdc297ddd0bf3b3d2d6c3d545f9ae64707b3f61cf5e9c42d1",
+    "src/quantharbor/ports/target.py": "b7cf3f74b35301196804aecf457acabf828603db5f1a319e6c0aa10ff4529d2d",
+    "src/quantharbor/adapters/synthetic_target.py": "d1866d1846a7035bc8217cf03d71e37a152ef419fce82ac3ee863dd5ef24fd3d",
+    "src/quantharbor/domain/serialization.py": "3e7243f427db45333b0017ebc0369760a42f5bd6a1b53f11fd826b3befb84d5b",
+    "tests/product/synthetic_target.py": "401ea1d7880bba7f5d65047124c993e1e2309b1a09ec40f7a67b3b352ecf5ea0",
+    "tests/product/test_target.py": "ca99cdb33d46acb053133dcaa8e6b387875d29d5dd6cea7ee3404be4636bd648",
+    "tests/product/test_target_constraints.py": "787b8a3ef6f4c658c45602f80b578edacb0047c38d06cb05e1fe13b2e67b1657",
+    "tests/product/test_target_canonical.py": "e6ed37aed7969af071dc89b5e915323b492a12d5b089bfaf236f063f8f263b35",
+    "docs/development/target.md": "24fcc0a5fc4d39427c3a23fbee38821bf4438ddb58b398faf1890070207bf38d"
+  },
+  "hashes_match": true,
+  "tests_executed": false,
+  "baseline_files_unchanged": 7
+}

@@ -1,0 +1,187 @@
+{
+  "task": "Q27-storage-followup",
+  "status": "partial",
+  "q27_complete": false,
+  "changed": [
+    "src/quantharbor/adapters/execution_uow.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "tests/product/test_execution_control.py",
+    "tests/product/test_execution_storage.py",
+    "tests/product/test_execution_sql.py"
+  ],
+  "owned_after_sha256": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "ff9ec012e38a7477b2298d0972effd60efeabad7b2d0ef2c0721283f4eca4004",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "4823a15520249b5480a40d08b230c31b45e3ce41db095f8ebb8aee6873dde600",
+    "docs/development/execution.md": "9a02e95c77a11b42125b7d4a1e1a7acf25aa1e8aaaf30c913aadd24d1faa4ebf",
+    "migrations/0003_synthetic_execution.sql": "34e991849aca4f00b7bac377c271bed85a527b97d5b4ee9528f96c70ff4de4c0",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "7d8fc9bfe12e86284f5524d7f5398dea5641e0ddf6318ed54743e968232d2ffd",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "ee6542b7922bbc957dd8bf17066f399ce70948d6e8595b7b3871458637725b73",
+    "tests/product/test_execution_sql.py": "01624dee24a631bf112de6133ed9162ac24827a9a9c20c4471f2151a436f3b2e",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c"
+  },
+  "implementation": [
+    "SQL execution_check_command: persisted challenge retained; fresh challenge limited to atomic withdraw/save, exact current issuer/principal/session/action/generation/nonce/target/version/time and same-delta challenge+receipt+result+command/nonce/receipt references. Finished command cannot be executed through a new SQL context; public replay remains original result/noop.",
+    "SQL-owned common_plan + measured actual/common future enforcement at existing save/consume budget gates. Finite capsule18 moves next recovery->bootstrap->actual session/live terminal obligations; next capsule replenished on new admission. Common small-row/index/escaped-copy bounds enforced. Pending commands, protective runtime facts, prepared source/risk and initial consumer cursor/workstate remain reserved. No cap increased.",
+    "Closed owner control future calculated from remaining withdrawal slots8 each + current-generation unfinished commands6 each instead of retaining all64 control rows. Actual history, claims, consumed, financial holds and future consumer inboxes remain.",
+    "UoW protocol errors poison and close connection; caught frame/read/apply errors cannot COMMIT. Strict integer JSON numbers and exact hex/page types. Existing deadline120s/exchange20s/SQL15s/lock10s/raw65536/header4096/hex135168/final8MiB/cumulative256MiB/financial retry0 unchanged.",
+    "Root runner adds exact execution_auth-only negative assertions, atomic withdraw positive/replay, common plan/usage observations, terminal-third diagnostic, real >8MiB staged+paged UTF8 roundtrip restore/COMMIT, conflict/order/missing/duplicate/EOF/timeout/poison/cleanup and financial COMMIT-EOF receipt observation. Existing55 scenario enumeration retained; q27_complete remains false."
+  ],
+  "EX_mapping": {
+    "EX09": {
+      "prior_actual_DB": "root literal7 applied and8 denied, nonzero holds4/reflection2/postquery1",
+      "evidence": "docs/evidence/execution-database-storage-focused-initial-2026-10-26.json",
+      "current_DB_reexecution": "NOT_RUN"
+    },
+    "EX11": {
+      "prior_actual_DB": "400+activebuy100+new50=550>500 denied; independent opposing sale nonnetting also passed",
+      "evidence": "docs/evidence/execution-database-storage-focused-initial-2026-10-26.json",
+      "current_DB_reexecution": "NOT_RUN",
+      "not_reported_unverified_finance": true
+    },
+    "EX32": {
+      "local": "255 preissuer deny no _put sideeffects; original/canonical index tests; real local terminal path preserves claims/history",
+      "common_SQL": "implemented guarded finite future; actual PostgreSQL compilation/runtime and full completion proof NOT_RUN",
+      "terminal_third": {
+        "actual": 85,
+        "remaining": 48,
+        "total": 133,
+        "limit": 128,
+        "deficit": 5,
+        "path": "two-principal root-equivalent; both terminal;2withdraw each;fresh issuer/session;actual rebind/resume;controller disconnect",
+        "active3_proven": false,
+        "terminal3_positive": false,
+        "scope": "specific path; not a universal impossibility theorem"
+      }
+    },
+    "EX34": {
+      "local": "real application atomic withdraw yields exact bridge challenge/receipt/nonce delta and public replay noop",
+      "actual_SQL": "new positive and13 binding negatives authored only; root must compile/run; AUTH exact code distinct from CLOSED"
+    },
+    "EX37_EX40": {
+      "local": "real local pipe >9MiB UTF8 roundtrip; bounded chunk frames; partial writes/EOF/timeout/cumulative bound/poison tests passed",
+      "actual_DB": "large staged+paged diagnostic and failure/cleanup/COMMIT-EOF authored NOT_RUN",
+      "large_probe_scope": "owner-scoped transport, savepoint restore before COMMIT; not product large-delta authority or full64MiB storage proof"
+    },
+    "EX17_EX19_EX30_EX31": {
+      "latest_local": "4 focused control tests pass",
+      "root_typed_event_receipt_quarantine_repair": "preserved"
+    }
+  },
+  "remaining": [
+    "Root must compile and execute migration0003/new atomic withdraw positive+exact AUTH negatives on its own fixed-image ownUUID DB. Worker ran no PostgreSQL/Docker/network. SQL runtime success is not claimed.",
+    "Common18-row finite capsule, row/index/copy byte envelopes and closed control reserve need independent DB path review and saturation/stop/withdraw/fill/correction/cancel/recovery execution. Full mandatory-path mathematical proof is not complete; repeated unbounded generation is not guaranteed.",
+    "Terminal-third positive and a genuine active3 denial remain unproved. Exact root-equivalent tested path needs133 Q26 units vs128. No quota/presentation40 relaxation, history deletion, hidden reclassification or mocked financial allow was used. Other legal compositions may still be investigated.",
+    "The >8MiB actual-DB diagnostic is a bounded owner transport roundtrip with restored state. Full actual product >8MiB chunked delta + all supported financial transitions under64MiB remains unproved.",
+    "Previously reported generic-state authority/CLOSED cross-field completeness, unsupported earlier cumulative successor reinterpretation, zero-cost and settled dependency corrections, independent reviews and final full product/quality87 remain with root. Earlier SQL/finance/control positives are preserved at their source versions, not invalidated wholesale."
+  ],
+  "effective_authority_boundary": {
+    "issuer": "live opaque SyntheticAuthority/broker registry verified by trusted Python under gate",
+    "SQL": "owner RESET/SET LOCAL ROLE trusted-host boundary; no hostile owner/admin isolation",
+    "cost": "canonical content/metadata/actual participating index keys, not PostgreSQL disk/WAL/MVCC/RSS",
+    "memory": "full typed state/JSON still materialized; frame and cumulative I/O bounds do not cap RSS; existing PostgresLedger._run capture_output not converted",
+    "private_auth_network_docker_install_git_mutation_external_send": "NOT_PERFORMED"
+  },
+  "red_green": [
+    {
+      "red": "sql-initial:9 run,1 error,8 pass",
+      "cause": "new independent local pipe peer expected quoted SQL literal but production _text uses UTF8 hex expression; test-peer parser error",
+      "fix": "peer parses final part/raw hex arguments without assuming literal format",
+      "green": "sql-repair9 pass; final focused includes all9 at freeze1"
+    },
+    {
+      "red": "third-probe: test instrumentation KeyError handles",
+      "cause": "persisted snapshots intentionally omit opaque handles/readers",
+      "fix": "measurement includes current live registry; no product change"
+    },
+    {
+      "finding": "third-probe2 and3 expose real Q26 historical capacity barrier after terminal/recovery; retained as negative, not green third-admission proof",
+      "final": "new storage negative test confirms exact85+48=133 and immutable before/after state; final focused passes this diagnostic"
+    }
+  ],
+  "date": "2026-10-27",
+  "role_exit": 0,
+  "handoff_sha256": "4fc0b2da4447200414437f082f23ef10d82723b6e358d02258ea58486c0bff62",
+  "root_integrity": {
+    "owned_count": 28,
+    "protected_count": 500,
+    "logs_count": 11,
+    "all_match": true
+  },
+  "validation": {
+    "focused": {
+      "key": "focused",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:tests/product python3.13 -B -m unittest -v test_execution_sql test_execution_runner test_execution_storage.ExecutionStorageTests.test_rows_and_each_index_are_independent_exact_utf8_bytes test_execution_storage.ExecutionStorageTests.test_255_manifest_before_issuer_construction_no_registry_sideeffects test_execution_storage.ExecutionStorageTests.test_owner_remaining_reserve_cannot_be_borrowed_or_double_counted test_execution_storage.ExecutionStorageTests.test_delta_omits_unmodified_history_and_preserves_exact_map_keys test_execution_storage.ExecutionStorageTests.test_atomic_withdraw_real_transition_bridge_carries_exact_new_challenge_receipt test_execution_storage.ExecutionStorageTests.test_terminal_both_fresh_rebind_exact_Q26_history_barrier_is_not_active3_proof",
+      "started_epoch": 1793062078.753,
+      "exit_code": 0,
+      "log": "/private/tmp/q27-storage-followup-focused-freeze1.log",
+      "run": 21,
+      "seconds": 104.414,
+      "failures": 0,
+      "errors": 0,
+      "log_sha256": "20e8c2694f6de671a777a7fa7e0386da9f6e06a252cba2ef598fe21bf7b21bbd",
+      "sourcefreeze": "q27-storage-followup-freeze-1"
+    },
+    "direct_impact": {
+      "key": "impact",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:tests/product python3.13 -B -m unittest -v test_execution_control.ExecutionControlTests.test_quarantine_restart_cannot_clear_history_or_protection test_execution_control.ExecutionControlTests.test_late_completion_via_new_runtime_preserves_broker_financial_fact test_execution_control.ExecutionControlTests.test_withdraw_new_session_after_original_approver_revoked test_execution_control.ExecutionControlTests.test_restart_commit_response_lost_old_issuer_fails_closed_current_CAS_observation",
+      "started_epoch": 1793062078.754,
+      "exit_code": 0,
+      "log": "/private/tmp/q27-storage-followup-impact-freeze1.log",
+      "run": 4,
+      "seconds": 109.83,
+      "failures": 0,
+      "errors": 0,
+      "log_sha256": "2c35991d5a142cc24a3ef48b00a7e32ab3e8734f1f80b998f2262d1eae27cd24",
+      "sourcefreeze": "q27-storage-followup-freeze-1"
+    },
+    "public_checks": [
+      {
+        "scope": "public static check",
+        "start": 1793062078.8512151,
+        "seconds": 1.0385007858276367,
+        "exit_code": 0,
+        "log": "/private/tmp/q27-storage-followup-check-0.log",
+        "log_sha256": "880ef95a569515be7e9bf14208aab4e4b3f6a83622dfc561eb5dfdcf15ba6575"
+      },
+      {
+        "scope": "public static check",
+        "start": 1793062079.8898351,
+        "seconds": 0.04780888557434082,
+        "exit_code": 0,
+        "log": "/private/tmp/q27-storage-followup-check-1.log",
+        "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+      },
+      {
+        "scope": "explicit public snapshot",
+        "start": 1793062079.9377549,
+        "seconds": 0.020993947982788086,
+        "exit_code": 0,
+        "log": "/private/tmp/q27-storage-followup-check-2.log",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "argument_list_sha256": "1eb957a151480217c294d1f1395c8c0e1e161d8297f2bfe6f706523632b9aee0"
+      }
+    ]
+  }
+}

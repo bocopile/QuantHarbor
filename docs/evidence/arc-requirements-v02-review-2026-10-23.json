@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-23",
+  "scope": "Q07 requirements draft v0.2 and policy-gate proposal review",
+  "result": "passed",
+  "reviewer": "env_final_reviewer",
+  "mode": "independent public document review only",
+  "evidence_sha256": {
+    "docs/requirements-scenarios.md": "c8f0ae802dafafe9d4dc9214baeaeaa0e3cf65c7f9bf8e89bf18cd642e9e3424",
+    "docs/decisions/A-DEC-002-initial-trading-policy.md": "f12d99219d505715c8b0b8b7a1c53a30edb57fc28885e5cf74651e4b5cd084a0",
+    "docs/decisions/A-DEC-003-policy-gates.md": "29e0fcff16ceeda1ce9bb64d65889481c62e7f5398b192979577a5217530ba4b"
+  },
+  "adopted": "A-DEC-002 user explicit responses",
+  "not_adopted": "A-DEC-003 pending three user choices",
+  "queue_completion_changed": false,
+  "remaining_gate": "A01 detailed ETF allowlist and supported exchanges must also be resolved at Q07 acceptance",
+  "financial_tests_executed": false
+}

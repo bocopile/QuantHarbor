@@ -1,0 +1,1343 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_completion_obligations",
+  "exit_code": 1,
+  "elapsed_seconds": 702.068,
+  "at": "2026-10-27T03:45:42.652582+00:00",
+  "command": "python3.13 -B /private/tmp/qh-q27-db-security-green.py",
+  "runner_sha256": "f686dd235eb4f637206a951ea5f32a94009f2746731b78901f5a7090e8fcaa22",
+  "handoff_sha256": "90744399205b093a5638ace2ac61cd3e2af58ace50d27abab2ab925c365d0f25",
+  "result": {
+    "scope": "Q27_root_actual_security_fixes_focused11",
+    "status": "fail",
+    "q27_complete": false,
+    "planned_scenarios": [
+      "SEC1-disconnect",
+      "SEC2-submit-expired",
+      "SEC2-cancel-expired",
+      "SEC2-cancel-boundary",
+      "SEC2-normal-positive",
+      "recovery-normal",
+      "recovery-two-controllers",
+      "recovery-invalidated",
+      "terminal-third",
+      "active-third",
+      "saturated-completion"
+    ],
+    "completed_scenarios": [
+      "SEC1-disconnect",
+      "SEC2-submit-expired",
+      "SEC2-cancel-expired",
+      "SEC2-cancel-boundary",
+      "SEC2-normal-positive",
+      "recovery-normal",
+      "recovery-two-controllers",
+      "recovery-invalidated",
+      "terminal-third"
+    ],
+    "checks": [
+      "SEC1_actual_DB_disconnect_paused_fresh_rebind_manual_resume_every_rows_bytes_nonincrease_no_owner_borrow",
+      "SEC2_submit_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend",
+      "SEC2_cancel_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend",
+      "SEC2_cancel_boundary_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend",
+      "SEC2_actual_DB_submit_cancel_positive_after_final_return_one_second_advance",
+      "DEC004_actual_rows_bytes_recovery_normal",
+      "DEC004_actual_rows_bytes_recovery_two_controllers",
+      "DEC004_actual_rows_bytes_recovery_invalidated",
+      "DEC004_same_generation_terminal3_admission_and_dispatch"
+    ],
+    "goldens": {
+      "SEC1_disconnect_completion": {
+        "trace": [
+          {
+            "stage": "restart",
+            "before": {
+              "bytes": 4520566,
+              "records": 86,
+              "remaining": {
+                "plan": {
+                  "next": 1,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 4393984,
+                "records": 40
+              },
+              "actual_bytes": 126582,
+              "actual_records": 46
+            },
+            "after": {
+              "bytes": 3417729,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 2
+                },
+                "bytes": 3279872,
+                "records": 31
+              },
+              "actual_bytes": 137857,
+              "actual_records": 48
+            }
+          },
+          {
+            "stage": "controller",
+            "before": {
+              "bytes": 3417729,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 2
+                },
+                "bytes": 3279872,
+                "records": 31
+              },
+              "actual_bytes": 137857,
+              "actual_records": 48
+            },
+            "after": {
+              "bytes": 3098917,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 1
+                },
+                "bytes": 2952192,
+                "records": 26
+              },
+              "actual_bytes": 146725,
+              "actual_records": 53
+            }
+          },
+          {
+            "stage": "approver",
+            "before": {
+              "bytes": 3098917,
+              "records": 79,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 1
+                },
+                "bytes": 2952192,
+                "records": 26
+              },
+              "actual_bytes": 146725,
+              "actual_records": 53
+            },
+            "after": {
+              "bytes": 2255771,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 2100224,
+                "records": 17
+              },
+              "actual_bytes": 155547,
+              "actual_records": 58
+            }
+          },
+          {
+            "stage": "matched-before-disconnect",
+            "before": {
+              "bytes": 2255771,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 2100224,
+                "records": 17
+              },
+              "actual_bytes": 155547,
+              "actual_records": 58
+            },
+            "after": {
+              "bytes": 1871167,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1707008,
+                "records": 15
+              },
+              "actual_bytes": 164159,
+              "actual_records": 60
+            }
+          },
+          {
+            "stage": "approver-disconnect",
+            "before": {
+              "bytes": 1871167,
+              "records": 75,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1707008,
+                "records": 15
+              },
+              "actual_bytes": 164159,
+              "actual_records": 60
+            },
+            "after": {
+              "bytes": 1746007,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1575936,
+                "records": 13
+              },
+              "actual_bytes": 170071,
+              "actual_records": 61
+            }
+          },
+          {
+            "stage": "fresh-rebind",
+            "before": {
+              "bytes": 1746007,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 1,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1575936,
+                "records": 13
+              },
+              "actual_bytes": 170071,
+              "actual_records": 61
+            },
+            "after": {
+              "bytes": 1359965,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1182720,
+                "records": 11
+              },
+              "actual_bytes": 177245,
+              "actual_records": 63
+            }
+          },
+          {
+            "stage": "manual-resume",
+            "before": {
+              "bytes": 1359965,
+              "records": 74,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 1,
+                  "sessions": 0
+                },
+                "bytes": 1182720,
+                "records": 11
+              },
+              "actual_bytes": 177245,
+              "actual_records": 63
+            },
+            "after": {
+              "bytes": 838001,
+              "records": 71,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 658432,
+                "records": 7
+              },
+              "actual_bytes": 179569,
+              "actual_records": 64
+            }
+          },
+          {
+            "stage": "controller-stop",
+            "before": {
+              "bytes": 838001,
+              "records": 71,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 658432,
+                "records": 7
+              },
+              "actual_bytes": 179569,
+              "actual_records": 64
+            },
+            "after": {
+              "bytes": 381577,
+              "records": 69,
+              "remaining": {
+                "plan": {
+                  "next": 0,
+                  "rebind": 0,
+                  "resume": 0,
+                  "sessions": 0
+                },
+                "bytes": 199680,
+                "records": 4
+              },
+              "actual_bytes": 181897,
+              "actual_records": 65
+            }
+          }
+        ],
+        "paused": true,
+        "owner_budgets_unchanged": true,
+        "slot": {
+          "controller_records": 13,
+          "controller_bytes": 1376256,
+          "noncontroller_records": 9,
+          "noncontroller_bytes": 851968
+        },
+        "capsule": {
+          "records": 29,
+          "bytes": 3211264
+        }
+      },
+      "SEC2_submit": {
+        "received_delta": 0,
+        "reason": "expired",
+        "durable_attempt": "armed",
+        "holds_preserved": true,
+        "noresend": true,
+        "final_DB_committed_closed": true,
+        "clock_after": "2024-03-08T14:31:41.000000Z",
+        "window": {
+          "checked_at": "2024-03-08T14:31:10.000000Z",
+          "deadlines": [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-04-01T00:00:00.000000Z",
+            "2024-03-08T14:31:30.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T23:59:59.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2025-01-01T00:00:00.000000Z",
+            "2025-01-01T00:00:00.000000Z"
+          ]
+        }
+      },
+      "SEC2_cancel": {
+        "received_delta": 0,
+        "reason": "expired",
+        "durable_attempt": "armed",
+        "holds_preserved": true,
+        "noresend": true,
+        "final_DB_committed_closed": true,
+        "clock_after": "2024-03-08T14:31:41.000000Z",
+        "window": {
+          "checked_at": "2024-03-08T14:31:10.000000Z",
+          "deadlines": [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:31:20.000000Z"
+          ]
+        }
+      },
+      "SEC2_cancel_boundary": {
+        "received_delta": 0,
+        "reason": "expired",
+        "durable_attempt": "armed",
+        "holds_preserved": true,
+        "noresend": true,
+        "final_DB_committed_closed": true,
+        "clock_after": "2024-03-08T14:31:20.000000Z",
+        "window": {
+          "checked_at": "2024-03-08T14:31:10.000000Z",
+          "deadlines": [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:31:20.000000Z"
+          ]
+        }
+      },
+      "SEC2_positive": {
+        "received": 2,
+        "submit": "accepted",
+        "cancel": "cancel_ack",
+        "windows": [
+          [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-04-01T00:00:00.000000Z",
+            "2024-03-08T14:31:30.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2024-03-08T23:59:59.000000Z",
+            "2024-03-08T14:31:33.000000Z",
+            "2025-01-01T00:00:00.000000Z",
+            "2025-01-01T00:00:00.000000Z"
+          ],
+          [
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:33:08.000000Z",
+            "2024-03-08T14:31:38.000000Z",
+            "2024-03-08T14:31:21.000000Z"
+          ]
+        ]
+      },
+      "completion_recovery_normal": [
+        {
+          "stage": "restart",
+          "before": {
+            "bytes": 4520572,
+            "records": 86,
+            "remaining": {
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 4393984,
+              "records": 40
+            },
+            "actual_bytes": 126588,
+            "actual_records": 46
+          },
+          "after": {
+            "bytes": 3417735,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          }
+        },
+        {
+          "stage": "controller",
+          "before": {
+            "bytes": 3417735,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          },
+          "after": {
+            "bytes": 3098923,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          }
+        },
+        {
+          "stage": "second-session",
+          "before": {
+            "bytes": 3098923,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          },
+          "after": {
+            "bytes": 2255777,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2100224,
+              "records": 17
+            },
+            "actual_bytes": 155553,
+            "actual_records": 58
+          }
+        },
+        {
+          "stage": "rebind",
+          "before": {
+            "bytes": 2255777,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2100224,
+              "records": 17
+            },
+            "actual_bytes": 155553,
+            "actual_records": 58
+          },
+          "after": {
+            "bytes": 1871173,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1707008,
+              "records": 15
+            },
+            "actual_bytes": 164165,
+            "actual_records": 60
+          }
+        },
+        {
+          "stage": "resume",
+          "before": {
+            "bytes": 1871173,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1707008,
+              "records": 15
+            },
+            "actual_bytes": 164165,
+            "actual_records": 60
+          },
+          "after": {
+            "bytes": 1349209,
+            "records": 72,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 1182720,
+              "records": 11
+            },
+            "actual_bytes": 166489,
+            "actual_records": 61
+          }
+        },
+        {
+          "stage": "stop",
+          "before": {
+            "bytes": 1349209,
+            "records": 72,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 1182720,
+              "records": 11
+            },
+            "actual_bytes": 166489,
+            "actual_records": 61
+          },
+          "after": {
+            "bytes": 892785,
+            "records": 70,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 723968,
+              "records": 8
+            },
+            "actual_bytes": 168817,
+            "actual_records": 62
+          }
+        }
+      ],
+      "completion_recovery_two_controllers": [
+        {
+          "stage": "restart",
+          "before": {
+            "bytes": 4520572,
+            "records": 86,
+            "remaining": {
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 4393984,
+              "records": 40
+            },
+            "actual_bytes": 126588,
+            "actual_records": 46
+          },
+          "after": {
+            "bytes": 3417735,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          }
+        },
+        {
+          "stage": "controller",
+          "before": {
+            "bytes": 3417735,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          },
+          "after": {
+            "bytes": 3098923,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          }
+        },
+        {
+          "stage": "second-session",
+          "before": {
+            "bytes": 3098923,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          },
+          "after": {
+            "bytes": 2780111,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2624512,
+              "records": 21
+            },
+            "actual_bytes": 155599,
+            "actual_records": 58
+          }
+        },
+        {
+          "stage": "rebind",
+          "before": {
+            "bytes": 2780111,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2624512,
+              "records": 21
+            },
+            "actual_bytes": 155599,
+            "actual_records": 58
+          },
+          "after": {
+            "bytes": 2395507,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2231296,
+              "records": 19
+            },
+            "actual_bytes": 164211,
+            "actual_records": 60
+          }
+        },
+        {
+          "stage": "resume",
+          "before": {
+            "bytes": 2395507,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2231296,
+              "records": 19
+            },
+            "actual_bytes": 164211,
+            "actual_records": 60
+          },
+          "after": {
+            "bytes": 1414791,
+            "records": 73,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 1248256,
+              "records": 12
+            },
+            "actual_bytes": 166535,
+            "actual_records": 61
+          }
+        },
+        {
+          "stage": "stop",
+          "before": {
+            "bytes": 1414791,
+            "records": 73,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 1248256,
+              "records": 12
+            },
+            "actual_bytes": 166535,
+            "actual_records": 61
+          },
+          "after": {
+            "bytes": 499615,
+            "records": 68,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 330752,
+              "records": 6
+            },
+            "actual_bytes": 168863,
+            "actual_records": 62
+          }
+        }
+      ],
+      "completion_recovery_invalidated": [
+        {
+          "stage": "restart",
+          "before": {
+            "bytes": 4520572,
+            "records": 86,
+            "remaining": {
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 4393984,
+              "records": 40
+            },
+            "actual_bytes": 126588,
+            "actual_records": 46
+          },
+          "after": {
+            "bytes": 3417735,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          }
+        },
+        {
+          "stage": "controller",
+          "before": {
+            "bytes": 3417735,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 3279872,
+              "records": 31
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          },
+          "after": {
+            "bytes": 3098923,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          }
+        },
+        {
+          "stage": "rebind-before-approver",
+          "before": {
+            "bytes": 3098923,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2952192,
+              "records": 26
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          },
+          "after": {
+            "bytes": 2714319,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2558976,
+              "records": 24
+            },
+            "actual_bytes": 155343,
+            "actual_records": 55
+          }
+        },
+        {
+          "stage": "elective-approver-invalidates",
+          "before": {
+            "bytes": 2714319,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 2558976,
+              "records": 24
+            },
+            "actual_bytes": 155343,
+            "actual_records": 55
+          },
+          "after": {
+            "bytes": 2264389,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2100224,
+              "records": 17
+            },
+            "actual_bytes": 164165,
+            "actual_records": 60
+          }
+        },
+        {
+          "stage": "rebind",
+          "before": {
+            "bytes": 2264389,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 2100224,
+              "records": 17
+            },
+            "actual_bytes": 164165,
+            "actual_records": 60
+          },
+          "after": {
+            "bytes": 1878347,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1707008,
+              "records": 15
+            },
+            "actual_bytes": 171339,
+            "actual_records": 62
+          }
+        },
+        {
+          "stage": "protective-stop-before-resume",
+          "before": {
+            "bytes": 1878347,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1707008,
+              "records": 15
+            },
+            "actual_bytes": 171339,
+            "actual_records": 62
+          },
+          "after": {
+            "bytes": 1815131,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1641472,
+              "records": 14
+            },
+            "actual_bytes": 173659,
+            "actual_records": 63
+          }
+        },
+        {
+          "stage": "reconcile-after-protective-stop",
+          "before": {
+            "bytes": 1815131,
+            "records": 77,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1641472,
+              "records": 14
+            },
+            "actual_bytes": 173659,
+            "actual_records": 63
+          },
+          "after": {
+            "bytes": 1424177,
+            "records": 76,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1248256,
+              "records": 12
+            },
+            "actual_bytes": 175921,
+            "actual_records": 64
+          }
+        },
+        {
+          "stage": "resume",
+          "before": {
+            "bytes": 1424177,
+            "records": 76,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1248256,
+              "records": 12
+            },
+            "actual_bytes": 175921,
+            "actual_records": 64
+          },
+          "after": {
+            "bytes": 1360973,
+            "records": 76,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 1182720,
+              "records": 11
+            },
+            "actual_bytes": 178253,
+            "actual_records": 65
+          }
+        },
+        {
+          "stage": "stop",
+          "before": {
+            "bytes": 1360973,
+            "records": 76,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 1182720,
+              "records": 11
+            },
+            "actual_bytes": 178253,
+            "actual_records": 65
+          },
+          "after": {
+            "bytes": 904549,
+            "records": 74,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 723968,
+              "records": 8
+            },
+            "actual_bytes": 180581,
+            "actual_records": 66
+          }
+        }
+      ],
+      "completion_third_terminal": {
+        "reclaim": {
+          "commands": 8,
+          "records": 24,
+          "bytes": 98304
+        },
+        "before": {
+          "rows": 26,
+          "bytes": 7798
+        },
+        "after": {
+          "rows": 2,
+          "bytes": 232
+        },
+        "approval_lookup_reclaim": null,
+        "admission_outcome": "applied",
+        "active_gate_reached": []
+      }
+    },
+    "cleanup": [
+      {
+        "project": "qh-ledger-0f6eff012e464c3f9dc56241634ca7d6",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-db58a1b86b4441b3907b8295fbd3a06a",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-307de3b07eef4b0990e12a333dc0c08a",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-588e53e6b0514a70927d793699817314",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-e85303ec155a44468c77a309f9816b1a",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-1e2562d05d694a0588942ba29c581b15",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-72a44b8e05684ce09f20a62945cfac3e",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-77b1d1f674534ef89c50b2b1d5b8bc4b",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-2dd3fd9f07d649529b36f62a60eae18f",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-1a1e73a97d034c1ba8309c00117ce4a8",
+        "result": "own_project_removed"
+      }
+    ],
+    "phase": "active-third",
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "5881084662e5a77358892e8c49c4f20855b37555892952e4aa862a51caa97415",
+    "unexecuted": "Focused11 only; latest full66 remains pending; fixed40 acceptance mapping and independent review/full product require separate judgment.",
+    "reason": "invalid_contract",
+    "error_trace": [
+      {
+        "file": "qh-q27-db-security-green.py",
+        "line": 48,
+        "function": "<module>"
+      },
+      {
+        "file": "check_execution.py",
+        "line": 1526,
+        "function": "completion_same_generation_third"
+      },
+      {
+        "file": "synthetic_execution.py",
+        "line": 167,
+        "function": "admission_challenge"
+      },
+      {
+        "file": "approval.py",
+        "line": 153,
+        "function": "challenge"
+      },
+      {
+        "file": "approval.py",
+        "line": 147,
+        "function": "_call"
+      }
+    ],
+    "diagnostic_sql_errors": [
+      "ERROR:  execution_capacity",
+      "CONTEXT:  PL/pgSQL function execution_check_budget(text) line 18 at RAISE"
+    ],
+    "diagnostic_mode": "same fixed SQL/input/role; only synthetic UoW stderr captured"
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "cce3f1136382b000b565423c4c45d119a660758e8f1d7300ec79ba187052b183",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "d7c8eca5bc6a2cf08fb1eaa0ad0f85027fe7024672034b2f8264ce27dd856fb3",
+    "docs/development/execution.md": "e1a27758cb43cc90b9380c92030d77283fd6b3b1d363725f2c29d1502758ff32",
+    "migrations/0003_synthetic_execution.sql": "5881084662e5a77358892e8c49c4f20855b37555892952e4aa862a51caa97415",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f5a6127956c0a78b779d6be4fc8aadecc7f27d04637d14388d6cce8682a127ac",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "3247dd49a5f2d211880c5d660a4a590e7f387312720aa4a4d9ff014b57688851",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "cce3f1136382b000b565423c4c45d119a660758e8f1d7300ec79ba187052b183",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "d7c8eca5bc6a2cf08fb1eaa0ad0f85027fe7024672034b2f8264ce27dd856fb3",
+    "docs/development/execution.md": "e1a27758cb43cc90b9380c92030d77283fd6b3b1d363725f2c29d1502758ff32",
+    "migrations/0003_synthetic_execution.sql": "5881084662e5a77358892e8c49c4f20855b37555892952e4aa862a51caa97415",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f5a6127956c0a78b779d6be4fc8aadecc7f27d04637d14388d6cce8682a127ac",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "3247dd49a5f2d211880c5d660a4a590e7f387312720aa4a4d9ff014b57688851",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31"
+  },
+  "owned_unchanged": true,
+  "q27_complete": false
+}

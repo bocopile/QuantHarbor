@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-23",
+  "task": "Q14",
+  "reviewer": "baseline_security_review / qh_security_reviewer",
+  "result": "pass_security_scope_after_fixes",
+  "resolved": [
+    "Docker proxy config injection",
+    "pending daemon identity binding",
+    "create response unknown cannot clear marker on initial absence"
+  ],
+  "reviewed_sha256": {
+    "src/quantharbor/runtime/isolation.py": "cffe1164ba3a8df3987911cd88b4afd776a647d3d01449f42bd1feca69476b6d",
+    "tests/product/test_boundary_isolation.py": "e061a893f86418ece9454419a1a10d9e447ef5e95706f7a72267684a51a0f0f9"
+  },
+  "reviewer_did_not_execute_tests": true,
+  "limits": [
+    "external deletion or crash after cleanup may require manual confirmation",
+    "actual financial authentication/orders not implemented",
+    "host admin and Docker daemon trusted"
+  ]
+}

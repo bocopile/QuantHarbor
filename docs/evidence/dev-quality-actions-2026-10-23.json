@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-23",
+  "scope": "inactive CI definition only; not executed",
+  "actions": [
+    {
+      "repo": "actions/checkout",
+      "tag": "v7.0.1",
+      "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "license": "MIT",
+      "license_sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5"
+    },
+    {
+      "repo": "actions/setup-python",
+      "tag": "v7.1.0",
+      "commit": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "license": "MIT",
+      "license_sha256": "7d070f6b64d9bcc530fe99cc21eaaa4b3c364e0b2d367d7735671fa202a03b32"
+    }
+  ],
+  "sources": [
+    "https://api.github.com/repos/actions/checkout/releases/latest",
+    "https://api.github.com/repos/actions/setup-python/releases/latest",
+    "https://docs.github.com/en/actions/reference/runners/github-hosted-runners"
+  ],
+  "limitations": [
+    "account cost/runner availability unverified",
+    "transitive bundled action dependencies not independently audited",
+    "remote run and activation not authorized"
+  ]
+}

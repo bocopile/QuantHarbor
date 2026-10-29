@@ -1,0 +1,11 @@
+{
+  "checked_on": "2026-10-23",
+  "zoneinfo": "https://docs.python.org/3.13/library/zoneinfo.html",
+  "nyse": "https://www.nyse.com/trade/hours-calendars",
+  "notes": [
+    "ZoneInfo uses system tzdb or tzdata; pinned tzdb needed for reproducibility",
+    "NYSE core 09:30–16:00 ET; early close/holiday version must be explicit",
+    "not an adopted production dataset; actual coverage/rights remain SG-02",
+    "2026-10-23 official Python3.13.17 docs rechecked: ZoneInfo.from_file accepts explicit BytesIO, avoids implicit system timezone path; pin supplied bytes/version/hash for deterministic adapter."
+  ]
+}

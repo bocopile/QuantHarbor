@@ -1,0 +1,50 @@
+{
+  "task": "Q21-local",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "changes_required",
+  "findings": [
+    {
+      "id": "V1",
+      "priority": "P1",
+      "summary": "store denial only holds valuation but stores selected raw MarketItem payload",
+      "reproduction": "build_snapshot with current_rights purposes=(research,) leaves selected raw payload in repository canonical bytes",
+      "file": "src/quantharbor/application/valuation.py",
+      "line": 72
+    },
+    {
+      "id": "V2",
+      "priority": "P1",
+      "summary": "canonical restoration and direct append bypass latest unique price and observation-rights binding",
+      "reproduction": "two bars10/11 and holdings2 cash1000: replace latest reference with old10, recompute amounts/NAV1020 and manifest; accepted vs correct1022. Changing proof rights_ref alone also bypasses select_view rights_blocked",
+      "file": "src/quantharbor/domain/valuation.py",
+      "line": 507
+    },
+    {
+      "id": "V3",
+      "priority": "P2",
+      "summary": "standalone ReconciliationResult can become matched without statement/covered_scope",
+      "reproduction": "replace reconcile(statement=None) status/missing_scope/reasons/matched flags to matched/empty/empty/true; constructor and canonical accept; snapshot later compare protects only aggregate",
+      "file": "src/quantharbor/domain/valuation.py",
+      "line": 729
+    }
+  ],
+  "sha256": {
+    "src/quantharbor/domain/valuation.py": "4e00603cea18fda03d6430ce4a8ca385cf450cca16bb967e82f05daf03e55cab",
+    "src/quantharbor/application/valuation.py": "06e4ca332d3731e6c8d47882f57ef7cba55af50c9759252690c8b5a37552e0de",
+    "src/quantharbor/ports/valuation.py": "7f47ea03c644b4fa49050c5f1c78d2cb19380ea89975e0b3f0ce00b71556f9a3",
+    "src/quantharbor/adapters/synthetic_valuation.py": "0f942df075bcf7d2edd2579e71baeb072bdf29b5acf163352f99fbaa4cca7b6d",
+    "src/quantharbor/domain/serialization.py": "3ce4ef10216e3993ad94c406e0ba1faf1c5eb091972c36a2c1c0821ac9081343",
+    "tests/product/synthetic_valuation.py": "1cd7a613c4b107cfb4e754db8f7e850d96966a182c503d4a77ecd0d9aa4239b5",
+    "tests/product/test_valuation.py": "707a314dbbb6071f0a5dd81fccfbe859c53d2fd67acffd48423b74432f995f19",
+    "tests/product/test_valuation_reconciliation.py": "a672617926cf3aaab5017f224ece751845c58cad16ce07cd2ac52f26e26d0f47",
+    "tests/product/test_valuation_snapshot.py": "9f2a2e4b8897e82fd5a15b65e79c329801450ffe85bfae52b78d130809653f18",
+    "docs/development/valuation.md": "933c1a1490028c4b39cbea871d59c704a2763a6530cfca4b24e6aaa28ee68218"
+  },
+  "hashes_match": true,
+  "tests_executed": false,
+  "reproduction_method": "static_code_trace",
+  "actual_api_calls": 0
+}

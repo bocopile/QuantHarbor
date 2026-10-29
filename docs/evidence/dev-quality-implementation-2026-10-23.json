@@ -1,0 +1,34 @@
+{
+  "task": "DEV-quality-gates",
+  "date": "2026-10-23",
+  "executor": "foundation_implementer",
+  "independent": false,
+  "scope": "public candidate checker and inactive CI definition",
+  "tests": {
+    "quality": {
+      "passed": 14,
+      "exit_code": 0,
+      "seconds": 1.328
+    },
+    "public_candidates": {
+      "checked": 178,
+      "findings": 0,
+      "exit_code": 0
+    }
+  },
+  "sha256": {
+    "scripts/check_quality.py": "53a9146d94a2f9cf1e262f7980b954832d3fd784cb4ddcbc14139b02b19e3020",
+    "tests/quality/__init__.py": "6e017c64cafd4b5c817f1f62c2b3bc5b8cc5ef680e73c51d1df34ff13c4ffbc4",
+    "tests/quality/test_quality.py": "5b4c622937f68ffb33b45612178c761eaa7ead83616e56cb8ed5cc67511234e7",
+    "docs/development/quality.md": "9c39b7367f347ae8401601d0663de8d17fa3d54c896f5190da36c2da03f4cd54"
+  },
+  "not_run": [
+    "independent validation",
+    "ENV/product/isolation regression in Q15",
+    "remote CI",
+    "private files or Git history audit"
+  ],
+  "notes": [
+    "global excludes preserved; synthetic global-ignore regression added"
+  ]
+}

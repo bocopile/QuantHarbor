@@ -1,0 +1,15 @@
+**
+!containers/
+!containers/Dockerfile.synthetic
+!src/
+!src/quantharbor/
+!src/quantharbor/**
+!tests/
+!tests/product/
+!tests/product/**
+!config/
+!config/runtime.synthetic.toml
+!config/runtime-lock.json
+!pyproject.toml
+**/__pycache__/
+**/*.pyc

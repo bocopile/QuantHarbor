@@ -1,0 +1,52 @@
+{
+  "task": "Q23-local",
+  "role": "qh_implementer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_development",
+  "result": "implementation_returned_review_pending",
+  "sha256": {
+    "src/quantharbor/domain/research.py": "72cd728517185dac26f71adcf90e19e34ed88031b0b25c2bf6478aa428a8ddc3",
+    "src/quantharbor/application/research.py": "4f0b4145dc0463e4f58dc9a9e455175af042359910d3b1c2d272c88921ac652f",
+    "src/quantharbor/ports/research.py": "b9bfd8d5b74a3b441b1190b2286da26af7a56c0a0d77502bddd20bf223531af6",
+    "src/quantharbor/adapters/synthetic_research.py": "9dd1f39113ee65a25739c21cdf5f5a7cbe08f2fca79e4f221f0369c7165dbf00",
+    "src/quantharbor/research/__init__.py": "7ed85a557be4ad20fa83d29f6747053f3fb87aef5a137d4523143043b71024a9",
+    "src/quantharbor/research/metrics.py": "4277638f249df37663a3744d6e2b8f707c17dbea45097b00f1889e1e010475a2",
+    "src/quantharbor/research/costing.py": "a6763d953acf9464cc912ab836c4f1f4558897f4d37fc26a8238ef0e19442f78",
+    "src/quantharbor/research/strategies.py": "9bebc7fb2ce975c3091ed8a2f854b3a3c731c8918e12743696bad761137146d5",
+    "src/quantharbor/domain/serialization.py": "dc21f8703e7dc8c2872a1b14f63ac83b2acf549a387a7ba20334b98c04793787",
+    "tests/product/synthetic_research.py": "200b2e183a42757840adbe157960a5c50b8929943d23b3ec239656df4ed5e2a2",
+    "tests/product/test_research.py": "f8f7609e07646aac3beca9ef5b03657ed8019e74c74a2791e4e1a3b266ea8fb3",
+    "tests/product/test_performance.py": "8087ecc880d5d4ebe2be4fd1f35b2a96ecbd9b735aedf7504d6b17110cf50319",
+    "tests/product/test_costing.py": "b898aff3122118f900a0fd63362a9a80df5e50d84570852bdf4ca0b8d593da95",
+    "docs/development/research.md": "9c77d1a5d54f2731c97d5963deb72e8e1b1cda8042273e595165ed9c608ec60e"
+  },
+  "spec_raw_sha256": "b24ec83a0cbbe1646fee64c2d433cf8d2c57831f58c8e2e746c0e9c371dc4bb4",
+  "self_validation": {
+    "product": 375,
+    "product_seconds": 140.488,
+    "q23": 27,
+    "quality": 87,
+    "public_files": 374,
+    "public_findings": 0,
+    "git_diff_check": "pass",
+    "fixed_runs": 24,
+    "fixed_complete": 24,
+    "same_input_manifest_result_hashes": "all_match"
+  },
+  "development_attempts": [
+    "initial quality.complete attribute corrected to status check",
+    "initial flow fixtures with entire-account USD-only scope rejected; corrected scope, performance8 passed",
+    "first24 batch fingerprint mismatch during implementation mutation correctly rejected",
+    "targeted25 had2 errors in PIT/costing fixtures; corrected before final375 pass"
+  ],
+  "unexecuted": [
+    "independent_review",
+    "independent_validation",
+    "actual_historical_performance",
+    "actual_strategy_adoption",
+    "LEAN_compatibility",
+    "production_durability"
+  ],
+  "actual_api_calls": 0
+}

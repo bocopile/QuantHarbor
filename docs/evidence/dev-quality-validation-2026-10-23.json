@@ -1,0 +1,47 @@
+{
+  "task": "DEV-quality-gates",
+  "date": "2026-10-23",
+  "executor": "env_final_validator",
+  "independent": true,
+  "result": "pass_in_scope",
+  "commands": [
+    {
+      "command": "python3.13 -I -S scripts/check_quality.py",
+      "exit_code": 0,
+      "files_checked": 182,
+      "findings": 0,
+      "seconds": 0.178
+    },
+    {
+      "command": "python3.13 -m unittest discover -s tests/quality -v",
+      "exit_code": 0,
+      "passed": 18,
+      "seconds": 1.906
+    },
+    {
+      "command": "PYTHONPATH=src python3.13 -m unittest discover -s tests/product -v",
+      "exit_code": 0,
+      "passed": 47,
+      "seconds": 0.362
+    },
+    {
+      "command": "python3.13 -I -S scripts/check_ai_team.py",
+      "exit_code": 0,
+      "members": 6,
+      "queue": 36,
+      "task_ids": 110
+    }
+  ],
+  "input_files": 6,
+  "combined_sha256": "efce9bf929e06dbf33fcb31667ac66e8c3d0713f506d4aaf8db528ee3014fb88",
+  "input_unchanged": true,
+  "not_run": [
+    "remote CI",
+    "Git history or ignored private file audit",
+    "Docker regression: relevant Q14 source unchanged"
+  ],
+  "limits": [
+    "not comprehensive secret/vulnerability audit",
+    "team checker is config consistency only"
+  ]
+}

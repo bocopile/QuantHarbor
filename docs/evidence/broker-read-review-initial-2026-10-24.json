@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-24",
+  "task": "Q19",
+  "reviewer": "env_final_reviewer",
+  "mode": "independent read-only",
+  "input_evidence": "broker-read-security-fixes-2026-10-24.json",
+  "hashes_matched": 10,
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P2",
+      "file": "src/quantharbor/domain/broker_read.py",
+      "issue": "complete allows unsupported operation or missing mandatory singleton section",
+      "examples": [
+        "kr_buy_capacity items and receipt rows jointly removed",
+        "kr_orders output2 removed"
+      ]
+    },
+    {
+      "id": "R2",
+      "priority": "P2",
+      "file": "src/quantharbor/domain/broker_read.py",
+      "issue": "accepted receipt row count not bound per received_at to item observed_at",
+      "example": "second page observation moved to first receipt timestamp while retaining totals"
+    }
+  ],
+  "not_executed": [
+    "tests",
+    "real API",
+    "private data"
+  ]
+}

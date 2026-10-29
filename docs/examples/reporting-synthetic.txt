@@ -1,0 +1,69 @@
+QuantHarbor SYNTHETIC report (합성 자산·현금·대사 보고)
+계좌: "synthetic-account:valuation" | 기준통화: "USD"
+평가 범위: "entire\u005faccount"; 전 종목; 통화 "KRW", "USD"; 항목 "holdings", "settled\u005fcash", "unsettled\u005fpayable", "unsettled\u005freceivable"
+평가 기준 (as_of): "2024-03-08T14:31:00.000000Z" | 지식 마감 (cutoff): "2024-03-08T14:31:03.000000Z"
+보고 생성: "2024-03-08T14:31:03.000000Z" | 표시: "2024-03-08T14:31:03.000000Z"
+스냅샷 생성: "2024-03-08T14:31:03.000000Z" | 조회 모드: "as\u005fknown"
+최초 cutoff: unknown (미확인)
+거래일: unknown (미확인); 사유: "trading\u005fdate\u005fnot\u005fresolved"
+
+자산 요약
+보고 상태: "reconciled" | 평가 상태: "complete"; 완전 평가: true
+NAV (완전 평가): "1022" "USD"
+확인된 부분 소계: "1022" "USD" (전체 자산·비중 분모로 사용하지 않음)
+평가 사유: 없음
+
+보유 자산 (1행)
+종목 "syn.instrument" / 거래소 "syn.venue" / 매핑 "mapping-v1" / 단위 "share" | 수량: "2"
+  가격: "11" "USD" / "share" | 원통화: "USD" | 원통화 평가액: "22"
+  평가 사유: 없음
+  원가: unknown (미확인) | 미실현손익: unknown (미확인) | 가격손익: unknown (미확인) | 환손익: unknown (미확인); 사유: "costing\u005fspec\u005fpending\u005fq23"
+
+통화별 현금 (1행)
+통화 "USD" | 결제 현금: "1000" | 미결제 수취: "0" | 미결제 지급: "0" | 경제적 현금: "1000"
+  완전 확인: true; 사유: 없음
+  원천 총액: unknown (미확인) | 예약금: unknown (미확인) | 가용금: unknown (미확인) | 매수가능액: unknown (미확인); 사유: "availability\u005fsemantics\u005funverified"
+
+통화별 평가·환산 (1행)
+통화 "USD" | 원통화 확인 소계: "1022" | 기준통화 평가액: "1022" "USD"
+  FX: 동일 통화 (환율 불필요) | 환산 방향: "identity"
+  완전 확인: true; 사유: 없음
+
+잔고 대사
+대사 범위: 보유 및 세 경제적 현금 component; 주문/체결/손익 미확인.
+대사 상태: "matched" | 상세 상태: "matched"
+요청 범위: "entire\u005faccount"; 전 종목; 통화 "KRW", "USD"; 항목 "holdings", "settled\u005fcash", "unsettled\u005fpayable", "unsettled\u005freceivable"
+확인 범위: "entire\u005faccount"; 전 종목; 통화 "KRW", "USD"; 항목 "holdings", "settled\u005fcash", "unsettled\u005fpayable", "unsettled\u005freceivable"
+누락 범위: 없음
+비교 항목: "holdings", "settled\u005fcash", "unsettled\u005fpayable", "unsettled\u005freceivable"
+요청 범위 일치: true | 전 계좌 잔고 일치: true
+대사 사유: 없음
+대사 원천: "statement-1" | 출처: "synthetic-statement" | 개정: "revision-1" | 원천 스냅샷: "source-snapshot-1"
+  원천 기준: "2024-03-08T14:31:00.000000Z" | 관측: "2024-03-08T14:31:03.000000Z" | 수집: "2024-03-08T14:31:03.000000Z" | 시점 일관성: "source\u005fsnapshot"
+대사 비교 내역 (7행; 차이 = 원천 - 원장)
+"holdings" | 종목 "syn.instrument" / 거래소 "syn.venue" / 매핑 "mapping-v1" / 단위 "share" | 상태: "matched"
+  원장: "2" | 원천: "2" | 차이: "0" | 허용차: "0" | 단위: "share"; 사유: 없음
+"settled\u005fcash" | 통화 "KRW" | 상태: "matched"
+  원장: "0" | 원천: "0" | 차이: "0" | 허용차: "0" | 단위: "KRW"; 사유: 없음
+"settled\u005fcash" | 통화 "USD" | 상태: "matched"
+  원장: "1000" | 원천: "1000" | 차이: "0" | 허용차: "0" | 단위: "USD"; 사유: 없음
+"unsettled\u005fpayable" | 통화 "KRW" | 상태: "matched"
+  원장: "0" | 원천: "0" | 차이: "0" | 허용차: "0" | 단위: "KRW"; 사유: 없음
+"unsettled\u005fpayable" | 통화 "USD" | 상태: "matched"
+  원장: "0" | 원천: "0" | 차이: "0" | 허용차: "0" | 단위: "USD"; 사유: 없음
+"unsettled\u005freceivable" | 통화 "KRW" | 상태: "matched"
+  원장: "0" | 원천: "0" | 차이: "0" | 허용차: "0" | 단위: "KRW"; 사유: 없음
+"unsettled\u005freceivable" | 통화 "USD" | 상태: "matched"
+  원장: "0" | 원천: "0" | 차이: "0" | 허용차: "0" | 단위: "USD"; 사유: 없음
+
+미체결 주문: "unknown" (미확인); 사유: "orders\u005fnot\u005fqueried"
+주문 참조: 없음 (미조회; 주문 없음의 근거 아님)
+
+보고 근거·정정
+보고 ID: "report:b17679fd1272acde88c64c8f5ec5347aff659345a26f11c919d5e15e68aae0d3" | 버전: 1
+스냅샷 ID: "snapshot:8be0e166761805c400b863a72add7e883885cbedc9115ffbf96707d60acfba6e"
+정정 전 보고 ID: 없음 (최초 보고)
+정정 전 스냅샷 ID: 없음 (최초 스냅샷)
+정책: 보고 "synthetic-reporting-v1" / 평가 "synthetic-valuation-v1" / 대사 "synthetic-reconciliation-v1"
+원장: cursor 1 / schema 1 / reducer "synthetic-ledger-v1"
+전체 hash·자료 참조·현재 권리 근거: JSON 출력에서 확인.

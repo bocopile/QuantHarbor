@@ -1,0 +1,51 @@
+{
+  "task": "Q20-local",
+  "execution": "separate_parent_qh_development",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "result": "L1_L2_fixes_returned",
+  "sha256": {
+    "src/quantharbor/domain/ledger.py": "5f49b3928759e594d832ce4bdecd124320f5fc7cddeaed26aca2e93100c69245",
+    "src/quantharbor/application/ledger.py": "8b13be5f228af64864445b1a40281e4d50d40644322c3a7a5cd3d93078bf36f2",
+    "src/quantharbor/ports/ledger.py": "fbda6397cb7e31c52530a1be71754b3bb1673e1e0997c08bdc57f894a4113e91",
+    "src/quantharbor/adapters/synthetic_ledger.py": "0fb4a781293e6f9481424cc32321a4e75c4b43f83f3b36b9b429b06ac884b8bd",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/domain/serialization.py": "1dcb58472cd6499653be512a344ad3880d5c6a51389eb9e7f42c0501d66a93fc",
+    "migrations/0002_synthetic_ledger.sql": "d48e206c7b74133cc5a8d1645bc986272701ba0124409d3bdb23b602d05333f8",
+    "tests/product/synthetic_ledger.py": "e700e9f3477831cdb4fc59e439dc500b2d14f432df8a029b3a91dd5d289e3c0a",
+    "tests/product/test_ledger.py": "73198505c32e63e949cf7bd3a72afc86b6c0c356be5a76dcec72ca84fd088e37",
+    "scripts/check_ledger.py": "01b52ab061947bd3ee04e5c0a9a2f0dedb3e397b9ba1cdd0dcfd9394dce1b484",
+    "tests/quality/test_ledger_runner.py": "fe241bf5332928d9ed9fbb6a9649f239c1b85616cf885cb0a5be2c32d5426e60",
+    "docs/development/ledger.md": "9d620513b5d2f6e35693315fbb4bce8b5d5a78549725afdcb34b1f01fca74f43"
+  },
+  "changed_sha256": {
+    "src/quantharbor/application/ledger.py": "8b13be5f228af64864445b1a40281e4d50d40644322c3a7a5cd3d93078bf36f2",
+    "migrations/0002_synthetic_ledger.sql": "d48e206c7b74133cc5a8d1645bc986272701ba0124409d3bdb23b602d05333f8",
+    "tests/product/test_ledger.py": "73198505c32e63e949cf7bd3a72afc86b6c0c356be5a76dcec72ca84fd088e37",
+    "scripts/check_ledger.py": "01b52ab061947bd3ee04e5c0a9a2f0dedb3e397b9ba1cdd0dcfd9394dce1b484",
+    "docs/development/ledger.md": "9d620513b5d2f6e35693315fbb4bce8b5d5a78549725afdcb34b1f01fca74f43"
+  },
+  "red": {
+    "tests": 62,
+    "initial_failures": 7,
+    "fixture_expectation_errors": 1,
+    "confirmed_regression_failures": 6
+  },
+  "green": {
+    "ledger": 62,
+    "product": 226,
+    "runner_quality": 12,
+    "failures": 0
+  },
+  "db_runner_new_cases": {
+    "accounts": 8,
+    "submissions": 35,
+    "mutated_expected_result_rejections": 3
+  },
+  "unexecuted": [
+    "actual_DB_after_fix",
+    "independent_rereview",
+    "independent_final_tests"
+  ],
+  "real_API_calls": 0
+}

@@ -1,0 +1,15 @@
+{
+  "task": "Q20-local",
+  "role": "qh_architect",
+  "model": "gpt-6-astra",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "design_returned_root_integrated",
+  "design_output_sha256": "201cfec8c98e3e507ec4bf8857a04b3a6b7a10c66c7028cab7aba5911975edf4",
+  "outputs": [
+    "docs/contracts/ledger-local-v1.md",
+    "docs/decisions/LEDGER-DEC-001-local-replay.md"
+  ],
+  "tests_executed": false,
+  "actual_api_calls": 0
+}

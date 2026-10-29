@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-24",
+  "task": "Q19",
+  "reviewer": "baseline_security_review",
+  "mode": "independent read-only",
+  "input_evidence": "broker-read-implementation-2026-10-24.json",
+  "hashes_matched": 10,
+  "findings": [
+    {
+      "id": "S1",
+      "priority": "P2",
+      "file": "src/quantharbor/domain/broker_read.py",
+      "issue": "canonical restoration permits row venue/currency inconsistent with request scope",
+      "example": "NASD/USD us_balance complete batch row mutated to NYSE/KRW"
+    },
+    {
+      "id": "S2",
+      "priority": "P2",
+      "file": "src/quantharbor/domain/broker_read.py",
+      "issue": "canonical restoration permits omitted required numeric source fields",
+      "example": "kr_balance holding ord_psbl_qty removed while retaining complete"
+    }
+  ],
+  "onboarding_example_review": "inactive, no approval/validator claim",
+  "not_executed": [
+    "tests",
+    "real API",
+    "credentials/private data"
+  ]
+}

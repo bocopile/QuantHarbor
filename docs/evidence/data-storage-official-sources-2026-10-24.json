@@ -1,0 +1,35 @@
+{
+  "api": {
+    "checked_on": "2026-10-23",
+    "version": "26.0.0",
+    "sources": [
+      "https://arrow.apache.org/docs/python/parquet/parquet.html",
+      "https://arrow.apache.org/docs/python/generated/pyarrow.parquet.ParquetFile.html",
+      "https://arrow.apache.org/docs/python/generated/pyarrow.parquet.write_table.html",
+      "https://arrow.apache.org/docs/python/generated/pyarrow.decimal128.html"
+    ],
+    "decisions": [
+      "decimal128(38,18), explicit UTC microseconds and no truncation",
+      "ParquetFile bounded metadata, fixed schema, disabled extension types, local file objects",
+      "dependency compatibility not yet tested"
+    ]
+  },
+  "security": {
+    "checked_on": "2026-10-24",
+    "official": [
+      "https://arrow.apache.org/security/",
+      "https://security.apache.org/projects/arrow/",
+      "https://arrow.apache.org/blog/2026/10/08/26.0.0-release/",
+      "https://arrow.apache.org/docs/python/install.html",
+      "https://arrow.apache.org/docs/format/Security.html"
+    ],
+    "confirmed": [
+      "26.0.0 release describes CVE-2026-92287 fix; no KMS/decryption configured in planned adapter",
+      "NumPy>=2 optional, pandas/cffi optional in install docs; not required for planned core Parquet use",
+      "full native dependency vulnerability audit not performed",
+      "Official security advisory states PyArrow26.0.0 unaffected by CVE-2026-92287; same page warns advisory list may lag.",
+      "Arrow recommends explicit full validation for untrusted serialized data; planned reader validates schema, bounded metadata, table.validate(full=True) and typed canonical records; process memory limit remains needed."
+    ],
+    "remaining": "actual install/import/read-write compatibility and adapter security review"
+  }
+}

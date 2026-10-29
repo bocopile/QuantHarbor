@@ -1,0 +1,50 @@
+{
+  "task": "PRODUCT-gap-review",
+  "date": "2026-10-27",
+  "status": "document_review_complete_proposals_only",
+  "roles": [
+    {
+      "role": "general_review",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "high",
+      "permission_profile": "qh_review",
+      "cli_exit_code": 0,
+      "output_sha256": "2b8c6207d1be98fae88daf6b4c364b211f4fc427cdae69d260f4ecc4545ac364",
+      "scope": "public_document_review_only",
+      "final_present": true
+    },
+    {
+      "role": "security_review",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "high",
+      "permission_profile": "qh_review",
+      "cli_exit_code": 0,
+      "output_sha256": "9081353db96da9db67b6358a8462f2d89ad65e1676a741da4e572d9045c43b58",
+      "scope": "public_document_review_only",
+      "final_present": true
+    }
+  ],
+  "review_findings": {
+    "general_groups": 8,
+    "security_wording_refinements": 6,
+    "root_consolidated_groups": 9
+  },
+  "final_report_sha256": "cfd3fe1e21cedf52dba0884db0d2cab60735e83fe84be2e2d843ea08e3d72338",
+  "root_post_review_changes": "Integrated security wording and corrected references; final integrated text was not independently rereviewed.",
+  "checks": {
+    "relative_links_and_line_ranges": {
+      "checked": 14,
+      "errors": []
+    }
+  },
+  "not_run": [
+    "product_tests",
+    "code_audit",
+    "installation_validation",
+    "browser_security_tests",
+    "real_broker_calls"
+  ],
+  "queue_changed": false,
+  "permissions_changed": false,
+  "oss_followup": "Separate root official-source research and read-only demo observation; no source adoption or installation."
+}

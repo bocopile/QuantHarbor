@@ -3,7 +3,7 @@
   "execution_mode": "sequential",
   "max_active_workers": 1,
   "orchestrator": "root",
-  "current_queue_item": "Q04",
+  "current_queue_item": "Q19",
   "automatic_background_dispatch": false,
   "source": "docs/execution-checklist.md",
   "work_items": [
@@ -97,16 +97,17 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": true,
-      "status": "in_progress",
+      "status": "completed",
       "approval_refs": [
         "AP-02"
       ],
       "evidence": [
         "docs/tasks/ENV-durable-audit.md",
         "docs/tasks/ENV-skill-workflow.md",
-        "docs/tasks/ENV-hook-audit.md"
+        "docs/tasks/ENV-hook-audit.md",
+        "docs/evidence/env-hook-runtime-2026-10-23.json"
       ],
-      "note": "로컬 구현·독립 보안 검토·전체 합성 테스트 55개·Hook 6종 발견 완료. 최신 조회 untrusted 6개. 사용자가 직접 신뢰 등록 후 알리기로 선택하여 완료 알림 대기. Q05 Slack은 AP-01 승인 후 연결 증거 확보."
+      "note": "2026-10-23 명시 위임 후 정상 /hooks 메뉴에서 프로젝트6개 trusted. 실제6종 이벤트·성공0/실패7 별도확인·중단·재개·독립 공개 증거 검토 완료. Post unknown 및 중단 Post누락의 한계 유지. 전체감사·장기보존·동일사용자변조방지 아님."
     },
     {
       "id": "Q05",
@@ -123,7 +124,7 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": true,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [
         "AP-01"
       ],
@@ -131,7 +132,7 @@
         "docs/tasks/ENV-slack.md",
         "docs/evidence/env-slack.json"
       ],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Q04 완료 후 AP-01의 기존 실제 수동 연결·1건 정확수신·불명확결과재전송금지 증거를 독립검토해 범위완료. 자동/예약/투자보고기능 아님. 이번 새전송없음."
     },
     {
       "id": "Q06",
@@ -148,10 +149,13 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ENV-final-assessment.md",
+        "docs/evidence/env-final-assessment-2026-10-23.json"
+      ],
+      "note": "2026-10-23 개발 ENV 명시 범위 독립 판정 통과. CLI0.163.0 프로필10개·제한 부모2개·임시 thread MCP 목록, Hook6종·재개·기존 수동Slack 근거 통합. 운영 금융 시스템 완료 아님."
     },
     {
       "id": "Q07",
@@ -167,7 +171,7 @@
       ],
       "scope": "A01~06, ARC-01·02",
       "prerequisite_description": "ENV 완료, 운용 선택",
-      "completion_criterion": "요구·정상/장애 시나리오",
+      "completion_criterion": "A01 범위·A02~06 정책 구조/후속 관문·정상/장애 수용 기준 독립 검토",
       "depends_on": [
         "Q06"
       ],
@@ -175,12 +179,16 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [
         "AP-04"
       ],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ARC-requirements.md",
+        "docs/evidence/arc-requirements-acceptance-2026-10-23.json",
+        "docs/policy-gates.md"
+      ],
+      "note": "2026-10-23 A-DEC-003 채택 범위의 Q07 요구 계약 독립 검토 통과. 실제 정책값은 PG-01~05 미완료, A01 지원표는 Q08에서 확인."
     },
     {
       "id": "Q08",
@@ -203,13 +211,17 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [
         "AP-03",
         "AP-05"
       ],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ARC-selection.md",
+        "docs/research/selection-2026-10-23.md",
+        "docs/evidence/arc-selection-review-2026-10-23.json"
+      ],
+      "note": "Q08 설계 대상/대안/보류와 SG01~04 조건 독립 판정 통과. 운영공급자·실제권리·패키지설치·모델평가는 후속 미완료."
     },
     {
       "id": "Q09",
@@ -227,10 +239,13 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ARC-data-contracts.md",
+        "docs/evidence/arc-data-review-2026-10-23.json"
+      ],
+      "note": "Q09 데이터·원장 계약 독립 검토 통과. 금융 구현·DB·실계좌 검증 아님."
     },
     {
       "id": "Q10",
@@ -248,10 +263,13 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ARC-execution-contracts.md",
+        "docs/evidence/arc-execution-review-2026-10-23.json"
+      ],
+      "note": "AI·목표·승인·위험·주문 v1 독립 검토 통과. 실제 정책·연결·금융 검증은 후속."
     },
     {
       "id": "Q11",
@@ -269,12 +287,16 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": true,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [
         "AP-03"
       ],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ARC-operations.md",
+        "docs/evidence/arc-operations-review-2026-10-23.json",
+        "docs/evidence/arc-operations-security-2026-10-23.json"
+      ],
+      "note": "Q11 보안·일반 설계 독립 통과. 실제 권한강제·운영·복원 검증은 후속."
     },
     {
       "id": "Q12",
@@ -292,10 +314,14 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/ARC-integration.md",
+        "docs/evidence/arc-integration-review-2026-10-23.json",
+        "docs/contracts/baseline-v1.json"
+      ],
+      "note": "설계 통합 독립 통과. 구현 정본·소유권·순서/검증 기준 고정. 실제 정책/기능/권한 관문 미완료."
     },
     {
       "id": "Q13",
@@ -315,10 +341,17 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/BASE-local-foundation.md",
+        "docs/evidence/base-foundation-review-2026-10-23.json",
+        "docs/evidence/base-foundation-validation-2026-10-23.json"
+      ],
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "selection_gate_refs": [
+        "SG-03"
+      ]
     },
     {
       "id": "Q14",
@@ -340,9 +373,14 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": true,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
+      "evidence": [
+        "docs/tasks/SEC-local-boundaries.md",
+        "docs/evidence/sec-local-security-final-2026-10-23.json",
+        "docs/evidence/sec-local-review-2026-10-23.json",
+        "docs/evidence/sec-local-validation-2026-10-23.json"
+      ],
       "note": "Completion here covers the stated sub-scope, not every original task ID in full."
     },
     {
@@ -361,11 +399,16 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": true,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [
         "AP-06"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/tasks/DEV-quality-gates.md",
+        "docs/evidence/dev-quality-fixes-2026-10-23.json",
+        "docs/evidence/dev-quality-review-2026-10-23.json",
+        "docs/evidence/dev-quality-validation-2026-10-23.json"
+      ],
       "note": "Completion here covers the stated sub-scope, not every original task ID in full."
     },
     {
@@ -384,10 +427,17 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": false,
-      "status": "pending",
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/DATA-catalog-calendar.md",
+        "docs/evidence/data-calendar-review-2026-10-23.json",
+        "docs/evidence/data-calendar-validation-2026-10-23.json"
+      ],
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "selection_gate_refs": [
+        "SG-02"
+      ]
     },
     {
       "id": "Q17",
@@ -406,11 +456,19 @@
       "lead": "qh_implementer",
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
-      "security_review_required": false,
-      "status": "pending",
+      "security_review_required": true,
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/DATA-market-pipeline.md",
+        "docs/evidence/data-storage-security-final-2026-10-24.json",
+        "docs/evidence/data-storage-review-final-2026-10-24.json",
+        "docs/evidence/data-market-validation-2026-10-24.json"
+      ],
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "selection_gate_refs": [
+        "SG-02"
+      ]
     },
     {
       "id": "Q18",
@@ -426,11 +484,19 @@
       "lead": "qh_implementer",
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
-      "security_review_required": false,
-      "status": "pending",
+      "security_review_required": true,
+      "status": "completed",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/DATA-document-lineage.md",
+        "docs/evidence/data-document-security-final-2026-10-24.json",
+        "docs/evidence/data-document-review-final-2026-10-24.json",
+        "docs/evidence/data-document-validation-2026-10-24.json"
+      ],
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "selection_gate_refs": [
+        "SG-02"
+      ]
     },
     {
       "id": "Q19",
@@ -449,12 +515,30 @@
       "reviewer": "qh_reviewer",
       "validator": "qh_validator",
       "security_review_required": true,
-      "status": "pending",
+      "status": "blocked",
       "approval_refs": [
         "AP-05"
       ],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/BROKER-read-adapter.md",
+        "docs/evidence/broker-read-validation-2026-10-24.json",
+        "docs/development/paper-connection-preparation.md",
+        "docs/tasks/SEC-paper-vault.md",
+        "docs/evidence/paper-vault-implementation-2026-10-24.json",
+        "docs/evidence/paper-vault-integration-2026-10-24.json",
+        "docs/evidence/paper-vault-security-host-final-2026-10-24.json",
+        "docs/evidence/paper-vault-review-final-2026-10-24.json",
+        "docs/evidence/paper-vault-validation-2026-10-24.json",
+        "docs/evidence/paper-vault-operational-attempt-2026-10-24.json"
+      ],
+      "note": "Broker synthetic code/reviews passed. AP05 single KIS paper read approved, unused. Vault53 mock tests,75 quality tests,actual synthetic lock/reopen/backup/restore and final reviews passed. Operational native create failed before image creation; user deferred password entry because unavailable now; prior approvals remain valid and unused, no automatic retry. Prior prompt display and failure cause remain unconfirmed. Actual PG01 values/support/rights/key injection/transport/read remain; Q19 incomplete. User authorized password-free local subscopes under EXEC-DEC-001; actual development pointer is docs/tasks/offline-execution-queue.json. Full integration completion remains pending.",
+      "policy_gate_refs": [
+        "PG-01"
+      ],
+      "selection_gate_refs": [
+        "SG-01"
+      ],
+      "product_followup": "docs/product-delivery-plan.md"
     },
     {
       "id": "Q20",
@@ -476,8 +560,12 @@
       "security_review_required": false,
       "status": "pending",
       "approval_refs": [],
-      "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "evidence": [
+        "docs/tasks/LEDGER-local.md",
+        "docs/evidence/ledger-validation-final-2026-10-24.json"
+      ],
+      "note": "EXEC-DEC-001 local synthetic sub-scope complete: independent review,product226,quality87,actual synthetic PostgreSQL79 inputs/18checks. Full integration queue still waits for Q19 actual gates; active local pointer is docs/tasks/offline-execution-queue.json.",
+      "local_status": "completed"
     },
     {
       "id": "Q21",
@@ -499,7 +587,13 @@
       "status": "pending",
       "approval_refs": [],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "합성 평가/대사/스냅샷 로컬 범위 완료. 실제 계좌 대사와 Q19 통합은 대기; 원래 전체 완료로 집계하지 않음. EXEC-DEC-001 적용.",
+      "local_status": "completed",
+      "local_evidence": [
+        "docs/tasks/VALUATION-local.md",
+        "docs/evidence/valuation-review-final-2026-10-24.json",
+        "docs/evidence/valuation-validation-final-2026-10-24.json"
+      ]
     },
     {
       "id": "Q22",
@@ -521,7 +615,13 @@
       "status": "pending",
       "approval_refs": [],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "합성 로컬 자산/현금/대사 보고와 CLI 조회 완료. 실제 계좌 자료·외부 전달·운영 영속성은 대기; 선행 실제 통합 완료와 구분. EXEC-DEC-001 적용.",
+      "local_status": "completed",
+      "local_evidence": [
+        "docs/tasks/REPORT-local.md",
+        "docs/evidence/report-review-final-2026-10-24.json",
+        "docs/evidence/report-validation-final-2026-10-24.json"
+      ]
     },
     {
       "id": "Q23",
@@ -545,7 +645,23 @@
       "status": "pending",
       "approval_refs": [],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. 정책 선행조건: PG-02 (docs/policy-gates.md). 합성 작업과 실제 연결/실행 관문을 구분한다.",
+      "policy_gate_refs": [
+        "PG-02"
+      ],
+      "selection_gate_refs": [
+        "SG-02",
+        "SG-03"
+      ],
+      "local_status": "completed",
+      "local_evidence": [
+        "docs/tasks/RESEARCH-local.md",
+        "docs/evidence/research-review-final-2026-10-24.json",
+        "docs/evidence/research-validation-final-2026-10-24.json",
+        "docs/research/strategy-comparison-synthetic-2026-10-24.md",
+        "docs/research/strategy-comparison-synthetic-2026-10-24.json"
+      ],
+      "local_notes": "EXEC-DEC-001 합성 성과/전략 범위 완료. 실제 자료·전략 채택·공급자/정책 관문과 전체 완료는 별도."
     },
     {
       "id": "Q24",
@@ -567,7 +683,15 @@
       "status": "pending",
       "approval_refs": [],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "local_status": "completed",
+      "local_evidence": [
+        "docs/tasks/TARGET-local.md",
+        "docs/evidence/target-review-final-2026-10-24.json",
+        "docs/evidence/target-validation-final-2026-10-24.json",
+        "docs/evidence/target-example-2026-10-24.json"
+      ],
+      "local_notes": "EXEC-DEC-001 합성 목표/후보 범위 완료. 실제 PG01/PG03·계좌/권리·주문 관문과 전체 완료는 별도."
     },
     {
       "id": "Q25",
@@ -597,7 +721,19 @@
         "AP-03"
       ],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. EXEC-DEC-001 synthetic local scope completed 2026-10-25; actual model/API/broker integration gates remain. Full status stays pending.",
+      "selection_gate_refs": [
+        "SG-02",
+        "SG-04"
+      ],
+      "local_status": "completed",
+      "local_evidence": [
+        "docs/tasks/AI-local.md",
+        "docs/evidence/ai-review-final-2026-10-25.json",
+        "docs/evidence/ai-security-post-review-2026-10-25.json",
+        "docs/evidence/ai-validation-final-2026-10-25.json",
+        "docs/research/ai-evaluation-synthetic-2026-10-25.md"
+      ]
     },
     {
       "id": "Q26",
@@ -619,7 +755,19 @@
         "AP-04"
       ],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. 정책 선행조건: PG-01 (docs/policy-gates.md). 합성 작업과 실제 연결/실행 관문을 구분한다. EXEC-DEC-001 synthetic local scope completed 2026-10-25. Real authentication/PG-01 and broker execution remain; full status stays pending.",
+      "policy_gate_refs": [
+        "PG-01"
+      ],
+      "local_status": "completed",
+      "local_evidence": [
+        "docs/tasks/APPROVAL-local.md",
+        "docs/evidence/approval-review-final-2026-10-25.json",
+        "docs/evidence/approval-security-post-review-2026-10-25.json",
+        "docs/evidence/approval-validation-final-2026-10-25.json",
+        "docs/evidence/approval-example-2026-10-25.json"
+      ],
+      "product_followup": "docs/product-delivery-plan.md"
     },
     {
       "id": "Q27",
@@ -648,7 +796,14 @@
         "AP-05"
       ],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. 정책 선행조건: PG-01, PG-03 (docs/policy-gates.md). 합성 작업과 실제 연결/실행 관문을 구분한다.",
+      "policy_gate_refs": [
+        "PG-01",
+        "PG-03"
+      ],
+      "selection_gate_refs": [
+        "SG-01"
+      ]
     },
     {
       "id": "Q28",
@@ -656,11 +811,18 @@
         "J04",
         "M01",
         "M02",
-        "M04"
+        "M04",
+        "C03",
+        "C05",
+        "D01",
+        "D05",
+        "F05",
+        "J05",
+        "J06"
       ],
-      "scope": "J04, M01·02·04의 구현 준비",
+      "scope": "J04/J06 및 C/D/F/J05 사용자 운영 후속, M01·02·04 구현 준비; P28-01~08",
       "prerequisite_description": "전송 권한·모의 통합 경로",
-      "completion_criterion": "전달 추적·감시·경보·백업·복구",
+      "completion_criterion": "기존 전달·감시·복원 + 화면/계약·실행 조립·실제 로컬 제어의 합성 검수·조회 대시보드·설치/업데이트/안내: P28-01~08 증거",
       "depends_on": [
         "Q27"
       ],
@@ -673,7 +835,20 @@
         "AP-10"
       ],
       "evidence": [],
-      "note": "이 묶음은 명시한 하위 범위만 다룬다. AP-10의 대상·공유 데이터·횟수·기간 승인 전에는 로컬 준비만 가능하다. 개발 알림 AP-01은 투자 보고·운영 경보 전송 권한을 포함하지 않는다. 예약·지속 운영은 AP-08도 필요하다."
+      "note": "이 묶음은 명시한 하위 범위만 다룬다. AP-10의 대상·공유 데이터·횟수·기간 승인 전에는 로컬 준비만 가능하다. 개발 알림 AP-01은 투자 보고·운영 경보 전송 권한을 포함하지 않는다. 예약·지속 운영은 AP-08도 필요하다.",
+      "selection_gate_refs": [
+        "SG-02"
+      ],
+      "product_subtasks": [
+        "P28-01",
+        "P28-02",
+        "P28-03",
+        "P28-04",
+        "P28-05",
+        "P28-06",
+        "P28-07",
+        "P28-08"
+      ]
     },
     {
       "id": "Q29",
@@ -688,7 +863,7 @@
       ],
       "scope": "K01~07 통합 판정",
       "prerequisite_description": "구성요소별 검증 완료",
-      "completion_criterion": "장애·보안·승인·데이터 실패 시나리오 통과",
+      "completion_criterion": "기존 REQ/SC·장애·보안 통합 + 사용자 설치/화면/CLI 흐름·부하/복원·실제 연결 복귀표: P29-01/02·RETURN-01 증거",
       "depends_on": [
         "Q28"
       ],
@@ -699,7 +874,12 @@
       "status": "pending",
       "approval_refs": [],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "product_subtasks": [
+        "P29-01",
+        "P29-02",
+        "RETURN-01"
+      ]
     },
     {
       "id": "Q30",
@@ -714,7 +894,7 @@
         "M05"
       ],
       "scope": "L01·02, G07 모의 평가, M 운영 기록",
-      "prerequisite_description": "모의 API 범위·관찰 기준·운영 자원",
+      "prerequisite_description": "모의 API 범위·관찰 기준·운영 자원; RETURN-02로 Q19~29 실제 연결 잔여 판정 완료",
       "completion_criterion": "장 시간 지속 모의·그림자 운용 기록",
       "depends_on": [
         "Q29"
@@ -729,7 +909,13 @@
         "AP-08"
       ],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. 정책 선행조건: PG-04 (docs/policy-gates.md). 합성 작업과 실제 연결/실행 관문을 구분한다.",
+      "policy_gate_refs": [
+        "PG-04"
+      ],
+      "product_subtasks": [
+        "RETURN-02"
+      ]
     },
     {
       "id": "Q31",
@@ -753,7 +939,14 @@
         "AP-05"
       ],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. 정책 선행조건: PG-05 (docs/policy-gates.md). 합성 작업과 실제 연결/실행 관문을 구분한다.",
+      "policy_gate_refs": [
+        "PG-05"
+      ],
+      "selection_gate_refs": [
+        "SG-01",
+        "SG-02"
+      ]
     },
     {
       "id": "Q32",
@@ -775,7 +968,10 @@
         "AP-07"
       ],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full. 정책 선행조건: PG-05 (docs/policy-gates.md). 합성 작업과 실제 연결/실행 관문을 구분한다.",
+      "policy_gate_refs": [
+        "PG-05"
+      ]
     },
     {
       "id": "Q33",
@@ -849,7 +1045,8 @@
       "status": "pending",
       "approval_refs": [],
       "evidence": [],
-      "note": "Completion here covers the stated sub-scope, not every original task ID in full."
+      "note": "Completion here covers the stated sub-scope, not every original task ID in full.",
+      "product_followup": "docs/product-delivery-plan.md"
     },
     {
       "id": "Q36",
@@ -871,5 +1068,7 @@
       "evidence": [],
       "note": "Completion here covers the stated sub-scope, not every original task ID in full."
     }
-  ]
+  ],
+  "product_delivery_queue": "docs/tasks/product-delivery-queue.json",
+  "product_delivery_decision": "docs/decisions/EXEC-DEC-002-product-delivery.md"
 }

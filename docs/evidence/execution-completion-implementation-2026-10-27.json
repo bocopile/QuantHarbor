@@ -1,0 +1,157 @@
+{
+  "task": "Q27-local",
+  "phase": "completion_obligations_implementation",
+  "status": "partial",
+  "q27_complete": false,
+  "at": "2026-10-27T02:16:41.321220+00:00",
+  "role": {
+    "name": "qh_implementer",
+    "model": "gpt-6.1-sol",
+    "reasoning": "high",
+    "profile": "qh_development",
+    "outcome": "runner_timeout_after_handoff_written",
+    "timeout_seconds": 1800,
+    "unfinished_logged_commands": 0
+  },
+  "handoff_sha256": "ac1343a390b9786581f481f84d7c41c313a610e86423a4b1432b32c3592ccba1",
+  "changed": [
+    "src/quantharbor/adapters/postgres_execution.py",
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "tests/product/test_execution_control.py",
+    "tests/product/test_execution_storage.py",
+    "src/quantharbor/adapters/synthetic_approval.py"
+  ],
+  "owned_sha256": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "526054be4741635fd73404144be0f816a3e86025d14ba5792dde8312c3c56998",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "a1e3a142ac532f05ea69b4f6058c3afa395813e88f7f9cdfce780e3cea0124b4",
+    "docs/development/execution.md": "015cb192eabd273c5475522c49d165b2b372989198a1cf85f217d65a4dd9d1c2",
+    "migrations/0003_synthetic_execution.sql": "57847f4ca3534af21c7dfd552b577484e2380a69107cfcfb5f2908ea98b3e6ba",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "e7bfe26132c919ecc62c7384daf53372478914f600280a10754564c86c1d552a",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "01624dee24a631bf112de6133ed9162ac24827a9a9c20c4471f2151a436f3b2e",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31"
+  },
+  "root_owned28_match": true,
+  "protected520_unchanged_before_root_integration": true,
+  "commands": [
+    {
+      "label": "focused_frozen",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_execution_storage.CompletionLookupTests",
+        "test_execution_control.ExecutionControlTests.test_recovery_controller_rebind_then_approver_invalidates_and_reconciles_again",
+        "test_execution_control.ExecutionControlTests.test_recovery_two_controllers_complete_rebind_resume_then_stop",
+        "test_execution_sql",
+        "-v"
+      ],
+      "elapsed_seconds": 339.514,
+      "exit_code": 0,
+      "log_sha256": "d93a6970cc68571102ee418bf32dfeba73b1c8fbb0465dcc15c531609cb5b303"
+    },
+    {
+      "label": "public_quality",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "scripts/check_quality.py"
+      ],
+      "elapsed_seconds": 1.055,
+      "exit_code": 1,
+      "log_sha256": "7d6afbf192288baee154e15c59f6bc1706030414689783a5992f8e2c4b4eb07b"
+    },
+    {
+      "label": "ai_team",
+      "command": [
+        "python3.13",
+        "-B",
+        "scripts/check_ai_team.py"
+      ],
+      "elapsed_seconds": 0.072,
+      "exit_code": 0,
+      "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+    },
+    {
+      "label": "git_diff_check",
+      "command": [
+        "git",
+        "--no-optional-locks",
+        "diff",
+        "--check"
+      ],
+      "elapsed_seconds": 0.021,
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "red_green_scope": {
+    "red": "3 focused missing-reclaim errors on original version. A 18→19/20 counterexamples source/design-based; no DB red execution by worker.",
+    "green": "15 latest local focused cases pass (339.229s unittest /339.514s command); earlier directly affected9 pass (148.775s), not latest full suite.",
+    "intermediate_failures_preserved": "persistent-state handles assertion corrected; terminal rebind moved before new candidate source; active3 uses actual smaller buy/sell target input with explicit exposure ceiling2000 to reach active gate. No finance formula replacement.",
+    "old133_negative_preserved": true
+  },
+  "source_freeze_scope": "15 tests used identical src/tests; final SQL reclaim guard changed afterward and has no actual DB result yet",
+  "implementation": [
+    "별도 controller query 유지 transaction에서 완료 command의 commands/nonces/receipts만 원자 회수. 다른 owner 쓰기/hold/계좌 메타데이터 변경과 결합 금지.",
+    "불변 challenge/receipt exact fallback으로 replay/query 해소. transient map 재저장 없음, current auth/session/generation/action/target/nonce/raw hash/source 검사 유지.",
+    "SQL unfinished 의무는 current-generation immutable challenge/receipt에서 산정; deferred account/evidence 제약으로 pending map 삭제와 completed partial triple 삭제 차단.",
+    "role/mode/stop-history 단계별 session 종료 및 현재/향후 stop+재대사 비용; 초기 복구25행(2×11+2+1), 독립 withdrawal/issuer repair 의무. actual row/index/copy/metadata bytes와 remaining 전후 상계 guard.",
+    "복구를 막는 candidate source 교체는 변경 전에 거절. 보호 stop 뒤 reconcile은 기존 mode에서 완료, stopped를 재개방하는 추가 rebind는 elective capacity 검사.",
+    "새 terminal3 admission/dispatch 양성 및 active3 실제 admission gate 거절 로컬 검증. 금융 산식 mock/guard 제거/상한 확대 없음."
+  ],
+  "db_scenarios_written": 61,
+  "db_scenarios_executed_by_worker": 0,
+  "remaining": {
+    "EX32_EX37": "Root must actually run new six and existing storage_saturated_completion/storage_terminal_third. 25-row stage reserve and byte preservation are implemented but not actual DB-proven. Shared recovery requires whole-account current journal/read-set match; independent obligations not netted.",
+    "EX34": "New SQL lookup/deferred constraints, auth exact bindings, raw/domain hash separation, save/COMMIT/EOF rollback require root actual PostgreSQL execution. SQL parser/permissions not executed by worker.",
+    "EX05_EX31": "Python replay and recovery paths focused pass; root actual COMMIT response-loss after reclaim and recovery stage conservation pending.",
+    "EX40": "Existing fixed image/network-none/no ports/no host mount/pullnever/own UUID cleanup/financial retry0 paths retained; not executed here.",
+    "prior_remaining": "Existing unsupported earlier cumulative successor reinterpretation, zero-cost and settled-trade dependency corrections remain as previously recorded; no new complete claim.",
+    "quality": "Existing immutable docs/implementation-backlog.md baseline mismatch prevents public quality pass. Worker preserved both baseline and file; root integration decision required.",
+    "final": "Root whole product/quality87 and independent security/general review not run; status/queue/contracts/evidence untouched for root integration."
+  },
+  "root_baseline_repair": {
+    "path": "docs/implementation-backlog.md",
+    "cause": "root plan-link paragraph added before worker start to frozen baseline document",
+    "before": "1d5d71314022a7ae037ba2cbd56892591f84745510eb5b0333b1bdf1785f98fe",
+    "after": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+    "method": "remove only root-added paragraph; baseline manifest unchanged",
+    "extended_plan_preserved": "docs/product-delivery-plan.md"
+  },
+  "not_run": [
+    "latest full actual DB61",
+    "latest full product/quality suites",
+    "independent final security/general reviews"
+  ],
+  "root_public_quality_after_baseline_repair": {
+    "result": "pass",
+    "files_checked": 549,
+    "findings": []
+  },
+  "root_diff_check": "pass"
+}

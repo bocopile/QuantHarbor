@@ -1,0 +1,45 @@
+{
+  "task": "Q17A",
+  "date": "2026-10-24",
+  "status": "R1-R4 fixes returned; independent re-review pending",
+  "actor": "foundation_implementer",
+  "red_regression": {
+    "methods": 4,
+    "expected_assertion_failures": 7,
+    "covers": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ]
+  },
+  "green_tests": {
+    "market_tests": 33,
+    "product_tests": 98,
+    "product_seconds": 0.517,
+    "quality_files": 212,
+    "quality_findings": 0,
+    "exit_code": 0
+  },
+  "fixes": [
+    "raw domain PIT versus application validated view and action date binding",
+    "full ActionRef identity/hash and basis/knowledge/venue/unit checks",
+    "future/regressing receipt rejection",
+    "all-evidence conflict reconstruction with permutation regressions"
+  ],
+  "files": {
+    "src/quantharbor/domain/market_data.py": "7021ae1020541040ec386572cb4ca0cd53794a23685beed8ca453d08b0142b9b",
+    "src/quantharbor/domain/serialization.py": "8aa1b45cdeb8f3b6d728011978baaed69c23e7b084f9cd68e7a48a9d26e50075",
+    "src/quantharbor/application/market_ingest.py": "e30c25995ab53ac538a487ba2afee2e13b0f12ccb0f477f5bba2f62f3c3bdb46",
+    "tests/product/test_market_data.py": "960fb2ce590d506a60f391cdebd17a63c49d1a31a29e943d66e5e6f9d94543ad",
+    "tests/product/test_market_ingest.py": "a28d646a700a99203bd77e89eb5f48f7971c53b504efaa9158611dfa02b1387b",
+    "tests/product/test_market_review.py": "a9259618024985ca351cce00d216faef56fadafee376ed303c805bf2d8d6f4d5",
+    "docs/development/market-data.md": "ad56dd77a784adba74d7b1c8160f36328cd13ccce82a8929be70323abbfcecbf"
+  },
+  "unexecuted": [
+    "independent re-review",
+    "Docker",
+    "Q17B persistence",
+    "actual source/API"
+  ]
+}

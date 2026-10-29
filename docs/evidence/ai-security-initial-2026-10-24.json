@@ -1,0 +1,57 @@
+{
+  "task": "Q25-local",
+  "role": "qh_security_reviewer",
+  "model": "gpt-6-astra",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "changes_required",
+  "findings": [
+    {
+      "id": "AS1",
+      "priority": "P1",
+      "path": "src/quantharbor/application/investment_ai.py:476",
+      "summary": "cached replay returns complete content after current report rights revoked"
+    },
+    {
+      "id": "AS2",
+      "priority": "P1",
+      "path": "src/quantharbor/adapters/synthetic_investment_ai.py:79",
+      "summary": "hypothesis required source dependencies replaceable with timezone ref; origin rights revocation bypass"
+    },
+    {
+      "id": "AS3",
+      "priority": "P1",
+      "path": "src/quantharbor/adapters/synthetic_investment_ai.py:62",
+      "summary": "blocked unauthorized query result can be resealed complete and review accepted"
+    },
+    {
+      "id": "AS4",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:499",
+      "summary": "malformed post-dispatch usage leaves dispatched instead of unknown_charge; new window bypass"
+    },
+    {
+      "id": "AS5",
+      "priority": "P2",
+      "path": "src/quantharbor/application/investment_ai.py:356",
+      "summary": "query16 cap resets per attempt; missing atomic request-level cumulative quota"
+    }
+  ],
+  "sha256": {
+    "src/quantharbor/domain/investment_ai.py": "3401ddcf640f56a680912ea45b9c440dea978e723579b7f2724df14ab9c44a9b",
+    "src/quantharbor/ports/investment_ai.py": "9630a387aab0f8b27dfc461160fab51200b51936b6411aa2b64e2b2d984285c4",
+    "src/quantharbor/application/investment_ai.py": "eb975ed7b9eefec52fca6fea937d4bb6c6140ee3cdc87f579af9ed302d2f251d",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "71f470739dac118ab2e69f37e1a90916e5acea55064cb27e044d7b5eabcdc33b",
+    "src/quantharbor/domain/serialization.py": "99e6c37650ef9ac1e88577644ec99b38b6efdd9c00ef0448b4e1563c30ba6ab1",
+    "tests/product/synthetic_investment_ai.py": "0678d7c0810297f350d9b57a2146f018ae49df425058ed32ad99024441de48c0",
+    "tests/product/test_investment_ai.py": "25f7994b242a98f8286cd7f072ed99e8eef9f082116f41ec8b6df1656bcb8c18",
+    "tests/product/test_investment_ai_bounds.py": "684965fab6141da0546c716916e4cf95fb655e39ce8accd4830bb01725c9a3f1",
+    "tests/product/test_investment_ai_evaluation.py": "4582f6e6eba5f8da0b3f8682754d04b8019354d2470209972b729956e5b1f884",
+    "tests/product/test_investment_ai_sources.py": "9defc5339bc10dd888ba49202567df3c47e73ba0a7cc3346ab1f5ea7446460c3",
+    "docs/development/investment-ai.md": "ce055b88182989d3b402eec6d410769e9472319d1cf79064d9f6a328a0ffda3b"
+  },
+  "hashes_match": true,
+  "spec_raw_sha256": "726411c4f367720820d7d47cc829e0baedca39254718c90c31a8bb8058004f3f",
+  "baseline_files_unchanged": 7,
+  "tests_executed": false
+}

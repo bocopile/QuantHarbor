@@ -1,0 +1,621 @@
+{
+  "task": "Q27-local",
+  "phase": "root_actual_database_completion_obligations",
+  "exit_code": 1,
+  "elapsed_seconds": 274.223,
+  "at": "2026-10-27T02:22:34.010603+00:00",
+  "command": "python3.13 -B /private/tmp/qh-q27-db-completion-repair1.py",
+  "runner_sha256": "317f7823058bdc5d1ca368549148504639a461121e58037865f4eab0e0b10c09",
+  "handoff_sha256": "ac1343a390b9786581f481f84d7c41c313a610e86423a4b1432b32c3592ccba1",
+  "result": {
+    "scope": "Q27_root_actual_completion_focused",
+    "status": "fail",
+    "q27_complete": false,
+    "planned_scenarios": [
+      "sql_auth_closed",
+      "completion_recovery_normal",
+      "completion_recovery_two_controllers",
+      "completion_recovery_invalidated",
+      "completion_terminal_third",
+      "completion_active_third",
+      "completion_lookup_atomicity",
+      "saturated_completion",
+      "terminal_third",
+      "frame_rollback"
+    ],
+    "completed_scenarios": [
+      "sql_auth_closed",
+      "completion_recovery_normal",
+      "completion_recovery_two_controllers"
+    ],
+    "checks": [
+      "SQLAUTH_product_generic_context_issue_GUC_selfhash_denied",
+      "SQLAUTH_real_two_backend_action_bound_context_no_cross_connection",
+      "CLOSED_owner_missing_null_extra_decimal_reservation_atomicity_duplicate_key_separate",
+      "CLOSED_standalone_consumed_intent_outbox_reach_COMMIT_fail_fingerprint_unchanged",
+      "SQLAUTH_atomic_withdraw_exact_delta_current_session_target_nonce_receipt_negative_and_positive_replay_noop",
+      "DEC004_actual_rows_bytes_recovery_normal",
+      "DEC004_actual_rows_bytes_recovery_two_controllers"
+    ],
+    "goldens": {
+      "completion_recovery_normal": [
+        {
+          "stage": "restart",
+          "before": {
+            "bytes": 2488956,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 2362368,
+              "records": 33
+            },
+            "actual_bytes": 126588,
+            "actual_records": 46
+          },
+          "after": {
+            "bytes": 2107015,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 1969152,
+              "records": 27
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          }
+        },
+        {
+          "stage": "controller",
+          "before": {
+            "bytes": 2107015,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 1969152,
+              "records": 27
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          },
+          "after": {
+            "bytes": 1788203,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 1641472,
+              "records": 22
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          }
+        },
+        {
+          "stage": "second-session",
+          "before": {
+            "bytes": 1788203,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 1641472,
+              "records": 22
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          },
+          "after": {
+            "bytes": 1207201,
+            "records": 71,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1051648,
+              "records": 13
+            },
+            "actual_bytes": 155553,
+            "actual_records": 58
+          }
+        },
+        {
+          "stage": "rebind",
+          "before": {
+            "bytes": 1207201,
+            "records": 71,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1051648,
+              "records": 13
+            },
+            "actual_bytes": 155553,
+            "actual_records": 58
+          },
+          "after": {
+            "bytes": 822597,
+            "records": 71,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 658432,
+              "records": 11
+            },
+            "actual_bytes": 164165,
+            "actual_records": 60
+          }
+        },
+        {
+          "stage": "resume",
+          "before": {
+            "bytes": 822597,
+            "records": 71,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 658432,
+              "records": 11
+            },
+            "actual_bytes": 164165,
+            "actual_records": 60
+          },
+          "after": {
+            "bytes": 628313,
+            "records": 69,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 461824,
+              "records": 8
+            },
+            "actual_bytes": 166489,
+            "actual_records": 61
+          }
+        },
+        {
+          "stage": "stop",
+          "before": {
+            "bytes": 628313,
+            "records": 69,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 461824,
+              "records": 8
+            },
+            "actual_bytes": 166489,
+            "actual_records": 61
+          },
+          "after": {
+            "bytes": 499569,
+            "records": 68,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 330752,
+              "records": 6
+            },
+            "actual_bytes": 168817,
+            "actual_records": 62
+          }
+        }
+      ],
+      "completion_recovery_two_controllers": [
+        {
+          "stage": "restart",
+          "before": {
+            "bytes": 2488956,
+            "records": 79,
+            "remaining": {
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 2362368,
+              "records": 33
+            },
+            "actual_bytes": 126588,
+            "actual_records": 46
+          },
+          "after": {
+            "bytes": 2107015,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 1969152,
+              "records": 27
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          }
+        },
+        {
+          "stage": "controller",
+          "before": {
+            "bytes": 2107015,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 2
+              },
+              "bytes": 1969152,
+              "records": 27
+            },
+            "actual_bytes": 137863,
+            "actual_records": 48
+          },
+          "after": {
+            "bytes": 1788203,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 1641472,
+              "records": 22
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          }
+        },
+        {
+          "stage": "second-session",
+          "before": {
+            "bytes": 1788203,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 1
+              },
+              "bytes": 1641472,
+              "records": 22
+            },
+            "actual_bytes": 146731,
+            "actual_records": 53
+          },
+          "after": {
+            "bytes": 1469391,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1313792,
+              "records": 17
+            },
+            "actual_bytes": 155599,
+            "actual_records": 58
+          }
+        },
+        {
+          "stage": "rebind",
+          "before": {
+            "bytes": 1469391,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 1,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 1313792,
+              "records": 17
+            },
+            "actual_bytes": 155599,
+            "actual_records": 58
+          },
+          "after": {
+            "bytes": 1084787,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 920576,
+              "records": 15
+            },
+            "actual_bytes": 164211,
+            "actual_records": 60
+          }
+        },
+        {
+          "stage": "resume",
+          "before": {
+            "bytes": 1084787,
+            "records": 75,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 1,
+                "sessions": 0
+              },
+              "bytes": 920576,
+              "records": 15
+            },
+            "actual_bytes": 164211,
+            "actual_records": 60
+          },
+          "after": {
+            "bytes": 759431,
+            "records": 71,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 592896,
+              "records": 10
+            },
+            "actual_bytes": 166535,
+            "actual_records": 61
+          }
+        },
+        {
+          "stage": "stop",
+          "before": {
+            "bytes": 759431,
+            "records": 71,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 592896,
+              "records": 10
+            },
+            "actual_bytes": 166535,
+            "actual_records": 61
+          },
+          "after": {
+            "bytes": 499615,
+            "records": 68,
+            "remaining": {
+              "plan": {
+                "next": 0,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "bytes": 330752,
+              "records": 6
+            },
+            "actual_bytes": 168863,
+            "actual_records": 62
+          }
+        }
+      ]
+    },
+    "cleanup": [
+      {
+        "project": "qh-ledger-0e785ec7813d4279b27aece3fb2a70bd",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-a09ff786728f4302970be44653b8a5d0",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-d2a66bb6654449bca81beb3d672cb0b2",
+        "result": "own_project_removed"
+      },
+      {
+        "project": "qh-ledger-85ab1c904b324546b11a5a145cdccfd4",
+        "result": "own_project_removed"
+      }
+    ],
+    "phase": "completion_recovery_invalidated",
+    "fixture_sha256": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migration_sha256": "629061c1a66eb4ec1575f8e1b0e4b3a3b9ae0cfe45c1bb20bcfd649e6d5d6b22",
+    "unexecuted": "Focused completion/storage/auth cases only; latest full DB suite, independent review and full product remain pending.",
+    "reason": "storage_failure",
+    "error_trace": [
+      {
+        "file": "qh-q27-db-completion-repair1.py",
+        "line": 48,
+        "function": "<module>"
+      },
+      {
+        "file": "check_execution.py",
+        "line": 1375,
+        "function": "completion_recovery_orders"
+      },
+      {
+        "file": "check_execution.py",
+        "line": 1327,
+        "function": "completion_step"
+      },
+      {
+        "file": "check_execution.py",
+        "line": 1375,
+        "function": "<lambda>"
+      },
+      {
+        "file": "postgres_execution.py",
+        "line": 92,
+        "function": "call"
+      },
+      {
+        "file": "postgres_execution.py",
+        "line": 258,
+        "function": "_persist"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 283,
+        "function": "call"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 39,
+        "function": "call"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 270,
+        "function": "_apply"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 188,
+        "function": "_select"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 39,
+        "function": "call"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 156,
+        "function": "_exchange"
+      }
+    ],
+    "diagnostic_sql_errors": [
+      "ERROR:  execution_auth",
+      "CONTEXT:  PL/pgSQL function execution_apply(text,text) line 6 at RAISE",
+      "ERROR:  execution_completion",
+      "CONTEXT:  PL/pgSQL function execution_save(text,text,text) line 145 at RAISE"
+    ],
+    "diagnostic_mode": "same fixed SQL/input/role; only synthetic UoW stderr captured"
+  },
+  "owned_before": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "526054be4741635fd73404144be0f816a3e86025d14ba5792dde8312c3c56998",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "a1e3a142ac532f05ea69b4f6058c3afa395813e88f7f9cdfce780e3cea0124b4",
+    "docs/development/execution.md": "015cb192eabd273c5475522c49d165b2b372989198a1cf85f217d65a4dd9d1c2",
+    "migrations/0003_synthetic_execution.sql": "629061c1a66eb4ec1575f8e1b0e4b3a3b9ae0cfe45c1bb20bcfd649e6d5d6b22",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "e7bfe26132c919ecc62c7384daf53372478914f600280a10754564c86c1d552a",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "01624dee24a631bf112de6133ed9162ac24827a9a9c20c4471f2151a436f3b2e",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31"
+  },
+  "owned_after": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "526054be4741635fd73404144be0f816a3e86025d14ba5792dde8312c3c56998",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "a1e3a142ac532f05ea69b4f6058c3afa395813e88f7f9cdfce780e3cea0124b4",
+    "docs/development/execution.md": "015cb192eabd273c5475522c49d165b2b372989198a1cf85f217d65a4dd9d1c2",
+    "migrations/0003_synthetic_execution.sql": "629061c1a66eb4ec1575f8e1b0e4b3a3b9ae0cfe45c1bb20bcfd649e6d5d6b22",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "e7bfe26132c919ecc62c7384daf53372478914f600280a10754564c86c1d552a",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "01624dee24a631bf112de6133ed9162ac24827a9a9c20c4471f2151a436f3b2e",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31"
+  },
+  "owned_unchanged": true,
+  "q27_complete": false
+}

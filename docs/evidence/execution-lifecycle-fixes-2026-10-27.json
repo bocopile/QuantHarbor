@@ -1,0 +1,347 @@
+{
+  "task": "Q27-local",
+  "phase": "completion_lifecycle_fixes",
+  "status": "partial",
+  "role": {
+    "model": "gpt-6.1-sol",
+    "reasoning": "high",
+    "profile": "qh_development",
+    "exit_code": 0
+  },
+  "handoff_sha256": "4fe6d4e17fa100888b11b3c8eeac2e74876a16d7762e97c9c49a25cfb1824d82",
+  "changed": [
+    "scripts/check_execution.py",
+    "docs/development/execution.md",
+    "migrations/0003_synthetic_execution.sql",
+    "tests/product/test_execution_sql.py"
+  ],
+  "owned_sha256": {
+    "src/quantharbor/domain/execution.py": "621f66a8638a2a4f039a31d9466288704af00f87d9bba6f07106281ebc9d46fb",
+    "src/quantharbor/domain/execution_math.py": "e40c6e1a5c6320c9e19ea99ff444f9baf1ec55a6c0dc71e131ab55c43c0d506a",
+    "src/quantharbor/application/execution.py": "2b0d7b1bb24638a82d9d32d32aefce2fb8425778212a2ba133ba8c10ab14c615",
+    "src/quantharbor/ports/execution.py": "4c9bc8ee8b6df79ad1f0ff8f724acf62a2b83cf46414dd10468305737fb88a77",
+    "src/quantharbor/adapters/postgres_execution.py": "cce3f1136382b000b565423c4c45d119a660758e8f1d7300ec79ba187052b183",
+    "src/quantharbor/adapters/synthetic_execution_broker.py": "48cb7669bfd8f2f560985e994156ec74cf908f4873e2f43dc3183dacd711ac0d",
+    "src/quantharbor/adapters/execution_uow.py": "4be6e45fc466a66abe6f4cd2e627b393775b3dca2d7849e247ea247f45544a3e",
+    "tests/product/synthetic_execution.py": "46f962978b3773e74bf6d2c69dc1ecba352579fd5c8bd2b7d28fc03e3d189e0c",
+    "tests/product/test_execution.py": "297889054484936b4ba501222dee227149f31f87e9d7b0d87bc2e080a9f6619b",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "scripts/check_execution.py": "206d34784890eb0975bad5cf3d2dc151bf2f58024fe09e77035e486afa0ef160",
+    "docs/development/execution.md": "3b1bf22e2e08305d1190f13208e8491ac8333825ef0b4087db5e573baa29f3b4",
+    "migrations/0003_synthetic_execution.sql": "2a28e090ab4546348d1b776413a2aab2212758f5462782178268de68663e4ab9",
+    "src/quantharbor/application/approval.py": "35d0aebdcbdd676e9c49d05f8ab7af077b2fd94ef174e8701069834156f516b5",
+    "src/quantharbor/domain/serialization.py": "ddc99b122b632afe224dbd73e6b030e0832d4348beaef6990d5adbd0064f5a59",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+    "src/quantharbor/application/research.py": "99a32e7c445f21cbd304e4f2b3cb6fbe31d38719579bf3c4d66c101542ebff59",
+    "src/quantharbor/application/execution_research.py": "21324781c4e91744317bd630965b471f0016aa868b0de92f0dc7b781af28dbb2",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_research_execution.py": "9ccbc0d83d7d6e6d887887c48a036d2485f9dfbfd693482bc36d08b6c628f423",
+    "tests/product/test_execution_control.py": "f5a6127956c0a78b779d6be4fc8aadecc7f27d04637d14388d6cce8682a127ac",
+    "src/quantharbor/domain/execution_budget.py": "a0c916968d967da5e308a22c45e897d26aa92d7ddf02b3f482128d18fa47f6d4",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c",
+    "tests/product/test_execution_sql.py": "59c7b7db567be1fe00fb4b24fa0e75b9e1b39fef1de38c1e09c4fcc711b5b0a9",
+    "src/quantharbor/adapters/postgres_ledger.py": "c73b4855ba57c2480362ffc2b59afcf9247e36a868641d1f2639c974e26ed4f0",
+    "src/quantharbor/adapters/synthetic_approval.py": "1415c75bda739a189ed5ea4146b1d74e32da011af56e67770ffdded97ca47d31"
+  },
+  "root_sha_checks": {
+    "owned28_match": true,
+    "protected_initial531_match": true,
+    "final_public_snapshot_match": true,
+    "command_logs_match": true
+  },
+  "changes": {
+    "A": "noncontroller repair2/393216 only when common_plan.resume1; optional rebind acquires all newly created obligations; controller13,next29,repair2 unchanged",
+    "B": "protective issued commands5 normal/6 recovery; approved own7 normal/8-or9 recovery retained on issuance to survive rejected last command; explicit byte repair credits; completion guard applies unconsumed protective receipts and expired/invalidated approvals",
+    "new_guard_scope": "success/rejected revoke/withdraw, same-TX withdraw, terminal expired/invalidated; consumed owner commands and successful approve/admit excluded; exact auth validator unchanged",
+    "immutable_evidence": "pending current-generation challenge/receipt reserve and consumed owner skip remain independent of mutable command lookup"
+  },
+  "transition_basis": [
+    {
+      "stage": "running_or_normal_stopped_noncontroller_terminal",
+      "classification": "mandatory",
+      "before_reserve": {
+        "records": 2,
+        "bytes": 131072
+      },
+      "actual_growth_max_records": 2,
+      "new_resume_obligation": 0,
+      "basis": "disconnect changes session/version, not global mode; plan.resume remains0"
+    },
+    {
+      "stage": "restart",
+      "classification": "mandatory_if_next1",
+      "before_reserve": {
+        "records": 29,
+        "bytes": 3211264
+      },
+      "after_components": "two session slots13/1376256 each +repair2/393216 +resume1/65536; unchanged"
+    },
+    {
+      "stage": "session_issue_in_promised_recovery",
+      "classification": "mandatory_if_slot_and_rebind1",
+      "before_reserve": {
+        "records": 13,
+        "bytes": 1376256
+      },
+      "after_noncontroller_max": {
+        "records": 9,
+        "bytes": 851968
+      },
+      "basis": "actual5 +terminal2 +repair2; controller bound unchanged"
+    },
+    {
+      "stage": "normal_stopped_to_rebind",
+      "classification": "elective",
+      "may_increase": true,
+      "precommit_capacity": "execution_check_budget after new plan and staged rows before COMMIT; allocate each new session/approval/command repair obligation",
+      "new_noncontroller_credit": {
+        "records": 2,
+        "bytes": 393216
+      },
+      "new_approval_rows": "approved7 ->8+pending; pending2 unchanged",
+      "new_command_rows": "approve9 unchanged; other4/5 ->6",
+      "new_repair_bytes": "approved and each unconsumed issued command +393216"
+    },
+    {
+      "stage": "recovery_noncontroller_disconnect",
+      "classification": "mandatory",
+      "before_reserve": {
+        "records": 4,
+        "bytes": 524288
+      },
+      "after_components": "actual event/session2 +shared repair2/393216; own live reserve disappears",
+      "caps_not_changed": true
+    },
+    {
+      "stage": "issued_unconsumed_protective_closure",
+      "classification": "mandatory",
+      "records_running": 5,
+      "records_recovery": 6,
+      "actual_rows_last": 3,
+      "actual_rows_hold_retained": 4,
+      "new_repair_rows_max": 2,
+      "command_recovery_bytes": 851968,
+      "typed_closure_byte_bound": 458752,
+      "new_repair_bytes": 393216,
+      "approval_reserve": "remains separate until terminal; rejection may leave approved live"
+    },
+    {
+      "stage": "approved_atomic_withdraw",
+      "classification": "funded_protective_closure",
+      "approval_records_running": 7,
+      "approval_records_recovery_no_pending": 8,
+      "approval_records_recovery_pending": 9,
+      "actual_new_challenge_rows": 3,
+      "actual_terminal_rows": {
+        "last_hold": 3,
+        "retained_hold": 4
+      },
+      "repair_rows": 2,
+      "approval_recovery_bytes": {
+        "no_pending": 917504,
+        "pending": 950272
+      },
+      "typed_challenge_and_closure_bytes_max": 524288,
+      "new_repair_bytes": 393216
+    },
+    {
+      "stage": "issued_expired_command_rejected_approval_still_live",
+      "classification": "mandatory",
+      "before_records_local": 15,
+      "after_records_local_max": 12,
+      "formula": "before approval9+command6; after receipt2+repair2+live_approval8; older protection_pending0 would strand renewed closure",
+      "bytes": "command851968 covers receipt65536+repair393216; approval large-copy/closure credit survives"
+    },
+    {
+      "stage": "issued_command_target_already_terminal",
+      "classification": "mandatory_protective_rejection",
+      "current_generation_only": true,
+      "immutable_source": "execution_evidence challenge absent matching immutable receipt, independent of mutable lookup",
+      "actual_receipt_rows": 2,
+      "new_repair_rows_max": 2,
+      "reserved_rows": 6,
+      "reserved_bytes": 851968
+    },
+    {
+      "stage": "consumed_command",
+      "classification": "owner_budget",
+      "common_command_reserve_skipped": true,
+      "new_guard_excludes": true,
+      "owner_reservation_unchanged": true
+    },
+    {
+      "stage": "fresh_matched_reconcile",
+      "classification": "mandatory_repair_when_promised",
+      "actual_rows_max": 2,
+      "release_rows": 2,
+      "actual_bytes_bound": 393216,
+      "release_bytes": 393216,
+      "new_query_identity_must_be_counted": true
+    },
+    {
+      "stage": "manual_resume",
+      "classification": "mandatory_after_matched_current_readset",
+      "actual_event_rows": 1,
+      "release": "resume1 plus recovery extras on sessions/approvals/commands; source/current auth unchanged"
+    },
+    {
+      "stage": "stop_after_resume",
+      "classification": "mandatory",
+      "controller_stop_repair_reserved": {
+        "records": 3,
+        "bytes": 458752
+      },
+      "actual_event_rows": 1,
+      "resume_obligation_not_created": true
+    },
+    {
+      "stage": "expired_approval_terminal",
+      "classification": "mandatory_terminal_but_recovery_boundary_pending",
+      "terminal_completion_guard": true,
+      "source_outside_scope": "src/quantharbor/application/execution.py:77 requires original approval.valid_from<=at<expires_at even on recovery",
+      "expected_reconcile": "unresolved/recovery_readset_unresolved",
+      "expected_manual_resume": "reconciliation_required",
+      "observed_on_actual_DB_this_turn": false
+    }
+  ],
+  "validation": {
+    "focused_SQL_tests": 4,
+    "focused_SQL_test_failures": 0,
+    "focused_SQL_test_errors": 0,
+    "focused_SQL_unittest_seconds": 0.001,
+    "quality": {
+      "result": "pass",
+      "files_checked": 562,
+      "findings": 0
+    },
+    "team": "pass",
+    "git_diff_check": "pass",
+    "owned_noindex_whitespace_checks": 4,
+    "original_runner_AST_scenarios_preserved": 66,
+    "original_runner_functions_preserved": true,
+    "SQL_auth_caps_owner_lookup_functions_unchanged": true,
+    "tests_reexecuted_from_previous35_plus2_SEC2_validity": "only changed SQL completion test plus3 new static tests; no runtime/security/window/control/storage/full-suite reruns",
+    "actual_DB_proof_claimed": false
+  },
+  "actual_DB": {
+    "executed": false,
+    "new_scenario_function": "completion_approval_terminal",
+    "new_scenario_count": 7,
+    "existing66_preserved": true,
+    "total_authored_scenario_count": 73,
+    "root_functions_kwargs": [
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {}
+      },
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {
+          "action": "withdraw"
+        }
+      },
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {
+          "action": "withdraw",
+          "atomic": true
+        }
+      },
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {
+          "sibling": "withdraw"
+        }
+      },
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {
+          "action": "withdraw",
+          "atomic": true,
+          "sibling": "admit"
+        }
+      },
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {
+          "expiry": "command"
+        }
+      },
+      {
+        "function": "completion_approval_terminal",
+        "kwargs": {
+          "action": "admit",
+          "expiry": "approval"
+        }
+      }
+    ],
+    "root_existing_required": [
+      {
+        "function": "completion_same_generation_third",
+        "kwargs": {
+          "active": true
+        }
+      },
+      {
+        "function": "completion_security_disconnect",
+        "kwargs": {}
+      },
+      {
+        "function": "completion_recovery_orders",
+        "kwargs": {
+          "order": "normal"
+        }
+      },
+      {
+        "function": "completion_recovery_orders",
+        "kwargs": {
+          "order": "two_controllers"
+        }
+      },
+      {
+        "function": "completion_recovery_orders",
+        "kwargs": {
+          "order": "invalidated"
+        }
+      },
+      {
+        "function": "completion_same_generation_third",
+        "kwargs": {}
+      },
+      {
+        "function": "storage_saturated_completion",
+        "kwargs": {}
+      }
+    ],
+    "scenario_claims": "six variants require successful fresh matched reconciliation/manual resume; expired target variant checks nonincreasing terminal closure and existing source-TTL fail-closed recovery boundary, not successful resume",
+    "capacity_preflight_observed_by_root": "elective issuance and ordinary-stop rebind call actual budget check before commit; record per-stage charge; no heartbeat saturation substitute",
+    "runner_all73_and_functions_invoke": "scripts/check_execution.py remains root-only; individual functions take (db,checks,goldens,**kwargs) after install(db)"
+  },
+  "remaining_material_issues": [
+    {
+      "issue": "new SQL and seven authored DB variants have not run on actual PostgreSQL",
+      "severity": "acceptance_pending",
+      "next": "root execute first; static4 do not prove actual DB sufficiency"
+    },
+    {
+      "issue": "expired approval recovery still reaches validate_current original approval TTL check",
+      "severity": "potential_existing_recovery_blocker",
+      "evidence": "src/quantharbor/application/execution.py:77 and postgres_execution.py:917 recovery invokes validate_current for approval head; static only this turn",
+      "changed": false,
+      "scope_reason": "all other source28 edits prohibited; no runtime authorization/source semantics relaxation",
+      "root_next": "run expired-target scenario and decide dedicated source-contract followup if complete expiry recovery is required"
+    },
+    {
+      "issue": "conservative separate live approval and command repair credits may reject additional elective issuance/rebind sooner at fixed caps",
+      "severity": "capacity_tradeoff",
+      "next": "actual targeted cases and independent reservation review; never waive guard or fixed limits"
+    },
+    {
+      "issue": "latest full73 DB, full product/quality unittest, fixed40 final assessment and independent security/general reviews pending",
+      "severity": "acceptance_pending"
+    }
+  ],
+  "q27_complete": false
+}

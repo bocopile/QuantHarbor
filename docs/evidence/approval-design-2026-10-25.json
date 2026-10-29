@@ -1,0 +1,11 @@
+{
+  "task": "Q26-local",
+  "role": "qh_architect",
+  "model": "gpt-6-astra",
+  "reasoning": "high",
+  "execution": "separate_parent_qh_review",
+  "result": "advice_returned_root_adopts_with_explicit_overrides",
+  "source": "docs/research/approval-design-input-2026-10-25.md",
+  "tests_executed": false,
+  "changes_by_advisor": false
+}

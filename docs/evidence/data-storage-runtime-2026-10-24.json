@@ -1,0 +1,61 @@
+{
+  "task": "Q17B-SG03",
+  "date": "2026-10-24",
+  "actor": "root",
+  "status": "local synthetic dependency compatibility pass; independent review pending",
+  "runs": [
+    {
+      "seconds": 13.2,
+      "product_tests": 98,
+      "storage_adapter_tests": 0,
+      "result": "pass"
+    },
+    {
+      "seconds": 14.168,
+      "product_tests": 98,
+      "storage_adapter_tests": 0,
+      "result": "pass",
+      "adds": "exact container env/limits and post-removal check"
+    },
+    {
+      "seconds": 12.255,
+      "product_tests": 98,
+      "storage_adapter_tests": 0,
+      "result": "pass",
+      "adds": "installed LICENSE/NOTICE hash and python metadata dependency check; copied build policy comparison"
+    }
+  ],
+  "verified": [
+    "offline hash-pinned wheel install in fixed linux/arm64 Python3.13.17",
+    "PyArrow26.0.0 import; no Python package dependencies per installed metadata",
+    "decimal128(38,18) exact123.000000000000000001 and UTC microseconds new writer/reader processes",
+    "bounded Parquet reader metadata/schema and full table validation",
+    "no host mount/network/credential env; read-only uid10001 memory512MiB cpu1 pids64 tmp64MiB",
+    "only own labelled UUID container/image removed; post-removal label listing empty",
+    "installed LICENSE/NOTICE match prior wheel hashes"
+  ],
+  "quality": {
+    "unit_tests": 19,
+    "seconds": 3.716,
+    "result": "pass",
+    "public_check_files": 219,
+    "findings": 0,
+    "note": "before this evidence file; later docs increase count"
+  },
+  "files": {
+    "config/market-storage-lock.json": "ddc94a5c468983597f365fca75446ab042861a1abeeecfd0f0c61763d65c1329",
+    "containers/Dockerfile.market-storage": "0aa518dc78fc356593664c3beb5c14739f9563f33b19ff2e889daf40d9c86527",
+    "containers/requirements.market-storage.txt": "dc6d27b895f3915b8543b2526673afeb963c81478418065c23f3bd1c908a4f11",
+    "scripts/check_market_storage.py": "84e42f7ecf45314239dd3a0c74a222a8436e8d4cebedda7a825210f15c55b371",
+    "scripts/check_quality.py": "99d108393920faf5902c487824c4616ff3af47b393988b358a38bf4f32018c93",
+    "tests/quality/test_quality.py": "ab5ab80e20aef50960bb2d8c5f62122387f5f6e4c976c8437ecb923c1633eafe"
+  },
+  "unexecuted": [
+    "Parquet product adapter",
+    "storage adapter tests",
+    "independent security/functional review and validator",
+    "complete native SBOM/CVE scan or source-to-binary attestation",
+    "actual source SG02/API/financial operations"
+  ],
+  "scope": "Q17 storage-only environment; Q13 base and Q14 untrusted research runtime unchanged; free local work"
+}

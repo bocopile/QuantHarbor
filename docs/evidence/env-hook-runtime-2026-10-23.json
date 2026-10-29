@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "scope": "trusted project Hook runtime on normal Codex CLI",
+  "cli_version": "0.163.0",
+  "base_commit": "2fa8f1d4172ddfcb43a2e2f689186833c7c4a483",
+  "trust": {
+    "method": "normal_hooks_review_ui_individual_trust",
+    "project_hooks_trusted": 6,
+    "enabled": 6,
+    "errors": 0,
+    "warnings": 0,
+    "global_hooks_changed": false,
+    "trust_database_edited": false,
+    "bypass_used": false
+  },
+  "input_sha256": {
+    "scripts/qh_hook_audit.py": "f5c1f46538733b1c1b5eb4ea1749d9e0cc6026f13363688bbd7837f73f1b417d",
+    "tests/test_hook_audit.py": "d8cea8a0c8efd137a91e9411383a82570b300eb0617c23d256c13b04b5776e77",
+    ".codex/hooks.json": "3428c99ea9cbbe3c1336c4153cac7585985e4a44d84b5ac4d549d1cdce16bc37"
+  },
+  "observed_runtime": {
+    "event_counts": {
+      "SessionEnd": 4,
+      "SessionStart": 2,
+      "PreToolUse": 10,
+      "PostToolUse": 9,
+      "Stop": 2,
+      "Interrupt": 1
+    },
+    "record_count": 28,
+    "post_outcomes": {
+      "unknown": 9
+    },
+    "all_post_calls_have_pre": true,
+    "pre_without_post_count": 1,
+    "all_files_0600": true,
+    "project_directory_0700": true,
+    "allowed_metadata_fields_only": true,
+    "raw_command_or_output_persisted": false,
+    "same_session_start_count_after_resume": 2,
+    "normal_quit_and_resume_verified": true,
+    "resume_readback": "Q04 and remaining Hook verification identified from task card and queue",
+    "interrupt_method": "Esc during active synthetic sleep turn; /stop used to close background terminals",
+    "session_start_behavior": "Observed when first user turn starts; opening resume UI without a turn did not add SessionStart"
+  },
+  "command_results": {
+    "scope": "Exact synthetic session tool results only; raw transcript not copied into this public evidence or project Hook audit. Codex native session history is separate.",
+    "results": [
+      {
+        "case": "success",
+        "observed_exit_codes": [
+          0
+        ]
+      },
+      {
+        "case": "failure",
+        "observed_exit_codes": [
+          7
+        ]
+      }
+    ]
+  },
+  "review": {
+    "status": "passed",
+    "agent": "baseline_security_review",
+    "role": "qh_security_reviewer",
+    "scope": "independent public evidence review, not independent runtime execution",
+    "blocking_findings": 0,
+    "reviewed_runtime_evidence_sha256": "60969e8e7d0dd0da1c14c4a84f18e618cf6982e259fc6f25048936715cad6523",
+    "clarifications_applied": [
+      "historical untrusted state labelled",
+      "raw transcript exclusion limited to public evidence and Hook audit"
+    ]
+  },
+  "limitations": [
+    "PostToolUse output is tool-specific; observed Bash outcomes remain unknown. Success/failure exit codes were separately verified from exact synthetic session tool results.",
+    "Interrupted call without PostToolUse remains incomplete, never success.",
+    "Temporary metadata audit is not long-term retention or same-user tamper protection.",
+    "Direct-child isolation and universal tool coverage are not claimed.",
+    "Normal root CLI reported unrelated optional Notion MCP OAuth warning; no Notion calls or auth changes were made."
+  ],
+  "source": "https://learn.chatgpt.com/docs/hooks"
+}

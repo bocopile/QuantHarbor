@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-24",
+  "task": "Q17B",
+  "reviewer": "env_final_reviewer",
+  "mode": "independent_read_only",
+  "result": "changes_required",
+  "input": "data-storage-security-fixes-2026-10-24.json",
+  "matched_hash_count": 17,
+  "findings": [
+    {
+      "id": "R5",
+      "priority": "P2",
+      "file": "src/quantharbor/domain/market_storage.py",
+      "line": 226,
+      "issue": "body-based rejection receipts skip request/scope/cursor/clock binding"
+    },
+    {
+      "id": "R6",
+      "priority": "P2",
+      "file": "scripts/check_market_storage.py",
+      "line": 142,
+      "issue": "Docker discovery before wheel validation makes FIFO regression require Docker CLI"
+    }
+  ],
+  "unexecuted": [
+    "tests",
+    "real API",
+    "power-loss durability"
+  ]
+}

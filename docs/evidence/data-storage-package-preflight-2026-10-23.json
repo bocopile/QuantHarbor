@@ -1,0 +1,82 @@
+{
+  "package": "pyarrow",
+  "version": "26.0.0",
+  "wheel": "pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+  "url": "https://files.pythonhosted.org/packages/3b/7c/cea852a832a327a8de797b3a68e5c25ce0f5aa1d20503807671bd90ec642/pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+  "size": 50865064,
+  "sha256": "e3b190ba1d3d22a5a8758597f797111b77d433473744352a184a5ee0a42d672e",
+  "notice_files": [
+    {
+      "path": "pyarrow-26.0.0.dist-info/METADATA",
+      "bytes": 3031,
+      "sha256": "be4adabcb9b03f3a468f17bb0f42b48e7e17cdd58741ba15753f28610c2497fb"
+    },
+    {
+      "path": "pyarrow-26.0.0.dist-info/WHEEL",
+      "bytes": 118,
+      "sha256": "5fd313c2fb2b74eaacb39f61479ebb956a2317d321905e7a85f8424994fd7203"
+    },
+    {
+      "path": "pyarrow-26.0.0.dist-info/licenses/",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "pyarrow-26.0.0.dist-info/licenses/LICENSE.txt",
+      "bytes": 110383,
+      "sha256": "cd03925a27219d326d622609fbcae6567279af8b8885c33d5969a9e4ef5d7525"
+    },
+    {
+      "path": "pyarrow-26.0.0.dist-info/licenses/NOTICE.txt",
+      "bytes": 2916,
+      "sha256": "afd895d61a00101f6d5a41cf518c83865d815e8109e956f512a0ce4ea9738c06"
+    }
+  ],
+  "native_shared_libraries": [
+    "pyarrow/lib.cpython-313-aarch64-linux-gnu.so",
+    "pyarrow/libarrow.so.2600",
+    "pyarrow/libarrow_acero.so.2600",
+    "pyarrow/libarrow_compute.so.2600",
+    "pyarrow/libarrow_dataset.so.2600",
+    "pyarrow/libarrow_flight.so.2600",
+    "pyarrow/libarrow_python.so",
+    "pyarrow/libarrow_python.so.2600",
+    "pyarrow/libarrow_python.so.2600.0.0",
+    "pyarrow/libarrow_python_flight.so",
+    "pyarrow/libarrow_python_flight.so.2600",
+    "pyarrow/libarrow_python_flight.so.2600.0.0",
+    "pyarrow/libarrow_python_parquet_encryption.so",
+    "pyarrow/libarrow_python_parquet_encryption.so.2600",
+    "pyarrow/libarrow_python_parquet_encryption.so.2600.0.0",
+    "pyarrow/libarrow_s3.so.2600",
+    "pyarrow/libarrow_substrait.so.2600",
+    "pyarrow/libparquet.so.2600"
+  ],
+  "scope": "downloaded hash-verified wheel and notice text into private temporary development cache; package not extracted, imported, installed, or adopted",
+  "source": {
+    "tag": "apache-arrow-26.0.0",
+    "tag_chain": [
+      "3771b4ca6e0de72d85979afeaefb85dc2a69b931",
+      "7a7f3a7686cd51992e194aae5c8a7c31b1706ebc"
+    ],
+    "commit": "446167169a0dc547e00e1bc29f417a40c0ca267a",
+    "url": "https://api.github.com/repos/apache/arrow/git/ref/tags/apache-arrow-26.0.0",
+    "binary_source_attestation_verified": false
+  },
+  "license_inspection": {
+    "notice_read": true,
+    "combined_license_read": "Apache-2.0 main terms and bundled-dependency notice sections inspected",
+    "bundled_notices_include": [
+      "Boost",
+      "gRPC",
+      "Apache Thrift",
+      "zstd",
+      "Brotli",
+      "RapidJSON",
+      "Snappy",
+      "re2",
+      "OpenSSL"
+    ],
+    "limits": "notice coverage is not verified native SBOM or vulnerability/legal audit; keep complete wheel notices intact"
+  }
+}

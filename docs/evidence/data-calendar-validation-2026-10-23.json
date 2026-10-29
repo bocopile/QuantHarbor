@@ -1,0 +1,39 @@
+{
+  "task": "DATA-catalog-calendar",
+  "date": "2026-10-23",
+  "executor": "env_final_validator",
+  "independent": true,
+  "result": "pass_in_scope",
+  "host_product": {
+    "passed": 65,
+    "skipped": 0,
+    "exit_code": 0,
+    "seconds": 0.424
+  },
+  "public_quality": {
+    "files_checked": 195,
+    "findings": 0,
+    "exit_code": 0,
+    "seconds": 0.126
+  },
+  "foundation": {
+    "checks": 8,
+    "container_product_passed": 65,
+    "exit_code": 0,
+    "seconds": 7.736,
+    "cleanup": "own_project_removed"
+  },
+  "team": {
+    "members": 6,
+    "queue": 36,
+    "task_ids": 110,
+    "exit_code": 0
+  },
+  "input_files": 8,
+  "input_unchanged": true,
+  "combined_sha256": "903d8ad679c7cdca1f8cfe232661072e8c309352dfc484d02d4ab271cc352054",
+  "not_run": [
+    "actual market/tzdb data acquisition",
+    "actual accounts/API/remote"
+  ]
+}

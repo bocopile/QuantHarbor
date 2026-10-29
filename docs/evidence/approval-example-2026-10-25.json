@@ -1,0 +1,23 @@
+{
+  "task": "Q26-local",
+  "scope": "root_actual_synthetic_example",
+  "result": "pass",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:tests/product python3.13 -B /private/tmp/qh-approval-example.py",
+  "exit_code": 0,
+  "source_validation": "docs/evidence/approval-validation-final-2026-10-25.json",
+  "script_sha256": "ecff330255655c5f30855a9be92633e0e3a0d2023370a6fa1a38ac135c3478ed",
+  "artifacts": {
+    "docs/examples/approval-synthetic.json": "84a7e859194bd956a391e3efc7087f37bcc512c6081331234983988d69fed03a",
+    "docs/examples/approval-synthetic.txt": "9f80daf170d2ff097dae7ba4e5e1abed6f7132c8a86212d53d12d9ab31471772"
+  },
+  "actual_broker_calls": 0,
+  "financial_golden": {
+    "quantity": "3",
+    "limit_price": "100",
+    "cost_bound": "2",
+    "maximum_burden": "302",
+    "currency": "USD"
+  },
+  "approval_claim_after_withdraw": 1,
+  "real_authentication_or_database": false
+}

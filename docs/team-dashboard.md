@@ -1,32 +1,32 @@
 # QuantHarbor AI 팀 작업 보드
 
-기록일: 2026-10-23 · 단계별 갱신 문서 · 자동 실시간 모니터 아님
+기록일: 2026-10-29 · 단계별 갱신 문서 · 자동 실시간 모니터 아님
 
 ## 현재 상황
 
-- 제품 실행 큐: **Q04 — Skills·Hook·감사**
-- 큐 완료: **3/36**. Q04 진행 중, Q05~36 미완료. 개수는 작업량 진행률이 아니다.
-- 제품 작업의 막힌 조건: AP-02 사용자 직접 Hook 신뢰 등록 후 실제 실행 확인. 2026-10-23 실제 재조회에서 enabled 6·untrusted 6·오류/경고 0을 확인했다.
-- 최근 완료 작업: **GIT-baseline — 기준 커밋 2bed4c4 생성**. 공개 파일 89개, 합성 테스트 55개·팀 정합성 PASS, 독립 보안 검토 차단 사항 없음.
-- 현재 작업: **Q04 사용자 처리 대기**. 기존 Hook 신뢰 직접 등록 선택에 따라 실제 이벤트 검증이 남아 있다. 기준 커밋으로 ENV 완료 조건을 바꾸지 않는다.
-- Git 적용(2026-10-23): branch `codex/env-baseline`, 기준 commit `2bed4c4`, 기본 checkout 1개. 기준 커밋 직후 clean·89개 blob 일치 확인. 이 보드의 완료 갱신은 후속 문서 커밋으로 보존한다. main `ec56042` 유지, 추가 worktree·PR·merge 미생성.
-- 실행 원칙: 전문 worker 1명, 작성자 1명. 역할 설정이 있다는 이유로 실행 중으로 표시하지 않는다.
+- 현재 작업: **사용자 요청으로 자동매매 개발 중단·Git 보존**. Q27은 미완료이며 현재 코드·문서를 중간 커밋으로 보존한다.
+- 최신 실제 DB: **19시나리오/19검사·1203.171초·ownDB19정리·소유29불변**. [실제 결과](evidence/execution-database-recovery-validity-2026-10-27.json). 만료승인/빈계좌 양성은 앞선 runner의 별도 증거다.
+- 구현·집중검증: 현재계좌 복구와 원승인 TTL 분리, 새자료/정책 결속, rollback/COMMIT 유실, 기존보안·저장 회귀. 독립·전체 판정 전이다.
+- 잔여: 독립 보안/일반 검토, 최신전체 DB84·제품/품질·고정40. Q27 partial.
+- [대시보드·제품 운영 보완 전체 계획](product-delivery-plan.md): Q27 후 하위12개 순차 진행. 현재 모두 pending.
+- 로컬 **Q20~26 완료7/10**, 전체 통합 **18/36·Q19 실제 연결 대기**. 부모/하위 개수를 합산하거나 작업량 진행률로 쓰지 않는다.
+- 실제 비밀번호·키·계좌/API·자금 접근 없음. 비밀번호 입력 보류 유지, 사용자 결정은 현재 불필요.
+- Git: codex/arc-contracts·개발 기준2fa8f1d. [중단 시점 커밋·푸시 카드](tasks/GIT-checkpoint-2026-10-29.md). 활성 worker0, root만 Git 보존 수행.
+- 단계별 증거와 이전 실패는 [진행 기록](status.md) 및 [Q27 카드](tasks/EXECUTION-local.md)에 보존한다.
 
 ## 담당자별 상태
 
-모델은 저장된 배정값이다. 실제 호출과 결과를 확인한 경우에만 실행으로 기록한다. 아래 표는 마지막 갱신 시점의 상태다.
+| 담당자 | 모델 / 추론 | 상태 | 최근·현재 책임 |
+|---|---|---|---|
+| 총괄 root | 프로젝트 설정 Sol / high | 개발 중단·Git 보존 | 공통 계약·큐·증거 통합 |
+| 조사 qh_researcher | Luna / high | 대기 | Q19 공개 명세 조사 반환 |
+| 설계 qh_architect | Astra / high | 자문 반환·DEC005 채택 | 과거승인 실행권한/현재계좌 검증 분리 |
+| 구현 qh_implementer | Sol / high | 사용자 요청으로 보류 | 승인무효화 후 발급명령 잔여보존 |
+| 일반 검토 qh_reviewer | Sol / high | Q26 PASS | AR1·AR2 해결·소유11 hash |
+| 보안 검토 qh_security_reviewer | Astra / high | P2 한 건 반환 | pending Q26 완료hold 손실 |
+| 검증 qh_validator | Luna / high | Q26 PASS | 제품630·품질87·승인70 |
 
-| 담당자 | 모델 / 추론 | 상태 | 현재 배정·최근 산출물 | 다음 조건 |
-|---|---|---|---|---|
-| 총괄 root | 프로젝트 설정 Sol / high | 기준 커밋 완료·Q04 대기 조건 확인 | GIT-baseline·검증·tree 확인·인계 기록 | 사용자 직접 Hook 신뢰 등록 후 실제 이벤트 검증 |
-| 조사 qh_researcher | Luna / high | 자문 완료 | 실제 agent `requirements_scout`가 1차 응답과 남은 요구 경계 반환 | 다음 공개 조사 배정 |
-| 설계 qh_architect | Astra / high | 미배정 | [역할 실행 경로 결정](decisions/ENV-DEC-004-role-execution.md) | 요구·설계 작업의 선행조건 충족 |
-| 구현 qh_implementer | Sol / high | 미배정 | [기존 Hook 준비 결과](tasks/ENV-hook-audit.md) | 구현 또는 결함 수정 배정 |
-| 일반 검토 qh_reviewer | Sol / high | 검토 완료 | 실제 agent `visibility_reviewer`: Git 전략의 실질 결함 없음 | 후속 검토 배정 |
-| 보안 검토 qh_security_reviewer | Astra / high | 검토 완료 | 실제 agent `baseline_security_review`: 공개 후보 차단 사항 없음 | 후속 변경 시 영향 검토 |
-| 검증 qh_validator | Luna / high | 미배정 | [기존 감사 실행기 검증](tasks/ENV-durable-audit.md) | Hook 신뢰 반영 후 실제 검증 배정 |
-
-Sol = gpt-6.1-sol, Luna = gpt-6-luna, Astra = gpt-6-astra. root의 실제 대화 모델 변경 여부는 설정값만으로 확인하지 않는다.
+Sol=gpt-6.1-sol, Luna=gpt-6-luna, Astra=gpt-6-astra. root 실제 모델 변경 여부는 설정값만으로 확인하지 않는다.
 
 ## 사용자가 보는 방법
 
@@ -55,6 +55,12 @@ Sol = gpt-6.1-sol, Luna = gpt-6-luna, Astra = gpt-6-astra. root의 실제 대화
 | 현재 | ENV-team-visibility | 보드·소통 정책 작성, `visibility_reviewer` 독립 문서 검토 완료·실질 불일치 없음. 링크·큐 수치 확인 |
 | 현재 | A-input-preparation | [사용자 3개 요구](requirements-input.md) 확보·조사 자문·독립 문서 검토 완료. 조회 시점 표현 수정 |
 | 이전 | GIT-workflow | 저장소 읽기 확인·[전략 문서](git-workflow.md)·[결정 기록](decisions/GIT-DEC-001-workflow.md)·독립 검토 완료, Git 이력 변경 없음 |
-| 현재 | GIT-baseline | [기준 커밋 2bed4c4](tasks/GIT-baseline.md), 공개 89개·합성 테스트 55개·독립 보안 검토·tree 확인 완료 |
+| 이전 | GIT-baseline | [기준 커밋 2bed4c4](tasks/GIT-baseline.md), 공개 89개·합성 테스트 55개·독립 보안 검토·tree 확인 완료 |
+| 현재 | Q04~06 | [개발 ENV 종합 판정](tasks/ENV-final-assessment.md) 완료·독립 검토 통과 |
+| 현재 | Q07 | [요구·시나리오 카드](tasks/ARC-requirements.md), 요구9개·SC16개·PG01~05 계약 독립 검토 통과·실제값은 후속 관문 |
 
 실제 계좌·키·토큰·채널 ID·원시 도구 로그는 이 보드에 기록하지 않는다. 본 문서는 실행 중인 서비스가 아니며 세션 종료 후 자동 갱신·무인 실행·예약 알림을 제공하지 않는다.
+
+### 2026-10-27 Q27 완료 의무 구현 인계
+
+단독 구현 종료(인계 후 시간제한), 최신 src/tests 집중15통과·소유28/보호520/로그SHA root대조. root가 frozen backlog 안내문단을 원상복구했고 확장 계획/큐는 유지한다. 다음 담당은 root 실제 합성DB 집중검사이며 worker 실행 중으로 표시하지 않는다. Q27 partial·P28/P29 하위12개 pending.

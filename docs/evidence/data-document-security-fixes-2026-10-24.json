@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-24",
+  "task": "Q18",
+  "stage": "security_fixes_pending_rereview",
+  "worker": "foundation_implementer",
+  "findings": [
+    "S3 purpose plus research rights for research use",
+    "D1 isolated quality command and exact wheel example"
+  ],
+  "red": {
+    "methods": 2,
+    "assertion_failures": 12
+  },
+  "green": {
+    "document_tests": 21,
+    "host_product": 127,
+    "quality_tests": 22,
+    "public_files": 248,
+    "findings": 0,
+    "volume_product": 127,
+    "market_storage": 12,
+    "seconds": 17.344,
+    "cleanup": "own_objects_removed"
+  },
+  "sha256": {
+    "src/quantharbor/domain/documents.py": "503a692c528d1cd95af3b63f067cde4b0092d2ad35e77cd70270eaee7d6add96",
+    "src/quantharbor/application/document_ingest.py": "26dd230687432be999294637d1b69be5c0238513525aca07c5a400dab76fc032",
+    "src/quantharbor/adapters/document_files.py": "8b2ad1952697a97e02ebeec687486088750c3837c5bc980840ab4f9cc1a3763f",
+    "src/quantharbor/domain/serialization.py": "ef5eebb7d2e2b97c6caaec7dbb6775b4b4f1d97a9ca1211d5cc396a621327bde",
+    "tests/product/synthetic_documents.py": "ed9659181fef94eea20d60cc54bcc030accfc51b5930d28f9db2803a6d63236d",
+    "tests/product/test_documents.py": "e7bcc60b55945c8ceb1e3e2591233f92ff6a1e4fbaf9293425da0d284733a2a8",
+    "tests/product/test_document_files.py": "5465a7ab0bf93a96953a172b9928a9a8bdd125cd300e2bd8cc7de489c5c15b72",
+    "docs/development/document-lineage.md": "5656182c8fa83bae05cb773fc22c8f10fe5ae28ec595750fe316c9c2b4f5e52f"
+  },
+  "unexecuted": [
+    "independent rereview",
+    "foundation repeat unnecessary",
+    "real data/API",
+    "power-loss durability"
+  ]
+}

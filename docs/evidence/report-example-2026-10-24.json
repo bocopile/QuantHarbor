@@ -1,0 +1,13 @@
+{
+  "task": "Q22-local",
+  "role": "root",
+  "kind": "synthetic_report_example",
+  "source": "tests/product/synthetic_reporting.py fixture through public build_report/render_report APIs",
+  "output": "docs/examples/reporting-synthetic.txt",
+  "sha256": "28786165cd8a0ca4213153fc580aed54adbce23da693cf7aca5d3b3088eeccc0",
+  "bytes": 4800,
+  "render_result": "success",
+  "independent_validation": false,
+  "real_financial_data": false,
+  "actual_api_calls": 0
+}

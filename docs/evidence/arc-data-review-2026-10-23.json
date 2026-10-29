@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-23",
+  "task": "Q09",
+  "reviewer": "env_final_reviewer / qh_reviewer",
+  "result": "pass_scoped_design",
+  "reviewed_sha256": {
+    "docs/tasks/ARC-data-contracts.md": "573b3701f9c735101df03915c5d9d03f04009905dfe7459f24c2af25f8986a8f",
+    "docs/contracts/data-v1.md": "fbabc7abf549a1d3e89523b7104613da2aaef05411337ca1785ebb81472e47c5",
+    "docs/decisions/ARC-DEC-001-data-boundaries.md": "de0eb1a53a097627d748a9df643897624b3c9e010ff303109b0bdcf3325b0aa2"
+  },
+  "resolved": [
+    "FX units/direction/finite positive rate",
+    "revision correction chain prevents double application",
+    "economic time and knowledge cutoff",
+    "explicit nullable references"
+  ],
+  "not_executed": [
+    "financial implementation/tests",
+    "DB migrations",
+    "broker connections"
+  ]
+}

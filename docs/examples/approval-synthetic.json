@@ -1,0 +1,90 @@
+{
+  "scope": "synthetic_in_process_only_not_actual_user_authorization",
+  "display": "합성 주문 후보 · synthetic-account:q24:US · q24.A 3주 매수 · 지정가 100 USD · 비용 최대 2 USD · 최대 필요자금 302 USD · 매도 최저 총대금 0 USD · day · 2024-03-08T14:31:03.000000Z부터 2024-03-08T14:31:33.000000Z 미만 · 명시한 합성 목표와 현재 보유의 차이입니다. · 위험: 가격 변화와 부분체결 위험이 있습니다. · 합성 전체 주문 비용 상한이며 부분체결 횟수와 무관합니다. · 표시한 종료시각은 제외하며 이후 최신 근거를 다시 검사해야 합니다. · 합성 시험이며 실제 전략 채택이 아닙니다. · 승인 전이며 주문은 전송되지 않았습니다. · 합성 승인 범위: synthetic-account:q24:US · synthetic · synthetic-generation-1 · submit_candidate_once · cd6a6496f1a63fb00efc5c3a66d00dd0d0559d3cea5ea134bdc618a529265a59 · 승인 종료 2024-03-08T14:31:28.000000Z 미만",
+  "sequence": [
+    "present",
+    "explicit_synthetic_approve",
+    "atomic_synthetic_admit",
+    "withdraw_before_dispatch"
+  ],
+  "states": [
+    {
+      "approval_state": "pending",
+      "approval_version": 1,
+      "approval_expiry": "2024-03-08T14:31:28.000000Z",
+      "candidate_claims": 0,
+      "intent_states": [],
+      "outbox_states": [],
+      "reservations": []
+    },
+    {
+      "approval_state": "approved",
+      "approval_version": 2,
+      "approval_expiry": "2024-03-08T14:31:28.000000Z",
+      "candidate_claims": 0,
+      "intent_states": [],
+      "outbox_states": [],
+      "reservations": []
+    },
+    {
+      "approval_state": "consumed",
+      "approval_version": 3,
+      "approval_expiry": "2024-03-08T14:31:28.000000Z",
+      "candidate_claims": 1,
+      "intent_states": [
+        "prepared"
+      ],
+      "outbox_states": [
+        "pending"
+      ],
+      "reservations": [
+        {
+          "kind": "cash",
+          "amount": "302",
+          "state": "held"
+        },
+        {
+          "kind": "quantity",
+          "amount": "3",
+          "state": "held"
+        },
+        {
+          "kind": "risk",
+          "amount": "302",
+          "state": "held"
+        }
+      ]
+    },
+    {
+      "approval_state": "consumed",
+      "approval_version": 3,
+      "approval_expiry": "2024-03-08T14:31:28.000000Z",
+      "candidate_claims": 1,
+      "intent_states": [
+        "aborted_unsent"
+      ],
+      "outbox_states": [
+        "aborted_unsent"
+      ],
+      "reservations": [
+        {
+          "kind": "cash",
+          "amount": "302",
+          "state": "released"
+        },
+        {
+          "kind": "quantity",
+          "amount": "3",
+          "state": "released"
+        },
+        {
+          "kind": "risk",
+          "amount": "302",
+          "state": "released"
+        }
+      ]
+    }
+  ],
+  "actual_broker_calls": 0,
+  "frozen_fixture_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300"
+}

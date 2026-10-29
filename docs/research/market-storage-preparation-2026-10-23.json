@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-23",
+  "status": "read_only_preparation_not_adoption",
+  "metadata": {
+    "date": "2026-10-23",
+    "scope": "official metadata read-only preparation; not adopted/downloaded/installed",
+    "pyarrow": {
+      "version": "26.0.0",
+      "requires_python": ">=3.11",
+      "license_expression": "Apache-2.0",
+      "requires_dist": null,
+      "wheel": "pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+      "sha256": "e3b190ba1d3d22a5a8758597f797111b77d433473744352a184a5ee0a42d672e",
+      "size": 50865064
+    },
+    "psycopg": {
+      "version": "3.3.6",
+      "requires_python": ">=3.10",
+      "license_expression": "LGPL-3.0-only",
+      "python313_linux_dependencies": "binary extra requires psycopg-binary==3.3.6; no typing extensions/tzdata markers",
+      "binary_wheel": "psycopg_binary-3.3.6-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+      "binary_sha256": "98c02090d88f2ebc0ec1e8da538f77d225ce0fffecf372aa39262e62a1b054ef"
+    },
+    "sources": [
+      "https://pypi.org/pypi/pyarrow/json",
+      "https://pypi.org/pypi/psycopg/json",
+      "https://pypi.org/pypi/psycopg-binary/json",
+      "https://arrow.apache.org/docs/python/install.html",
+      "https://www.psycopg.org/psycopg3/docs/basic/install.html"
+    ],
+    "pending": [
+      "wheel LICENSE/NOTICE and bundled native notices actual inspection",
+      "exact source revision/license",
+      "platform import and API integration",
+      "choose only dependency actually needed in Q17",
+      "policy/lock/quality changes require review; no package installation yet"
+    ]
+  },
+  "pyarrow_wheel": {
+    "package": "pyarrow",
+    "version": "26.0.0",
+    "wheel": "pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+    "url": "https://files.pythonhosted.org/packages/3b/7c/cea852a832a327a8de797b3a68e5c25ce0f5aa1d20503807671bd90ec642/pyarrow-26.0.0-cp313-cp313-manylinux_2_28_aarch64.whl",
+    "size": 50865064,
+    "sha256": "e3b190ba1d3d22a5a8758597f797111b77d433473744352a184a5ee0a42d672e",
+    "notice_files": [
+      {
+        "path": "pyarrow-26.0.0.dist-info/METADATA",
+        "bytes": 3031,
+        "sha256": "be4adabcb9b03f3a468f17bb0f42b48e7e17cdd58741ba15753f28610c2497fb"
+      },
+      {
+        "path": "pyarrow-26.0.0.dist-info/WHEEL",
+        "bytes": 118,
+        "sha256": "5fd313c2fb2b74eaacb39f61479ebb956a2317d321905e7a85f8424994fd7203"
+      },
+      {
+        "path": "pyarrow-26.0.0.dist-info/licenses/",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "pyarrow-26.0.0.dist-info/licenses/LICENSE.txt",
+        "bytes": 110383,
+        "sha256": "cd03925a27219d326d622609fbcae6567279af8b8885c33d5969a9e4ef5d7525"
+      },
+      {
+        "path": "pyarrow-26.0.0.dist-info/licenses/NOTICE.txt",
+        "bytes": 2916,
+        "sha256": "afd895d61a00101f6d5a41cf518c83865d815e8109e956f512a0ce4ea9738c06"
+      }
+    ],
+    "native_shared_libraries": [
+      "pyarrow/lib.cpython-313-aarch64-linux-gnu.so",
+      "pyarrow/libarrow.so.2600",
+      "pyarrow/libarrow_acero.so.2600",
+      "pyarrow/libarrow_compute.so.2600",
+      "pyarrow/libarrow_dataset.so.2600",
+      "pyarrow/libarrow_flight.so.2600",
+      "pyarrow/libarrow_python.so",
+      "pyarrow/libarrow_python.so.2600",
+      "pyarrow/libarrow_python.so.2600.0.0",
+      "pyarrow/libarrow_python_flight.so",
+      "pyarrow/libarrow_python_flight.so.2600",
+      "pyarrow/libarrow_python_flight.so.2600.0.0",
+      "pyarrow/libarrow_python_parquet_encryption.so",
+      "pyarrow/libarrow_python_parquet_encryption.so.2600",
+      "pyarrow/libarrow_python_parquet_encryption.so.2600.0.0",
+      "pyarrow/libarrow_s3.so.2600",
+      "pyarrow/libarrow_substrait.so.2600",
+      "pyarrow/libparquet.so.2600"
+    ],
+    "scope": "in-memory archive metadata inspection only; no extraction/import/installation"
+  },
+  "driver_option": {
+    "date": "2026-10-23",
+    "scope": "read-only option preparation, not adoption or installed dependency",
+    "source": "https://www.psycopg.org/psycopg3/docs/basic/install.html",
+    "facts": [
+      "Official current docs show Python3.10–3.15 and PostgreSQL10–18 support",
+      "Binary installation bundles libpq; pure Python still needs libpq",
+      "Exact release/wheel/platform/licenses and actual integration must be verified before SG03 adoption"
+    ],
+    "decision": "none"
+  },
+  "limits": [
+    "No package extracted, imported, or installed",
+    "No selected Q17 dependency yet",
+    "License file presence and hashes are not legal or vulnerability audit",
+    "Wheel was read only in memory and discarded"
+  ]
+}

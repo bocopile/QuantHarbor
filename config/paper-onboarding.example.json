@@ -1,0 +1,68 @@
+{
+  "template_version": 1,
+  "active": false,
+  "purpose": "Q19 paper onboarding draft; not a runnable policy or approval",
+  "environment": "paper",
+  "broker_proposal": "kis",
+  "account_ref": null,
+  "user_decision_ref": null,
+  "valid_from": null,
+  "expires_at": null,
+  "connection": {
+    "approved_read_operations": [],
+    "approved_session_count": null,
+    "account_capability_ref": null,
+    "rights_ref": null,
+    "rate_limit_profile_ref": null
+  },
+  "funding": {
+    "total_by_currency": [],
+    "market_allocations": [],
+    "cash_floors": [],
+    "valuation_basis_ref": null
+  },
+  "risk": {
+    "instrument_limits": [],
+    "industry_limits": [],
+    "market_limits": [],
+    "currency_limits": [],
+    "order_limit": null,
+    "daily_limit": null,
+    "volume_participation_limit": null,
+    "loss_limit": null,
+    "drawdown_limit": null,
+    "denominator_and_cost_policy_ref": null
+  },
+  "approval_policy": {
+    "candidate_ttl_seconds": null,
+    "allowed_price_change": null,
+    "reapproval_on_change": true,
+    "reuse_allowed": false,
+    "revocation_policy_ref": null
+  },
+  "operation": {
+    "manual_local_session": true,
+    "new_paid_cost_allowed": false,
+    "on_failure": "stop_new_submission",
+    "automatic_cancel": false,
+    "automatic_liquidation": false,
+    "resume": "manual_after_reconciliation",
+    "liveness_deadline_seconds": null
+  },
+  "private_storage": {
+    "encrypted_store_profile_ref": null,
+    "key_injection_profile_ref": null,
+    "retention_policy_ref": null,
+    "backup_restore_evidence_ref": null
+  },
+  "strategy_selection": {
+    "status": "pending_comparison",
+    "required_before": "Q27"
+  },
+  "instructions": {
+    "privacy": "Do not enter actual values into this tracked example or chat. Decide a private location outside the repository before copying and completing it. No API keys or account numbers belong in this form; use private references only.",
+    "numbers": "Amounts and ratios are decimal strings with explicit currency/unit, evaluation window and basis. Null/empty means not decided, never unlimited.",
+    "authority": "Completing this form does not authorize API calls or orders. AP-05 and gate verification are separate.",
+    "validation": "No actual policy loader/validator is supplied by this example. Validate the completed private profile before connection."
+  }
+}

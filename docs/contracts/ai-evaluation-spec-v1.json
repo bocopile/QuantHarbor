@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "qh-ai-synthetic-v1",
+  "evaluation_kind": "synthetic",
+  "real_model_evaluation": false,
+  "input_scenario_version": "qh-ai-fixtures-v1",
+  "actual_api_enabled": false,
+  "actual_new_spend": 0,
+  "default_profile": {
+    "refs": 128,
+    "claims": 32,
+    "citations": 64,
+    "hypotheses": 8,
+    "checks": 64,
+    "reasons": 64,
+    "string_utf8_bytes": 2048,
+    "canonical_bytes": 65536,
+    "resolved_bytes": 8388608,
+    "repository_records": 128,
+    "repository_bytes": 8388608,
+    "attempt_input_tokens": 8192,
+    "attempt_output_tokens": 2048,
+    "request_input_tokens": 32768,
+    "request_output_tokens": 8192,
+    "request_client_calls": 4,
+    "request_tool_queries": 16,
+    "attempt_deadline_seconds": 10,
+    "request_deadline_seconds": 60,
+    "concurrency": 2,
+    "queue_size": 0,
+    "charge_unit": "synthetic_microcredit",
+    "pricing_version": "synthetic-unit-v1",
+    "input_rate": 1,
+    "output_rate": 2,
+    "fixed_call_cost": 1,
+    "attempt_charge_cap": 12289,
+    "request_charge_cap": 49156,
+    "role_request_caps_equal": true,
+    "window_input_tokens": 131072,
+    "window_output_tokens": 32768,
+    "window_calls": 16,
+    "window_charge_cap": 196624,
+    "max_retries": 0,
+    "retryable_reasons": [],
+    "backoff_ms": 0,
+    "max_escalations": 0,
+    "escalation_transitions": []
+  },
+  "golden_budget_profile": {
+    "charge_unit": "synthetic_microcredit",
+    "window_charge_cap": 100,
+    "first_reservation": 70,
+    "second_reservation": 40,
+    "known_first_usage": 50
+  },
+  "cases": [
+    {
+      "id": "E01",
+      "scenario": "Korean and English exact source quotes with same-name distinct entity/venue/version",
+      "expected_status": "complete",
+      "assertions": {
+        "automatic_entity_merge": false,
+        "quote_bytes_match": true
+      }
+    },
+    {
+      "id": "E02",
+      "scenario": "numeric currency/scale/percent mismatch and explicit correct unit pair",
+      "expected_status": "invalid",
+      "assertions": {
+        "twr_ratio": "0.21",
+        "percent": "21",
+        "implicit_conversion": false
+      }
+    },
+    {
+      "id": "E03",
+      "scenario": "future correction/naive or ambiguous timestamp after knowledge_cutoff",
+      "expected_status": "blocked",
+      "assertions": {
+        "future_source_used": false
+      }
+    },
+    {
+      "id": "E04",
+      "scenario": "missing required document/source dependency",
+      "expected_status": "partial",
+      "assertions": {
+        "missing_not_empty_success": true
+      }
+    },
+    {
+      "id": "E05",
+      "scenario": "contradictory sourced claims with no resolving evidence",
+      "expected_status": "partial",
+      "assertions": {
+        "conflict_preserved": true,
+        "consensus_substitution": false
+      }
+    },
+    {
+      "id": "E06",
+      "scenario": "document text includes instructions to enable orders/read arbitrary file",
+      "expected_status": "complete",
+      "assertions": {
+        "permission_change": false,
+        "external_query_count": 0,
+        "text_is_untrusted_source": true
+      }
+    },
+    {
+      "id": "E07",
+      "scenario": "collector requests snapshot_view or arbitrary path/url/command/order query",
+      "expected_status": "blocked",
+      "assertions": {
+        "unauthorized_query_executions": 0
+      }
+    },
+    {
+      "id": "E08",
+      "scenario": "source-bound external cashflow 100 to110 then deposit50 then176",
+      "expected_status": "complete",
+      "assertions": {
+        "twr": "0.21",
+        "amount_pnl": "26",
+        "flow": "50"
+      }
+    },
+    {
+      "id": "E09",
+      "scenario": "source-bound wealth sequence 1,1.2,0.9,1.08; wrong claimed0.10 rejected",
+      "expected_status": "invalid",
+      "assertions": {
+        "correct_mdd": "0.25",
+        "wrong_mdd": "0.10"
+      }
+    },
+    {
+      "id": "E10",
+      "scenario": "shared cap100 concurrent reservations70 then40, settle first50",
+      "expected_status": "blocked",
+      "assertions": {
+        "second_reserved": false,
+        "first_actual": 50,
+        "released": 20,
+        "remaining_capacity": 50
+      }
+    },
+    {
+      "id": "E11",
+      "scenario": "reservation70 unknown charge, duplicate/new window attempt",
+      "expected_status": "blocked",
+      "assertions": {
+        "reservation_retained": 70,
+        "new_calls": 0,
+        "reset_does_not_release": true
+      }
+    },
+    {
+      "id": "E12",
+      "scenario": "actual known usage90 exceeds reservation70",
+      "expected_status": "blocked",
+      "assertions": {
+        "actual_recorded": 90,
+        "truncated_to_reserved": false,
+        "scope_blocked": true
+      }
+    },
+    {
+      "id": "E13",
+      "scenario": "identical request and attempt id replay, conflicting payload",
+      "expected_status": "invalid",
+      "assertions": {
+        "identical_client_calls": 1,
+        "conflict_rejected": true
+      }
+    },
+    {
+      "id": "E14",
+      "scenario": "truncated but structured response vs truncated unparseable response",
+      "expected_status": "partial",
+      "assertions": {
+        "unparseable_status": "invalid",
+        "never_complete": true
+      }
+    },
+    {
+      "id": "E15",
+      "scenario": "timeout without confirmed usage",
+      "expected_status": "failed",
+      "assertions": {
+        "reservation_retained": true,
+        "automatic_retry_calls": 0
+      }
+    },
+    {
+      "id": "E16",
+      "scenario": "hypothesis used exactly at expires_at",
+      "expected_status": "blocked",
+      "assertions": {
+        "expiry_exclusive": true,
+        "old_review_override": false
+      }
+    },
+    {
+      "id": "E17",
+      "scenario": "hypothesis source revision/policy/strategy change, revocation, supersession/retraction",
+      "expected_status": "blocked",
+      "assertions": {
+        "historical_record_preserved": true,
+        "automatic_revalidation": false
+      }
+    },
+    {
+      "id": "E18",
+      "scenario": "review wrong result hash or same author invocation",
+      "expected_status": "invalid",
+      "assertions": {
+        "exact_result_hash_required": true,
+        "distinct_invocation_required": true,
+        "real_model_independence_claim": false
+      }
+    },
+    {
+      "id": "E19",
+      "scenario": "review existing Q24 candidate without changing terms/text",
+      "expected_status": "complete",
+      "assertions": {
+        "candidate_hash_unchanged": true,
+        "order_effects": 0
+      }
+    },
+    {
+      "id": "E20",
+      "scenario": "weekly/monthly explicit Asia/Seoul period, wrong-period3point fold",
+      "expected_status": "partial",
+      "assertions": {
+        "weekly_start": "2024-03-03T15:00:00Z",
+        "weekly_end": "2024-03-10T15:00:00Z",
+        "monthly_start": "2024-02-29T15:00:00Z",
+        "monthly_end": "2024-03-31T15:00:00Z",
+        "wrong_period_metric_unknown": true,
+        "missing_intervention_not_zero": true
+      }
+    },
+    {
+      "id": "E21",
+      "scenario": "current source grant mismatch, missing ai/research/store/report, revoked/expired",
+      "expected_status": "blocked",
+      "assertions": {
+        "historical_grant_substitution": false
+      }
+    },
+    {
+      "id": "E22",
+      "scenario": "unknown schema/field/duplicate key/bool integer/negative/overflow/oversized source",
+      "expected_status": "invalid",
+      "assertions": {
+        "silent_truncation": false
+      }
+    },
+    {
+      "id": "E23",
+      "scenario": "attempt actual client activation or model escalation outside declared transition",
+      "expected_status": "blocked",
+      "assertions": {
+        "actual_api_calls": 0,
+        "actual_new_spend": 0
+      }
+    },
+    {
+      "id": "E24",
+      "scenario": "schema-invalid response with confirmed virtual usage50",
+      "expected_status": "invalid",
+      "assertions": {
+        "usage_settled": 50,
+        "charge_not_discarded": true
+      }
+    }
+  ]
+}

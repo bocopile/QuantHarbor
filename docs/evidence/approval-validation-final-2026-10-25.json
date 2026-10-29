@@ -1,0 +1,286 @@
+{
+  "task": "Q26-local independent validation",
+  "captured_utc": "2026-10-25T09:40:04Z",
+  "accepted_baseline": "docs/evidence/approval-review-fixes-2026-10-25.json",
+  "gates": [
+    {
+      "name": "full_product",
+      "argv": [
+        "python3.13",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src"
+      },
+      "started_utc": "2026-10-25T09:21:14Z",
+      "elapsed_seconds": 1085.765,
+      "returncode": 0,
+      "counts": {
+        "unittest_tests": 630,
+        "reported_seconds": 1085.401,
+        "failures": 0,
+        "errors": 0
+      },
+      "log": "/private/tmp/q26-independent-validation/full_product.log",
+      "log_sha256": "b9bc08e4f2867978b6406e17f04276844e293516a6a157fc1b2e7d3b87439a5f",
+      "passed": true,
+      "summary_status": "OK"
+    },
+    {
+      "name": "quality_unittest",
+      "argv": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/quality",
+        "-v"
+      ],
+      "environment_overrides": {},
+      "started_utc": "2026-10-25T09:39:20Z",
+      "elapsed_seconds": 3.392,
+      "returncode": 0,
+      "counts": {
+        "unittest_tests": 87,
+        "reported_seconds": 3.187,
+        "failures": 0,
+        "errors": 0
+      },
+      "log": "/private/tmp/q26-independent-validation/quality_unittest.log",
+      "log_sha256": "9e350b64d776a61902601f7a0aa460f667fc847f1d616b2a9dee2c557a300e21",
+      "passed": true,
+      "summary_status": "OK"
+    },
+    {
+      "name": "check_quality",
+      "argv": [
+        "python3.13",
+        "-I",
+        "-S",
+        "scripts/check_quality.py"
+      ],
+      "environment_overrides": {},
+      "started_utc": "2026-10-25T09:39:23Z",
+      "elapsed_seconds": 0.75,
+      "returncode": 0,
+      "counts": {},
+      "log": "/private/tmp/q26-independent-validation/check_quality.log",
+      "log_sha256": "be6cdc155a6d181fae3df2759748f1f2ef2879b527d86299f3b5e2c5943ac679",
+      "passed": true,
+      "quality_report": {
+        "scope": "Q15_public_candidates_only",
+        "result": "pass",
+        "files_checked": 478,
+        "findings": [],
+        "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+      }
+    },
+    {
+      "name": "check_ai_team",
+      "argv": [
+        "python3.13",
+        "scripts/check_ai_team.py"
+      ],
+      "environment_overrides": {},
+      "started_utc": "2026-10-25T09:39:24Z",
+      "elapsed_seconds": 0.046,
+      "returncode": 0,
+      "counts": {},
+      "log": "/private/tmp/q26-independent-validation/check_ai_team.log",
+      "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009",
+      "passed": true,
+      "output_summary": "PASS: 저장된 팀원 6명·큐 36개·작업 ID 110개 정합성 확인\n범위: 로컬 파일만 검사. 현재 세션 모델·역할 로드·권한·격리·외부 연결은 미검증.\n승인 ID 등록과 증거 파일 존재만 확인. 승인 충족·증거의 성공 여부는 미판정."
+    },
+    {
+      "name": "git_diff_check",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "environment_overrides": {},
+      "started_utc": "2026-10-25T09:39:24Z",
+      "elapsed_seconds": 0.027,
+      "returncode": 0,
+      "counts": {},
+      "log": "/private/tmp/q26-independent-validation/git_diff_check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    }
+  ],
+  "approval_subset": {
+    "definitions_expected": 70,
+    "executed": 70,
+    "counts_by_suite": {
+      "test_approval": 21,
+      "test_approval_regression": 19,
+      "test_approval_security": 17,
+      "test_approval_review": 13
+    },
+    "fixed_case_ids": [
+      "AP01",
+      "AP02",
+      "AP03",
+      "AP04",
+      "AP05",
+      "AP06",
+      "AP07",
+      "AP08",
+      "AP09",
+      "AP10",
+      "AP11",
+      "AP12",
+      "AP13",
+      "AP14",
+      "AP15",
+      "AP16",
+      "AP17",
+      "AP18",
+      "AP19",
+      "AP20",
+      "AP21"
+    ],
+    "fixed_case_count": 21,
+    "positive_source_cases": [
+      "test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission (test_approval.ApprovalFixedCases.test_AP01_exact_positive_presentation_explicit_approve_and_atomic_admission) ... ok",
+      "test_dispatch_positive_uses_controller_without_approval_permission (test_approval_security.ApprovalSecurity.test_dispatch_positive_uses_controller_without_approval_permission) ... ok"
+    ],
+    "concurrent_cases": [
+      "test_truly_simultaneous_two_instances_admit_one_candidate (test_approval_regression.ApprovalRegression.test_truly_simultaneous_two_instances_admit_one_candidate) ... ok",
+      "test_simultaneous_issuance_then_withdraw_before_all_dispatch_completions (test_approval_security.ApprovalSecurity.test_simultaneous_issuance_then_withdraw_before_all_dispatch_completions) ... ok"
+    ],
+    "rollback_cases": [
+      "test_atomic_withdraw_clock_fault_rolls_back_finance_but_keeps_fault_latch (test_approval_security.ApprovalSecurity.test_atomic_withdraw_clock_fault_rolls_back_finance_but_keeps_fault_latch) ... ok",
+      "test_atomic_withdraw_staging_failure_rolls_back_issuance_and_all_charges (test_approval_security.ApprovalSecurity.test_atomic_withdraw_staging_failure_rolls_back_issuance_and_all_charges) ... ok"
+    ]
+  },
+  "hashes": {
+    "before": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+      "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+      "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+      "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+      "tests/product/test_approval_review.py": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1",
+      "docs/architecture.md": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+      "docs/contracts/serialization-v1.md": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+      "docs/implementation-backlog.md": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+      "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+      "docs/contracts/execution-v1.md": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+      "docs/contracts/operations-v1.md": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+      "docs/contracts/approval-fixture-v1.json": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300"
+    },
+    "after": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+      "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+      "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+      "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+      "tests/product/test_approval_review.py": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1",
+      "docs/architecture.md": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+      "docs/contracts/serialization-v1.md": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+      "docs/implementation-backlog.md": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+      "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+      "docs/contracts/execution-v1.md": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+      "docs/contracts/operations-v1.md": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+      "docs/contracts/approval-fixture-v1.json": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300"
+    },
+    "owned11_match": {
+      "src/quantharbor/domain/approval.py": true,
+      "src/quantharbor/application/approval.py": true,
+      "src/quantharbor/ports/approval.py": true,
+      "src/quantharbor/adapters/synthetic_approval.py": true,
+      "src/quantharbor/domain/serialization.py": true,
+      "tests/product/synthetic_approval.py": true,
+      "tests/product/test_approval.py": true,
+      "tests/product/test_approval_regression.py": true,
+      "docs/development/approval.md": true,
+      "tests/product/test_approval_security.py": true,
+      "tests/product/test_approval_review.py": true
+    },
+    "owned11_matched": 11,
+    "baseline7_match": {
+      "docs/architecture.md": true,
+      "docs/contracts/serialization-v1.md": true,
+      "docs/implementation-backlog.md": true,
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": true,
+      "docs/contracts/data-v1.md": true,
+      "docs/contracts/execution-v1.md": true,
+      "docs/contracts/operations-v1.md": true
+    },
+    "baseline7_matched": 7,
+    "approval_fixture_expected_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+    "approval_fixture_after_sha256": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+    "approval_fixture_match": true
+  },
+  "working_repository_readonly_check": {
+    "branch": "codex/arc-contracts",
+    "head": "2fa8f1d4172ddfcb43a2e2f689186833c7c4a483",
+    "status_sha256_after": "e6491a90afa4c4da94985d93f493a908b0f65d2fe008bf63c7daa016b8cde899",
+    "status_lines_after": 245,
+    "project_git_mutation_commands_used": false,
+    "note": "Quality suite synthetic Git fixture tests are allowed to mutate their own temporary repositories; project repository Git state was not mutated by this validator."
+  },
+  "limits": [
+    "No real authentication or credentials",
+    "No Q27 persistent database atomicity, dispatch fencing, egress, or reconciliation claim",
+    "No private reads, network, Docker, installation, source/docs/config edits, or subagents"
+  ],
+  "result": "pass",
+  "aggregate_elapsed_seconds": 1089.98,
+  "role": "qh_validator",
+  "requested_model": "gpt-6-luna",
+  "reasoning": "high",
+  "root_verified_owned_sha256": {
+    "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+    "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+    "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+    "src/quantharbor/adapters/synthetic_approval.py": "a81a2e25e9b04166b3e6064316a35f27f97a0ea15efdaee521989d12fd35911c",
+    "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+    "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+    "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+    "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+    "docs/development/approval.md": "9988bf0ca964af821f08c89868d99d069bcc23d4d834d29bc4ca9cea8bc6804d",
+    "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+    "tests/product/test_approval_review.py": "307f9de09c91b8aad86e59b7a68be2cf0c2332f0fae54ea49097722efe3086f1"
+  },
+  "root_acceptance": {
+    "result": "pass",
+    "scope": "Q26_synthetic_local_only",
+    "handoff_raw_sha256": "bda66b5421b9b13529439e611c36ab796c1c1f179a0eccb3a6f2112a78fb7c0b",
+    "logs_verified": 5,
+    "baseline_verified": 7,
+    "fixture_verified": true,
+    "actual_gates_unchanged": true,
+    "post_integration_checks": {
+      "public_files": 482,
+      "public_findings": 0,
+      "team": "pass",
+      "git_diff_check": "pass",
+      "product_rerun": false,
+      "reason": "only common status/evidence/example documents changed after validator"
+    }
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "task_id": "Q26-local/J05-AS1-AS2",
+  "role_requested": "qh_development",
+  "model_requested": "Sol",
+  "reasoning_requested": "high",
+  "status": "focused_checks_passed_pending_root_contract_adoption_and_independent_reviews",
+  "scope": "synthetic_in_process_only",
+  "written_utc": "2026-10-25T08:49:51.404479+00:00",
+  "started_utc": "2026-10-25T08:31:24.226007+00:00",
+  "elapsed_since_capture_seconds": 1107.147562,
+  "ownership": {
+    "owned_files": [
+      "src/quantharbor/domain/approval.py",
+      "src/quantharbor/application/approval.py",
+      "src/quantharbor/ports/approval.py",
+      "src/quantharbor/adapters/synthetic_approval.py",
+      "src/quantharbor/domain/serialization.py",
+      "tests/product/synthetic_approval.py",
+      "tests/product/test_approval.py",
+      "tests/product/test_approval_regression.py",
+      "docs/development/approval.md",
+      "tests/product/test_approval_security.py"
+    ],
+    "allowned_sha256": {
+      "src/quantharbor/domain/approval.py": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+      "src/quantharbor/application/approval.py": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+      "src/quantharbor/ports/approval.py": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+      "src/quantharbor/adapters/synthetic_approval.py": "76f72e2908fa0b70ed17631570d9f9b8eb9cafea88df492583ad01abcec7725d",
+      "src/quantharbor/domain/serialization.py": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+      "tests/product/synthetic_approval.py": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+      "tests/product/test_approval.py": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+      "tests/product/test_approval_regression.py": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+      "docs/development/approval.md": "4eed3b9c59769e6a7d16c782ead06f3c4b6cd0daaf1b4dffc0fb4d52c20c2dea",
+      "tests/product/test_approval_security.py": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d"
+    },
+    "before_after_hashes": {
+      "src/quantharbor/domain/approval.py": {
+        "before": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+        "after": "7a439c38e6bb780c887e1f857c0b35ce112f0c82f85d601c6d8b8c7d9766a644",
+        "changed": false
+      },
+      "src/quantharbor/application/approval.py": {
+        "before": "d47171b9e75a895eb370005b111fe6aa06596ee1adb665a3a66de38930583ea8",
+        "after": "9841738df4ba38e9506589dcaf5172cde2a67bb26fed511342eebd094a1d27ca",
+        "changed": true
+      },
+      "src/quantharbor/ports/approval.py": {
+        "before": "6d3ccc06ca208ad1490006f129e3092b02fb5ee39579e1edc5dd20b25b417130",
+        "after": "7ae94527e68b6c3f24c32c4a1fd9e1a6bd803bb3ed7620b2e27ec37ba16b49b5",
+        "changed": true
+      },
+      "src/quantharbor/adapters/synthetic_approval.py": {
+        "before": "5eb9d83543305db253f036766d6b3a19979a982acf1e253ec6bbf0a1eeef1407",
+        "after": "76f72e2908fa0b70ed17631570d9f9b8eb9cafea88df492583ad01abcec7725d",
+        "changed": true
+      },
+      "src/quantharbor/domain/serialization.py": {
+        "before": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+        "after": "c79d98fe627f9f0ba73984851e5e6ccdd5908d6bd9254f87b0ff9a5429e7ee71",
+        "changed": false
+      },
+      "tests/product/synthetic_approval.py": {
+        "before": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+        "after": "9d2db20b191b996ae2699826d4fa592717620090663319b3d4472c4abcf75a33",
+        "changed": false
+      },
+      "tests/product/test_approval.py": {
+        "before": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+        "after": "17451ec7d809dd0cd55d5ba6cdee52c1626b3f4305b7621bda7a0a72b3020dd6",
+        "changed": false
+      },
+      "tests/product/test_approval_regression.py": {
+        "before": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+        "after": "bf29249dd1c0e9f953e93b98fee88724d96a518e21ed2405abe9e326c7bab342",
+        "changed": false
+      },
+      "docs/development/approval.md": {
+        "before": "1c696de2dfd5c93d4bf339a9ac067b5105bdd9f0adb494f943a8051e6bc9d842",
+        "after": "4eed3b9c59769e6a7d16c782ead06f3c4b6cd0daaf1b4dffc0fb4d52c20c2dea",
+        "changed": true
+      },
+      "tests/product/test_approval_security.py": {
+        "before": null,
+        "after": "3b353c4e973d46a577d9eacfe518a968317a825daae42234228ec290f476aa1d",
+        "changed": true
+      }
+    },
+    "preexisting_owned9_exact_initial_implementation": true,
+    "new_test": "tests/product/test_approval_security.py",
+    "serializer_changed": false
+  },
+  "red_reproduction": {
+    "run": {
+      "label": "red-AS1-AS2",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_approval_security",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:31:40.997967+00:00",
+      "ended_utc": "2026-10-25T08:32:01.586134+00:00",
+      "elapsed_seconds": 20.587619,
+      "exit_code": 1,
+      "tests": 2,
+      "unittest_seconds": 20.347,
+      "log": "/private/tmp/q26-security-handoff/red-AS1-AS2.txt",
+      "log_sha256": "864977e5684c1f47bc1700d8876dde58d8a5daf227c0f2cb99bcf9a0ad042114"
+    },
+    "product_files_unmodified_at_red": true,
+    "failures": 2,
+    "errors": 0,
+    "setup_errors": [],
+    "AS1_actual": "('applied', None) instead of ('rejected', 'authority_denied')",
+    "AS2_actual": "capacity_exceeded on legitimate withdrawal; hold trace=[20, 17, 14, 11, 8, 6, 4]",
+    "red_is_assertion_failure_not_setup_error": true
+  },
+  "fix": {
+    "tool": "tools.apply_patch",
+    "after_red_ended_utc": "2026-10-25T08:32:01.586134+00:00",
+    "completed_before_freeze_utc": "2026-10-25T08:41:12.475931+00:00",
+    "verification_command": [
+      "python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/product",
+      "-p",
+      "test_approval*.py",
+      "-v"
+    ],
+    "diffs": {
+      "src/quantharbor/application/approval.py": {
+        "path": "/private/tmp/q26-security-handoff/diffs/src__quantharbor__application__approval.py.diff",
+        "sha256": "69ee7f9a0c94b921279574759b461fa60d9197b07cb87d6009bf1d084338f06e"
+      },
+      "src/quantharbor/ports/approval.py": {
+        "path": "/private/tmp/q26-security-handoff/diffs/src__quantharbor__ports__approval.py.diff",
+        "sha256": "eed9b84963d857c1324fb0495b9617bf1dd4d10adf78369d0237f2337b363057"
+      },
+      "src/quantharbor/adapters/synthetic_approval.py": {
+        "path": "/private/tmp/q26-security-handoff/diffs/src__quantharbor__adapters__synthetic_approval.py.diff",
+        "sha256": "21bd8b16c572bb49f4a29b03d3f2026a6870c2dad313b3750e5fbd977a67abda"
+      },
+      "docs/development/approval.md": {
+        "path": "/private/tmp/q26-security-handoff/diffs/docs__development__approval.md.diff",
+        "sha256": "e601914e98c7cdf2060d81d277ab99b06828ab1b6bee3008c28fbf71c991ec36"
+      },
+      "tests/product/test_approval_security.py": {
+        "path": "/private/tmp/q26-security-handoff/diffs/tests__product__test_approval_security.py.diff",
+        "sha256": "7bd5bdd365fb6ac48c146830d13474adaf50bef471e13b9df2296ce1accfdb65"
+      }
+    },
+    "AS1": "Resolve original issuer-bound session capability under aggregate lock, run current approve authorization, bind original principal/session/account/environment/generation. Controller does not need approve. No automatic intent/outbox/reservation cancellation.",
+    "AS2": "Existing command indexes identify every outstanding worst-case completion budget within the approval hold. Issuance reserves all completions plus 8 closure records/bytes; additional capacity only from global unallocated room. Terminal transitions retain other issued command budgets. All totals remain <=128 records/8MiB. Explicit atomic withdraw uses final protected space and rolls issuance back on failure.",
+    "maximum_completion_records": {
+      "approve": 4,
+      "deny": 4,
+      "revoke": 4,
+      "admit": 10,
+      "dispatch": 4,
+      "withdraw": 5
+    },
+    "protected_closure_records": 8,
+    "bytes_per_reserved_record": 65536,
+    "initial_procedure_records": 40,
+    "session_hold_records": 8,
+    "new_storage_collections": 0,
+    "product_patch_tool_calls": 4,
+    "git_diff_scope_note": "git diff --check covered tracked changes; bounded whitespace audit also checked all changed owned untracked files.",
+    "AS1_after_test_assertion": "rejected / authority_denied; intent, outbox, reservations, claims, heads unchanged",
+    "AS2_after_test_assertion": "at least one dispatch applied; all issued completions funded; legitimate withdrawal applied"
+  },
+  "root_contract_adoption": {
+    "required": true,
+    "guide": "docs/development/approval.md",
+    "proposal": "Adopt additive ApprovalCommands/ApprovalApplication.withdraw(handle, approval_ref, command_id=...) for atomic synthetic protective closure. General two-step challenges, including withdraw, preserve final 8 records so pending/rejected/expired commands cannot exhaust them.",
+    "reason": "At finite capacity, separately issued closure challenges can expire and leave durable rejection receipts; guaranteed final closure needs atomic issue-and-complete without another independently pending command.",
+    "semantics": "Same aggregate RLock across internal issuance/completion swaps; no intermediate state visible to other application instances. Failure/rejection rolls back newly issued command/nonce/receipt/charges; clock fault latch persists. Existing independent pending command cannot be taken over; complete it via execute. Applied exact replay returns same receipt. Q27 must use one real DB transaction.",
+    "root_contract_fixture_decision_modified": false
+  },
+  "checks": {
+    "red-AS1-AS2": {
+      "label": "red-AS1-AS2",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "test_approval_security",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:31:40.997967+00:00",
+      "ended_utc": "2026-10-25T08:32:01.586134+00:00",
+      "elapsed_seconds": 20.587619,
+      "exit_code": 1,
+      "tests": 2,
+      "unittest_seconds": 20.347,
+      "log": "/private/tmp/q26-security-handoff/red-AS1-AS2.txt",
+      "log_sha256": "864977e5684c1f47bc1700d8876dde58d8a5daf227c0f2cb99bcf9a0ad042114"
+    },
+    "final-focused": {
+      "label": "final-focused",
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-p",
+        "test_approval*.py",
+        "-v"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:41:12.512273+00:00",
+      "ended_utc": "2026-10-25T08:49:25.372588+00:00",
+      "elapsed_seconds": 492.85283,
+      "exit_code": 0,
+      "tests": 57,
+      "unittest_seconds": 492.618,
+      "log": "/private/tmp/q26-security-handoff/final-focused.txt",
+      "log_sha256": "e3a1541fcbd08f17af11768ce218727e0935a4a2e0d935942265b4ef1d82a00e"
+    },
+    "final-public-quality": {
+      "label": "final-public-quality",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:41:21.339743+00:00",
+      "ended_utc": "2026-10-25T08:41:22.134636+00:00",
+      "elapsed_seconds": 0.794652,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-security-handoff/final-public-quality.txt",
+      "log_sha256": "a2e1068c1b53636c717993cf0a5e7039e859f40dcebf3a686bad9387fbf06939"
+    },
+    "final-team": {
+      "label": "final-team",
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_ai_team.py"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:41:21.339893+00:00",
+      "ended_utc": "2026-10-25T08:41:21.392436+00:00",
+      "elapsed_seconds": 0.052357,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-security-handoff/final-team.txt",
+      "log_sha256": "7c995aa6ec7fec19fef409b4f513aed50cd0cbcf65f4c598a7d6baa8981b0009"
+    },
+    "final-diff": {
+      "label": "final-diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "src:tests/product"
+      },
+      "started_utc": "2026-10-25T08:41:21.339569+00:00",
+      "ended_utc": "2026-10-25T08:41:21.371042+00:00",
+      "elapsed_seconds": 0.031247,
+      "exit_code": 0,
+      "tests": null,
+      "unittest_seconds": null,
+      "log": "/private/tmp/q26-security-handoff/final-diff.txt",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "final_focused_runs_after_freeze": 1,
+  "green_reruns": 0,
+  "development_test_runs_after_fixes_before_freeze": 0,
+  "new_security_test_methods": 17,
+  "new_security_passes": 17,
+  "original_fixed_fixture_passes": 21,
+  "invariants": {
+    "frozen_utc": "2026-10-25T08:41:12.475931+00:00",
+    "allowned10_match_freeze": true,
+    "preexisting_public_files_compared": 464,
+    "nonowned_changes": [],
+    "root_common_unchanged": true,
+    "baseline7": {
+      "docs/architecture.md": {
+        "expected": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+        "actual": "18ea3b3ec6544fd13c7f4083420e70160e2c3fb607e28ada7ec53f1cf2c15833",
+        "match": true
+      },
+      "docs/contracts/serialization-v1.md": {
+        "expected": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+        "actual": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+        "match": true
+      },
+      "docs/implementation-backlog.md": {
+        "expected": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+        "actual": "c2c916bae7f1602f3898e1fab3e038b581c53823bde32c1734ebf2f894073165",
+        "match": true
+      },
+      "docs/decisions/ARC-DEC-004-implementation-baseline.md": {
+        "expected": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+        "actual": "bff5b7e8ea44b1fe9beb2a76fd763202ae8df626058fbe70ff5c56eec342011b",
+        "match": true
+      },
+      "docs/contracts/data-v1.md": {
+        "expected": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+        "actual": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+        "match": true
+      },
+      "docs/contracts/execution-v1.md": {
+        "expected": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+        "actual": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+        "match": true
+      },
+      "docs/contracts/operations-v1.md": {
+        "expected": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+        "actual": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+        "match": true
+      }
+    },
+    "fixture": {
+      "expected": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+      "actual": "84190ff349d81877bbfdace4ffd23d9e0c1de5d474c3a3c6568c870504c71300",
+      "match": true
+    },
+    "bounded_owned_whitespace_findings": []
+  },
+  "public_quality": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 470,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "not_executed": {
+    "serializer_compatibility": "unchanged serializer; explicitly conditional and not rerun",
+    "full_product_suite": "deferred to final validator",
+    "quality_unittest87": "deferred to final validator",
+    "independent_general_security_review": "root reviewers pending",
+    "network": true,
+    "subagents": true,
+    "child_mcp": true,
+    "private_reads": true,
+    "passwords_real_authentication": true,
+    "external_APIs": true,
+    "Docker": true,
+    "installation": true,
+    "Git_mutation": true,
+    "Q27_real_DB_atomicity_egress": "out of scope"
+  },
+  "remaining": [
+    "Root adoption of documented additive atomic protective withdraw semantics in approval-local-v1; fixed contracts/specs/baseline were preserved.",
+    "Root independent security/general review and final validator full product plus quality unittest87.",
+    "Root integrates common evidence/status/task/queue; worker wrote only owned product/guide/test files and temporary handoff artifacts.",
+    "Real authentication/account authority/PG-01, Q27 persistent atomic admission/egress/reconciliation and historical snapshot restore remain outside this synthetic scope."
+  ],
+  "artifacts": {
+    "before_capture": "/private/tmp/q26-security-handoff/before.json",
+    "freeze": "/private/tmp/q26-security-handoff/freeze.json",
+    "audit": "/private/tmp/q26-security-handoff/audit.json",
+    "runner": "/private/tmp/q26-security-handoff/run.py",
+    "handoff_builder": "/private/tmp/q26-security-handoff/build_handoff.py"
+  },
+  "artifact_sha256": {
+    "before.json": "e1ac506c3bd3c440c071ee754b599434efb17b7f2d23d2da9736d672a5bf904c",
+    "freeze.json": "5a4356dee6e8c270ca29a1aa697e749af8c55b1b5400fe8d7893e2ce58e00f05",
+    "audit.json": "e101fabe8e417a033f13ead117c2ffb5294f54e81b547903b6af0aba1385378d",
+    "run.py": "1ed01b1662e697688a82b67b9e7ac31de1f6ea7db7e045d9968781feb0c67526",
+    "build_handoff.py": "f0cf419245a8a3ab4db2d92fa37e8e74bf9ddc66e074c376cb7ebf69ab650d20"
+  },
+  "root_verification": {
+    "owned_hashes_matched": 10,
+    "baseline_matched": 7,
+    "fixture_matched": true,
+    "contract_adopted": "docs/contracts/approval-local-v1.md#as1as2-보완-채택--2026-10-25",
+    "source_or_test_changes_by_root": false,
+    "independent_review": "pending"
+  }
+}

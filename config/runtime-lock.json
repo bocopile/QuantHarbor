@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-23",
+  "platform": "linux/arm64",
+  "python_packages": [],
+  "python": {
+    "version": "3.13.17",
+    "image": "python@sha256:608b27b2db85abf38d81685085cd1166a5ed7ada66549f0dfe53a75bb830cd5d",
+    "source_revision": "e316b6c5b88b7c8e4806aa7626060c9bd8227e66",
+    "source_sha256": "6020bd10aff3bf4821be16f088ebb1591beb7b811dcd8fab1da8f7c22a7b27e7",
+    "license": "PSF license and bundled third-party notices; Docker recipe MIT"
+  },
+  "postgres": {
+    "version": "18.6",
+    "image": "postgres@sha256:a5377a521c0383c9862394c90bdbf7707800ac9a6e40d18318193badfac52ce0",
+    "source_revision": "e00e1bd34ec5c8a8e7ad89b273b3d42efaf6d5bc",
+    "license": "PostgreSQL License; Docker recipe MIT"
+  },
+  "inventory": "docs/evidence/base-runtime-inventory-2026-10-23.json",
+  "scope": "Q13 local synthetic foundation only; Parquet/LEAN/product AI deferred to their gates"
+}

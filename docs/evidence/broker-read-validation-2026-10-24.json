@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-24",
+  "task": "Q19",
+  "validator": "env_final_validator",
+  "recorded_by": "root",
+  "scope": "local synthetic preparation; Q19 actual connection not complete",
+  "input_evidence": "broker-read-review-fixes-2026-10-24.json",
+  "input_evidence_sha256": "8eab4d6504932f45a8f77ff2e5dc16179c6cd16e29ebad15105ae6c223a7f61b",
+  "commands": [
+    {
+      "command": "PYTHONPATH=src python3.13 -m unittest discover -s tests/product -v",
+      "exit_code": 0,
+      "tests": 164,
+      "reported_seconds": 2.16
+    },
+    {
+      "command": "python3.13 -I -S -m unittest discover -s tests/quality -v",
+      "exit_code": 0,
+      "tests": 22,
+      "reported_seconds": 2.57
+    },
+    {
+      "command": "python3.13 -I -S scripts/check_quality.py",
+      "exit_code": 0,
+      "public_candidates": 275,
+      "findings": 0,
+      "reported_seconds": 0.21
+    },
+    {
+      "command": "python3.13 -I -S scripts/check_ai_team.py",
+      "exit_code": 0,
+      "team": 6,
+      "queue": 36,
+      "task_ids": 110
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "skips": 0,
+  "failures": 0,
+  "input_hashes_before_after_match": true,
+  "sha256": {
+    "src/quantharbor/domain/broker_read.py": "f8ea2dda07ba1f4bd6199d7ff1aa1555923f344cf408615477816a0fa1849fd9",
+    "src/quantharbor/ports/broker_read.py": "96f05f4e7d192b7d9d94db2c241bf5723f6613897f5752a42f7b9d7758f73c8f",
+    "src/quantharbor/application/broker_read.py": "55e616ee255771c866f9d7cab1190fde4279fbc6a049ff0f003037c7c14a728b",
+    "src/quantharbor/adapters/kis_read.py": "b048590cd451eefc43d06c05ba8515f5e5b28529b759f88debd5ecfac7deccfc",
+    "src/quantharbor/adapters/synthetic_broker.py": "d6fa266a6270c823b2e1dc80dad530c3a3806a5c29d2892c0688eaba537ed7c4",
+    "src/quantharbor/domain/serialization.py": "4b111a8758f2f1a133301c2bb4ec161703f2e9df948652bb37fd8c4b34ed87d7",
+    "tests/product/synthetic_broker.py": "ab5451eb1fb942eac9f1dbff3ea230a029b01f7a19347cec4feb8ea631f6882c",
+    "tests/product/test_broker_read.py": "b953eea28aa7dec7e3a4cb0f019dd97e9e10cc41b31e017ef81099a9abde6f69",
+    "tests/product/test_kis_read.py": "de1dcb4b1164fd77196b6ca858e27253d607e30b673f6f9e9224873c6ef70d9d",
+    "docs/development/broker-read.md": "256cc12c0745853f886e5c92cdcd9044019abbdc988faaf4d92ba745392a2165"
+  },
+  "not_executed": [
+    "real API",
+    "account-specific capabilities",
+    "credentials/private financial data",
+    "actual policy values/permissions/session",
+    "DB/Docker reruns",
+    "remote CI",
+    "Git history or full secret/vulnerability audit"
+  ],
+  "root_post_record_checks": {
+    "purpose": "final status/queue records changed after independent run",
+    "team_check": "pass 6/36/110",
+    "public_quality": "pass 276 candidates, findings 0",
+    "git_diff_check": "pass",
+    "product_tests_repeated": false
+  }
+}

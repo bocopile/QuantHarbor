@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-23",
+  "scope": "Q08 design choices and deferred gates, not full B operational completion",
+  "result": "passed",
+  "reviewer": "env_final_reviewer",
+  "source_cross_read": "official Kiwoom mock, LEAN CLI and direct engine build; no runtime tests",
+  "reviewed_sha256": {
+    "docs/research/selection-2026-10-23.md": "1810b86049dad6b6d2ab2fcffb2aeb2d8f9eccd93e438c53aae985a6ad7e7c28",
+    "docs/decisions/B-DEC-001-initial-adoption.md": "247b547ffedf4dbec99ab1437c9289f5790382b4175cecbb7a396cd8cddaf4f3"
+  },
+  "resolved": "SG02 Q16 mapping; SG01 Q31 recheck; KIS example TR discrepancy retained as unverified runtime gate",
+  "pending": [
+    "SG-01",
+    "SG-02",
+    "SG-03",
+    "SG-04"
+  ],
+  "runtime_tests_executed": false
+}

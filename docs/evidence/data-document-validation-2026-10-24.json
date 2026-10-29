@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-24",
+  "task": "Q18",
+  "validator": "env_final_validator",
+  "mode": "independent_execution",
+  "result": "pass",
+  "host_product": 127,
+  "document_tests": 21,
+  "quality_tests": 22,
+  "public_files": 251,
+  "findings": 0,
+  "storage": {
+    "python": "3.13.17",
+    "pyarrow": "26.0.0",
+    "product_tests": 127,
+    "market_storage_tests": 12,
+    "medium": "own_local_docker_volume",
+    "new_process_documents": true,
+    "seconds": 16.627,
+    "cleanup": "own_objects_removed"
+  },
+  "team": {
+    "members": 6,
+    "queue": 36,
+    "task_ids": 110
+  },
+  "input": "data-document-security-fixes-2026-10-24.json",
+  "input_sha256": "25af477285abe3769509a55012b8f3e79230b945b1f3a46a16cb2efc603746d8",
+  "matched_sha256_before_after": 8,
+  "wheel_sha256": "e3b190ba1d3d22a5a8758597f797111b77d433473744352a184a5ee0a42d672e",
+  "unexecuted": [
+    "foundation repeat (no relevant changes)",
+    "Q14 repeat (no relevant changes)",
+    "real source/rights/API/AI/finance",
+    "power-loss durability"
+  ]
+}

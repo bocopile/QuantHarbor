@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-23",
+  "task": "Q13",
+  "executor": "root",
+  "result": "pass_synthetic_foundation",
+  "checks": [
+    "pinned_python_runtime",
+    "product_unit_tests",
+    "synthetic_config_startup",
+    "pinned_postgres_startup",
+    "migration_apply_and_idempotency",
+    "migration_checksum_change_rejected",
+    "failed_transaction_rollback",
+    "synthetic_dump_restore_exact_values"
+  ],
+  "product_tests": {
+    "discovered": 22,
+    "run": 22
+  },
+  "cleanup": "own_project_removed",
+  "elapsed_seconds": 6.942,
+  "initial_failure": "buildx home activity permission denied; fixed using temporary BUILDX_CONFIG",
+  "sha256": {
+    ".dockerignore": "37971f268b43c9eba764cbd0ce30f153eae3ca950c4062e92f28b8f305b6fca1",
+    "config/runtime-lock.json": "93bced488278625d9b6207682f3663d95157e6f45bb44bb3287e460fdb971a27",
+    "config/runtime.synthetic.toml": "68a6504d0a2d9d9fc7c6e515c235c6e685d9a997851caf6db6545f0d992456f4",
+    "containers/Dockerfile.synthetic": "72fe9eca28f3e5f5763ca9576651661a8299c84372b7ba580196dc61324c4a21",
+    "containers/compose.synthetic.yaml": "464cddd1e6ef3d0d142a557258a8d13c29e26225b780a366f0c4f07d2e943064",
+    "migrations/0001_synthetic_foundation.sql": "3dcad32e09b30af71a557ee211a98fb6afdd96e3639f77990a0a904bb045997a",
+    "pyproject.toml": "e24bbcbc91d434005913cf376fa91d9c941e7fe0dd29bf13b3fc7e9044f146b6",
+    "scripts/check_foundation.py": "67c4134d7517f4770496d6e12b9076f646965e6eeee8082238ef08cf243b312a",
+    "src/quantharbor/__init__.py": "25adfdc7d92417c933a6f6ce088c6d4ca337b16dce5f7bbc19620c7a3248551e",
+    "src/quantharbor/__main__.py": "897d960299988d2e943d53e9d6baa805e015ef597c9e722b9f591f038f418f60",
+    "src/quantharbor/adapters/__init__.py": "c042803d64dd1b53366527b3060d93cb2313e13c7c69deed08e811e6dd2e5fad",
+    "src/quantharbor/application/__init__.py": "7328c64d87707d0d571d87b6ddfceda218741e39b996b1fd0cbddc73fcca4bcd",
+    "src/quantharbor/domain/__init__.py": "693f89dc30994f1872f950b66719edd9c2dcfa541a2082d7b095196dd5fc2606",
+    "src/quantharbor/domain/primitives.py": "fa0bb0e1311f794335fb443ade49865d670ac3f34f16e2d3e39f246c9e566444",
+    "src/quantharbor/domain/serialization.py": "2195ee4a5ff649923926950b9df58f952bb00e727b2bf83253f77cc9da9c5d9e",
+    "src/quantharbor/ports/__init__.py": "f736c4179432f212b62ce937e1368cf78b2b24fc7023e6af92d1a7ea5167f861",
+    "src/quantharbor/runtime/__init__.py": "feeed3495aa3de41e5397491359b4fa1e6b168a4fef6c2ca1d7a0556f9aa59c3",
+    "src/quantharbor/runtime/settings.py": "e5b03e3f9dd7e60c2caa07607f3ab9162766176918c71a840d2bb0904290e8cc",
+    "tests/product/__init__.py": "afd4a56c9e91dd36264330a0ae05e4a3ae18f4c484c707adc7dcd1feccf88212",
+    "tests/product/test_primitives.py": "8a761610fe4424dbc21c205deba7879f6dcd35de684aff5084e988677eec8365",
+    "tests/product/test_serialization.py": "4975de47c786bd728dddaec476011d063168b638e21cc2f3b10dd4ee5969e715",
+    "tests/product/test_settings_cli.py": "339ce7a7650e01b811ad36ae888011954621fc3e636cc0d5b82f3750a6560afe"
+  },
+  "limits": [
+    "self validation; independent validator pending",
+    "synthetic only; no actual accounts or financial workflows",
+    "Q14 resource/isolation enforcement not validated"
+  ]
+}
