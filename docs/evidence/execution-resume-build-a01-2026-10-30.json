@@ -1,0 +1,52 @@
+{
+  "task": "Q27-resume",
+  "run_id": "Q27-03-build-a01",
+  "recorded_at": "2026-10-30",
+  "scope": "bounded_implementation_and_local_synthetic_tests",
+  "termination": {
+    "run_id": "Q27-03-build-a01",
+    "exit_code": -15,
+    "timed_out": true,
+    "elapsed_seconds": 1200.052
+  },
+  "final_message_file_exists": false,
+  "pending_command_items": 0,
+  "changed_files": [
+    "src/quantharbor/adapters/postgres_execution.py",
+    "tests/product/test_execution_control.py"
+  ],
+  "protected_unchanged": 576,
+  "source_test_manifest": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "0bc83c3d63880801951dc198fbf8d2f24f513dc510ecb4d7d636ef9bd7fe662d"
+  },
+  "results": [
+    {
+      "check": "existing_P2_before_runtime_fix",
+      "status": "FAIL",
+      "seconds": 111.928,
+      "reason": "pending_hold_missing"
+    },
+    {
+      "check": "existing_P2_after_runtime_fix",
+      "status": "FAIL",
+      "seconds": 111.746,
+      "reason": "stale_expected_9_vs_existing_completion_4"
+    },
+    {
+      "check": "four_focused_control_tests",
+      "status": "FAIL",
+      "seconds": 547.872,
+      "detail": "three passed; mixed pending command test had4 errors; input-specific partial evidence"
+    },
+    {
+      "check": "mixed_pending_after_fault_boundary_fix",
+      "status": "FAIL",
+      "seconds": 240.205,
+      "detail": "withdraw actor receipt query errors2; final actor correction not rerun"
+    }
+  ],
+  "q27_complete": false,
+  "latest_complete_verification": false,
+  "raw_logs_in_git": false
+}

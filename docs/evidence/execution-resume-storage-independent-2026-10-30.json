@@ -1,0 +1,1486 @@
+{
+  "cases": [
+    {
+      "checks": [
+        "catalog_allowlist",
+        "all22_base_rows_content_PK_UNIQUE_bytes",
+        "all_statecopy_owner_category_totals",
+        "physical_byte_partition_conservation",
+        "open_and_closed_raw_budget_remaining",
+        "independent_common_current_obligations",
+        "common128_8MiB_global1024_64MiB",
+        "transient_empty"
+      ],
+      "excluded_fixed_metadata_counts": {
+        "runtime_identity": 1,
+        "schema_migrations": 3,
+        "synthetic_probe": 0
+      },
+      "index_inventory_count": 37,
+      "name": "storage_all22",
+      "snapshots": [
+        {
+          "budgets": [],
+          "common_charge": {
+            "actual_bytes": 34184,
+            "actual_records": 24,
+            "bytes": 4034952,
+            "records": 62,
+            "remaining": {
+              "bytes": 4000768,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 38
+            }
+          },
+          "copy_entries": 16,
+          "copy_logical_records": 4,
+          "copy_reattributed_bytes": 0,
+          "empty_relations": [
+            "execution_claim",
+            "execution_intent",
+            "execution_reservation",
+            "execution_attempt",
+            "execution_outbox",
+            "execution_broker_inbox",
+            "execution_event_resolution",
+            "execution_budget",
+            "execution_cursor",
+            "ledger_inbox",
+            "ledger_inbox_collision",
+            "ledger_workstate"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 12423560,
+            "actual_plus_current_future_records": 62,
+            "bytes": 16777216,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 128
+          },
+          "owner_categories": [
+            {
+              "bytes": 34184,
+              "category": "common",
+              "owner": "@common",
+              "records": 24
+            }
+          ],
+          "physical": {
+            "bytes": 34184,
+            "records": 20
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 15935,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_budget": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_claim": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_cursor": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_evidence": {
+              "canonical_bytes": 9878,
+              "index_bytes": 2117,
+              "rows": 9
+            },
+            "execution_head": {
+              "canonical_bytes": 386,
+              "index_bytes": 162,
+              "rows": 2
+            },
+            "execution_intent": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_outbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_reservation": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_decision": {
+              "canonical_bytes": 1160,
+              "index_bytes": 30,
+              "rows": 1
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 113,
+              "index_bytes": 79,
+              "rows": 1
+            },
+            "ledger_event": {
+              "canonical_bytes": 1865,
+              "index_bytes": 175,
+              "rows": 1
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 343,
+              "index_bytes": 62,
+              "rows": 2
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 320,
+              "index_bytes": 79,
+              "rows": 1
+            },
+            "ledger_projection": {
+              "canonical_bytes": 970,
+              "index_bytes": 293,
+              "rows": 1
+            },
+            "ledger_stream": {
+              "canonical_bytes": 121,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            }
+          },
+          "snapshot": "initial",
+          "transient_empty": true
+        },
+        {
+          "budgets": [
+            {
+              "actual_bytes": 74097,
+              "actual_records": 26,
+              "category_remaining": {
+                "base": 20,
+                "broker": 64,
+                "control": 50,
+                "late": 32,
+                "ledger": 192
+              },
+              "closed": false,
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "remaining_bytes": 25091727,
+              "remaining_records": 358
+            }
+          ],
+          "common_charge": {
+            "actual_bytes": 75962,
+            "actual_records": 31,
+            "bytes": 5387450,
+            "records": 83,
+            "remaining": {
+              "bytes": 5311488,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 52
+            }
+          },
+          "copy_entries": 48,
+          "copy_logical_records": 13,
+          "copy_reattributed_bytes": 37834,
+          "empty_relations": [
+            "execution_attempt",
+            "execution_broker_inbox",
+            "execution_event_resolution",
+            "execution_cursor",
+            "ledger_inbox",
+            "ledger_inbox_collision",
+            "ledger_workstate"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 38941882,
+            "actual_plus_current_future_records": 467,
+            "bytes": 41943040,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 512
+          },
+          "owner_categories": [
+            {
+              "bytes": 75962,
+              "category": "common",
+              "owner": "@common",
+              "records": 31
+            },
+            {
+              "bytes": 62980,
+              "category": "base",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 12
+            },
+            {
+              "bytes": 0,
+              "category": "broker",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 11117,
+              "category": "control",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 14
+            },
+            {
+              "bytes": 0,
+              "category": "late",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 0,
+              "category": "ledger",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            }
+          ],
+          "physical": {
+            "bytes": 150059,
+            "records": 44
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 74677,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_budget": {
+              "canonical_bytes": 238,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_claim": {
+              "canonical_bytes": 330,
+              "index_bytes": 199,
+              "rows": 1
+            },
+            "execution_cursor": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_evidence": {
+              "canonical_bytes": 54297,
+              "index_bytes": 6039,
+              "rows": 24
+            },
+            "execution_head": {
+              "canonical_bytes": 581,
+              "index_bytes": 245,
+              "rows": 3
+            },
+            "execution_intent": {
+              "canonical_bytes": 3845,
+              "index_bytes": 152,
+              "rows": 1
+            },
+            "execution_outbox": {
+              "canonical_bytes": 125,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_reservation": {
+              "canonical_bytes": 2808,
+              "index_bytes": 657,
+              "rows": 4
+            },
+            "ledger_decision": {
+              "canonical_bytes": 1160,
+              "index_bytes": 30,
+              "rows": 1
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 113,
+              "index_bytes": 79,
+              "rows": 1
+            },
+            "ledger_event": {
+              "canonical_bytes": 1865,
+              "index_bytes": 175,
+              "rows": 1
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 343,
+              "index_bytes": 62,
+              "rows": 2
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 320,
+              "index_bytes": 79,
+              "rows": 1
+            },
+            "ledger_projection": {
+              "canonical_bytes": 970,
+              "index_bytes": 293,
+              "rows": 1
+            },
+            "ledger_stream": {
+              "canonical_bytes": 121,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            }
+          },
+          "snapshot": "admitted_pending_challenge",
+          "transient_empty": true
+        },
+        {
+          "budgets": [
+            {
+              "actual_bytes": 133946,
+              "actual_records": 55,
+              "category_remaining": {
+                "base": 15,
+                "broker": 61,
+                "control": 50,
+                "late": 32,
+                "ledger": 171
+              },
+              "closed": false,
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "remaining_bytes": 25031878,
+              "remaining_records": 329
+            }
+          ],
+          "common_charge": {
+            "actual_bytes": 91237,
+            "actual_records": 34,
+            "bytes": 4812901,
+            "records": 83,
+            "remaining": {
+              "bytes": 4721664,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 49
+            }
+          },
+          "copy_entries": 61,
+          "copy_logical_records": 13,
+          "copy_reattributed_bytes": 58429,
+          "empty_relations": [
+            "execution_cursor",
+            "ledger_inbox",
+            "ledger_inbox_collision",
+            "ledger_workstate"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 38367333,
+            "actual_plus_current_future_records": 467,
+            "bytes": 41943040,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 512
+          },
+          "owner_categories": [
+            {
+              "bytes": 91237,
+              "category": "common",
+              "owner": "@common",
+              "records": 34
+            },
+            {
+              "bytes": 96748,
+              "category": "base",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 17
+            },
+            {
+              "bytes": 7125,
+              "category": "broker",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 3
+            },
+            {
+              "bytes": 11117,
+              "category": "control",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 14
+            },
+            {
+              "bytes": 0,
+              "category": "late",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 18956,
+              "category": "ledger",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 21
+            }
+          ],
+          "physical": {
+            "bytes": 225183,
+            "records": 76
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 102681,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 813,
+              "index_bytes": 151,
+              "rows": 1
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 1287,
+              "index_bytes": 229,
+              "rows": 1
+            },
+            "execution_budget": {
+              "canonical_bytes": 238,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_claim": {
+              "canonical_bytes": 330,
+              "index_bytes": 199,
+              "rows": 1
+            },
+            "execution_cursor": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 313,
+              "index_bytes": 239,
+              "rows": 1
+            },
+            "execution_evidence": {
+              "canonical_bytes": 76585,
+              "index_bytes": 8059,
+              "rows": 32
+            },
+            "execution_head": {
+              "canonical_bytes": 581,
+              "index_bytes": 245,
+              "rows": 3
+            },
+            "execution_intent": {
+              "canonical_bytes": 4315,
+              "index_bytes": 152,
+              "rows": 1
+            },
+            "execution_outbox": {
+              "canonical_bytes": 133,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_reservation": {
+              "canonical_bytes": 3154,
+              "index_bytes": 657,
+              "rows": 4
+            },
+            "ledger_decision": {
+              "canonical_bytes": 4865,
+              "index_bytes": 120,
+              "rows": 4
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 452,
+              "index_bytes": 316,
+              "rows": 4
+            },
+            "ledger_event": {
+              "canonical_bytes": 8209,
+              "index_bytes": 917,
+              "rows": 4
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 1351,
+              "index_bytes": 248,
+              "rows": 8
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 1280,
+              "index_bytes": 316,
+              "rows": 4
+            },
+            "ledger_projection": {
+              "canonical_bytes": 5199,
+              "index_bytes": 1172,
+              "rows": 4
+            },
+            "ledger_stream": {
+              "canonical_bytes": 121,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            }
+          },
+          "snapshot": "known_cost_fill",
+          "transient_empty": true
+        },
+        {
+          "budgets": [
+            {
+              "actual_bytes": 177205,
+              "actual_records": 88,
+              "category_remaining": {
+                "base": 14,
+                "broker": 59,
+                "control": 50,
+                "late": 32,
+                "ledger": 141
+              },
+              "closed": false,
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "remaining_bytes": 24988619,
+              "remaining_records": 296
+            }
+          ],
+          "common_charge": {
+            "actual_bytes": 92090,
+            "actual_records": 35,
+            "bytes": 4748218,
+            "records": 83,
+            "remaining": {
+              "bytes": 4656128,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 48
+            }
+          },
+          "copy_entries": 66,
+          "copy_logical_records": 13,
+          "copy_reattributed_bytes": 66067,
+          "empty_relations": [
+            "execution_cursor",
+            "ledger_inbox",
+            "ledger_inbox_collision",
+            "ledger_workstate"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 38302650,
+            "actual_plus_current_future_records": 467,
+            "bytes": 41943040,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 512
+          },
+          "owner_categories": [
+            {
+              "bytes": 92090,
+              "category": "common",
+              "owner": "@common",
+              "records": 35
+            },
+            {
+              "bytes": 108291,
+              "category": "base",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 18
+            },
+            {
+              "bytes": 11471,
+              "category": "broker",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 5
+            },
+            {
+              "bytes": 11117,
+              "category": "control",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 14
+            },
+            {
+              "bytes": 0,
+              "category": "late",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 46326,
+              "category": "ledger",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 51
+            }
+          ],
+          "physical": {
+            "bytes": 269295,
+            "records": 110
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 110619,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 813,
+              "index_bytes": 151,
+              "rows": 1
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 2573,
+              "index_bytes": 458,
+              "rows": 2
+            },
+            "execution_budget": {
+              "canonical_bytes": 238,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_claim": {
+              "canonical_bytes": 330,
+              "index_bytes": 199,
+              "rows": 1
+            },
+            "execution_cursor": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 626,
+              "index_bytes": 478,
+              "rows": 2
+            },
+            "execution_evidence": {
+              "canonical_bytes": 82089,
+              "index_bytes": 8611,
+              "rows": 34
+            },
+            "execution_head": {
+              "canonical_bytes": 581,
+              "index_bytes": 245,
+              "rows": 3
+            },
+            "execution_intent": {
+              "canonical_bytes": 4315,
+              "index_bytes": 152,
+              "rows": 1
+            },
+            "execution_outbox": {
+              "canonical_bytes": 133,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_reservation": {
+              "canonical_bytes": 3834,
+              "index_bytes": 657,
+              "rows": 4
+            },
+            "ledger_decision": {
+              "canonical_bytes": 8729,
+              "index_bytes": 211,
+              "rows": 7
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 791,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_event": {
+              "canonical_bytes": 20915,
+              "index_bytes": 2094,
+              "rows": 10
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 3373,
+              "index_bytes": 622,
+              "rows": 20
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 2241,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_projection": {
+              "canonical_bytes": 9681,
+              "index_bytes": 2052,
+              "rows": 7
+            },
+            "ledger_stream": {
+              "canonical_bytes": 122,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            }
+          },
+          "snapshot": "positive_correction_reversal_indexes",
+          "transient_empty": true
+        },
+        {
+          "budgets": [
+            {
+              "actual_bytes": 191777,
+              "actual_records": 91,
+              "category_remaining": {
+                "base": 0,
+                "broker": 0,
+                "control": 22,
+                "late": 0,
+                "ledger": 6
+              },
+              "closed": true,
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "remaining_bytes": 4469760,
+              "remaining_records": 28
+            }
+          ],
+          "common_charge": {
+            "actual_bytes": 92645,
+            "actual_records": 36,
+            "bytes": 4355557,
+            "records": 78,
+            "remaining": {
+              "bytes": 4262912,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 42
+            }
+          },
+          "copy_entries": 69,
+          "copy_logical_records": 13,
+          "copy_reattributed_bytes": 73048,
+          "empty_relations": [
+            "execution_cursor",
+            "ledger_inbox",
+            "ledger_inbox_collision",
+            "ledger_workstate"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 17405702,
+            "actual_plus_current_future_records": 197,
+            "bytes": 21438753,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 247
+          },
+          "owner_categories": [
+            {
+              "bytes": 92645,
+              "category": "common",
+              "owner": "@common",
+              "records": 36
+            },
+            {
+              "bytes": 118485,
+              "category": "base",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 19
+            },
+            {
+              "bytes": 15849,
+              "category": "broker",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 7
+            },
+            {
+              "bytes": 11117,
+              "category": "control",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 14
+            },
+            {
+              "bytes": 0,
+              "category": "late",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 46326,
+              "category": "ledger",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 51
+            }
+          ],
+          "physical": {
+            "bytes": 284422,
+            "records": 114
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 117603,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 813,
+              "index_bytes": 151,
+              "rows": 1
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 3871,
+              "index_bytes": 687,
+              "rows": 3
+            },
+            "execution_budget": {
+              "canonical_bytes": 230,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_claim": {
+              "canonical_bytes": 330,
+              "index_bytes": 199,
+              "rows": 1
+            },
+            "execution_cursor": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 939,
+              "index_bytes": 717,
+              "rows": 3
+            },
+            "execution_evidence": {
+              "canonical_bytes": 87606,
+              "index_bytes": 9163,
+              "rows": 36
+            },
+            "execution_head": {
+              "canonical_bytes": 581,
+              "index_bytes": 245,
+              "rows": 3
+            },
+            "execution_intent": {
+              "canonical_bytes": 4317,
+              "index_bytes": 152,
+              "rows": 1
+            },
+            "execution_outbox": {
+              "canonical_bytes": 134,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_reservation": {
+              "canonical_bytes": 3834,
+              "index_bytes": 657,
+              "rows": 4
+            },
+            "ledger_decision": {
+              "canonical_bytes": 8729,
+              "index_bytes": 211,
+              "rows": 7
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 791,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_event": {
+              "canonical_bytes": 20915,
+              "index_bytes": 2094,
+              "rows": 10
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 3373,
+              "index_bytes": 622,
+              "rows": 20
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 2241,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_projection": {
+              "canonical_bytes": 9681,
+              "index_bytes": 2052,
+              "rows": 7
+            },
+            "ledger_stream": {
+              "canonical_bytes": 122,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            }
+          },
+          "snapshot": "terminal_pending_closure_and_ledger_outbox",
+          "transient_empty": true
+        },
+        {
+          "budgets": [
+            {
+              "actual_bytes": 193625,
+              "actual_records": 97,
+              "category_remaining": {
+                "base": 0,
+                "broker": 0,
+                "control": 22,
+                "late": 0,
+                "ledger": 0
+              },
+              "closed": true,
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "remaining_bytes": 4460544,
+              "remaining_records": 22
+            }
+          ],
+          "common_charge": {
+            "actual_bytes": 93172,
+            "actual_records": 39,
+            "bytes": 4353012,
+            "records": 79,
+            "remaining": {
+              "bytes": 4259840,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 40
+            }
+          },
+          "copy_entries": 69,
+          "copy_logical_records": 13,
+          "copy_reattributed_bytes": 73048,
+          "empty_relations": [
+            "ledger_inbox_collision"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 17395789,
+            "actual_plus_current_future_records": 198,
+            "bytes": 21431385,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 247
+          },
+          "owner_categories": [
+            {
+              "bytes": 93172,
+              "category": "common",
+              "owner": "@common",
+              "records": 39
+            },
+            {
+              "bytes": 118485,
+              "category": "base",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 19
+            },
+            {
+              "bytes": 15849,
+              "category": "broker",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 7
+            },
+            {
+              "bytes": 11117,
+              "category": "control",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 14
+            },
+            {
+              "bytes": 0,
+              "category": "late",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 48174,
+              "category": "ledger",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 57
+            }
+          ],
+          "physical": {
+            "bytes": 286797,
+            "records": 123
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 117603,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 813,
+              "index_bytes": 151,
+              "rows": 1
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 3871,
+              "index_bytes": 687,
+              "rows": 3
+            },
+            "execution_budget": {
+              "canonical_bytes": 230,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_claim": {
+              "canonical_bytes": 330,
+              "index_bytes": 199,
+              "rows": 1
+            },
+            "execution_cursor": {
+              "canonical_bytes": 54,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 939,
+              "index_bytes": 717,
+              "rows": 3
+            },
+            "execution_evidence": {
+              "canonical_bytes": 87606,
+              "index_bytes": 9163,
+              "rows": 36
+            },
+            "execution_head": {
+              "canonical_bytes": 581,
+              "index_bytes": 245,
+              "rows": 3
+            },
+            "execution_intent": {
+              "canonical_bytes": 4317,
+              "index_bytes": 152,
+              "rows": 1
+            },
+            "execution_outbox": {
+              "canonical_bytes": 134,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_reservation": {
+              "canonical_bytes": 3834,
+              "index_bytes": 657,
+              "rows": 4
+            },
+            "ledger_decision": {
+              "canonical_bytes": 8729,
+              "index_bytes": 211,
+              "rows": 7
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 791,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_event": {
+              "canonical_bytes": 20915,
+              "index_bytes": 2094,
+              "rows": 10
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 1449,
+              "index_bytes": 707,
+              "rows": 7
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 3373,
+              "index_bytes": 622,
+              "rows": 20
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 2241,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_projection": {
+              "canonical_bytes": 9681,
+              "index_bytes": 2052,
+              "rows": 7
+            },
+            "ledger_stream": {
+              "canonical_bytes": 122,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 87,
+              "index_bytes": 50,
+              "rows": 1
+            }
+          },
+          "snapshot": "closed_consumed_ledger_outbox",
+          "transient_empty": true
+        },
+        {
+          "budgets": [
+            {
+              "actual_bytes": 200814,
+              "actual_records": 100,
+              "category_remaining": {
+                "base": 0,
+                "broker": 0,
+                "control": 8,
+                "late": 0,
+                "ledger": 0
+              },
+              "closed": true,
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "remaining_bytes": 1622016,
+              "remaining_records": 8
+            }
+          ],
+          "common_charge": {
+            "actual_bytes": 95758,
+            "actual_records": 41,
+            "bytes": 4224526,
+            "records": 79,
+            "remaining": {
+              "bytes": 4128768,
+              "plan": {
+                "next": 1,
+                "rebind": 0,
+                "resume": 0,
+                "sessions": 0
+              },
+              "records": 38
+            }
+          },
+          "copy_entries": 75,
+          "copy_logical_records": 14,
+          "copy_reattributed_bytes": 76986,
+          "empty_relations": [
+            "ledger_inbox_collision"
+          ],
+          "future_components_without_independent_expectation": [],
+          "global_charge": {
+            "actual_plus_current_future_bytes": 14435964,
+            "actual_plus_current_future_records": 187,
+            "bytes": 18600046,
+            "common_and_source_reserved_bytes": 16777216,
+            "common_reserved_records": 128,
+            "records": 236
+          },
+          "owner_categories": [
+            {
+              "bytes": 95758,
+              "category": "common",
+              "owner": "@common",
+              "records": 41
+            },
+            {
+              "bytes": 122063,
+              "category": "base",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 19
+            },
+            {
+              "bytes": 15849,
+              "category": "broker",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 7
+            },
+            {
+              "bytes": 14728,
+              "category": "control",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 17
+            },
+            {
+              "bytes": 0,
+              "category": "late",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 0
+            },
+            {
+              "bytes": 48174,
+              "category": "ledger",
+              "owner": "execution-intent:82a2c0c80f374be4a368ea0fef7f1cbc",
+              "records": 57
+            }
+          ],
+          "physical": {
+            "bytes": 296572,
+            "records": 127
+          },
+          "relations": {
+            "execution_account": {
+              "canonical_bytes": 122670,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_attempt": {
+              "canonical_bytes": 813,
+              "index_bytes": 151,
+              "rows": 1
+            },
+            "execution_broker_inbox": {
+              "canonical_bytes": 3871,
+              "index_bytes": 687,
+              "rows": 3
+            },
+            "execution_budget": {
+              "canonical_bytes": 228,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_claim": {
+              "canonical_bytes": 330,
+              "index_bytes": 199,
+              "rows": 1
+            },
+            "execution_cursor": {
+              "canonical_bytes": 54,
+              "index_bytes": 28,
+              "rows": 1
+            },
+            "execution_event_resolution": {
+              "canonical_bytes": 939,
+              "index_bytes": 717,
+              "rows": 3
+            },
+            "execution_evidence": {
+              "canonical_bytes": 91309,
+              "index_bytes": 9884,
+              "rows": 39
+            },
+            "execution_head": {
+              "canonical_bytes": 780,
+              "index_bytes": 332,
+              "rows": 4
+            },
+            "execution_intent": {
+              "canonical_bytes": 4317,
+              "index_bytes": 152,
+              "rows": 1
+            },
+            "execution_outbox": {
+              "canonical_bytes": 134,
+              "index_bytes": 80,
+              "rows": 1
+            },
+            "execution_reservation": {
+              "canonical_bytes": 3834,
+              "index_bytes": 657,
+              "rows": 4
+            },
+            "ledger_decision": {
+              "canonical_bytes": 8729,
+              "index_bytes": 211,
+              "rows": 7
+            },
+            "ledger_delivery": {
+              "canonical_bytes": 791,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_event": {
+              "canonical_bytes": 20915,
+              "index_bytes": 2094,
+              "rows": 10
+            },
+            "ledger_inbox": {
+              "canonical_bytes": 1449,
+              "index_bytes": 707,
+              "rows": 7
+            },
+            "ledger_inbox_collision": {
+              "canonical_bytes": 0,
+              "index_bytes": 0,
+              "rows": 0
+            },
+            "ledger_journal": {
+              "canonical_bytes": 3373,
+              "index_bytes": 622,
+              "rows": 20
+            },
+            "ledger_outbox": {
+              "canonical_bytes": 2241,
+              "index_bytes": 553,
+              "rows": 7
+            },
+            "ledger_projection": {
+              "canonical_bytes": 9681,
+              "index_bytes": 2052,
+              "rows": 7
+            },
+            "ledger_stream": {
+              "canonical_bytes": 122,
+              "index_bytes": 68,
+              "rows": 1
+            },
+            "ledger_workstate": {
+              "canonical_bytes": 87,
+              "index_bytes": 50,
+              "rows": 1
+            }
+          },
+          "snapshot": "terminal_closure_completed",
+          "transient_empty": true
+        }
+      ],
+      "status": "pass"
+    }
+  ],
+  "cleanup": [
+    {
+      "case": "storage_all22",
+      "status": "own_project_removed"
+    }
+  ],
+  "diagnostic": {},
+  "elapsed_seconds": 113.851,
+  "input_sha256": {
+    "docs/contracts/execution-fixture-v1.json": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "migrations/0003_synthetic_execution.sql": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa",
+    "scripts/check_execution.py": "beccce93647b68e30b0da4b22f3a04e23f8fa54ec2ce4d7cf2fabf4ea965b036",
+    "src/quantharbor/adapters/execution_uow.py": "ad4433ee4542bdf16fb7df6416d09ec76d419f187a99b1589a58b8061fb0bd41",
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f",
+    "tests/product/test_execution_financial.py": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5",
+    "tests/product/test_execution_sql.py": "ccaa95854b200d4ed5c85b44e6e593b90ec2a3b0172dff43bc476820788efd6d"
+  },
+  "limitations": [
+    "Authored supplement only; fixed40 mapping, existing84, independent review and final integration remain root responsibilities.",
+    "Snapshot proof validates listed lifecycle obligations; it is not an exhaustive proof of every possible future interleaving."
+  ],
+  "phase": "complete",
+  "q27_complete": false,
+  "status": "pass",
+  "task": "Q27-storage-proof-a02/revision4",
+  "actor": "root",
+  "revision": {
+    "actor": "root",
+    "source_diagnostic": "qh-q27-storage-diagnostic-20261030-p1dcibl3",
+    "source_proof_sha256": "0998c8e3a1a252d103d59b2a30cb8e6399e617bf2292f062f829d27d6c9e538c",
+    "corrected_proof_sha256": "cdf341e131313eb1485a795a5336e7240f654600d5f31e9c0bab5afb0bee905b",
+    "only_expected_formula_change": "prepared future byte units: 2*prepared*262144",
+    "observed_difference_bytes": 262144,
+    "limits_assertions_production_unchanged": true,
+    "run_only_storage": true
+  },
+  "root_interpretation": "Storage-only corrected independent oracle: all22relations/37indexes and7lifecycle snapshots PASS. Prior unsupported4cases passed separately on identical product inputs. Not a latest84 or wholeQ27 PASS."
+}

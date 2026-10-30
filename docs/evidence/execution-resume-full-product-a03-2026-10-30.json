@@ -1,0 +1,31 @@
+{
+  "scope": "Q27_final_input_full_product_unittest",
+  "status": "PASS",
+  "started_at": 1793340728.023865,
+  "current": null,
+  "q27_complete": false,
+  "planned_tests": 789,
+  "tests_run": 789,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "input_unchanged": true,
+  "elapsed_seconds": 6575.253,
+  "ended_at": 1793347303.368869,
+  "actor": "root",
+  "run_id": "Q27-08-product-a03-root",
+  "tracked_file_count": 578,
+  "parent_exit": {
+    "run_id": "Q27-08-product-a03-root",
+    "actor": "root",
+    "exit_code": 0,
+    "elapsed_seconds": 6575.317
+  },
+  "input_sha256": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "src/quantharbor/adapters/execution_uow.py": "ad4433ee4542bdf16fb7df6416d09ec76d419f187a99b1589a58b8061fb0bd41",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f",
+    "tests/product/test_execution_financial.py": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5",
+    "tests/product/test_execution_sql.py": "ccaa95854b200d4ed5c85b44e6e593b90ec2a3b0172dff43bc476820788efd6d"
+  }
+}

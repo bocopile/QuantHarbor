@@ -1,0 +1,250 @@
+{
+  "run_id": "Q27-remaining-database-a01",
+  "scope": "original_scenarios_25_through_84_same_frozen_inputs",
+  "status": "RUNNING",
+  "planned": 60,
+  "completed": 11,
+  "passed": 10,
+  "failed": 1,
+  "q27_complete": false,
+  "earlier_cohort": "a02 scenarios1-23 PASS;24 FAIL;not repeated",
+  "started_at": 1793351879.761059,
+  "deadline_seconds": 10800,
+  "automatic_retries": 0,
+  "elapsed_seconds": 727.479,
+  "current_scenario": 36,
+  "results": [
+    {
+      "scenario": 25,
+      "expression": "lambda db, c, g: risk_negative(db, c, g, mode='turnover')",
+      "status": "FAIL",
+      "result_file": "scenario-25.json",
+      "error_type": "ApprovalDenied",
+      "reason": "invalid_contract",
+      "trace_symbols": [
+        {
+          "file": "run-remaining.py",
+          "line": 35,
+          "function": "<module>"
+        },
+        {
+          "file": "check_execution.py",
+          "line": 1959,
+          "function": "<lambda>"
+        },
+        {
+          "file": "check_execution.py",
+          "line": 588,
+          "function": "risk_negative"
+        },
+        {
+          "file": "synthetic_execution.py",
+          "line": 167,
+          "function": "admission_challenge"
+        },
+        {
+          "file": "approval.py",
+          "line": 153,
+          "function": "challenge"
+        },
+        {
+          "file": "approval.py",
+          "line": 147,
+          "function": "_call"
+        }
+      ],
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 75.978,
+      "checks": [],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [
+        "execution_capacity"
+      ],
+      "database_context": [
+        {
+          "function": "execution_check_budget",
+          "line": 18
+        },
+        {
+          "function": "execution_save",
+          "line": 160
+        },
+        {
+          "function": "execution_apply",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "scenario": 26,
+      "expression": "lambda db, c, g: risk_negative(db, c, g, mode='loss')",
+      "status": "PASS",
+      "result_file": "scenario-26.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 52.656,
+      "checks": [
+        "EX13_actual_all_account_DB_loss_negative_no_cached_allow"
+      ],
+      "goldens": {
+        "risk_loss": {
+          "observed_loss": "40",
+          "worst_cost": "15",
+          "prospective_loss": "55",
+          "NAV": "960",
+          "loss_limit": "50",
+          "drawdown_limit": "0.05"
+        }
+      },
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 27,
+      "expression": "lambda db, c, g: risk_negative(db, c, g, mode='drawdown')",
+      "status": "PASS",
+      "result_file": "scenario-27.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 53.657,
+      "checks": [
+        "EX13_actual_all_account_DB_drawdown_negative_no_cached_allow"
+      ],
+      "goldens": {
+        "risk_drawdown": {
+          "observed_loss": "40",
+          "worst_cost": "15",
+          "prospective_loss": "55",
+          "NAV": "960",
+          "loss_limit": "50",
+          "drawdown_limit": "0.05"
+        }
+      },
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 28,
+      "expression": "control_cancel",
+      "status": "PASS",
+      "result_file": "scenario-28.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 79.229,
+      "checks": [
+        "EX27_EX28_actual_DB_cancel_ack_attempt_commit_ACK_hold_fill_finality_no_retry"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 29,
+      "expression": "lambda db, c, g: control_cancel(db, c, g, mode='unknown')",
+      "status": "PASS",
+      "result_file": "scenario-29.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 75.199,
+      "checks": [
+        "EX27_EX28_actual_DB_cancel_unknown_attempt_commit_ACK_hold_fill_finality_no_retry"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 30,
+      "expression": "control_cancel_conflict",
+      "status": "PASS",
+      "result_file": "scenario-30.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 76.299,
+      "checks": [
+        "EX28_actual_DB_confirmation_before_fill_conflict_preserved_incomplete_hold"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 31,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='dispatch', action='stop')",
+      "status": "PASS",
+      "result_file": "scenario-31.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 74.736,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_dispatch_before_stop_not_multi_process_isolation_proof"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 32,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='protect', action='stop')",
+      "status": "PASS",
+      "result_file": "scenario-32.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 56.402,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_protect_before_stop_not_multi_process_isolation_proof"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 33,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='dispatch', action='withdraw')",
+      "status": "PASS",
+      "result_file": "scenario-33.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 75.078,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_dispatch_before_withdraw_not_multi_process_isolation_proof"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 34,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='protect', action='withdraw')",
+      "status": "PASS",
+      "result_file": "scenario-34.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 55.211,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_protect_before_withdraw_not_multi_process_isolation_proof"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 35,
+      "expression": "control_protect_rights",
+      "status": "PASS",
+      "result_file": "scenario-35.json",
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 54.501,
+      "checks": [
+        "EX29_actual_DB_new_controller_session_withdraw_after_approve_report_risk_rights_loss"
+      ],
+      "goldens": {},
+      "input_unchanged": true,
+      "database_fixed_reasons": [],
+      "database_context": []
+    }
+  ],
+  "snapshot_only": true,
+  "captured_results": 11
+}

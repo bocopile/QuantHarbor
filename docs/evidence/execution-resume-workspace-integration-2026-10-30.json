@@ -1,0 +1,25 @@
+{
+  "task": "Q27-local",
+  "scope": "apply_reviewed_worktree_product_diff_to_original_checkout",
+  "base": "80403ab3b8ef322e7d38e8554b42f263bb37cbae",
+  "files": {
+    "src/quantharbor/adapters/postgres_execution.py": {
+      "before": "914ec4d9d0c237830db4f0d50bada90a59365d97d72fbde26549ee54fa409bc0",
+      "after": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046"
+    },
+    "tests/product/test_execution_control.py": {
+      "before": "287a4e8725374f010253ef96c03740b722034fe4d6bfea9d165ee898cdcacbbb",
+      "after": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f"
+    },
+    "tests/product/test_execution_financial.py": {
+      "before": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793",
+      "after": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5"
+    }
+  },
+  "preexisting_user_product_edits": false,
+  "existing_document_edits_preserved": true,
+  "commit_push_merge": false,
+  "q27_complete": false,
+  "actual_database84": "in_progress",
+  "latest_full783": "not_yet_run"
+}

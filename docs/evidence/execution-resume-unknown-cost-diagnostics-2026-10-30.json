@@ -1,0 +1,96 @@
+{
+  "task": "Q27_unknown_cost_RCA",
+  "probe_through_settlement_only": {
+    "task": "Q27_unknown_cost_diagnostic",
+    "status": "PASS",
+    "phase": "settlement",
+    "q27_complete": false,
+    "steps": [
+      "migration",
+      "harness",
+      "approval_admit",
+      "dispatch",
+      "receive_unknown",
+      "check_unknown_state",
+      "injected_inbox",
+      "injected_fill_trade",
+      "injected_fill_fee",
+      "injected_fill_tax",
+      "injected_ledger",
+      "injected_fill_reservation",
+      "injected_fill_intent",
+      "injected_fill_history",
+      "injected_commit",
+      "receive_complete",
+      "settlement"
+    ],
+    "cleanup": "own_project_removed",
+    "project": "qh-ledger-2db7a17191d64e4ca99106569b065242",
+    "database_fixed_reasons": [],
+    "postgres_error_count": 0,
+    "input_unchanged": true,
+    "elapsed_seconds": 83.845
+  },
+  "complete_probe": {
+    "task": "Q27_unknown_cost_diagnostic",
+    "status": "FAIL",
+    "phase": "fingerprint_before_duplicate",
+    "q27_complete": false,
+    "steps": [
+      "migration",
+      "harness",
+      "approval_admit",
+      "dispatch",
+      "receive_unknown",
+      "check_unknown_state",
+      "injected_inbox",
+      "injected_fill_trade",
+      "injected_fill_fee",
+      "injected_fill_tax",
+      "injected_ledger",
+      "injected_fill_reservation",
+      "injected_fill_intent",
+      "injected_fill_history",
+      "injected_commit",
+      "receive_complete",
+      "cost_bounds",
+      "settlement",
+      "replay",
+      "cash_literal"
+    ],
+    "error_type": "ExecutionDenied",
+    "reason": "storage_failure",
+    "trace_symbols": [
+      {
+        "file": "diagnose.py",
+        "line": 47,
+        "function": "<module>"
+      },
+      {
+        "file": "diagnose.py",
+        "line": 16,
+        "function": "phase"
+      },
+      {
+        "file": "postgres_execution.py",
+        "line": 177,
+        "function": "call"
+      }
+    ],
+    "cleanup": "own_project_removed",
+    "project": "qh-ledger-f37d02d088ad48e5bd924c74233b66dc",
+    "database_fixed_reasons": [],
+    "postgres_error_count": 0,
+    "input_unchanged": true,
+    "elapsed_seconds": 83.253
+  },
+  "confirmed_failed_phase": "fingerprint_before_duplicate",
+  "postgres_errors_observed": 0,
+  "static_cause": "execution_fingerprint returns raw ledger_journal numeric amount; UoW _json rejects noninteger JSON numbers; _db_command maps ValueError to storage_failure",
+  "pure_parser_reproduction": {
+    "integer_numeric": "accepted",
+    "fractional_numeric": "ValueError_non_integer_json_number"
+  },
+  "runtime_change_yet": false,
+  "q27_complete": false
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "Q27-04-proof-author-a01",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "profile": "qh_development",
+  "parent_exit": {
+    "run_id": "Q27-04-proof-author-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 670.92
+  },
+  "tracked578_inputs_unchanged": true,
+  "authored_proof_sha256": "558c68a037680904cc95a284b5b33c6ed34d78c35a93ccf1cdfe75996ead9651",
+  "authored_handoff_sha256": "a61413eef80057691683685914c9aaf5742a1e47768c01a9aa6460151514f8d1",
+  "static_checks": {
+    "AST": "PASS",
+    "SQL_literal_parenthesis_guard": "PASS",
+    "actualDB": "NOT RUN",
+    "compile": "PASS",
+    "expectation_helper_call_guard": "PASS",
+    "inert_import": "PASS",
+    "proof_sha256": "558c68a037680904cc95a284b5b33c6ed34d78c35a93ccf1cdfe75996ead9651",
+    "pure_canonical_samples": 9,
+    "root_baseline_matches": true,
+    "tracked_aggregate": "27dd63559167f8a349dace98e08a62c0dc7b65e89009cf1c1551a0a1ddaea594",
+    "tracked_files_unchanged": 578
+  },
+  "actual_database_run": false,
+  "q27_complete": false
+}

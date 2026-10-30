@@ -1,0 +1,894 @@
+{
+  "run_id": "Q27-remaining-database-a01",
+  "scope": "original_scenarios_25_through_84_same_frozen_inputs",
+  "status": "COLLECTED_WITH_FAILURES",
+  "planned": 60,
+  "completed": 60,
+  "passed": 58,
+  "failed": 2,
+  "elapsed_seconds": 4854.199,
+  "timed_out": false,
+  "input_unchanged": true,
+  "not_run": 0,
+  "q27_complete": false,
+  "comparison": "원래전체a02의1~23PASS/24FAIL과별도실행. 같은고정578입력이지만단일84사례PASS결과가아님.",
+  "raw_logs_in_git": false,
+  "cases": [
+    {
+      "scenario": 25,
+      "expression": "lambda db, c, g: risk_negative(db, c, g, mode='turnover')",
+      "status": "FAIL",
+      "elapsed_seconds": 75.978,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [],
+      "reason": "invalid_contract",
+      "database_fixed_reasons": [
+        "execution_capacity"
+      ],
+      "database_context": [
+        {
+          "function": "execution_check_budget",
+          "line": 18
+        },
+        {
+          "function": "execution_save",
+          "line": 160
+        },
+        {
+          "function": "execution_apply",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "scenario": 26,
+      "expression": "lambda db, c, g: risk_negative(db, c, g, mode='loss')",
+      "status": "PASS",
+      "elapsed_seconds": 52.656,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX13_actual_all_account_DB_loss_negative_no_cached_allow"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 27,
+      "expression": "lambda db, c, g: risk_negative(db, c, g, mode='drawdown')",
+      "status": "PASS",
+      "elapsed_seconds": 53.657,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX13_actual_all_account_DB_drawdown_negative_no_cached_allow"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 28,
+      "expression": "control_cancel",
+      "status": "PASS",
+      "elapsed_seconds": 79.229,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX27_EX28_actual_DB_cancel_ack_attempt_commit_ACK_hold_fill_finality_no_retry"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 29,
+      "expression": "lambda db, c, g: control_cancel(db, c, g, mode='unknown')",
+      "status": "PASS",
+      "elapsed_seconds": 75.199,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX27_EX28_actual_DB_cancel_unknown_attempt_commit_ACK_hold_fill_finality_no_retry"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 30,
+      "expression": "control_cancel_conflict",
+      "status": "PASS",
+      "elapsed_seconds": 76.299,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX28_actual_DB_confirmation_before_fill_conflict_preserved_incomplete_hold"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 31,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='dispatch', action='stop')",
+      "status": "PASS",
+      "elapsed_seconds": 74.736,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_dispatch_before_stop_not_multi_process_isolation_proof"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 32,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='protect', action='stop')",
+      "status": "PASS",
+      "elapsed_seconds": 56.402,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_protect_before_stop_not_multi_process_isolation_proof"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 33,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='dispatch', action='withdraw')",
+      "status": "PASS",
+      "elapsed_seconds": 75.078,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_dispatch_before_withdraw_not_multi_process_isolation_proof"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 34,
+      "expression": "lambda db, c, g: control_race(db, c, g, first='protect', action='withdraw')",
+      "status": "PASS",
+      "elapsed_seconds": 55.211,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX15_EX17_EX29_actual_DB_two_threads_shared_Python_gate_protect_before_withdraw_not_multi_process_isolation_proof"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 35,
+      "expression": "control_protect_rights",
+      "status": "PASS",
+      "elapsed_seconds": 54.501,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX29_actual_DB_new_controller_session_withdraw_after_approve_report_risk_rights_loss"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 36,
+      "expression": "lambda db, c, g: control_restart(db, c, g, mode='corrected')",
+      "status": "PASS",
+      "elapsed_seconds": 116.418,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_corrected_preserves_claims_history_hold"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 37,
+      "expression": "lambda db, c, g: control_restart(db, c, g, mode='quarantine')",
+      "status": "PASS",
+      "elapsed_seconds": 76.347,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_quarantine_preserves_claims_history_hold"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 38,
+      "expression": "lambda db, c, g: control_restart(db, c, g, mode='unknown')",
+      "status": "PASS",
+      "elapsed_seconds": 76.947,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_unknown_preserves_claims_history_hold"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 39,
+      "expression": "lambda db, c, g: control_restart(db, c, g, mode='before_handoff')",
+      "status": "PASS",
+      "elapsed_seconds": 66.601,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_before_handoff_preserves_claims_history_hold"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 40,
+      "expression": "lambda db, c, g: control_restart(db, c, g, mode='late_completion')",
+      "status": "PASS",
+      "elapsed_seconds": 69.64,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX17_EX18_EX30_EX31_actual_DB_restart_new_issuer_late_completion_preserves_claims_history_hold"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 41,
+      "expression": "control_restart_reply_loss",
+      "status": "PASS",
+      "elapsed_seconds": 28.735,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX31_actual_DB_restart_COMMIT_response_loss_CAS_observation_no_live_split_authority"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 42,
+      "expression": "lambda db, c, g: control_cancel_fault(db, c, g, phase='before_cancel_handoff')",
+      "status": "PASS",
+      "elapsed_seconds": 75.393,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX27_actual_DB_before_cancel_handoff_durable_attempt_unknown_hold_no_resend"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 43,
+      "expression": "lambda db, c, g: control_cancel_fault(db, c, g, phase='after_cancel_handoff')",
+      "status": "PASS",
+      "elapsed_seconds": 74.614,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX27_actual_DB_after_cancel_handoff_durable_attempt_unknown_hold_no_resend"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 44,
+      "expression": "control_proven_unsent",
+      "status": "PASS",
+      "elapsed_seconds": 87.197,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX19_EX30_EX31_actual_DB_explicit_issuer_unsent_revoked_attempt_only_release_rebind_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 45,
+      "expression": "lambda db, c, g: control_proven_unsent(db, c, g, sent=True)",
+      "status": "PASS",
+      "elapsed_seconds": 73.483,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX19_EX30_EX31_actual_DB_explicit_issuer_unsent_already_sent_refused"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 46,
+      "expression": "control_resume_binding",
+      "status": "PASS",
+      "elapsed_seconds": 66.604,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX30_actual_DB_resume_exact_session_source_hash_current_cash_qty_query_readset"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 47,
+      "expression": "lambda db, c, g: literal_sell_holds(db, c, g, quantity=7)",
+      "status": "PASS",
+      "elapsed_seconds": 114.999,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX09_full_DB_nonzero_partial_holds_postquery_fill_qty7"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 48,
+      "expression": "lambda db, c, g: literal_sell_holds(db, c, g, quantity=8)",
+      "status": "PASS",
+      "elapsed_seconds": 110.366,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX09_full_DB_nonzero_partial_holds_postquery_fill_qty8"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 49,
+      "expression": "literal_exposure",
+      "status": "PASS",
+      "elapsed_seconds": 93.917,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX11_full_DB_400_plus_activebuy100_plus_new50_denied550_over500"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 50,
+      "expression": "storage_independent",
+      "status": "PASS",
+      "elapsed_seconds": 75.995,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX32_independent_actual_rows_each_PK_UNIQUE_key_bytes_future_inbox"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 51,
+      "expression": "storage_manifest_deny",
+      "status": "PASS",
+      "elapsed_seconds": 28.753,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX32_255_rows_fixed_manifest_preissue_deny_zero_DB_issuer_sideeffects"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 52,
+      "expression": "storage_saturated_completion",
+      "status": "PASS",
+      "elapsed_seconds": 123.218,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX32_saturated_two_owner_bytes_issued_fill_correction_cancel_withdraw_stop_restart_other_reserve"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 53,
+      "expression": "storage_terminal_third",
+      "status": "PASS",
+      "elapsed_seconds": 135.863,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX32_terminal_history_capacity_diagnostic_only_third_positive_UNRESOLVED"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 54,
+      "expression": "sql_auth_closed",
+      "status": "FAIL",
+      "elapsed_seconds": 55.852,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "SQLAUTH_product_generic_context_issue_GUC_selfhash_denied"
+      ],
+      "reason": "storage_failure",
+      "database_fixed_reasons": [
+        "ledger_contract"
+      ],
+      "database_context": [
+        {
+          "function": "ledger_keys",
+          "line": 5
+        },
+        {
+          "function": "execution_issue_context",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "scenario": 55,
+      "expression": "frame_rollback",
+      "status": "PASS",
+      "elapsed_seconds": 69.591,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "EX37_EX40_real_gt8MiB_roundtrip_missing_conflict_order_UTF8_duplicate_EOF_timeout_poison_cleanup",
+        "EX40_actual_COMMIT_EOF_receipt_observation_no_financial_retry"
+      ],
+      "database_fixed_reasons": [
+        "ledger_contract",
+        "ledger_contract",
+        "ledger_contract",
+        "ledger_contract",
+        "ledger_contract",
+        "execution_frame",
+        "execution_frame",
+        "execution_frame"
+      ],
+      "database_context": [
+        {
+          "function": "ledger_keys",
+          "line": 5
+        },
+        {
+          "function": "execution_issue_context",
+          "line": 7
+        },
+        {
+          "function": "ledger_keys",
+          "line": 5
+        },
+        {
+          "function": "execution_issue_context",
+          "line": 7
+        },
+        {
+          "function": "ledger_keys",
+          "line": 5
+        },
+        {
+          "function": "execution_issue_context",
+          "line": 7
+        },
+        {
+          "function": "ledger_keys",
+          "line": 5
+        },
+        {
+          "function": "execution_issue_context",
+          "line": 7
+        },
+        {
+          "function": "ledger_keys",
+          "line": 5
+        },
+        {
+          "function": "execution_issue_context",
+          "line": 7
+        },
+        {
+          "function": "execution_stage_chunk",
+          "line": 7
+        },
+        {
+          "function": "execution_stage_chunk",
+          "line": 7
+        },
+        {
+          "function": "execution_stage_chunk",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "scenario": 56,
+      "expression": "completion_recovery_orders",
+      "status": "PASS",
+      "elapsed_seconds": 109.314,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC004_actual_rows_bytes_recovery_normal"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 57,
+      "expression": "lambda db, c, g: completion_recovery_orders(db, c, g, order='two_controllers')",
+      "status": "PASS",
+      "elapsed_seconds": 107.255,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC004_actual_rows_bytes_recovery_two_controllers"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 58,
+      "expression": "lambda db, c, g: completion_recovery_orders(db, c, g, order='invalidated')",
+      "status": "PASS",
+      "elapsed_seconds": 148.254,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC004_actual_rows_bytes_recovery_invalidated"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 59,
+      "expression": "completion_same_generation_third",
+      "status": "PASS",
+      "elapsed_seconds": 166.378,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC004_same_generation_terminal3_admission_and_dispatch"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 60,
+      "expression": "lambda db, c, g: completion_same_generation_third(db, c, g, active=True)",
+      "status": "PASS",
+      "elapsed_seconds": 168.108,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC004_active3_actual_admission_gate"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 61,
+      "expression": "completion_lookup_atomicity",
+      "status": "PASS",
+      "elapsed_seconds": 74.66,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC004_pending_map_immutable_reserve_completed_reclaim_replay_auth_atomicity_commit_loss"
+      ],
+      "database_fixed_reasons": [
+        "execution_auth"
+      ],
+      "database_context": [
+        {
+          "function": "execution_apply",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "scenario": 62,
+      "expression": "completion_security_disconnect",
+      "status": "PASS",
+      "elapsed_seconds": 125.857,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "SEC1_actual_DB_disconnect_paused_fresh_rebind_manual_resume_every_rows_bytes_nonincrease_no_owner_borrow"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 63,
+      "expression": "completion_security_handoff",
+      "status": "PASS",
+      "elapsed_seconds": 71.555,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "SEC2_submit_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 64,
+      "expression": "lambda db, c, g: completion_security_handoff(db, c, g, cancel=True)",
+      "status": "PASS",
+      "elapsed_seconds": 74.3,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "SEC2_cancel_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 65,
+      "expression": "lambda db, c, g: completion_security_handoff(db, c, g, cancel=True, command_boundary=True)",
+      "status": "PASS",
+      "elapsed_seconds": 74.013,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "SEC2_cancel_boundary_actual_DB_final_return_then_clock_advance_zero_receive_armed_hold_noresend"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 66,
+      "expression": "completion_security_handoff_positive",
+      "status": "PASS",
+      "elapsed_seconds": 72.868,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "SEC2_actual_DB_submit_cancel_positive_after_final_return_one_second_advance"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 67,
+      "expression": "completion_approval_terminal",
+      "status": "PASS",
+      "elapsed_seconds": 74.418,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "LIFECYCLE_approval_terminal_revoke_issued_rows_bytes_auth_immutable_fresh_reconcile_manual_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 68,
+      "expression": "lambda db, c, g: completion_approval_terminal(db, c, g, action='withdraw')",
+      "status": "PASS",
+      "elapsed_seconds": 74.775,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "LIFECYCLE_approval_terminal_withdraw_issued_rows_bytes_auth_immutable_fresh_reconcile_manual_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 69,
+      "expression": "lambda db, c, g: completion_approval_terminal(db, c, g, action='withdraw', atomic=True)",
+      "status": "PASS",
+      "elapsed_seconds": 69.723,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "LIFECYCLE_approval_terminal_withdraw_atomic_rows_bytes_auth_immutable_fresh_reconcile_manual_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 70,
+      "expression": "lambda db, c, g: completion_approval_terminal(db, c, g, sibling='withdraw')",
+      "status": "PASS",
+      "elapsed_seconds": 84.404,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "LIFECYCLE_approval_terminal_revoke_issued_sibling_withdraw_rows_bytes_auth_immutable_fresh_reconcile_manual_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 71,
+      "expression": "lambda db, c, g: completion_approval_terminal(db, c, g, action='withdraw', atomic=True, sibling='admit')",
+      "status": "PASS",
+      "elapsed_seconds": 80.568,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "LIFECYCLE_approval_terminal_withdraw_atomic_sibling_admit_rows_bytes_auth_immutable_fresh_reconcile_manual_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 72,
+      "expression": "lambda db, c, g: completion_approval_terminal(db, c, g, expiry='command')",
+      "status": "PASS",
+      "elapsed_seconds": 86.502,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "LIFECYCLE_approval_terminal_revoke_issued_expired_command_rows_bytes_auth_immutable_fresh_reconcile_manual_resume"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 73,
+      "expression": "lambda db, c, g: completion_approval_terminal(db, c, g, action='admit', expiry='approval')",
+      "status": "PASS",
+      "elapsed_seconds": 81.467,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_expired_approval_terminal_rows_bytes_matched_resume_no_replay_effect"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 74,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='empty')",
+      "status": "PASS",
+      "elapsed_seconds": 49.65,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_empty_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 75,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='request')",
+      "status": "PASS",
+      "elapsed_seconds": 56.219,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_request_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 76,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='policy')",
+      "status": "PASS",
+      "elapsed_seconds": 52.749,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_policy_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 77,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='fresh')",
+      "status": "PASS",
+      "elapsed_seconds": 131.088,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_fresh_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 78,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='runtime')",
+      "status": "PASS",
+      "elapsed_seconds": 29.195,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_runtime_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 79,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='unknown')",
+      "status": "PASS",
+      "elapsed_seconds": 97.263,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_unknown_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 80,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='cost')",
+      "status": "PASS",
+      "elapsed_seconds": 94.367,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_cost_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 81,
+      "expression": "lambda db, c, g: recovery_validity(db, c, g, mode='rights')",
+      "status": "PASS",
+      "elapsed_seconds": 47.546,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_rights_actual_boundary_original_rows_bytes"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 82,
+      "expression": "lambda db, c, g: recovery_binding_transaction(db, c, g, mode='rollback')",
+      "status": "PASS",
+      "elapsed_seconds": 47.299,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_transaction_rollback_actual_DB_registry_CAS_readset"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 83,
+      "expression": "lambda db, c, g: recovery_binding_transaction(db, c, g, mode='commit_loss')",
+      "status": "PASS",
+      "elapsed_seconds": 82.358,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_transaction_commit_loss_actual_DB_registry_CAS_readset"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    },
+    {
+      "scenario": 84,
+      "expression": "lambda db, c, g: recovery_binding_transaction(db, c, g, mode='sql')",
+      "status": "PASS",
+      "elapsed_seconds": 69.624,
+      "cleanup": "own_project_removed",
+      "input_unchanged": true,
+      "checks": [
+        "DEC005_transaction_sql_actual_DB_registry_CAS_readset"
+      ],
+      "database_fixed_reasons": [],
+      "database_context": []
+    }
+  ]
+}
