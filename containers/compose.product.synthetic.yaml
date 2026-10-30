@@ -1,0 +1,44 @@
+# P28-03 synthetic DB only. Named data survives stop; no disk-quota guarantee.
+services:
+  db:
+    image: postgres@sha256:a5377a521c0383c9862394c90bdbf7707800ac9a6e40d18318193badfac52ce0
+    platform: linux/arm64
+    pull_policy: never
+    user: "999:999"
+    network_mode: none
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 128
+    mem_limit: 256m
+    cpus: 1
+    environment:
+      POSTGRES_USER: qh_synthetic
+      POSTGRES_DB: qh_synthetic
+      POSTGRES_PASSWORD: synthetic-only-not-a-credential
+      PGDATA: /var/lib/postgresql/18/docker
+    command: [postgres, -c, "listen_addresses=", -c, "max_connections=10", -c, "shared_buffers=16MB"]
+    volumes:
+      - type: volume
+        source: data
+        target: /var/lib/postgresql
+        volume:
+          nocopy: false
+    tmpfs:
+      - /var/run/postgresql:size=1048576,uid=999,gid=999,mode=0700
+      - /tmp:size=16777216,mode=1777
+    labels:
+      io.quantharbor.product.synthetic: "true"
+      io.quantharbor.product.token: "${QH_PRODUCT_TOKEN:?required}"
+      io.quantharbor.product.binding: "${QH_PRODUCT_BINDING:?required}"
+      io.quantharbor.product.root: "${QH_PRODUCT_ROOT:?required}"
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: "3"
+    restart: "no"
+volumes:
+  data:
+    external: true
+    name: "${QH_PRODUCT_VOLUME:?required}"

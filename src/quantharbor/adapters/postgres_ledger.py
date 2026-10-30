@@ -52,6 +52,15 @@ class PostgresLedger:
         self._ready = False
         self.cleanup = 'not_started'
         self.migration_checksums = {}
+        self._product_database = None
+
+    @classmethod
+    def product_synthetic(cls, runtime_root, *, binding_id):
+        """기존 empty/private0700 외부 root의 합성 제품 DB. I/O는 with 진입 때만 한다."""
+        from .product_database import ProductDatabase
+        database = PostgresLedger()
+        database._product_database = ProductDatabase(runtime_root, binding_id)
+        return database
 
     def _run(self, args, *, data=None, timeout=60, expected=0, error_marker=None):
         try:
@@ -103,6 +112,8 @@ COMMIT;
 """
 
     def __enter__(self):
+        if self._product_database is not None:
+            return self._product_database.open(self)
         try:
             context = self._run(['docker', 'context', 'show']).decode().strip()
             metadata = json.loads(self._run(['docker', 'context', 'inspect', context]))
@@ -139,6 +150,8 @@ COMMIT;
             raise
 
     def close(self):
+        if self._product_database is not None:
+            return self._product_database.close(self)
         self._ready = False
         if self._compose is not None:
             try:

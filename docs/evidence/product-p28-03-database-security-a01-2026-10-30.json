@@ -1,0 +1,24 @@
+{
+  "task_id": "P28-03",
+  "internal_step": 1,
+  "run_id": "P28-03-database-security-a01",
+  "execution": {
+    "run_id": "P28-03-database-security-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 153.061
+  },
+  "model": "gpt-6-astra",
+  "profile": "qh_review",
+  "scope_hashes": {
+    "src/quantharbor/adapters/postgres_ledger.py": "f047fea5e274338e1c3f8ad415bfb3a6f850f4fb2bef4e292e80a2473f88cfc9",
+    "src/quantharbor/adapters/product_database.py": "ad007f316b8c9a30ad35b17297987e5cd9288b579b03dfc316d848d7481e7c32",
+    "containers/compose.product.synthetic.yaml": "82028dc230cbf4d8d0265abe16926bd4277814048245e7236d82514e30c4d4db",
+    "tests/product/test_product_database.py": "cf9914cec5e53bd76735e38f9c27ed80fa5f1092818fd26fc1971a654640fb24"
+  },
+  "findings": 0,
+  "scope": "original4files_before_Binds_representation_fix",
+  "actual_tests": "NOT RUN",
+  "later_change": "FUP-P28-005 exact namedvolume Binds normalization+2regressions requires delta/general review",
+  "report": "docs/research/product-p28-03-database-security-a01-2026-10-30.md"
+}

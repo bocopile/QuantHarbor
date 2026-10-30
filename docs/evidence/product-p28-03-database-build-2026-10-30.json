@@ -1,0 +1,131 @@
+{
+  "task_id": "P28-03",
+  "internal_step": 1,
+  "run_id": "P28-03-database-build-a01",
+  "execution": {
+    "run_id": "P28-03-database-build-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 655.158
+  },
+  "model": "gpt-6.1-sol",
+  "profile": "qh_development",
+  "owned_files": [
+    "containers/compose.product.synthetic.yaml",
+    "src/quantharbor/adapters/postgres_ledger.py",
+    "src/quantharbor/adapters/product_database.py",
+    "tests/product/test_product_database.py"
+  ],
+  "source_hashes": {
+    "containers/compose.product.synthetic.yaml": "82028dc230cbf4d8d0265abe16926bd4277814048245e7236d82514e30c4d4db",
+    "src/quantharbor/adapters/postgres_ledger.py": "f047fea5e274338e1c3f8ad415bfb3a6f850f4fb2bef4e292e80a2473f88cfc9",
+    "src/quantharbor/adapters/product_database.py": "ad007f316b8c9a30ad35b17297987e5cd9288b579b03dfc316d848d7481e7c32",
+    "tests/product/test_product_database.py": "cf9914cec5e53bd76735e38f9c27ed80fa5f1092818fd26fc1971a654640fb24"
+  },
+  "root_protected_recheck": {
+    "files": 653,
+    "unchanged": true
+  },
+  "unit_final": {
+    "command": [
+      "python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/product",
+      "-p",
+      "test_product_database.py",
+      "-v"
+    ],
+    "PYTHONPATH": "src",
+    "returncode": 0,
+    "elapsed": 0.35036787498393096,
+    "run": 24,
+    "passed": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "mocked_Docker_boundary_only"
+  },
+  "unit_iterations": [
+    {
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-p",
+        "test_product_database.py",
+        "-v"
+      ],
+      "PYTHONPATH": "src",
+      "returncode": 1,
+      "elapsed": 0.33230533299501985
+    },
+    {
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-p",
+        "test_product_database.py",
+        "-v"
+      ],
+      "PYTHONPATH": "src",
+      "returncode": 1,
+      "elapsed": 0.3149449590127915
+    },
+    {
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/product",
+        "-p",
+        "test_product_database.py",
+        "-v"
+      ],
+      "PYTHONPATH": "src",
+      "returncode": 0,
+      "elapsed": 0.34440541701042093
+    }
+  ],
+  "quality": {
+    "command": [
+      "python3.13",
+      "-I",
+      "-S",
+      "-B",
+      "scripts/check_quality.py"
+    ],
+    "returncode": 0,
+    "elapsed": 1.2892064579937141,
+    "files": 657,
+    "findings": 0
+  },
+  "diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "elapsed": 0.02437045899569057
+  },
+  "actualDB": "NOT RUN at handoff",
+  "independent_review": "NOT RUN at handoff",
+  "whole_product789": "NOT RUN on new lifecycle source",
+  "P28-03_complete": false
+}
