@@ -1,0 +1,16 @@
+{
+  "run_id": "Q27-10-unknown-cost-fixed-a01",
+  "actor": "root",
+  "status": "PASS",
+  "checks": [
+    "EX26_actual_unknown_complete_revision_fee1_tax0_5_settlement_once"
+  ],
+  "goldens": {},
+  "phase": "exact_unknown_cost_scenario",
+  "q27_complete": false,
+  "cleanup": "own_project_removed",
+  "project": "qh-ledger-734b5f96c6e543708c140a9d7b920a35",
+  "elapsed_seconds": 83.906,
+  "input_unchanged": true,
+  "runtime_uow_sha256": "ad4433ee4542bdf16fb7df6416d09ec76d419f187a99b1589a58b8061fb0bd41"
+}

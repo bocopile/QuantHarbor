@@ -1,6 +1,8 @@
 """고정 합성 DB의 단일 psql connection/transaction. raw SQL은 제품 API가 아니다."""
 import json
+from decimal import Decimal
 from functools import wraps
+from hashlib import sha256
 import os
 import selectors
 import subprocess
@@ -19,7 +21,7 @@ MAX_TRANSACTION_BYTES = 256 * 1048576
 TRANSACTION_SECONDS = 120
 
 
-def _json(raw):
+def _json(raw, *, fingerprint=False):
     def pairs(values):
         obj={}
         for key,value in values:
@@ -27,7 +29,8 @@ def _json(raw):
             obj[key]=value
         return obj
     def invalid_number(value): raise ValueError('non_integer_json_number')
-    return json.loads(raw,object_pairs_hook=pairs,parse_float=invalid_number,parse_constant=invalid_number)
+    return json.loads(raw,object_pairs_hook=pairs,
+        parse_float=Decimal if fingerprint else invalid_number,parse_constant=invalid_number)
 
 
 
@@ -206,7 +209,15 @@ class ExecutionUnitOfWork:
             chunk=bytes.fromhex(response['hex'])
             if len(chunk)!=min(MAX_CHUNK,total-page*MAX_CHUNK): raise ExecutionDenied('storage_failure')
             data.extend(chunk)
-            if len(data)==total: return _json(data.decode('utf-8'))
+            if len(data)==total:
+                if operation=='fingerprint':
+                    # SQL freezes ordered rows as jsonb::text UTF-8 pages.
+                    # Validate exact numbers without float conversion, then hash
+                    # every original byte. The repository hashes this opaque
+                    # digest through its existing JSON-result fingerprint path.
+                    _json(data.decode('utf-8'),fingerprint=True)
+                    return sha256(data).hexdigest()
+                return _json(data.decode('utf-8'))
         raise ExecutionDenied('capacity_exceeded')
 
     @_rollback_on_error

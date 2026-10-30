@@ -1,0 +1,18 @@
+{
+  "run_id": "Q27-06-fingerprint-security-a02",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "profile": "qh_review",
+  "parent_exit": {
+    "run_id": "Q27-06-fingerprint-security-a02",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 121.561
+  },
+  "result": "no_new_findings_or_blockers_in_a04_scope",
+  "root_observed_all578_inputs_unchanged": true,
+  "reviewer_reran_tests": false,
+  "reviewer_checked_all578_hashes": false,
+  "root_actual_unknown_cost_PASS_after_a04": true,
+  "q27_complete": false
+}

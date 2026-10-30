@@ -1,9 +1,12 @@
 """SQL bridge의 local I/O/권한 경계. 실제 DB 양/음성은 별도 root 실행."""
+from contextlib import contextmanager
+from hashlib import sha256
 import json
 from pathlib import Path
 import re
 import subprocess
 import sys
+from threading import RLock
 import time
 import unittest
 from unittest.mock import patch
@@ -11,6 +14,7 @@ from unittest.mock import patch
 from quantharbor.adapters.execution_uow import (ExecutionUnitOfWork,MAX_FRAME,MAX_CHUNK,
     MAX_CHUNK_FRAME,MAX_HEADER,MAX_TRANSACTION_BYTES,_json)
 from quantharbor.adapters.postgres_ledger import PostgresLedger
+from quantharbor.adapters.postgres_execution import PostgresExecutionRepository
 from quantharbor.domain import execution as d
 
 
@@ -18,6 +22,150 @@ class ExecutionSQLTests(unittest.TestCase):
     def uow(self):
         db=PostgresLedger();db._ready=True
         return ExecutionUnitOfWork(db,'synthetic-account:sql-test')
+
+    @contextmanager
+    def snapshot_peer(self,raw):
+        # Exercise real pipes, page framing and JSON validation. This peer
+        # supplies snapshot bytes only; it implements no SQL or authority.
+        peer=r'''
+import json,re,sys
+raw=bytearray();response=None
+for line in sys.stdin.buffer:
+ text=line.decode().strip()
+ if text.startswith('SELECT qh.execution_stage_chunk('):
+  m=re.search(r",([0-9]+),'([0-9a-f]*)'\);$",text)
+  if m is None:sys.exit(3)
+  raw.extend(bytes.fromhex(m[2]));response='1'
+ elif text.startswith('SELECT qh.execution_read_page('):
+  page=int(text.rsplit(',',1)[1].split(')')[0]);start=page*65536
+  response=json.dumps({'page':page,'total':len(raw),'hex':raw[start:start+65536].hex()})
+ elif text.startswith('\\echo '):
+  sys.stdout.write(response+'\n'+text.split(' ',1)[1]+'\n');sys.stdout.flush()
+'''
+        u=self.uow();u._deadline=time.monotonic()+10
+        u._process=subprocess.Popen([sys.executable,'-I','-S','-B','-c',peer],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,bufsize=0)
+        process=u._process
+        try:
+            for part,offset in enumerate(range(0,len(raw),MAX_CHUNK)):
+                self.assertEqual(u._select('execution_stage_chunk','context:snapshot',part,raw[offset:offset+MAX_CHUNK].hex()),1)
+            yield u
+        finally:
+            u.close()
+            self.assertIsNone(u._process)
+            self.assertIsNotNone(process.poll())
+
+    def fingerprint_in_uow(self,u):
+        # The public method's already-active transaction branch. Repository
+        # construction/authorization/SQL semantics are outside this I/O test.
+        repo=object.__new__(PostgresExecutionRepository)
+        repo._lock=RLock();repo._uow=u;repo._account=u.account_ref
+        return repo.fingerprint()
+
+    def test_fingerprint_fractional_and_fine_exact_numbers_through_repository(self):
+        fingerprints=[]
+        for amount in ('0','1','0.5','-0.5','898.5',
+                       '1.0000000000000000000000000001',
+                       '1.0000000000000000000000000002','1e-1000','2e-1000','1e1000'):
+            with self.subTest(amount=amount):
+                raw=('{"ledger_journal": [{"amount": '+amount+'}]}').encode()
+                with self.snapshot_peer(raw) as u:
+                    first=self.fingerprint_in_uow(u)
+                    self.assertEqual(self.fingerprint_in_uow(u),first)
+                    digest=u.call('execution_fingerprint',u.account_ref)
+                    self.assertEqual(digest,sha256(raw).hexdigest())
+                    self.assertEqual(first,sha256(json.dumps(digest).encode()).hexdigest())
+                    self.assertRegex(first,r'^[0-9a-f]{64}$')
+                    self.assertFalse(u._failed)
+                fingerprints.append(first)
+        self.assertEqual(len(set(fingerprints)),len(fingerprints))
+
+    def test_fingerprint_keeps_every_economic_approval_delivery_and_reserve_row(self):
+        tables=('execution_account','execution_evidence','execution_head',
+            'execution_claim','execution_intent','execution_reservation','execution_attempt',
+            'execution_outbox','execution_broker_inbox','execution_event_resolution',
+            'execution_budget','execution_cursor','ledger_stream','ledger_event',
+            'ledger_journal','ledger_decision','ledger_projection','ledger_outbox',
+            'ledger_workstate','ledger_inbox','ledger_delivery','ledger_inbox_collision')
+        rows={name:'[{"amount": 0.5, "nested": {"retained": true}, "nullable": null}]' for name in tables}
+        def snapshot(values):
+            return ('{'+', '.join(json.dumps(k)+': '+v for k,v in values.items())+'}').encode()
+        raw=snapshot(rows)
+        with self.snapshot_peer(raw) as u:before=self.fingerprint_in_uow(u)
+        fingerprints={before}
+        for name in tables:
+            with self.subTest(table=name):
+                changed=dict(rows);changed[name]=rows[name].replace('true','false')
+                with self.snapshot_peer(snapshot(changed)) as u:after=self.fingerprint_in_uow(u)
+                self.assertNotIn(after,fingerprints)
+                fingerprints.add(after)
+        changed=dict(rows)
+        # Adding a second row, including otherwise identical economic fields,
+        # must also be visible; the peer deliberately does no row filtering.
+        changed['ledger_journal']='['+rows['ledger_journal'][1:-1]+', {"amount": 0.5}]'
+        with self.snapshot_peer(snapshot(changed)) as u:self.assertNotIn(self.fingerprint_in_uow(u),fingerprints)
+
+    def test_fingerprint_assembles_all_pages_before_hashing_exact_utf8_bytes(self):
+        prefix=b'{"padding": "'+('한'*21820).encode()
+        field=b'", "ledger_journal": [{"amount": '
+        prefix+=b'x'*(MAX_CHUNK-4-len(prefix)-len(field))+field
+        raw=prefix+b'0.12345678901234567890123456789'+b'}], "tail": "'+('한'*30000).encode()+b'"}'
+        self.assertGreater(len(raw),2*MAX_CHUNK)
+        with self.snapshot_peer(raw) as u:
+            with patch.object(u,'_exchange',wraps=u._exchange) as exchange:
+                first=self.fingerprint_in_uow(u)
+            self.assertEqual(exchange.call_count,3)
+            for args,kwargs in exchange.call_args_list:
+                self.assertEqual(kwargs['frame_limit'],MAX_CHUNK_FRAME)
+                self.assertLessEqual(len((args[0]+'\n\\echo '+'q27frame'+'0'*32+'\n').encode()),MAX_CHUNK_FRAME)
+            self.assertEqual(u.call('execution_fingerprint',u.account_ref),sha256(raw).hexdigest())
+        # The change is on the last page, after both a split number and UTF-8.
+        with self.snapshot_peer(raw[:-2]+b'x'+raw[-2:]) as u:self.assertNotEqual(self.fingerprint_in_uow(u),first)
+
+    def test_fingerprint_validation_rejects_duplicates_nonfinite_and_extra_output(self):
+        for raw in (b'{"x": 0.5, "x": 1}',b'{"x": {"n": 0.5, "n": 1}}',
+                    b'{"x": NaN}',b'{"x": Infinity}',b'{"x": -Infinity}',
+                    b'{"x": 0.5}\ntrue',b'{"x": "\xff"}'):
+            with self.subTest(raw=raw),self.snapshot_peer(raw) as u:
+                with self.assertRaises((ValueError,UnicodeError,d.ExecutionDenied)):
+                    self.fingerprint_in_uow(u)
+                self.assertTrue(u._failed)
+                self.assertIsNone(u._process)
+                with self.assertRaises(d.ExecutionDenied):u.commit()
+
+    def test_nonfingerprint_reads_still_reject_untyped_decimals(self):
+        for function,values in (('execution_load',()),('execution_ledger',('replay','','')),
+                                ('execution_ledger',('events','',''))):
+            with self.subTest(function=function,values=values),self.snapshot_peer(b'{"state": {"map": [["amount", 0.5]]}}') as u:
+                with self.assertRaises(ValueError):u.call(function,u.account_ref,*values)
+                self.assertTrue(u._failed)
+                self.assertIsNone(u._process)
+                with self.assertRaises(d.ExecutionDenied):u.commit()
+
+    def test_fingerprint_page_sequence_limits_and_account_gate_remain_closed(self):
+        raw=b'{"padding": "'+b'x'*MAX_CHUNK+b'", "amount": 0.5}'
+        pages=[{'page':n,'total':len(raw),'hex':raw[n*MAX_CHUNK:(n+1)*MAX_CHUNK].hex()} for n in range(2)]
+        invalid=[dict(pages[1],page=0),dict(pages[1],total=len(raw)+1),dict(pages[1],hex=''),
+                 dict(pages[1],hex='ff'+pages[1]['hex'][2:]),dict(pages[1],extra=1)]
+        for last in invalid:
+            u=self.uow()
+            with self.subTest(last=last),patch.object(u,'_select',side_effect=[pages[0],last]) as select:
+                with self.assertRaises((d.ExecutionDenied,ValueError,UnicodeError)):
+                    u.call('execution_fingerprint',u.account_ref)
+                self.assertEqual(select.call_count,2)
+                self.assertTrue(u._failed)
+                with self.assertRaises(d.ExecutionDenied):u.commit()
+        for response in ({'page':0,'total':64*1048576+1,'hex':''},
+                         {'page':False,'total':2,'hex':'7b7d'},
+                         {'page':0,'total':2,'hex':'7B7D'},
+                         {'page':0,'total':2,'hex':'7b 7d'}):
+            u=self.uow()
+            with patch.object(u,'_select',return_value=response),self.assertRaises(d.ExecutionDenied):
+                u.call('execution_fingerprint',u.account_ref)
+            self.assertTrue(u._failed)
+        u=self.uow()
+        with patch.object(u,'_select') as select,self.assertRaises(d.ExecutionDenied):
+            u.call('execution_fingerprint','synthetic-account:other')
+        select.assert_not_called()
 
     def test_DEC005_SQL_closed_validity_readset_resume_policy_and_append_only_archive(self):
         # Structural regression only. Genuine context/CAS/SQL effects are root DB scenarios.
