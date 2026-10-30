@@ -8,12 +8,11 @@ from hashlib import sha256
 import json
 import subprocess
 
-from .postgres_ledger import PostgresLedger, LedgerStorageError, ROOT, _text
+from .postgres_ledger import PostgresLedger, LedgerStorageError, _text
 from quantharbor.domain.ledger import account, choice, hash_record, integer
 from quantharbor.domain.primitives import ContractError
 from quantharbor.domain.serialization import canonical_bytes, parse_payload
 
-_MIGRATION = ROOT / 'migrations/product/0001_artifacts.sql'
 _NAMES = {'report': 'Report', 'snapshot': 'PortfolioSnapshot', 'experiment': 'ExperimentResult',
           'target': ('TargetPlan', 'OrderCandidate', 'TargetBuildResult')}
 _FIELDS = ('namespace', 'kind', 'artifact_id', 'environment', 'account_ref', 'created_at',
@@ -174,52 +173,8 @@ class ProductArtifacts(MutableMapping):
             _deny('product_artifact_database_unavailable')
 
     def _ensure_schema(self):
-        body = _MIGRATION.read_bytes()
-        checksum = sha256(body).hexdigest()
-        definition = body.decode().split('$fn$')
-        if len(definition) != 3:
-            _deny('product_artifact_schema_invalid')
-        function_body = _text(definition[1])
-        # The installation branch is entered only when the schema is completely absent.
-        sql = """BEGIN;
-SELECT pg_advisory_xact_lock(5130028) IS NOT NULL;
-SELECT NOT EXISTS(SELECT 1 FROM pg_namespace WHERE nspname='qh_product') AS install_artifacts \\gset
-\\if :install_artifacts
-""" + body.decode() + "\nINSERT INTO qh_product.schema_migrations VALUES(1,'" + checksum + "');\n\\endif\n"
-        sql += """DO $guard$ BEGIN
-IF (SELECT count(*) FROM qh_product.schema_migrations)<>1 OR NOT EXISTS(
-SELECT 1 FROM qh_product.schema_migrations WHERE version=1 AND checksum='""" + checksum + """') THEN
-RAISE EXCEPTION 'product_artifact_migration_mismatch'; END IF;
-IF to_regprocedure('qh_product.append_artifacts(jsonb,integer)') IS NULL
-OR to_regclass('qh_product.artifacts_listing') IS NULL OR to_regclass('qh_product.experiment_one_child') IS NULL THEN
-RAISE EXCEPTION 'product_artifact_structure'; END IF;
-IF NOT EXISTS(SELECT 1 FROM pg_proc p JOIN pg_language l ON l.oid=p.prolang
-WHERE p.oid=to_regprocedure('qh_product.append_artifacts(jsonb,integer)')
-AND p.prosrc=""" + function_body + """ AND l.lanname='plpgsql'
-AND p.prokind='f' AND p.prorettype='void'::regtype AND NOT p.proretset
-AND NOT p.prosecdef AND NOT p.proisstrict AND p.provolatile='v' AND p.proparallel='u'
-AND p.proconfig IS NULL AND pg_get_userbyid(p.proowner)=current_user) THEN
-RAISE EXCEPTION 'product_artifact_structure'; END IF;
-IF (SELECT array_agg(attname::text || ':' || format_type(atttypid,atttypmod) || ':' || attnotnull::text ORDER BY attnum)
-    FROM pg_attribute WHERE attrelid='qh_product.artifacts'::regclass AND attnum>0 AND NOT attisdropped)
-    IS DISTINCT FROM ARRAY['namespace:text:true','kind:text:true','artifact_id:text:true','environment:text:true',
-    'account_ref:text:true','created_at:text:true','record_hash:text:true','wire_sha256:text:true','payload:bytea:true',
-    'predecessor:text:false','comparison_key:text:false','plan_id:text:false'] THEN
-RAISE EXCEPTION 'product_artifact_structure'; END IF;
-IF (SELECT count(*) FROM pg_constraint WHERE conrelid='qh_product.artifacts'::regclass AND contype='c' AND convalidated)<>14
-OR NOT EXISTS(SELECT 1 FROM pg_constraint WHERE conrelid='qh_product.artifacts'::regclass AND contype='p' AND conkey=ARRAY[1,2,3]::smallint[])
-OR NOT EXISTS(SELECT 1 FROM pg_index WHERE indexrelid='qh_product.artifacts_listing'::regclass AND indisvalid AND indkey::text='1 4 5 6 2 3')
-OR NOT EXISTS(SELECT 1 FROM pg_index WHERE indexrelid='qh_product.experiment_one_child'::regclass AND indisvalid AND indisunique AND indkey::text='10' AND indpred IS NOT NULL) THEN
-RAISE EXCEPTION 'product_artifact_structure'; END IF;
-END $guard$;
-SELECT namespace,kind,artifact_id,environment,account_ref,created_at,record_hash,wire_sha256,payload,
-predecessor,comparison_key,plan_id FROM qh_product.artifacts LIMIT 0;
-COMMIT;
-"""
-        try:
-            self._database._query(sql)
-        except LedgerStorageError:
-            _deny('product_artifact_schema_invalid')
+        from .product_schema import ensure_schema
+        ensure_schema(self._database)
 
     def _load(self):
         self._check()

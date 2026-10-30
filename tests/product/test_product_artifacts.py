@@ -54,6 +54,8 @@ class Store:
         self.mode = 'ok'
         self.installs = 0
         self.schema = 'absent'
+        self.schema_versions = ()
+        self.schema_fault = None
         self.calls = 0
         self.row_limit = 512
         self.byte_limit = 33554432
@@ -64,11 +66,14 @@ class Store:
     def query(self, sql, **kwargs):
         self.calls += 1
         if 'install_artifacts' in sql:
-            if self.schema not in ('absent', 'valid'):
+            if self.schema not in ('absent', 'valid') or self.schema_fault is not None:
+                raise LedgerStorageError()
+            if self.schema == 'valid' and self.schema_versions not in ((1,), (1, 2)):
                 raise LedgerStorageError()
             if self.schema == 'absent':
                 self.installs += 1
                 self.schema = 'valid'
+            self.schema_versions = (1, 2)
             return ''
         namespace = bytes.fromhex(re.search("WHERE namespace=convert_from\\(decode\\('([0-9a-f]+)'", sql)[1]).decode()
         return json.dumps(sorted((deepcopy(r) for r in self.rows if r['namespace'] == namespace),
@@ -158,6 +163,34 @@ class ProductArtifactTests(unittest.TestCase):
             self.assertIs(type(listed), tuple)
             self.assertEqual(b.list_records(environment='synthetic', account_ref='synthetic-account:other'), ())
         self.assertEqual(self.store.installs, 1)
+
+    def test_common_registry_upgrade_and_known_v2_preserve_artifact_rows(self):
+        # Command-boundary schema state simulation, not actual DDL evidence.
+        self.store.schema, self.store.schema_versions = 'valid', (1,)
+        repo = self.repo()
+        self.assertEqual(self.store.schema_versions, (1, 2))
+        repo.append(self.report)
+        before = deepcopy(self.store.rows)
+        self.assertEqual(self.read(self.repo(), self.report), self.report)
+        self.assertEqual(self.store.rows, before)
+        self.assertEqual(self.store.installs, 0)
+
+    def test_common_registry_failure_keeps_existing_rows_and_v1_record(self):
+        self.repo().append(self.report)
+        before = deepcopy(self.store.rows)
+        self.store.schema_versions, self.store.schema_fault = (1,), 'ddl_rollback'
+        with self.assertRaises(LedgerStorageError):
+            self.repo()
+        self.assertEqual(self.store.rows, before)
+        self.assertEqual(self.store.schema_versions, (1,))
+
+    def test_common_registry_missing_and_future_versions_are_not_reinstalled(self):
+        self.store.schema = 'valid'
+        for versions in ((), (2,), (1, 3), (1, 2, 3)):
+            self.store.schema_versions = versions
+            with self.subTest(versions=versions), self.assertRaises(LedgerStorageError):
+                self.repo()
+        self.assertEqual(self.store.installs, 0)
 
     def test_backend_constructor_is_io_free_and_explicit_factory_is_required(self):
         count = self.store.calls

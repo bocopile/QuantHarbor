@@ -4,13 +4,25 @@
 
 ## 현재 우선 지시 — 2026-10-30 계획 작업 계속·실패 후속 큐
 
-사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속16개: awaiting_retest1·queued2·resolved13이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
+사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속22개: awaiting_retest1·queued2·resolved19이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
 
-- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a는납품했고내부2b-1저장기반배정준비다. 새HEAD8a27220고정836제품/86DB검사는실행중이며최종결과미확정이다. 브라우저/fixed40최종관문은유지한다.
+- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a는납품했고내부2b-1저장기반은최종62집중/실제DB12·독립검토로기능수용,Git납품전최종확인중이다. 새HEAD8a27220고정836제품/86DB검사는실행중이며최종결과미확정이다. 브라우저/fixed40최종관문은유지한다.
 - 원래 의존성은 통합·완료 관문으로 보존한다. 준비된 계약/산출물의 설계와 격리된 구현을 먼저 진행하고, 차단하는 실제 결함은 영향받는 항목에 연결한다. artifact_ready와 completed를 구분한다. [운영 카드](tasks/PLAN-forward-execution-2026-10-30.md).
 - worker1·writer1·재귀 위임0, 계좌/키/주문/자금·새지출·외부메시지범위는유지하고,Git은명시허가된작업브랜치단위commit/push를진행한다. 단순 진행 허가를 다시 묻지 않는다.
 
 ## 2026-10-30 실제 실행 관측
+
+- 내부2b-1 저장기반기능수용: 최종6SHA62집중PASS/actual12PASS, 보안delta115.062초지적0/같은6SHA. 일반3보완도직전독립보안에서확인. FUP-P28-009~014해결·초기시간상한/재현한계/버전별검증이력보존. [최종보안](evidence/product-p28-03-ai-store-security-a02-2026-10-30.json). Git납품최종확인중이며2b-2/core/closing미래전이/P03전체완료는아니다.
+
+- 내부2b-1 보안302.239초는일반3보완확인/상속구조P2추가(FUP-P28-014). root는고정4테이블의상속관계를거부. 원래중복행시도는AIchunk STRICT에서이미실패했으므로factory성공/경제오염RED로표현하지않는다. 최종6SHA62집중 PASS36.930초·actual12 PASS18.337초/자료보존. [현재실제](evidence/product-p28-03-ai-store-actual-a03-2026-10-30.json). 보안delta/납품최종검토대기.
+
+- 내부2b-1 일반P2세건 모두RED후보완. 현재AI59 PASS0.868초·동일6SHA actualDB11 PASS17.621초. 새자기v1에서11artifact upgrade/DDLrollback부터반복했고기존v2보존, CHECK완화숨김book 거부GREEN추가. [수정](evidence/product-p28-03-ai-store-fixes-2026-10-30.json), [실제](evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json). 06독립보안·현재82회귀진행중, 일반최종수용/commit대기.
+
+- 내부2b-1 독립일반356.398초·P2세건: CHECK정의손상/잠금·최종검증 deadline/완료receipt시각·원천관계. FUP-P28-011~013 root재현·수정중이며 수용/commit 전 관문으로 유지한다. [검토](evidence/product-p28-03-ai-store-review-a01-2026-10-30.json).
+
+- 내부2b-1 root actual 합성DB10 PASS17.097초·현재6SHA불변·자기자료보존. 기존11artifact upgrade/DDL rollback/CAS/chunk/COMMIT unknown/readback/shared latch/stopreopen/function guard를 확인했다. [실제근거](evidence/product-p28-03-ai-store-actual-a01-2026-10-30.json). 독립일반검토/현재artifact회귀는진행중이고core/closing미래전이/최대부하/제품전체는 NOT RUN이다.
+
+- 최신 Git은15단위 commit/push·origin SHA 일치(ca1f209). 내부2b-1 구현은1199.766초 상한 종료·6파일 부분반환/보호713개 불변이다. root는 processed revision bool 허용을 RED 재현·strict type 보완 후 현재 AI55 PASS(0.681초) 확인. FUP-P28-009/010에 실제DB·독립검토 잔여를 연결했다. [근거](evidence/product-p28-03-ai-store-build-2026-10-30.json). 내부2b-2 core 연결·종료 용량증명/전체제품조립은 NOT RUN·미구현, P28-03 전체완료 아님.
 
 - 작업단위14개commit/push/원격SHA확인. 추가6c8786f(내부2a불변저장)·8a27220(Q27fixture/보강검사). [전체납품](evidence/task-unit-git-delivery-2026-10-30.json). 공개유효bytes38독립검토164.963초/차단0,원래불변680snapshot의한계는과장하지않는다.
 - P28-03 내부1/2a기능수용,다음2b-1저장기반배정준비. AI예산복구설계374.138초를root revision1에통합. 기존0001/금융pin/기본memory보존·부모제품0/12는그대로다.

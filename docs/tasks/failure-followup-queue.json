@@ -507,6 +507,169 @@
       "observation": "보안정적P2. sourcechecksum행/테이블을유지한no-op본문이factory검사를통과할수있음. 본문/함수속성검증최소보완예정.",
       "resolution": "명시factory에서설치function의정확본문/속성/owner를기대migration과대조. 실제自己DBRED_REPRODUCED2.340초→GREEN2.417초·원본복원/정상factory,독립delta79.360초지적0·최종20PASS·6c8786fcommitpush.",
       "resolved_commit": "6c8786f1c3a8075ec7122fe15024f4c7fb110eb1"
+    },
+    {
+      "id": "FUP-P28-009",
+      "origin_task": "P28-03",
+      "title": "AI 저장 기반 구현 시간 상한 후 부분 인계 수용",
+      "classification": "execution_timeout",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-1:acceptance"
+      ],
+      "may_proceed": [
+        "P28-03:scoped_root_validation",
+        "Q27:isolated_validation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-store-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-fixes-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-security-a02-2026-10-30.json"
+      ],
+      "resolution": "1200초 상한 종료·6파일/worker handoff 보존, 보호713개 불변. root 실제DB와 독립검토 후 저장기반만 판정; core bridge/종료증명 별도2b-2",
+      "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
+      "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
+    },
+    {
+      "id": "FUP-P28-010",
+      "origin_task": "P28-03",
+      "title": "AI 체크포인트 processed revision의 bool-as-int 허용",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-1:acceptance"
+      ],
+      "may_proceed": [
+        "Q27:isolated_validation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-store-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-fixes-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-security-a02-2026-10-30.json"
+      ],
+      "resolution": "root RED 재현 후 processed tuple/hash/transition/revision strict type 검증. 전체 AI55 PASS; 독립 재확인 대기",
+      "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
+      "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
+    },
+    {
+      "id": "FUP-P28-011",
+      "origin_task": "P28-03",
+      "title": "ai_state CHECK 의미 손상 검출 누락",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-1:acceptance"
+      ],
+      "may_proceed": [
+        "Q27:isolated_validation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-store-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-fixes-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-security-a02-2026-10-30.json"
+      ],
+      "finding": {
+        "id": "FUP-P28-011",
+        "severity": "P2",
+        "title": "ai_state CHECK 의미 손상 검출 누락",
+        "file": "src/quantharbor/adapters/product_schema.py",
+        "line": 82
+      },
+      "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
+      "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
+    },
+    {
+      "id": "FUP-P28-012",
+      "origin_task": "P28-03",
+      "title": "60초 전체 deadline 잠금 대기/최종검증 제외",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-1:acceptance"
+      ],
+      "may_proceed": [
+        "Q27:isolated_validation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-store-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-fixes-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-security-a02-2026-10-30.json"
+      ],
+      "finding": {
+        "id": "FUP-P28-012",
+        "severity": "P2",
+        "title": "60초 전체 deadline 잠금 대기/최종검증 제외",
+        "file": "src/quantharbor/adapters/product_ai.py",
+        "line": 650
+      },
+      "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
+      "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
+    },
+    {
+      "id": "FUP-P28-013",
+      "origin_task": "P28-03",
+      "title": "완료 result receipt 시각/원천관계 검증 누락",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-1:acceptance"
+      ],
+      "may_proceed": [
+        "Q27:isolated_validation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-store-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-fixes-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-security-a02-2026-10-30.json"
+      ],
+      "finding": {
+        "id": "FUP-P28-013",
+        "severity": "P2",
+        "title": "완료 result receipt 시각/원천관계 검증 누락",
+        "file": "src/quantharbor/adapters/product_ai.py",
+        "line": 311
+      },
+      "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
+      "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
+    },
+    {
+      "id": "FUP-P28-014",
+      "origin_task": "P28-03",
+      "title": "상속 저장 테이블의 단일 book 훼손 미검출",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-1:acceptance"
+      ],
+      "may_proceed": [
+        "Q27:isolated_validation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-store-security-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-fixes-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-actual-a03-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-store-security-a02-2026-10-30.json"
+      ],
+      "resolution": "고정4테이블 pg_inherits 부모/자식 관계 거부. 이전부모+자식2행 시도는 ai_chunk STRICT에서 이미실패하여 factory성공 RED로주장하지않음; 현재명시schema거부 actual12/18.337초, 독립delta대기",
+      "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
+      "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # P28-03 — 로컬 실행 조립·영속성·15분 분석
 
-- 상태: 진행 — 내부1/2a납품·내부2b-1저장기반배정준비
+- 상태: 진행 — 내부1/2a납품·내부2b-1저장기반기능수용/납품확인
 - 단계·선행조건: EXEC-DEC-003, P28-02 product-read-v1 준비·P28-01 정적 산출물. Q27/실제화면 미해결은 통합·완료 관문 유지
 - 요청 근거·범위: 사용자 전체 계획 우선 진행·실패 큐. 현재호스트 로컬 합성 제품 조립·영속성·활성세션15분 분석
 - 담당: root 공통계약/큐/상태, qh_implementer 지정파일, 독립 일반/보안 검토·root 실제 합성DB. worker1/writer1·재귀0
@@ -96,3 +96,43 @@
 - 2b 자문374.138초의typedcheckpoint+명시phase·공유gate/owner/latch/query durable barrier안을root [revision1](../contracts/product-ai-persistence-v1.md)에통합했다. globalauxiliary1MiB예약/closingattempt별128KiB slot·총aux8MiB/encoded32MiB·32KiBchunk의보수제품상한과증명기준을명시했다.
 - 2b-1 배정준비 소유6파일: src/quantharbor/adapters/product_schema.py, product_ai.py, migrations/product/0002_ai.sql, tests/product/test_product_ai.py 신규; product_artifacts.py loader위임, tests/product/test_product_artifacts.py 필요회귀. 기존0001 checksum/금융1~3/DBlifecycle/기본AI memory는불변. 2b-1은저장기반이며실제corefactory/client호출연결은2b-2다.
 - 다음Sol/high1200초·자동재시도0 배정전root baseline을worker권한밖.runtime/team에보존한다. 현재본문은배정준비이며실제기동/검증은반환후따로기록한다.
+
+## 내부2b-1 부분 반환·root 보완
+
+- Sol/high1199.766초 시간 상한 종료·지정6파일/부분 인계 보존, root 보호713개 SHA 불변. worker AI54/기존artifact23 PASS·최종 registry3 PASS를 버전별 구분한다. 실제 PostgreSQL/독립검토는 NOT RUN이다. [근거](../evidence/product-p28-03-ai-store-build-2026-10-30.json).
+- root 신규 회귀에서 processed revision True가 marker1과 같게 판독되는 결함 RED. tuple/hash/transition과 정수 revision의 정확 타입검증 후 현재 AI55 PASS0.681초. FUP-P28-009/010에 후속 판정 연결.
+- 저장기반 범위는 공통 schema1→2·typed codec·bounded pipe·request/policy append/CAS·정확 COMMIT readback이다. core factory/reserve/dispatch/settle/query/restart/실제 execute proof와 미래 closing monotonic proof는 내부2b-2 미구현이며 이번 수용으로 확장하지 않는다.
+
+## 내부2b-1 root 실제 DB 확인
+
+- actual 합성 PostgreSQL a01:17.097초·10항목 PASS·6소스SHA 불변·자기제품DB stop/자료보존. [근거](../evidence/product-p28-03-ai-store-actual-a01-2026-10-30.json).
+- 기존v1산출물11개 보존→schema2 실제upgrade/known2 artifact factory, 강제DDL오류의 schema/version/table 롤백, request/policy canonical append·동일멱등/충돌·stale CAS, 두facade 경합1commit/1stale, 실제2chunk 복원, COMMIT ACK 유실/COMMIT후SQL ERROR의 정확readback·재write0, stage실패 원자성/임시stage잔여0/공유latch, 동일container/volume stop·reopen 및옛facade 거부, ai_metadata본문손상 거부/복원을 확인했다.
+- core 연결·실제 execute marker/closing 미래전이증명/최대32MiB성능/새AI소스전체suite/HTTP·IPC·브라우저/15분slot은 NOT RUN. 실제2chunk 성공을 최대부하 증명으로 확대하지 않는다. 독립일반검토/현재artifact23검사는 진행중이다.
+
+## 내부2b-1 일반P2 보완과 동일버전 실제DB
+
+- 일반검토356.398초 P2세건을FUP-P28-011~013에보존. CHECK내용손상은실제RED2.650초/자료복원, deadline·완료receipt 신규4시험6FAIL로재현했다. root정확CHECK정의대조/진입절대deadline·timedlock·같은deadline schema pipe·최종판정/완료receipt관계를보완했다. [수정근거](../evidence/product-p28-03-ai-store-fixes-2026-10-30.json).
+- 현재AI59 PASS0.868초. actuala02 동일6SHA11 PASS17.621초·원본v2보존·별도자기v1에합성11산출물준비후upgrade/DDL원자성부터반복, CHECK완화숨김book거부GREEN추가. 첫seed는macOS /var symlink로기존NOFOLLOW거부(새DB기동전); 준비경로만canonical로보정, 제품guard보존. [현재실제](../evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json).
+- 보안및일반최종검토·현재82회귀/commit은진행중. core factory/phase연결·closing미래전이증명/최대32MiB성능·전체제품/HTTP/브라우저/15분slot은미실행이다.
+
+## 내부2b-1 보안 상속 guard 보완
+
+- 보안302.239초는일반3보완확인·상속P2추가. root부모+자식중복행시도는AI factory가ai_chunk STRICT에서이미실패했으므로factory성공/경제오염을재현했다고주장하지않는다. schema guard가관계를명시거부하도록고정4테이블 pg_inherits 부모/자식검사를추가했다. FUP-P28-014와[수정근거](../evidence/product-p28-03-ai-store-fixes-2026-10-30.json)에한계보존.
+- 최종6SHA의AI59+registry3=62 PASS36.930초, 실제별도자기v1부터12 PASS18.337초·자료보존. 상속중복행이metadata읽기전schema에서거부됨을확인했다. [현재실제](../evidence/product-p28-03-ai-store-actual-a03-2026-10-30.json). 보안delta·최종일반/납품관문대기. 기존82PASS129.442초는상속guard추가전버전으로분리한다.
+
+## 다음 내부2b-2의 순차 배정 경계
+
+저장기반 납품 이후 다음 세 단계로 나눈다. 아래는 배정 설계이며 실제 실행/검증 완료가 아니다. 새 부모 작업/완료율 항목은 추가하지 않는다.
+
+1. 2b-2a: exact factory·DB 검증본만의 내부 hydration/phase·공유 세대 첫 recovery barrier, 조회/balance/attempt·reserve/cancel을 연결한다. 다른 facade의 같은 세대 작업을 재시작으로 취소하지 않는다. 아직 연결하지 않은 query/dispatch/client/processed 경로는 제품 모드에서 명시 차단한다.
+2. 2b-2b: query charge를 Sources 접근 전에 durable 확정하고 실패/재시작에도 요청16회 quota를 환급하지 않는다. 현재 Sources는 새 facade에 명시 bind하며 과거 source객체를 복원하지 않는다.
+3. 2b-2c: 실제 execute/review·owner/세대/호출1회·dispatch unknown시 client0·정산/결과/marker/hold/receipt 원자성과 최종 복구를 연결한다. client 대기 중 gate/SQL lock을 유지하지 않는다.
+
+- 2b-2a 소유 예정4파일: src/quantharbor/adapters/synthetic_investment_ai.py, product_ai.py, tests/product/test_product_ai.py, test_product_ai_core.py(신규). application/domain/SQL/registry/lifecycle/공통문서는 root 소유이며 변경 필요는 근거를 반환한다.
+- 예약 전 필수 종료 용량증명을 먼저 갖춘다. 제품 모드의 pending attempt 원문은 최대64KiB까지 커질 여유를 byte_capacity 안에 보수 계상하고, 기존 closing3records/196608bytes·128records/8MiB와 auxiliary slot은 유지한다. 이 여유는 실제 원문+기존 closing 한도를 높이는 것이 아니며, pending이 있는 동안 모든 추가 저장에도 같은 보수 가드를 적용한다. global metadata1MiB/attempt slot128KiB의 귀속과 미래 전이 상한을 증명할 수 없으면 reserve/client를 차단한다. 기본 memory 경로는 변경하지 않는다.
+- 2b-2a 수용은 실제 예산/취소/세대 복구 저장 경계까지다. query·유료/실제client·processed core 전체 수용으로 올리지 않는다. 구현1200초/자동재시도0, 지정 단위·기존AI회귀·root 실제 합성DB·독립검토·작업단위commit/push로 인계한다.
+
+## 내부2b-1 저장기반 기능수용
+
+- 보안최종delta115.062초 지적0·최종6SHA불변. 이전일반3건의보완은직전보안에서확인,상속guard는최종delta에서해결확인. 현재62집중/actual12PASS와함께저장기반만기능수용한다. [최종보안](../evidence/product-p28-03-ai-store-security-a02-2026-10-30.json).
+- FUP-P28-009~014해결. 최초timeout/원래실패/상속재현한계/버전별검증은삭제하지않는다. 현재Git납품사전확인중·아직16번째commit/push를기록하지않았다. 다음2b-2a factory/budget/recovery배정설계는실행전이며미구현 core/query/client/processed/closing/P03전체완료와구분한다.
