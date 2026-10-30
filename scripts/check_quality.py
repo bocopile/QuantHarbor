@@ -45,7 +45,7 @@ _CONFIG_FILES = frozenset((
     "config/ai/slack-notifications.example.json", "config/ci/quality.workflow.example.yml",
 ))
 _PUBLIC_ROOTS = frozenset(("docs", "src", "scripts", "tests", "migrations", "containers"))
-_TEXT_SUFFIXES = frozenset((".md", ".py", ".json", ".toml", ".yaml", ".yml", ".sql", ".txt", ".sh"))
+_TEXT_SUFFIXES = frozenset((".md", ".py", ".json", ".toml", ".yaml", ".yml", ".sql", ".txt", ".sh", ".html"))
 _PROTECTED_PARTS = frozenset((".git", ".idea", ".vscode", ".aws", ".ssh", "private", ".private",
                               "secrets", ".secrets", "credentials", ".credentials", "keys", ".keys",
                               ".runtime", "runtime", "raw",

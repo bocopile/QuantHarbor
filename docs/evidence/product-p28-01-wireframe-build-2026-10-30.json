@@ -1,0 +1,132 @@
+{
+  "task_id": "P28-01",
+  "run_id": "P28-01-wireframe-build-a01",
+  "actor": "qh_implementer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "profile": "qh_development",
+  "execution": {
+    "run_id": "P28-01-wireframe-build-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 453.66
+  },
+  "owned_files": [
+    "docs/product/synthetic-wireframes.html",
+    "scripts/check_quality.py",
+    "tests/quality/test_quality.py"
+  ],
+  "source_hashes": {
+    "docs/product/synthetic-wireframes.html": "16a827d2a8a1bb26d59584902e80df4116f46499e8cdbf0ce935370598178d4a",
+    "scripts/check_quality.py": "cd61ebeecd85d74f451c7dea31a275fc92c44769281c19e149652646f4dfd052",
+    "tests/quality/test_quality.py": "b021ce8ba9ab30377b871e14740227151a6434455e2486c72239de6dcd6651e7"
+  },
+  "protection": {
+    "baseline_public_file_count": 628,
+    "final_public_file_count": 629,
+    "protected_file_count": 626,
+    "protected_unchanged": true,
+    "protected_changed": [],
+    "existing_owned_changed": [
+      "scripts/check_quality.py",
+      "tests/quality/test_quality.py"
+    ],
+    "new_owned": [
+      "docs/product/synthetic-wireframes.html"
+    ],
+    "spec_sha256": "4f90b5fe4b6b0c53a64001712e221088cb07b5f0c47adfb843bb5e37f90f84a9",
+    "acceptance_matrix_sha256": "9e9a693fce64b7e64bc90488e579d8a802844e40a6b80d94421d8119c62e6a7d"
+  },
+  "root_rechecked_protected_unchanged": true,
+  "tests": {
+    "quality_module": {
+      "command": [
+        "/opt/homebrew/bin/python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/quality",
+        "-p",
+        "test_quality.py",
+        "-v"
+      ],
+      "elapsed_seconds": 2.876,
+      "exit_code": 0,
+      "run": 21,
+      "passed": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "public_candidates": {
+      "command": [
+        "/opt/homebrew/bin/python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "elapsed_seconds": 1.354,
+      "exit_code": 0,
+      "files": 629,
+      "findings": 0
+    },
+    "diff_check": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "elapsed_seconds": 0.032,
+      "exit_code": 0
+    },
+    "static_structure": {
+      "scope": "one-off static document inspection, not DOM regression or browser/visual/WCAG audit",
+      "result": "PASS",
+      "checks": {
+        "balanced_elements": true,
+        "unique_ids": true,
+        "fragment_links_resolve": true,
+        "six_areas": true,
+        "no_scripts_forms_or_embedded_resources": true,
+        "csp_connections_scripts_forms_disabled": true,
+        "no_css_resource_urls": true,
+        "no_trailing_whitespace": true,
+        "banner": true
+      },
+      "heading_count": 6,
+      "fragment_link_count": 19,
+      "details_count": 8,
+      "html_bytes": 38749,
+      "elapsed_seconds": 0.003
+    }
+  },
+  "browser_visual": {
+    "status": "NOT RUN",
+    "attempts": [
+      {
+        "surface": "iab",
+        "result": "unavailable"
+      },
+      {
+        "surface": "chrome_loopback_http",
+        "result": "ERR_CONNECTION_TIMED_OUT"
+      },
+      {
+        "surface": "chrome_file_url",
+        "result": "browser_URL_policy_rejected"
+      }
+    ],
+    "server_http_head": "200 via direct local connection; does not prove browser rendering",
+    "server_stopped": true,
+    "policy_bypass_attempted": false
+  },
+  "independent_review": "IN PROGRESS",
+  "product_integration": "NOT RUN",
+  "acceptance": "NOT_ACCEPTED",
+  "q27_gate": "unchanged"
+}
