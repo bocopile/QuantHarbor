@@ -1,0 +1,20 @@
+{
+  "run_id": "Q27-07-review-a02",
+  "assignment_revision": 3,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "profile": "qh_review",
+  "parent_exit": {
+    "run_id": "Q27-07-review-a02",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 99.337
+  },
+  "result": "no_findings_within_test_fixture_diff",
+  "tracked_input_count": 578,
+  "all_inputs_unchanged": true,
+  "financial_test_sha256": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5",
+  "runtime_sha256": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+  "tests_rerun_by_reviewer": false,
+  "q27_complete": false
+}
