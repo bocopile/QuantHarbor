@@ -6,7 +6,7 @@
 - 담당: root 공통계약/큐/상태, qh_implementer 지정파일, 독립 일반/보안 검토·root 실제 합성DB. worker1/writer1·재귀0
 - 입력: main80403ab 미커밋기준, product-read-v1 revision5 SHA35f6ed51edb43e04711f3dcec290c553bc4a5af201467a3110ae1bc64edd0977, 기존 exact-type repository/UoW/ledger 계약과 migration1~3
 - 소유: 실행 단위별 아래 명시. 기존 사용자수정 보존. 계약·status·큐는root만 통합
-- Git: original checkout 로컬변경, Q27 고정worktree 불변. commit/push/원격 없음
+- Git: codex/qh-local-delivery-20261030, base80403ab, 내부1 commit93222a0/origin SHA확인. Q27고정worktree불변·PR/merge없음
 - 허용: 제한 qh_development, Sol/high, 로컬 합성 구현/요청검증·새유료/외부연결/실제금융 없음
 - 검증: 단계별 의미있는단위·실제합성DB 재시작·원자성·계약대조·독립검토. 실행하지 않은 전체통합/사용자인증/브라우저/금융은NOT RUN
 - 시간·비용: 배정별1200초·자동재시도0·기존구독
@@ -58,3 +58,14 @@
 - 최종source4개는독립일반138.335초·보안delta101.486초지적0·동일SHA다. 기능검증mock26/실제9PASS로DB수명관리seam을후속격리구현에사용할수있다. [최종보안](../evidence/product-p28-03-database-security-a02-2026-10-30.json).
 - FUP-P28-005는해결. FUP-P28-004의과거mock필드별원인전체복원은증거한계로후속큐에남긴다. 이를현재제품의실제검증성공과혼동하지않고P28-03 전체완료/전체수용은선언하지않는다.
 - 사용자작업단위commit/push지시대로내부1기능을독립작업브랜치에기록한다. 다음내부2는2a 보고/평가/연구/목표의불변canonical저장·목록,2b AI예산/작업mutable상태복구로분해한다.
+
+## 내부2a 설계 입력 — 2026-10-30
+
+- [불변산출물 계약](../contracts/product-artifacts-v1.md) root초안: 보고/평가/연구/목표만, mutable AI작업/예산은2b별도. 기존exact타입·메모리경로·canonical/lineage/목표묶음원자성보존. 금융schema1~3변경없음.
+- 03 제한Astra/high 읽기설계검토 후root확정, 04지정파일순차구현. 새코드/실제DB/전체통합은아직NOT RUN.
+
+## 내부2a 설계 반환·revision2
+
+- Astra/high192.227초·P2두건: 없는created_at과공통branch금지. root는target목록시각evaluated_at/experiment만fork금지로보완했다. [자문](../research/product-p28-03-artifacts-design-2026-10-30.md).
+- 추가확정: 제품open/close공유gate·세대결속/옛facade거부, canonical재인코딩/목표묶음재검증, 단일SQLtransaction·증분quota·버전결손차단·COMMIT응답unknown판별. 기존금융schema/pin/권한가드불변.
+- 구현소유예정9파일: adapters/synthetic_reporting.py, synthetic_valuation.py, synthetic_research.py, synthetic_target.py, postgres_ledger.py, product_artifacts.py, migrations/product/0001_artifacts.sql, tests/product/test_product_artifacts.py, test_product_database.py.
