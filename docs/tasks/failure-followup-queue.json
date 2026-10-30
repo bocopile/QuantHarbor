@@ -129,7 +129,7 @@
       "origin_task": "Q27",
       "title": "최종 동일 입력의 전체 제품/actualDB 판정 수거",
       "classification": "validation_execution",
-      "status": "awaiting_retest",
+      "status": "resolved",
       "owner": "root",
       "priority": "blocking_affected_acceptance",
       "blocks": [
@@ -150,7 +150,9 @@
         "docs/evidence/execution-resume-full-product-a03-2026-10-30.json",
         "docs/evidence/execution-resume-full-database-a02-2026-10-30.json",
         "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json",
-        "docs/evidence/execution-final-current-validation-start-2026-10-30.json"
+        "docs/evidence/execution-final-current-validation-start-2026-10-30.json",
+        "docs/evidence/execution-final-current-product-2026-10-30.json",
+        "docs/evidence/execution-final-current-database-2026-10-30.json"
       ],
       "latest_runs": [
         {
@@ -198,16 +200,37 @@
         }
       ],
       "completion_criterion": "실제 종료·PASS/FAIL/NOT RUN·전후입력·자기DB정리·동일 버전 독립 검토를 root가 확인. DB runner의partial 상수는 별도 계약 판정과 대조",
-      "blocked_by": [
-        "FUP-Q27-006"
-      ]
+      "latest_product": {
+        "status": "PASS",
+        "tests_run": 836,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6800.646,
+        "tracked_input_count": 708,
+        "source_manifest_sha256": "fc210b115631b3edb9e152f2ac8c9384a398f32d04b14248b377fb1934d1eab2"
+      },
+      "resolution": "동일8a27220/708입력의 전체제품836 PASS6800.646초·actualDB86 PASS6932.892초/자기DB86정리, 실패·오류·skip0. 기존계획 전체검사 수거완료; 고정40 추가관측6건은006/009~014의별도관문.",
+      "remaining_acceptance": "FUP-Q27-006/009~014의 정본 관측 보강 전 Q27 전체완료 아님",
+      "latest_database": {
+        "status": "PASS_ALL_86",
+        "planned": 86,
+        "completed": 86,
+        "passed": 86,
+        "failed": 0,
+        "not_run": 0,
+        "elapsed_seconds": 6932.892,
+        "tracked_input_count": 708,
+        "source_manifest_sha256": "fc210b115631b3edb9e152f2ac8c9384a398f32d04b14248b377fb1934d1eab2",
+        "own_projects_removed": 86
+      }
     },
     {
       "id": "FUP-Q27-006",
       "origin_task": "Q27",
       "title": "고정40 대응 초안의 누락/범위 과장 재대조",
       "classification": "research_reconciliation",
-      "status": "queued",
+      "status": "diagnosing",
       "owner": "root",
       "priority": "blocking_affected_acceptance",
       "blocks": [
@@ -222,10 +245,21 @@
         "docs/evidence/execution-resume-closure-design-2026-10-30.json",
         "docs/evidence/execution-resume-fixed40-gap-proof-a02-2026-10-30.json",
         "docs/evidence/execution-resume-day-proof-a03-2026-10-30.json",
-        "docs/evidence/execution-resume-day-cursor-proof-a01-2026-10-30.json"
+        "docs/evidence/execution-resume-day-cursor-proof-a01-2026-10-30.json",
+        "docs/evidence/execution-fixed40-current-mapping-2026-10-30.json",
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
       ],
       "completion_criterion": "기대 문장→실제 assertion→최종 실행 결과 연결. EX11 literal_exposure 누락, EX35 one-process 요구에 multi-process 범위를 추가한 초안은 정정. 실제 공백과 과도한 제안을 구분하고 요구는 면제하지 않음",
-      "latest_observation": "추가실제EX02재사용금지/EX05replay_conflict 2PASS181.806초,EX25consume+cursor/workstate rollback PASS,EX18/31하루경과미확인/기존행보존1PASS83.516초. 초기proof준비NameError/사유명/전체fingerprint·모든hold양수oracle오류는보존. 공식40매핑/독립확인잔여."
+      "latest_observation": "추가실제EX02재사용금지/EX05replay_conflict 2PASS181.806초,EX25consume+cursor/workstate rollback PASS,EX18/31하루경과미확인/기존행보존1PASS83.516초. 초기proof준비NameError/사유명/전체fingerprint·모든hold양수oracle오류는보존. 공식40매핑/독립확인잔여.",
+      "root_static_mapping": "독립585.747초:34 supported_static/6 real_gap. 제품결함재현과구분하며추가관측6건을별도후속으로분리.",
+      "child_followups": [
+        "FUP-Q27-009",
+        "FUP-Q27-010",
+        "FUP-Q27-011",
+        "FUP-Q27-012",
+        "FUP-Q27-013",
+        "FUP-Q27-014"
+      ]
     },
     {
       "id": "FUP-P28-001",
@@ -670,6 +704,144 @@
       "resolution": "고정4테이블 pg_inherits 부모/자식 관계 거부. 이전부모+자식2행 시도는 ai_chunk STRICT에서 이미실패하여 factory성공 RED로주장하지않음; 현재명시schema거부 actual12/18.337초, 독립delta대기",
       "current_validation": "최종6SHA62집중PASS36.930초/actual12PASS18.337초; 일반지적보완독립확인·보안delta115.062초0지적",
       "remaining_acceptance": "AI core 연결/미래 closing 증명/제품통합은 원래 내부2b-2 이후 별도; Git납품 사전확인 진행"
+    },
+    {
+      "id": "FUP-Q27-009",
+      "origin_task": "Q27",
+      "parent_followup": "FUP-Q27-006",
+      "fixed_case": "EX10",
+      "title": "매도 미수금500의 실제금액·fresh query 전 가용금불증가 관측",
+      "classification": "validation_gap",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration"
+      ],
+      "may_proceed": [
+        "P28-03:isolated_planned_implementation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+      ],
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+    },
+    {
+      "id": "FUP-Q27-010",
+      "origin_task": "Q27",
+      "parent_followup": "FUP-Q27-006",
+      "fixed_case": "EX21",
+      "title": "실제 발급 mixed semantics 사건의 격리·근거보존·경제량 불변",
+      "classification": "validation_gap",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration"
+      ],
+      "may_proceed": [
+        "P28-03:isolated_planned_implementation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+      ],
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+    },
+    {
+      "id": "FUP-Q27-011",
+      "origin_task": "Q27",
+      "parent_followup": "FUP-Q27-006",
+      "fixed_case": "EX27",
+      "title": "cancel foreign account·다른 target 거부와 송신/금융 불변",
+      "classification": "validation_gap",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration"
+      ],
+      "may_proceed": [
+        "P28-03:isolated_planned_implementation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+      ],
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+    },
+    {
+      "id": "FUP-Q27-012",
+      "origin_task": "Q27",
+      "parent_followup": "FUP-Q27-006",
+      "fixed_case": "EX33",
+      "title": "만료 cost rule·classification의 실제 시간가드 거부 근거",
+      "classification": "validation_gap",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration"
+      ],
+      "may_proceed": [
+        "P28-03:isolated_planned_implementation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+      ],
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+    },
+    {
+      "id": "FUP-Q27-013",
+      "origin_task": "Q27",
+      "parent_followup": "FUP-Q27-006",
+      "fixed_case": "EX34",
+      "title": "owner SQL cross-account/FK·enum·negative·행version 독립 거부",
+      "classification": "validation_gap",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration"
+      ],
+      "may_proceed": [
+        "P28-03:isolated_planned_implementation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+      ],
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+    },
+    {
+      "id": "FUP-Q27-014",
+      "origin_task": "Q27",
+      "parent_followup": "FUP-Q27-006",
+      "fixed_case": "EX37",
+      "title": "8MiB 이내 서로다른 전체 해소refs129개의 실제 count 가드",
+      "classification": "validation_gap",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration"
+      ],
+      "may_proceed": [
+        "P28-03:isolated_planned_implementation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+      ],
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
     }
   ]
 }

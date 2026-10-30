@@ -4,23 +4,23 @@
 
 ## 현재 상황
 
-- 현재계획: **P28-03 내부2a납품완료·2b-1 AI저장기반배정준비**. 내부2a6c8786f·최종artifact20PASS/실제재시작·원자성/함수변조검증·독립일반/보안확인. [카드](tasks/PRODUCT-P28-03.md).
-- 2b설계는374.138초자문후typedcheckpoint/phase/query barrier/owner/latch/보수quota로확정. 실제구현/AIcore연결은아직NOT RUN.
-- Q27 최신바뀐/추가6context465.254초PASS·8a27220납품. 같은HEAD고정708입력에서전체제품836와DB86이실행중이다. 새전체결과/고정40최종판정은대기.
-- 후속16개중해결13·재확인1·대기2. 전체18/36·로컬7/10·제품0/12 completed·artifact_ready2. 항목크기가달라작업량진행률로합산하지않는다.
-- 총14개단위commit/push·원격SHA확인. 기존main80403ab/이전고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
+- 현재계획: **P28-03 내부1/2a/2b-1납품·2b-2a 배정준비**. 내부2a6c8786f·최종artifact20PASS/실제재시작·원자성/함수변조검증·독립일반/보안확인. [카드](tasks/PRODUCT-P28-03.md).
+- 2b설계는374.138초자문후typedcheckpoint/phase/query barrier/owner/latch/보수quota로확정. 2b-1저장기반은62집중/actual12/독립검토로납품,AIcore연결은아직NOT RUN.
+- Q27 최신바뀐/추가6context465.254초PASS·8a27220납품. 같은HEAD고정708입력에서전체제품836/DB86 모두PASS·자기DB86정리. 고정40은독립34지원/6관측보강으로후속분리.
+- 후속28개중해결20·진단1·대기7. 전체18/36·로컬7/10·제품0/12 completed·artifact_ready2. 항목크기가달라작업량진행률로합산하지않는다.
+- 총16개단위commit/push·원격SHA확인. 기존main80403ab/이전고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
 
 ## 담당자별 상태
 
 | 패널·담당 | 모델/추론 | 실제 상태 | 책임 |
 |---|---|---|---|
-| 01 root | 현재세션/직접Python | DB86실행중 | 새입력고정·실패수거·자기DB정리 |
+| 01 root | 현재세션/직접Python | DB86완료·원래계획배정준비 | 새입력고정·실패수거·자기DB정리 |
 | 02 qh_researcher | Luna/high | 미배정 | 조사대기 |
 | 03 qh_architect | Astra/high | 2b설계반환374.138초 | typed복구/예산/query barrier계약 |
-| 04 qh_implementer | Sol/high | 2a반환·2b-1배정준비 | 지정파일구현 |
-| 05 qh_reviewer | Sol/high | 두납품검토반환164.963초·차단0 | 단계증거·SHA·납품범위 |
-| 06 qh_security_reviewer | Astra/high | 2a최종delta반환79.360초·지적0 | 설치함수/commit실패경계 |
-| 07 검증위치 | root직접Python | 전체제품836실행중 | 최종836결과·고정입력 |
+| 04 qh_implementer | Sol/high | 2b-1납품·2b-2a미배정 | 지정파일구현 |
+| 05 qh_reviewer | Sol/high | 고정40검토585.747초·34지원6관측보강 | 단계증거·SHA·납품범위 |
+| 06 qh_security_reviewer | Astra/high | 2b-1최종delta115.062초·지적0 | 설치함수/commit실패경계 |
+| 07 검증위치 | root직접Python | 전체제품836완료·rc0 | 최종836결과·고정입력 |
 | 08 BOARD | 모델없음 | 한시적관측 | 실제역할/검사상태·자동배정없음 |
 
 worker1/writer1·재귀0. 일부패널의대기는순차정책이며전체모델동시기동이아니다. 아래이전이력은당시관측이다.
@@ -32,6 +32,8 @@ worker1/writer1·재귀0. 일부패널의대기는순차정책이며전체모델
 3. 별도 제한 CLI로 실행하는 작업은 앱의 subagent 항목에 표시된다고 가정하지 않는다. 보드에 실행 경로·관측 상태·비민감 결과 링크를 남긴다. 표시 편의를 위해 권한 경계를 바꾸지 않는다.
 
 ## 사용자에게 전달하는 내용
+
+2026-10-30 사용자 추가지시: 작업 진행 중5분마다 전체완료 분자/분모·진행률,최근완료,활성작업,후속큐,commit/push현황을 대화로 보고한다. item완료와 artifact_ready, 검증진척을 구분한다.
 
 | 유형 | 전달 기준·내용 |
 |---|---|

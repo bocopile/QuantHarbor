@@ -1,6 +1,6 @@
 # P28-03 — 로컬 실행 조립·영속성·15분 분석
 
-- 상태: 진행 — 내부1/2a납품·내부2b-1저장기반기능수용/납품확인
+- 상태: 진행 — 내부1/2a/2b-1납품·다음2b-2a배정준비
 - 단계·선행조건: EXEC-DEC-003, P28-02 product-read-v1 준비·P28-01 정적 산출물. Q27/실제화면 미해결은 통합·완료 관문 유지
 - 요청 근거·범위: 사용자 전체 계획 우선 진행·실패 큐. 현재호스트 로컬 합성 제품 조립·영속성·활성세션15분 분석
 - 담당: root 공통계약/큐/상태, qh_implementer 지정파일, 독립 일반/보안 검토·root 실제 합성DB. worker1/writer1·재귀0
@@ -136,3 +136,8 @@
 
 - 보안최종delta115.062초 지적0·최종6SHA불변. 이전일반3건의보완은직전보안에서확인,상속guard는최종delta에서해결확인. 현재62집중/actual12PASS와함께저장기반만기능수용한다. [최종보안](../evidence/product-p28-03-ai-store-security-a02-2026-10-30.json).
 - FUP-P28-009~014해결. 최초timeout/원래실패/상속재현한계/버전별검증은삭제하지않는다. 현재Git납품사전확인중·아직16번째commit/push를기록하지않았다. 다음2b-2a factory/budget/recovery배정설계는실행전이며미구현 core/query/client/processed/closing/P03전체완료와구분한다.
+
+## 내부2b-1 Git 납품
+
+- ba5b52d816a57b85beccfd4cce78dd24875119b8,19파일을독립10항목191.025초/차단0뒤commit·origin push/원격SHA대조했다. 최종stage공백검사에서보고서Markdown두공백9줄이검출돼commit전공백만정리후PASS,코드6SHA는불변이다. [납품](../evidence/product-p28-03-ai-store-delivery-2026-10-30.json).
+- 총16단위납품. 내부2b-2a/b/c는여전히배정설계이며미실행, P28-03 status in_progress/artifact_ready false를유지한다.

@@ -4,13 +4,23 @@
 
 ## 현재 우선 지시 — 2026-10-30 계획 작업 계속·실패 후속 큐
 
-사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속22개: awaiting_retest1·queued2·resolved19이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
+- 추가보고지시: 작업중5분마다전체완료기준진행률·최근완료/현재작업·후속큐·작업단위commit/push를보고한다. 항목완료율과내부검증진척은구분한다.
 
-- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a는납품했고내부2b-1저장기반은최종62집중/실제DB12·독립검토로기능수용,Git납품전최종확인중이다. 새HEAD8a27220고정836제품/86DB검사는실행중이며최종결과미확정이다. 브라우저/fixed40최종관문은유지한다.
+사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속28개: diagnosing1·queued7·resolved20이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
+
+- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a/2b-1저장기반을납품했다. 다음2b-2a factory/예산/복구구현은배정준비이며아직미실행이다. HEAD8a27220고정제품836/actualDB86은모두PASS·708입력불변/자기DB86정리이며고정40관측보강6건은별도미완료다. 브라우저/fixed40최종관문은유지한다.
 - 원래 의존성은 통합·완료 관문으로 보존한다. 준비된 계약/산출물의 설계와 격리된 구현을 먼저 진행하고, 차단하는 실제 결함은 영향받는 항목에 연결한다. artifact_ready와 completed를 구분한다. [운영 카드](tasks/PLAN-forward-execution-2026-10-30.md).
 - worker1·writer1·재귀 위임0, 계좌/키/주문/자금·새지출·외부메시지범위는유지하고,Git은명시허가된작업브랜치단위commit/push를진행한다. 단순 진행 허가를 다시 묻지 않는다.
 
 ## 2026-10-30 실제 실행 관측
+
+- actualDB86/86 PASS6932.892초·실패/미실행0·자기UUID DB86정리·모든case입력불변,최종708manifest동일. [최종DB](evidence/execution-final-current-database-2026-10-30.json). 전체제품836과함께FUP-Q27-005 수거관문해결. 독립고정40의관측보강6건은006/009~014에유지하여Q27전체완료로올리지않는다.
+
+- 동일8a27220고정 전체제품836 PASS6800.646초·실패/오류/skip/실패subtest0,고유836ID/708입력전후같음·manifestSHA대조·root exit0. [최종제품](evidence/execution-final-current-product-2026-10-30.json). 이후AI저장기반은별도62/actual12증거이며이836에포함되지않는다. actualDB최종과고정40관측보강6건은여전히별도관문이다.
+
+- 고정40 독립585.747초:34 supported_static/6 real_gap. EX10/21/27/33/34/37의관측보강을FUP-Q27-009~014에분리·006진단중,제품결함재현과구분한다. [독립검토](evidence/execution-fixed40-semantic-review-2026-10-30.json). 전체836/86성공여부와별도로Q27완료관문유지·계획된P28-03 2b-2a준비계속.
+
+- 총16단위commit/push·origin SHA확인: 최신ba5b52d(내부2b-1 저장기반19파일). 독립납품191.025초/10항목PASS·차단0,staging후Markdown줄끝공백9곳을정리해실제cached공백검사PASS후commit했다. [납품근거](evidence/product-p28-03-ai-store-delivery-2026-10-30.json). source6은검토/actual동일SHA,root문서공백정리만추가. 다음고정40매핑의독립의미검토를준비한다.
 
 - 내부2b-1 저장기반기능수용: 최종6SHA62집중PASS/actual12PASS, 보안delta115.062초지적0/같은6SHA. 일반3보완도직전독립보안에서확인. FUP-P28-009~014해결·초기시간상한/재현한계/버전별검증이력보존. [최종보안](evidence/product-p28-03-ai-store-security-a02-2026-10-30.json). Git납품최종확인중이며2b-2/core/closing미래전이/P03전체완료는아니다.
 

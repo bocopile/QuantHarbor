@@ -1,0 +1,192 @@
+{
+  "run_id": "Q27-fixed40-semantic-review-a01",
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 585.747,
+  "source_sha256": {
+    "docs/evidence/execution-fixed40-current-mapping-2026-10-30.json": "6c1e6b754eab08679abc06c053a0d295725a6b330b5b4c19de6e685b78ff477c",
+    "docs/research/execution-fixed40-current-mapping-2026-10-30.md": "bf95a9887a35d91f34b97a730e8e0e7cba8d7e62b29033bbc6685d41de667e49",
+    "scripts/check_execution.py": "8761b29b96c386b4bf349eaf1aafb3e83e8a2f6de5f7bf0334a404134b9687ca",
+    "docs/contracts/execution-fixture-v1.json": "41756164ab565c611458d0d3dfeed236aaefa5d98973a76e04b04766c7ff46a1",
+    "tests/product/test_execution.py": "da73e32f90c3e2d5f5375927fd1d2492e14fb74c7de50505c2fd066ac19e181d",
+    "tests/product/test_execution_broker.py": "fddf61d6938de7cc5eafddd37ee1c67e48ca2e234ffcfe8eae770bd1e78fb608",
+    "tests/product/test_execution_correction.py": "feadd6e01e09ffe4ea57debe57184d5220b9ff018e8989fd3ea56198bf97b716",
+    "tests/product/test_execution_financial.py": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5",
+    "tests/product/test_execution_math.py": "1e661ee161c8f20ca8dd498872778b2418f586426c65b27766495d9bd0119b7d",
+    "tests/product/test_execution_runner.py": "0d9191a0145aef3bba0e9e030956b8751a8f06b1fe14d6f9b9cf6d297876e41f",
+    "tests/product/test_execution_storage.py": "8b9f58cd283082522d595aa27fcb23a478fe6cf2a18e0db32719466807c37c2c"
+  },
+  "source_unchanged": true,
+  "static_mapping_acceptable": false,
+  "supported_static": 34,
+  "real_gap": 6,
+  "cases": {
+    "EX01": {
+      "status": "supported_static",
+      "evidence": "[D:85](../../scripts/check_execution.py#L85): 3/100/2/302, applied, intent/claim/outbox/예약 행 수와 consumed 확인."
+    },
+    "EX02": {
+      "status": "supported_static",
+      "evidence": "[D:280](../../scripts/check_execution.py#L280), [D:868](../../scripts/check_execution.py#L868): 경쟁 승인 미소비, 세대 변경·aborted_unsent 후 **새 실제 승인**도 candidate_already_consumed."
+    },
+    "EX03": {
+      "status": "supported_static",
+      "evidence": "[D:225](../../scripts/check_execution.py#L225): 실제 SQL lock 대기·요청 중첩, 승자 하나, 잔액 298/198."
+    },
+    "EX04": {
+      "status": "supported_static",
+      "evidence": "[D:87](../../scripts/check_execution.py#L87): consumed부터 commit까지 각 fault의 commit_failed와 fingerprint 불변."
+    },
+    "EX05": {
+      "status": "supported_static",
+      "evidence": "[D:249](../../scripts/check_execution.py#L249): 실제 COMMIT 후 응답 프레임 유실, 조회 재실행 무변경. 다른 approval payload는 replay_conflict·intent 추가 없음."
+    },
+    "EX06": {
+      "status": "supported_static",
+      "evidence": "[D:121](../../scripts/check_execution.py#L121): A598 전체 현금 구성값, 실제 Q20 수량1·payable−100."
+    },
+    "EX07": {
+      "status": "supported_static",
+      "evidence": "[D:132](../../scripts/check_execution.py#L132): 결제 후 L900/H202/B1000/U202/D100/A598."
+    },
+    "EX08": {
+      "status": "supported_static",
+      "evidence": "[D:149](../../scripts/check_execution.py#L149): 독립 fresh query, cutoff/reflection, A598, 다음 실제 admission 후196."
+    },
+    "EX09": {
+      "status": "supported_static",
+      "evidence": "[D:911](../../scripts/check_execution.py#L911): 실제 구성값12/4/10/2/1과 sellable 호출 인자 확인, 7 허용·8 거부."
+    },
+    "EX10": {
+      "status": "real_gap",
+      "evidence": "[F:188](../../tests/product/test_execution_financial.py#L188)은 미수금100. [D:388](../../scripts/check_execution.py#L388)도 기본 1×100이며 정본 입력500이 없음."
+    },
+    "EX11": {
+      "status": "supported_static",
+      "evidence": "[D:931](../../scripts/check_execution.py#L931): 400+100+50, 실제 current_risk 진입·risk_blocked. 반대매도 비상계는 [D:560](../../scripts/check_execution.py#L560)의 별도 관측."
+    },
+    "EX12": {
+      "status": "supported_static",
+      "evidence": "[D:569](../../scripts/check_execution.py#L569), [D:592](../../scripts/check_execution.py#L592): 실제 gross400/NAV1000/가용금≥300, current_risk·prospective_loss 진입, turnover 인자400/650/0/1000 및 daily 선행 거부."
+    },
+    "EX13": {
+      "status": "supported_static",
+      "evidence": "[D:599](../../scripts/check_execution.py#L599): 실제 손실40와 prospective_loss 인자40/15/960. [수학:68](../../tests/product/test_execution_math.py#L68)은55·미확인 분모 거부."
+    },
+    "EX14": {
+      "status": "supported_static",
+      "evidence": "[단위:91](../../tests/product/test_execution.py#L91): 자기 예약 제외. [제어:380](../../tests/product/test_execution_control.py#L380): 실제 deadline 집합·정확 만료 거부. heartbeat 불연장은 공통 [AP07:182](../../tests/product/test_approval.py#L182)."
+    },
+    "EX15": {
+      "status": "supported_static",
+      "evidence": "[D:674](../../scripts/check_execution.py#L674): stop/withdraw 양 순서의 실제 스레드 경쟁·송신0/1·handoff 후 release0."
+    },
+    "EX16": {
+      "status": "supported_static",
+      "evidence": "[D:173](../../scripts/check_execution.py#L173): handoff 후 장애, received1·unknown·hold302·재송신 거부."
+    },
+    "EX17": {
+      "status": "supported_static",
+      "evidence": "[D:752](../../scripts/check_execution.py#L752): 새 authority/세대, 옛 handle 거부·예약/claim/원장 보존·미해결 resume 거부."
+    },
+    "EX18": {
+      "status": "supported_static",
+      "evidence": "[D:186](../../scripts/check_execution.py#L186), [D:1979](../../scripts/check_execution.py#L1979): 빈 조회는 unresolved. 하루 경과 후 intent·양수 hold 보존, 새 intent/send 없음."
+    },
+    "EX19": {
+      "status": "supported_static",
+      "evidence": "[D:503](../../scripts/check_execution.py#L503): 위조/foreign/bool 거부·fingerprint 불변, 실제 issuer final_reject만 예약 해제."
+    },
+    "EX20": {
+      "status": "supported_static",
+      "evidence": "[D:123](../../scripts/check_execution.py#L123): 중복 fill 무변경·수량1. [D:314](../../scripts/check_execution.py#L314): fill 선행 후 late ACK가 partially_filled를 퇴행시키지 않음."
+    },
+    "EX21": {
+      "status": "real_gap",
+      "evidence": "[F:118](../../tests/product/test_execution_financial.py#L118), [D:370](../../scripts/check_execution.py#L370): 누계3·누락 선행사건·재처리는 확인. **mixed semantics 입력·격리 assertion 없음.**"
+    },
+    "EX22": {
+      "status": "supported_static",
+      "evidence": "[F:105](../../tests/product/test_execution_financial.py#L105): revision2 선행 격리→revision1→명시 재처리, 유효수량2·이전 revision 무퇴행."
+    },
+    "EX23": {
+      "status": "supported_static",
+      "evidence": "[D:411](../../scripts/check_execution.py#L411): 충돌·초과체결 증거4개 보존, used100 유지·신규 거부·Q20 incomplete."
+    },
+    "EX24": {
+      "status": "supported_static",
+      "evidence": "[D:112](../../scripts/check_execution.py#L112): inbox/ledger/reservation/intent/history/commit 각각 fingerprint 불변 후 동일 발급 사건 적용."
+    },
+    "EX25": {
+      "status": "supported_static",
+      "evidence": "[D:137](../../scripts/check_execution.py#L137), [D:1996](../../scripts/check_execution.py#L1996): 역순·중복 inbox 분리, 실제 consume COMMIT fault rollback→accepted→duplicate noop·workstate cursor 확인."
+    },
+    "EX26": {
+      "status": "supported_static",
+      "evidence": "[D:347](../../scripts/check_execution.py#L347): 미확인 비용의 보수적 used/hold, 동일 사건 완성 revision·fee/tax·결제·중복 무변경. 미지원 경계는 별도 safe-block 근거로 분리."
+    },
+    "EX27": {
+      "status": "real_gap",
+      "evidence": "[D:629](../../scripts/check_execution.py#L629): 별도 cancel·ACK 무해제. [제어:454](../../tests/product/test_execution_control.py#L454)는 승인자 권한 거부, [제어:462](../../tests/product/test_execution_control.py#L462)는 버전 거부. wrong-account/target 관측 연결 부족."
+    },
+    "EX28": {
+      "status": "supported_static",
+      "evidence": "[D:633](../../scripts/check_execution.py#L633): ACK/timeout 후 fill 수용, 확정 잔량만200 해제, 중복·재송신 거부."
+    },
+    "EX29": {
+      "status": "supported_static",
+      "evidence": "[D:718](../../scripts/check_execution.py#L718): 기존 승인·source 권리 상실 후 새 controller 철회 성공·송신0. 금융 조회 제한은 상속 query와 [AP06:172](../../tests/product/test_approval.py#L172)의 보조 연결."
+    },
+    "EX30": {
+      "status": "supported_static",
+      "evidence": "[D:886](../../scripts/check_execution.py#L886): session/current-query 결속. [D:1854](../../scripts/check_execution.py#L1854): 초기 빈 계좌의 실제 matched→명시 resume·주문0."
+    },
+    "EX31": {
+      "status": "supported_static",
+      "evidence": "[D:755](../../scripts/check_execution.py#L755), [D:1982](../../scripts/check_execution.py#L1982): 세대 복구 시 claim/예약 보존·옛 handle 거부, 하루 경과 옛 challenge 거부·추가 금융 효과0."
+    },
+    "EX32": {
+      "status": "supported_static",
+      "evidence": "[D:1168](../../scripts/check_execution.py#L1168): 포화 예약 중 fill/correction/cancel/withdraw/stop/restart. [D:1567](../../scripts/check_execution.py#L1567): 실제 active3 입장 가드·무추가. rows/key bytes/미래예약 범위로 한정."
+    },
+    "EX33": {
+      "status": "real_gap",
+      "evidence": "[단위:102](../../tests/product/test_execution.py#L102)와 [F:346](../../tests/product/test_execution_financial.py#L346)은 권리·위조 조회·stale query를 관측. stale cost/classification 등 정본 나머지 조건의 실제 거부 assertion 연결 부족."
+    },
+    "EX34": {
+      "status": "real_gap",
+      "evidence": "[D:1025](../../scripts/check_execution.py#L1025): closed-field/삭제/보존식·COMMIT orphan 검사는 있음. cross-account/enum/negative/행 version·FK의 독립 SQL 음성 입력 부족."
+    },
+    "EX35": {
+      "status": "supported_static",
+      "evidence": "[D:207](../../scripts/check_execution.py#L207): 두 facade, 공유 gate, 별도 SQL lock 경쟁과 단일 경제 효과. **one process 범위.**"
+    },
+    "EX36": {
+      "status": "supported_static",
+      "evidence": "[경계:27](../../tests/product/test_execution_runner.py#L27), [단위:115](../../tests/product/test_execution.py#L115): 임의 객체·subclass·duck adapter 거부. exact adapter 직접 단위검사가 적절함."
+    },
+    "EX37": {
+      "status": "real_gap",
+      "evidence": "[D:1272](../../scripts/check_execution.py#L1272): framing/UTF8/EOF/timeout/rollback 확인. 공통 byte/text 검사도 있으나 **전체 해소 집합128refs 한도를 실제 유발하는 assertion 연결 없음.**"
+    },
+    "EX38": {
+      "status": "supported_static",
+      "evidence": "[D:441](../../scripts/check_execution.py#L441): obligations=True에서 실제800→498→96."
+    },
+    "EX39": {
+      "status": "supported_static",
+      "evidence": "[D:329](../../scripts/check_execution.py#L329): 정정 후 principal used290/held10/cost held2, 실제 Q20 수량3·보존식."
+    },
+    "EX40": {
+      "status": "supported_static",
+      "evidence": "[D:70](../../scripts/check_execution.py#L70): migration 재적용·count3. [D:2093](../../scripts/check_execution.py#L2093): own DB context·cleanup 수거. 현재 전체 실행의 실제 최종 정리 판정은 보류."
+    }
+  },
+  "gaps_are_reproduced_product_defects": false,
+  "reviewer_execution": "read_only_no_tests",
+  "NOT_RUN": [
+    "actual_DB",
+    "full_suite",
+    "Q27_final_acceptance"
+  ]
+}
