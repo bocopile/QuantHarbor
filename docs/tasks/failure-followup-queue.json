@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "decision": "docs/decisions/EXEC-DEC-003-planned-work-and-followups.md",
+  "created_on": "2026-10-30",
+  "execution_mode": "planned_first_with_scoped_followups",
+  "max_active_workers": 1,
+  "max_writers": 1,
+  "automatic_background_dispatch": false,
+  "statuses": [
+    "queued",
+    "diagnosing",
+    "fixing",
+    "awaiting_retest",
+    "resolved",
+    "blocked"
+  ],
+  "dispatch_policy": {
+    "planned_ready_items_first": true,
+    "failed_checks_create_or_update_followup": true,
+    "block_only_affected_integration_and_completion": true,
+    "artifact_ready_is_not_completed": true,
+    "final_completion_requires_all_required_followups_resolved": true,
+    "root_verifies_actual_results": true
+  },
+  "items": [
+    {
+      "id": "FUP-Q27-001",
+      "origin_task": "Q27",
+      "title": "source 교체 시 미완료 명령 hold 누락",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local"
+      ],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-build-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-pending-database-2026-10-30.json",
+        "docs/evidence/execution-resume-security-2026-10-30.json",
+        "docs/evidence/execution-resume-review-2026-10-30.json"
+      ],
+      "resolution": "기존 pending completion 비용만 보존; 집중3/actualDB3 및 독립 검토 확인",
+      "resolved_input": {
+        "postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046"
+      },
+      "remaining_acceptance": "FUP-Q27-005의 최신 전체 판정"
+    },
+    {
+      "id": "FUP-Q27-002",
+      "origin_task": "Q27",
+      "title": "financial 시험의 process/policy 준비 불일치",
+      "classification": "test_fixture",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "normal",
+      "blocks": [],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-full-product-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-build-a03-2026-10-30.json",
+        "docs/evidence/execution-resume-review-a02-2026-10-30.json"
+      ],
+      "resolution": "원래2ERROR 재현 후 실제 peer·policy/session 준비, 금융21PASS·독립 일반 지적0",
+      "remaining_acceptance": "최신 전체 제품 판정은 FUP-Q27-005"
+    },
+    {
+      "id": "FUP-Q27-003",
+      "origin_task": "Q27",
+      "title": "소수 numeric fingerprint의 JSON 판독 실패",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local"
+      ],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-full-database-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-unknown-cost-diagnostics-2026-10-30.json",
+        "docs/evidence/execution-resume-fingerprint-fix-a04-2026-10-30.json",
+        "docs/evidence/execution-resume-unknown-cost-fixed-2026-10-30.json",
+        "docs/evidence/execution-resume-fingerprint-security-2026-10-30.json",
+        "docs/evidence/execution-resume-fingerprint-review-2026-10-30.json"
+      ],
+      "resolution": "fingerprint에만 정확 Decimal 검증/전체bytes해시, 신규6·SQL20+runner6·원래actual unknown_cost PASS·독립 검토",
+      "resolved_input": {
+        "execution_uow.py": "ad4433ee4542bdf16fb7df6416d09ec76d419f187a99b1589a58b8061fb0bd41"
+      },
+      "remaining_acceptance": "FUP-Q27-005의 최신 전체 판정"
+    },
+    {
+      "id": "FUP-Q27-004",
+      "origin_task": "Q27",
+      "title": "독립 공통 예약 oracle의 prepared byte 단위 누락",
+      "classification": "test_oracle",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "normal",
+      "blocks": [],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-supplemental-db-initial-2026-10-30.json",
+        "docs/evidence/execution-resume-storage-oracle-diagnostic-2026-10-30.json",
+        "docs/evidence/execution-resume-storage-independent-2026-10-30.json"
+      ],
+      "resolution": "행52 일치/bytes262144 차이를 진단; prepared2단위 계상으로 독립 기대 계산 보완. 실제 storage22관계·7snapshot PASS, 제품/한도 불변"
+    },
+    {
+      "id": "FUP-Q27-005",
+      "origin_task": "Q27",
+      "title": "최종 동일 입력의 전체 제품/actualDB 판정 수거",
+      "classification": "validation_execution",
+      "status": "blocked",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration",
+        "P29-02:completion"
+      ],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-full-product-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-full-product-a02-interrupted-2026-10-30.json",
+        "docs/evidence/execution-resume-full-database-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-post-a04-quality-2026-10-30.json",
+        "docs/evidence/execution-resume-full-product-a03-2026-10-30.json",
+        "docs/evidence/execution-resume-full-database-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json"
+      ],
+      "latest_runs": [
+        {
+          "run_id": "Q27-08-product-a03-root",
+          "scope": "all_product_unittests",
+          "planned": 789,
+          "actual_run": 789,
+          "status": "PASS",
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "input_unchanged": true,
+          "evidence": "docs/evidence/execution-resume-full-product-a03-2026-10-30.json"
+        },
+        {
+          "run_id": "Q27-08-database-a02",
+          "scope": "actual_synthetic_PostgreSQL",
+          "planned": 84,
+          "completed": 23,
+          "failed_scenario": 24,
+          "status": "FAIL",
+          "reason": "invalid_contract",
+          "cleanup_projects": 24,
+          "input_unchanged": true,
+          "evidence": "docs/evidence/execution-resume-full-database-a02-2026-10-30.json"
+        },
+        {
+          "run_id": "Q27-remaining-database-a01",
+          "scope": "original_scenarios_25_through_84_same_frozen_inputs",
+          "status": "COLLECTED_WITH_FAILURES",
+          "planned": 60,
+          "completed": 60,
+          "passed": 58,
+          "failed": 2,
+          "input_unchanged": true,
+          "evidence": "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json"
+        }
+      ],
+      "completion_criterion": "실제 종료·PASS/FAIL/NOT RUN·전후입력·자기DB정리·동일 버전 독립 검토를 root가 확인. DB runner의partial 상수는 별도 계약 판정과 대조",
+      "blocked_by": [
+        "FUP-Q27-007",
+        "FUP-Q27-006"
+      ]
+    },
+    {
+      "id": "FUP-Q27-006",
+      "origin_task": "Q27",
+      "title": "고정40 대응 초안의 누락/범위 과장 재대조",
+      "classification": "research_reconciliation",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local"
+      ],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-closure-design-2026-10-30.json"
+      ],
+      "completion_criterion": "기대 문장→실제 assertion→최종 실행 결과 연결. EX11 literal_exposure 누락, EX35 one-process 요구에 multi-process 범위를 추가한 초안은 정정. 실제 공백과 과도한 제안을 구분하고 요구는 면제하지 않음"
+    },
+    {
+      "id": "FUP-P28-001",
+      "origin_task": "P28-01",
+      "title": "설계 자문 시간 제한으로 최종 초안 미반환",
+      "classification": "execution_timeout",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "normal",
+      "blocks": [
+        "P28-01:artifact_ready"
+      ],
+      "may_proceed": [
+        "root_authored_P28-01_spec",
+        "static_wireframe_implementation"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-01-architecture-timeout-2026-10-30.json",
+        "docs/evidence/product-p28-01-wireframe-build-2026-10-30.json",
+        "docs/evidence/product-p28-01-review-2026-10-30.json",
+        "docs/evidence/product-p28-01-security-2026-10-30.json"
+      ],
+      "completion_criterion": "root 작성 화면명세/REQ9·SC16 매핑·와이어프레임과 독립 검토 증거를 확보하고 원래 시간제한 기록 보존",
+      "automatic_retry": false,
+      "resolution": "root 작성6화면·REQ9/SC16 매핑·정적HTML, 품질21PASS와 독립 일반/보안 지적0 확보. 자문시간제한 이력 보존. 실제 표시 검수는 FUP-P28-002로 남김"
+    },
+    {
+      "id": "FUP-Q27-007",
+      "origin_task": "Q27",
+      "title": "actualDB84 24번 daily-risk invalid_contract 실패",
+      "classification": "validation_failure",
+      "status": "diagnosing",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-01:integration",
+        "P29-02:completion"
+      ],
+      "may_proceed": [
+        "P28-01:design",
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-full-database-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-daily-risk-diagnostic-2026-10-30.json",
+        "docs/evidence/execution-resume-daily-risk-diagnostic-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-daily-risk-diagnostic-a03-2026-10-30.json",
+        "docs/evidence/execution-resume-remaining-database-progress-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-risk-proposal-rejected-2026-10-30.json"
+      ],
+      "failed_run_id": "Q27-08-database-a02",
+      "failed_scenario": 24,
+      "failed_mode": "risk_negative:daily",
+      "reason": "invalid_contract",
+      "completion_criterion": "daily/turnover 원래수치·실제경제사실·위험차단검사를보존하면서용량거부원인최소해결. 실제집중/최신필수검증·독립확인. 후속60사례58PASS/2FAIL원본보존.",
+      "root_cause_confirmed": false,
+      "diagnostic_observation": "a03 204.641초 FAIL, psql 고정사유 execution_capacity 1건 식별. admission challenge 저장→execution_apply 용량가드 거부가 바깥 invalid_contract로 변환됨. 각 자기DB정리/578입력불변. 어떤 용량항목이 부족한지는 미확정이며 한도 증액/가드면제하지 않음. 후속25도같은용량거부. privatefixture간소화안도2FAIL로미채택, 한도/SQL불변.",
+      "database_reason": "execution_capacity",
+      "failing_guard": "execution_check_budget body line18: common current+future records>128 OR bytes>8388608",
+      "related_failed_scenarios": [
+        24,
+        25
+      ]
+    },
+    {
+      "id": "FUP-P28-002",
+      "origin_task": "P28-01",
+      "title": "브라우저 표시·키보드·좁은 화면 검수 미실행",
+      "classification": "verification_capability",
+      "status": "queued",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-01:completion",
+        "P29-01:UX_acceptance"
+      ],
+      "may_proceed": [
+        "P28-02:design",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-01-wireframe-build-2026-10-30.json"
+      ],
+      "completion_criterion": "허용된 브라우저에서 실제 넓은/좁은 화면 배치·탐색·키보드 초점·상세·표 스크롤 확인. 정책 우회 없이 PASS/FAIL 기록",
+      "root_cause": "IAB unavailable; Chrome loopback timeout; file URL policy rejection",
+      "waived": false
+    },
+    {
+      "id": "FUP-P28-003",
+      "origin_task": "P28-02",
+      "title": "조회 cookie 포트·응답세대·잔존수명 계약 보완",
+      "classification": "security_design_gap",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-02:artifact_ready",
+        "P28-06:security_acceptance"
+      ],
+      "may_proceed": [
+        "root_contract_revision",
+        "independent_non_auth_design"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-02-security-a01-2026-10-30.json",
+        "docs/evidence/product-p28-02-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a03-2026-10-30.json",
+        "docs/evidence/product-p28-02-review-a02-2026-10-30.json"
+      ],
+      "resolution_draft": "revision5 쿠키/Set-Cookie·발급장부 제거, origin memory token+명시헤더+credentials omit·서버절대만료·응답epoch. 메모리/XSS경계와실제검증잔여명시. 독립확인대기",
+      "completion_criterion": "수정계약의 독립 재검토에서 원래2건 해소 확인. 실제HTTP/브라우저 공격/경합시험은 P28-06/P29에서 별도판정",
+      "resolution": "revision5 쿠키/Set-Cookie 없는 origin-memory token 규약. 독립 보안129.305초·일반73.609초 원래3건해결·지적0·같은최종SHA 확인. 실제HTTP/브라우저보안시험은P28-06/P29 미실행으로유지."
+    },
+    {
+      "id": "FUP-P28-004",
+      "origin_task": "P28-03",
+      "title": "DB수명관리 모의시험의 초기명령/label fixture 불일치",
+      "classification": "test_fixture",
+      "status": "awaiting_retest",
+      "owner": "root",
+      "priority": "normal",
+      "blocks": [
+        "P28-03:internal1_acceptance"
+      ],
+      "may_proceed": [
+        "independent_runtime_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-database-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-mock-fixture-diagnostic-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-mock-controlled-reproduction-2026-10-30.json"
+      ],
+      "observed": "a01 FAIL16, a02 FAIL1/ERROR14, mock교정후a03 22PASS·최종a04 24PASS. 이전로그보존. 실제Docker증거와구분.",
+      "completion_criterion": "초기실패가mock명령/label준비였는지독립일반검토확인·최종24개/실제필수수용을분리해기록",
+      "evidence_limit": "초기mock전체bytes없음. 준비불일치해소는독립근거로뒷받침되지만초기필드별원인전체확정은보류. 현재26/actual9검증과분리.",
+      "controlled_reproduction": "원래22개테스트를메모리에서두fixtureoffset만반전해a01 FAIL16/a02 FAIL1+ERROR14를각각동일재현, currentcontrol22PASS. 생산코드미수정·실제Docker미실행. 정확역사bytes복원주장없음.",
+      "next_action": "독립검토가controlledmechanism과현재26/actual9성공을확인하고,남는역사자료한계를수용판정과구분."
+    },
+    {
+      "id": "FUP-P28-005",
+      "origin_task": "P28-03",
+      "title": "실제Docker namedvolume의 Binds표기를호스트bind로오판",
+      "classification": "product_adapter_representation",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal1_actualDB_acceptance"
+      ],
+      "may_proceed": [
+        "internal2_nonfinancial_persistence_design",
+        "unrelated_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-actual-db-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-binds-fix-2026-10-30.json",
+        "docs/evidence/product-p28-03-actual-db-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json"
+      ],
+      "root_cause_confirmed": true,
+      "root_cause": "HostConfig.Binds가 None/[] 대신정확한자기namedvolume:/var/lib/postgresql:rw 로표시됨. Mounts는volume·자기Name/RW대상, container는미기동. guard가정상형식을거부.",
+      "completion_criterion": "동일자기namedvolume의정확Binds형식만허용하고다른source/target/mode/hostmount거부회귀·실제재초기화/stop/reopen/ledger보존·독립검토확인",
+      "data_state": "own_created_volume_container_preserved_not_started",
+      "resolution_draft": "root exact own Binds형식허용·신규2회귀red1error→26PASS·실제8.205초9항목PASS·일반지적0, 보안delta최종확인대기",
+      "resolution": "정확자기namedvolume Binds만허용·별도Mounts/ID/소유가드보존, red1→26PASS·actual9PASS/8.205초·독립일반138.335초/보안delta101.486초지적0·최종소스SHA일치"
+    },
+    {
+      "id": "FUP-Q27-008",
+      "origin_task": "Q27",
+      "title": "SQLAUTH의 수동 context header에 current_validation 누락",
+      "classification": "test_fixture",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "Q27:local",
+        "P29-02:SQL_AUTH_acceptance"
+      ],
+      "may_proceed": [
+        "P28-03:independent_implementation",
+        "remaining_independent_database_cases"
+      ],
+      "evidence": [
+        "docs/evidence/execution-resume-sql-auth-case54-failure-2026-10-30.json",
+        "docs/evidence/execution-resume-sql-auth-case54-fixed-2026-10-30.json"
+      ],
+      "root_cause_confirmed": true,
+      "root_cause": "original scenario54의owner발급테스트header15keys와SQLexecution_issue_context가요구하는16keys의차이(current_validation). 실제ledger_contract/line7일치.",
+      "completion_criterion": "consume context에 current_validation:null을넣어닫힌schema를맞추고해당actualSQLAUTH전체재실행,productionSQL/권한가드불변·독립검토/작업단위commit·push",
+      "resolution": "current_validation:null 한필드추가후 actualSQLAUTH5PASS/71.869초. 독립사전검토지적0/원본SHA일치, 6e8c1e3 commit·push·원격SHA일치. 생산SQL/권한가드불변. 원래고정case54FAIL이력보존.",
+      "remaining_acceptance": "Q27최종동일입력판정은FUP-Q27-005"
+    }
+  ]
+}

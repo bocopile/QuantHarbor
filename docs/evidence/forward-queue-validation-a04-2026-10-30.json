@@ -1,0 +1,52 @@
+{
+  "run_id": "forward-queue-validation-a04-root",
+  "status": "PASS",
+  "scope": "metadata_and_public_candidates_only",
+  "counts": {
+    "full": {
+      "completed": 18,
+      "blocked": 1,
+      "pending": 17
+    },
+    "offline": {
+      "completed": 7,
+      "in_progress": 1,
+      "pending": 2
+    },
+    "product": {
+      "in_progress": 3,
+      "pending": 9
+    },
+    "followups": {
+      "resolved": 8,
+      "blocked": 1,
+      "queued": 2,
+      "diagnosing": 1,
+      "awaiting_retest": 1
+    }
+  },
+  "original_12_ids_dependencies_and_acceptance_preserved": true,
+  "worker1_writer1_no_dispatcher": true,
+  "evidence_references_checked": 53,
+  "markdown_links_checked": 406,
+  "queue_hashes": {
+    "config/ai/execution-queue.json": "e83b1c31e6fc1327ee88efaaafde193e6959a0fad366ad832df24ea4ca9cd121",
+    "docs/tasks/offline-execution-queue.json": "8e78492ec1daf5c0ad84c2dd2833a5a3921e08a44dfb877900141e0ed0032caf",
+    "docs/tasks/product-delivery-queue.json": "04fcf8403015856fbdaac39c1ba764dcca9dd2f6775a4d7102a0592ad0d383a0",
+    "docs/tasks/failure-followup-queue.json": "d6ad70ac5626bdc3683795dcc8ef9ef2a95202508df691fb3ed9ce0d193e27e8"
+  },
+  "public_candidates": {
+    "scope": "Q15_public_candidates_only",
+    "result": "pass",
+    "files_checked": 676,
+    "findings": [],
+    "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+  },
+  "NOT_RUN": [
+    "new_product_full_suite",
+    "browser_visual",
+    "HTTP_IPC_security",
+    "Q27_final_acceptance"
+  ],
+  "runtime_policy_enforcement_proven": false
+}

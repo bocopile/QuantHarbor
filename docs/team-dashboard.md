@@ -1,32 +1,30 @@
 # QuantHarbor AI 팀 작업 보드
 
-기록일: 2026-10-29 · 단계별 갱신 문서 · 자동 실시간 모니터 아님
+기록일: 2026-10-30 · 단계별 갱신 문서 · 자동 실시간 모니터 아님
 
 ## 현재 상황
 
-- 현재 작업: **사용자 요청으로 자동매매 개발 중단·Git 보존**. Q27은 미완료이며 현재 코드·문서를 중간 커밋 `3c7f22a`로 보존하고 origin 푸시·SHA 일치를 확인했다.
-- 최신 실제 DB: **19시나리오/19검사·1203.171초·ownDB19정리·소유29불변**. [실제 결과](evidence/execution-database-recovery-validity-2026-10-27.json). 만료승인/빈계좌 양성은 앞선 runner의 별도 증거다.
-- 구현·집중검증: 현재계좌 복구와 원승인 TTL 분리, 새자료/정책 결속, rollback/COMMIT 유실, 기존보안·저장 회귀. 독립·전체 판정 전이다.
-- 잔여: 독립 보안/일반 검토, 최신전체 DB84·제품/품질·고정40. Q27 partial.
-- [대시보드·제품 운영 보완 전체 계획](product-delivery-plan.md): Q27 후 하위12개 순차 진행. 현재 모두 pending.
-- 로컬 **Q20~26 완료7/10**, 전체 통합 **18/36·Q19 실제 연결 대기**. 부모/하위 개수를 합산하거나 작업량 진행률로 쓰지 않는다.
-- 실제 비밀번호·키·계좌/API·자금 접근 없음. 비밀번호 입력 보류 유지, 사용자 결정은 현재 불필요.
-- Git: codex/arc-contracts·개발 기준2fa8f1d. [중단 시점 커밋·푸시 카드](tasks/GIT-checkpoint-2026-10-29.md). 활성 worker0. 개발은 사용자 재개 요청까지 보류.
-- 단계별 증거와 이전 실패는 [진행 기록](status.md) 및 [Q27 카드](tasks/EXECUTION-local.md)에 보존한다.
+- 현재계획: **P28-03 내부2a 불변산출물영속성설계**. 내부1 DB수명관리mock26/actual9·독립일반/보안 지적0·commit93222a0/origin확인. [카드](tasks/PRODUCT-P28-03.md).
+- P28-01 정적6화면/매핑/HTML, P28-02 revision5조회/인증계약 artifact_ready. 실제브라우저/HTTP/IPC검증은NOT RUN. completed가아니다.
+- Q27 제품789PASS. actualDB 원래1~23PASS/24FAIL, 후속25~84는58PASS/2FAIL·자기DB60정리·입력불변. SQLAUTH54수정후실제5PASS/독립확인으로개별해결. daily/turnover/fixed40/최종관문은[후속큐](tasks/failure-followup-queue.md).
+- 전체18/36·로컬7/10·제품0/12 completed, artifact_ready2개. 크기가다른항목을작업량진행률로합산하지않는다.
+- 작업단위7commit·push/원격SHA확인. 기존main80403ab·고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
+- worker1·writer1·재귀0. 패널은역할위치이고모두동시모델실행이아니다.08은모델없는한시적관측이다.
 
 ## 담당자별 상태
 
-| 담당자 | 모델 / 추론 | 상태 | 최근·현재 책임 |
+| 패널·담당 | 모델/추론 | 실제 상태 | 책임 |
 |---|---|---|---|
-| 총괄 root | 프로젝트 설정 Sol / high | 개발 중단·Git 보존 | 공통 계약·큐·증거 통합 |
-| 조사 qh_researcher | Luna / high | 대기 | Q19 공개 명세 조사 반환 |
-| 설계 qh_architect | Astra / high | 자문 반환·DEC005 채택 | 과거승인 실행권한/현재계좌 검증 분리 |
-| 구현 qh_implementer | Sol / high | 사용자 요청으로 보류 | 승인무효화 후 발급명령 잔여보존 |
-| 일반 검토 qh_reviewer | Sol / high | Q26 PASS | AR1·AR2 해결·소유11 hash |
-| 보안 검토 qh_security_reviewer | Astra / high | P2 한 건 반환 | pending Q26 완료hold 손실 |
-| 검증 qh_validator | Luna / high | Q26 PASS | 제품630·품질87·승인70 |
+| 01 root | 현재세션 | 실행중 | 계약/큐/증거통합·단위commitpush |
+| 02 qh_researcher | Luna/high | 미배정 | 필요조사대기 |
+| 03 qh_architect | Astra/high | 내부2a설계반환·P2두건root보완 | 4종불변저장·원자성·lineage |
+| 04 qh_implementer | Sol/high | 내부1반환·다음배정대기 | 소유파일만구현 |
+| 05 qh_reviewer | Sol/high | 공통기록/설계사전검토예정 | 명시파일·증거·미완료관문 |
+| 06 qh_security_reviewer | Astra/high | DB수명최종delta반환·지적0 | 권한/자료보존경계 |
+| 07 검증위치 | root실행 | 후속60사례종료 | 58PASS/2FAIL·실패별도추적 |
+| 08 BOARD | 모델없음 | 한시적관측 | 실제역할/검사상태표시·자동배정없음 |
 
-Sol=gpt-6.1-sol, Luna=gpt-6-luna, Astra=gpt-6-astra. root 실제 모델 변경 여부는 설정값만으로 확인하지 않는다.
+설정·기동·반환·검수·완료는구분한다. 아래이전이력은당시관측이며현재표를우선한다.
 
 ## 사용자가 보는 방법
 

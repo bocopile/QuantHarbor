@@ -1,0 +1,18 @@
+{
+  "scope": "planned_and_followup_queue_consistency_and_changed_document_links",
+  "status": "PASS",
+  "product_items": 12,
+  "product_completed": 0,
+  "static_artifact_ready": 1,
+  "current": "P28-02",
+  "followups": 9,
+  "followup_states": {
+    "resolved": 5,
+    "blocked": 1,
+    "queued": 3
+  },
+  "evidence_refs": 32,
+  "checked_document_links": 22,
+  "runtime_enforcement": "NOT TESTED",
+  "product_integration": "NOT RUN"
+}

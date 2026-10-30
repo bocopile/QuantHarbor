@@ -1,0 +1,44 @@
+{
+  "task_id": "FUP-P28-004",
+  "scope": "controlled_counterfactual_reproduction_of_two_fixture_offsets",
+  "original_test_names_count": 22,
+  "results": [
+    {
+      "variant": "command_tail_offset",
+      "test_count": 22,
+      "failures": 16,
+      "errors": 0,
+      "elapsed_seconds": 0.037,
+      "command_tail_fixed_message_count": 16,
+      "container_guard_error_count": 0,
+      "stop_count_failure_count": 0,
+      "production_source_modified": false
+    },
+    {
+      "variant": "project_label_offset",
+      "test_count": 22,
+      "failures": 1,
+      "errors": 14,
+      "elapsed_seconds": 0.048,
+      "command_tail_fixed_message_count": 0,
+      "container_guard_error_count": 14,
+      "stop_count_failure_count": 1,
+      "production_source_modified": false
+    },
+    {
+      "variant": "current_control",
+      "test_count": 22,
+      "failures": 0,
+      "errors": 0,
+      "elapsed_seconds": 0.091,
+      "command_tail_fixed_message_count": 0,
+      "container_guard_error_count": 0,
+      "stop_count_failure_count": 0,
+      "production_source_modified": false
+    }
+  ],
+  "matches_recorded_a01_a02_and_a03_counts": true,
+  "evidence_limit": "Historical complete pre-edit source bytes remain unavailable. This is an explicitly labeled controlled reproduction, not a claim of exact source restoration.",
+  "actual_Docker": "NOT RUN; command boundary mocked",
+  "raw_logs_in_git": false
+}

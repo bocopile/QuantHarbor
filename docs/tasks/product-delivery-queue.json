@@ -6,7 +6,7 @@
   "max_writers": 1,
   "automatic_background_dispatch": false,
   "blocking_prerequisite": "Q27:local",
-  "current_item": null,
+  "current_item": "P28-03",
   "counting_rule": "기존36개 상위 큐의 확장 하위 작업. 부모 완료와 합산하지 않으며 이전 완료 범위를 소급 변경하지 않는다.",
   "items": [
     {
@@ -21,15 +21,36 @@
       "depends_on": [
         "Q27:local"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "lead": "qh_architect",
       "reviewer": "qh_reviewer",
       "security_reviewer": "qh_security_reviewer",
       "validator": "qh_validator",
       "completion_criterion": "화면 목록·정보 구조·합성 와이어프레임·REQ/SC→화면/CLI→서비스→시험 매핑. 모의/실전·통화·시점·잠정/확정·차단/빈값/오류/만료 상태 정의",
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/product-p28-01-wireframe-build-2026-10-30.json",
+        "docs/evidence/product-p28-01-review-2026-10-30.json",
+        "docs/evidence/product-p28-01-security-2026-10-30.json"
+      ],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "artifact_ready_pending_acceptance",
+      "artifact_ready": true,
+      "start_dependencies": [
+        "Q26:local",
+        "Q27:contract-v1"
+      ],
+      "completion_dependencies": [
+        "Q27:local"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation",
+      "task_card": "docs/tasks/PRODUCT-P28-01.md",
+      "start_exception_decision": "docs/decisions/EXEC-DEC-003-planned-work-and-followups.md",
+      "artifact_scope": "static_spec_mapping_and_source_wireframe_only",
+      "remaining_checks": [
+        "FUP-P28-002",
+        "Q27:local"
+      ]
     },
     {
       "id": "P28-02",
@@ -43,15 +64,35 @@
       "depends_on": [
         "P28-01"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "lead": "qh_architect",
       "reviewer": "qh_reviewer",
       "security_reviewer": "qh_security_reviewer",
       "validator": "qh_validator",
       "completion_criterion": "조회 API/read model·권한·브라우저 저장/종료·local-only 경계·갱신 순서·세션 생존 분리. 모듈별 영속성/운영 어댑터 차이와 보호 IPC/CLI 인증·정책 변경 영향 명세",
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/product-p28-02-architecture-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a01-2026-10-30.json",
+        "docs/evidence/product-p28-02-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a03-2026-10-30.json",
+        "docs/evidence/product-p28-02-review-a02-2026-10-30.json"
+      ],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "artifact_ready_pending_acceptance",
+      "artifact_ready": true,
+      "start_dependencies": [
+        "P28-01:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-01"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation",
+      "task_card": "docs/tasks/PRODUCT-P28-02.md",
+      "start_exception_decision": "docs/decisions/EXEC-DEC-003-planned-work-and-followups.md",
+      "artifact_scope": "additive_product_read_and_runtime_connection_contract_revision5",
+      "contract_sha256": "35f6ed51edb43e04711f3dcec290c553bc4a5af201467a3110ae1bc64edd0977"
     },
     {
       "id": "P28-03",
@@ -63,15 +104,32 @@
       "depends_on": [
         "P28-02"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "lead": "qh_implementer",
       "reviewer": "qh_reviewer",
       "security_reviewer": "qh_security_reviewer",
       "validator": "qh_validator",
       "completion_criterion": "하나의 제품 실행 경로로 실제 모듈/저장소를 연결. 사용자 활성 세션 안 분석 slot, 긴 작업/잠자기/시계변화/중복기동/재시작, 기존 주문 추적 우선, 자동 금융 재전송 금지",
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/product-p28-03-database-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-actual-db-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json"
+      ],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "internal2a_artifact_persistence_design",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-02:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-02"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation",
+      "task_card": "docs/tasks/PRODUCT-P28-03.md",
+      "start_exception_decision": "docs/decisions/EXEC-DEC-003-planned-work-and-followups.md",
+      "internal_step": 2,
+      "internal_steps": 6
     },
     {
       "id": "P28-04",
@@ -92,7 +150,16 @@
       "completion_criterion": "실제 로컬 사용자/IPC 세션을 합성 계좌로 검수. 비공개 운영 입력과 공개 예제 분리. 정책 변경 전후/기존 승인 영향, 초기 보유/현금/원가 출처·누락 이력·수동 거래 대사·중복 도입 검수",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-03:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-03"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "P28-05",
@@ -117,7 +184,16 @@
       "completion_criterion": "기존 OPS-local 범위: 합성 전달 실패/unknown·현재 권리·감시·백업 manifest·별도 복원·새 권한 세대·대사/수동 재개. 외부 전송은 제외",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-04:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-04"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "P28-06",
@@ -138,7 +214,16 @@
       "completion_criterion": "자산/현금/위험, 분석/근거/반론, 후보/승인 이력, 주문/체결/대사, 투자 AI 작업, 운영 상태를 실제 read model에 연결. 오래된 응답/캐시/권한회수 처리. 금융 행동은 기존 CLI",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-05:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-05"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "P28-07",
@@ -159,7 +244,16 @@
       "completion_criterion": "현재 지원 호스트 기준 설치/진단/시작/정상종료/재시작, 버전·설정·DB 호환성, 업데이트 중 실패/복원. 실제 자료 삭제 없는 재설치. 합성 데이터로 검수",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-06:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-06"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "P28-08",
@@ -180,7 +274,16 @@
       "completion_criterion": "합성 지원 규모/지연/용량 한계와 오류 대응을 문서화. 초기사용·일일점검·중단/취소/철회 구분, 키보드·색상 외 상태·시점/통화 표시. 실제 운영 수치는 PG04에서 확정",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-07:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-07"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "P29-01",
@@ -204,7 +307,16 @@
       "completion_criterion": "설치→합성 계좌 도입→분석→후보→CLI 승인→합성 주문→체결→보고→종료/재개를 실제 모듈/조회화면으로 수행. 와이어프레임과 실제 표시 비교, 사용자 과업 증거",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P28-08:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P28-08"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "P29-02",
@@ -233,7 +345,16 @@
       "completion_criterion": "REQ9/SC16·계약 실패 사례·권한/캐시/세션·원자성·누적 용량·업데이트/복원 통합. 동일 소스 버전의 독립 검토/요청된 검증 증거와 미실행 분리",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P29-01:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P29-01"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "RETURN-01",
@@ -254,7 +375,16 @@
       "completion_criterion": "Q17~19/Q20~27 각각 합성 완료/실제 미실행·어댑터/지원/권리/PG/기존승인·담당·실행순서·증거 표 작성. 비밀번호 없이 작성 가능. 로컬 Q29 완료에 이 목록 포함",
       "evidence": [],
       "scope": "local_synthetic_or_public_design",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "P29-02:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "P29-02"
+      ],
+      "start_scope": "independent_design_and_isolated_implementation"
     },
     {
       "id": "RETURN-02",
@@ -276,7 +406,33 @@
       "completion_criterion": "사용자 입력 가능 시 기존 Q19~29 미완료 실제 범위를 순차 검증. 대상·행위별 기존 승인과 PG/SG 확인. 토큰/조회 승인으로 주문·모델 지출·외부 보고를 허용하지 않음. Q30 지속 모의의 선행조건",
       "evidence": [],
       "scope": "actual_integration_gated",
-      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합"
+      "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
+      "stage": "not_started",
+      "artifact_ready": false,
+      "start_dependencies": [
+        "RETURN-01:artifact_ready"
+      ],
+      "completion_dependencies": [
+        "RETURN-01"
+      ],
+      "start_scope": "existing_actual_integration_gates"
     }
-  ]
+  ],
+  "execution_policy_decision": "docs/decisions/EXEC-DEC-003-planned-work-and-followups.md",
+  "failure_followup_queue": "docs/tasks/failure-followup-queue.json",
+  "blocking_prerequisite_scope": "integration_and_completion",
+  "start_policy": {
+    "mode": "planned_first",
+    "depends_on_semantics": "integration_and_completion_gates_preserved",
+    "independent_preparation_allowed": true,
+    "stage_values": [
+      "not_started",
+      "design_in_progress",
+      "artifact_ready",
+      "implementation_in_progress",
+      "verification_pending",
+      "accepted"
+    ],
+    "blocked_contract_or_affected_runtime_paths_must_not_be_activated": true
+  }
 }

@@ -1,0 +1,124 @@
+{
+  "authorization": "user_explicit_task_unit_commit_and_push_2026-10-30",
+  "branch": "codex/qh-local-delivery-20261030",
+  "remote": "origin",
+  "main_preserved_at": "80403ab3b8ef322e7d38e8554b42f263bb37cbae",
+  "units": [
+    {
+      "unit": "q27-pending-budget",
+      "commit": "af40f9c807687488f533df341aac36ddc3931940",
+      "push": "PASS",
+      "remote_sha_verified": true
+    },
+    {
+      "unit": "q27-fixtures",
+      "commit": "eb476bc5472da9b58a694f86cf4557fc2a7a03e8",
+      "files": [
+        "tests/product/test_execution_financial.py",
+        "docs/evidence/execution-resume-build-a03-2026-10-30.json",
+        "docs/evidence/execution-resume-review-a02-2026-10-30.json"
+      ],
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "eb476bc5472da9b58a694f86cf4557fc2a7a03e8"
+    },
+    {
+      "unit": "q27-fingerprint",
+      "commit": "eeb8d4c6eef78a8074f023dcb1712eaf40d7df51",
+      "files": [
+        "src/quantharbor/adapters/execution_uow.py",
+        "tests/product/test_execution_sql.py",
+        "docs/evidence/execution-resume-fingerprint-fix-a04-2026-10-30.json",
+        "docs/evidence/execution-resume-unknown-cost-fixed-2026-10-30.json",
+        "docs/evidence/execution-resume-fingerprint-security-2026-10-30.json",
+        "docs/evidence/execution-resume-fingerprint-review-2026-10-30.json"
+      ],
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "eeb8d4c6eef78a8074f023dcb1712eaf40d7df51"
+    },
+    {
+      "unit": "p28-static",
+      "commit": "0f9e1494352aebf2dd7f4810c067b6ea0ba400a9",
+      "files": [
+        "scripts/check_quality.py",
+        "tests/quality/test_quality.py",
+        "docs/product/synthetic-wireframes.html",
+        "docs/evidence/product-p28-01-wireframe-build-2026-10-30.json"
+      ],
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "0f9e1494352aebf2dd7f4810c067b6ea0ba400a9"
+    },
+    {
+      "unit": "p28-contract",
+      "commit": "b745a28ac6004c55c1a0ee751a522b9866f2e970",
+      "files": [
+        "docs/contracts/product-read-v1.md",
+        "docs/tasks/PRODUCT-P28-02.md",
+        "docs/research/product-p28-02-security-a02-2026-10-30.md",
+        "docs/research/product-p28-02-security-a01-2026-10-30.md",
+        "docs/research/product-p28-02-review-a02-2026-10-30.md",
+        "docs/research/product-p28-02-security-a03-2026-10-30.md",
+        "docs/research/product-p28-02-architecture-2026-10-30.md",
+        "docs/research/product-p28-02-review-a01-2026-10-30.md",
+        "docs/evidence/product-p28-02-architecture-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a01-2026-10-30.json",
+        "docs/evidence/product-p28-02-review-a02-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-02-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-02-security-a03-2026-10-30.json"
+      ],
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "b745a28ac6004c55c1a0ee751a522b9866f2e970"
+    },
+    {
+      "unit": "p28-db-lifetime",
+      "commit": "93222a0ffe382115a288ec497f84404978880ba4",
+      "files": [
+        "src/quantharbor/adapters/postgres_ledger.py",
+        "src/quantharbor/adapters/product_database.py",
+        "containers/compose.product.synthetic.yaml",
+        "tests/product/test_product_database.py",
+        "docs/tasks/PRODUCT-P28-03.md",
+        "docs/evidence/product-p28-03-actual-db-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-mock-fixture-diagnostic-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-binds-fix-2026-10-30.json",
+        "docs/evidence/product-p28-03-actual-db-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-database-security-a01-2026-10-30.json",
+        "docs/research/product-p28-03-database-security-a02-2026-10-30.md",
+        "docs/research/product-p28-03-database-security-a01-2026-10-30.md",
+        "docs/research/product-p28-03-database-review-a01-2026-10-30.md"
+      ],
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "93222a0ffe382115a288ec497f84404978880ba4"
+    },
+    {
+      "unit": "q27-sql-auth-header",
+      "commit": "6e8c1e3961b5de410293397c88a20b8b00d4bd25",
+      "files": [
+        "scripts/check_execution.py",
+        "docs/evidence/execution-resume-sql-auth-case54-failure-2026-10-30.json",
+        "docs/evidence/execution-resume-sql-auth-case54-fixed-2026-10-30.json"
+      ],
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "6e8c1e3961b5de410293397c88a20b8b00d4bd25"
+    }
+  ],
+  "pull_request": "NOT CREATED",
+  "merge": "NOT RUN",
+  "force_push": false,
+  "raw_auth_or_git_logs_in_git": false
+}
