@@ -4,13 +4,23 @@
 
 ## 현재 우선 지시 — 2026-10-30 계획 작업 계속·실패 후속 큐
 
-사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속13개: awaiting_retest1·blocked1·diagnosing1·queued2·resolved8이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
+사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속16개: awaiting_retest1·queued2·resolved13이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
 
-- 현재 계획 작업: P28-01 정적명세/매핑/HTML과 P28-02 revision5 조회·인증·실행연결계약은 artifact_ready이며 completed가 아니다. [P28-03](tasks/PRODUCT-P28-03.md) 내부1 DB수명관리기능검증·독립검토·commit/push를마치고내부2a 비금융불변산출물저장을설계한다. P28-01 브라우저표시검수와 Q27 최종관문은미완료다. 최신제품789/789 PASS·actualDB는원래1~23PASS/24FAIL와후속25~84의58PASS/2FAIL을분리보존했다. SQLAUTH54는한필드보완후실제5검사PASS, daily/turnover는미해결이다.
+- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a는납품했고내부2b-1저장기반배정준비다. 새HEAD8a27220고정836제품/86DB검사는실행중이며최종결과미확정이다. 브라우저/fixed40최종관문은유지한다.
 - 원래 의존성은 통합·완료 관문으로 보존한다. 준비된 계약/산출물의 설계와 격리된 구현을 먼저 진행하고, 차단하는 실제 결함은 영향받는 항목에 연결한다. artifact_ready와 completed를 구분한다. [운영 카드](tasks/PLAN-forward-execution-2026-10-30.md).
-- worker1·writer1·재귀 위임0, 계좌/키/주문/자금·새 지출·외부 전송·Git 원격 범위는 유지한다. 단순 진행 허가를 다시 묻지 않는다.
+- worker1·writer1·재귀 위임0, 계좌/키/주문/자금·새지출·외부메시지범위는유지하고,Git은명시허가된작업브랜치단위commit/push를진행한다. 단순 진행 허가를 다시 묻지 않는다.
 
 ## 2026-10-30 실제 실행 관측
+
+- 작업단위14개commit/push/원격SHA확인. 추가6c8786f(내부2a불변저장)·8a27220(Q27fixture/보강검사). [전체납품](evidence/task-unit-git-delivery-2026-10-30.json). 공개유효bytes38독립검토164.963초/차단0,원래불변680snapshot의한계는과장하지않는다.
+- P28-03 내부1/2a기능수용,다음2b-1저장기반배정준비. AI예산복구설계374.138초를root revision1에통합. 기존0001/금융pin/기본memory보존·부모제품0/12는그대로다.
+- HEAD8a27220의독립worktree/708추적입력으로전체제품836와actualDB86을새로기동했다. root직접실행·각10800초·자동재시도0·실패별도수거·최종결과미확정. [기동근거](evidence/execution-final-current-validation-start-2026-10-30.json). Q27완료/fixed40최종수용으로올리지않는다.
+
+- 내부2a9파일구현반환844.414초/집중89PASS. COMMIT후확인ERROR의일반P2는root보완후신규4/전체artifact20·실제확인오류PASS·독립보안해결확인. actuala02앞5PASS후시험준비FAIL과같은source의a03후속6PASS/32.744초를구분한다. 현재설치함수본문손상검출P2를보완중, 전체수용은아직이다. [카드](tasks/PRODUCT-P28-03.md).
+- Q27공통용량은실패순간131records>128로확정. core위험가드/한도불변으로fixture를보완한private a04 daily/turnover둘다PASS180.088초,원래used400+active350+new300/NAV1000/실제위험계산assert보존. 원래driver3함수에반영했으며독립검토/최종입력판정전이다. 추가EX02/05/18/25/31실제양성근거도수거했다.
+
+- 총12개작업단위를각각commit·push/원격SHA대조했다. 추가5개는팀절차53a326b/Q27증거4eeb6f4/화면명세3472a75/공통진행ac3a278/영속계약439f15e다. [납품근거](evidence/task-unit-git-delivery-2026-10-30.json).
+- 내부2a불변산출물저장구현을04Sol/high에9파일/1200초/자동재시도0으로배정. 내부1초기mock후속은controlled재현/현재검증의독립확인으로해결,정확역사bytes의증거한계보존. 현재후속해결9·대기2·진단1·차단1.
 
 - 최신Git납품7단위: `af40f9c`, `eb476bc`, `eeb8d4c`, `0f9e149`, `b745a28`(조회계약), `93222a0`(제품DB수명), `6e8c1e3`(SQLAUTHheader). 각각독립사전검토/명시staging/정상push·원격SHA일치. main80403ab/고정worktree보존. [납품근거](evidence/task-unit-git-delivery-2026-10-30.json). 아래시간별기록은당시관측이다.
 - 후속actualDB60개는4854.199초종료·58PASS/25및54FAIL·자기DB60개정리·578고정입력불변. [최종](evidence/execution-resume-remaining-database-final-a01-2026-10-30.json). FUP-Q27-008은수정/실제5/독립검토/commitpush로해결, 원래실패이력보존. 위험fixture간소화시도2FAIL은미채택·SQL/한도불변.

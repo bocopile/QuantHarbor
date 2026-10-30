@@ -1,0 +1,84 @@
+{
+  "run_id": "P28-Q27-delivery-precommit-a01",
+  "elapsed_seconds": 164.963,
+  "exit_code": 0,
+  "reviewed_files": 38,
+  "working_SHA_matches": true,
+  "units": [
+    {
+      "id": "p28-artifact-storage",
+      "checks": 10,
+      "allowed": true,
+      "reviewed": 26,
+      "committed_changes": 24
+    },
+    {
+      "id": "q27-fixture-proof",
+      "checks": 10,
+      "allowed": true,
+      "reviewed": 12,
+      "committed_changes": 12
+    }
+  ],
+  "delivery": [
+    {
+      "unit": "p28-artifact-storage",
+      "commit": "6c8786f1c3a8075ec7122fe15024f4c7fb110eb1",
+      "files": [
+        "src/quantharbor/adapters/synthetic_reporting.py",
+        "src/quantharbor/adapters/synthetic_valuation.py",
+        "src/quantharbor/adapters/synthetic_research.py",
+        "src/quantharbor/adapters/synthetic_target.py",
+        "src/quantharbor/adapters/postgres_ledger.py",
+        "src/quantharbor/adapters/product_artifacts.py",
+        "migrations/product/0001_artifacts.sql",
+        "tests/product/test_product_artifacts.py",
+        "tests/product/test_product_database.py",
+        "docs/evidence/product-p28-03-artifacts-actual-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-actual-a03-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-commit-outcome-fix-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-ready-for-delivery-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-security-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-unit-final-2026-10-30.json",
+        "docs/evidence/product-p28-03-function-integrity-green-2026-10-30.json",
+        "docs/evidence/product-p28-03-function-integrity-red-2026-10-30.json",
+        "docs/research/product-p28-03-artifacts-review-a01-2026-10-30.md",
+        "docs/research/product-p28-03-artifacts-security-a01-2026-10-30.md",
+        "docs/research/product-p28-03-artifacts-security-a02-2026-10-30.md"
+      ],
+      "reviewed_unchanged_context_files": 2,
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "6c8786f1c3a8075ec7122fe15024f4c7fb110eb1"
+    },
+    {
+      "unit": "q27-fixture-proof",
+      "commit": "8a27220a898b56a68f12168bf32f36b91d368b92",
+      "files": [
+        "scripts/check_execution.py",
+        "docs/evidence/execution-resume-common-budget-measure-2026-10-30.json",
+        "docs/evidence/execution-resume-current-focused-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-day-cursor-proof-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-day-proof-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-day-proof-a03-2026-10-30.json",
+        "docs/evidence/execution-resume-fixed40-gap-proof-a01-2026-10-30.json",
+        "docs/evidence/execution-resume-fixed40-gap-proof-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-risk-fixture-fixed-a04-2026-10-30.json",
+        "docs/evidence/execution-resume-risk-proposal-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-risk-proposal-a03-2026-10-30.json",
+        "docs/research/execution-resume-risk-fixture-2026-10-30.md"
+      ],
+      "reviewed_unchanged_context_files": 0,
+      "push": "PASS",
+      "precommit_checks": 10,
+      "push_exit": 0,
+      "remote_sha": "8a27220a898b56a68f12168bf32f36b91d368b92"
+    }
+  ],
+  "full_Q27_P03_completed": false
+}

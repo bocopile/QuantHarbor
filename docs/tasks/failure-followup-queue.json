@@ -129,7 +129,7 @@
       "origin_task": "Q27",
       "title": "최종 동일 입력의 전체 제품/actualDB 판정 수거",
       "classification": "validation_execution",
-      "status": "blocked",
+      "status": "awaiting_retest",
       "owner": "root",
       "priority": "blocking_affected_acceptance",
       "blocks": [
@@ -149,7 +149,8 @@
         "docs/evidence/execution-resume-post-a04-quality-2026-10-30.json",
         "docs/evidence/execution-resume-full-product-a03-2026-10-30.json",
         "docs/evidence/execution-resume-full-database-a02-2026-10-30.json",
-        "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json"
+        "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json",
+        "docs/evidence/execution-final-current-validation-start-2026-10-30.json"
       ],
       "latest_runs": [
         {
@@ -186,11 +187,18 @@
           "failed": 2,
           "input_unchanged": true,
           "evidence": "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json"
+        },
+        {
+          "run_id": "Q27-final-current-validation-a01",
+          "base_commit": "8a27220a898b56a68f12168bf32f36b91d368b92",
+          "scope": "frozen_current_full836_and_actual86",
+          "status": "RUNNING",
+          "completed_not_inferred": true,
+          "evidence": "docs/evidence/execution-final-current-validation-start-2026-10-30.json"
         }
       ],
       "completion_criterion": "실제 종료·PASS/FAIL/NOT RUN·전후입력·자기DB정리·동일 버전 독립 검토를 root가 확인. DB runner의partial 상수는 별도 계약 판정과 대조",
       "blocked_by": [
-        "FUP-Q27-007",
         "FUP-Q27-006"
       ]
     },
@@ -211,9 +219,13 @@
         "independent_planned_artifacts"
       ],
       "evidence": [
-        "docs/evidence/execution-resume-closure-design-2026-10-30.json"
+        "docs/evidence/execution-resume-closure-design-2026-10-30.json",
+        "docs/evidence/execution-resume-fixed40-gap-proof-a02-2026-10-30.json",
+        "docs/evidence/execution-resume-day-proof-a03-2026-10-30.json",
+        "docs/evidence/execution-resume-day-cursor-proof-a01-2026-10-30.json"
       ],
-      "completion_criterion": "기대 문장→실제 assertion→최종 실행 결과 연결. EX11 literal_exposure 누락, EX35 one-process 요구에 multi-process 범위를 추가한 초안은 정정. 실제 공백과 과도한 제안을 구분하고 요구는 면제하지 않음"
+      "completion_criterion": "기대 문장→실제 assertion→최종 실행 결과 연결. EX11 literal_exposure 누락, EX35 one-process 요구에 multi-process 범위를 추가한 초안은 정정. 실제 공백과 과도한 제안을 구분하고 요구는 면제하지 않음",
+      "latest_observation": "추가실제EX02재사용금지/EX05replay_conflict 2PASS181.806초,EX25consume+cursor/workstate rollback PASS,EX18/31하루경과미확인/기존행보존1PASS83.516초. 초기proof준비NameError/사유명/전체fingerprint·모든hold양수oracle오류는보존. 공식40매핑/독립확인잔여."
     },
     {
       "id": "FUP-P28-001",
@@ -245,7 +257,7 @@
       "origin_task": "Q27",
       "title": "actualDB84 24번 daily-risk invalid_contract 실패",
       "classification": "validation_failure",
-      "status": "diagnosing",
+      "status": "resolved",
       "owner": "root",
       "priority": "blocking_affected_acceptance",
       "blocks": [
@@ -265,21 +277,28 @@
         "docs/evidence/execution-resume-daily-risk-diagnostic-a03-2026-10-30.json",
         "docs/evidence/execution-resume-remaining-database-progress-a01-2026-10-30.json",
         "docs/evidence/execution-resume-remaining-database-final-a01-2026-10-30.json",
-        "docs/evidence/execution-resume-risk-proposal-rejected-2026-10-30.json"
+        "docs/evidence/execution-resume-risk-proposal-rejected-2026-10-30.json",
+        "docs/evidence/execution-resume-common-budget-measure-2026-10-30.json",
+        "docs/evidence/execution-resume-risk-fixture-fixed-a04-2026-10-30.json",
+        "docs/evidence/execution-resume-current-focused-a01-2026-10-30.json"
       ],
       "failed_run_id": "Q27-08-database-a02",
       "failed_scenario": 24,
       "failed_mode": "risk_negative:daily",
       "reason": "invalid_contract",
       "completion_criterion": "daily/turnover 원래수치·실제경제사실·위험차단검사를보존하면서용량거부원인최소해결. 실제집중/최신필수검증·독립확인. 후속60사례58PASS/2FAIL원본보존.",
-      "root_cause_confirmed": false,
+      "root_cause_confirmed": true,
       "diagnostic_observation": "a03 204.641초 FAIL, psql 고정사유 execution_capacity 1건 식별. admission challenge 저장→execution_apply 용량가드 거부가 바깥 invalid_contract로 변환됨. 각 자기DB정리/578입력불변. 어떤 용량항목이 부족한지는 미확정이며 한도 증액/가드면제하지 않음. 후속25도같은용량거부. privatefixture간소화안도2FAIL로미채택, 한도/SQL불변.",
       "database_reason": "execution_capacity",
       "failing_guard": "execution_check_budget body line18: common current+future records>128 OR bytes>8388608",
       "related_failed_scenarios": [
         24,
         25
-      ]
+      ],
+      "root_cause": "거부시공통현재68+미래63=131행>128,bytes6352989<8388608. 실제거래gross400/활성350/신규300/NAV1000를유지하는2거래fixture로불필요결제기록을줄임. 원래위험함수/한도불변.",
+      "observation": "privatea04 daily/turnover각PASS180.088초·원래핵심위험계산호출assert보존,3함수AST만publicdriver반영. 독립검토/작업단위commit대기.",
+      "resolution": "原한도/위험/fixture40불변,131행의준비포화를고정수치유지하는2거래준비로보완. 최신6context465.254초PASS·독립사전검토지적0·8a27220commitpush/원격SHA확인. 전체86은FUP-Q27-005에서별도진행.",
+      "resolved_commit": "8a27220a898b56a68f12168bf32f36b91d368b92"
     },
     {
       "id": "FUP-P28-002",
@@ -336,7 +355,7 @@
       "origin_task": "P28-03",
       "title": "DB수명관리 모의시험의 초기명령/label fixture 불일치",
       "classification": "test_fixture",
-      "status": "awaiting_retest",
+      "status": "resolved",
       "owner": "root",
       "priority": "normal",
       "blocks": [
@@ -350,13 +369,16 @@
         "docs/evidence/product-p28-03-mock-fixture-diagnostic-2026-10-30.json",
         "docs/evidence/product-p28-03-database-review-a01-2026-10-30.json",
         "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json",
-        "docs/evidence/product-p28-03-mock-controlled-reproduction-2026-10-30.json"
+        "docs/evidence/product-p28-03-mock-controlled-reproduction-2026-10-30.json",
+        "docs/evidence/planning-evidence-precommit-2026-10-30.json"
       ],
       "observed": "a01 FAIL16, a02 FAIL1/ERROR14, mock교정후a03 22PASS·최종a04 24PASS. 이전로그보존. 실제Docker증거와구분.",
       "completion_criterion": "초기실패가mock명령/label준비였는지독립일반검토확인·최종24개/실제필수수용을분리해기록",
       "evidence_limit": "초기mock전체bytes없음. 준비불일치해소는독립근거로뒷받침되지만초기필드별원인전체확정은보류. 현재26/actual9검증과분리.",
       "controlled_reproduction": "원래22개테스트를메모리에서두fixtureoffset만반전해a01 FAIL16/a02 FAIL1+ERROR14를각각동일재현, currentcontrol22PASS. 생산코드미수정·실제Docker미실행. 정확역사bytes복원주장없음.",
-      "next_action": "독립검토가controlledmechanism과현재26/actual9성공을확인하고,남는역사자료한계를수용판정과구분."
+      "next_action": "독립검토가controlledmechanism과현재26/actual9성공을확인하고,남는역사자료한계를수용판정과구분.",
+      "resolution": "독립일반222.558초가controlled재현분포/현재mock26/actual9/기존독립검토와실패분리기록을검토해원래수용기준충족확인. 정확역사bytes복원주장없이fixture원인후속해결.",
+      "remaining_acceptance": "P28-03의나머지내부단위·실제통합은별도"
     },
     {
       "id": "FUP-P28-005",
@@ -412,6 +434,79 @@
       "completion_criterion": "consume context에 current_validation:null을넣어닫힌schema를맞추고해당actualSQLAUTH전체재실행,productionSQL/권한가드불변·독립검토/작업단위commit·push",
       "resolution": "current_validation:null 한필드추가후 actualSQLAUTH5PASS/71.869초. 독립사전검토지적0/원본SHA일치, 6e8c1e3 commit·push·원격SHA일치. 생산SQL/권한가드불변. 원래고정case54FAIL이력보존.",
       "remaining_acceptance": "Q27최종동일입력판정은FUP-Q27-005"
+    },
+    {
+      "id": "FUP-P28-006",
+      "origin_task": "P28-03",
+      "title": "실제저장검사의 용량 예외·봉인된 target ID 준비 불일치",
+      "classification": "test_fixture",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "normal",
+      "blocks": [
+        "P28-03:internal2a_acceptance"
+      ],
+      "may_proceed": [
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-artifacts-actual-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-actual-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-actual-a03-2026-10-30.json"
+      ],
+      "completion_criterion": "Python선행capacity거부와실제SQLrollback분리·content-derived ID위조불가보존,동일source의실제후속/원자성/재시작및독립검토",
+      "observation": "a01 factory검사1PASS후PythonContractError예상누락FAIL. a02 실제5PASS후타당하지않은targetID수정시도ContractErrorFAIL. a03 같은9source/기존자기DB에서나머지6PASS32.744초·stop/reopen/metadata중간충돌/oversize/체크섬/정확목록보존,원래두FAIL보존.",
+      "resolution": "Python선행capacity와SQL원자quota를분리하고봉인ID위조대신명시adversarialmetadata중간충돌로검증. a02첫5PASS/같은source a03후속6PASS·최종20·독립검토·6c8786fcommitpush확인. 원래FAIL이력보존.",
+      "resolved_commit": "6c8786f1c3a8075ec7122fe15024f4c7fb110eb1"
+    },
+    {
+      "id": "FUP-P28-007",
+      "origin_task": "P28-03",
+      "title": "COMMIT 이후 확인쿼리 오류의 rollback 오분류",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2a_acceptance"
+      ],
+      "may_proceed": [
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-artifacts-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-commit-outcome-fix-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-security-a01-2026-10-30.json"
+      ],
+      "completion_criterion": "저장결과exact재조회우선·확인불가unknown/확정실패구분·실제postCOMMIT ERROR/단위회귀·독립확인·작업단위commitpush",
+      "observation": "RED1ERROR→CommitOutcome4/전체artifact20PASS,actuala02확인쿼리ERROR해소PASS,독립보안이원래P2해결확인. 최종사전검토/commit대기.",
+      "resolution": "ERROR후immutable재조회우선/확인불가unknown으로보완. 新回帰RED1→4·최종20PASS,실제postCOMMIT確認ERROR/응답유실해소PASS·독립보안확인·6c8786fcommitpush.",
+      "resolved_commit": "6c8786f1c3a8075ec7122fe15024f4c7fb110eb1"
+    },
+    {
+      "id": "FUP-P28-008",
+      "origin_task": "P28-03",
+      "title": "설치 저장함수 본문 손상의 재연결 검증 누락",
+      "classification": "product_defect",
+      "status": "resolved",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2a_acceptance"
+      ],
+      "may_proceed": [
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-artifacts-security-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-function-integrity-red-2026-10-30.json",
+        "docs/evidence/product-p28-03-function-integrity-green-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-security-a02-2026-10-30.json"
+      ],
+      "completion_criterion": "실제자기합성DB본문변조RED→명시factory기대정의대조GREEN·원본복원·기존정상재시작/독립확인·commitpush",
+      "observation": "보안정적P2. sourcechecksum행/테이블을유지한no-op본문이factory검사를통과할수있음. 본문/함수속성검증최소보완예정.",
+      "resolution": "명시factory에서설치function의정확본문/속성/owner를기대migration과대조. 실제自己DBRED_REPRODUCED2.340초→GREEN2.417초·원본복원/정상factory,독립delta79.360초지적0·최종20PASS·6c8786fcommitpush.",
+      "resolved_commit": "6c8786f1c3a8075ec7122fe15024f4c7fb110eb1"
     }
   ]
 }

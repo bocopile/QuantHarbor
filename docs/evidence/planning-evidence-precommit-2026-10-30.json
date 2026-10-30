@@ -1,0 +1,49 @@
+{
+  "run_id": "planning-evidence-precommit-a01",
+  "role": "qh_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "elapsed_seconds": 222.558,
+  "exit_code": 0,
+  "units": [
+    {
+      "id": "team-workflow",
+      "allowed": true,
+      "check_count": 10,
+      "findings": []
+    },
+    {
+      "id": "q27-evidence-handoff",
+      "allowed": true,
+      "check_count": 10,
+      "findings": []
+    },
+    {
+      "id": "p28-screen-spec",
+      "allowed": true,
+      "check_count": 10,
+      "findings": []
+    },
+    {
+      "id": "forward-handoff",
+      "allowed": true,
+      "check_count": 10,
+      "findings": []
+    },
+    {
+      "id": "p28-artifact-contract",
+      "allowed": true,
+      "check_count": 10,
+      "findings": []
+    }
+  ],
+  "files_reviewed": 68,
+  "mock_followup": {
+    "criterion_satisfied": true,
+    "reason": "원래 완료 기준인 fixture 준비 불일치의 독립 확인과 최종/실제 검증의 분리 기록을 충족한다고 판단한다. root controlled 증거의 FAIL16 및 FAIL1/ERROR14·말단 분포가 초기 진단과 일치하고, 현재 double의 Compose 인자·project label은 생산 코드와 정합한다. 당시 test 파일만 수정된 타임라인과 현재 코드의 독립 일반/보안 검토가 이를 뒷받침한다. control22PASS·최종26PASS·actual9PASS는 각각 별도 증거이며 현재 기능 결함으로 판정하지 않는다. 이번 검토에서 재현은 실행하지 않았다.",
+    "historical_evidence_limit": "정확한 수정 전 전체 bytes가 없어 역사적 소스의 동일 복원이나 모든 실패의 정확한 필드별 인과는 확정하지 않는다. controlled mechanism의 확인을 그 주장으로 확대하지 않는다."
+  },
+  "review_scope": "read_only_static_evidence_and_commit_packet",
+  "new_tests_run": false,
+  "reviewed_base": "6e8c1e3961b5de410293397c88a20b8b00d4bd25"
+}

@@ -1,0 +1,30 @@
+{
+  "base_commit": "8a27220a898b56a68f12168bf32f36b91d368b92",
+  "branch": "codex/q27-final-validation-20261030-wso_7mgy",
+  "tracked_input_count": 708,
+  "source_manifest_sha256": "fc210b115631b3edb9e152f2ac8c9384a398f32d04b14248b377fb1934d1eab2",
+  "automatic_retries": 0,
+  "deadline_seconds": 10800,
+  "run_id": "Q27-final-current-validation-a01-start",
+  "actor": "root",
+  "specialist_AI_started_for_tests": false,
+  "full_product_planned": 836,
+  "actual_DB_planned": 86,
+  "status": "RUNNING",
+  "q27_complete": false,
+  "NOT_RUN": [
+    "final_full_product_result",
+    "final_all86_result",
+    "fixed40_final_independent_signoff"
+  ],
+  "full_product": {
+    "status": "RUNNING",
+    "completed": 175,
+    "planned": 836
+  },
+  "actual_DB": {
+    "status": "RUNNING",
+    "completed": 10,
+    "planned": 86
+  }
+}

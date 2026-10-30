@@ -113,11 +113,14 @@
       "evidence": [
         "docs/evidence/product-p28-03-database-build-2026-10-30.json",
         "docs/evidence/product-p28-03-actual-db-a02-2026-10-30.json",
-        "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json"
+        "docs/evidence/product-p28-03-database-security-a02-2026-10-30.json",
+        "docs/evidence/product-p28-03-artifacts-ready-for-delivery-2026-10-30.json",
+        "docs/evidence/product-execution-delivery-precommit-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-persistence-design-2026-10-30.json"
       ],
       "scope": "local_synthetic_or_public_design",
       "owned_files": "착수 카드에서 실제 입력 버전과 파일 경로를 고정; 공통 계약/큐/status는 root 통합",
-      "stage": "internal2a_artifact_persistence_design",
+      "stage": "internal2a_delivered_internal2b_store_design_ready",
       "artifact_ready": false,
       "start_dependencies": [
         "P28-02:artifact_ready"

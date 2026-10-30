@@ -1,12 +1,12 @@
 # P28-03 — 로컬 실행 조립·영속성·15분 분석
 
-- 상태: 진행 — 내부1 기능검증·독립검토 확인, 내부2 준비
+- 상태: 진행 — 내부1/2a납품·내부2b-1저장기반배정준비
 - 단계·선행조건: EXEC-DEC-003, P28-02 product-read-v1 준비·P28-01 정적 산출물. Q27/실제화면 미해결은 통합·완료 관문 유지
 - 요청 근거·범위: 사용자 전체 계획 우선 진행·실패 큐. 현재호스트 로컬 합성 제품 조립·영속성·활성세션15분 분석
 - 담당: root 공통계약/큐/상태, qh_implementer 지정파일, 독립 일반/보안 검토·root 실제 합성DB. worker1/writer1·재귀0
-- 입력: main80403ab 미커밋기준, product-read-v1 revision5 SHA35f6ed51edb43e04711f3dcec290c553bc4a5af201467a3110ae1bc64edd0977, 기존 exact-type repository/UoW/ledger 계약과 migration1~3
+- 입력: 코드기준8a27220, product-read-v1 revision5 SHA35f6ed51edb43e04711f3dcec290c553bc4a5af201467a3110ae1bc64edd0977, product-ai-persistence-v1 revision1 SHAf95ec6afccd549d15e6ce1df0a02612bbbd5d688b13e31bf7523785dec3aafdb. 기존exact타입/금융migration1~3보존. 과거단계입력은하단이력.
 - 소유: 실행 단위별 아래 명시. 기존 사용자수정 보존. 계약·status·큐는root만 통합
-- Git: codex/qh-local-delivery-20261030, base80403ab, 내부1 commit93222a0/origin SHA확인. Q27고정worktree불변·PR/merge없음
+- Git: codex/qh-local-delivery-20261030, base80403ab·코드HEAD8a27220, 내부1 93222a0/내부2a6c8786f/Q27보강8a27220 각각origin SHA확인. 별도Q27최종검증worktree8a27220고정·PR/merge없음
 - 허용: 제한 qh_development, Sol/high, 로컬 합성 구현/요청검증·새유료/외부연결/실제금융 없음
 - 검증: 단계별 의미있는단위·실제합성DB 재시작·원자성·계약대조·독립검토. 실행하지 않은 전체통합/사용자인증/브라우저/금융은NOT RUN
 - 시간·비용: 배정별1200초·자동재시도0·기존구독
@@ -69,3 +69,30 @@
 - Astra/high192.227초·P2두건: 없는created_at과공통branch금지. root는target목록시각evaluated_at/experiment만fork금지로보완했다. [자문](../research/product-p28-03-artifacts-design-2026-10-30.md).
 - 추가확정: 제품open/close공유gate·세대결속/옛facade거부, canonical재인코딩/목표묶음재검증, 단일SQLtransaction·증분quota·버전결손차단·COMMIT응답unknown판별. 기존금융schema/pin/권한가드불변.
 - 구현소유예정9파일: adapters/synthetic_reporting.py, synthetic_valuation.py, synthetic_research.py, synthetic_target.py, postgres_ledger.py, product_artifacts.py, migrations/product/0001_artifacts.sql, tests/product/test_product_artifacts.py, test_product_database.py.
+
+## 내부2a 구현 배정 — P28-03-artifacts-build-a01
+
+- Sol/high·qh_development 별도부모,1200초·자동재시도0·worker1/writer1. 위확정9파일만소유, root는반환전공개파일쓰기를멈추고보호SHA를보존한다.
+- 계약revision2 SHAf29ef5fb9f458522deadf3f234c8770c9d0f25024af88eef1a55edbdc809bfc8, HEAD439f15e 기반. 기본메모리4종·exactfactory·gate/세대·canonical/lineage·목표묶음·별도migration/quota검사. actualDB/새전체통합은NOT RUN으로인계한다.
+- 내부1은현재mock26/actual9/독립일반·보안/초기fixture원인후속해결로기능수용. [후속독립판정](../evidence/planning-evidence-precommit-2026-10-30.json). 정확과거testbytes없음의역사한계는그대로남긴다. 내부1수용은전체P28-03완료가아니다.
+
+## 내부2a 실제 반환·현재 수용관문
+
+- Sol/high844.414초·지정9파일구현,기존메모리43+새artifact19+DBmock27=89PASS·공개683지적0. 작성자가rootbefore.json을덮어쓴기록사고로원래680all-public초기증명은없음. root가writer초기tracked673SHA는재대조불변확인했고원래전체불변으로확대하지않는다. 이후rootbaseline은worker권한밖.runtime/team에별도보존한다. [구현](../evidence/product-p28-03-artifacts-build-2026-10-30.json).
+- 일반231.865초P2 COMMIT후ERROR오분류→root보완RED1/새4·전체artifact20PASS. 실제a02확인ERROR해소와보안214.612초독립해결확인.
+- actuala01 44.461초FAIL/1검사, a02 104.218초FAIL/5검사(시험준비), 동일source연속a03 32.744초6PASS. root가임의targetID를만들지않고실제SQL의반드시거부할metadata중간충돌로원자성을검사했다. 4종canonical/정정분기/COMMIT응답유실·afterERROR/별도schema/oversize/체크섬거부/stopreopen동일자료·oldfacade거부를버전별로구분한다. 자기자료보존. [후속](../evidence/product-p28-03-artifacts-actual-a03-2026-10-30.json).
+- 추가보안P2는설치함수본문손상검출누락(FUP-P28-008)으로현재보완. 내부2a전체수용/commit은이검증과최종검토뒤, P03전체artifact_ready는아직아니다.
+- 내부5에직접execution_uow.Popen의제품close공유gate직렬화/정상종료drain을명시인계. 2a성공을금융조립종료전체수용으로확대하지않는다.
+
+## 내부2b 독립 설계 착수
+
+- 내부2a저장기능최종가드/검토확인·최종commit준비동안[AI예산·작업복구계약준비](../contracts/product-ai-persistence-v1.md)를03Astra/high읽기설계에배정한다. 내부2a미완료를완료로올리지않고독립설계만진행한다.
+- 입력: SyntheticAIRepository의실제reserve/dispatch/settle/query/execute/processed규칙,기존ai-local-v1과product-read-v1,현재제품DBgate/세대/별도schema1. mutable상태의단순dict/JSON권위복원금지. 신규실제AI비용/자동외부retry없음.
+- 설계자문540초·자동재시도0·쓰기/시험/하위agent없음. 실제구현소유·완료기준·migration2변경목록은root가반환후확정한다.
+
+## 内部2a 납품·2b-1 다음 배정 준비
+
+- 최종artifact20PASS128.542초,설치함수손상실제RED2.340→GREEN2.417초,보안delta79.360초0지적/11SHA불변. 독립납품사전검토164.963초·소스/증거26검토중실제변경24만6c8786f로commit·origin push/원격SHA확인. [납품](../evidence/product-execution-delivery-precommit-2026-10-30.json). P28-03 전체/AI복구/HTTP/15분slot완료는아니다.
+- 2b 자문374.138초의typedcheckpoint+명시phase·공유gate/owner/latch/query durable barrier안을root [revision1](../contracts/product-ai-persistence-v1.md)에통합했다. globalauxiliary1MiB예약/closingattempt별128KiB slot·총aux8MiB/encoded32MiB·32KiBchunk의보수제품상한과증명기준을명시했다.
+- 2b-1 배정준비 소유6파일: src/quantharbor/adapters/product_schema.py, product_ai.py, migrations/product/0002_ai.sql, tests/product/test_product_ai.py 신규; product_artifacts.py loader위임, tests/product/test_product_artifacts.py 필요회귀. 기존0001 checksum/금융1~3/DBlifecycle/기본AI memory는불변. 2b-1은저장기반이며실제corefactory/client호출연결은2b-2다.
+- 다음Sol/high1200초·자동재시도0 배정전root baseline을worker권한밖.runtime/team에보존한다. 현재본문은배정준비이며실제기동/검증은반환후따로기록한다.

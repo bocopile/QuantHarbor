@@ -4,27 +4,26 @@
 
 ## 현재 상황
 
-- 현재계획: **P28-03 내부2a 불변산출물영속성설계**. 내부1 DB수명관리mock26/actual9·독립일반/보안 지적0·commit93222a0/origin확인. [카드](tasks/PRODUCT-P28-03.md).
-- P28-01 정적6화면/매핑/HTML, P28-02 revision5조회/인증계약 artifact_ready. 실제브라우저/HTTP/IPC검증은NOT RUN. completed가아니다.
-- Q27 제품789PASS. actualDB 원래1~23PASS/24FAIL, 후속25~84는58PASS/2FAIL·자기DB60정리·입력불변. SQLAUTH54수정후실제5PASS/독립확인으로개별해결. daily/turnover/fixed40/최종관문은[후속큐](tasks/failure-followup-queue.md).
-- 전체18/36·로컬7/10·제품0/12 completed, artifact_ready2개. 크기가다른항목을작업량진행률로합산하지않는다.
-- 작업단위7commit·push/원격SHA확인. 기존main80403ab·고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
-- worker1·writer1·재귀0. 패널은역할위치이고모두동시모델실행이아니다.08은모델없는한시적관측이다.
+- 현재계획: **P28-03 내부2a납품완료·2b-1 AI저장기반배정준비**. 내부2a6c8786f·최종artifact20PASS/실제재시작·원자성/함수변조검증·독립일반/보안확인. [카드](tasks/PRODUCT-P28-03.md).
+- 2b설계는374.138초자문후typedcheckpoint/phase/query barrier/owner/latch/보수quota로확정. 실제구현/AIcore연결은아직NOT RUN.
+- Q27 최신바뀐/추가6context465.254초PASS·8a27220납품. 같은HEAD고정708입력에서전체제품836와DB86이실행중이다. 새전체결과/고정40최종판정은대기.
+- 후속16개중해결13·재확인1·대기2. 전체18/36·로컬7/10·제품0/12 completed·artifact_ready2. 항목크기가달라작업량진행률로합산하지않는다.
+- 총14개단위commit/push·원격SHA확인. 기존main80403ab/이전고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
 
 ## 담당자별 상태
 
 | 패널·담당 | 모델/추론 | 실제 상태 | 책임 |
 |---|---|---|---|
-| 01 root | 현재세션 | 실행중 | 계약/큐/증거통합·단위commitpush |
-| 02 qh_researcher | Luna/high | 미배정 | 필요조사대기 |
-| 03 qh_architect | Astra/high | 내부2a설계반환·P2두건root보완 | 4종불변저장·원자성·lineage |
-| 04 qh_implementer | Sol/high | 내부1반환·다음배정대기 | 소유파일만구현 |
-| 05 qh_reviewer | Sol/high | 공통기록/설계사전검토예정 | 명시파일·증거·미완료관문 |
-| 06 qh_security_reviewer | Astra/high | DB수명최종delta반환·지적0 | 권한/자료보존경계 |
-| 07 검증위치 | root실행 | 후속60사례종료 | 58PASS/2FAIL·실패별도추적 |
-| 08 BOARD | 모델없음 | 한시적관측 | 실제역할/검사상태표시·자동배정없음 |
+| 01 root | 현재세션/직접Python | DB86실행중 | 새입력고정·실패수거·자기DB정리 |
+| 02 qh_researcher | Luna/high | 미배정 | 조사대기 |
+| 03 qh_architect | Astra/high | 2b설계반환374.138초 | typed복구/예산/query barrier계약 |
+| 04 qh_implementer | Sol/high | 2a반환·2b-1배정준비 | 지정파일구현 |
+| 05 qh_reviewer | Sol/high | 두납품검토반환164.963초·차단0 | 단계증거·SHA·납품범위 |
+| 06 qh_security_reviewer | Astra/high | 2a최종delta반환79.360초·지적0 | 설치함수/commit실패경계 |
+| 07 검증위치 | root직접Python | 전체제품836실행중 | 최종836결과·고정입력 |
+| 08 BOARD | 모델없음 | 한시적관측 | 실제역할/검사상태·자동배정없음 |
 
-설정·기동·반환·검수·완료는구분한다. 아래이전이력은당시관측이며현재표를우선한다.
+worker1/writer1·재귀0. 일부패널의대기는순차정책이며전체모델동시기동이아니다. 아래이전이력은당시관측이다.
 
 ## 사용자가 보는 방법
 
