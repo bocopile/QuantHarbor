@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import subprocess
 import time
+from threading import RLock
 import uuid
 
 from quantharbor.domain.ledger import (AppendResult, ContractError, SyntheticLedgerSubmission,
@@ -53,6 +54,8 @@ class PostgresLedger:
         self.cleanup = 'not_started'
         self.migration_checksums = {}
         self._product_database = None
+        self._product_gate = RLock()
+        self._product_generation = None
 
     @classmethod
     def product_synthetic(cls, runtime_root, *, binding_id):
@@ -81,9 +84,21 @@ class PostgresLedger:
                                 '-v', 'ON_ERROR_STOP=1', '-U', 'qh_synthetic', '-d', database]
 
     def _query(self, sql, *, database='qh_synthetic', expected=0, error_marker=None):
+        if self._product_database is not None:
+            with self._product_gate:
+                return self._query_direct(sql, database=database, expected=expected, error_marker=error_marker)
+        return self._query_direct(sql, database=database, expected=expected, error_marker=error_marker)
+
+    def _query_direct(self, sql, *, database, expected, error_marker):
         return self._run(self._psql(database), data=sql.encode('utf-8'), expected=expected, error_marker=error_marker).decode('utf-8').strip()
 
     def _transaction(self, sql):
+        if self._product_database is not None:
+            with self._product_gate:
+                return self._transaction_ready(sql)
+        return self._transaction_ready(sql)
+
+    def _transaction_ready(self, sql):
         if not self._ready:
             raise LedgerStorageError('synthetic_database_unavailable')
         return self._query("BEGIN; SET LOCAL statement_timeout='15s'; SET LOCAL lock_timeout='10s';\n" + sql + '\nCOMMIT;')
@@ -113,7 +128,10 @@ COMMIT;
 
     def __enter__(self):
         if self._product_database is not None:
-            return self._product_database.open(self)
+            with self._product_gate:
+                result = self._product_database.open(self)
+                self._product_generation = object()
+                return result
         try:
             context = self._run(['docker', 'context', 'show']).decode().strip()
             metadata = json.loads(self._run(['docker', 'context', 'inspect', context]))
@@ -151,7 +169,9 @@ COMMIT;
 
     def close(self):
         if self._product_database is not None:
-            return self._product_database.close(self)
+            with self._product_gate:
+                self._product_generation = None
+                return self._product_database.close(self)
         self._ready = False
         if self._compose is not None:
             try:

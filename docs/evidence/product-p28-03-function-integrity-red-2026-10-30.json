@@ -1,0 +1,11 @@
+{
+  "run_id": "P28-03-function-integrity-red-a01",
+  "scope": "owned_synthetic_DB_function_body_damage_detection",
+  "source_sha256": "ba7e0aa5279f8e9bc4c6dabce8c658f2384d81bfa2a40f46714da4411450f913",
+  "damaged_function_factory_rejected": false,
+  "original_function_restored_and_factory_valid": true,
+  "status": "RED_REPRODUCED",
+  "elapsed_seconds": 2.34,
+  "cleanup": "own_product_stopped_data_preserved",
+  "data_preserved": true
+}

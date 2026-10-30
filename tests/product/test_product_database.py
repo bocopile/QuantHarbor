@@ -199,6 +199,21 @@ class ProductDatabaseTests(unittest.TestCase):
         for name in ('marker.json', 'manifest.json', 'writer.lock'):
             self.assertEqual(stat.S_IMODE((self.root / name).stat().st_mode), 0o600)
 
+    def test_product_open_generation_changes_only_on_success_and_close_invalidates(self):
+        db = self.db()
+        self.assertIsNone(db._product_generation)
+        with db:
+            first = db._product_generation
+            self.assertIsNotNone(first)
+            with self.assertRaises(LedgerStorageError):
+                db.__enter__()
+            self.assertIs(db._product_generation, first)
+        self.assertIsNone(db._product_generation)
+        with db:
+            self.assertIsNot(db._product_generation, first)
+            self.assertIsNotNone(db._product_generation)
+        self.assertIsNone(db._product_generation)
+
     def test_legacy_constructor_uuid_and_down_volumes_unchanged(self):
         db = PostgresLedger()
         self.assertNotEqual(db._project, PostgresLedger()._project)

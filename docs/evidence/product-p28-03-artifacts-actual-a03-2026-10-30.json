@@ -1,0 +1,42 @@
+{
+  "run_id": "P28-03-artifacts-actual-a03",
+  "scope": "continuation_after_a02_first_five_checks_same_source",
+  "status": "PASS",
+  "checks": [
+    "a02_complete_typed_records_restored_in_new_process",
+    "actual_SQL_adversarial_metadata_middle_conflict_rolls_back_prior_valid_plan",
+    "actual_database_payload_65537_byte_rejection_is_atomic",
+    "actual_checksum_corruption_denied_and_restored_before_stop",
+    "stop_preserves_data_and_old_facade_is_denied",
+    "same_identity_restart_exact_lists_lineage_bundle_schema_once_and_no_double_append"
+  ],
+  "same_source_as_a02": true,
+  "actual_synthetic_PostgreSQL": true,
+  "whole_P28_03_complete": false,
+  "elapsed_seconds": 32.744,
+  "source_sha256": {
+    "src/quantharbor/adapters/synthetic_reporting.py": "c89c933aacfe35da4b5732ed261f0adac89249fa714866904805e45fa0915203",
+    "src/quantharbor/adapters/synthetic_valuation.py": "0183f353c6ceb3852eaf427163671f32096ac3f09ea96f3398a4bb85cf5e026d",
+    "src/quantharbor/adapters/synthetic_research.py": "d937d6e93a152cf5e7d199d1a2eadf9b62a9cb548ba14d278aa23d1bb455d27f",
+    "src/quantharbor/adapters/synthetic_target.py": "9747a2f2211afccdb23d5fdfbd3a31ea35f121397e4adabf5df478a591f4d63b",
+    "src/quantharbor/adapters/postgres_ledger.py": "36c685890292b67fa68854da3ec8bedc0fc14189f348cb94ebd54ca6c4428bf9",
+    "src/quantharbor/adapters/product_artifacts.py": "ba7e0aa5279f8e9bc4c6dabce8c658f2384d81bfa2a40f46714da4411450f913",
+    "migrations/product/0001_artifacts.sql": "e82d7893e8a374ff8ff8409b5e2f003c80a11bc69620982a5abaf1e0bca96ee3",
+    "tests/product/test_product_artifacts.py": "4adbaa80cb7d4b86ab6d8f04c2ce01af2f31536e9f118260af4d67b5077f849f",
+    "tests/product/test_product_database.py": "e842cd7120647fda266ad1c1c891771c37680d3dbb84a52bdcf43b400940bd09",
+    "migrations/0001_synthetic_foundation.sql": "3dcad32e09b30af71a557ee211a98fb6afdd96e3639f77990a0a904bb045997a",
+    "migrations/0002_synthetic_ledger.sql": "d48e206c7b74133cc5a8d1645bc986272701ba0124409d3bdb23b602d05333f8",
+    "migrations/0003_synthetic_execution.sql": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa"
+  },
+  "source_unchanged": true,
+  "cleanup": "own_product_stopped_data_preserved",
+  "data_preserved": true,
+  "timed_out": false,
+  "NOT_RUN": [
+    "AI_budget_recovery",
+    "full_new_product_suite",
+    "HTTP_IPC_browser",
+    "15minute_slot",
+    "physical_disk_scale"
+  ]
+}

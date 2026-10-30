@@ -15,6 +15,20 @@ class SyntheticSnapshotRepository:
         self._snapshots = {}
         self._lock = RLock()
 
+    @classmethod
+    def product_synthetic(cls, database, *, capacity=128):
+        """명시 제품 연결. 같은 정확 repository 타입과 검증 경로를 유지한다."""
+        from .product_artifacts import ProductArtifacts
+        repository = SyntheticSnapshotRepository(capacity=capacity)
+        repository._snapshots = ProductArtifacts.product_synthetic(database, 'snapshot', capacity=capacity)
+        repository._lock = database._product_gate
+        return repository
+
+    def list_records(self, *, environment, account_ref):
+        from .product_artifacts import list_records
+        with self._lock:
+            return list_records(self._snapshots, 'snapshot', environment, account_ref)
+
     def get(self, snapshot_id, *, environment, account_ref):
         identifier(snapshot_id)
         choice(environment, ('synthetic',))

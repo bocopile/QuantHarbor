@@ -1,0 +1,11 @@
+{
+  "run_id": "P28-03-function-integrity-green-a01",
+  "scope": "owned_synthetic_DB_function_body_damage_detection",
+  "source_sha256": "1affa45aedded7b6e2ebdf84a6a137b7e56ad3c36629d2ee44d0ee12b633196e",
+  "damaged_function_factory_rejected": true,
+  "original_function_restored_and_factory_valid": true,
+  "status": "GREEN",
+  "elapsed_seconds": 2.417,
+  "cleanup": "own_product_stopped_data_preserved",
+  "data_preserved": true
+}
