@@ -978,7 +978,7 @@ def sql_auth_closed(db,checks,goldens):
     # Owner is deliberately able to issue contexts, but a different backend cannot use one.
     header={'version':int(db._query('SELECT version FROM qh.execution_account;')),'generation':h.authority._generation,'fence':1,
       'source_hash':h.repo._source_hash(),'actor':None,'session':None,'action':None,'nonce':None,'target':None,'target_version':None,
-      'at':AT,'issuer':h.authority._instance,'fact':None,'operation':'consume','command':None}
+      'at':AT,'issuer':h.authority._instance,'fact':None,'operation':'consume','command':None,'current_validation':None}
     with ExecutionUnitOfWork(db,account) as uow:
         uow._exchange('RESET ROLE;',result=False)
         token='root-context'

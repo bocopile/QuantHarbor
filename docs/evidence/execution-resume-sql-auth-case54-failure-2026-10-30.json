@@ -1,0 +1,62 @@
+{
+  "scope": "original_frozen_SQLAUTH_scenario54",
+  "result": {
+    "scenario": 54,
+    "expression": "sql_auth_closed",
+    "status": "FAIL",
+    "result_file": "scenario-54.json",
+    "error_type": "ExecutionDenied",
+    "reason": "storage_failure",
+    "trace_symbols": [
+      {
+        "file": "run-remaining.py",
+        "line": 35,
+        "function": "<module>"
+      },
+      {
+        "file": "check_execution.py",
+        "line": 987,
+        "function": "sql_auth_closed"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 196,
+        "function": "_select"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 42,
+        "function": "call"
+      },
+      {
+        "file": "execution_uow.py",
+        "line": 160,
+        "function": "_exchange"
+      }
+    ],
+    "cleanup": "own_project_removed",
+    "elapsed_seconds": 55.852,
+    "checks": [
+      "SQLAUTH_product_generic_context_issue_GUC_selfhash_denied"
+    ],
+    "goldens": {},
+    "input_unchanged": true,
+    "database_fixed_reasons": [
+      "ledger_contract"
+    ],
+    "database_context": [
+      {
+        "function": "ledger_keys",
+        "line": 5
+      },
+      {
+        "function": "execution_issue_context",
+        "line": 7
+      }
+    ]
+  },
+  "input_unchanged": "checked_each_case",
+  "current_validation_missing_from_fixture_header": true,
+  "production_schema_unchanged": true,
+  "q27_complete": false
+}
