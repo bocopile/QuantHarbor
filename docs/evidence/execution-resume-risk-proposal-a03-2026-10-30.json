@@ -1,0 +1,99 @@
+{
+  "run_id": "Q27-risk-fixture-proposal-a03",
+  "scope": "private_proposed_daily_turnover_fixture_only",
+  "status": "FAIL",
+  "variant_ast_sha256": "b751624a14e824231c765f71e26b77f97fb4134b941e6053c493c20edd35d7fd",
+  "production_SQL_or_limits_changed": false,
+  "applied_to_repository": false,
+  "cases": [
+    {
+      "mode": "daily",
+      "status": "FAIL",
+      "budget_after_rollback": {
+        "common_records": 58,
+        "common_bytes": 146459,
+        "future": {
+          "plan": {
+            "next": 1,
+            "rebind": 0,
+            "resume": 0,
+            "sessions": 0
+          },
+          "bytes": 5803008,
+          "records": 59
+        }
+      },
+      "error_type": "CheckFailure",
+      "reason": "risk_new300_reaches_amount_guard",
+      "trace_symbols": [
+        {
+          "file": "probe.py",
+          "line": 25,
+          "function": "<module>"
+        },
+        {
+          "file": "risk-variant.py",
+          "line": 39,
+          "function": "risk_negative"
+        },
+        {
+          "file": "check_execution.py",
+          "line": 50,
+          "function": "require"
+        }
+      ],
+      "cleanup": "own_project_removed",
+      "checks": [],
+      "goldens": {},
+      "elapsed_seconds": 78.108,
+      "database_fixed_reasons": []
+    },
+    {
+      "mode": "turnover",
+      "status": "FAIL",
+      "budget_after_rollback": {
+        "common_records": 58,
+        "common_bytes": 146459,
+        "future": {
+          "plan": {
+            "next": 1,
+            "rebind": 0,
+            "resume": 0,
+            "sessions": 0
+          },
+          "bytes": 5803008,
+          "records": 59
+        }
+      },
+      "error_type": "CheckFailure",
+      "reason": "risk_new300_reaches_amount_guard",
+      "trace_symbols": [
+        {
+          "file": "probe.py",
+          "line": 25,
+          "function": "<module>"
+        },
+        {
+          "file": "risk-variant.py",
+          "line": 39,
+          "function": "risk_negative"
+        },
+        {
+          "file": "check_execution.py",
+          "line": 50,
+          "function": "require"
+        }
+      ],
+      "cleanup": "own_project_removed",
+      "checks": [],
+      "goldens": {},
+      "elapsed_seconds": 83.322,
+      "database_fixed_reasons": []
+    }
+  ],
+  "q27_complete": false,
+  "current": null,
+  "elapsed_seconds": 161.434,
+  "timed_out": false,
+  "source_unchanged": true
+}

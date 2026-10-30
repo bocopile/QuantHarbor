@@ -1,0 +1,29 @@
+{
+  "run_id": "Q27-day-proof-a03",
+  "scope": "EX18_EX31_elapsed_day_EX25_atomic_consume",
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "next_day",
+      "status": "PASS",
+      "observation": {
+        "denial_reasons": [
+          "session_expired",
+          "authority_denied"
+        ]
+      },
+      "checks": [
+        "EX18_actual_elapsed_UTC_day_unknown_and_nonzero_holds_preserved_no_new_intent_send",
+        "EX31_actual_elapsed_UTC_day_old_approval_session_nonce_rejected_no_mutation"
+      ],
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    }
+  ],
+  "q27_complete": false,
+  "current": null,
+  "elapsed_seconds": 83.516,
+  "timed_out": false,
+  "source_unchanged": true,
+  "input_count": 578
+}

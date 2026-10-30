@@ -261,6 +261,15 @@ def commit_reply_loss(db,checks,goldens):
     require(rowcount(db,'execution_intent')==1,'EX05_second_intent')
     checks.append('EX05_actual_connection_commit_response_frame_lost_lookup_once')
 
+    second=h.approved(label='changed-payload-approval')
+    original=h.repo.fingerprint()
+    try:h.admission_challenge(second,label=challenge.command_id)
+    except a.ApprovalDenied as error:
+        require(error.reason=='replay_conflict','EX05_changed_payload_wrong_reason')
+    else:raise CheckFailure('EX05_changed_payload_accepted')
+    require(h.repo.fingerprint()==original and rowcount(db,'execution_intent')==1,'EX05_changed_payload_mutated')
+    checks.append('EX05_actual_same_command_changed_approval_payload_conflict_no_mutation')
+
 
 def duplicate_claims(db,checks,goldens):
     h=DatabaseHarness(db)
@@ -558,15 +567,14 @@ def risk_negative(db,checks,goldens,*,mode):
         append_external(db,h.source,key='exposure-external',index=1,quantity='1',price='100')
         expected={'current':'500','active_opposing_sale':'100','new_buy':'50','one_sided':'550','limit':'500'}
     elif mode in ('daily','turnover'):
-        manifest=dict(holdings=('4','0'),cash=(('settled_cash','400'),('unsettled_receivable','200')),
-            capacity='400',sellable=('4','0'),cutoff=0)
+        manifest=dict(holdings=('4','0'),cash=(('settled_cash','600'),('unsettled_payable','-200'),('unsettled_receivable','200')),
+            capacity='600',sellable=('4','0'),cutoff=0)
         h=DatabaseHarness(db,target_options={'cash':'600','holdings':('4','0'),'targets':('0.5','3'),'lot':'0.5','fee':'0'},
             policy_changes={'max_daily_amount':'1000' if mode=='daily' else '10000000'},current_manifest=manifest)
         h.admit(h.approved(0,label='active-sale'),label='active-sale-admit')
         next_=h.approved(1,label='risk-next')
-        trade_id=append_external(db,h.source,key='roundtrip-buy',index=1,quantity='2',price='100')
-        settle_external(db,h.source,trade_id,'200')
-        append_external(db,h.source,key='roundtrip-sell',index=1,quantity='-2',price='100')
+        trade_id=append_external(db,h.source,key='roundtrip-buy',index=0,quantity='0.5',price='400')
+        append_external(db,h.source,key='roundtrip-sell',index=0,quantity='-0.5',price='400')
         expected={'used':'400','active':'350','new':'300','total':'1050','NAV':'1000','turnover':'1.05'}
     else:
         manifest=dict(holdings=('1','0'),cash=(('settled_cash','1000'),('unsettled_payable','-140')),
@@ -583,6 +591,10 @@ def risk_negative(db,checks,goldens,*,mode):
     if mode in ('daily','turnover'):
         require(sum((f.notional for f in fresh.current.costs),number('0'))==400,'risk_actual_daily_usage400')
         require(fresh.current.performance.time_weighted_nav.value=='1000','risk_actual_time_weighted_NAV1000')
+        require(fresh.current.facts.sellability_rows[0].settled_quantity=='3.5','risk_roundtrip_preserves_active_sale_eligibility')
+        cashrow=h.repo.account_cash(h.controller)[0]
+        goldens['fixture_cash']={k:getattr(cashrow,k) for k in ('ledger','outstanding','floor','broker','unreflected','debits','available')}
+        require(number(cashrow.available)>=300,'risk_new300_reaches_amount_guard')
     elif mode in ('loss','drawdown'):
         require(fresh.current.performance.amount_pnl.value=='-40','risk_actual_observed_loss40')
     challenge=h.admission_challenge(next_,label='risk-negative-admit')
@@ -847,6 +859,23 @@ def control_proven_unsent(db,checks,goldens,*,sent=False):
         new.control(controller,'resume')
         require(h.broker.received_count==0,'manual_unsent_order')
     checks.append('EX19_EX30_EX31_actual_DB_explicit_issuer_unsent_'+('already_sent_refused' if sent else 'revoked_attempt_only_release_rebind_resume'))
+
+    if not sent:
+        from quantharbor.domain.target import ref as target_ref
+        app=ApprovalApplication(new)
+        approver=authority.issue_session('execution-approver')
+        c=h.source.artifacts.candidates[0]
+        _,second=app.present(approver,target_ref('candidate',c.candidate_id,c))
+        ch=app.challenge(approver,a.ref('approval',second.approval_id,second),action='approve',command_id='after-unsent-approve')
+        require(app.execute(approver,ch).outcome=='applied','EX02_reapprove_failed')
+        second=new.head(approver,second.approval_id)
+        ch=app.challenge(approver,a.ref('approval',second.approval_id,second),action='admit',command_id='after-unsent-admit')
+        receipt=app.execute(approver,ch)
+        require(receipt.outcome=='rejected' and receipt.reason_code=='candidate_already_consumed','EX02_unsent_candidate_reused')
+        require(new.head(approver,second.approval_id).state=='approved','EX02_unsent_second_consumed')
+        require(rowcount(db,'execution_claim')==1 and rowcount(db,'execution_intent')==1,'EX02_unsent_new_claim_intent')
+        require(h.broker.received_count==0,'EX02_unsent_new_send')
+        checks.append('EX02_actual_aborted_unsent_after_new_generation_reapproval_cannot_reuse_candidate')
 
 
 def control_resume_binding(db,checks,goldens):
@@ -1934,6 +1963,62 @@ def recovery_binding_transaction(db,checks,goldens,*,mode='rollback'):
     checks.append('DEC005_transaction_'+mode+'_actual_DB_registry_CAS_readset')
 
 
+def elapsed_day_unknown(db, checks, goldens):
+    from datetime import datetime, timedelta
+    h = DatabaseHarness(db, response='timeout')
+    first = h.approved(0, label='day-first')
+    second = h.approved(1, label='day-second')
+    pending = h.admission_challenge(second, label='day-old-nonce')
+    admitted = h.admit(first, label='day-first-admit')
+    h.repo.dispatch(h.controller, admitted.consumed_intent_id)
+    require(db._query('SELECT state FROM qh.execution_intent;') == 'unknown', 'EX18_day_setup_unknown')
+    before = db._query('SELECT jsonb_agg(to_jsonb(i) ORDER BY intent_id) FROM qh.execution_intent i;')
+    holds = rows(db)
+    count = rowcount(db, 'execution_intent')
+    calls = h.broker.received_count
+    at = datetime.fromisoformat(h.clock.at.replace('Z', '+00:00'))
+    h.clock.at = (at + timedelta(days=1)).isoformat().replace('+00:00', 'Z')
+    denied = []
+    for handle in (h.approver, h.authority.issue_session('execution-approver')):
+        try:
+            h.app.execute(handle, pending)
+        except (a.ApprovalDenied, d.ExecutionDenied) as e:
+            denied.append(e.reason)
+        else:
+            raise CheckFailure('EX31_elapsed_day_old_nonce_admitted')
+    require(db._query('SELECT jsonb_agg(to_jsonb(i) ORDER BY intent_id) FROM qh.execution_intent i;') == before, 'EX18_day_intent_mutated')
+    require(rows(db) == holds and any((number(x['held']) > 0 for x in holds.values())), 'EX18_day_unknown_hold_released')
+    require(db._query('SELECT state FROM qh.execution_intent;') == 'unknown', 'EX18_day_unknown_lost')
+    require(rowcount(db, 'execution_intent') == count and h.broker.received_count == calls == 1, 'EX18_day_new_order_sent')
+    checks.extend(['EX18_actual_elapsed_UTC_day_unknown_and_nonzero_holds_preserved_no_new_intent_send', 'EX31_actual_elapsed_UTC_day_old_authority_rejected_no_new_economics'])
+    goldens['elapsed_day_unknown'] = {'denial_reasons': denied}
+
+def ledger_consume_atomicity(db, checks, goldens):
+    h = DatabaseHarness(db)
+    append_external(db, h.source, key='cursor-atomic-external', index=0, quantity='1', price='100')
+    mid, ph, cursor = json.loads(db._query('SELECT json_build_array(message_id,payload_hash,cursor) FROM qh.ledger_outbox ORDER BY cursor DESC LIMIT 1;'))
+    require(db._query("SELECT count(*) FROM qh.ledger_inbox WHERE consumer='synthetic-execution' AND message_id=" + _text(mid) + ';') == '0', 'EX25_setup_already_consumed')
+    before = h.repo.fingerprint()
+
+    def fail_commit(uow):
+        raise RuntimeError('synthetic_commit_fault')
+    try:
+        with patch.object(ExecutionUnitOfWork, 'commit', fail_commit):
+            h.repo.consume_ledger(mid, ph)
+    except (a.ApprovalDenied, d.ExecutionDenied):
+        pass
+    else:
+        raise CheckFailure('EX25_fault_not_observed')
+    require(h.repo.fingerprint() == before, 'EX25_consume_cursor_workstate_partial_commit')
+    r = h.repo.consume_ledger(mid, ph)
+    require(r['result'] == 'accepted' and r['cursor'] == cursor, 'EX25_valid_consume_failed')
+    after = h.repo.fingerprint()
+    dup = h.repo.consume_ledger(mid, ph)
+    require(dup['result'] == 'duplicate' and dup['cursor'] == cursor and (h.repo.fingerprint() == after), 'EX25_duplicate_mutated')
+    require(db._query("SELECT cursor FROM qh.ledger_workstate WHERE consumer='synthetic-execution';") == str(cursor), 'EX25_workstate_not_atomic')
+    checks.append('EX25_actual_consume_inbox_execution_cursor_workstate_rollback_then_once_duplicate_noop')
+    goldens['ledger_consume_atomicity'] = {'cursor': cursor}
+
 def main():
     if len(sys.argv)!=1:
         print(json.dumps({'status':'fail','reason':'arguments_not_accepted','checks':[],'cleanup':[]}))
@@ -2001,7 +2086,8 @@ def main():
                          lambda db,c,g:recovery_validity(db,c,g,mode='rights'),
                          lambda db,c,g:recovery_binding_transaction(db,c,g,mode='rollback'),
                          lambda db,c,g:recovery_binding_transaction(db,c,g,mode='commit_loss'),
-                         lambda db,c,g:recovery_binding_transaction(db,c,g,mode='sql')),start=1):
+                         lambda db,c,g:recovery_binding_transaction(db,c,g,mode='sql'),
+                         elapsed_day_unknown,ledger_consume_atomicity),start=1):
             print('scenario:'+str(scenario_number)+':start',file=sys.stderr,flush=True)
             result['phase']=getattr(scenario,'__name__','bounded_scenario')
             db=PostgresLedger()
