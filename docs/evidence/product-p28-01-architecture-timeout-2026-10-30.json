@@ -1,0 +1,18 @@
+{
+  "run_id": "P28-01-architecture-a01",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "profile": "qh_review",
+  "exit": {
+    "run_id": "P28-01-architecture-a01",
+    "exit_code": -15,
+    "timed_out": true,
+    "elapsed_seconds": 600.036
+  },
+  "final_file_exists": false,
+  "stable_input_count": 82,
+  "stable_inputs_unchanged": true,
+  "result": "timeout_no_final_design",
+  "planned_action": "root authors scoped screen spec/mapping; HTML implementation and independent review follow",
+  "P28_01_complete": false
+}
