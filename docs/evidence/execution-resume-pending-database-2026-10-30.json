@@ -1,0 +1,82 @@
+{
+  "scope": "Q27_actual_synthetic_DB_pending_source_completion",
+  "status": "PASS",
+  "q27_complete": false,
+  "checks": [
+    "revoke_persisted_reserve_rollback_repeat_completion_replay_history_no_order",
+    "pending-approve_persisted_reserve_rollback_repeat_completion_replay_history_no_order",
+    "mixed-expired_persisted_reserve_rollback_repeat_completion_replay_history_no_order"
+  ],
+  "cases": [
+    {
+      "label": "revoke",
+      "actions": [
+        "revoke"
+      ],
+      "expired": false,
+      "status": "PASS",
+      "persisted_hold": [
+        4,
+        262144
+      ]
+    },
+    {
+      "label": "pending-approve",
+      "actions": [
+        "approve"
+      ],
+      "expired": false,
+      "status": "PASS",
+      "persisted_hold": [
+        4,
+        262144
+      ]
+    },
+    {
+      "label": "mixed-expired",
+      "actions": [
+        "revoke",
+        "withdraw",
+        "admit"
+      ],
+      "expired": true,
+      "status": "PASS",
+      "persisted_hold": [
+        19,
+        1245184
+      ]
+    }
+  ],
+  "cleanup": [
+    {
+      "case": "revoke",
+      "project": "qh-ledger-d35d91ca5cac4aed894b427faae32a42",
+      "result": "own_project_removed"
+    },
+    {
+      "case": "pending-approve",
+      "project": "qh-ledger-c9eade700dd74466933337442d267245",
+      "result": "own_project_removed"
+    },
+    {
+      "case": "mixed-expired",
+      "project": "qh-ledger-763a59ef33054d44981a288f65f3ed13",
+      "result": "own_project_removed"
+    }
+  ],
+  "before": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f"
+  },
+  "after": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f"
+  },
+  "input_unchanged": true,
+  "elapsed_seconds": 281.84,
+  "recorded_at": "2026-10-30",
+  "runner_sha256": "6c8dc562b9d148d859f4e6654cbb1e71eb8ef89d9f80b77cdd2aaac262ce2e1c",
+  "execution_owner": "root",
+  "independent_validation": false,
+  "raw_logs_in_git": false
+}

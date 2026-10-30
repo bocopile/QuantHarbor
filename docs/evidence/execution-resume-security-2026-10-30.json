@@ -1,0 +1,30 @@
+{
+  "task": "Q27-resume",
+  "run_id": "Q27-06-security-a01",
+  "recorded_at": "2026-10-30",
+  "role": "qh_security_reviewer",
+  "requested_model": "gpt-6-astra",
+  "requested_reasoning": "high",
+  "profile": "qh_review",
+  "kind": "independent_static_read_only",
+  "termination": {
+    "run_id": "Q27-06-security-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 166.642
+  },
+  "result": "last_P2_resolved_in_reviewed_scope_no_new_blocking_finding",
+  "manifest": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f"
+  },
+  "input_unchanged": true,
+  "tests_executed_by_reviewer": false,
+  "actual_database_independently_executed": false,
+  "q27_complete": false,
+  "remaining": [
+    "independent_general_review",
+    "latest_full_DB_product_quality_fixed40_assessment"
+  ],
+  "raw_logs_in_git": false
+}

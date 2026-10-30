@@ -144,7 +144,7 @@ class ExecutionControlTests(unittest.TestCase):
                 for actor,command in issued:
                     before=deepcopy(h.db.local_stored)
                     h.db.fail_commit=True
-                    with self.assertRaises(d.ExecutionDenied):h.app.execute(actor,command)
+                    with self.assertRaises(d.ExecutionDenied):h.repo.execute(actor,command)
                     h.db.fail_commit=False
                     self.assertEqual(h.db.local_stored,before)
                     receipt=h.app.execute(actor,command)
@@ -155,7 +155,7 @@ class ExecutionControlTests(unittest.TestCase):
                     self.assertEqual(state['holds'].get(ap.approval_id,(0,0)),(required,required*65536))
                     self.assertEqual(h.repo._pending_budget(state,ap.approval_id),(required,required*65536))
                     frozen=deepcopy(h.db.local_stored)
-                    self.assertEqual(h.repo.resolve(h.approver,state['receipts'][command.command_id]),receipt)
+                    self.assertEqual(h.repo.command_result(actor,command.command_id),receipt)
                     self.assertEqual(h.app.execute(actor,command),receipt)
                     self.assertEqual(h.db.local_stored,frozen)
                     self.assertTrue(all(state['records'][key]==value for key,value in original.items()))
@@ -179,11 +179,58 @@ class ExecutionControlTests(unittest.TestCase):
                 self.assertEqual(h.db.local_stored,before)
                 h.repo.replace_source(h.controller,fresh)
                 if pending:
-                    self.assertEqual(h.state()['holds'][ap.approval_id],(9,9*65536))
+                    # Q26 AS2 reserves approve's four completion records after
+                    # invalidation (docs/development/approval.md), not the full hold.
+                    self.assertEqual(h.state()['holds'][ap.approval_id],(4,4*65536))
                     result=h.app.execute(h.approver,command)
                     self.assertEqual((result.outcome,result.reason_code),('rejected','version_conflict'))
                 self.assertNotIn(ap.approval_id,h.state()['holds'])
                 self.assertFalse(h.state()['intents']);self.assertEqual(h.broker.received_count,0)
+
+    def test_P2_repeated_source_replacement_keeps_pending_command_until_receipt(self):
+        from synthetic_execution import fresh_target_source
+        for action in ('approve','revoke'):
+            with self.subTest(action=action):
+                h=ControlHarness(reporting=False,facts=())
+                if action=='revoke':ap=h.approved()
+                else:
+                    candidate=h.source.artifacts.candidates[0]
+                    _,ap=h.app.present(h.approver,target_ref('candidate',candidate.candidate_id,candidate))
+                command=h.app.challenge(h.approver,a.ref('approval',ap.approval_id,ap),
+                    action=action,command_id='p2-repeated-'+action)
+                original=h.state()['records'].copy()
+                fresh=fresh_target_source(h.source,at=AT)
+                h.repo.replace_source(h.controller,fresh)
+                invalidated=h.repo.head(h.approver,ap.approval_id)
+                self.assertEqual(invalidated.state,'invalidated')
+                self.assertEqual(h.state()['holds'][ap.approval_id],(4,4*65536))
+                before=deepcopy(h.db.local_stored)
+                h.repo.replace_source(h.controller,fresh)
+                self.assertEqual(h.db.local_stored,before)
+                second=fresh_target_source(fresh,at=AT,label='p2-second-source')
+                h.repo.replace_source(h.controller,second)
+                state=h.state()
+                self.assertEqual(state['holds'][ap.approval_id],(4,4*65536))
+                self.assertEqual(h.repo.head(h.approver,ap.approval_id),invalidated)
+                self.assertEqual(state['commands'][command.command_id],a.ref('challenge',command.challenge_id,command))
+                self.assertEqual(state['nonces'][command.nonce],state['commands'][command.command_id])
+                before=deepcopy(h.db.local_stored)
+                with self.assertRaises(a.ApprovalDenied) as denied:
+                    h.app.challenge(h.approver,a.ref('approval',invalidated.approval_id,invalidated),
+                        action=action,command_id='p2-new-command')
+                self.assertEqual(denied.exception.reason,'terminal_state')
+                self.assertEqual(h.db.local_stored,before)
+                receipt=h.app.execute(h.approver,command)
+                self.assertEqual((receipt.outcome,receipt.reason_code),('rejected','version_conflict'))
+                self.assertNotIn(ap.approval_id,h.state()['holds'])
+                before=deepcopy(h.db.local_stored)
+                self.assertEqual(h.app.execute(h.approver,command),receipt)
+                h.repo.replace_source(h.controller,second)
+                self.assertEqual(h.db.local_stored,before)
+                state=h.state()
+                self.assertTrue(all(state['records'][key]==value for key,value in original.items()))
+                self.assertFalse(state['intents']);self.assertFalse(state['claims'])
+                self.assertEqual(h.broker.received_count,0)
 
     def test_DEC005_approval_expiry_recovers_without_new_order_authority(self):
         h=ControlHarness(reporting=False,facts=());ap=h.approved()

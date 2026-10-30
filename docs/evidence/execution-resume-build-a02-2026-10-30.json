@@ -1,0 +1,32 @@
+{
+  "task": "Q27-resume",
+  "run_id": "Q27-03-build-a02",
+  "assignment_revision": 2,
+  "recorded_at": "2026-10-30",
+  "termination": {
+    "run_id": "Q27-03-build-a02",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 606.944
+  },
+  "verification": "host_Python_3.13.12_local_synthetic_only",
+  "tests": [
+    "test_P2_pending_approval_and_empty_budget_source_invalidation",
+    "test_P2_source_invalidation_retains_exact_pending_completion_budget",
+    "test_P2_repeated_source_replacement_keeps_pending_command_until_receipt"
+  ],
+  "test_result": "PASS",
+  "test_count": 3,
+  "test_seconds": 519.075,
+  "source_unchanged_from_a02_input": true,
+  "manifest": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f"
+  },
+  "runtime_independent_review": "NOT RUN",
+  "actual_database": "NOT RUN",
+  "full_verification": "NOT RUN",
+  "q27_complete": false,
+  "cmux_exit_status_update_observed": true,
+  "raw_logs_in_git": false
+}
