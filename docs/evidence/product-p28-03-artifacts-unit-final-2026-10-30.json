@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 128.542,
+  "log_sha256": "d3d11865c4e5fa51f57c6860be2ce1aaf0cc827a3c4e9268b233c6c5c0a2b2fc",
+  "source_sha256": {
+    "src/quantharbor/adapters/product_artifacts.py": "1affa45aedded7b6e2ebdf84a6a137b7e56ad3c36629d2ee44d0ee12b633196e",
+    "tests/product/test_product_artifacts.py": "4adbaa80cb7d4b86ab6d8f04c2ce01af2f31536e9f118260af4d67b5077f849f",
+    "migrations/product/0001_artifacts.sql": "e82d7893e8a374ff8ff8409b5e2f003c80a11bc69620982a5abaf1e0bca96ee3"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "task": "FUP-Q27-007",
+  "run_id": "Q27-daily-risk-diagnostic-a02",
+  "status": "FAIL",
+  "q27_complete": false,
+  "exception_sites": [
+    {
+      "file": "src/quantharbor/adapters/execution_uow.py",
+      "line": 146,
+      "function": "_exchange",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/execution_uow.py",
+      "line": 160,
+      "function": "_exchange",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/execution_uow.py",
+      "line": 42,
+      "function": "call",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/execution_uow.py",
+      "line": 196,
+      "function": "_select",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/execution_uow.py",
+      "line": 287,
+      "function": "_apply",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/execution_uow.py",
+      "line": 300,
+      "function": "call",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/postgres_execution.py",
+      "line": 405,
+      "function": "_persist",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/adapters/postgres_execution.py",
+      "line": 147,
+      "function": "call",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/application/approval.py",
+      "line": 143,
+      "function": "_call",
+      "error_type": "ExecutionDenied"
+    },
+    {
+      "file": "src/quantharbor/application/approval.py",
+      "line": 147,
+      "function": "_call",
+      "error_type": "ApprovalDenied"
+    },
+    {
+      "file": "src/quantharbor/application/approval.py",
+      "line": 153,
+      "function": "challenge",
+      "error_type": "ApprovalDenied"
+    },
+    {
+      "file": "tests/product/synthetic_execution.py",
+      "line": 167,
+      "function": "admission_challenge",
+      "error_type": "ApprovalDenied"
+    },
+    {
+      "file": "scripts/check_execution.py",
+      "line": 588,
+      "function": "risk_negative",
+      "error_type": "ApprovalDenied"
+    }
+  ],
+  "phase": "risk_negative_daily",
+  "error_type": "ApprovalDenied",
+  "reason": "invalid_contract",
+  "trace_symbols": [
+    {
+      "file": "diagnose.py",
+      "line": 25,
+      "function": "<module>"
+    },
+    {
+      "file": "check_execution.py",
+      "line": 588,
+      "function": "risk_negative"
+    },
+    {
+      "file": "synthetic_execution.py",
+      "line": 167,
+      "function": "admission_challenge"
+    },
+    {
+      "file": "approval.py",
+      "line": 153,
+      "function": "challenge"
+    },
+    {
+      "file": "approval.py",
+      "line": 147,
+      "function": "_call"
+    }
+  ],
+  "cleanup": "own_project_removed",
+  "input_unchanged": true,
+  "checks": [],
+  "goldens": {},
+  "timed_out": false,
+  "elapsed_seconds": 205.092
+}

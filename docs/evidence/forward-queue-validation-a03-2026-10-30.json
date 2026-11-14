@@ -1,0 +1,19 @@
+{
+  "scope": "queue_consistency_new_review_links_before_P28-03",
+  "status": "PASS",
+  "product_items": 12,
+  "product_completed": 0,
+  "design_artifact_ready": 2,
+  "current": "P28-03",
+  "internal_step": 1,
+  "followups": 10,
+  "followup_states": {
+    "resolved": 6,
+    "blocked": 1,
+    "queued": 2,
+    "diagnosing": 1
+  },
+  "evidence_refs": 46,
+  "checked_links": 32,
+  "actual_product_integration": "NOT RUN"
+}

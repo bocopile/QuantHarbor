@@ -1,32 +1,29 @@
 # QuantHarbor AI 팀 작업 보드
 
-기록일: 2026-10-29 · 단계별 갱신 문서 · 자동 실시간 모니터 아님
+기록일: 2026-10-30 · 단계별 갱신 문서 · 자동 실시간 모니터 아님
 
 ## 현재 상황
 
-- 현재 작업: **사용자 요청으로 자동매매 개발 중단·Git 보존**. Q27은 미완료이며 현재 코드·문서를 중간 커밋 `3c7f22a`로 보존하고 origin 푸시·SHA 일치를 확인했다.
-- 최신 실제 DB: **19시나리오/19검사·1203.171초·ownDB19정리·소유29불변**. [실제 결과](evidence/execution-database-recovery-validity-2026-10-27.json). 만료승인/빈계좌 양성은 앞선 runner의 별도 증거다.
-- 구현·집중검증: 현재계좌 복구와 원승인 TTL 분리, 새자료/정책 결속, rollback/COMMIT 유실, 기존보안·저장 회귀. 독립·전체 판정 전이다.
-- 잔여: 독립 보안/일반 검토, 최신전체 DB84·제품/품질·고정40. Q27 partial.
-- [대시보드·제품 운영 보완 전체 계획](product-delivery-plan.md): Q27 후 하위12개 순차 진행. 현재 모두 pending.
-- 로컬 **Q20~26 완료7/10**, 전체 통합 **18/36·Q19 실제 연결 대기**. 부모/하위 개수를 합산하거나 작업량 진행률로 쓰지 않는다.
-- 실제 비밀번호·키·계좌/API·자금 접근 없음. 비밀번호 입력 보류 유지, 사용자 결정은 현재 불필요.
-- Git: codex/arc-contracts·개발 기준2fa8f1d. [중단 시점 커밋·푸시 카드](tasks/GIT-checkpoint-2026-10-29.md). 활성 worker0. 개발은 사용자 재개 요청까지 보류.
-- 단계별 증거와 이전 실패는 [진행 기록](status.md) 및 [Q27 카드](tasks/EXECUTION-local.md)에 보존한다.
+- 현재계획: **P28-03 내부1/2a/2b-1납품·2b-2a 배정준비**. 내부2a6c8786f·최종artifact20PASS/실제재시작·원자성/함수변조검증·독립일반/보안확인. [카드](tasks/PRODUCT-P28-03.md).
+- 2b설계는374.138초자문후typedcheckpoint/phase/query barrier/owner/latch/보수quota로확정. 2b-1저장기반은62집중/actual12/독립검토로납품,AIcore연결은아직NOT RUN.
+- Q27 최신바뀐/추가6context465.254초PASS·8a27220납품. 같은HEAD고정708입력에서전체제품836/DB86 모두PASS·자기DB86정리. 고정40은독립34지원/6관측보강으로후속분리.
+- 후속28개중해결20·진단1·대기7. 전체18/36·로컬7/10·제품0/12 completed·artifact_ready2. 항목크기가달라작업량진행률로합산하지않는다.
+- 총16개단위commit/push·원격SHA확인. 기존main80403ab/이전고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
 
 ## 담당자별 상태
 
-| 담당자 | 모델 / 추론 | 상태 | 최근·현재 책임 |
+| 패널·담당 | 모델/추론 | 실제 상태 | 책임 |
 |---|---|---|---|
-| 총괄 root | 프로젝트 설정 Sol / high | 개발 중단·Git 보존 | 공통 계약·큐·증거 통합 |
-| 조사 qh_researcher | Luna / high | 대기 | Q19 공개 명세 조사 반환 |
-| 설계 qh_architect | Astra / high | 자문 반환·DEC005 채택 | 과거승인 실행권한/현재계좌 검증 분리 |
-| 구현 qh_implementer | Sol / high | 사용자 요청으로 보류 | 승인무효화 후 발급명령 잔여보존 |
-| 일반 검토 qh_reviewer | Sol / high | Q26 PASS | AR1·AR2 해결·소유11 hash |
-| 보안 검토 qh_security_reviewer | Astra / high | P2 한 건 반환 | pending Q26 완료hold 손실 |
-| 검증 qh_validator | Luna / high | Q26 PASS | 제품630·품질87·승인70 |
+| 01 root | 현재세션/직접Python | DB86완료·원래계획배정준비 | 새입력고정·실패수거·자기DB정리 |
+| 02 qh_researcher | Luna/high | 미배정 | 조사대기 |
+| 03 qh_architect | Astra/high | 2b설계반환374.138초 | typed복구/예산/query barrier계약 |
+| 04 qh_implementer | Sol/high | 2b-1납품·2b-2a미배정 | 지정파일구현 |
+| 05 qh_reviewer | Sol/high | 고정40검토585.747초·34지원6관측보강 | 단계증거·SHA·납품범위 |
+| 06 qh_security_reviewer | Astra/high | 2b-1최종delta115.062초·지적0 | 설치함수/commit실패경계 |
+| 07 검증위치 | root직접Python | 전체제품836완료·rc0 | 최종836결과·고정입력 |
+| 08 BOARD | 모델없음 | 한시적관측 | 실제역할/검사상태·자동배정없음 |
 
-Sol=gpt-6.1-sol, Luna=gpt-6-luna, Astra=gpt-6-astra. root 실제 모델 변경 여부는 설정값만으로 확인하지 않는다.
+worker1/writer1·재귀0. 일부패널의대기는순차정책이며전체모델동시기동이아니다. 아래이전이력은당시관측이다.
 
 ## 사용자가 보는 방법
 
@@ -35,6 +32,8 @@ Sol=gpt-6.1-sol, Luna=gpt-6-luna, Astra=gpt-6-astra. root 실제 모델 변경 �
 3. 별도 제한 CLI로 실행하는 작업은 앱의 subagent 항목에 표시된다고 가정하지 않는다. 보드에 실행 경로·관측 상태·비민감 결과 링크를 남긴다. 표시 편의를 위해 권한 경계를 바꾸지 않는다.
 
 ## 사용자에게 전달하는 내용
+
+2026-10-30 사용자 추가지시: 작업 진행 중5분마다 전체완료 분자/분모·진행률,최근완료,활성작업,후속큐,commit/push현황을 대화로 보고한다. item완료와 artifact_ready, 검증진척을 구분한다.
 
 | 유형 | 전달 기준·내용 |
 |---|---|

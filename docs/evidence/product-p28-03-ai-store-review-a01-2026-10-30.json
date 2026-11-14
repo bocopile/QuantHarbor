@@ -1,0 +1,46 @@
+{
+  "run_id": "P28-03-ai-store-general-a01",
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 356.398,
+  "source_sha256": {
+    "src/quantharbor/adapters/product_schema.py": "dbef68d34a12a590cf4b6bc4adbaf62c9afeedc59d33f5d099f2c46d1a785429",
+    "src/quantharbor/adapters/product_ai.py": "a6f02f9a8bcb91420c6474ffa0f980384b155e0ce79eaa6ff2aaaad28bd03b67",
+    "migrations/product/0002_ai.sql": "dabe5c871395c13be34b73bb8ae982c1b59aa850c39e0d3ae012d3d349a3da60",
+    "tests/product/test_product_ai.py": "787459a65c35ede2d6db1ddfe9eb27eafc2e43417dc82e47f8f363263afe8145",
+    "src/quantharbor/adapters/product_artifacts.py": "9cb0f5e6dc0845f31dc6b1156a5d1cf2e3bc128137a60548417023630c36ba4a",
+    "tests/product/test_product_artifacts.py": "ba85e2da52f4ab627be634eb2385a4ccf0c654074d63e9be89d5a2a55bc3fa1f"
+  },
+  "findings": [
+    {
+      "id": "FUP-P28-011",
+      "severity": "P2",
+      "title": "ai_state CHECK 의미 손상 검출 누락",
+      "file": "src/quantharbor/adapters/product_schema.py",
+      "line": 82
+    },
+    {
+      "id": "FUP-P28-012",
+      "severity": "P2",
+      "title": "60초 전체 deadline 잠금 대기/최종검증 제외",
+      "file": "src/quantharbor/adapters/product_ai.py",
+      "line": 650
+    },
+    {
+      "id": "FUP-P28-013",
+      "severity": "P2",
+      "title": "완료 result receipt 시각/원천관계 검증 누락",
+      "file": "src/quantharbor/adapters/product_ai.py",
+      "line": 311
+    }
+  ],
+  "source_unchanged": true,
+  "reviewer_execution": "read_only_no_tests",
+  "root_disposition": "reproduce_and_fix_before_acceptance",
+  "NOT_RUN": [
+    "reviewer_actual_DB",
+    "full_suite",
+    "core_bridge",
+    "closing_proof"
+  ]
+}

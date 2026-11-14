@@ -1,0 +1,51 @@
+{
+  "run_id": "Q27-day-cursor-proof-a01",
+  "scope": "EX18_EX31_elapsed_day_EX25_atomic_consume",
+  "status": "FAIL",
+  "cases": [
+    {
+      "name": "next_day",
+      "status": "FAIL",
+      "error_type": "CheckFailure",
+      "reason": "EX18_day_mutated",
+      "trace_symbols": [
+        {
+          "file": "proof.py",
+          "function": "<module>",
+          "line": 50
+        },
+        {
+          "file": "proof.py",
+          "function": "next_day",
+          "line": 20
+        },
+        {
+          "file": "check_execution.py",
+          "function": "require",
+          "line": 50
+        }
+      ],
+      "checks": [],
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    },
+    {
+      "name": "cursor_fault",
+      "status": "PASS",
+      "observation": {
+        "cursor": 2
+      },
+      "checks": [
+        "EX25_actual_consume_inbox_execution_cursor_workstate_rollback_then_once_duplicate_noop"
+      ],
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    }
+  ],
+  "q27_complete": false,
+  "current": null,
+  "elapsed_seconds": 120.834,
+  "timed_out": false,
+  "source_unchanged": true,
+  "input_count": 578
+}

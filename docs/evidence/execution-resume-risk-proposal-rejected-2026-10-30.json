@@ -1,0 +1,99 @@
+{
+  "run_id": "Q27-risk-fixture-proposal-a01",
+  "scope": "private_proposed_daily_turnover_fixture_only",
+  "status": "FAIL",
+  "variant_ast_sha256": "0b2e5460866c8cb101c8558c1d875a9259b44476c4002e88ea1989eb788c9f95",
+  "production_SQL_or_limits_changed": false,
+  "applied_to_repository": false,
+  "cases": [
+    {
+      "mode": "daily",
+      "status": "FAIL",
+      "budget_after_rollback": {
+        "common_records": 57,
+        "common_bytes": 142584,
+        "future": {
+          "plan": {
+            "next": 1,
+            "rebind": 0,
+            "resume": 0,
+            "sessions": 0
+          },
+          "bytes": 5803008,
+          "records": 59
+        }
+      },
+      "error_type": "ExecutionDenied",
+      "reason": "storage_failure",
+      "trace_symbols": [
+        {
+          "file": "probe.py",
+          "line": 25,
+          "function": "<module>"
+        },
+        {
+          "file": "risk-variant.py",
+          "line": 33,
+          "function": "risk_negative"
+        },
+        {
+          "file": "postgres_execution.py",
+          "line": 177,
+          "function": "call"
+        }
+      ],
+      "cleanup": "own_project_removed",
+      "checks": [],
+      "goldens": {},
+      "elapsed_seconds": 67.521,
+      "database_fixed_reasons": []
+    },
+    {
+      "mode": "turnover",
+      "status": "FAIL",
+      "budget_after_rollback": {
+        "common_records": 57,
+        "common_bytes": 142584,
+        "future": {
+          "plan": {
+            "next": 1,
+            "rebind": 0,
+            "resume": 0,
+            "sessions": 0
+          },
+          "bytes": 5803008,
+          "records": 59
+        }
+      },
+      "error_type": "ExecutionDenied",
+      "reason": "storage_failure",
+      "trace_symbols": [
+        {
+          "file": "probe.py",
+          "line": 25,
+          "function": "<module>"
+        },
+        {
+          "file": "risk-variant.py",
+          "line": 33,
+          "function": "risk_negative"
+        },
+        {
+          "file": "postgres_execution.py",
+          "line": 177,
+          "function": "call"
+        }
+      ],
+      "cleanup": "own_project_removed",
+      "checks": [],
+      "goldens": {},
+      "elapsed_seconds": 67.845,
+      "database_fixed_reasons": []
+    }
+  ],
+  "q27_complete": false,
+  "elapsed_seconds": 135.368,
+  "timed_out": false,
+  "source_unchanged": true,
+  "interpretation": "private fixture간소화제안은daily/turnover둘다FAIL. 저장소에적용하지않음. rollback후공통현재57+미래59=116행/현재142584+미래5803008bytes는실패전상태만표시하며거부시도중최고필요량이아님. 원래execution_capacity원인의최종해결아님."
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "post_commit_ERROR_outcome_classification",
+  "RED": {
+    "tests": 1,
+    "errors": 1,
+    "reason": "product_artifact_write_rolled_back_before_confirmation"
+  },
+  "GREEN_CommitOutcome": {
+    "tests": 4,
+    "status": "PASS"
+  },
+  "GREEN_full_artifacts": {
+    "exit_code": 0,
+    "elapsed_seconds": 129.354,
+    "log_sha256": "cedeb4964a36b3254035235d7c8a172c9cf28d06d8aabfa5558be62f13876a6b",
+    "tests": 20,
+    "status": "PASS"
+  },
+  "actual_confirmation_ERROR": "docs/evidence/product-p28-03-artifacts-actual-a02-2026-10-30.json",
+  "independent_confirmation": "docs/evidence/product-p28-03-artifacts-security-a01-2026-10-30.json",
+  "remaining_security_finding": "installed_function_definition_integrity"
+}

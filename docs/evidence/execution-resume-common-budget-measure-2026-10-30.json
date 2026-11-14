@@ -1,0 +1,25 @@
+{
+  "run_id": "Q27-common-budget-measure-a01",
+  "scope": "one_original_daily_scenario_diagnostic",
+  "repository_changed": false,
+  "database_guard_instrumented_notice_only": true,
+  "guard_or_limits_bypassed": false,
+  "q27_complete": false,
+  "status": "FAIL_DIAGNOSTIC",
+  "error_type": "ApprovalDenied",
+  "reason": "invalid_contract",
+  "measurements": [
+    {
+      "current_records": 68,
+      "future_records": 63,
+      "current_bytes": 156765,
+      "future_bytes": 6196224
+    }
+  ],
+  "cleanup": "own_project_removed",
+  "checks": [],
+  "elapsed_seconds": 78.645,
+  "source_unchanged": true,
+  "input_count": 578,
+  "timed_out": false
+}

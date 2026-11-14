@@ -1,0 +1,25 @@
+{
+  "run_id": "P28-03-artifacts-review-a01",
+  "exit": {
+    "run_id": "P28-03-artifacts-review-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 231.865
+  },
+  "input_source_sha256": {
+    "src/quantharbor/adapters/synthetic_reporting.py": "c89c933aacfe35da4b5732ed261f0adac89249fa714866904805e45fa0915203",
+    "src/quantharbor/adapters/synthetic_valuation.py": "0183f353c6ceb3852eaf427163671f32096ac3f09ea96f3398a4bb85cf5e026d",
+    "src/quantharbor/adapters/synthetic_research.py": "d937d6e93a152cf5e7d199d1a2eadf9b62a9cb548ba14d278aa23d1bb455d27f",
+    "src/quantharbor/adapters/synthetic_target.py": "9747a2f2211afccdb23d5fdfbd3a31ea35f121397e4adabf5df478a591f4d63b",
+    "src/quantharbor/adapters/postgres_ledger.py": "36c685890292b67fa68854da3ec8bedc0fc14189f348cb94ebd54ca6c4428bf9",
+    "src/quantharbor/adapters/product_artifacts.py": "03ef5e1626a50eef80ee5a71edb2b678306c42109494f0d6c230e9730b7e4fcf",
+    "migrations/product/0001_artifacts.sql": "e82d7893e8a374ff8ff8409b5e2f003c80a11bc69620982a5abaf1e0bca96ee3",
+    "tests/product/test_product_artifacts.py": "27c07e9063bf5ffe4d0054c9d2500b9acd748c33dba732eca59b8d3ba73ac61e",
+    "tests/product/test_product_database.py": "e842cd7120647fda266ad1c1c891771c37680d3dbb84a52bdcf43b400940bd09",
+    "docs/contracts/product-artifacts-v1.md": "f29ef5fb9f458522deadf3f234c8770c9d0f25024af88eef1a55edbdc809bfc8",
+    "docs/contracts/product-read-v1.md": "35f6ed51edb43e04711f3dcec290c553bc4a5af201467a3110ae1bc64edd0977"
+  },
+  "report": "docs/research/product-p28-03-artifacts-review-a01-2026-10-30.md",
+  "findings": 1,
+  "review_only": true
+}

@@ -1,0 +1,39 @@
+{
+  "run_id": "Q27-day-proof-a02",
+  "scope": "EX18_EX31_elapsed_day_EX25_atomic_consume",
+  "status": "FAIL",
+  "cases": [
+    {
+      "name": "next_day",
+      "status": "FAIL",
+      "error_type": "CheckFailure",
+      "reason": "EX18_day_unknown_hold_released",
+      "trace_symbols": [
+        {
+          "file": "proof.py",
+          "function": "<module>",
+          "line": 50
+        },
+        {
+          "file": "proof.py",
+          "function": "next_day",
+          "line": 21
+        },
+        {
+          "file": "check_execution.py",
+          "function": "require",
+          "line": 50
+        }
+      ],
+      "checks": [],
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    }
+  ],
+  "q27_complete": false,
+  "current": null,
+  "elapsed_seconds": 85.813,
+  "timed_out": false,
+  "source_unchanged": true,
+  "input_count": 578
+}

@@ -1,5 +1,9 @@
 # 전체 작업 계획
 
+2026-10-30 최신 실행 정책: [실패 후속 큐](tasks/failure-followup-queue.json)와 [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 테스트 실패 추가 작업은 별도로 추적하고 착수 가능한 원래 계획 작업을 우선 진행한다. 기존 의존성의 통합·완료 관문과 실제 완료 증거는 유지한다. P28-01 설계를 착수하며 artifact_ready를 completed로 집계하지 않는다.
+
+2026-10-29 전체 목록 정의: [8패널 팀의 전체 작업 목록](team-work-list.md)에 기존36개 실행 묶음·110개 원래 ID 전부, 제품 하위12개, Q27 잔여8단계, 담당·선행·완료 조건을 연결했다. **이후 사용자 지시로 Q27 로컬 개발·검증을 재개했다.** 현재 실행은 [재개 카드](tasks/EXECUTION-resume-2026-10-29.md)와 status를 따른다. 큐/계약/완료 증거·동시성 정책은 목록 작성만으로 변경하지 않았다.
+
 2026-10-27 사용자 채택: [대시보드·제품 운영 확장 계획](product-delivery-plan.md)과 [EXEC-DEC-002](decisions/EXEC-DEC-002-product-delivery.md)를 전체 목록에 통합한다. Q27 판정 후 Q28의 P28-01~08, Q29의 P29-01/02·RETURN-01을 순차 완료하고 실제 연결 복귀 RETURN-02를 Q30 이전에 판정한다. 기존36개 부모와110개 원래 ID·과거 완료 범위는 보존하며 새 산출물은 미착수다.
 
 2026-10-24 최신 사용자 지시: [EXEC-DEC-001](decisions/EXEC-DEC-001-offline-sequence.md)에 따라 Q19 실제 연결을 대기로 두고 Q20~29 입력 없는 로컬 하위 범위를 순차 진행한다. 아래 원래 전체 완료 기준은 유지하며 하위 범위 진행은 별도 로컬 큐로 추적한다.

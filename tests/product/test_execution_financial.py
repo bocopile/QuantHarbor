@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 import unittest
 from unittest.mock import patch
 
@@ -273,18 +274,30 @@ class ExecutionPipeTests(unittest.TestCase):
         finally: uow.close()
 
     def test_EX37_write_timeout_and_oversized_frame_return_fixed_reason(self):
-        uow=self.unit_uow()
-        uow._process=object()
-        with self.assertRaises(d.ExecutionDenied) as failure: uow._exchange('x'*MAX_FRAME)
-        self.assertEqual(failure.exception.reason,'capacity_exceeded')
-        uow._process=None
-        uow._process=subprocess.Popen([sys.executable,'-B','-c','import sys; sys.stdin.buffer.read()'],
-            stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,bufsize=0)
-        try:
-            with patch('quantharbor.adapters.execution_uow.time.monotonic',side_effect=[0,21]):
-                with self.assertRaises(d.ExecutionDenied) as failure: uow._exchange('SELECT 1;')
-            self.assertEqual(failure.exception.reason,'storage_failure')
-        finally: uow.close()
+        for sql,reason in (('x'*MAX_FRAME,'capacity_exceeded'),('SELECT 1;','storage_failure')):
+            with self.subTest(reason=reason):
+                uow=self.unit_uow()
+                # This owned peer ignores stdin EOF, exercising bounded kill/wait.
+                peer=uow._process=subprocess.Popen([sys.executable,'-B','-c',
+                    'import time; print("ready",flush=True); time.sleep(60)'],
+                    stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,bufsize=0)
+                try:
+                    self.assertEqual(peer.stdout.readline(),b'ready\n')
+                    self.assertIsNone(peer.poll())
+                    uow._deadline=time.monotonic()-1
+                    started=time.monotonic()
+                    with self.assertRaises(d.ExecutionDenied) as failure: uow._exchange(sql)
+                    self.assertEqual(failure.exception.reason,reason)
+                    self.assertLess(time.monotonic()-started,5)
+                    self.assertTrue(uow._failed)
+                    self.assertIsNone(uow._process)
+                    self.assertIsNotNone(peer.poll())
+                    self.assertTrue(peer.stdin.closed)
+                    self.assertTrue(peer.stdout.closed)
+                finally:
+                    uow.close()
+                    if peer.poll() is None:
+                        peer.kill();peer.wait(timeout=2)
 
 
 class ExecutionSourceRefreshTests(unittest.TestCase):
@@ -292,19 +305,36 @@ class ExecutionSourceRefreshTests(unittest.TestCase):
         return FinancialHarness((fact('f','execution-1'),fact('s','execution-1',kind='settlement')))
 
     def prepare_source_transition(self,h):
+        from quantharbor.adapters.synthetic_approval import (
+            FixturePrincipal,SyntheticApprovalRepository,SyntheticAuthority)
         from quantharbor.domain import approval as a
+        from synthetic_approval import policy as approval_policy
+        authority=SyntheticAuthority((FixturePrincipal('execution-controller',h.intent.account_ref,
+            'controller',('runtime',)),),clock=lambda:AT)
+        approval_repo=SyntheticApprovalRepository(authority,h.source,approval_policy(h.source))
+        controller=authority.issue_session('execution-controller')
+        # Keep the financial events/reservations while adding real policy/session state.
+        state=approval_repo._copy()
+        state['records'].update(h.repo._state.get('records',{}))
+        state['heads'].update(h.repo._state.get('heads',{}))
+        h.repo._state=state | {k:v for k,v in h.repo._state.items() if k not in ('records','heads')}
+        h.repo._authority=authority
+        authority._repository=h.repo
+        h.repo._source_history=()
+        h.repo._validation_query=None
+        h.repo._validated_current=None
         approval_ref=a.ref('approval',h.approval.approval_id,h.approval)
-        h.repo._state.update(heads={('approval',h.approval.approval_id):approval_ref},
-            records={approval_ref:a.encoded(h.approval)},generation='synthetic-generation-1',fence=1)
-        h.repo._auth=lambda *args,**kwargs:None
+        h.repo._state['heads'][('approval',h.approval.approval_id)]=approval_ref
+        h.repo._state['records'][approval_ref]=a.encoded(h.approval)
+        return controller
 
     def test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically(self):
         h=self.harness()
         h.receive(0);h.receive(1)
-        self.prepare_source_transition(h)
+        controller=self.prepare_source_transition(h)
         original=h.repo._source
         q=h.broker.query(1)
-        inputs=PostgresExecutionRepository.refresh_current.__wrapped__(h.repo,object(),q)
+        inputs=PostgresExecutionRepository.refresh_current.__wrapped__(h.repo,controller,q)
         self.assertIs(h.repo._source,original)
         self.assertEqual(inputs.query,q)
         self.assertEqual({r.source_cutoff for r in h.repo._state['reservations'].values()},{AT})
@@ -315,11 +345,11 @@ class ExecutionSourceRefreshTests(unittest.TestCase):
 
     def test_EX33_refresh_rejects_real_but_stale_query_after_fill(self):
         h=self.harness();h.receive(0)
-        self.prepare_source_transition(h)
+        controller=self.prepare_source_transition(h)
         q=h.broker.query()
         before=h.repo._state.copy()
         with self.assertRaises(d.ExecutionDenied):
-            PostgresExecutionRepository.refresh_current.__wrapped__(h.repo,object(),q)
+            PostgresExecutionRepository.refresh_current.__wrapped__(h.repo,controller,q)
         self.assertEqual(h.repo._state,before)
 
     def test_EX08_component_partial_reflection_cannot_double_deduct_or_double_include(self):

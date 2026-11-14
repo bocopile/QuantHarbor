@@ -150,5 +150,9 @@
     }
   ],
   "product_delivery_queue": "docs/tasks/product-delivery-queue.json",
-  "scope_extension_decision": "docs/decisions/EXEC-DEC-002-product-delivery.md"
+  "scope_extension_decision": "docs/decisions/EXEC-DEC-002-product-delivery.md",
+  "execution_policy_decision": "docs/decisions/EXEC-DEC-003-planned-work-and-followups.md",
+  "failure_followup_queue": "docs/tasks/failure-followup-queue.json",
+  "active_planned_subtask": "P28-03",
+  "active_planned_scope": "independent_preparation_while_Q27_validation_pending"
 }

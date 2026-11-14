@@ -1,0 +1,16 @@
+{
+  "queue_ids_states_evidence": "PASS",
+  "original12_ids_dependencies_completion_criteria_preserved": "PASS",
+  "formal_completion_counts_unchanged": {
+    "full": 18,
+    "local": 7
+  },
+  "followups": {
+    "resolved": 4,
+    "awaiting_retest": 1,
+    "queued": 1
+  },
+  "planned_current": "P28-01",
+  "legacy_checker_scope": "full36_team_config_only",
+  "actual_products_completed_by_policy_change": 0
+}
