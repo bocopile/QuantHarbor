@@ -1,0 +1,37 @@
+{
+  "task_id": "P28-02",
+  "run_id": "P28-02-security-a01",
+  "execution": {
+    "run_id": "P28-02-security-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 245.118
+  },
+  "model": "gpt-6-astra",
+  "reasoning": "high",
+  "profile": "qh_review",
+  "scope_hashes": {
+    "docs/contracts/product-read-v1.md": "942e87c1286db83262204695ff6cd5ca4767e1f3a80306c33c708d09cef90eb2",
+    "docs/contracts/data-v1.md": "72a445a05bec315753ae48323c440d2d854e9832147c42660e42fd8e2116b099",
+    "docs/contracts/execution-v1.md": "c61c56d74846d5995a04c39dc9d92fbd82b15e2dab93312ff90b51397d2b5e59",
+    "docs/contracts/operations-v1.md": "15cd0dd3d0b6706a356d6f79ee5c09c85d7840f012a9eb55781c98191543ca2d",
+    "docs/contracts/serialization-v1.md": "bc2a266bfd0c14812a47cc43b2e971efa848962d210cdbad822502caec38baa8",
+    "docs/product/screen-spec-v1.md": "4f90b5fe4b6b0c53a64001712e221088cb07b5f0c47adfb843bb5e37f90f84a9"
+  },
+  "root_input_unchanged": true,
+  "findings": [
+    {
+      "id": "P28-02-SEC-01",
+      "priority": "P2",
+      "issue": "cross_port_cookie_disclosure"
+    },
+    {
+      "id": "P28-02-SEC-02",
+      "priority": "P2",
+      "issue": "late_set_cookie_cross_generation_race"
+    }
+  ],
+  "report": "docs/research/product-p28-02-security-a01-2026-10-30.md",
+  "actual_security_tests": "NOT RUN",
+  "acceptance": "REVISION_REQUIRED"
+}

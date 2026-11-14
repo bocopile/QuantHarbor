@@ -13,12 +13,54 @@ def _encode(obj):
     return canonical_bytes(CanonicalPayload(type(obj).__name__, 1, obj.body.environment, obj))
 
 
+def _check_artifacts(artifacts):
+    if type(artifacts) is not TargetArtifacts or type(artifacts.candidates) is not tuple or len(artifacts.candidates) > 128:
+        raise ContractError()
+    originals = (artifacts.plan, *artifacts.candidates, artifacts.result)
+    if type(artifacts.plan) is not TargetPlan or type(artifacts.result) is not TargetBuildResult or any(type(c) is not OrderCandidate for c in artifacts.candidates):
+        raise ContractError()
+    encoded = tuple(_encode(obj) for obj in originals)
+    objects = tuple(parse_payload(raw).payload for raw in encoded)
+    plan, candidates, result = objects[0], objects[1:-1], objects[-1]
+    b, rb = plan.body, result.body
+    pr = ref('plan', plan.plan_id, plan)
+    if (rb.plan_ref, rb.account_ref, rb.environment, rb.request_ref, rb.outcome, rb.failures) != (
+            pr, b.account_ref, b.environment, ref('request', b.request.request_id, b.request), b.status, b.failures):
+        raise ContractError()
+    if rb.candidate_refs != tuple(ref('candidate', c.candidate_id, c) for c in candidates) or len(candidates) != len(b.orders):
+        raise ContractError()
+    for index, c in enumerate(candidates):
+        cb = c.body
+        if (cb.plan_ref, cb.order_index, cb.account_ref, cb.environment, cb.authority_generation,
+                cb.policy_ref, cb.input_refs, cb.terms) != (pr, index, b.account_ref, b.environment,
+                b.request.authority_generation, b.request.policy_ref, b.input_refs, b.orders[index]):
+            raise ContractError()
+    keys = (('plan', plan.plan_id), *(('candidate', c.candidate_id) for c in candidates), ('result', result.result_id))
+    if len(set(keys)) != len(keys):
+        raise ContractError()
+    return keys, encoded, plan, candidates, result
+
+
 class SyntheticTargetRepository:
     def __init__(self, *, capacity=128):
         integer(capacity, 1, 128)
         self._capacity = capacity
         self._records = {}
         self._lock = RLock()
+
+    @classmethod
+    def product_synthetic(cls, database, *, capacity=128):
+        """명시 제품 연결. 같은 정확 repository 타입과 검증 경로를 유지한다."""
+        from .product_artifacts import ProductArtifacts
+        repository = SyntheticTargetRepository(capacity=capacity)
+        repository._records = ProductArtifacts.product_synthetic(database, 'target', capacity=capacity)
+        repository._lock = database._product_gate
+        return repository
+
+    def list_records(self, *, environment, account_ref):
+        from .product_artifacts import list_records
+        with self._lock:
+            return list_records(self._records, 'target', environment, account_ref)
 
     def get(self, reference, *, environment, account_ref):
         if type(reference) is not TargetRef:
@@ -34,30 +76,8 @@ class SyntheticTargetRepository:
             return obj
 
     def append(self, artifacts):
-        if type(artifacts) is not TargetArtifacts or type(artifacts.candidates) is not tuple or len(artifacts.candidates) > 128:
-            raise ContractError()
-        originals = (artifacts.plan, *artifacts.candidates, artifacts.result)
-        if type(artifacts.plan) is not TargetPlan or type(artifacts.result) is not TargetBuildResult or any(type(c) is not OrderCandidate for c in artifacts.candidates):
-            raise ContractError()
-        encoded = tuple(_encode(obj) for obj in originals)
-        objects = tuple(parse_payload(raw).payload for raw in encoded)
-        plan, candidates, result = objects[0], objects[1:-1], objects[-1]
-        b, rb = plan.body, result.body
-        pr = ref('plan', plan.plan_id, plan)
-        if (rb.plan_ref, rb.account_ref, rb.environment, rb.request_ref, rb.outcome, rb.failures) != (
-                pr, b.account_ref, b.environment, ref('request', b.request.request_id, b.request), b.status, b.failures):
-            raise ContractError()
-        if rb.candidate_refs != tuple(ref('candidate', c.candidate_id, c) for c in candidates) or len(candidates) != len(b.orders):
-            raise ContractError()
-        for index, c in enumerate(candidates):
-            cb = c.body
-            if (cb.plan_ref, cb.order_index, cb.account_ref, cb.environment, cb.authority_generation,
-                    cb.policy_ref, cb.input_refs, cb.terms) != (pr, index, b.account_ref, b.environment,
-                    b.request.authority_generation, b.request.policy_ref, b.input_refs, b.orders[index]):
-                raise ContractError()
-        keys = (('plan', plan.plan_id), *(('candidate', c.candidate_id) for c in candidates), ('result', result.result_id))
-        if len(set(keys)) != len(keys):
-            raise ContractError()
+        keys, encoded, plan, candidates, result = _check_artifacts(artifacts)
+        b = plan.body
         with self._lock:
             prior = b.request.predecessor_plan_ref
             if prior is not None:

@@ -1,0 +1,25 @@
+{
+  "task_id": "P28-03",
+  "internal_step": 1,
+  "run_id": "P28-03-database-security-a02",
+  "execution": {
+    "run_id": "P28-03-database-security-a02",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 101.486
+  },
+  "model": "gpt-6-astra",
+  "profile": "qh_review",
+  "scope_hashes": {
+    "src/quantharbor/adapters/postgres_ledger.py": "f047fea5e274338e1c3f8ad415bfb3a6f850f4fb2bef4e292e80a2473f88cfc9",
+    "src/quantharbor/adapters/product_database.py": "a2ea638571113dc8369ec45431dcf71b93a1b4b1a45a9091c4bf53fbedbae9a6",
+    "containers/compose.product.synthetic.yaml": "82028dc230cbf4d8d0265abe16926bd4277814048245e7236d82514e30c4d4db",
+    "tests/product/test_product_database.py": "5b0c3ac418aaafa32cb5a26a2ee81efa9211791a9eefbc717ce48f8f4fb03eb1"
+  },
+  "root_input_unchanged": true,
+  "findings": 0,
+  "FUP-P28-005": "resolved_in_reviewed_scope",
+  "FUP-P28-004": "preparation_mismatch_supported_but_complete_historical_causality_not_confirmed",
+  "report": "docs/research/product-p28-03-database-security-a02-2026-10-30.md",
+  "actual_tests": "NOT RUN by reviewer; root actual9 proof referenced separately"
+}

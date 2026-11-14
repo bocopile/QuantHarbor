@@ -1,0 +1,53 @@
+{
+  "run_id": "P28-03-artifacts-ready-for-delivery-a01-root",
+  "scope": "internal2a_four_immutable_repositories_only",
+  "source_sha256": {
+    "src/quantharbor/adapters/synthetic_reporting.py": "c89c933aacfe35da4b5732ed261f0adac89249fa714866904805e45fa0915203",
+    "src/quantharbor/adapters/synthetic_valuation.py": "0183f353c6ceb3852eaf427163671f32096ac3f09ea96f3398a4bb85cf5e026d",
+    "src/quantharbor/adapters/synthetic_research.py": "d937d6e93a152cf5e7d199d1a2eadf9b62a9cb548ba14d278aa23d1bb455d27f",
+    "src/quantharbor/adapters/synthetic_target.py": "9747a2f2211afccdb23d5fdfbd3a31ea35f121397e4adabf5df478a591f4d63b",
+    "src/quantharbor/adapters/postgres_ledger.py": "36c685890292b67fa68854da3ec8bedc0fc14189f348cb94ebd54ca6c4428bf9",
+    "src/quantharbor/adapters/product_artifacts.py": "1affa45aedded7b6e2ebdf84a6a137b7e56ad3c36629d2ee44d0ee12b633196e",
+    "migrations/product/0001_artifacts.sql": "e82d7893e8a374ff8ff8409b5e2f003c80a11bc69620982a5abaf1e0bca96ee3",
+    "tests/product/test_product_artifacts.py": "4adbaa80cb7d4b86ab6d8f04c2ce01af2f31536e9f118260af4d67b5077f849f",
+    "tests/product/test_product_database.py": "e842cd7120647fda266ad1c1c891771c37680d3dbb84a52bdcf43b400940bd09"
+  },
+  "final_artifact_tests": {
+    "run": 20,
+    "status": "PASS",
+    "elapsed_seconds": 128.542,
+    "evidence": "docs/evidence/product-p28-03-artifacts-unit-final-2026-10-30.json"
+  },
+  "earlier_focused_versions": {
+    "author_memory": 43,
+    "author_artifacts": 19,
+    "author_product_db_mock": 27,
+    "author_total": 89,
+    "root_added_regression": 1,
+    "not_one_single_90_test_invocation": true
+  },
+  "actual_DB_evidence": [
+    "docs/evidence/product-p28-03-artifacts-actual-a01-2026-10-30.json",
+    "docs/evidence/product-p28-03-artifacts-actual-a02-2026-10-30.json",
+    "docs/evidence/product-p28-03-artifacts-actual-a03-2026-10-30.json",
+    "docs/evidence/product-p28-03-function-integrity-red-2026-10-30.json",
+    "docs/evidence/product-p28-03-function-integrity-green-2026-10-30.json"
+  ],
+  "actual_interpretation": "a01/a02원래시험준비FAIL보존. a02첫5PASS와같은source a03후속6PASS를분리. 이후backend함수정의검증만추가했고실제RED→GREEN·복원후정상factory를확인. 최종20은이후source와일치. 단일전체실제검사PASS로포장하지않음.",
+  "independent_review": {
+    "general_P2_post_commit_error": "resolved_and_security_confirmed",
+    "security_P2_installed_function_integrity": "resolved_by_delta",
+    "final_delta_new_findings": 0
+  },
+  "evidence_limit": "root최초680공개snapshot덮어쓰기·원본없음. writertracked673초기SHA의root재대조는불변. 원래모든공개680불변으로확대하지않음. 향후rootbaseline은worker권한밖.runtime보존.",
+  "NOT_RUN": [
+    "full_new_product_suite",
+    "AI_budget_recovery",
+    "current_rights_HTTP_IPC_browser",
+    "15minute_slot_composition",
+    "physical_disk_or_RSS_scale"
+  ],
+  "outside_scope_handoff": "directfinancialExecutionUnitOfWorkPopen-close공유gate는P03내부5조립관문",
+  "whole_P28_03_artifact_ready": false,
+  "whole_P28_03_completed": false
+}

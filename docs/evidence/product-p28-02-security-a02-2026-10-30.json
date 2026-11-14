@@ -1,0 +1,21 @@
+{
+  "task_id": "P28-02",
+  "run_id": "P28-02-security-a02",
+  "execution": {
+    "run_id": "P28-02-security-a02",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 212.249
+  },
+  "model": "gpt-6-astra",
+  "profile": "qh_review",
+  "scope_hashes": {
+    "docs/contracts/product-read-v1.md": "6ec66d1491e537d4d1f8710f4c4d731d75c4d80c8197f7df5e4e112c671231a1"
+  },
+  "root_input_unchanged": true,
+  "security_original2": "resolved_at_contract_level",
+  "cookie_residual": "partial_resolution_P2_Date_Expires_delay",
+  "report": "docs/research/product-p28-02-security-a02-2026-10-30.md",
+  "actual_tests": "NOT RUN",
+  "acceptance": "REVISION_REQUIRED"
+}

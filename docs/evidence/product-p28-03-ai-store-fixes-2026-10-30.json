@@ -1,0 +1,82 @@
+{
+  "task": "P28-03:internal2b-1",
+  "fixes": [
+    "FUP-P28-010",
+    "FUP-P28-011",
+    "FUP-P28-012",
+    "FUP-P28-013",
+    "FUP-P28-014"
+  ],
+  "source_sha256": {
+    "src/quantharbor/adapters/product_schema.py": "cc68fed06641971398169d158a3af5f2eb0ed956557b9036bfd9e21f40024faa",
+    "src/quantharbor/adapters/product_ai.py": "4f0257acf2539c4c9e9093c189db71ca0a8a3dc27fe7a644159ed0fdaf4885df",
+    "migrations/product/0002_ai.sql": "dabe5c871395c13be34b73bb8ae982c1b59aa850c39e0d3ae012d3d349a3da60",
+    "tests/product/test_product_ai.py": "b1fa01adba85eb30ea7e6e847f6b839e1c4e9e312e52513dc9c78b8b8e8453c5",
+    "src/quantharbor/adapters/product_artifacts.py": "9cb0f5e6dc0845f31dc6b1156a5d1cf2e3bc128137a60548417023630c36ba4a",
+    "tests/product/test_product_artifacts.py": "ba85e2da52f4ab627be634eb2385a4ccf0c654074d63e9be89d5a2a55bc3fa1f"
+  },
+  "CHECK_red": {
+    "run_id": "P28-03-ai-check-integrity-red",
+    "status": "RED_REPRODUCED",
+    "empty_book_wrongly_accepted": true,
+    "data_restored": true,
+    "elapsed_seconds": 2.65,
+    "cleanup": "own_product_stopped_data_preserved"
+  },
+  "CHECK_green": {
+    "actual_test": "actual_weakened_single_book_CHECK_and_hidden_checkpoint_denied_restored",
+    "evidence": "docs/evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json"
+  },
+  "deadline_receipt_red": {
+    "tests": 4,
+    "failures": 6,
+    "errors": 0,
+    "scope": "terminal receipt deadline/source/pre-reservation; gate wait; final decode; factory schema budget"
+  },
+  "current_AI": {
+    "tests": 59,
+    "result": "PASS",
+    "elapsed_seconds": 0.868
+  },
+  "changes": [
+    "registry/AI16 CHECK exact definition comparison for pinned PostgreSQL image",
+    "absolute deadline at public entry, timed locks, bounded schema transport, final validation and success checks",
+    "terminal result receipt checked_at within reservation/deadline and queried source in resolved refs",
+    "processed revision strict int type excluding bool"
+  ],
+  "NOT_RUN": [
+    "independent_fix_recheck",
+    "maximum_32MiB_performance",
+    "core_execute_closing_future_proof"
+  ],
+  "current_focused": {
+    "scope": "current_AI59_and_artifact23",
+    "tests_planned": 82,
+    "exit_code": 0,
+    "elapsed_seconds": 129.442,
+    "tests_actual": 82,
+    "result": "PASS"
+  },
+  "quality": {
+    "files": 725,
+    "findings": 0,
+    "result": "PASS",
+    "version_limit": "before final review/status evidence"
+  },
+  "inheritance_probe_limit": {
+    "status": "NOT_REPRODUCED_AS_STATED",
+    "phase": "AI_factory_with_two_inherited_state_rows",
+    "observed": "product_ai_command_failed at ai_chunk strict select; factory did not accept duplicate rows",
+    "cleanup": "own_inheritance_probe_dropped_in_finally; product_database_stopped_data_preserved",
+    "scope_limit": "schema guard itself lacks inheritance check as independent static review found; nonempty chunk reader already fails closed",
+    "followup": "reject inheritance explicitly before metadata/chunk; verify actual GREEN without claiming prior factory success"
+  },
+  "inheritance_fix": "Reject pg_inherits parent/child links for all4 fixed product tables, including child outside namespace",
+  "final_current_focused": {
+    "tests": 62,
+    "scope": "AI59+registry3 after inheritance guard",
+    "result": "PASS",
+    "elapsed_seconds": 36.93
+  },
+  "final_actual": "docs/evidence/product-p28-03-ai-store-actual-a03-2026-10-30.json"
+}

@@ -1,5 +1,7 @@
 # QuantHarbor AI 팀과 순차 운영
 
+2026-10-29 패널 실행 절차: [8패널 작업·인계·복구 설계](team-section-design.md), [배정 양식](templates/team-assignment.md), [반환 양식](templates/team-result.md), [ENV-DEC-005](decisions/ENV-DEC-005-cmux-section-workflow.md)를 따른다. 현재 대화의 root 한 명이 총괄하며01은 콘솔,02~07은 작업별 제한 실행,08은 모델 없는 상태 표시다. 기존 worker1/writer1·ENV-DEC-004를 유지한다. 사용자가 분석 완료 후 실제 작업 재개를 지시했으며 현재 실행/검증 실적은 status와 Q27 카드에 구분한다.
+
 ## 2026-10-23 총괄 실행 계획
 
 사용자가 총괄 책임·자체 팀 운영과 구체적인 계획을 다시 요청했다. 기존 역할 6개와 36개 큐를 재사용한다. 이 절의 계획 수립만으로 큐 완료 실적을 늘리지 않았다. 이후 같은 날짜 사용자가 Hook 신뢰를 root에 명시 위임했고 정상 메뉴 등록·실제 검증과 Q06 개발 ENV 판정을 완료했다. 현재 단계는 실행 큐와 status를 따른다.

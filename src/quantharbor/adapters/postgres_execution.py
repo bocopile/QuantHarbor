@@ -537,7 +537,13 @@ class PostgresExecutionRepository(SyntheticApprovalRepository):
                 approval=self._get(s,r)
                 if approval.state in ('pending','approved'):
                     self._change(s,approval,'invalidated',at,event,reason='policy_changed')
-                    s['holds'].pop(identity,None)
+                    # Source invalidation ends approval authority, but issued
+                    # commands in this generation still need rejection receipts.
+                    pending=self._pending_budget(s,identity)
+                    if pending[0]:
+                        s['holds'][identity]=pending
+                    else:
+                        s['holds'].pop(identity,None)
         self._source_history=history
         self._source=source
         s['pending_target_policy_ref']=source.request.policy_ref

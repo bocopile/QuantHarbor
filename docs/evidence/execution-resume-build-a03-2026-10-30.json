@@ -1,0 +1,75 @@
+{
+  "run_id": "Q27-03-build-a03",
+  "assignment_revision": 3,
+  "requested_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "profile": "qh_development",
+  "parent_exit": {
+    "run_id": "Q27-03-build-a03",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 464.984
+  },
+  "root_observed_changed_files": [
+    "tests/product/test_execution_financial.py"
+  ],
+  "protected_unchanged_count": 577,
+  "runtime_sha256": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+  "financial_test_sha256": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5",
+  "control_test_sha256": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f",
+  "runs": {
+    "reproduction": {
+      "command": "PYTHONPATH=src:tests/product /opt/homebrew/bin/python3.13 -B -m unittest -v test_execution_financial.ExecutionPipeTests.test_EX37_write_timeout_and_oversized_frame_return_fixed_reason test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+      "exit_code": 1,
+      "duration_seconds": 16.425289124978008,
+      "tracked_count": 578,
+      "test_sha256": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793"
+    },
+    "fixture-check-1-final-two": {
+      "command": "PYTHONPATH=src:tests/product /opt/homebrew/bin/python3.13 -B -m unittest -v test_execution_financial.ExecutionPipeTests.test_EX37_write_timeout_and_oversized_frame_return_fixed_reason test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+      "exit_code": 1,
+      "duration_seconds": 18.52894625000772,
+      "test_sha256": "6e46d8a4bff41f58996ba7cc140f11a5f074846d477487fd11c648defa5ddef1"
+    },
+    "final-two": {
+      "command": "PYTHONPATH=src:tests/product /opt/homebrew/bin/python3.13 -B -m unittest -v test_execution_financial.ExecutionPipeTests.test_EX37_write_timeout_and_oversized_frame_return_fixed_reason test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+      "exit_code": 0,
+      "duration_seconds": 22.759208041999955,
+      "test_sha256": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5"
+    },
+    "final-module": {
+      "command": "PYTHONPATH=src:tests/product /opt/homebrew/bin/python3.13 -B -m unittest -v test_execution_financial",
+      "exit_code": 0,
+      "duration_seconds": 211.4621719160059,
+      "test_sha256": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5"
+    }
+  },
+  "root_cause": "Test fixtures drifted from subprocess cleanup protocol and required approval policy/session state; production runtime unchanged.",
+  "q27_complete": false,
+  "not_run": [
+    "latest_full783",
+    "full_actual_database84",
+    "latest_quality",
+    "fixed40_final_assessment"
+  ],
+  "counts": {
+    "before": {
+      "run": 2,
+      "errors": 2
+    },
+    "intermediate": {
+      "run": 2,
+      "pass": 1,
+      "errors": 1
+    },
+    "final_two": {
+      "run": 2,
+      "pass": 2
+    },
+    "final_module": {
+      "run": 21,
+      "pass": 21,
+      "skipped": 0
+    }
+  }
+}

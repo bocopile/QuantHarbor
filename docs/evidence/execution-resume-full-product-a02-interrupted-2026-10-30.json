@@ -1,0 +1,22 @@
+{
+  "scope": "Q27_final_input_full_product_unittest",
+  "status": "INTERRUPTED",
+  "started_at": 1793338249.806139,
+  "current": null,
+  "q27_complete": false,
+  "planned_tests": 783,
+  "exception": "KeyboardInterrupt",
+  "input_unchanged": true,
+  "elapsed_seconds": 816.61,
+  "ended_at": 1793339066.390194,
+  "actor": "root",
+  "run_id": "Q27-08-product-a02-root",
+  "recorded_pass": 171,
+  "reason_for_interrupt": "actual_DB_fingerprint_fractional_numeric_decode_conflict_requires_changed_runtime",
+  "parent_exit": {
+    "run_id": "Q27-08-product-a02-root",
+    "actor": "root",
+    "exit_code": 1,
+    "elapsed_seconds": 816.685
+  }
+}

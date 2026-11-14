@@ -1,14 +1,126 @@
 # QuantHarbor 진행 상태와 인계
 
-기록 기준일: 2026-10-29. 이 문서는 새 세션에서 가장 먼저 확인하는 진행 기록이다. 항목별 실제 검증일은 각 기록을 따른다.
+기록 기준일: 2026-10-30. 이 문서는 새 세션에서 가장 먼저 확인하는 진행 기록이다. 항목별 실제 검증일은 각 기록을 따른다.
 
 ## 2026-11-14 v2 문서 분석·보강 작업 목록 정의
 
 사용자가 `v2/`의 MD·PDF 분석과 GitHub 자료·보강 필요 영역의 동시 분석을 Claude Workflow로 요청했고, 분석 중 지속 학습·진짜/가짜 판별과 리밸런싱·포트폴리오 정책을 추가 요구했다. 결과는 [v2 작업 목록](v2-work-list-2026-11-14.md)이다. HEAD edd018a 기준 정적 분석이며 테스트·DB·Docker·계좌·키·주문은 실행하지 않았고 큐·계약·코드는 바꾸지 않았다. NX 작업 53개와 사용자 결정 16개는 제안이며 기존 큐의 완료 판정을 바꾸지 않는다. 순서 변경(REORDER 3건)과 정책값은 사용자 결정 전 미확정이다. 세금·KIS·KRX 규칙 중 다수는 UNVERIFIABLE 또는 전문가 확인 필요다.
 
-후속으로 6개 자료 조사(세금·시장 규칙·KIS와 데이터 약관·법 경계·GitHub 구현 사례·진위 판별 문헌)를 [조사 기록](research/v2-followup-research-2026-11-14.md)에 정리했다. 거래세 합계 0.20%는 1차 확인, 양도세 통산 범위·데이터 약관 서술은 정정했다. 순서 변경 3건은 설계 준비만 앞당기는 안으로 사용자 위임 판단을 기록했고 정책 값은 미결정이다. 세무·법률은 자문이 아니며 전문가 확인 전 확정하지 않는다. 다수 항목은 2차 출처·초록만 읽은 상태다. 이 기록은 분석·조사 문서만 담은 별도 브랜치의 PR로 올렸고 merge 여부는 검토자 결정이다. 원 작업 브랜치의 미완료 Q27·P28-03 변경은 포함하지 않는다.
+후속으로 6개 자료 조사(세금·시장 규칙·KIS와 데이터 약관·법 경계·GitHub 구현 사례·진위 판별 문헌)를 [조사 기록](research/v2-followup-research-2026-11-14.md)에 정리했다. 거래세 합계 0.20%는 1차 확인, 양도세 통산 범위·데이터 약관 서술은 정정했다. 순서 변경 3건은 설계 준비만 앞당기는 안으로 사용자 위임 판단을 기록했고 정책 값은 미결정이다. 세무·법률은 자문이 아니며 전문가 확인 전 확정하지 않는다. 다수 항목은 2차 출처·초록만 읽은 상태다. 이 기록은 분석·조사 문서만 담은 별도 브랜치의 PR로 올렸고 merge 여부는 검토자 결정이다. 원 작업 브랜치의 17커밋은 별도 병합 PR로 올리며 Q27·P28-03 미완료 상태 그대로다.
 
-## 현재 우선 지시 — 2026-10-29 개발 중단·Git 보존
+## 현재 우선 지시 — 2026-10-30 계획 작업 계속·실패 후속 큐
+
+- 추가보고지시: 작업중5분마다전체완료기준진행률·최근완료/현재작업·후속큐·작업단위commit/push를보고한다. 항목완료율과내부검증진척은구분한다.
+
+사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속28개: diagnosing1·queued7·resolved20이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
+
+- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a/2b-1저장기반을납품했다. 다음2b-2a factory/예산/복구구현은배정준비이며아직미실행이다. HEAD8a27220고정제품836/actualDB86은모두PASS·708입력불변/자기DB86정리이며고정40관측보강6건은별도미완료다. 브라우저/fixed40최종관문은유지한다.
+- 원래 의존성은 통합·완료 관문으로 보존한다. 준비된 계약/산출물의 설계와 격리된 구현을 먼저 진행하고, 차단하는 실제 결함은 영향받는 항목에 연결한다. artifact_ready와 completed를 구분한다. [운영 카드](tasks/PLAN-forward-execution-2026-10-30.md).
+- worker1·writer1·재귀 위임0, 계좌/키/주문/자금·새지출·외부메시지범위는유지하고,Git은명시허가된작업브랜치단위commit/push를진행한다. 단순 진행 허가를 다시 묻지 않는다.
+
+## 2026-10-30 실제 실행 관측
+
+- actualDB86/86 PASS6932.892초·실패/미실행0·자기UUID DB86정리·모든case입력불변,최종708manifest동일. [최종DB](evidence/execution-final-current-database-2026-10-30.json). 전체제품836과함께FUP-Q27-005 수거관문해결. 독립고정40의관측보강6건은006/009~014에유지하여Q27전체완료로올리지않는다.
+
+- 동일8a27220고정 전체제품836 PASS6800.646초·실패/오류/skip/실패subtest0,고유836ID/708입력전후같음·manifestSHA대조·root exit0. [최종제품](evidence/execution-final-current-product-2026-10-30.json). 이후AI저장기반은별도62/actual12증거이며이836에포함되지않는다. actualDB최종과고정40관측보강6건은여전히별도관문이다.
+
+- 고정40 독립585.747초:34 supported_static/6 real_gap. EX10/21/27/33/34/37의관측보강을FUP-Q27-009~014에분리·006진단중,제품결함재현과구분한다. [독립검토](evidence/execution-fixed40-semantic-review-2026-10-30.json). 전체836/86성공여부와별도로Q27완료관문유지·계획된P28-03 2b-2a준비계속.
+
+- 총16단위commit/push·origin SHA확인: 최신ba5b52d(내부2b-1 저장기반19파일). 독립납품191.025초/10항목PASS·차단0,staging후Markdown줄끝공백9곳을정리해실제cached공백검사PASS후commit했다. [납품근거](evidence/product-p28-03-ai-store-delivery-2026-10-30.json). source6은검토/actual동일SHA,root문서공백정리만추가. 다음고정40매핑의독립의미검토를준비한다.
+
+- 내부2b-1 저장기반기능수용: 최종6SHA62집중PASS/actual12PASS, 보안delta115.062초지적0/같은6SHA. 일반3보완도직전독립보안에서확인. FUP-P28-009~014해결·초기시간상한/재현한계/버전별검증이력보존. [최종보안](evidence/product-p28-03-ai-store-security-a02-2026-10-30.json). Git납품최종확인중이며2b-2/core/closing미래전이/P03전체완료는아니다.
+
+- 내부2b-1 보안302.239초는일반3보완확인/상속구조P2추가(FUP-P28-014). root는고정4테이블의상속관계를거부. 원래중복행시도는AIchunk STRICT에서이미실패했으므로factory성공/경제오염RED로표현하지않는다. 최종6SHA62집중 PASS36.930초·actual12 PASS18.337초/자료보존. [현재실제](evidence/product-p28-03-ai-store-actual-a03-2026-10-30.json). 보안delta/납품최종검토대기.
+
+- 내부2b-1 일반P2세건 모두RED후보완. 현재AI59 PASS0.868초·동일6SHA actualDB11 PASS17.621초. 새자기v1에서11artifact upgrade/DDLrollback부터반복했고기존v2보존, CHECK완화숨김book 거부GREEN추가. [수정](evidence/product-p28-03-ai-store-fixes-2026-10-30.json), [실제](evidence/product-p28-03-ai-store-actual-a02-2026-10-30.json). 06독립보안·현재82회귀진행중, 일반최종수용/commit대기.
+
+- 내부2b-1 독립일반356.398초·P2세건: CHECK정의손상/잠금·최종검증 deadline/완료receipt시각·원천관계. FUP-P28-011~013 root재현·수정중이며 수용/commit 전 관문으로 유지한다. [검토](evidence/product-p28-03-ai-store-review-a01-2026-10-30.json).
+
+- 내부2b-1 root actual 합성DB10 PASS17.097초·현재6SHA불변·자기자료보존. 기존11artifact upgrade/DDL rollback/CAS/chunk/COMMIT unknown/readback/shared latch/stopreopen/function guard를 확인했다. [실제근거](evidence/product-p28-03-ai-store-actual-a01-2026-10-30.json). 독립일반검토/현재artifact회귀는진행중이고core/closing미래전이/최대부하/제품전체는 NOT RUN이다.
+
+- 최신 Git은15단위 commit/push·origin SHA 일치(ca1f209). 내부2b-1 구현은1199.766초 상한 종료·6파일 부분반환/보호713개 불변이다. root는 processed revision bool 허용을 RED 재현·strict type 보완 후 현재 AI55 PASS(0.681초) 확인. FUP-P28-009/010에 실제DB·독립검토 잔여를 연결했다. [근거](evidence/product-p28-03-ai-store-build-2026-10-30.json). 내부2b-2 core 연결·종료 용량증명/전체제품조립은 NOT RUN·미구현, P28-03 전체완료 아님.
+
+- 작업단위14개commit/push/원격SHA확인. 추가6c8786f(내부2a불변저장)·8a27220(Q27fixture/보강검사). [전체납품](evidence/task-unit-git-delivery-2026-10-30.json). 공개유효bytes38독립검토164.963초/차단0,원래불변680snapshot의한계는과장하지않는다.
+- P28-03 내부1/2a기능수용,다음2b-1저장기반배정준비. AI예산복구설계374.138초를root revision1에통합. 기존0001/금융pin/기본memory보존·부모제품0/12는그대로다.
+- HEAD8a27220의독립worktree/708추적입력으로전체제품836와actualDB86을새로기동했다. root직접실행·각10800초·자동재시도0·실패별도수거·최종결과미확정. [기동근거](evidence/execution-final-current-validation-start-2026-10-30.json). Q27완료/fixed40최종수용으로올리지않는다.
+
+- 내부2a9파일구현반환844.414초/집중89PASS. COMMIT후확인ERROR의일반P2는root보완후신규4/전체artifact20·실제확인오류PASS·독립보안해결확인. actuala02앞5PASS후시험준비FAIL과같은source의a03후속6PASS/32.744초를구분한다. 현재설치함수본문손상검출P2를보완중, 전체수용은아직이다. [카드](tasks/PRODUCT-P28-03.md).
+- Q27공통용량은실패순간131records>128로확정. core위험가드/한도불변으로fixture를보완한private a04 daily/turnover둘다PASS180.088초,원래used400+active350+new300/NAV1000/실제위험계산assert보존. 원래driver3함수에반영했으며독립검토/최종입력판정전이다. 추가EX02/05/18/25/31실제양성근거도수거했다.
+
+- 총12개작업단위를각각commit·push/원격SHA대조했다. 추가5개는팀절차53a326b/Q27증거4eeb6f4/화면명세3472a75/공통진행ac3a278/영속계약439f15e다. [납품근거](evidence/task-unit-git-delivery-2026-10-30.json).
+- 내부2a불변산출물저장구현을04Sol/high에9파일/1200초/자동재시도0으로배정. 내부1초기mock후속은controlled재현/현재검증의독립확인으로해결,정확역사bytes의증거한계보존. 현재후속해결9·대기2·진단1·차단1.
+
+- 최신Git납품7단위: `af40f9c`, `eb476bc`, `eeb8d4c`, `0f9e149`, `b745a28`(조회계약), `93222a0`(제품DB수명), `6e8c1e3`(SQLAUTHheader). 각각독립사전검토/명시staging/정상push·원격SHA일치. main80403ab/고정worktree보존. [납품근거](evidence/task-unit-git-delivery-2026-10-30.json). 아래시간별기록은당시관측이다.
+- 후속actualDB60개는4854.199초종료·58PASS/25및54FAIL·자기DB60개정리·578고정입력불변. [최종](evidence/execution-resume-remaining-database-final-a01-2026-10-30.json). FUP-Q27-008은수정/실제5/독립검토/commitpush로해결, 원래실패이력보존. 위험fixture간소화시도2FAIL은미채택·SQL/한도불변.
+- 다음계획은P28-03 내부2a:4종불변canonical산출물·목록저장. 내부2b AI예산/작업복구와나머지readmodel/권리snapshot/조립/15분slot은아직미구현. 초기mock실패의controlled재현은원래분포를일치시켰으나정확역사bytes복원은아니다.
+
+- 검증완료단위추가3건을각각commit·push/원격SHA대조했다: `eb476bc` 금융시험fixture, `eeb8d4c` 소수fingerprint, `0f9e149` 정적합성화면/HTML검사. 첫pending예약수정`af40f9c`와합계4개. main/고정worktree보존·PR/merge없음. [납품근거](evidence/task-unit-git-delivery-2026-10-30.json). 후속연결계약/제품DB수명관리/공통진행기록도각범위검토후순차반영한다.
+
+
+- 작업단위첫커밋/푸시: `af40f9c807687488f533df341aac36ddc3931940`(Q27 pending완료예약수정·회귀·증거6파일). 독립사전10항목PASS 뒤기존origin 작업브랜치로push, ls-remote SHA일치확인. main/고정검증worktree보존. 이어준비된단위별로commit·push한다.
+- P28-03 namedvolume Binds표현을정확자기volume한정으로보완, 회귀26개중수정전ERROR1→26PASS. actualDB a02는8.205초·9항목PASS: uid999초기화/schema1~3, 별도프로세스lock거부, stop/reopen동일identity·원장사실보존·중복재계상없음·잘못된binding거부·기존disposable정리. 소스4불변·제품volume자료보존. [실제근거](evidence/product-p28-03-actual-db-a02-2026-10-30.json). 독립일반138.335초지적0, 보안delta확인은대기. 초기mock전체원인의독립확정한계는FUP-P28-004에보존한다.
+
+
+- 사용자추가지시: 작업단위commit·push를기존origin의작업브랜치에실행한다. 최신origin/main=80403ab를확인했고main/미커밋파일을보존해codex/qh-local-delivery-20261030을생성했다. 코드/시험/증거의논리단위별로검토후commit·push하며같은허가를반복질문하지않는다. PR/merge/force push는미허용·미실행. 실제SHA/원격결과는수행후기록한다.
+
+
+- P28-03 actualDB a01은0.946초·기동전FAIL/자기자료보존·소스불변. Docker의정상namedvolume Binds표기를호스트bind거부와함께차단한구현표현불일치로좁혔다. FUP-P28-005에등록하고정확자기volume만허용하는최소보완을진행한다. [실제근거](evidence/product-p28-03-actual-db-a01-2026-10-30.json). 실제uid초기화/재시작자료보존은아직NOT RUN이다.
+
+
+- P28-03 내부1 구현655.158초 반환: 소유4파일·보호653개불변, mock24PASS·공개657지적0. 실제DB와독립검토는현재미실행/착수중, 새수명관리소스의전체789는NOT RUN이다. [구현근거](evidence/product-p28-03-database-build-2026-10-30.json). 초기mock준비실패는FUP-P28-004로보존한다. Q27후속25~84는원래고정본에서각자기DB별도실행하며실패후에도다음사례로진행·private후속큐수거후root통합, 전체PASS로올리지않는다.
+
+
+- P28-02 revision5 최종보안129.305초·일반73.609초 지적0·같은계약SHA35f6ed51 및입력불변. 계약artifact_ready, 실제HTTP/브라우저/IPC시험NOT RUN·status in_progress. FUP-P28-003 계약지적해결. [P28-03](tasks/PRODUCT-P28-03.md) DB수명관리 내부1단위구현을이어간다. 원래부모완료18/36·로컬7/10·제품0/12는변경하지않았다.
+
+
+- P28-02 설계 자문7건(256.207초)·독립보안2건(245.118초)·일반추가1건(152.166초)을 root revision4에 반영했다. 6화면 데이터/시점·현재권리정본·불변페이지·DB정확타입수명관리·정책CAS, cookie+origin메모리proof·세대별이름·절대만료/미만료발급장부를 명세했다. FUP-P28-003은 독립재확인대기, 제품구현/실제보안시험은 NOT RUN.
+- FUP-Q27-007 진단3회는 각 단일동일시나리오/각자기DB정리/고정578불변이다. 마지막204.641초에서 SQL execution_check_budget의 공통 현재+완료예약128records/8MiB 가드 execution_capacity 거부를 확인했다. 어떤계상항목이초과하는지·fixture/제품분류는미확정, 한도증액/가드면제없음. [실제진단](evidence/execution-resume-daily-risk-diagnostic-a03-2026-10-30.json). 원래계획P28을우선진행하며 전체DB재실행은하지않았다.
+
+
+- P28-01 독립 일반95.852초·보안81.327초 지적0·입력 불변. 정적 명세/매핑/HTML은 artifact_ready, 실제 브라우저 검수는 FUP-P28-002로 미해결·status in_progress 유지. [다음 P28-02](tasks/PRODUCT-P28-02.md) 조회/인증/제어 연결 계약 초안을 작성하고 독립 검토한다. 제품 완료 개수는 늘리지 않는다.
+
+
+- 재개 확인: P28-01 구현453.660초 정상 반환. 지정 HTML/품질검사/품질시험3파일만 변경·보호626개 root 재대조 불변. 품질21/21 PASS·공개629파일 지적0·정적6영역/19링크/8상세구조 PASS. [실제 근거](evidence/product-p28-01-wireframe-build-2026-10-30.json). 05 독립 일반 검토 진행. 브라우저 표시 확인은 IAB 부재·HTTP 시간초과·파일URL 정책거절로 NOT RUN이며 우회하지 않았다.
+- Q27 최신 전체 제품789 PASS·실패/오류/skip0·6575.253초·고정578입력불변. [결과](evidence/execution-resume-full-product-a03-2026-10-30.json). actualDB a02는23개 완료 후24번 daily-risk invalid_contract FAIL·1926.136초·자기24project 정리·입력불변. [실패](evidence/execution-resume-full-database-a02-2026-10-30.json). 원인 미확정으로 FUP-Q27-007에 보관하고 독립 계획 산출물을 계속한다.
+
+
+- 추가 실제DB의 DEC002 미지원4case PASS와 저장 독립 대조 PASS를 확인했다. 저장은 원래 oracle의 prepared2단위 중 byte1단위 누락을 진단·보완한 뒤22관계/37index/7snapshot·113.851초 PASS·자기DB 정리다. [저장 근거](evidence/execution-resume-storage-independent-2026-10-30.json). 제품/한도는 변경하지 않았다. 최신 제품789와 전체DB84 a02를 새 입력에서 실행 중이며 전체 결과는 미확정이다.
+
+- a04 실제 완료343.256초: UoW fingerprint만 정확 Decimal 검증 후 원문 전체 해시로 판독한다. 일반 load/replay/events는 기존 소수 거절을 유지한다. 신규6 PASS·SQL20+runner6 PASS26·제품 소비부/SQL migration 불변·공개607 중 보호605 불변. [수정 근거](evidence/execution-resume-fingerprint-fix-a04-2026-10-30.json).
+- 실패했던 원래 unknown_cost 전체가 수정 후83.906초 PASS·578입력불변·자기DB 정리됐다. [실제 결과](evidence/execution-resume-unknown-cost-fixed-2026-10-30.json). Astra 독립 보안 검토121.561초·차단/지적0·root 전후578SHA 일치. [검토](research/execution-resume-fingerprint-security-2026-10-30.md). Sol 독립 일반 검토와 추가 actualDB5는 실행 중이며 첫 미지원 누계 사례만 PASS 관측이다. 최신 전체제품은 새6개를 포함해 재실행 대기다.
+
+- unknown_cost 실패는 결제/원장금액 이후 fingerprint 판독으로 좁혔다. 두 번째 실제 진단은 fingerprint 직전까지 통과 후 같은 storage_failure·DB오류0·자기project정리·입력불변이다. SQL fingerprint의 numeric 소수금액과 정수전용 JSON 판독 충돌을 순수 재현과 대조했다. [진단](evidence/execution-resume-unknown-cost-diagnostics-2026-10-30.json).04에 원래 checkout의 제한된 판독 경로 수정 a04를 배정하며 일반 계약 판독/금액검증은 유지한다.
+- 전체 제품 a02-root는 runtime 수정 필요로171개 PASS 기록 후 root가 SIGINT로 중단했다. INTERRUPTED·입력불변이며 나머지를 성공으로 집계하지 않는다. [부분 기록](evidence/execution-resume-full-product-a02-interrupted-2026-10-30.json). 임시 추가 증거 검사는 작성·정적 확인만 종료했고 실제DB는 NOT RUN이다. [작성 근거](evidence/execution-resume-proof-author-2026-10-30.json). 최신 전체 재검사는 수정·실제 집중·독립 검토 후 다시 고정한다.
+
+- 실제DB 전체 a01은9개 완료 후10번 unknown_cost에서 storage_failure로 중단했다.803.439초·입력578 불변·사용한 자기10project 전부 정리. 후속74개는 NOT RUN이다. [실제 실패 근거](evidence/execution-resume-full-database-a01-2026-10-30.json). 원인 식별용 단일 시나리오 진단을 시작했고 전체 제품 검사는 별도로 계속 중이다.84 PASS·Q27 완료로 기록하지 않는다.
+
+- 03 Astra 완료조건 자문 종료207.861초·추적578불변. [보고](research/execution-resume-closure-design-2026-10-30.md). 잔여8개 중 의도된 미지원2·구현/실제근거대기5·저장계상 독립증명 범위결손1로 분류했다. 새 runtime 결함 확정은 아니며 DEC002 미지원3종 실제DB와 Q27/state복사/owner를 포함한 독립 대조가 필요하다.04 Sol에게 임시 proof 작성만 배정했고 실제DB 실행은 root가 담당한다.
+- root 직접 전체 제품 재검사 Q27-08-product-a02-root를07에서 시작했다. 새 Luna 부모는 기동하지 않았으며, 기존 준비 패킷과 실제 실행을 구분한다. 고정 worktree783전체·전후578hash·10800초 상한·자동재시도0. root DB84와 결과 영역을 분리하고 전문 AI는04 한 명을 유지한다. 최종 결과는 미확정이다.
+- a03 독립 일반 검토 정상 종료99.337초·지적0·입력578 불변. [검토](research/execution-resume-review-a02-2026-10-30.md). 최종 worktree 공개578파일 지적0·품질87 PASS를 확인했다. 최초 -I/-S 누락 실패와 정정 실행을 [품질 증거](evidence/execution-resume-quality-2026-10-30.json)에 함께 보존했다.
+- 검토된 제품3파일을 원래 checkout에도 반영했다. 기존 제품 파일이 HEAD와 같은지 먼저 대조하고 기존 문서 변경을 보존했으며 worktree와 최종 SHA 일치. [통합 근거](evidence/execution-resume-workspace-integration-2026-10-30.json). commit/push/merge 없음.03은 잔여8항목 설계 자문 중, root actualDB84는2개 완료·3번 실행 관측이다. 최신783은 준비만 했고 Q27은 미완료다.
+- a03 완료:financial-test 한 파일만 보완·보호577 불변, 실패2개 재현 후 최종2/2·금융21/21 PASS(skip0). [증거](evidence/execution-resume-build-a03-2026-10-30.json). 05 독립 일반 검토 a02와 root 실제 합성 PostgreSQL 전체84를 시작했다. 제품 runtime 추가 수정 없음. 최신 전체783/품질·fixed40 판정은 아직 잔여이며 Q27 미완료.
+- 전체 제품검증 a01 종료:783개 실행·781 PASS·2 ERROR·skip0·6536.548초·추적578파일 불변. [실제 결과](evidence/execution-resume-full-product-a01-2026-10-30.json). EX37의 가짜 process 정리와 EX08의 불완전 policy 상태에서 오류가 발생했다. a03은 financial-test 한 파일의 준비 데이터 정합성부터 재현·보완하며 runtime은 보호한다. Q27 전체 미완료.
+- 사용자 “계속 진행시켜”와 현재 호스트 권한 변경을 확인했다. root는 추가 명령 승인 없이 기존 로컬 범위를 이어간다. 역할의 제한 프로필·worker1/writer1·외부 행위 경계는 유지한다. 이는3명 병행안에 대한 명시 응답으로 간주하지 않는다.
+- 반복 permission 피드백 반영: cmux 표시 변경에서 전체 셸 명령별 승인이 반복된 운영 문제를 확인했다. [절차 4.1](team-section-design.md)의 기존 허가 재사용·좁은 prefix_rule·로컬 진행 우선·UI 갱신 최소화를 반영했다. 같은 관측의07은201/783 PASS·완료명령64회 exit0·권한대기 유형 이벤트0, 최종 결과는 미확정이다. 호스트/전역 권한을 변경하지 않았고 향후 prefix 재사용 성공은 미검증이다. [상세 카드](tasks/EXECUTION-resume-2026-10-29.md).
+- 07 Luna/high의 독립 전체 제품검증은 실제 실행 중이다. 이번 관측은783개 중196개 PASS·실패관측0이며 최종 결과/종료는 미확정이다. 02/03 미배정,04/05/06 반환 완료,08 한시적 진행 관측으로 구분했다. 기존 worker1 정책을 유지하며3명 병행안의 응답을 기다린다. 실제DB 전체/품질/fixed40 전체 판정은 미실행. [진행 카드](tasks/EXECUTION-resume-2026-10-29.md).
+- Q27 단독 구현 a01은 실제 실행됐으나1200.052초 제한으로 종료했다. 소유2파일 부분 수정·보호576개 불변, 마지막 시험 교정은 미검증이다. [부분 증거](evidence/execution-resume-build-a01-2026-10-30.json)와 [재개 카드](tasks/EXECUTION-resume-2026-10-29.md).
+- 일부 회귀 FAIL 및 마지막 수정 미검증으로 Q27 완료가 아니다. 종료 후 남은 cmux “기동” 표시를 실제 종료/검수 상태로 바로잡았다. a02는 기존 비용 정의와 시험 경계를 대조·보완하고 집중3개를 같은 입력에서 확인한다.
+- 다음 실제 DB·독립 검토·최종 전체 판정은 잔여다. Docker Desktop 시작 후 Docker API 조회는 가능했고 기존QH 컨테이너는 없었다. 계좌/실제 주문/자금/외부 전송은 사용하지 않았다.
+- 후속 a02 정상 종료606.944초, 최종 동일본 집중3개 PASS·519.075초·runtime 보호입력 불변을 확인했다. [증거](evidence/execution-resume-build-a02-2026-10-30.json).04 종료표시도 실제 자동 갱신됐다. 고정 PostgreSQL image를 준비했으며 같은 소스의 실제 합성DB·독립 검토·최신전체 판정은 잔여다.
+- 같은 최종 source/test로 실제 합성DB3사례281.84초 PASS·자기project3개 정리·입력불변을 확인했다. [증거](evidence/execution-resume-pending-database-2026-10-30.json). root실행이며 독립검증/전체84판정으로 확대하지 않는다. 다음은06 독립보안→05 일반검토·최신전체 기준이다.
+- 06 Astra/high 독립 정적 보안 검토 exit0·166.642초·입력 불변. 마지막P2는 해당 수정범위에서 해결됐고 추가 차단 지적 없음. [증거](evidence/execution-resume-security-2026-10-30.json). 다음05 일반 검토·최신전체 판정을 유지한다.
+- 05 Sol/high 독립 일반 검토 exit0·132.273초·입력불변·추가지적0·범위내차단없음. [증거](evidence/execution-resume-review-2026-10-30.json). 이제 고정 입력의 최신 전체 제품/품질·실제DB/fixed40 판정을 진행한다. 집중 결과와 독립 정적 검토만으로 Q27 전체를 완료하지 않는다.
+
+## 현재 우선 지시 — 2026-10-29 설계 완료 후 개발 재개
+
+사용자가 패널별 작업 설계에 이어 **“분석 다되는데로 작업 진행해줘”**라고 지시했다. 설계/분석 완료 후 기존 허용된 로컬 개발·합성 검증·순차 팀 작업을 재개한다. 아래 이전 보류는 이 범위에서 대체됐으며 계좌·실제 주문/자금·새 비용·외부 전송·Git 원격 권한을 확대하지 않는다.
+
+- 설계: [8패널 절차](team-section-design.md), [배정](templates/team-assignment.md)·[반환](templates/team-result.md), ENV-DEC-005 및 [완료 카드](tasks/PLAN-team-section-design-2026-10-29.md). 문서5개/링크15개·패널별 절차 확인. 실제 역할/제품 검증 통과와 구분한다.
+- 다음 실제 작업: Q27 보존분·마지막 pending 예약 P2와 입력 버전 확인 → 제한된 단독 구현 → 관련 독립 검토·요청된 합성 검증. 역할 기동과 모델/프로필 적용부터 확인하며 worker1/writer1을 유지한다.
+- 현재 확인: PATH의 codex 미발견 후 기존 설치 CLI0.165.0과 Python3.13.12를 확인했다. 기존 ChatGPT 로그인과 새 Q27 worktree의 qh_development 프로필 해석·pwd 확인을 마쳤다. 설치/인증 변경·전체 권한 재검증은 하지 않았다.
+- Q27 재개: [실행 카드](tasks/EXECUTION-resume-2026-10-29.md). base80403ab의 별도 codex/q27-resume-20261029 worktree를 준비하고 source/test 입력을 고정했다. 과거29파일 중28동일·control-test의 보존된 회귀 작성분만 달라 runtime P2 수정/최종 판정은 미완료다. 초기2파일 단독 구현을04에 배정하며 실제 결과는 반환 후 통합한다.
+
+## 이전 지시 — 2026-10-29 개발 중단·Git 보존
 
 사용자가 자동매매 개발 작업 중단과 현재 변경의 커밋·푸시를 명시 요청했다. 이전 순차 구현 지시는 보류한다. Q27은 미완료이며 후속 대시보드·통합 작업도 재개하지 않는다. 아래 과거 기록의 “진행 중”·“다음 작업”은 당시 인계이며 현재 실행 지시가 아니다.
 
@@ -18,9 +130,29 @@
 - 제품·실제 DB 검사는 새로 실행하지 않는다. 커밋 후보 공개 파일 검사·제외 규칙·diff 검사만 수행한다. 중간 저장 커밋 `3c7f22a`를 origin/codex/arc-contracts에 푸시하고 원격 SHA 일치를 확인했다. 완료 기록은 후속 문서 커밋으로 보존한다.
 - 재개: 사용자 재개 요청 후에만 Q27의 저장된 변경과 미검증 범위를 다시 확인한다. 실제 계좌/API·주문·자금 사용은 수행하지 않았다.
 
-## 2026-10-29 main 통합 요청
+## 2026-10-29 전체 작업 목록 정의
 
-**현재: PR #1 준비 완료, main 머지는 자동 승인 심사에서 실행 전에 거부되어 미실행이다. 사용자 명시 승인 대기이며 자동매매 개발 보류를 유지한다.**
+사용자 “이제 전체 작업 리스트를 정의해봐” 요청에 따라 [전체 작업 목록](team-work-list.md)을 작성했다. 기존36개 실행 묶음·110개 원래 ID 전체 색인·12개 제품 하위 작업·Q27 잔여8단계·재개 준비5항목·8패널 책임·실제 연결 복귀·사용자 결정 시점·완료 규칙을 연결했다. [작업 카드](tasks/PLAN-team-work-list-2026-10-29.md).
+
+- 목록 작성 범위 완료이며 제품 개발 재개 지시로 확대하지 않았다. 기존 전체/로컬/제품 큐와 완료 상태·계약·모델/동시성 정책은 유지한다.
+- 현재 경로: 재개 요청 후 Q27 보존분/마지막P2 → P28-01~08 → P29-01/02·RETURN-01 → 실제 입력/관문 충족 시 RETURN-02 → Q30~36. Q19는 실제 연결 관문, Q20~26은 합성 로컬 완료 범위다.
+- 실제 변경: 전체 목록·작업 카드 작성, plan/팀 보드 연결과 본 기록, cmux BOARD의 정적 목록 안내. 문서 대조에서36개 큐·원래110개 ID 누락/중복·제품 하위12개 선행/담당/완료 조건·Q27 하위8단계·상대 링크25개와 공백 확인을 통과했다. BOARD 실제 표시도 확인했다. 상세 결과와 최초 확인 스크립트의 범위 보정은 카드에 기록했다.
+- 미실행: 제품/DB/품질 검사·독립 검토·AI worker 기동·새 권한/모델 검증·계좌/API·주문·자금·외부 전송·Git 이력/원격 변경. 개발 보류 유지.
+
+## 2026-10-29 현재 로컬 관측·cmux 팀 운영 분석
+
+사용자가 현재 디렉터리 상세 분석과 cmux 다중 세션을 하나의 팀으로 운영하는 진행 방식 판단을 요청했다. [분석](development/cmux-team-analysis-2026-10-29.md)과 [작업 카드](tasks/ENV-cmux-team-analysis-2026-10-29.md)에 구조·의존관계·역할·인계·재개 시나리오를 기록했다. 자동매매 개발 보류는 유지한다.
+
+- 로컬 실제 상태: main `80403ab3b8ef322e7d38e8554b42f263bb37cbae`, PR #1 병합 메시지와 두 부모를 가진 커밋, 기본 worktree 한 개, 분석 착수 시 clean. 아래 “main 머지 미실행”은 이전 시도 당시 기록이다. 이번에는 Git 이력 변경·원격 조회를 하지 않아 현재 원격 상태를 새로 확인한 것은 아니다.
+- 전체 큐의 Q19는 실제 연결 통합 관문, 로컬 큐의 Q27은 마지막 로컬 작업 위치다. Q27 카드의 보류 지시가 우선한다. Q20~26 로컬 완료7개·전체 완료18개·제품 하위12개 pending은 서로 다른 범위이며 작업량 진행률로 합산하지 않는다.
+- 코드 판독: source 교체 시 승인 hold를 제거하는 경로와 `_pending_budget()`가 존재한다. 마지막 P2의 최종 수정 완료는 확인할 수 없다. 새 DB 재현·수정·최신 전체 판정은 하지 않았다.
+- cmux workspace **QH · 팀 운영 분석**의 최초4분할을 사용자 후속 요청으로 같은 창·동일 workspace 안의 **4열×2행 8분할**로 세분화했다. 위: 총괄/조사/설계/구현, 아래: 일반 검토/보안 검토/검증/정적 작업 보드. tree·read-screen·cmux 자체 화면 캡처로 배치와 안내/대기를 확인했다. 기존 창은 보존했고 AI worker를 기동하지 않았다. 패널 생성은 모델/권한 로드·독립 검토·자동 팀 실행 완료가 아니다.
+- 실제 변경: 분석·작업 카드·본 최신 관측만 작성. 팀 설정·큐·계약·제품 코드는 유지했다. 문서 링크/공백과 cmux 최종 조회 결과는 작업 카드에 기록한다.
+- 미실행: 제품/품질/DB 검사, 독립 검토, 새 모델 세션/권한 프로브, 계좌/API·주문·자금·Slack, commit/push/merge. 다음 제품 작업은 사용자 개발 재개 요청 후 Q27 보존분과 P2부터 범위를 고정한다.
+
+## 2026-10-29 main 통합 요청 — 당시 기록
+
+**당시 시도: PR #1 준비 후 main 머지가 자동 승인 심사에서 실행 전에 거부되어 명시 승인을 기다렸다. 이후 로컬 병합 확인은 바로 위 최신 관측을 따른다. 자동매매 개발 보류는 유지한다.**
 
 사용자가 보존된 작업의 main 머지를 요청했다. [PR #1](https://github.com/bocopile/QuantHarbor/pull/1)로 `codex/arc-contracts`를 `main`에 squash merge하는 작업을 수행한다. 이 문서는 머지 대상에 포함되는 사전 인계이며 실제 완료 여부·통합 SHA는 PR의 merged 상태와 Git 이력을 기준으로 확인한다. [작업 카드](tasks/GIT-main-merge-2026-10-29.md).
 

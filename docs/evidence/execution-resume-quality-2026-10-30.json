@@ -1,0 +1,79 @@
+{
+  "task": "Q27",
+  "scope": "final_worktree_public_candidates_and_quality_unit_tests",
+  "all578_inputs_unchanged": true,
+  "input_files": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f",
+    "tests/product/test_execution_financial.py": "caa3bec7c8637827c55ef3ddf6a8d891f73cc38a6a1ef8989567009e2672c1e5"
+  },
+  "initial_execution": {
+    "public-candidates": {
+      "command": [
+        "python3.13",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.041
+    },
+    "quality-unittests": {
+      "command": [
+        "python3.13",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/quality",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 4.284
+    }
+  },
+  "corrected_execution": {
+    "public-candidates": {
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "scripts/check_quality.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.289,
+      "report": {
+        "scope": "Q15_public_candidates_only",
+        "result": "pass",
+        "files_checked": 578,
+        "findings": [],
+        "excludes": "ignored_private_files;git_history;complete_secret_or_vulnerability_audit;remote_CI"
+      }
+    },
+    "quality-unittests": {
+      "command": [
+        "python3.13",
+        "-I",
+        "-S",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/quality",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 4.282,
+      "tests_run": 87,
+      "passed": 87
+    }
+  },
+  "root_cause_of_initial_failures": "Root omitted required -I -S flags; CLI bootstrap denied and two mocked paper-storage success-path tests returned before intended signal handling. No runtime or test change.",
+  "q27_complete": false
+}
