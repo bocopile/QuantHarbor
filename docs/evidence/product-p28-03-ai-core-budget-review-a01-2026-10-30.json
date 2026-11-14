@@ -1,0 +1,36 @@
+{
+  "run_id": "P28-03-ai-core-budget-general-a01",
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 380.325,
+  "findings": [
+    {
+      "id": "FUP-P28-016",
+      "severity": "P2",
+      "title": "public factory/예약 준비를 포함한 단일 deadline 결속",
+      "file": "src/quantharbor/adapters/synthetic_investment_ai.py",
+      "line": 51
+    },
+    {
+      "id": "FUP-P28-017",
+      "severity": "P2",
+      "title": "잔액 조회의 겹치는 정책 window 결속 누락",
+      "file": "src/quantharbor/adapters/product_ai.py",
+      "line": 893
+    }
+  ],
+  "source_sha256": {
+    "tests/product/test_product_ai.py": "24cda6f8234a49a9feee293bcb5fadc2123772cb5e350f8f978a8c77ebeb75f9",
+    "tests/product/test_product_ai_core.py": "cbe81879f117b6ba8a6b16e611535d006499010fc57f665ccb59e7f57f990c16",
+    "src/quantharbor/adapters/product_ai.py": "466bceab26006a86217e31cda67bb5a10b9c27a9b4a628120c1c8a07d8105190",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "d8cbec9760cff9fd04c1f48c83dc908179f4a25071d5a96f3e57212cf9b820f5"
+  },
+  "input_unchanged": true,
+  "reviewer_execution": "read_only_no_tests",
+  "NOT_RUN": [
+    "actual_PostgreSQL",
+    "full_suite",
+    "client_bridge",
+    "future_finish_proof"
+  ]
+}

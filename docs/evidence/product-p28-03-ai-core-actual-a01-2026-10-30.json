@@ -1,0 +1,92 @@
+{
+  "run_id": "P28-03-ai-core-actual-a01",
+  "status": "FAIL",
+  "checks": [
+    "actual_exact_factory_reads_existing_v2_history_without_budget_reset",
+    "actual_reserve_duplicate_payload_conflict_shared_facade_live_reservation_preserved",
+    "actual_cancel_releases_cost_and_closing_hold_without_result_marker",
+    "actual_two_facades_same_attempt_one_new_one_replay_one_budget_charge",
+    "actual_reserve_COMMIT_ack_loss_exact_readback_no_write_replay",
+    "actual_unconnected_dispatch_execute_source_and_client_zero"
+  ],
+  "actual_synthetic_PostgreSQL": true,
+  "source_sha256": {
+    "tests/product/test_product_ai.py": "24cda6f8234a49a9feee293bcb5fadc2123772cb5e350f8f978a8c77ebeb75f9",
+    "tests/product/test_product_ai_core.py": "cbe81879f117b6ba8a6b16e611535d006499010fc57f665ccb59e7f57f990c16",
+    "src/quantharbor/adapters/product_ai.py": "466bceab26006a86217e31cda67bb5a10b9c27a9b4a628120c1c8a07d8105190",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "d8cbec9760cff9fd04c1f48c83dc908179f4a25071d5a96f3e57212cf9b820f5"
+  },
+  "core_bridge_scope": "2b-2a_only",
+  "q27_complete": false,
+  "product_complete": false,
+  "elapsed_seconds": 23.132,
+  "error_type": "ContractError",
+  "reason": "actual_core_check_failed",
+  "trace_symbols": [
+    {
+      "file": "ai-core-proof-a01.py",
+      "function": "<module>",
+      "line": 103
+    },
+    {
+      "file": "synthetic_investment_ai.py",
+      "function": "reserve",
+      "line": 327
+    },
+    {
+      "file": "synthetic_investment_ai.py",
+      "function": "_product_call",
+      "line": 59
+    },
+    {
+      "file": "product_ai.py",
+      "function": "_core_call",
+      "line": 849
+    },
+    {
+      "file": "product_ai.py",
+      "function": "_transition",
+      "line": 808
+    },
+    {
+      "file": "synthetic_investment_ai.py",
+      "function": "reserve",
+      "line": 387
+    },
+    {
+      "file": "<string>",
+      "function": "__init__",
+      "line": 18
+    },
+    {
+      "file": "investment_ai.py",
+      "function": "__post_init__",
+      "line": 101
+    },
+    {
+      "file": "investment_ai.py",
+      "function": "checked",
+      "line": 93
+    },
+    {
+      "file": "investment_ai.py",
+      "function": "check",
+      "line": 58
+    }
+  ],
+  "input_unchanged": true,
+  "cleanup": "own_product_stopped_data_preserved",
+  "data_preserved": true,
+  "timed_out": false,
+  "NOT_RUN": [
+    "dispatched_known_settled_recovery_SQL_fault_fixture",
+    "closing_capacity_saturation",
+    "actual_query_execute_client_processed_bridge",
+    "maximum_payload_scale",
+    "whole_product_integration",
+    "browser",
+    "15minute_slot"
+  ],
+  "root_diagnosis": "failed at fifth attempt for the same request: domain sequence bound4; first restart cancellation checks had passed before this fixture error",
+  "correction": "use a distinct request identity for the post-restart independent reservation; preserve sequence bound"
+}

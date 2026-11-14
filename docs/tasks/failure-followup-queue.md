@@ -2,7 +2,7 @@
 
 2026-10-30 · 정본 [JSON](failure-followup-queue.json). 원래계획우선·영향받는통합/완료관문유지.
 
-현재 28개: diagnosing1·queued7·resolved20.
+현재 31개: diagnosing1·awaiting_retest3·queued7·resolved20.
 
 | ID | 종류 | 상태 | 작업 | 차단 범위 |
 |---|---|---|---|---|
@@ -34,5 +34,8 @@
 | FUP-Q27-012 | validation_gap | queued | 만료 cost rule·classification의 실제 시간가드 거부 근거 | Q27:local, P29-01:integration |
 | FUP-Q27-013 | validation_gap | queued | owner SQL cross-account/FK·enum·negative·행version 독립 거부 | Q27:local, P29-01:integration |
 | FUP-Q27-014 | validation_gap | queued | 8MiB 이내 서로다른 전체 해소refs129개의 실제 count 가드 | Q27:local, P29-01:integration |
+| FUP-P28-015 | test_fixture_or_expectation | awaiting_retest | AI 예산 복구 신규시험의 초기 fixture·SQL 기대값 실패 인계 | P28-03:internal2b-2a:acceptance |
+| FUP-P28-016 | product_defect | awaiting_retest | public factory/예약 준비를 포함한 단일 deadline 결속 | P28-03:internal2b-2a:acceptance |
+| FUP-P28-017 | product_defect | awaiting_retest | 잔액 조회의 겹치는 정책 window 결속 누락 | P28-03:internal2b-2a:acceptance |
 
-고정40관측보강6건은제품결함재현과구분한다. 전체836/86 수거는완료했으나Q27최종수용은별도다. 자동배정없음.
+고정40관측보강/초기시험오류/실제제품결함을구분한다. 개별후속해결과상위완료는별도다. 자동배정없음.
