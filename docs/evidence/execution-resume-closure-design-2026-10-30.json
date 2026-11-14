@@ -1,0 +1,26 @@
+{
+  "run_id": "Q27-02-closure-design-a01",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "profile": "qh_review",
+  "parent_exit": {
+    "run_id": "Q27-02-closure-design-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 207.861
+  },
+  "all578_inputs_unchanged": true,
+  "classification": {
+    "intentional_unsupported": 2,
+    "implemented_evidence_pending": 5,
+    "independent_proof_gap": 1
+  },
+  "actual_runtime_defect_confirmed": false,
+  "required_supplemental_evidence": [
+    "actual_DB_earlier_cumulative_revision_with_successor",
+    "actual_DB_positive_cost_to_zero_revision",
+    "actual_DB_settled_trade_correction_dependency",
+    "full_storage_row_index_bytes_state_copies_owner_attribution_independent_oracle"
+  ],
+  "q27_complete": false
+}

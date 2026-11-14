@@ -98,6 +98,54 @@ class PublicRepositoryTests(unittest.TestCase):
         self.assertEqual(quality.inspect_repository(self.root)["result"], "pass")
         self.assertFalse(marker.exists())
 
+    def test_public_html_is_read_as_text_without_execution_or_fetch(self):
+        path = "docs/product/synthetic.html"
+        content = ('<!doctype html><html lang="ko"><meta charset="utf-8">'
+                   '<title>합성 미리보기</title><style>body { color: navy; }</style>'
+                   '<h1>합성 자료</h1><details><summary>근거</summary>정적 예시</details>'
+                   '<script>throw new Error("SYNTHETIC_MUST_NOT_EXECUTE");</script>'
+                   '<img src="https://synthetic.invalid/must-not-fetch" alt="합성 자료">'
+                   '</html>')
+        put(self.root, path, content)
+        original_read = quality._read_public
+        original_popen = subprocess.Popen
+        read_paths = []
+
+        def read(fd, name):
+            read_paths.append(name)
+            return original_read(fd, name)
+
+        def git_only(command, *args, **kwargs):
+            self.assertEqual(Path(command[0]).name, "git", "candidate_content_must_not_execute")
+            return original_popen(command, *args, **kwargs)
+
+        # HTML도 실행/렌더링하지 않는 텍스트 감사다. 자원 참조는 fetch하지 않는다.
+        with patch.object(quality, "_read_public", side_effect=read), \
+                patch.object(subprocess, "Popen", side_effect=git_only), \
+                patch("socket.socket", side_effect=AssertionError("candidate_must_not_connect")), \
+                patch("socket.create_connection", side_effect=AssertionError("candidate_must_not_connect")):
+            report = quality.inspect_repository(self.root)
+        self.assertEqual(report["result"], "pass")
+        self.assertIn(path, read_paths)
+        self.assertEqual((self.root / path).read_text(), content)
+
+    def test_html_embedded_secret_shapes_fail_and_cli_redacts_raw_values(self):
+        values = ["gh" + "p_" + "A" * 36, "sk-" + "proj-" + "B" * 48]
+        path = "docs/product/embedded.html"
+        put(self.root, path, '<!doctype html><html><title>합성</title><body>'
+            '<!-- ' + values[0] + ' --><p data-value="' + values[1] + '">합성</p></body></html>')
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with patch.object(quality, "ROOT", self.root), redirect_stdout(stdout), redirect_stderr(stderr):
+            result = quality.main([])
+        report = json.loads(stdout.getvalue())
+        self.assertEqual(result, 1)
+        self.assertEqual(report["result"], "fail")
+        self.assertTrue({"secret_github_token", "secret_api_token"} <= reasons(report))
+        self.assertTrue(all(item["path"] == path for item in report["findings"]))
+        self.assertEqual(stderr.getvalue(), "")
+        for value in values:
+            self.assertNotIn(value, stdout.getvalue() + stderr.getvalue())
+
     def test_ignored_private_and_operational_files_are_never_opened(self):
         put(self.root, "private/not-public.txt", "DO_NOT_READ_SYNTHETIC_CANARY")
         put(self.root, "config/connections.local.yaml", "DO_NOT_READ_SYNTHETIC_CANARY")

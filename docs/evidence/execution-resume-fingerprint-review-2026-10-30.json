@@ -1,0 +1,16 @@
+{
+  "run_id": "Q27-07-fingerprint-review-a03",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "profile": "qh_review",
+  "parent_exit": {
+    "run_id": "Q27-07-fingerprint-review-a03",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 177.536
+  },
+  "result": "no_findings_in_a04_scope",
+  "all578_inputs_unchanged": true,
+  "tests_rerun_by_reviewer": false,
+  "q27_complete": false
+}

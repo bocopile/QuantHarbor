@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="dark">
+  <title>QuantHarbor · 합성 투자 현황 미리보기</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0e1725;
+      --nav: #0b1320;
+      --panel: #152236;
+      --panel-raised: #1a2b40;
+      --line: #314258;
+      --text: #edf2f7;
+      --muted: #b3c1d1;
+      --teal: #91ddd0;
+      --teal-bg: #183b3b;
+      --amber: #f1cc8a;
+      --amber-bg: #3c3225;
+      --red: #ffb4b4;
+      --red-bg: #412a34;
+      --slate-bg: #29374a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 1.5rem; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    a { color: var(--teal); text-underline-offset: .25em; }
+    a:hover { color: #c4fff1; }
+    a:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid #b0f4e6;
+      outline-offset: 5px;
+      border-radius: 4px;
+    }
+    .skip-link { position: fixed; top: -6rem; left: 1rem; z-index: 10; padding: .7rem 1rem; background: var(--nav); }
+    .skip-link:focus { top: 1rem; }
+    .sidebar { position: fixed; inset: 0 auto 0 0; width: 244px; padding: 2rem 1.25rem; background: var(--nav); border-right: 1px solid var(--line); overflow-y: auto; }
+    .brand { display: block; color: var(--text); text-decoration: none; font-size: 1.35rem; font-weight: 750; letter-spacing: -.04em; }
+    .brand span { color: var(--teal); }
+    .brand-note { color: var(--muted); font-size: .78rem; margin: .2rem 0 2.2rem; }
+    .nav-label, .eyebrow { color: var(--teal); font-size: .73rem; font-weight: 750; letter-spacing: .13em; }
+    nav ol { list-style: none; padding: 0; margin: .7rem 0 2rem; }
+    nav li { margin: .3rem 0; }
+    nav a { display: flex; gap: .75rem; align-items: center; padding: .85rem .7rem; color: var(--muted); text-decoration: none; border: 1px solid transparent; border-radius: 8px; font-size: .86rem; }
+    nav a:hover, nav a:focus-visible { background: var(--panel); color: var(--text); border-color: var(--line); }
+    .nav-num { font-size: .72rem; color: var(--teal); font-variant-numeric: tabular-nums; }
+    .sidebar-note { border-top: 1px solid var(--line); padding-top: 1.1rem; font-size: .78rem; color: var(--muted); }
+    .sidebar-note strong { display: block; color: var(--text); margin-bottom: .3rem; }
+    .sidebar-note p { margin: .6rem 0; }
+    main { margin-left: 244px; max-width: 1590px; padding: 1.5rem clamp(1.25rem, 3.5vw, 4rem) 3rem; }
+    .preview-banner { background: var(--teal-bg); border: 1px solid #39746e; border-radius: 8px; padding: .7rem 1rem; color: #c5f3e9; font-size: .84rem; font-weight: 650; }
+    .topline, .section-heading, .card-heading, .hero-heading { display: flex; gap: 1rem; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .topline { margin: 1.6rem 0 .5rem; color: var(--muted); font-size: .8rem; }
+    .context { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+    .context span + span { border-left: 1px solid var(--line); padding-left: .6rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.3; margin: .6rem 0; letter-spacing: -.055em; }
+    h2 { font-size: 1.4rem; line-height: 1.4; margin: 0; letter-spacing: -.035em; }
+    h3 { font-size: 1rem; margin-bottom: .7rem; }
+    .intro { color: var(--muted); max-width: 54rem; margin: .5rem 0 1.5rem; }
+    .readonly-label { border: 1px solid var(--line); border-radius: 6px; padding: .45rem .7rem; color: var(--muted); font-size: .78rem; }
+    .snapshot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 1rem 0; margin: 0; }
+    dt { color: var(--muted); font-size: .77rem; }
+    dd { margin: .25rem 0 0; font-size: .83rem; }
+    section { margin-top: 3.5rem; scroll-margin-top: 1.5rem; }
+    section:target > .section-heading { border-left: 3px solid var(--teal); padding-left: 1rem; }
+    .section-heading { margin-bottom: 1rem; }
+    .section-heading p { color: var(--muted); margin: .35rem 0 0; font-size: .86rem; }
+    .section-index { color: var(--teal); font-size: .73rem; font-weight: 700; display: block; margin-bottom: .25rem; letter-spacing: .12em; }
+    .pill { display: inline-block; padding: .2rem .6rem; border-radius: 5px; font-size: .73rem; font-weight: 650; line-height: 1.6; vertical-align: middle; }
+    .good { color: var(--teal); background: var(--teal-bg); }
+    .warn { color: var(--amber); background: var(--amber-bg); }
+    .bad { color: var(--red); background: var(--red-bg); }
+    .neutral { color: #d0dceb; background: var(--slate-bg); }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .85rem; margin-bottom: 1rem; }
+    .metric { border: 1px solid var(--line); border-radius: 10px; padding: 1.15rem; background: var(--panel); }
+    .metric.primary { background: #19353b; border-color: #4c807d; }
+    .metric dt { font-size: .82rem; color: var(--muted); }
+    .metric dd { font-size: clamp(1.55rem, 2.4vw, 2rem); font-weight: 700; line-height: 1.35; font-variant-numeric: tabular-nums; letter-spacing: -.03em; }
+    .metric dd small { font-size: .7rem; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+    .metric p { font-size: .74rem; color: var(--muted); margin: .6rem 0 0; }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1rem; align-items: start; }
+    .grid.equal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 1.25rem; }
+    .card + .card.stacked { margin-top: 1rem; }
+    .card-heading { margin-bottom: .65rem; }
+    .card-heading h3 { margin: 0; }
+    .caption, .note { color: var(--muted); font-size: .78rem; }
+    .note { margin: .8rem 0 0; }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: .82rem; }
+    caption { text-align: left; padding-bottom: .7rem; color: var(--muted); font-size: .77rem; }
+    th, td { padding: .8rem .4rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-size: .75rem; font-weight: 550; }
+    th[scope="row"] { color: var(--text); font-size: .82rem; }
+    tbody tr:last-child > * { border-bottom: 0; }
+    td small { display: block; color: var(--muted); margin-top: .25rem; font-size: .74rem; }
+    .number { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .key-values { display: grid; grid-template-columns: minmax(6rem, .8fr) minmax(0, 1.5fr); gap: .65rem 1rem; margin: 0; }
+    .key-values dt, .key-values dd { font-size: .82rem; margin: 0; }
+    .callout { border-left: 3px solid var(--amber); background: #282a2e; padding: .9rem 1rem; border-radius: 0 6px 6px 0; font-size: .82rem; margin-top: 1rem; }
+    .callout strong { color: var(--amber); display: block; margin-bottom: .25rem; }
+    .callout p { margin: 0; }
+    .callout.danger { background: #2e2530; border-color: var(--red); }
+    .callout.danger strong { color: var(--red); }
+    .trace { display: flex; padding: 0; list-style: none; gap: .5rem; flex-wrap: wrap; margin: 1rem 0; }
+    .trace li { flex: 1 1 7rem; border: 1px solid var(--line); border-radius: 6px; padding: .65rem .75rem; font-size: .75rem; background: var(--panel); }
+    .trace span { display: block; color: var(--muted); font-size: .7rem; margin-bottom: .2rem; }
+    .evidence { margin: 0; padding-left: 1.2rem; font-size: .85rem; }
+    .evidence li { margin: .65rem 0; }
+    .evidence small { display: block; color: var(--muted); margin-top: .15rem; }
+    details { border-top: 1px solid var(--line); margin-top: 1rem; padding-top: .85rem; font-size: .82rem; }
+    summary { cursor: pointer; color: var(--teal); padding: .15rem 0; }
+    details[open] summary { margin-bottom: .8rem; }
+    details p:last-child { margin-bottom: 0; }
+    .scenario { border: 1px dashed #6e687a; border-radius: 8px; padding: 1rem; margin-top: 1rem; background: #1d2232; }
+    .scenario h3 { font-size: .88rem; }
+    .scenario p { font-size: .82rem; margin: .5rem 0 0; }
+    .timeline { list-style: none; padding: 0; margin: .75rem 0 0; }
+    .timeline li { border-left: 2px solid var(--line); padding: 0 0 1rem 1rem; font-size: .82rem; }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline time { display: block; color: var(--muted); font-size: .73rem; }
+    footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.2rem; color: var(--muted); font-size: .77rem; }
+    footer p { margin: .5rem 0; }
+    @media (min-width: 1800px) { main { margin-right: auto; } }
+    @media (max-width: 1180px) {
+      .sidebar { width: 214px; padding-inline: 1rem; }
+      main { margin-left: 214px; padding-inline: 1.5rem; }
+      .grid, .grid.equal { grid-template-columns: minmax(0, 1fr); }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .sidebar { position: static; width: auto; padding: 1rem; border-right: 0; border-bottom: 1px solid var(--line); }
+      .brand-note { margin-bottom: .9rem; }
+      .nav-label, .sidebar-note { display: none; }
+      nav ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem; margin: 0; }
+      nav li { margin: 0; }
+      nav a { padding: .55rem .6rem; font-size: .77rem; background: var(--panel); gap: .45rem; }
+      main { margin: 0; padding: 1rem; }
+      .preview-banner { font-size: .78rem; }
+      .snapshot { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
+      section { margin-top: 2.5rem; }
+      .card { padding: 1rem; }
+      .metric { padding: .85rem; }
+      .metric dd { font-size: 1.6rem; }
+      .key-values { grid-template-columns: minmax(5rem, .7fr) minmax(0, 1.5fr); gap: .6rem; }
+      th, td { padding-inline: .25rem; }
+    }
+    @media (prefers-reduced-motion: no-preference) { a, summary { transition: color .15s ease; } }
+    @media print {
+      .sidebar, .skip-link { display: none; }
+      main { margin: 0; max-width: none; padding: 0; }
+      .card, .metric { break-inside: avoid; }
+      details { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <aside class="sidebar">
+    <a class="brand" href="#main">Quant<span>Harbor</span></a>
+    <p class="brand-note">투자 판단과 운영의 기록</p>
+    <p class="nav-label">계좌 A · 합성 환경</p>
+    <nav aria-label="투자 현황의 여섯 영역">
+      <ol>
+        <li><a href="#assets"><span class="nav-num">01</span> 자산·현금·위험</a></li>
+        <li><a href="#analysis"><span class="nav-num">02</span> 분석·근거·반론</a></li>
+        <li><a href="#candidates"><span class="nav-num">03</span> 후보·승인 이력</a></li>
+        <li><a href="#orders"><span class="nav-num">04</span> 주문·체결·대사</a></li>
+        <li><a href="#investment-ai"><span class="nav-num">05</span> 투자 AI 작업</a></li>
+        <li><a href="#operations"><span class="nav-num">06</span> 운영·연결·복원</a></li>
+      </ol>
+    </nav>
+    <div class="sidebar-note">
+      <strong>읽고, 근거를 확인하는 화면</strong>
+      <p>링크는 이 문서 안의 상세로 이동합니다. 금액·승인·주문은 변경하지 않습니다.</p>
+      <p>SYN-A와 계좌 A는 모두 가공 이름입니다.</p>
+      <a href="#reading-guide">상태와 금융 행동 안내</a>
+    </div>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <div class="preview-banner">설계 미리보기 · 합성 예시 · 실제 조회/금융 제어 없음</div>
+    <header>
+      <div class="topline">
+        <div class="context"><span>합성 환경</span><span>표시용 계좌 A</span><span>원통화별 표시</span></div>
+        <span>화면 설계 v1 · 2026-10-30</span>
+      </div>
+      <div class="hero-heading">
+        <h1>계좌 A의 투자 현황</h1>
+        <span class="readonly-label">읽기 전용 · 고정된 예시</span>
+      </div>
+      <p class="intro">가용 현금에서 판단의 근거, 주문 이후의 확인까지. 같은 합성 기록을 따라가며 현재 상태와 확인할 일을 살펴봅니다.</p>
+      <dl class="snapshot">
+        <div><dt>자료 기준시점 · 거래일</dt><dd><time datetime="2024-03-08T14:31:11Z">2024-03-08 14:31:11 UTC</time><br>미국 동부 09:31:11 EST · 거래일 03-08</dd></div>
+        <div><dt>원천 · 버전 · 확정 여부</dt><dd>합성 원장 v1 · 합성 조회 v1<br>현금·체결: 합성 확인값 / 분석·보고: 잠정</dd></div>
+        <div><dt>조회시각 예시 · 통화</dt><dd><time datetime="2024-03-08T14:31:12Z">2024-03-08 14:31:12 UTC</time><br>USD · KRW 별도 / 검증된 환율 없음</dd></div>
+      </dl>
+      <p class="note">모든 시각·수치·상태는 고정된 합성 예시입니다. 현재 시장이나 실제 계좌 상태를 나타내지 않으며, 열기·새로고침으로 자료나 승인 유효기간이 갱신되지 않습니다.</p>
+    </header>
+
+    <section id="assets" aria-labelledby="assets-title">
+      <div class="section-heading">
+        <div><span class="section-index">01 / ACCOUNT</span><h2 id="assets-title">자산·현금·위험</h2><p>잔고와 예약을 나누어, 지금 사용할 수 있는 범위를 확인합니다.</p></div>
+        <span class="pill good">합성 대사 · 일치</span>
+      </div>
+      <dl class="metrics">
+        <div class="metric"><dt>원장 현금</dt><dd>900.00 <small>USD</small></dd><p>체결 반영 후 · 확인됨</p></div>
+        <div class="metric"><dt>예약 부담</dt><dd>202.00 <small>USD</small></dd><p>미체결 2주와 비용 상한</p></div>
+        <div class="metric"><dt>현금 하한</dt><dd>100.00 <small>USD</small></dd><p>합성 정책값 · 운영 기본값 아님</p></div>
+        <div class="metric primary"><dt>사용 가능</dt><dd>598.00 <small>USD</small></dd><p>다음 후보 반영 전 · 확인됨</p></div>
+      </dl>
+      <div class="grid">
+        <article class="card">
+          <h3>통화별 현금의 구성</h3>
+          <div class="table-wrap" role="region" aria-label="현금 구성 표, 좁은 화면에서 가로 스크롤 가능" tabindex="0">
+            <table>
+              <caption>합성 원장 v1 · 조회 v1 · 기준 14:31:11 UTC · 다음 후보 반영 전</caption>
+              <thead><tr><th scope="col">항목</th><th scope="col" class="number">금액</th><th scope="col">통화</th><th scope="col">상태</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">원장 현금</th><td class="number">900.00</td><td>USD</td><td>확인됨</td></tr>
+                <tr><th scope="row">증권사 매수가능금액</th><td class="number">900.00</td><td>USD</td><td>합성 완전 조회</td></tr>
+                <tr><th scope="row">주문 예약 부담</th><td class="number">202.00</td><td>USD</td><td>유지 중</td></tr>
+                <tr><th scope="row">조회에 미반영된 예약</th><td class="number">202.00</td><td>USD</td><td>위 예약과 동일</td></tr>
+                <tr><th scope="row">추가 차감액</th><td class="number">0.00</td><td>USD</td><td><span class="pill neutral">정상 0 · 확인됨</span></td></tr>
+                <tr><th scope="row">현금 하한</th><td class="number">100.00</td><td>USD</td><td>합성 정책 v1</td></tr>
+                <tr><th scope="row">사용 가능</th><td class="number">598.00</td><td>USD</td><td>확인됨</td></tr>
+                <tr><th scope="row">원화 현금</th><td class="number">—</td><td>KRW</td><td><span class="pill warn">자료 누락 · 미확인</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">미반영 예약은 같은 예약의 조회 반영 여부입니다. 별도 부담으로 두 번 차감하지 않습니다. 금액은 고정된 예시 문자열이며 이 화면에서 계산하지 않습니다.</p>
+        </article>
+        <div>
+          <article class="card">
+            <div class="card-heading"><h3>보유 SYN-A</h3><span class="pill good">1주 · 확인됨</span></div>
+            <dl class="key-values">
+              <dt>종목</dt><dd>SYN-A · 가공 종목</dd>
+              <dt>분류 예시</dt><dd>미국 · 합성 거래소 · 개별 주식 · USD</dd>
+              <dt>보유 원천</dt><dd>합성 체결 1건 · 원장 v1</dd>
+              <dt>미체결</dt><dd>2주 · <a href="#orders">주문과 예약 보기</a></dd>
+              <dt>지원 범위</dt><dd>합성 사례만 표시. 실제 시장·거래소·상품·환경별 지원은 미확인</dd>
+            </dl>
+          </article>
+          <div class="callout">
+            <strong>원화 자료를 먼저 확인해야 합니다</strong>
+            <p>KRW 누락은 0원이 아닙니다. 원화 잔고가 필요한 위험 증가 주문은 보류합니다. 검증된 환율이 없어 USD와 합산하지 않습니다.</p>
+          </div>
+          <details>
+            <summary>환전·위험 판정 안내</summary>
+            <p>환전은 사용자가 별도로 수행합니다. 완료 알림만으로 가용금이 늘지 않으며, 새 현금 조회와 대사로 반영 여부를 확인해야 합니다.</p>
+            <p>분류·지원 여부가 불명확한 ETF나 필수 한도가 미설정인 경우 실행 가능으로 표시하지 않습니다. 합성 현금 예시가 실제 운용 준비 완료를 뜻하지 않습니다.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="analysis" aria-labelledby="analysis-title">
+      <div class="section-heading">
+        <div><span class="section-index">02 / RESEARCH</span><h2 id="analysis-title">분석·근거·반론</h2><p>결론과 함께 출처, 가정, 반대 근거를 읽습니다.</p></div>
+        <span class="pill warn">잠정 · 후보 검토용</span>
+      </div>
+      <article class="card">
+        <div class="card-heading"><h3>AN-SYN-01 · SYN-A 분석</h3><a href="#analysis-evidence">근거 상세로 이동</a></div>
+        <dl class="key-values">
+          <dt>분석 기준</dt><dd><time datetime="2024-03-08T14:31:11Z">2024-03-08 14:31:11 UTC</time> · 미국 동부 09:31:11 EST</dd>
+          <dt>입력·전략·정책</dt><dd>합성 문서 A v1 · 가격 스냅샷 1 · 합성 전략 v1 · synthetic-policy-v1</dd>
+          <dt>관련 후보</dt><dd><a href="#candidates">C-SYN-01 · 버전 1</a></dd>
+          <dt>종합 판정</dt><dd>근거 확인이 필요한 검토용 분석 · 승인·제출 권한 없음</dd>
+        </dl>
+      </article>
+      <div class="grid equal" id="analysis-evidence" style="margin-top: 1rem;">
+        <article class="card">
+          <h3>근거와 가정</h3>
+          <ul class="evidence">
+            <li>합성 문서 A · 버전 1<small>발표·수집 시각 예시: 2024-03-08 14:30:00 / 14:30:10 UTC</small></li>
+            <li>가격 스냅샷 1 · SYN-A<small>관측 14:31:11 UTC · 합성 자료 · 실제 시세 아님</small></li>
+            <li>가정: 자료의 비교 기준이 동일함<small>거래량이 빠져 있어 이 가정을 확정할 수 없음</small></li>
+          </ul>
+          <details>
+            <summary>출처·사용 권리·자료 시점</summary>
+            <p>이 문서 안의 가공 자료만 사용했습니다. 실제 공급자 자료의 수집·저장·AI 제공 권리는 별도 확인 대상입니다. 분석 간격이 자료의 신선도 허용범위를 정하지 않습니다.</p>
+          </details>
+        </article>
+        <article class="card">
+          <div class="card-heading"><h3>반론과 미확인</h3><span class="pill warn">거래량 자료 누락</span></div>
+          <p>가격만으로 유동성을 판단할 수 없습니다. 반대 근거가 해결되기 전, 이 분석에 의존하는 위험 증가 후보를 검증 완료로 승격하지 않습니다.</p>
+          <div class="scenario">
+            <h3>별도 상태 예시 · 오래된 자료</h3>
+            <span class="pill warn">오래된 자료 · 실행 입력 제외</span>
+            <p>가격 관측 2024-03-07 21:00 UTC, 확인 기준 03-08 14:31:11 UTC. 신선도 허용범위 초과로 판정된 예시입니다. 과거 연구에는 당시 자료임을 표시하고, 현재 값으로 대체하지 않습니다.</p>
+          </div>
+        </article>
+      </div>
+      <p class="note">금액·원장·위험 판정은 정해진 계산과 검사로 확인해야 합니다. AI의 동의나 분석 결과만으로 승인·주문 상태가 바뀌지 않습니다. <a href="#investment-ai">투자 AI 작업의 출력 검토 보기</a></p>
+    </section>
+
+    <section id="candidates" aria-labelledby="candidates-title">
+      <div class="section-heading">
+        <div><span class="section-index">03 / DECISIONS</span><h2 id="candidates-title">후보·승인 이력</h2><p>무엇을 승인했는지, 어느 범위까지 유효했는지 확인합니다.</p></div>
+        <span class="pill neutral">승인 소비됨 · 재사용 불가</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-heading"><h3>C-SYN-01 · 버전 1</h3><span class="pill neutral">부분 변경</span></div>
+          <dl class="key-values">
+            <dt>대상·행동</dt><dd>합성 환경 · 계좌 A · SYN-A 매수 3주</dd>
+            <dt>정확한 조건</dt><dd>지정가 100.00 USD · 비용 상한 2.00 USD</dd>
+            <dt>최대 부담</dt><dd>302.00 USD · 후보 생성 당시의 상한</dd>
+            <dt>정책·의도</dt><dd>synthetic-policy-v1 · I-SYN-01</dd>
+            <dt>승인 범위</dt><dd>이 후보·버전·행동·계좌·환경에만 결속. 다른 후보에 사용할 수 없음</dd>
+            <dt>유효 범위 예시</dt><dd>2024-03-08 14:30:00–14:31:00 UTC · 한 번 소비됨</dd>
+            <dt>현재 연결</dt><dd><a href="#orders">부분체결 1주 / 미체결 2주</a></dd>
+          </dl>
+          <div class="callout">
+            <strong>새 후보가 기존 주문을 대체하지 않습니다</strong>
+            <p>새 후보 C-SYN-02는 작성 대기입니다. 기존 승인·체결·미체결을 이어받거나 자동 취소하지 않습니다. 변경된 조건은 추가 검토와 별도 승인이 필요합니다.</p>
+          </div>
+          <details>
+            <summary>전체 목표와 부분 변경의 차이</summary>
+            <p>이 후보는 SYN-A만을 다루는 부분 변경입니다. 누락 종목을 청산하지 않습니다. 전체 목표에서는 누락의 의미까지 계약·승인 범위에 명시해야 하며 모호하면 보류합니다. 같은 의도의 중복 제출도 허용하지 않습니다.</p>
+          </details>
+        </article>
+        <article class="card">
+          <h3>승인 이력 · 합성 기록</h3>
+          <ol class="timeline">
+            <li><time datetime="2024-03-08T14:30:20Z">03-08 14:30:20 UTC</time><strong>C-SYN-01 v1 · 승인 기록</strong><br>표시용 승인자 A · 위 조건에만 유효</li>
+            <li><time datetime="2024-03-08T14:30:30Z">03-08 14:30:30 UTC</time><strong>승인 소비 · I-SYN-01에 결속</strong><br>소비는 증권사 접수·체결과 별개</li>
+          </ol>
+          <div class="scenario">
+            <h3>옛 승인 예시 · C-SYN-00</h3>
+            <span class="pill warn">만료 · 재사용 불가</span>
+            <p>만료시각 2024-03-08 14:30:00 UTC. 다시 열거나 새로고침해도 연장되지 않습니다.</p>
+          </div>
+          <details>
+            <summary>승인·철회와 보호된 로컬 CLI 안내</summary>
+            <p>이 화면에는 승인·철회 기능이 없습니다. 금융 행동은 별도의 인증된 보호 경로에서 수행해야 하며, 제품 사용자 명령과 연결 안내는 준비 중입니다.</p>
+            <p>철회가 제출 전에 확정되면 제출을 거부합니다. 이미 제출된 경우에는 철회 기록과 주문 상태를 따로 확인하고, 미체결 취소를 별도 권한으로 요청해야 합니다.</p>
+            <p>승인 후에도 제출 직전에 세션·정책·승인·현금·미체결·위험·시장 세션을 다시 확인해야 합니다.</p>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section id="orders" aria-labelledby="orders-title">
+      <div class="section-heading">
+        <div><span class="section-index">04 / EXECUTION RECORD</span><h2 id="orders-title">주문·체결·대사</h2><p>보낸 요청, 실제 체결, 원장 반영을 구분해 추적합니다.</p></div>
+        <span class="pill good">합성 조회 · 완전 / 대사 · 일치</span>
+      </div>
+      <ol class="trace" aria-label="동일 합성 주문의 추적 관계">
+        <li><span>후보</span><a href="#candidates">C-SYN-01 v1</a></li>
+        <li><span>승인</span>소비됨</li>
+        <li><span>의도 · 제출 시도</span>I-SYN-01 · 1회</li>
+        <li><span>주문</span>O-SYN-01 · 부분체결</li>
+        <li><span>원장 · 대사</span>v1 · 합성 일치</li>
+      </ol>
+      <div class="grid">
+        <article class="card">
+          <h3>체결과 잔량</h3>
+          <div class="table-wrap" role="region" aria-label="합성 주문 체결 표" tabindex="0">
+            <table>
+              <caption>SYN-A · 계좌 A · USD · 기준 2024-03-08 14:31:11 UTC</caption>
+              <thead><tr><th scope="col">기록</th><th scope="col" class="number">수량</th><th scope="col">가격·금액</th><th scope="col">상태</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">주문 수량</th><td class="number">3주</td><td>지정가 100.00 USD</td><td>접수됨</td></tr>
+                <tr><th scope="row">체결 F-SYN-01</th><td class="number">1주</td><td>체결가 100.00 USD</td><td>원장 v1 반영</td></tr>
+                <tr><th scope="row">미체결 잔량</th><td class="number">2주</td><td>예약 부담 202.00 USD</td><td>예약 유지</td></tr>
+                <tr><th scope="row">취소 요청</th><td class="number">—</td><td>해당 요청 없음</td><td>완전 조회 · 결과 없음</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">예약 202.00 USD는 잔량의 가격 부담 200.00 USD와 비용 상한 2.00 USD입니다. 체결된 1주는 현금 900.00 USD에 이미 반영되어 있습니다.</p>
+          <details>
+            <summary>대사와 보고 기준 보기</summary>
+            <p>합성 원장 v1과 합성 조회 v1의 주문·체결·보유·현금이 일치하는 예시입니다. 같은 체결을 중복 계상하지 않고, 재분석에는 기존 체결과 미체결을 함께 반영해야 합니다.</p>
+            <p>보고 예시 R-SYN-01은 원장 v1 기준의 잠정 보고입니다. 비용·정정 검토와 장 마감 대사가 끝나기 전 확정 보고로 승격하지 않습니다. <a href="#report-delivery">보고 전달 상태 보기</a></p>
+          </details>
+        </article>
+        <article class="card">
+          <h3>미체결과 위험을 읽는 법</h3>
+          <p>취소 요청과 취소 완료는 다릅니다. 취소가 대기 중이면 잔량이 체결될 수 있고 예약은 최종 상태 확인 전 유지됩니다.</p>
+          <p class="note">이 표의 주문에는 취소 요청이 없습니다. 아래 장애 사례는 같은 주문의 현재 상태가 아닌 별도 예시입니다.</p>
+          <div class="scenario">
+            <h3>별도 장애 예시 · 응답 유실</h3>
+            <span class="pill warn">접수 상태불명</span>
+            <span class="pill bad">동일 의도 재전송 차단</span>
+            <p>전송 후 접수 응답을 확인할 수 없습니다. 미접수나 실패로 단정하지 않고 주문 조회·대사를 먼저 확인합니다. 관련 신규 위험 증가 주문은 보류합니다.</p>
+          </div>
+          <p class="note">조회 실패도 주문 실패를 뜻하지 않습니다. 조회 재시도는 공급자 조건과 제한 안에서만 수행하며, 주문을 자동 재제출하지 않습니다.</p>
+          <a href="#reading-guide">중단·취소·철회·청산·재가동의 차이</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="investment-ai" aria-labelledby="investment-ai-title">
+      <div class="section-heading">
+        <div><span class="section-index">05 / INVESTMENT AI</span><h2 id="investment-ai-title">투자 AI 작업</h2><p>투자 분석 작업의 근거, 출력 검토와 보류 사유를 확인합니다.</p></div>
+        <span class="pill neutral">AI 공급자 미연결 · 실제 호출 없음</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>합성 출력 검토 · AN-SYN-01</h3>
+          <div class="table-wrap" role="region" aria-label="투자 AI 역할별 합성 작업" tabindex="0">
+            <table>
+              <caption>가공된 작업 기록 · 분석 기준 14:31:11 UTC · 입력 문서 A v1 / 가격 스냅샷 1</caption>
+              <thead><tr><th scope="col">역할</th><th scope="col">출력·근거</th><th scope="col">검토 상태</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">자료 검토</th><td>문서 A의 출처·시각 확인<small>실제 외부 자료 수집 없음</small></td><td><span class="pill warn">잠정</span></td></tr>
+                <tr><th scope="row">전략 분석</th><td>후보 검토용 가정 정리<small>분석이 주문 권한을 만들지 않음</small></td><td><span class="pill warn">미완료</span></td></tr>
+                <tr><th scope="row">위험 반론</th><td>거래량 누락·출처 충돌<small><a href="#analysis-evidence">반론 상세 확인</a></small></td><td><span class="pill bad">후보 승격 차단</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <details>
+            <summary>출력 검증과 실패 처리</summary>
+            <p>출처·종목·시간·통화·수치·필수 항목이 빠지거나 서로 충돌하면 부적합·미확인으로 보존합니다. 미완료 출력을 검증된 후보로 승격하지 않습니다.</p>
+            <p>금액·위험·원장 계산은 AI 응답과 별도로 검증해야 합니다. 재시도·모델 상향은 확정된 시간·횟수·비용 정책 안에서만 허용되며 무한 반복하지 않습니다.</p>
+          </details>
+        </article>
+        <article class="card">
+          <h3>연결과 예산</h3>
+          <dl class="key-values">
+            <dt>공급자</dt><dd><span class="pill neutral">미연결</span></dd>
+            <dt>모델 배치</dt><dd>미확정 · 활성 모델 없음</dd>
+            <dt>비용 정책</dt><dd><span class="pill warn">미설정</span></dd>
+            <dt>사용 비용</dt><dd>집계 없음 · 0원으로 추정하지 않음</dd>
+            <dt>호출·상향</dt><dd>정책 확정 전 실행 불가</dd>
+          </dl>
+          <div class="callout danger">
+            <strong>검증을 마치기 전에는 보류합니다</strong>
+            <p>여기에 표시한 역할은 투자 작업의 예시입니다. 공급자 가용성이나 금융 업무 성능 검증을 통과했다는 의미가 아닙니다.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="operations" aria-labelledby="operations-title">
+      <div class="section-heading">
+        <div><span class="section-index">06 / OPERATIONS</span><h2 id="operations-title">운영·연결·복원</h2><p>연결 준비와 보고 전달, 재가동 전 확인할 근거를 살펴봅니다.</p></div>
+        <span class="pill neutral">실제 시스템 미연결</span>
+      </div>
+      <div class="grid equal">
+        <article class="card">
+          <h3>연결·자료 준비</h3>
+          <dl class="key-values">
+            <dt>증권사</dt><dd><span class="pill neutral">미연결 · 실제 조회 없음</span></dd>
+            <dt>시장 자료</dt><dd>합성 문서·가격만 표시. 실제 신선도·완전성 미확인</dd>
+            <dt>필수 정책</dt><dd><span class="pill warn">미설정 · 준비 완료 아님</span></dd>
+            <dt>로컬 세션</dt><dd>비활성 · 조회 화면으로 연장되지 않음</dd>
+            <dt>분석 간격</dt><dd>활성 세션에서 기본 15분 · 현재 자동 실행 없음</dd>
+            <dt>다른 주기</dt><dd>수집·주문·리밸런싱·승인 만료는 각각 별도 조건</dd>
+            <dt>시장 시간</dt><dd>UTC·미국 동부 시각·거래일을 구분. 정규장 밖 제출 거부</dd>
+          </dl>
+          <div class="scenario">
+            <h3>별도 장애 예시 · 조회 실패</h3>
+            <span class="pill bad">조회 실패 · 현재 상태 미확인</span>
+            <p>기준 2024-03-08 14:31:11 UTC의 조회가 실패한 사례입니다. 과거 정상값을 현재 결과로 표시하지 않습니다. 주문 접수 상태는 별도로 확인하며, 무한 재시도하지 않습니다.</p>
+          </div>
+        </article>
+        <article class="card" id="report-delivery">
+          <div class="card-heading"><h3>보고와 전달은 별도 상태</h3><span class="pill neutral">외부 전송 미설정</span></div>
+          <dl class="key-values">
+            <dt>보고 예시</dt><dd>R-SYN-01 · 잠정 · 합성 원장 v1</dd>
+            <dt>기준</dt><dd>2024-03-08 거래일 · 14:31:11 UTC</dd>
+            <dt>정정 관계</dt><dd>원본 v1 · 정정본 없음</dd>
+            <dt>전달 결과</dt><dd>미연결 · 전송 시도 없음</dd>
+          </dl>
+          <details>
+            <summary>전달 실패·결과불명 시 확인할 일</summary>
+            <p>보고 전달 실패가 거래 실패를 뜻하지 않으며, 전달을 위해 거래를 다시 실행하지 않습니다. 보고 ID·중복 전달·정정 관계를 확인하고 전달 결과불명은 확인 전 자동 재전송하지 않습니다.</p>
+            <p>초기 로컬 모의에서는 경보 전달이 불가능하면 신규 제출을 중단하고, 확인 후 수동 재개해야 합니다.</p>
+          </details>
+        </article>
+      </div>
+      <article class="card stacked" style="margin-top: 1rem;">
+        <div class="card-heading"><h3>백업·업데이트·복원 근거</h3><span class="pill warn">복원 검증 미확인</span></div>
+        <dl class="key-values">
+          <dt>백업·복원시각</dt><dd>기록 없음 · 제품 통합 단계에서 확인 예정</dd>
+          <dt>버전·복원세대</dt><dd>미확인 · 이 화면의 설계 v1과 실제 설치 버전은 별개</dd>
+          <dt>업데이트·복귀</dt><dd>적용·이전 버전 복귀 근거 없음 · 실행 기능 없음</dd>
+          <dt>복원 후 조건</dt><dd>이전 세션·승인 무효화, 기존 의도·주문·체결·예약 보존과 대사 확인</dd>
+          <dt>재가동</dt><dd>저장·대사·연결·현재 정책·권한 확인 후 별도 명시 판단. 자동 재가동 없음</dd>
+        </dl>
+        <p class="note">저장이나 대사가 실패했다면 복원 완료로 표시하지 않습니다. 현재 화면은 백업 생성·복원·업데이트·권한 변경을 수행하지 않습니다.</p>
+      </article>
+
+      <details id="reading-guide" open>
+        <summary>상태와 금융 행동 안내 · 읽기 전용</summary>
+        <div class="grid equal">
+          <article class="card">
+            <h3>서로 다른 다섯 가지 행동</h3>
+            <dl class="key-values">
+              <dt>신규 주문 중단</dt><dd>새 제출을 멈춤. 이미 접수된 주문은 체결될 수 있음</dd>
+              <dt>미체결 취소</dt><dd>기존 주문 잔량의 취소를 요청. 완료 확인 전 체결·예약 가능성 유지</dd>
+              <dt>승인 철회</dt><dd>승인 권한을 거둠. 이미 제출된 주문을 자동 취소하지 않음</dd>
+              <dt>청산</dt><dd>보유를 줄이는 별도 주문. 중단이나 취소와 다르며 별도 승인·검사 필요</dd>
+              <dt>재가동</dt><dd>상태 복원·대사·권한·정책 확인 후 명시적으로 재개</dd>
+            </dl>
+            <p class="note">실제 금융 행동은 보호된 로컬 CLI 등 별도 인증 경로가 필요합니다. 제품용 명령·연결은 준비 중이며 이 문서에서는 실행할 수 없습니다.</p>
+          </article>
+          <article class="card">
+            <h3>상태 문구의 의미</h3>
+            <dl class="key-values">
+              <dt>확인됨 / 잠정</dt><dd>합성 확인값과 추가 검토가 필요한 값을 구분</dd>
+              <dt>정상 0 / 결과 없음</dt><dd>확인된 수치 0과 완전 조회의 빈 결과를 구분</dd>
+              <dt>미확인 / 자료 누락</dt><dd>판정하지 못한 상태와 필수 자료가 없는 상태. 0으로 대체하지 않음</dd>
+              <dt>조회 실패 / 미연결</dt><dd>실패한 조회와 애초에 연결하지 않은 상태를 구분</dd>
+              <dt>오래된 자료 / 만료</dt><dd>자료 신선도 초과와 승인·권리의 유효기간 종료를 구분</dd>
+              <dt>차단</dt><dd>사유와 영향 범위를 읽고 필요한 근거를 확인</dd>
+            </dl>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <footer>
+      <p>QuantHarbor · 화면 설계 v1 · 합성 예시 전용. 정적 문서의 링크 이동과 상세 펼치기만 사용할 수 있습니다.</p>
+      <p>실제 조회·로그인·공급자 호출·금융 제어·전송·저장은 연결되어 있지 않습니다. 화면 내용은 브라우저에서 계산하지 않습니다.</p>
+      <a href="#main">처음으로 돌아가기 ↑</a>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "run_id": "P28-03-ai-store-actual-a02",
+  "status": "PASS",
+  "checks": [
+    "actual_v1_to_v2_DDL_fault_rolls_back_registry_tables_and_artifacts",
+    "actual_upgrade_existing_11_artifacts_and_known_v2_factory_preserved",
+    "actual_typed_append_exact_bytes_idempotence_conflict_stale_CAS",
+    "actual_two_facades_same_revision_one_commit_one_stale",
+    "actual_multi_chunk_checkpoint_reassembles_exact_canonical_bytes",
+    "actual_COMMIT_ack_loss_exact_readback_no_write_replay",
+    "actual_post_COMMIT_SQL_error_exact_readback_confirms_once",
+    "actual_stage_failure_atomic_no_stage_leak_generation_shared_latch",
+    "actual_stop_reopen_same_identity_exact_book_artifacts_finance_pins_old_facade_denied",
+    "actual_weakened_single_book_CHECK_and_hidden_checkpoint_denied_restored",
+    "actual_known_v2_function_body_damage_denied_restored_no_data_change"
+  ],
+  "actual_synthetic_PostgreSQL": true,
+  "artifact_ready": false,
+  "completed": false,
+  "elapsed_seconds": 17.621,
+  "chunk_count": 2,
+  "source_sha256": {
+    "src/quantharbor/adapters/product_schema.py": "39e0672deed4a3de73e80f7648baad770846339f59f37aa9bdd5066eb815887a",
+    "src/quantharbor/adapters/product_ai.py": "4f0257acf2539c4c9e9093c189db71ca0a8a3dc27fe7a644159ed0fdaf4885df",
+    "migrations/product/0002_ai.sql": "dabe5c871395c13be34b73bb8ae982c1b59aa850c39e0d3ae012d3d349a3da60",
+    "tests/product/test_product_ai.py": "b1fa01adba85eb30ea7e6e847f6b839e1c4e9e312e52513dc9c78b8b8e8453c5",
+    "src/quantharbor/adapters/product_artifacts.py": "9cb0f5e6dc0845f31dc6b1156a5d1cf2e3bc128137a60548417023630c36ba4a",
+    "tests/product/test_product_artifacts.py": "ba85e2da52f4ab627be634eb2385a4ccf0c654074d63e9be89d5a2a55bc3fa1f"
+  },
+  "source_unchanged": true,
+  "cleanup": "own_product_stopped_data_preserved",
+  "data_preserved": true,
+  "timed_out": false,
+  "NOT_RUN": [
+    "core_factory_reserve_dispatch_settle_query_restart",
+    "execute_processed_proof_bridge",
+    "future_closing_monotonic_proof",
+    "full_suite_for_new_AI_sources",
+    "maximum_32MiB_performance",
+    "HTTP_IPC_browser",
+    "15minute_slot"
+  ],
+  "preparation_history": {
+    "first_seed": "FAIL product_metadata_or_private_path_invalid before new database started",
+    "cause": "macOS /var temp symlink rejected by existing NOFOLLOW guard",
+    "correction": "canonical resolved private path; production guard preserved",
+    "second_seed": "PASS fresh owned v1 with11 synthetic artifact rows; prior v2 data preserved"
+  }
+}

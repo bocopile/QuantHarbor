@@ -1,0 +1,73 @@
+{
+  "run_id": "Q27-risk-fixture-proposal-a04",
+  "scope": "private_proposed_daily_turnover_fixture_only",
+  "status": "PASS",
+  "variant_ast_sha256": "31e10be4dad15eb0602f79bcc67f8645aa0c4394d32579ecd4c68f292961b82b",
+  "production_SQL_or_limits_changed": false,
+  "applied_to_repository": false,
+  "cases": [
+    {
+      "mode": "daily",
+      "status": "PASS",
+      "cleanup": "own_project_removed",
+      "checks": [
+        "EX12_actual_all_account_DB_daily_negative_no_cached_allow"
+      ],
+      "goldens": {
+        "fixture_cash": {
+          "ledger": "600",
+          "outstanding": "200",
+          "floor": "0",
+          "broker": "600",
+          "unreflected": "200",
+          "debits": "0",
+          "available": "400"
+        },
+        "risk_daily": {
+          "used": "400",
+          "active": "350",
+          "new": "300",
+          "total": "1050",
+          "NAV": "1000",
+          "turnover": "1.05"
+        }
+      },
+      "elapsed_seconds": 90.158,
+      "database_fixed_reasons": []
+    },
+    {
+      "mode": "turnover",
+      "status": "PASS",
+      "cleanup": "own_project_removed",
+      "checks": [
+        "EX12_actual_all_account_DB_turnover_negative_no_cached_allow"
+      ],
+      "goldens": {
+        "fixture_cash": {
+          "ledger": "600",
+          "outstanding": "200",
+          "floor": "0",
+          "broker": "600",
+          "unreflected": "200",
+          "debits": "0",
+          "available": "400"
+        },
+        "risk_turnover": {
+          "used": "400",
+          "active": "350",
+          "new": "300",
+          "total": "1050",
+          "NAV": "1000",
+          "turnover": "1.05"
+        }
+      },
+      "elapsed_seconds": 89.926,
+      "database_fixed_reasons": []
+    }
+  ],
+  "q27_complete": false,
+  "current": null,
+  "elapsed_seconds": 180.088,
+  "timed_out": false,
+  "source_unchanged": true
+}

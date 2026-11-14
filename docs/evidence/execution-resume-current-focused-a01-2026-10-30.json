@@ -1,0 +1,141 @@
+{
+  "run_id": "Q27-current-focused-a01",
+  "scope": "current_original_driver_changed_and_supplemental_six_cases",
+  "status": "PASS",
+  "planned": 6,
+  "cases": [
+    {
+      "name": "commit_reply_loss",
+      "parameters": {},
+      "status": "PASS",
+      "checks": [
+        "EX05_actual_connection_commit_response_frame_lost_lookup_once",
+        "EX05_actual_same_command_changed_approval_payload_conflict_no_mutation"
+      ],
+      "goldens": {},
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    },
+    {
+      "name": "risk_negative",
+      "parameters": {
+        "mode": "daily"
+      },
+      "status": "PASS",
+      "checks": [
+        "EX12_actual_all_account_DB_daily_negative_no_cached_allow"
+      ],
+      "goldens": {
+        "fixture_cash": {
+          "ledger": "600",
+          "outstanding": "200",
+          "floor": "0",
+          "broker": "600",
+          "unreflected": "200",
+          "debits": "0",
+          "available": "400"
+        },
+        "risk_daily": {
+          "used": "400",
+          "active": "350",
+          "new": "300",
+          "total": "1050",
+          "NAV": "1000",
+          "turnover": "1.05"
+        }
+      },
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    },
+    {
+      "name": "risk_negative",
+      "parameters": {
+        "mode": "turnover"
+      },
+      "status": "PASS",
+      "checks": [
+        "EX12_actual_all_account_DB_turnover_negative_no_cached_allow"
+      ],
+      "goldens": {
+        "fixture_cash": {
+          "ledger": "600",
+          "outstanding": "200",
+          "floor": "0",
+          "broker": "600",
+          "unreflected": "200",
+          "debits": "0",
+          "available": "400"
+        },
+        "risk_turnover": {
+          "used": "400",
+          "active": "350",
+          "new": "300",
+          "total": "1050",
+          "NAV": "1000",
+          "turnover": "1.05"
+        }
+      },
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    },
+    {
+      "name": "control_proven_unsent",
+      "parameters": {},
+      "status": "PASS",
+      "checks": [
+        "EX19_EX30_EX31_actual_DB_explicit_issuer_unsent_revoked_attempt_only_release_rebind_resume",
+        "EX02_actual_aborted_unsent_after_new_generation_reapproval_cannot_reuse_candidate"
+      ],
+      "goldens": {},
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    },
+    {
+      "name": "elapsed_day_unknown",
+      "parameters": {},
+      "status": "PASS",
+      "checks": [
+        "EX18_actual_elapsed_UTC_day_unknown_and_nonzero_holds_preserved_no_new_intent_send",
+        "EX31_actual_elapsed_UTC_day_old_authority_rejected_no_new_economics"
+      ],
+      "goldens": {
+        "elapsed_day_unknown": {
+          "denial_reasons": [
+            "session_expired",
+            "authority_denied"
+          ]
+        }
+      },
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    },
+    {
+      "name": "ledger_consume_atomicity",
+      "parameters": {},
+      "status": "PASS",
+      "checks": [
+        "EX25_actual_consume_inbox_execution_cursor_workstate_rollback_then_once_duplicate_noop"
+      ],
+      "goldens": {
+        "ledger_consume_atomicity": {
+          "cursor": 2
+        }
+      },
+      "cleanup": "own_project_removed",
+      "source_unchanged": true
+    }
+  ],
+  "q27_complete": false,
+  "current": null,
+  "elapsed_seconds": 465.254,
+  "timed_out": false,
+  "source_sha256": {
+    "scripts/check_execution.py": "8761b29b96c386b4bf349eaf1aafb3e83e8a2f6de5f7bf0334a404134b9687ca",
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "src/quantharbor/adapters/execution_uow.py": "ad4433ee4542bdf16fb7df6416d09ec76d419f187a99b1589a58b8061fb0bd41",
+    "src/quantharbor/adapters/postgres_ledger.py": "36c685890292b67fa68854da3ec8bedc0fc14189f348cb94ebd54ca6c4428bf9",
+    "tests/product/synthetic_execution.py": "30b7da1f8956da0bf18c7e8ef946e30481f5ba73c3a98bad55cbc42f61e54b86",
+    "migrations/0003_synthetic_execution.sql": "bcc8af18e4bf300715ed6b0b288ffac052cd2b6d23be208876741b92593c6afa"
+  },
+  "source_unchanged": true
+}

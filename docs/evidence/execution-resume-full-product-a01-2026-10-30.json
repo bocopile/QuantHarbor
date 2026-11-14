@@ -1,0 +1,46 @@
+{
+  "scope": "Q27_final_input_full_product_unittest",
+  "status": "FAIL",
+  "started_at": 1793325562.983083,
+  "current": null,
+  "q27_complete": false,
+  "planned_tests": 783,
+  "tests_run": 783,
+  "failures": 0,
+  "errors": 2,
+  "skipped": 0,
+  "input_unchanged": true,
+  "elapsed_seconds": 6536.548,
+  "ended_at": 1793332097.539443,
+  "run_id": "Q27-08-validate-a01",
+  "requested_model": "gpt-6-luna",
+  "reasoning_effort": "high",
+  "profile": "qh_development",
+  "parent_exit": {
+    "run_id": "Q27-08-validate-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 6582.946
+  },
+  "pass_count": 781,
+  "failed_tests": [
+    {
+      "id": "test_execution_financial.ExecutionPipeTests.test_EX37_write_timeout_and_oversized_frame_return_fixed_reason",
+      "status": "FAIL",
+      "kind": "error",
+      "seconds": 0.004
+    },
+    {
+      "id": "test_execution_financial.ExecutionSourceRefreshTests.test_EX08_refresh_current_updates_reservation_cutoffs_and_reflection_atomically",
+      "status": "FAIL",
+      "kind": "error",
+      "seconds": 11.318
+    }
+  ],
+  "input_files": {
+    "src/quantharbor/adapters/postgres_execution.py": "6cf7c1b52a4920b6e7a6c62873216a1bf118b24eb7b720cb4f352a70d5b11046",
+    "tests/product/test_execution_control.py": "c0696663edb19bf818ade4f52ff76221205c66d8ee0258aaca647afad57dde8f",
+    "tests/product/test_execution_financial.py": "6e54790924b600942944f9903053d9c0a14df53bef999bd4d1284eb3ffefe793"
+  },
+  "tracked_file_count": 578
+}
