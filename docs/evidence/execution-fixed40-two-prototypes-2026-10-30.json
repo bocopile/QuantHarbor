@@ -1,0 +1,49 @@
+{
+  "scope": "private_frozen_prototype_for_FUP_Q27_009_010",
+  "status": "PASS_PRIVATE_PROTOTYPES",
+  "base_commit": "8a27220a898b56a68f12168bf32f36b91d368b92",
+  "results": [
+    {
+      "id": "FUP-Q27-009",
+      "status": "PASS",
+      "observations": {
+        "actual_receivable": "500",
+        "available_before": "998",
+        "available_after_receivable": "998",
+        "available_after_settlement_without_fresh_query": "998"
+      },
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 72.825,
+      "input_unchanged": true
+    },
+    {
+      "id": "FUP-Q27-010",
+      "status": "PASS",
+      "observations": {
+        "disposition": "quarantined",
+        "guard_reasons": [
+          "mixed_semantics"
+        ],
+        "raw_broker_inbox_rows": 2,
+        "economic_projection_unchanged": true
+      },
+      "cleanup": "own_project_removed",
+      "elapsed_seconds": 72.106,
+      "input_unchanged": true
+    }
+  ],
+  "public_test_integrated": false,
+  "independent_recheck": false,
+  "q27_complete": false,
+  "elapsed_seconds": 145.087,
+  "timed_out": false,
+  "input_unchanged": true,
+  "tracked_input_count": 708,
+  "source_manifest_sha256": "fc210b115631b3edb9e152f2ac8c9384a398f32d04b14248b377fb1934d1eab2",
+  "prototype_code_sha256": "d1056287bd6d7c1eab3549e6ba412193c502b858b8707047fa4701f92e4246b5",
+  "NOT_RUN": [
+    "public_test_integration",
+    "independent_semantic_recheck",
+    "Q27_completion"
+  ]
+}

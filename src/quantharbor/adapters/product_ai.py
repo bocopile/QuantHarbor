@@ -1,8 +1,8 @@
-"""P28-03/2b-1 private synthetic AI storage foundation.
+"""P28-03 private synthetic AI storage and 2b-2a budget bridge.
 
 Only fresh books and bounded database decoding are authoritative. No repository or
-caller JSON import exists. Core execution, recovery and proof issuance are 2b-2;
-processed transitions deliberately fail closed until that bridge is implemented.
+caller JSON import exists. Factory, budget and recovery are connected; execution,
+query and processed transitions remain closed until their own bridges exist.
 Logical quotas are not RAM, WAL or disk reservations.
 """
 import base64
@@ -23,7 +23,7 @@ from .postgres_ledger import PostgresLedger, LedgerStorageError, _text
 from .product_database import ProductDatabase
 from .product_schema import ensure_schema
 from quantharbor.domain import investment_ai as d
-from quantharbor.domain.primitives import ContractError
+from quantharbor.domain.primitives import ContractError, identifier, utc_instant
 from quantharbor.domain.serialization import canonical_bytes, parse_payload
 
 _CHUNK = 32768
@@ -429,6 +429,54 @@ def _quota(book, markers):
     return reserved, worst
 
 
+def _admission(book, markers, capacity, byte_capacity):
+    """Logical closing proof for admissions; never increases canonical quotas.
+
+    At most 128 records/refs/hashes, 128 payloads of four int63 values, 128
+    policy/block bindings, 128 query counters <=16 and 128 markers fit the
+    single 1MiB global slot (each normalized row <1KiB). Outer record IDs
+    (128 chars, at most six JSON bytes each) also fit its separate 1MiB
+    encoding allowance. No source, request or policy text is copied there.
+
+    Each held attempt reserves 3*65536 canonical bytes PLUS enough room for
+    its existing canonical record to grow to 65536. All further admissions
+    charge this headroom too. A fixed 128KiB auxiliary slot contains receipts
+    whose asdict UTF8 JSON is <=32768: their DTO envelopes add <256 bytes each
+    (<=16 receipts), base64 adds <=1/3+rounding, and fixed denial/hash/metadata
+    rows add <8192. Even 6x JSON escaping of non-ASCII is inside base64 DTOs,
+    whose canonical encoding uses UTF8; no second escaping multiplication.
+    2*(32768+16*256)+8192 < 128KiB is a conservative slot bound. As actual
+    data grows, remaining reservation shrinks by the same amount. Unheld
+    terminal auxiliary data stays charged, never silently discarded.
+
+    Finish/marker issuance is NOT accepted here: its future bridge must prove
+    the result <=64KiB, consume its closing hold atomically, remove receipts,
+    and preserve validated creation revisions. This proof grants no client
+    permission and no RAM/WAL/disk reservation.
+    """
+    from .synthetic_investment_ai import AIDenied
+    # Closed-row worst cases: payloads, three hash lists, query counters,
+    # processed bindings plus duplicate server marker metadata, fixed keys.
+    global_bound = 128*(320+3*72+80+2*160)+4096
+    slot_bound = 2*(32768+16*256)+8192
+    if _GLOBAL < global_bound or _SLOT < slot_bound:
+        raise AIDenied('capacity')
+    sizes = {d.ref(k, i, _dto(raw, _TYPES[k])).sha256: len(raw)
+             for k, i, raw in book.records if k == 'attempt'}
+    raw_size = sum(len(raw) for _, _, raw in book.records)
+    headroom = sum(65536-sizes[h] for h in book.holds)
+    if (len(book.records)+3*len(book.holds) > capacity
+            or raw_size+196608*len(book.holds)+headroom > byte_capacity):
+        raise AIDenied('capacity')
+    try:
+        reserved, _ = _quota(book, markers)
+    except ContractError:
+        raise AIDenied('capacity') from None
+    worst = 4*((raw_size+196608*len(book.holds)+headroom+2)//3)+4*128+reserved+_GLOBAL
+    if worst > _ENCODED:
+        raise AIDenied('capacity')
+
+
 class _Pipe:
     """Bounded nonblocking psql transport. No communicate/capture_output path."""
     def __init__(self, database):
@@ -521,9 +569,23 @@ class _Pipe:
         sql = 'SELECT qh_product.ai_chunk(' + str(revision) + ',' + _text(digest) + ',' + str(index) + ');\n'
         return self._exchange((sql.encode(),), deadline)
 
-    def publish(self, revision, opcode, operation_id, digest, raw, record_count, markers, deadline):
-        if type(opcode) is not Opcode or opcode is not Opcode.APPEND:
+    def publish(self, revision, opcode, operation_id, digest, raw, record_count, markers, deadline, phase=None):
+        if type(opcode) is not Opcode or opcode not in (
+                Opcode.APPEND, Opcode.RESERVE, Opcode.CANCEL, Opcode.RESTART_RECONCILE):
             _fail('product_ai_bridge_required')
+        if opcode is not Opcode.APPEND:
+            if (type(phase) is not _Phase or type(phase.store) is not ProductAIStore
+                    or phase is not phase.store._active_phase or phase.store._pipe is not self
+                    or self._db is not phase.store._db
+                    or phase.owner is not phase.store._owner or phase.generation is not phase.store._generation
+                    or phase.opcode is not opcode or phase.revision != revision
+                    or phase.operation_id != operation_id or phase.input_digest != digest
+                    or phase.markers != markers):
+                _fail('product_ai_phase_invalid')
+            phase.store._check()
+            expected, _ = phase.store._transition(phase)
+            if _json(_wire(expected)) != raw or len(expected.records) != record_count:
+                _fail('product_ai_phase_invalid')
         _int(revision)
         _int(record_count, 0, 128)
         _hash(digest)
@@ -543,6 +605,7 @@ class _Pipe:
 class _Shared:
     def __init__(self, generation):
         self.generation, self.lock, self.failed = generation, RLock(), False
+        self.recovered = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -556,10 +619,11 @@ class _Phase:
     revision: int
     book: _Book
     markers: tuple
+    inputs: tuple = ()
 
 
 class ProductAIStore:
-    """Internal DB-bound store. No AI core factory/execute bridge in 2b-1.
+    """Internal DB-bound store with closed budget and recovery phases.
 
     append accepts only typed request/policy, never a book, memory repository,
     restore mapping, processed flag, arbitrary SQL, DSN or book identifier.
@@ -575,10 +639,16 @@ class ProductAIStore:
         self._pipe = _Pipe(database)
         self._shared = None
         self._active_phase = None
+        self._binding = database._product_database
+        self._facade = None
 
     @classmethod
     def product_synthetic(cls, database, *, capacity=128, byte_capacity=8388608):
         deadline = time.monotonic()+_DEADLINE
+        return cls._factory(database, capacity=capacity, byte_capacity=byte_capacity, deadline=deadline)
+
+    @classmethod
+    def _factory(cls, database, *, capacity, byte_capacity, deadline):
         store = cls(database, capacity=capacity, byte_capacity=byte_capacity)
         with _timed_lock(database._product_gate, deadline):
             store._check()
@@ -600,11 +670,12 @@ class ProductAIStore:
 
     def _check(self):
         p = self._db._product_database
-        if (type(self._db) is not PostgresLedger or type(p) is not ProductDatabase or not self._db._ready
+        if (type(self._db) is not PostgresLedger or type(p) is not ProductDatabase or p is not self._binding or not self._db._ready
                 or not p.active or p.lock is None or p.fd is None or self._db._compose is None
                 or self._generation is None or self._generation is not self._db._product_generation):
             _fail('product_ai_database_unavailable')
-        if self._shared is not None and (self._shared.generation is not self._generation or self._shared.failed):
+        if self._shared is not None and (self._shared.generation is not self._generation
+                or self._shared is not self._db._product_ai_shared or self._shared.failed):
             _fail('product_ai_failed_latch')
 
     def _read(self, deadline):
@@ -651,6 +722,189 @@ class ProductAIStore:
         except (ContractError, ValueError, TypeError, KeyError, AttributeError, RecursionError):
             _fail()
 
+    @contextmanager
+    def _phase(self, opcode, inputs=(), *, deadline=None):
+        from .synthetic_investment_ai import AIDenied
+        if deadline is None:
+            deadline = time.monotonic()+_DEADLINE
+        if self._shared is None:
+            _fail('product_ai_factory_required')
+        with _timed_lock(self._db._product_gate, deadline), _timed_lock(self._shared.lock, deadline):
+            self._check()
+            if self._active_phase is not None:
+                _fail('product_ai_phase_invalid')
+            try:
+                book, markers, meta = self._read(deadline)
+                phase = _Phase(self, self._owner, self._generation, opcode,
+                    uuid.uuid4().hex, sha256(_json(inputs)).hexdigest(), meta['revision'], book, markers, inputs)
+                self._active_phase = phase
+                yield phase, deadline
+                self._check()
+                _alive(deadline)
+            except (ContractError, KeyError, AIDenied):
+                raise
+            except LedgerStorageError as error:
+                if error.reason != 'product_ai_bridge_required':
+                    self._shared.failed = True
+                raise
+            except BaseException:
+                self._shared.failed = True
+                raise
+            finally:
+                self._active_phase = None
+
+    def _hydrate(self, phase):
+        """Only this store's issued, current DB phase can create a core view."""
+        from .synthetic_investment_ai import SyntheticAIRepository
+        if (type(phase) is not _Phase or phase is not self._active_phase
+                or phase.store is not self or phase.owner is not self._owner
+                or phase.generation is not self._generation):
+            _fail('product_ai_phase_invalid')
+        self._check()
+        core = SyntheticAIRepository(capacity=self._capacity, byte_capacity=self._byte_capacity)
+        book = phase.book
+        core._records = {(k, i): raw for k, i, raw in book.records}
+        objects = {d.ref(k, i, _dto(raw, _TYPES[k])).sha256: _dto(raw, _TYPES[k])
+                   for k, i, raw in book.records}
+        core._attempts = {o.attempt_id: o for o in objects.values() if type(o) is d.AIBudgetAttempt}
+        core._payloads = {objects[a].attempt_id: (d.encoded(objects[r]), d.encoded(objects[p]), d.encoded(u))
+                          for a, r, p, u in book.payloads}
+        core._policies = {(objects[h].budget_scope, objects[h].window_start, objects[h].window_end): objects[h]
+                          for h in book.policies}
+        core._blocked = {objects[h].budget_scope for h in book.blocked}
+        core._holds = {objects[h].attempt_id: (3, 196608) for h in book.holds}
+        core._query_totals = {d.ref('request', objects[h].request_id, objects[h]): n for h, n in book.queries}
+        core._query_receipts = {objects[h].attempt_id: list(rs) for h, rs in book.receipts}
+        core._query_denials = {objects[h].attempt_id: rs for h, rs in book.denials}
+        # Never infer processing from a terminal record. _read validated these
+        # exact DB marker hashes, transitions and their creation revisions.
+        core._processed = {(m.kind, getattr(objects[m.record_hash], _IDS[m.kind])):
+            d.encoded(objects[m.record_hash]) for m in phase.markers}
+        return core
+
+    def _freeze(self, phase, core):
+        def ah(identity):
+            a = core._attempts[identity]
+            return d.ref('attempt', identity, a).sha256
+        policies = {d.ref('budget_policy', p.policy_id, p).sha256: p for p in core._policies.values()}
+        blocked = list(phase.book.blocked)
+        covered = {policies[h].budget_scope for h in blocked}
+        for h, p in policies.items():
+            if p.budget_scope in core._blocked and p.budget_scope not in covered:
+                blocked.append(h)
+                covered.add(p.budget_scope)
+        if any(v != (3, 196608) for v in core._holds.values()):
+            _fail('product_ai_phase_invalid')
+        return _Book(records=tuple((k, i, raw) for (k, i), raw in core._records.items()),
+            payloads=tuple((ah(i), core._attempts[i].request_ref.sha256,
+                core._attempts[i].policy_ref.sha256, core._attempts[i].reserved_usage) for i in core._payloads),
+            policies=tuple(policies), blocked=tuple(blocked), holds=tuple(ah(i) for i in core._holds),
+            queries=tuple((r.sha256, n) for r, n in core._query_totals.items()),
+            receipts=tuple((ah(i), tuple(rs)) for i, rs in core._query_receipts.items()),
+            denials=tuple((ah(i), rs) for i, rs in core._query_denials.items()),
+            processed=phase.book.processed)
+
+    def _transition(self, phase):
+        core = self._hydrate(phase)
+        if phase.opcode is Opcode.RESERVE:
+            if len(phase.inputs) != 5:
+                _fail('product_ai_phase_invalid')
+            r, p, identity, usage, at = phase.inputs
+            result = core.reserve(_dto(_unb64(r), d.ResearchRequest),
+                _dto(_unb64(p), d.AIBudgetPolicy), identity,
+                d.Usage(*usage), at=at)
+        elif phase.opcode is Opcode.CANCEL:
+            if len(phase.inputs) != 3 or type(phase.inputs[2]) is not bool:
+                raise ContractError()
+            identity, at, retain = phase.inputs
+            result = core.cancel(identity, at=at, retain_result=retain)
+        elif phase.opcode is Opcode.RESTART_RECONCILE:
+            if phase.inputs:
+                _fail('product_ai_phase_invalid')
+            for a in tuple(core._attempts.values()):
+                if a.state == 'reserved':
+                    core.cancel(a.attempt_id, at=a.reserved_at)
+                elif a.state == 'dispatched':
+                    core.settle_unknown(a.attempt_id)
+            result = None
+        else:
+            _fail('product_ai_bridge_required')
+        return self._freeze(phase, core), result
+
+    def _recover(self, *, deadline=None):
+        with self._phase(Opcode.RESTART_RECONCILE, deadline=deadline) as (phase, deadline):
+            if self._shared.recovered:
+                return
+            proposed, _ = self._transition(phase)
+            if proposed != phase.book:
+                self._commit(phase, proposed, deadline)
+            self._shared.recovered = True
+
+    def _core_call(self, facade, name, args, kwargs):
+        deadline = time.monotonic()+_DEADLINE
+        from .synthetic_investment_ai import SyntheticAIRepository
+        from quantharbor.application.investment_ai import Sources
+        if type(facade) is not SyntheticAIRepository or facade is not self._facade or facade._product_store is not self:
+            _fail('product_ai_phase_invalid')
+        if name == 'reserve':
+            r, p, identity, usage = args
+            if type(r) is not d.ResearchRequest or type(p) is not d.AIBudgetPolicy or type(usage) is not d.Usage:
+                raise ContractError()
+            inputs = (_b64(d.encoded(r)), _b64(d.encoded(p)), identifier(identity), d.usage_values(usage), utc_instant(kwargs['at']))
+            with self._phase(Opcode.RESERVE, inputs, deadline=deadline) as (phase, deadline):
+                proposed, result = self._transition(phase)
+                if result[1]:
+                    _admission(proposed, phase.markers, self._capacity, self._byte_capacity)
+                    self._commit(phase, proposed, deadline)
+                return result
+        if name == 'cancel':
+            inputs = (identifier(args[0]), utc_instant(kwargs['at']), kwargs['retain_result'])
+            with self._phase(Opcode.CANCEL, inputs, deadline=deadline) as (phase, deadline):
+                proposed, result = self._transition(phase)
+                self._commit(phase, proposed, deadline)
+                return result
+        if name == 'append':
+            kind, identity, obj = args
+            if (kind not in ('request', 'budget_policy') or type(obj) is not _TYPES[kind]
+                    or identity != getattr(obj, _IDS[kind])):
+                with self._phase(Opcode.APPEND, deadline=deadline):
+                    _fail('product_ai_bridge_required')
+            # Use the same operation lock and DB revision for append's read/CAS.
+            raw = d.encoded(obj)
+            with self._phase(Opcode.APPEND, (kind, identity, _b64(raw)), deadline=deadline) as (phase, deadline):
+                prior = {(k, i): b for k, i, b in phase.book.records}.get((kind, identity))
+                if prior is not None:
+                    if prior != raw:
+                        raise ContractError()
+                    return _dto(prior, _TYPES[kind])
+                proposed = replace(phase.book, records=(*phase.book.records, (kind, identity, raw)))
+                _admission(proposed, phase.markers, self._capacity, self._byte_capacity)
+                self._commit(phase, proposed, deadline)
+                return _dto(raw, _TYPES[kind])
+        with self._phase(Opcode.APPEND, deadline=deadline) as (phase, _):
+            if name == 'bind_sources':
+                sources, = args
+                if type(sources) is not Sources or sources.repository is not facade:
+                    raise ContractError()
+                facade._current_sources = sources
+                return None
+            if name not in ('get', 'attempt', 'balance', 'result_for', 'hypotheses',
+                            'query_count', 'query_denials', 'hypothesis_dependencies'):
+                _fail('product_ai_bridge_required')
+            core = self._hydrate(phase)
+            if name == 'balance':
+                p, = args
+                if type(p) is not d.AIBudgetPolicy:
+                    raise ContractError()
+                for prior in core._policies.values():
+                    if prior.budget_scope == p.budget_scope and not (
+                            p.window_end <= prior.window_start or prior.window_end <= p.window_start):
+                        if prior != p:
+                            raise ContractError()
+                        p = prior
+                args = (p,)
+            return getattr(core, name)(*args, **kwargs)
+
     def read_records(self):
         deadline = time.monotonic()+_DEADLINE
         if self._shared is None:
@@ -666,6 +920,7 @@ class ProductAIStore:
                 raise
 
     def append(self, kind, obj, *, expected_revision):
+        from .synthetic_investment_ai import AIDenied
         deadline = time.monotonic()+_DEADLINE
         if self._shared is None:
             _fail('product_ai_factory_required')
@@ -695,7 +950,7 @@ class ProductAIStore:
                     return self._commit(phase, proposed, deadline)
                 finally:
                     self._active_phase = None
-            except ContractError:
+            except (ContractError, AIDenied):
                 raise
             except LedgerStorageError as error:
                 if error.reason != 'product_ai_stale_revision':
@@ -708,25 +963,35 @@ class ProductAIStore:
     def _commit(self, phase, proposed, deadline):
         self._check()
         if (type(phase) is not _Phase or phase is not self._active_phase or phase.store is not self or phase.owner is not self._owner
-                or phase.generation is not self._generation or phase.opcode is not Opcode.APPEND):
+                or phase.generation is not self._generation or phase.opcode not in (
+                    Opcode.APPEND, Opcode.RESERVE, Opcode.CANCEL, Opcode.RESTART_RECONCILE)):
             _fail('product_ai_phase_invalid')
         # No generic candidate-book commit: ordinary append may add exactly one
         # request/policy and cannot alter any auxiliary state or create markers.
-        old = {(k, i): raw for k, i, raw in phase.book.records}
-        new = {(k, i): raw for k, i, raw in proposed.records}
-        added = new.keys()-old.keys()
-        if (len(added) != 1 or any(new.get(k) != v for k, v in old.items())
-                or next(iter(added))[0] not in ('request', 'budget_policy')
-                or replace(proposed, records=phase.book.records) != phase.book):
-            _fail('product_ai_phase_invalid')
+        if phase.opcode is Opcode.APPEND:
+            old = {(k, i): raw for k, i, raw in phase.book.records}
+            new = {(k, i): raw for k, i, raw in proposed.records}
+            added = new.keys()-old.keys()
+            if (len(added) != 1 or any(new.get(k) != v for k, v in old.items())
+                    or next(iter(added))[0] not in ('request', 'budget_policy')
+                    or replace(proposed, records=phase.book.records) != phase.book):
+                _fail('product_ai_phase_invalid')
+        else:
+            # Re-derive each closed transition from this issued phase's DB book.
+            # No generic commit or processed-marker issuing path is exposed.
+            expected, _ = self._transition(phase)
+            if expected != proposed:
+                _fail('product_ai_phase_invalid')
         _validate(proposed, phase.markers, phase.revision+1, capacity=self._capacity, byte_capacity=self._byte_capacity)
+        if phase.opcode in (Opcode.APPEND, Opcode.RESERVE):
+            _admission(proposed, phase.markers, self._capacity, self._byte_capacity)
         raw = _json(_wire(proposed))
         _alive(deadline)
         expected_hash = sha256(raw).hexdigest()
         ack = ('ai_ack:' + phase.operation_id + ':' + str(phase.revision+1) + ':' + expected_hash).encode()
         acknowledged = False
         try:
-            acknowledged = self._pipe.publish(phase.revision, phase.opcode, phase.operation_id, phase.input_digest, raw, len(proposed.records), phase.markers, deadline) == ack
+            acknowledged = self._pipe.publish(phase.revision, phase.opcode, phase.operation_id, phase.input_digest, raw, len(proposed.records), phase.markers, deadline, phase) == ack
         except LedgerStorageError:
             pass
         # A bounded readback is required even after an ack; never replay a write.

@@ -10,6 +10,8 @@
 
 코드 검증·백로그 대조·비평가 결과의 레인별 원자료(findings 77건, 백로그 매핑 64건, 누락 영역 17건, 증거 현황)는 [검증 전수 기록](research/v2-claim-verification-2026-11-14.md)에 있다. 정적 판독이며 재검증은 일부 항목에만 적용했다.
 
+2026-11-15 `v2/`가 새 문서(v3 재감사서, main@5ff8e29 재분석 PDF)로 교체되어 현재 main(171e3e4) 기준으로 재분석했다. 결과는 [델타 분석](research/v2-reaudit-delta-2026-11-15.md)이다: 새 작업 17개(NZ)·기존 NX 변경 45건·웨이브 Δ1~Δ6·결정 항목 15개는 모두 제안이며 큐의 완료 판정을 바꾸지 않는다. 정적 분석이고 테스트·DB는 실행하지 않았으며 재검증은 일부 항목에만 적용했다. 순서 변경은 실데이터 스파이크(ND-17) 하나만 사용자 결정이 필요하다.
+
 ## 2026-11-15 v2 작업 목록 전체 채택 결정
 
 사용자가 델타 분석의 ND-18에 "전부 채택"으로 응답했다. [PLAN-DEC-001](decisions/PLAN-DEC-001-v2-delta-adoption.md)에 따라 NX 53개·NZ 17개를 계획된 작업으로 채택하되 착수·완료가 아니며 기존 순서와 Q27 임계 경로, 차단 항목, 정책 값 사용자 결정은 그대로다. 정적 분석 채택이며 실행 검증이 아니다.
@@ -18,13 +20,19 @@
 
 - 추가보고지시: 작업중5분마다전체완료기준진행률·최근완료/현재작업·후속큐·작업단위commit/push를보고한다. 항목완료율과내부검증진척은구분한다.
 
-사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속28개: diagnosing1·queued7·resolved20이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
+사용자가 전체 계획을 계속 진행하고 테스트 실패로 생긴 추가 작업을 별도 큐로 관리하도록 지시했다. [EXEC-DEC-003](decisions/EXEC-DEC-003-planned-work-and-followups.md)에 따라 원래36개/로컬10개/제품12개를 유지하고 [실패 후속 큐](tasks/failure-followup-queue.json)를 추가했다. 현재 후속31개: diagnosing1·awaiting_retest3·queued7·resolved20이다. 최신 수치는 실패 후속 JSON을 따른다. 실패를 이관한 것만으로 완료를 선언하지 않는다.
 
-- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a/2b-1저장기반을납품했다. 다음2b-2a factory/예산/복구구현은배정준비이며아직미실행이다. HEAD8a27220고정제품836/actualDB86은모두PASS·708입력불변/자기DB86정리이며고정40관측보강6건은별도미완료다. 브라우저/fixed40최종관문은유지한다.
+- 현재 계획 작업: P28-01 정적화면/P28-02조회계약은artifact_ready, P28-03내부1/2a/2b-1저장기반을납품했다. 다음2b-2a factory/예산/복구4파일구현을배정하며기동/반환은.runtime의실제실행기록을따른다. HEAD8a27220고정제품836/actualDB86은모두PASS·708입력불변/자기DB86정리이며고정40관측보강6건은별도미완료다. 브라우저/fixed40최종관문은유지한다.
 - 원래 의존성은 통합·완료 관문으로 보존한다. 준비된 계약/산출물의 설계와 격리된 구현을 먼저 진행하고, 차단하는 실제 결함은 영향받는 항목에 연결한다. artifact_ready와 completed를 구분한다. [운영 카드](tasks/PLAN-forward-execution-2026-10-30.md).
 - worker1·writer1·재귀 위임0, 계좌/키/주문/자금·새지출·외부메시지범위는유지하고,Git은명시허가된작업브랜치단위commit/push를진행한다. 단순 진행 허가를 다시 묻지 않는다.
 
 ## 2026-10-30 실제 실행 관측
+
+- 2b-2a 일반380.325초 P2두건(deadline 재시작/잔액window결속),root는public예약준비deadline추가관측까지RED3재현·보완후집중94PASS2.282초. FUP-P28-016/017에연결. [수정](evidence/product-p28-03-ai-core-budget-fixes-2026-10-30.json). actuala01은6PASS뒤시험입력sequence5>4로FAIL23.132초/자료보존,requestID분리a02와현재199통합검사를진행한다. 새client/query/processed는아직미구현이다.
+
+- P28-03 2b-2a1127.530초정상반환·지정4파일/보호734공개파일불변·같은최종4SHA196 PASS203.351초(프로세스203.745초)/Python3.13.12. [구현인계](evidence/product-p28-03-ai-core-budget-build-2026-10-30.json). 초기fixture/기대값FAIL은FUP-P28-015로보존;현재actualPG/독립검토는NOT RUN이며query/client/processed/15분slot/P03전체미완료.
+
+- 17번째edd018a 인계14docs commit/push·원격SHA확인. 사전223.774초의현재mapping RUNNING표기P2를2파일정정/독립delta121.633초0지적뒤납품했다. [납품](evidence/execution-final-handoff-delivery-2026-10-30.json). planned-first로P28-03 2b-2a 4파일/1200초배정준비후공개쓰기동결. 고정40후속중2건은별도고정708본 actual145.087초PASS/자기DB2정리이나공개test/독립재확인전queued유지한다. [사전검사](evidence/execution-fixed40-two-prototypes-2026-10-30.json).
 
 - actualDB86/86 PASS6932.892초·실패/미실행0·자기UUID DB86정리·모든case입력불변,최종708manifest동일. [최종DB](evidence/execution-final-current-database-2026-10-30.json). 전체제품836과함께FUP-Q27-005 수거관문해결. 독립고정40의관측보강6건은006/009~014에유지하여Q27전체완료로올리지않는다.
 

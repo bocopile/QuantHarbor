@@ -1,0 +1,93 @@
+{
+  "run_id": "P28-03-ai-core-budget-build-a01",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "worker_exit": {
+    "run_id": "P28-03-ai-core-budget-build-a01",
+    "exit_code": 0,
+    "timed_out": false,
+    "elapsed_seconds": 1127.53
+  },
+  "owned_files": [
+    "src/quantharbor/adapters/product_ai.py",
+    "src/quantharbor/adapters/synthetic_investment_ai.py",
+    "tests/product/test_product_ai.py",
+    "tests/product/test_product_ai_core.py"
+  ],
+  "source_sha256": {
+    "tests/product/test_product_ai.py": "24cda6f8234a49a9feee293bcb5fadc2123772cb5e350f8f978a8c77ebeb75f9",
+    "tests/product/test_product_ai_core.py": "cbe81879f117b6ba8a6b16e611535d006499010fc57f665ccb59e7f57f990c16",
+    "src/quantharbor/adapters/product_ai.py": "466bceab26006a86217e31cda67bb5a10b9c27a9b4a628120c1c8a07d8105190",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "d8cbec9760cff9fd04c1f48c83dc908179f4a25071d5a96f3e57212cf9b820f5"
+  },
+  "protected_public_files_verified": 734,
+  "protected_changes": [],
+  "unexpected_public": [],
+  "final_tests": {
+    "python": "3.13.12",
+    "tests": 196,
+    "new_core": 30,
+    "store": 61,
+    "existing_memory": 105,
+    "result": "PASS",
+    "unittest_seconds": 203.351,
+    "process_seconds": 203.745,
+    "exit_code": 0,
+    "before_after_source_same": true,
+    "command": [
+      "/opt/homebrew/opt/python@3.13/bin/python3.13",
+      "-B",
+      "-m",
+      "unittest",
+      "test_product_ai_core",
+      "test_product_ai",
+      "test_investment_ai",
+      "test_investment_ai_bounds",
+      "test_investment_ai_review",
+      "test_investment_ai_sources",
+      "test_investment_ai_security",
+      "test_investment_ai_security_second",
+      "test_investment_ai_evaluation",
+      "-q"
+    ]
+  },
+  "quality": {
+    "files": 738,
+    "findings": 0,
+    "result": "PASS"
+  },
+  "diff_check": "PASS",
+  "historical_failures": [
+    {
+      "run": "core-a01",
+      "tests": 26,
+      "failures": 4,
+      "errors": 9,
+      "writer_classification": "fixture_or_expectation",
+      "exact_historical_source_replay": "NOT RUN"
+    },
+    {
+      "run": "phase_SQL_expectation",
+      "failures": 1,
+      "writer_classification": "expected text did not account for existing _text encoding"
+    }
+  ],
+  "implemented_scope": [
+    "exact_factory_and_DB_historical_queries",
+    "reserve_cancel_opaque_atomic_phases",
+    "first_generation_recovery_barrier",
+    "typed_checkpoint_internal_hydration",
+    "shared_generation_gate_latch_and_exact_readback",
+    "pending_attempt_64KiB_headroom_and_auxiliary_attribution"
+  ],
+  "NOT_RUN": [
+    "actual_PostgreSQL_restart_faults",
+    "independent_general_security_reviews",
+    "query_charge_outcome_bridge",
+    "actual_execute_dispatch_client_processed_review_bridge",
+    "future_finish_semantic_proof",
+    "full_new_source_suite836_DB86"
+  ],
+  "artifact_ready": false,
+  "completed": false
+}
