@@ -1,0 +1,37 @@
+{
+  "run_id": "P28-03-ai-core-actual-a02",
+  "status": "PASS",
+  "checks": [
+    "actual_exact_factory_reads_existing_v2_history_without_budget_reset",
+    "actual_reserve_duplicate_payload_conflict_shared_facade_live_reservation_preserved",
+    "actual_cancel_releases_cost_and_closing_hold_without_result_marker",
+    "actual_two_facades_same_attempt_one_new_one_replay_one_budget_charge",
+    "actual_reserve_COMMIT_ack_loss_exact_readback_no_write_replay",
+    "actual_unconnected_dispatch_execute_source_and_client_zero",
+    "actual_same_identity_restart_first_barrier_reserved_cancel_old_facade_denial_new_facade_no_repeat"
+  ],
+  "actual_synthetic_PostgreSQL": true,
+  "source_sha256": {
+    "tests/product/test_product_ai.py": "24cda6f8234a49a9feee293bcb5fadc2123772cb5e350f8f978a8c77ebeb75f9",
+    "tests/product/test_product_ai_core.py": "e2bd289a9afe4dd5ab3c1578fc1b53c53bcaf77d4292f6d739fd7bf56c45c071",
+    "src/quantharbor/adapters/product_ai.py": "197b76e1e609b9b9015da927edf099153f7f7f6eb0042f6448e6242155308d94",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "e2324c273034b363674bd7aea6fafd95e21ea3710259a3baf8a3f07f7a39efb0"
+  },
+  "core_bridge_scope": "2b-2a_only",
+  "q27_complete": false,
+  "product_complete": false,
+  "elapsed_seconds": 30.721,
+  "input_unchanged": true,
+  "cleanup": "own_product_stopped_data_preserved",
+  "data_preserved": true,
+  "timed_out": false,
+  "NOT_RUN": [
+    "dispatched_known_settled_recovery_SQL_fault_fixture",
+    "closing_capacity_saturation",
+    "actual_query_execute_client_processed_bridge",
+    "maximum_payload_scale",
+    "whole_product_integration",
+    "browser",
+    "15minute_slot"
+  ]
+}

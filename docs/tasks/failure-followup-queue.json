@@ -724,9 +724,11 @@
         "independent_planned_artifacts"
       ],
       "evidence": [
-        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json",
+        "docs/evidence/execution-fixed40-two-prototypes-2026-10-30.json"
       ],
-      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음",
+      "private_prototype": "실제합성DB관측PASS/자기DB정리·708입력불변. 공개test미통합/독립재확인미실행으로queued유지."
     },
     {
       "id": "FUP-Q27-010",
@@ -747,9 +749,11 @@
         "independent_planned_artifacts"
       ],
       "evidence": [
-        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
+        "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json",
+        "docs/evidence/execution-fixed40-two-prototypes-2026-10-30.json"
       ],
-      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+      "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음",
+      "private_prototype": "실제합성DB관측PASS/자기DB정리·708입력불변. 공개test미통합/독립재확인미실행으로queued유지."
     },
     {
       "id": "FUP-Q27-011",
@@ -842,6 +846,71 @@
         "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json"
       ],
       "scope_rule": "정본/생산가드/한도변경없이관측보강;현재제품결함을재현했다고주장하지않음"
+    },
+    {
+      "id": "FUP-P28-015",
+      "origin_task": "P28-03",
+      "title": "AI 예산 복구 신규시험의 초기 fixture·SQL 기대값 실패 인계",
+      "classification": "test_fixture_or_expectation",
+      "status": "awaiting_retest",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-2a:acceptance"
+      ],
+      "may_proceed": [
+        "P28-03:scoped_actual_validation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-core-budget-build-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-core-actual-a01-2026-10-30.json"
+      ],
+      "current_validation": "최종같은4SHA196 PASS; root734보호파일불변. 실제DB·독립검토대기",
+      "scope_limit": "정확과거중간bytes 재현은미실행. 초기분류는작성자설명이며현재기능수용을불필요한역사복원관문으로확장하지않음",
+      "root_actual_fixture": "a01앞6PASS후동일요청5번째attempt가domain sequence≤4에거부. 재시작취소검사자체는이미통과했고독립후속예약의requestID를분리해재검증한다."
+    },
+    {
+      "id": "FUP-P28-016",
+      "origin_task": "P28-03",
+      "title": "public factory/예약 준비를 포함한 단일 deadline 결속",
+      "classification": "product_defect",
+      "status": "awaiting_retest",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-2a:acceptance"
+      ],
+      "may_proceed": [
+        "P28-03:scoped_actual_validation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-core-budget-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-core-budget-fixes-2026-10-30.json"
+      ],
+      "current_validation": "RED3→현재집중94PASS;같은최종4SHA199/실제DB/독립검토대기"
+    },
+    {
+      "id": "FUP-P28-017",
+      "origin_task": "P28-03",
+      "title": "잔액 조회의 겹치는 정책 window 결속 누락",
+      "classification": "product_defect",
+      "status": "awaiting_retest",
+      "owner": "root",
+      "priority": "blocking_affected_acceptance",
+      "blocks": [
+        "P28-03:internal2b-2a:acceptance"
+      ],
+      "may_proceed": [
+        "P28-03:scoped_actual_validation",
+        "independent_planned_artifacts"
+      ],
+      "evidence": [
+        "docs/evidence/product-p28-03-ai-core-budget-review-a01-2026-10-30.json",
+        "docs/evidence/product-p28-03-ai-core-budget-fixes-2026-10-30.json"
+      ],
+      "current_validation": "RED3→현재집중94PASS;같은최종4SHA199/실제DB/독립검토대기"
     }
   ]
 }

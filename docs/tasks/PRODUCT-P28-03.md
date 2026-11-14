@@ -1,6 +1,6 @@
 # P28-03 — 로컬 실행 조립·영속성·15분 분석
 
-- 상태: 진행 — 내부1/2a/2b-1납품·다음2b-2a배정준비
+- 상태: 진행 — 내부1/2a/2b-1납품·내부2b-2a 4파일구현배정
 - 단계·선행조건: EXEC-DEC-003, P28-02 product-read-v1 준비·P28-01 정적 산출물. Q27/실제화면 미해결은 통합·완료 관문 유지
 - 요청 근거·범위: 사용자 전체 계획 우선 진행·실패 큐. 현재호스트 로컬 합성 제품 조립·영속성·활성세션15분 분석
 - 담당: root 공통계약/큐/상태, qh_implementer 지정파일, 독립 일반/보안 검토·root 실제 합성DB. worker1/writer1·재귀0
@@ -141,3 +141,21 @@
 
 - ba5b52d816a57b85beccfd4cce78dd24875119b8,19파일을독립10항목191.025초/차단0뒤commit·origin push/원격SHA대조했다. 최종stage공백검사에서보고서Markdown두공백9줄이검출돼commit전공백만정리후PASS,코드6SHA는불변이다. [납품](../evidence/product-p28-03-ai-store-delivery-2026-10-30.json).
 - 총16단위납품. 내부2b-2a/b/c는여전히배정설계이며미실행, P28-03 status in_progress/artifact_ready false를유지한다.
+
+## 내부2b-2a 구현 배정 — P28-03-ai-core-budget-build-a01
+
+- Sol/high·qh_development 별도부모1200초·자동재시도0·worker1/writer1. 입력HEADedd018a(저장기반ba5b52d)·AI계약revision1 SHAf95ec6afccd549d15e6ce1df0a02612bbbd5d688b13e31bf7523785dec3aafdb.
+- 소유4파일: src/quantharbor/adapters/synthetic_investment_ai.py, product_ai.py, tests/product/test_product_ai.py, test_product_ai_core.py(신규). SQL/registry/계약/큐/status/application/domain/나머지파일은보호. root baseline은.runtime/team에별도보존,공개파일쓰기는반환까지중단한다.
+- 위2b-2a exactfactory/budget/reserve-cancel/recovery barrier와현재DB조회/세대/gate/latch만. 미연결query/dispatch/client/processed/execute는제품mode차단하고기본memory를보존한다. closing/headroom/aux귀속증명후reserve,새facade로같은세대진행작업취소금지.
+- 의미있는집중/기존AI회귀·품질/공백과정확SHA/미구현을인계. 실제PG/Docker/새fullsuite는구현자NOT RUN,root가별도판정. 반환만으로완료/수용하지않는다.
+
+## 내부2b-2a 구현 반환
+
+- Sol/high1127.530초 정상반환·소유4파일/보호734공개파일root SHA대조불변. exact factory·현재DB조회·reserve/cancel·첫세대recovery·opaque phase/공유latch/closing headroom구현. 최종4SHA196 PASS(Python3.13.12,unittest203.351초/프로세스203.745초)·공개738지적0·공백PASS. [근거](../evidence/product-p28-03-ai-core-budget-build-2026-10-30.json).
+- 신규초기시험26중4FAIL/9ERROR및phaseSQL기대값1FAIL 이력은FUP-P28-015에보존. 정확과거중간source재현은미실행·작성자fixture설명과현재실제기능판정구분.
+- 실제PG/별도process재시작/독립일반·보안은NOT RUN,root가이어판정한다. query charge/outcome 및실제execute/review/dispatch/settle/client/processed/가설쓰기는제품mode차단·다음2b-2b/c다. 반환을P03완료로올리지않는다.
+
+## 내부2b-2a 일반지적·root 보완
+
+- 일반380.325초 P2두건: factory전체deadline리셋,잔액조회overlap window다른정책허용. root는예약입력encoding시간까지포함하는RED추가하여총3FAIL재현후단일entrydeadline전달/overlap exactpolicy결속으로보완,현재core33+store61=94 PASS2.282초. [수정](../evidence/product-p28-03-ai-core-budget-fixes-2026-10-30.json).
+- actuala01 6기능PASS뒤독립후속예약을동일request에5번째발급한시험오류로FAIL23.132초;domain sequence4한도보존/requestID분리로a02실행. 실제DB자료보존/당시4SHA불변. 현재4SHA의통합199/actuala02/독립보안은진행·미확정이다.
