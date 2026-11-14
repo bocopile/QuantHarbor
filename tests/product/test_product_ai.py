@@ -139,7 +139,7 @@ class MemoryWire:
         return s._json([self.revision, sha256(self.raw).hexdigest(), index,
                         self.raw[index*s._CHUNK:(index+1)*s._CHUNK].hex()])
 
-    def publish(self, revision, opcode, operation_id, digest, raw, record_count, markers, deadline):
+    def publish(self, revision, opcode, operation_id, digest, raw, record_count, markers, deadline, phase=None):
         self.deadlines.append(deadline)
         self.writes += 1
         if revision != self.revision:
@@ -760,6 +760,43 @@ class PipeTests(unittest.TestCase):
             with self.assertRaises(LedgerStorageError) as caught:
                 p.publish(0, opcode, 'a'*32, 'b'*64, b'{}', 0, (), time.monotonic()+1)
             self.assertEqual(caught.exception.reason, 'product_ai_bridge_required')
+
+    def test_budget_publish_requires_exact_internally_issued_phase_before_io(self):
+        p = self.pipe('raise AssertionError()')
+        with patch.object(p, '_exchange') as exchange:
+            for opcode in (s.Opcode.RESERVE, s.Opcode.CANCEL, s.Opcode.RESTART_RECONCILE):
+                with self.subTest(opcode=opcode), self.assertRaises(LedgerStorageError) as caught:
+                    p.publish(0, opcode, 'a'*32, 'b'*64, b'{}', 0, (), time.monotonic()+1)
+                self.assertEqual(caught.exception.reason, 'product_ai_phase_invalid')
+            exchange.assert_not_called()
+
+    def test_issued_reserve_phase_generates_only_closed_budget_publish_sql(self):
+        db, wire = opened(), MemoryWire()
+        pipe = s._Pipe(db)
+        with patch.object(s, 'ensure_schema'), patch.object(s, '_Pipe', return_value=wire):
+            store = s.ProductAIStore.product_synthetic(db)
+        r, p, usage = request(), policy(), d.priced(9, 20)
+        inputs = (s._b64(d.encoded(r)), s._b64(d.encoded(p)), 'attempt:1', d.usage_values(usage), NOW)
+        with store._phase(s.Opcode.RESERVE, inputs) as (phase, deadline):
+            proposed, _ = store._transition(phase)
+            raw = s._json(s._wire(proposed))
+            store._pipe = pipe
+            captured = []
+            def exchange(fragments, _):
+                captured.extend(fragments)
+                return b'synthetic-command-ack'
+            try:
+                with patch.object(pipe, '_exchange', side_effect=exchange):
+                    ack = pipe.publish(phase.revision, phase.opcode, phase.operation_id,
+                        phase.input_digest, raw, len(proposed.records), phase.markers, deadline, phase)
+                self.assertEqual(ack, b'synthetic-command-ack')
+                sql = b''.join(captured)
+                self.assertIn(b'SELECT qh_product.ai_publish(0,'+s._text('reserve').encode(), sql)
+                self.assertIn(b'COMMIT;', sql)
+                self.assertEqual(sql.count(b'qh_product.ai_publish('), 1)
+            finally:
+                store._pipe = wire
+        self.assertEqual(wire.writes, 0)
 
 
 if __name__ == '__main__':

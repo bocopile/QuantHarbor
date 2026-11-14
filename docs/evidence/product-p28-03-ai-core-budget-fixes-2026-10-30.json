@@ -1,0 +1,46 @@
+{
+  "task": "P28-03:internal2b-2a",
+  "review": "docs/evidence/product-p28-03-ai-core-budget-review-a01-2026-10-30.json",
+  "source_sha256": {
+    "tests/product/test_product_ai.py": "24cda6f8234a49a9feee293bcb5fadc2123772cb5e350f8f978a8c77ebeb75f9",
+    "tests/product/test_product_ai_core.py": "e2bd289a9afe4dd5ab3c1578fc1b53c53bcaf77d4292f6d739fd7bf56c45c071",
+    "src/quantharbor/adapters/product_ai.py": "197b76e1e609b9b9015da927edf099153f7f7f6eb0042f6448e6242155308d94",
+    "src/quantharbor/adapters/synthetic_investment_ai.py": "e2324c273034b363674bd7aea6fafd95e21ea3710259a3baf8a3f07f7a39efb0"
+  },
+  "root_RED": {
+    "regression_tests": 3,
+    "failures": 3,
+    "reserve_timeout_probe": {
+      "budget_seconds": 0.1,
+      "preparation_delay": 0.12,
+      "observed_seconds": 0.165,
+      "outcome": "incorrect_success"
+    },
+    "factory_timeout_probe": {
+      "budget_seconds": 0.1,
+      "schema_delay": 0.06,
+      "recovery_delay": 0.06,
+      "observed_seconds": 0.138,
+      "outcome": "incorrect_success"
+    },
+    "balance_probe": {
+      "stored_cap": 100,
+      "reserved": 50,
+      "correct_balance": 50,
+      "changed_window_end_and_cap_200_balance": 150
+    }
+  },
+  "changes": [
+    "one entry deadline across schema/read/recovery/confirmation",
+    "reserve prep encoding within same deadline",
+    "overlapping scope/window must use exact registered policy"
+  ],
+  "root_focused_GREEN": {
+    "tests": 94,
+    "result": "PASS",
+    "elapsed_seconds": 2.282
+  },
+  "current_199": "RUNNING",
+  "actual_current_a02": "RUNNING",
+  "independent_security": "NOT RUN"
+}

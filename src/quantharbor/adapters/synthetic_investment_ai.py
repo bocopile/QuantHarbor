@@ -1,6 +1,7 @@
 """Q25 in-process 합성 client/공유 저장소. 실제 client는 항상 비활성이다."""
 from dataclasses import asdict, replace
 import json
+import time
 from threading import RLock
 
 from quantharbor.domain.investment_ai import (AIBudgetAttempt,AIBudgetPolicy,AIRef,Usage,ResearchRequest,
@@ -43,6 +44,23 @@ class SyntheticAIRepository:
         self._capacity=capacity
         self._byte_capacity=byte_capacity
 
+    @classmethod
+    def product_synthetic(cls, database, *, capacity=128, byte_capacity=8388608):
+        from .product_ai import ProductAIStore, _DEADLINE, _alive
+        deadline = time.monotonic()+_DEADLINE
+        if cls is not SyntheticAIRepository:
+            raise ContractError()
+        store = ProductAIStore._factory(database, capacity=capacity, byte_capacity=byte_capacity, deadline=deadline)
+        store._recover(deadline=deadline)
+        repository = SyntheticAIRepository(capacity=capacity, byte_capacity=byte_capacity)
+        repository._product_store = store
+        store._facade = repository
+        _alive(deadline)
+        return repository
+
+    def _product_call(self, name, *args, **kwargs):
+        return self._product_store._core_call(self, name, args, kwargs)
+
     def _room(self, key,raw):
         records=len(self._records)+(key not in self._records)
         size=sum(map(len,self._records.values()))-len(self._records.get(key,b''))+len(raw)
@@ -50,6 +68,8 @@ class SyntheticAIRepository:
             raise AIDenied('capacity')
 
     def append(self,kind,identity,obj,*,sources=None):
+        if hasattr(self, '_product_store'):
+            return self._product_call('append', kind, identity, obj, sources=sources)
         if kind not in _TYPES or type(obj) is not _TYPES[kind]:
             raise ContractError()
         if kind=='attempt':
@@ -117,6 +137,8 @@ class SyntheticAIRepository:
 
     def bind_sources(self,sources):
         """호스트가 완성해 주입한 현재 원천을 사용한다. 과거 처리 원천으로 대체하지 않는다."""
+        if hasattr(self, '_product_store'):
+            return self._product_call('bind_sources', sources)
         from quantharbor.application.investment_ai import Sources
         if type(sources) is not Sources or sources.repository is not self:
             raise ContractError()
@@ -125,6 +147,8 @@ class SyntheticAIRepository:
 
     def hypothesis_dependencies(self,origin_ref):
         """필수 집합은 처리된 origin/request/원천 manifest에서만 도출한다."""
+        if hasattr(self, '_product_store'):
+            return self._product_call('hypothesis_dependencies', origin_ref)
         with self._lock:
             origin=self.get(origin_ref)
             if type(origin) is not ResearchResult or self._processed.get(('result',origin.result_id))!=encoded(origin):
@@ -141,6 +165,8 @@ class SyntheticAIRepository:
             return dependencies
 
     def execute_query(self,request,query,sources,*,at,attempt_id=None):
+        if hasattr(self, '_product_store'):
+            return self._product_call('execute_query', request, query, sources, at=at, attempt_id=attempt_id)
         with self._lock:
             if attempt_id is not None:
                 a=self._attempts.get(attempt_id)
@@ -192,16 +218,22 @@ class SyntheticAIRepository:
             return obj,receipt
 
     def query_count(self,request_ref):
+        if hasattr(self, '_product_store'):
+            return self._product_call('query_count', request_ref)
         with self._lock:
             self.get(request_ref)
             return self._query_totals.get(request_ref,0)
 
     def query_denials(self,attempt_id):
+        if hasattr(self, '_product_store'):
+            return self._product_call('query_denials', attempt_id)
         with self._lock:
             return self._query_denials.get(attempt_id,())
 
     def execute(self,request,policy,sources,client,**kwargs):
         """저장소가 실제 호출·정규화·검증을 실행하고 exact 처리 결과만 수락한다."""
+        if hasattr(self, '_product_store'):
+            return self._product_call('execute', request, policy, sources, client, **kwargs)
         from quantharbor.application.investment_ai import _run_research
         if sources.repository is not self:
             raise ContractError()
@@ -228,6 +260,8 @@ class SyntheticAIRepository:
                 raise
 
     def execute_review(self,review_request,exact_result_ref,reviewer,sources,**kwargs):
+        if hasattr(self, '_product_store'):
+            return self._product_call('execute_review', review_request, exact_result_ref, reviewer, sources, **kwargs)
         from quantharbor.application.investment_ai import _review_result
         if sources.repository is not self:
             raise ContractError()
@@ -267,6 +301,8 @@ class SyntheticAIRepository:
                 raise
 
     def get(self,reference):
+        if hasattr(self, '_product_store'):
+            return self._product_call('get', reference)
         if type(reference) is not AIRef:
             raise ContractError()
         with self._lock:
@@ -279,6 +315,8 @@ class SyntheticAIRepository:
             return obj
 
     def hypotheses(self):
+        if hasattr(self, '_product_store'):
+            return self._product_call('hypotheses')
         with self._lock:
             return tuple(parse_payload(v).payload for (k,_),v in self._records.items() if k=='hypothesis')
 
@@ -288,6 +326,8 @@ class SyntheticAIRepository:
         return a
 
     def reserve(self,request,policy,attempt_id,reserved,*,at):
+        if hasattr(self, '_product_store'):
+            return self._product_call('reserve', request, policy, attempt_id, reserved, at=at)
         if type(request) is not ResearchRequest or type(policy) is not AIBudgetPolicy or type(reserved) is not Usage:
             raise ContractError()
         request=parse_payload(encoded(request)).payload
@@ -359,6 +399,8 @@ class SyntheticAIRepository:
             return a,True
 
     def dispatch(self,attempt_id,*,at):
+        if hasattr(self, '_product_store'):
+            return self._product_call('dispatch', attempt_id, at=at)
         at=utc_instant(at)
         with self._lock:
             a=self._attempts[attempt_id]
@@ -367,6 +409,8 @@ class SyntheticAIRepository:
             return self._save_attempt(replace(a,state='dispatched',dispatch_at=at))
 
     def cancel(self,attempt_id,*,at,retain_result=False):
+        if hasattr(self, '_product_store'):
+            return self._product_call('cancel', attempt_id, at=at, retain_result=retain_result)
         with self._lock:
             a=self._attempts[attempt_id]
             if a.state!='reserved':
@@ -377,6 +421,8 @@ class SyntheticAIRepository:
             return a
 
     def settle(self,attempt_id,usage,*,at):
+        if hasattr(self, '_product_store'):
+            return self._product_call('settle', attempt_id, usage, at=at)
         with self._lock:
             a=self._attempts[attempt_id]
             p=self.get(a.policy_ref)
@@ -412,6 +458,8 @@ class SyntheticAIRepository:
 
     def settle_unknown(self,attempt_id):
         """전송 후 전제 실패의 확정. 마지막 확정 시각/정상 정산은 보존한다."""
+        if hasattr(self, '_product_store'):
+            return self._product_call('settle_unknown', attempt_id)
         with self._lock:
             a=self._attempts[attempt_id]
             if a.state in ('settled','unknown_charge'):
@@ -424,6 +472,8 @@ class SyntheticAIRepository:
             return self._save_attempt(unknown)
 
     def finish(self,attempt_id,result):
+        if hasattr(self, '_product_store'):
+            return self._product_call('finish', attempt_id, result)
         with self._lock:
             a=self._attempts[attempt_id]
             if result.request_ref!=a.request_ref or result.budget_attempt_refs!=(ref('attempt',attempt_id,a),):
@@ -437,15 +487,21 @@ class SyntheticAIRepository:
                 raise
 
     def result_for(self,attempt_id):
+        if hasattr(self, '_product_store'):
+            return self._product_call('result_for', attempt_id)
         with self._lock:
             raw=self._records.get(('result','result:'+attempt_id))
             return parse_payload(raw).payload if raw else None
 
     def attempt(self,attempt_id):
+        if hasattr(self, '_product_store'):
+            return self._product_call('attempt', attempt_id)
         with self._lock:
             return parse_payload(encoded(self._attempts[attempt_id])).payload
 
     def balance(self,policy):
+        if hasattr(self, '_product_store'):
+            return self._product_call('balance', policy)
         with self._lock:
             values=[]
             for a in self._attempts.values():

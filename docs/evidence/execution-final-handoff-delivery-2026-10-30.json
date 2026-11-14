@@ -1,0 +1,44 @@
+{
+  "run_id": "Q27-final-handoff-delivery",
+  "precommit_base": {
+    "elapsed_seconds": 223.774,
+    "result": "9PASS_1P2_mapping_stale_dynamic_state",
+    "commit_allowed": false
+  },
+  "root_fix": "only current mapping JSON/MD dynamic state updated to836/86PASS; static34/6 and Q27 incomplete preserved",
+  "precommit_delta": {
+    "elapsed_seconds": 121.633,
+    "findings": 0,
+    "input_files": 14,
+    "input_unchanged": true,
+    "commit_allowed": true
+  },
+  "delivery": {
+    "unit": "Q27-final-validation-and-scoped-followups-handoff",
+    "commit": "edd018a30e8084e9239ff785d89dc8671e37c140",
+    "branch": "codex/qh-local-delivery-20261030",
+    "files": [
+      "docs/evidence/execution-final-current-database-2026-10-30.json",
+      "docs/evidence/execution-final-current-product-2026-10-30.json",
+      "docs/evidence/execution-fixed40-current-mapping-2026-10-30.json",
+      "docs/evidence/execution-fixed40-semantic-review-2026-10-30.json",
+      "docs/evidence/product-p28-03-ai-store-delivery-2026-10-30.json",
+      "docs/evidence/task-unit-git-delivery-2026-10-30.json",
+      "docs/research/execution-fixed40-current-mapping-2026-10-30.md",
+      "docs/research/execution-fixed40-semantic-review-2026-10-30.md",
+      "docs/status.md",
+      "docs/tasks/PRODUCT-P28-03.md",
+      "docs/tasks/failure-followup-queue.json",
+      "docs/tasks/failure-followup-queue.md",
+      "docs/tasks/product-delivery-queue.json",
+      "docs/team-dashboard.md"
+    ],
+    "precommit_base_elapsed_seconds": 223.774,
+    "precommit_delta_elapsed_seconds": 121.633,
+    "push": "PASS",
+    "remote_sha": "edd018a30e8084e9239ff785d89dc8671e37c140"
+  },
+  "PR": "NOT RUN",
+  "merge": "NOT RUN",
+  "force_push": "NOT RUN"
+}

@@ -4,11 +4,11 @@
 
 ## 현재 상황
 
-- 현재계획: **P28-03 내부1/2a/2b-1납품·2b-2a 배정준비**. 내부2a6c8786f·최종artifact20PASS/실제재시작·원자성/함수변조검증·독립일반/보안확인. [카드](tasks/PRODUCT-P28-03.md).
+- 현재계획: **P28-03 내부1/2a/2b-1납품·2b-2a 4파일반환·실제검증/검토**. 내부2a6c8786f·최종artifact20PASS/실제재시작·원자성/함수변조검증·독립일반/보안확인. [카드](tasks/PRODUCT-P28-03.md).
 - 2b설계는374.138초자문후typedcheckpoint/phase/query barrier/owner/latch/보수quota로확정. 2b-1저장기반은62집중/actual12/독립검토로납품,AIcore연결은아직NOT RUN.
 - Q27 최신바뀐/추가6context465.254초PASS·8a27220납품. 같은HEAD고정708입력에서전체제품836/DB86 모두PASS·자기DB86정리. 고정40은독립34지원/6관측보강으로후속분리.
-- 후속28개중해결20·진단1·대기7. 전체18/36·로컬7/10·제품0/12 completed·artifact_ready2. 항목크기가달라작업량진행률로합산하지않는다.
-- 총16개단위commit/push·원격SHA확인. 기존main80403ab/이전고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
+- 후속31개중해결20·진단1·재확인3·대기7. 전체18/36·로컬7/10·제품0/12 completed·artifact_ready2. 항목크기가달라작업량진행률로합산하지않는다.
+- 총17개단위commit/push·원격SHA확인. 기존main80403ab/이전고정worktree보존·PR/merge없음. [납품](evidence/task-unit-git-delivery-2026-10-30.json).
 
 ## 담당자별 상태
 
@@ -17,7 +17,7 @@
 | 01 root | 현재세션/직접Python | DB86완료·원래계획배정준비 | 새입력고정·실패수거·자기DB정리 |
 | 02 qh_researcher | Luna/high | 미배정 | 조사대기 |
 | 03 qh_architect | Astra/high | 2b설계반환374.138초 | typed복구/예산/query barrier계약 |
-| 04 qh_implementer | Sol/high | 2b-1납품·2b-2a미배정 | 지정파일구현 |
+| 04 qh_implementer | Sol/high | 2b-2a반환196PASS·실제검증대기 | 지정파일구현 |
 | 05 qh_reviewer | Sol/high | 고정40검토585.747초·34지원6관측보강 | 단계증거·SHA·납품범위 |
 | 06 qh_security_reviewer | Astra/high | 2b-1최종delta115.062초·지적0 | 설치함수/commit실패경계 |
 | 07 검증위치 | root직접Python | 전체제품836완료·rc0 | 최종836결과·고정입력 |
